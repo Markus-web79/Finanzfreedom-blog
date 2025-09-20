@@ -1,3 +1,4 @@
+
 name: Generate & Deploy Blog
 
 on:
@@ -18,15 +19,15 @@ jobs:
           node-version: 18
 
       - name: Install root deps
-        run: npm ci || npm install
+        run: npm install
 
-      - - name: Generate Article
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-  run: |
-    cd generator
-    npm install
-    node generate.js
+      - name: Generate Article
+        run: |
+          cd generator
+          npm install
+          node generate.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Commit new Article
         run: |
@@ -37,7 +38,9 @@ jobs:
           git push
 
       - name: Build & Export
-        run: npm run build && npm run export
+        run: |
+          npm run build
+          npm run export
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

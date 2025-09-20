@@ -101,9 +101,9 @@ await fs.writeFile(outPath, md, "utf8");
 console.log("✅ Artikel gespeichert unter:", outPath);
 }
 
+// Generator starten
 generateArticle().catch(err => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
 });
-// Artikel generieren
 

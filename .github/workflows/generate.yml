@@ -20,13 +20,13 @@ jobs:
       - name: Install root deps
         run: npm ci || npm install
 
-      - name: Generate Article
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          cd generator
-          npm ci || npm install
-          node generate.js
+      - - name: Generate Article
+  env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  run: |
+    cd generator
+    npm install
+    node generate.js
 
       - name: Commit new Article
         run: |

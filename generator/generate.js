@@ -38,7 +38,8 @@ function makePrompt(length = "short") {
   ];
 
   const topic = topics[Math.floor(Math.random() * topics.length)];
-  const lengthInfo = length === "long" ? "Schreibe ca. 1200 Wörter." : "Schreibe ca. 500 Wörter.";
+  const lengthInfo =
+    length === "long" ? "Schreibe ca. 1200 Wörter." : "Schreibe ca. 500 Wörter.";
   return `${base}\n\nThema: ${topic}\n${lengthInfo}`;
 }
 
@@ -46,7 +47,9 @@ async function generateArticle() {
   // 📌 Prüfen ob content/ leer ist → Demo-Artikel anlegen
   const contentDir = path.join(process.cwd(), "content");
   await fs.ensureDir(contentDir);
-  const existingFiles = fs.readdirSync(contentDir).filter(file => file.endsWith(".md")); // Nur .md zählen
+  const existingFiles = fs
+    .readdirSync(contentDir)
+    .filter((file) => file.endsWith(".md")); // Nur .md-Dateien zählen
 
   if (existingFiles.length === 0) {
     const demoSlug = "willkommen";
@@ -68,3 +71,31 @@ Hier kannst du sofort sehen, wie Inhalte angezeigt werden.
     await fs.writeFile(demoPath, demoMd, "utf8");
     console.log("✅ Demo-Artikel erstellt:", demoPath);
   }
+
+  // 🔽 Ab hier: AI-gesteuerte Artikelerstellung
+  const longForm = needsLongForm();
+  const prompt = makePrompt(longForm ? "long" : "short");
+
+  console.log("📝 Generiere Artikel mit Prompt:", prompt);
+
+  const completion = await client.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  const output = completion.choices[0].message.content;
+  const slug = slugify(output.split("\n")[0].slice(0, 60), { lower: true });
+
+  const md = output.replace(/^META:.*$/m, ""); // Entferne META-Zeile aus dem Body
+
+  const outPath = path.join(contentDir, `${slug}.md`);
+  await fs.writeFile(outPath, md, "utf8");
+
+  console.log("✅ Artikel gespeichert unter:", outPath);
+}
+
+// Generator starten
+generateArticle().catch((err) => {
+  console.error("❌ Fehler beim Generieren:", err);
+  process.exit(1);
+});

@@ -1,17 +1,20 @@
-{
-  "name": "finanzfreedom-blog",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build"
-  },
-  "dependencies": {
-    "next": "14.2.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "fs-extra": "^11.2.0",
-    "slugify": "^1.6.6",
-    "openai": "^4.0.0"
-  }
+/** @type {import('next').NextConfig} */
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+let assetPrefix = '';
+let basePath = '';
+
+if (isGithubActions) {
+  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
+  basePath = `/${repo}`;
+  assetPrefix = `/${repo}/`;
 }
+
+const nextConfig = {
+  output: 'export',
+  images: { unoptimized: true },
+  assetPrefix,
+  basePath,
+  distDir: 'out'
+};
+
+module.exports = nextConfig;

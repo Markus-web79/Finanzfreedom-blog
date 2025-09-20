@@ -88,6 +88,53 @@ async function generateArticle() {
 
   const md = fm + body + '\n';
 
+  // 📌 Speichern direkt im Root-"content/" Ordner
+  const outDir = path.join(process.cwd(), 'content');
+  await fs.ensureDir(outDir);
+  const outPath = path.join(outDir, `${slug}.md`);
+  await fs.writeFile(outPath, md, 'utf8');
+
+  console.log(`✅ Neuer Artikel gespeichert: ${outPath}`);
+}
+
+generateArticle().catch(err => {
+  console.error("❌ Fehler beim Generieren:", err);
+  process.exit(1);
+});
+// Artikel generieren
+async function generateArticle() {
+  const longForm = needsLongForm();
+  const prompt = makePrompt(longForm ? 'long' : 'short');
+
+  const response = await client.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [{ role: "user", content: prompt }],
+    temperature: 0.7
+  });
+
+  const raw = response.choices?.[0]?.message?.content || "META: Artikel über Finanzen\nInhalt konnte nicht generiert werden.";
+  const { meta, body } = parseMeta(raw);
+
+  const titleLine = body.split('\n').find(l => l.trim().length > 0) || "Artikel zu Finanzen";
+  const safeTitle = titleLine.replace(/^#+\s*/, '').trim();
+  const slug = slugify(`${safeTitle}-${Date.now()}`, { lower: true, strict: true });
+  const now = new Date().toISOString();
+  const tags = ['Finanzen', 'Passives Einkommen'];
+  const excerpt = meta.slice(0, 150) || 'Artikel über Finanzen & passives Einkommen.';
+
+  const fm = [
+    '---',
+    `title: ${safeTitle}`,
+    `date: ${now}`,
+    `slug: ${slug}`,
+    `tags: [${tags.join(', ')}]`,
+    `excerpt: ${excerpt}`,
+    '---',
+    ''
+  ].join('\n');
+
+  const md = fm + body + '\n';
+
   const outDir = path.join(process.cwd(), 'content');
   await fs.ensureDir(outDir);
   const outPath = path.join(outDir, `${slug}.md`);

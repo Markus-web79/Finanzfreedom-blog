@@ -37,8 +37,6 @@ jobs:
           git add content/
           git commit -m "Auto: neuer AI-Artikel" || echo "Keine Änderungen"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build & Export
         run: |

@@ -44,15 +44,14 @@ function makePrompt(length = "short") {
 }
 
 async function generateArticle() {
-  // 📌 Prüfen ob content/ leer ist → Demo-Artikel anlegen
   const contentDir = path.join(process.cwd(), "content");
   await fs.ensureDir(contentDir);
-const existingFiles = fs
-  .readdirSync(contentDir)
-  .filter((file) => file.endsWith(".md") && file !== ".gitkeep");
 
-  if (existingFiles.length === 0) {
-    const demoSlug = "willkommen";
+  // 📌 Willkommensartikel erzwingen, wenn er fehlt
+  const demoSlug = "willkommen";
+  const demoPath = path.join(contentDir, `${demoSlug}.md`);
+
+  if (!fs.existsSync(demoPath)) {
     const demoMd = `---
 title: "Willkommen auf dem FinanzFreedom Blog"
 date: "${new Date().toISOString().split("T")[0]}"
@@ -67,7 +66,6 @@ Hier kannst du sofort sehen, wie Inhalte angezeigt werden.
 👉 Bald kommen hier automatisch neue Artikel mit Tipps und Affiliate-Links!
 `;
 
-    const demoPath = path.join(contentDir, `${demoSlug}.md`);
     await fs.writeFile(demoPath, demoMd, "utf8");
     console.log("✅ Demo-Artikel erstellt:", demoPath);
   }
@@ -93,9 +91,3 @@ Hier kannst du sofort sehen, wie Inhalte angezeigt werden.
 
   console.log("✅ Artikel gespeichert unter:", outPath);
 }
-
-// Generator starten
-generateArticle().catch((err) => {
-  console.error("❌ Fehler beim Generieren:", err);
-  process.exit(1);
-});

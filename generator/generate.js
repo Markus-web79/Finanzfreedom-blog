@@ -7,7 +7,7 @@ const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // Entscheidet: 3 kurze Artikel, dann 1 langer
 function needsLongForm() {
-  const stampPath = path.join(process.cwd(), 'generator', '.pattern.json');
+  const stampPath = path.join(process.cwd(), '.pattern.json');
   let state = { counter: 0 };
   if (fs.existsSync(stampPath)) state = fs.readJsonSync(stampPath);
   state.counter = (state.counter || 0) + 1;

@@ -88,13 +88,17 @@ async function generateArticle() {
 
   const md = fm + body + '\n';
 
-  // 📌 Speichern direkt im Root-"content/" Ordner
-  const outDir = path.join(process.cwd(), 'content');
-  await fs.ensureDir(outDir);
-  const outPath = path.join(outDir, `${slug}.md`);
-  await fs.writeFile(outPath, md, 'utf8');
+// 📌 Speichern direkt im Root-"content/" Ordner
+const outDir = path.join(process.cwd(), "content");
+await fs.ensureDir(outDir);
 
-  console.log(`✅ Neuer Artikel gespeichert: ${outPath}`);
+// Dateiname = slug + .md
+const outPath = path.join(outDir, `${slug}.md`);
+
+// Markdown-Datei schreiben
+await fs.writeFile(outPath, md, "utf8");
+
+console.log("✅ Artikel gespeichert unter:", outPath);
 }
 
 generateArticle().catch(err => {

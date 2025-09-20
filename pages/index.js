@@ -20,12 +20,7 @@ export async function getStaticProps() {
     };
   });
 
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  return { props: { posts } };
-}
-
-  // Neueste zuerst
+  // Neueste zuerst sortieren
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return { props: { posts } };

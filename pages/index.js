@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md")); // ✅ nur .md-Dateien
+  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md"));
 
   const posts = files.map((file) => {
     const filePath = path.join(contentDir, file);
@@ -13,14 +13,13 @@ export async function getStaticProps() {
     const { data } = matter(fileContents);
 
     return {
-      slug: data.slug || file.replace(/\.md$/, ""),
+      slug: file.replace(/\.md$/, ""),
       title: data.title || "Unbenannter Artikel",
-      date: data.date || null,
+      date: data.date || "",
       excerpt: data.excerpt || "",
     };
   });
 
-  // Neueste zuerst sortieren
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return { props: { posts } };
@@ -34,13 +33,11 @@ export default function Home({ posts }) {
 
       <ul style={{ listStyle: "none", padding: 0 }}>
         {posts.map((post) => (
-          <li key={post.slug} style={{ marginBottom: "2rem" }}>
+          <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`/${post.slug}`} style={{ color: "blue", textDecoration: "underline" }}>
-                {post.title}
-              </Link>
+              <Link href={`/${post.slug}`}>{post.title}</Link>
             </h2>
-            <p><small>{post.date ? new Date(post.date).toLocaleDateString("de-DE") : ""}</small></p>
+            <small>{post.date}</small>
             <p>{post.excerpt}</p>
           </li>
         ))}

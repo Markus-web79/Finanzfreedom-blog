@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir);
+  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md")); // ✅ nur .md-Dateien
 
   const posts = files.map((file) => {
     const filePath = path.join(contentDir, file);
@@ -19,6 +19,11 @@ export async function getStaticProps() {
       excerpt: data.excerpt || "",
     };
   });
+
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return { props: { posts } };
+}
 
   // Neueste zuerst
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));

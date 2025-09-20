@@ -51,7 +51,7 @@ async function generateArticle() {
   const demoSlug = "willkommen";
   const demoPath = path.join(contentDir, `${demoSlug}.md`);
 
-  if (!fs.existsSync(demoPath)) {
+    if (!fs.existsSync(demoPath)) {
     const demoMd = `---
 title: "Willkommen auf dem FinanzFreedom Blog"
 date: "${new Date().toISOString().split("T")[0]}"

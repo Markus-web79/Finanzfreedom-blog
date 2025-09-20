@@ -35,7 +35,7 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`/${post.slug}`}>{post.title}</Link>
+              <Link href={`/Finanzfreedom-blog/${post.slug}`}>{post.title}</Link>
             </h2>
             <small>{post.date}</small>
             <p>{post.excerpt}</p>

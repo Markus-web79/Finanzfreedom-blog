@@ -47,9 +47,9 @@ async function generateArticle() {
   // 📌 Prüfen ob content/ leer ist → Demo-Artikel anlegen
   const contentDir = path.join(process.cwd(), "content");
   await fs.ensureDir(contentDir);
-  const existingFiles = fs
-    .readdirSync(contentDir)
-    .filter((file) => file.endsWith(".md")); // Nur .md-Dateien zählen
+const existingFiles = fs
+  .readdirSync(contentDir)
+  .filter((file) => file.endsWith(".md") && file !== ".gitkeep");
 
   if (existingFiles.length === 0) {
     const demoSlug = "willkommen";

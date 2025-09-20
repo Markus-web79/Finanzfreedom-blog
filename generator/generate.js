@@ -44,7 +44,7 @@ function makePrompt(length = "short") {
 }
 
 async function generateArticle() {
-  const contentDir = path.join(process.cwd(), "content");
+  const contentDir = path.join(process.cwd(), "..", "content");
   await fs.ensureDir(contentDir);
 
   // 📌 Willkommensartikel erzwingen, wenn er fehlt

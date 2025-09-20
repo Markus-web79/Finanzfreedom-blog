@@ -30,10 +30,11 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: Commit new Article
+          - name: Commit new Article
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          mkdir -p content
           git add content/
           git commit -m "Auto: neuer AI-Artikel" || echo "Keine Änderungen"
           git push

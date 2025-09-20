@@ -16,21 +16,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
 
       - name: Install root deps
         run: npm install
 
       - name: Generate Article
+        working-directory: ./generator
         run: |
-          cd generator
           ls -R
           npm install
           node generate.js
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-     - name: Commit new Article
+      - name: Commit new Article
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"

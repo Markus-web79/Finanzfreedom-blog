@@ -47,12 +47,11 @@ async function generateArticle() {
   const contentDir = path.join(process.cwd(), "..", "content");
   await fs.ensureDir(contentDir);
 
-  // 📌 Willkommensartikel erzwingen, wenn er fehlt
+  // 📌 Willkommensartikel erzwingen (immer neu schreiben)
   const demoSlug = "willkommen";
   const demoPath = path.join(contentDir, `${demoSlug}.md`);
 
-    if (!fs.existsSync(demoPath)) {
-    const demoMd = `---
+  const demoMd = `---
 title: "Willkommen auf dem FinanzFreedom Blog"
 date: "${new Date().toISOString().split("T")[0]}"
 excerpt: "Dein automatischer Blog über Finanzen und passives Einkommen ist live!"
@@ -66,9 +65,8 @@ Hier kannst du sofort sehen, wie Inhalte angezeigt werden.
 👉 Bald kommen hier automatisch neue Artikel mit Tipps und Affiliate-Links!
 `;
 
-    await fs.writeFile(demoPath, demoMd, "utf8");
-    console.log("✅ Demo-Artikel erstellt:", demoPath);
-  }
+  await fs.writeFile(demoPath, demoMd, "utf8");
+  console.log("✅ Demo-Artikel erstellt:", demoPath);
 
   // 🔽 Ab hier: AI-gesteuerte Artikelerstellung
   const longForm = needsLongForm();

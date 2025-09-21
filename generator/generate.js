@@ -3,7 +3,9 @@ const path = require("path");
 const slugify = require("slugify");
 const OpenAI = require("openai");
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 const topics = [
   "ETFs für Einsteiger: So startest du mit einem Sparplan",

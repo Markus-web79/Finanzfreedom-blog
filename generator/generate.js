@@ -1,7 +1,7 @@
-import fs from "fs-extra";
-import path from "path";
-import slugify from "slugify";
-import OpenAI from "openai";
+const fs = require("fs-extra");
+const path = require("path");
+const slugify = require("slugify");
+const OpenAI = require("openai");
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 

@@ -2,7 +2,12 @@
   "name": "finanzfreedom-blog",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "postbuild": "next export"
+}
     "dev": "next dev",
     "build": "next build",
     "start": "next start"

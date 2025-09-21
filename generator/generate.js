@@ -5,72 +5,57 @@ import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// 🔹 Hilfsfunktion: Immer einen Titel erzwingen
-function ensureTitleAndSlug(data, fallbackTitle) {
-  let title = data.title || fallbackTitle || "Automatisch generierter Artikel";
-  let slug = data.slug || slugify(title, { lower: true, strict: true });
-  return { title, slug };
+// Hilfsfunktion: Slug erzeugen
+function makeSlug(title) {
+  return slugify(title, { lower: true, strict: true });
+}
+
+// Prompt-Erstellung
+function makePrompt() {
+  return `Du bist ein deutscher Finanz-Redakteur. 
+Schreibe einen SEO-optimierten Blogartikel über Finanzen & passives Einkommen. 
+Verwende klare Überschriften (H2/H3), Listen und Beispiele. 
+Füge am Anfang 'META: ...' mit einer kurzen Meta-Beschreibung ein.`;
 }
 
 async function generateArticle() {
-  const contentDir = path.join(process.cwd(), "..", "content");
-  await fs.ensureDir(contentDir);
+  const prompt = makePrompt();
 
-  // 🔹 Prompt für OpenAI
-  const prompt = `
-Du bist ein deutscher Finanz-Redakteur. Schreibe einen Blogartikel mit Titel, Datum, Kurzbeschreibung (excerpt) und Inhalt. 
-Antwortformat im Markdown mit Frontmatter (title, date, excerpt, slug).
-`;
-
-  const res = await client.chat.completions.create({
+  // API-Aufruf
+  const response = await client.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ role: "user", content: prompt }],
   });
 
-  const rawText = res.choices[0].message.content.trim();
+  const text = response.choices[0].message.content.trim();
 
-  // 🔹 Frontmatter auslesen
-  const match = /^---([\s\S]*?)---/m.exec(rawText);
-  let frontmatter = {};
-  if (match) {
-    match[1].split("\n").forEach(line => {
-      const [key, ...rest] = line.split(":");
-      if (key && rest.length > 0) {
-        frontmatter[key.trim()] = rest.join(":").trim().replace(/^"|"$/g, "");
-      }
-    });
-  }
+  // Titel extrahieren (erste Überschrift oder Fallback)
+  let title = "Automatisch erstellter Artikel";
+  const match = text.match(/^#\s+(.*)/m);
+  if (match) title = match[1];
 
-  // 🔹 Titel & Slug sicherstellen
-  const { title, slug } = ensureTitleAndSlug(
-    frontmatter,
-    "FinanzFreedom Artikel"
-  );
+  const slug = makeSlug(title);
 
-  // 🔹 Fallbacks für Datum & Excerpt
-  const date = frontmatter.date || new Date().toISOString().split("T")[0];
-  const excerpt =
-    frontmatter.excerpt ||
-    "Ein automatisch generierter FinanzFreedom Blogartikel.";
-
-  // 🔹 Markdown-Datei erstellen
-  const md = `---
+  const frontmatter = `---
 title: "${title}"
-date: "${date}"
-excerpt: "${excerpt}"
+date: "${new Date().toISOString().split("T")[0]}"
+excerpt: "${title} – ein automatisch erstellter Blogartikel."
 slug: "${slug}"
 ---
-
-${rawText.replace(/^---[\s\S]*?---/, "").trim()}
 `;
 
+  const md = frontmatter + "\n" + text;
+
+  // 📌 Im content/-Ordner speichern
+  const contentDir = path.join(process.cwd(), "..", "content");
+  await fs.ensureDir(contentDir);
   const outPath = path.join(contentDir, `${slug}.md`);
+
   await fs.writeFile(outPath, md, "utf8");
   console.log("✅ Artikel gespeichert unter:", outPath);
 }
 
-// Start
-generateArticle().catch(err => {
+generateArticle().catch((err) => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
 });

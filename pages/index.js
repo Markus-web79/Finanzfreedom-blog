@@ -26,6 +26,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
+  const basePath = process.env.NEXT_PUBLIC_BASEPATH || "";
+
   return (
     <div style={{ fontFamily: "sans-serif", padding: "2rem", maxWidth: "700px", margin: "0 auto" }}>
       <h1>📈 FinanzFreedom Blog</h1>
@@ -35,7 +37,7 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`/Finanzfreedom-blog/${post.slug}`}>{post.title}</Link>
+              <Link href={`${basePath}/${post.slug}`}>{post.title}</Link>
             </h2>
             <small>{post.date}</small>
             <p>{post.excerpt}</p>

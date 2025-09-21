@@ -11,6 +11,7 @@ export async function getStaticProps() {
     const fp = path.join(contentDir, file);
     const raw = fs.readFileSync(fp, "utf8");
     const { data } = matter(raw);
+
     return {
       slug: file.replace(/\.md$/, ""),
       title: data.title || "Unbenannter Artikel",
@@ -19,7 +20,9 @@ export async function getStaticProps() {
     };
   });
 
-  posts.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  // Neueste zuerst
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return { props: { posts } };
 }
 
@@ -33,7 +36,8 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`/${post.slug}`}>{post.title}</Link>
+              {/* ✅ Hier wird jetzt "/pages/slug" verlinkt */}
+              <Link href={`/pages/${post.slug}`}>{post.title}</Link>
             </h2>
             <small>{post.date}</small>
             <p>{post.excerpt}</p>

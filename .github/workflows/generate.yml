@@ -2,7 +2,7 @@ name: Generate & Deploy Blog
 
 on:
   schedule:
-    - cron: "0 8 * * *" # Täglich um 08:00 UTC
+    - cron: "0 8 * * *"   # täglich 08:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -40,6 +40,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Export static site
+        run: npm run export
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

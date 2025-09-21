@@ -5,13 +5,12 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md"));
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
 
   const posts = files.map((file) => {
-    const filePath = path.join(contentDir, file);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
-
+    const fp = path.join(contentDir, file);
+    const raw = fs.readFileSync(fp, "utf8");
+    const { data } = matter(raw);
     return {
       slug: file.replace(/\.md$/, ""),
       title: data.title || "Unbenannter Artikel",
@@ -20,14 +19,11 @@ export async function getStaticProps() {
     };
   });
 
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
+  posts.sort((a,b)=> new Date(b.date) - new Date(a.date));
   return { props: { posts } };
 }
 
 export default function Home({ posts }) {
-  const basePath = process.env.NEXT_PUBLIC_BASEPATH || "";
-
   return (
     <div style={{ fontFamily: "sans-serif", padding: "2rem", maxWidth: "700px", margin: "0 auto" }}>
       <h1>📈 FinanzFreedom Blog</h1>
@@ -37,7 +33,7 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`${basePath}/${post.slug}`}>{post.title}</Link>
+              <Link href={`/${post.slug}`}>{post.title}</Link>
             </h2>
             <small>{post.date}</small>
             <p>{post.excerpt}</p>

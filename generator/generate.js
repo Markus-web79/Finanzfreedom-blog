@@ -5,107 +5,70 @@ import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Entscheidet: 3 kurze Artikel, dann 1 langer
-function needsLongForm() {
-  const stampPath = path.join(process.cwd(), ".pattern.json");
-  let state = { counter: 0 };
-  if (fs.existsSync(stampPath)) state = fs.readJsonSync(stampPath);
-  state.counter = (state.counter || 0) + 1;
-  let isLong = false;
-  if (state.counter >= 4) {
-    isLong = true;
-    state.counter = 0;
-  }
-  fs.writeJsonSync(stampPath, state);
-  return isLong;
+// Themenliste
+const topics = [
+  "ETFs für Einsteiger: So startest du mit einem Sparplan",
+  "Dividendenstrategie: Monatliche Ausschüttungen clever nutzen",
+  "5 Wege zu passivem Einkommen ohne Startkapital",
+  "Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen",
+  "Fehler, die Anfänger beim Investieren vermeiden sollten",
+  "Passives Einkommen mit digitalen Produkten (E-Book, Vorlagen)",
+  "ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?",
+  "Inflation & Zinsen: So schützt du dein Erspartes",
+  "Automatisierte Sparpläne: Tipps & Tools",
+  "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
+];
+
+// Zufälliges Thema auswählen
+function pickTopic() {
+  return topics[Math.floor(Math.random() * topics.length)];
 }
 
-// Prompt-Erstellung
-function makePrompt(length = "short") {
-  const base = `Du bist ein deutscher Finanz-Redakteur. Schreibe einen SEO-optimierten Blogartikel über Finanzen & passives Einkommen. Verwende klare Überschriften (H2/H3), Listen und Beispiele. Füge am Anfang 'META: ...' mit einer kurzen Meta-Beschreibung ein. Baue 1–2 Hinweise auf Risiken ein.`;
-
-  const topics = [
-    "ETFs für Einsteiger: So startest du mit einem Sparplan",
-    "Dividendenstrategie: Monatliche Ausschüttungen clever nutzen",
-    "5 Wege zu passivem Einkommen ohne Startkapital",
-    "Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen",
-    "Fehler, die Anfänger beim Investieren vermeiden sollten",
-    "Passives Einkommen mit digitalen Produkten (E-Book, Vorlagen)",
-    "ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?",
-    "Inflation & Zinsen: So schützt du dein Erspartes",
-    "Automatisierte Sparpläne: Tipps & Tools",
-    "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
-  ];
-
-  const topic = topics[Math.floor(Math.random() * topics.length)];
-  const lengthInfo = length === "long" ? "Schreibe ca. 1500 Wörter." : "Schreibe ca. 600 Wörter.";
-  return `${base}\nThema: ${topic}\n${lengthInfo}`;
+// Prompt für OpenAI
+function makePrompt(topic) {
+  return `Du bist ein deutscher Finanz-Redakteur. 
+Schreibe einen SEO-optimierten Blogartikel zum Thema "${topic}". 
+Strukturiere mit H2/H3 Überschriften, Listen und Beispielen. 
+Füge am Anfang eine kurze Meta-Beschreibung hinzu (META: ...).`;
 }
 
 async function generateArticle() {
+  const topic = pickTopic();
+  const slug = slugify(topic, { lower: true, strict: true });
   const contentDir = path.join(process.cwd(), "..", "content");
   await fs.ensureDir(contentDir);
 
-  // Willkommensartikel nur beim allerersten Mal erzeugen
-  const demoSlug = "willkommen";
-  const demoPath = path.join(contentDir, `${demoSlug}.md`);
-  if (!fs.existsSync(demoPath)) {
-    const demoMd = `---
-title: "Willkommen auf dem FinanzFreedom Blog"
-date: "${new Date().toISOString().split("T")[0]}"
-excerpt: "Dein automatischer Blog über Finanzen und passives Einkommen ist live!"
----
+  console.log("📝 Generiere Artikel:", topic);
 
-# 🎉 Willkommen
-
-Dies ist dein erster automatisch erzeugter Artikel.  
-Hier kannst du sofort sehen, wie Inhalte angezeigt werden.
-
-👉 Bald kommen hier automatisch neue Artikel mit Tipps und Affiliate-Links!
-`;
-    await fs.writeFile(demoPath, demoMd, "utf8");
-    console.log("✅ Demo-Artikel erstellt:", demoPath);
-  }
-
-  // Prompt wählen
-  const isLong = needsLongForm();
-  const prompt = makePrompt(isLong ? "long" : "short");
-
-  // OpenAI-Request
+  // OpenAI Anfrage
   const response = await client.chat.completions.create({
     model: "gpt-4o-mini",
-    messages: [{ role: "user", content: prompt }],
+    messages: [{ role: "user", content: makePrompt(topic) }],
   });
 
-  const text = response.choices[0].message.content;
+  const body = response.choices[0].message.content.trim();
 
-  // Artikel vorbereiten
-  const slug = slugify(prompt.split("Thema: ")[1].split("\n")[0], { lower: true, strict: true });
+  // Metadaten / Frontmatter
   const md = `---
-title: "${prompt.split("Thema: ")[1].split("\n")[0]}"
+title: "${topic}"
 date: "${new Date().toISOString().split("T")[0]}"
-excerpt: "Automatisch generierter Artikel über ${prompt.split("Thema: ")[1].split("\n")[0]}."
+excerpt: "Ein Artikel über ${topic}."
+slug: "${slug}"
 ---
 
-${text}
+${body}
 `;
 
-  // Datei speichern
+  // Speichern
   const outPath = path.join(contentDir, `${slug}.md`);
   await fs.writeFile(outPath, md, "utf8");
 
-  // Titel auslesen
-  const firstLine = md.split("\n").find(l => l.startsWith("title:"));
-  const title = firstLine ? firstLine.replace("title:", "").trim().replace(/"/g, "") : slug;
-
-  // Log-Ausgabe
-  console.log("📝 Neuer Artikel erstellt:");
-  console.log("   Titel:", title);
-  console.log("   Datei:", outPath);
-  console.log("   URL:  /pages/" + slug);
+  console.log("✅ Artikel gespeichert unter:", outPath);
 }
 
-generateArticle().catch(err => {
+// Start
+generateArticle().catch((err) => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
+});
 });

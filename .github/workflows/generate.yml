@@ -1,6 +1,8 @@
+name: Generate & Deploy Blog
+
 on:
   schedule:
-    - cron: "0 8 * * *"  # täglich um 08:00 UTC
+    - cron: "0 8 * * *" # täglich um 08:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -13,9 +15,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
-      - name: Install root deps
+      - name: Install dependencies
         run: npm install
 
       - name: Generate Article
@@ -27,23 +29,20 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: Debug Content
-        run: |
-          echo "📂 Inhalt von Root:"
-          ls -R .
-          echo "📂 Inhalt von content/:"
-          ls -R ./content || echo "Ordner content/ nicht gefunden"
-
       - name: Commit new Article
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add ./content/
+          mkdir -p content
+          git add content/
           git commit -m "Auto: neuer AI-Artikel" || echo "Keine Änderungen"
           git push || true
 
       - name: Build
         run: npm run build
+
+      - name: Generate Sitemap
+        run: npm run postbuild
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

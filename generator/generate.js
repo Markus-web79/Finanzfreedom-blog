@@ -43,7 +43,7 @@ async function generateArticle() {
   // OpenAI Anfrage
   const response = await client.chat.completions.create({
     model: "gpt-4o-mini",
-    messages: [{ role: "user", content: makePrompt(topic) }],
+    messages: [{ role: "user", content: makePrompt(topic) }]
   });
 
   const body = response.choices[0].message.content.trim();
@@ -70,5 +70,4 @@ ${body}
 generateArticle().catch((err) => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
-});
 });

@@ -1,13 +1,19 @@
 /** @type {import('next').NextConfig} */
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+let assetPrefix = '';
+let basePath = '';
+
+if (isGithubActions) {
+  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
+  basePath = `/${repo}`;
+  assetPrefix = `/${repo}/`;
+}
+
 const nextConfig = {
-  output: 'export',
+  output: 'export',       // <--- wichtig für GitHub Pages
   images: { unoptimized: true },
-  basePath: '/Finanzfreedom-blog',
-  assetPrefix: '/Finanzfreedom-blog/',
-  trailingSlash: true,               // << wichtig für GitHub Pages
-  env: {
-    NEXT_PUBLIC_BASEPATH: '/Finanzfreedom-blog',
-  },
+  assetPrefix,
+  basePath,
 };
 
 module.exports = nextConfig;

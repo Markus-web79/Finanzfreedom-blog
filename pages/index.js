@@ -5,23 +5,27 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md"));
 
   const posts = files.map((file) => {
-    const fp = path.join(contentDir, file);
-    const raw = fs.readFileSync(fp, "utf8");
-    const { data } = matter(raw);
+    const filePath = path.join(contentDir, file);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(fileContents);
 
     return {
-      slug: file.replace(/\.md$/, ""),
+      slug: data.slug || file.replace(/\.md$/, ""),
       title: data.title || "Unbenannter Artikel",
-      date: data.date || "",
+      date: data.date || null,
       excerpt: data.excerpt || "",
     };
   });
 
-  // Neueste zuerst
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Sortierung: Willkommen immer oben, Rest nach Datum
+  posts.sort((a, b) => {
+    if (a.slug === "willkommen") return -1;
+    if (b.slug === "willkommen") return 1;
+    return new Date(b.date) - new Date(a.date);
+  });
 
   return { props: { posts } };
 }
@@ -36,7 +40,6 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              {/* ✅ Hier wird jetzt "/pages/slug" verlinkt */}
               <Link href={`/pages/${post.slug}`}>{post.title}</Link>
             </h2>
             <small>{post.date}</small>

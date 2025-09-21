@@ -41,12 +41,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Generate Sitemap
-        run: npm run sitemap || echo "Kein Sitemap-Script definiert"
-
-      - name: Generate Sitemap
-        run: npm run postbuild
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

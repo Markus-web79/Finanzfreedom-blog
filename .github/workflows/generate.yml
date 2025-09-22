@@ -1,27 +1,27 @@
-name: Generate Blog Articles
+name: Generate & Deploy Blog
 
 on:
   schedule:
-    - cron: "0 8 * * 1,3,5"   # jeden Montag, Mittwoch, Freitag um 08:00 UTC
-  workflow_dispatch:           # manuell startbar
+    - cron: "0 8 * * *"   # jeden Tag um 08:00 UTC
+  workflow_dispatch:       # manuell starten möglich
 
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: 18
 
-      - name: Install root deps
+      - name: Install Root Dependencies
         run: npm install
 
-      - name: Run Generator
+      - name: Generate Article
         working-directory: ./generator
         run: |
           npm install
@@ -29,10 +29,21 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: Commit new article
+      - name: Commit New Article
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add content/
           git commit -m "Auto: neuer AI-Artikel" || echo "Keine Änderungen"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Blog
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out

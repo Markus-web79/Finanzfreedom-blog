@@ -5,46 +5,57 @@ import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Hilfsfunktion → Slug erstellen
-function makeSlug(title) {
-  return slugify(title, { lower: true, strict: true });
+// Hilfsfunktion: Entscheidet, ob ein langer Artikel generiert wird
+function needsLongForm() {
+  const stampPath = path.join(process.cwd(), ".pattern.json");
+  let state = { counter: 0 };
+
+  if (fs.existsSync(stampPath)) state = fs.readJsonSync(stampPath);
+
+  state.counter = (state.counter || 0) + 1;
+
+  let isLong = false;
+  if (state.counter >= 4) {
+    isLong = true;
+    state.counter = 0;
+  }
+
+  fs.writeJsonSync(stampPath, state);
+  return isLong;
 }
 
-// Artikel-Themenliste
-const topics = [
-  "ETFs für Einsteiger: So startest du mit einem Sparplan",
-  "Dividendenstrategie: Monatliche Ausschüttungen clever nutzen",
-  "5 Wege zu passivem Einkommen ohne Startkapital",
-  "Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen",
-  "Fehler, die Anfänger beim Investieren vermeiden sollten",
-  "Passives Einkommen mit digitalen Produkten (E-Book, Vorlagen)",
-  "ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?",
-  "Inflation & Zinsen: So schützt du dein Erspartes",
-  "Automatisierte Sparpläne: Tipps & Tools",
-  "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
-];
+// Prompt für OpenAI
+function makePrompt(length = "short") {
+  const base = `Du bist ein deutscher Finanz-Redakteur. Schreibe einen SEO-optimierten Blogartikel über Finanzen & passives Einkommen. Verwende klare Überschriften (H2/H3), Listen und Beispiele. Füge am Anfang 'META: ...' mit einer kurzen Meta-Beschreibung ein. Baue 1–2 Hinweise auf Risiken ein.`;
 
-// Zufälliges Thema auswählen
-function pickTopic() {
-  return topics[Math.floor(Math.random() * topics.length)];
+  const topics = [
+    "ETFs für Einsteiger: So startest du mit einem Sparplan",
+    "Dividendenstrategie: Monatliche Ausschüttungen clever nutzen",
+    "5 Wege zu passivem Einkommen ohne Startkapital",
+    "Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen",
+    "Fehler, die Anfänger beim Investieren vermeiden sollten",
+    "Passives Einkommen mit digitalen Produkten (E-Book, Vorlagen)",
+    "ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?",
+    "Inflation & Zinsen: So schützt du dein Erspartes",
+    "Automatisierte Sparpläne: Tipps & Tools",
+    "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
+  ];
+
+  const topic = topics[Math.floor(Math.random() * topics.length)];
+  const lengthInfo =
+    length === "long"
+      ? "Schreibe ca. 1500 Wörter."
+      : "Schreibe ca. 600 Wörter.";
+
+  return `${base}\n\nThema: ${topic}\n\n${lengthInfo}`;
 }
 
+// Artikel generieren
 async function generateArticle() {
-  const title = pickTopic();
-  const slug = makeSlug(title);
+  const longForm = needsLongForm();
+  const prompt = makePrompt(longForm ? "long" : "short");
 
-  const prompt = `
-  Du bist Finanz-Redakteur. Schreibe einen Blogartikel mit folgendem Titel:
-  "${title}".
-
-  Anforderungen:
-  - Schreibe SEO-optimiert.
-  - Nutze klare Überschriften (H2, H3).
-  - Schreibe ein kurzes Intro.
-  - Baue eine Meta-Beschreibung ein (max. 160 Zeichen, mit "META:").
-  - Füge 1-2 Hinweise auf Risiken ein.
-  - Schreibe in freundlichem, verständlichem Deutsch.
-  `;
+  console.log("📝 Prompt:", prompt);
 
   const completion = await client.chat.completions.create({
     model: "gpt-4o-mini",
@@ -53,26 +64,30 @@ async function generateArticle() {
 
   const content = completion.choices[0].message.content;
 
-  // Ordner sicherstellen
-  const contentDir = path.join(process.cwd(), "..", "content");
-  await fs.ensureDir(contentDir);
+  // --- Fallbacks für Frontmatter ---
+  let titleMatch = content.match(/#+\s*(.+)/);
+  const title = titleMatch ? titleMatch[1].trim() : "Automatisch generierter Artikel";
+  const slug = slugify(title, { lower: true, strict: true }) || `artikel-${Date.now()}`;
+  const date = new Date().toISOString().split("T")[0];
 
-  // Dateipfad
-  const filePath = path.join(contentDir, `${slug}.md`);
-
-  // Markdown-Datei
+  // Markdown bauen
   const md = `---
 title: "${title}"
-date: "${new Date().toISOString().split("T")[0]}"
-excerpt: "${title} – ein automatisch erstellter Artikel."
 slug: "${slug}"
+date: "${date}"
+excerpt: "${content.split("\n")[0].replace("META:", "").trim() || "Kurzbeschreibung folgt."}"
 ---
 
 ${content}
 `;
 
-  await fs.writeFile(filePath, md, "utf8");
-  console.log("✅ Artikel gespeichert:", filePath);
+  // Datei speichern
+  const outDir = path.join(process.cwd(), "..", "content");
+  await fs.ensureDir(outDir);
+  const outPath = path.join(outDir, `${slug}.md`);
+  await fs.writeFile(outPath, md, "utf8");
+
+  console.log("✅ Artikel gespeichert unter:", outPath);
 }
 
 generateArticle().catch((err) => {

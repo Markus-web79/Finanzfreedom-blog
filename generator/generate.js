@@ -36,54 +36,71 @@ function makePrompt(length = "short") {
     "Automatisierte Sparpläne: Tipps & Tools",
     "Steuern auf Kapitalerträge: Grundlagen für Einsteiger",
     "Die Zukunft der Finanzberatung: Digital vs. Traditionell",
-    "Passives Einkommen: Der Schlüssel zur finanziellen Freiheit"
   ];
 
   const topic = topics[Math.floor(Math.random() * topics.length)];
-  const lengthInfo = length === "long" ? "Mindestens 1500 Wörter." : "Ca. 600 Wörter.";
+  const lengthInfo =
+    length === "long"
+      ? "Schreibe einen langen Artikel mit mindestens 1200 Wörtern."
+      : "Schreibe einen kurzen Artikel mit 600–800 Wörtern.";
 
-  return { topic, prompt: `${base}\n\nThema: ${topic}\n\n${lengthInfo}` };
+  return `${base}\n\nThema: ${topic}\n\n${lengthInfo}`;
 }
 
-// 📌 Artikel speichern mit sauberem Frontmatter
-async function saveArticle(topic, slug, content) {
-  const md = `---
-title: "${topic}"
+async function generateArticle() {
+  const contentDir = path.join(process.cwd(), "..", "content");
+  await fs.ensureDir(contentDir);
+
+  // 📌 Willkommensartikel erzwingen, wenn er fehlt
+  const demoSlug = "willkommen";
+  const demoPath = path.join(contentDir, `${demoSlug}.md`);
+  if (!fs.existsSync(demoPath)) {
+    const demoMd = `---
+title: "Willkommen auf dem FinanzFreedom Blog"
 date: "${new Date().toISOString().split("T")[0]}"
-excerpt: "${content.split("\n").slice(0, 2).join(" ").substring(0, 150)}..."
-slug: "${slug}"
+excerpt: "Dein automatischer Blog über Finanzen und passives Einkommen ist live!"
 ---
 
-${content}
+# 🎉 Willkommen
+
+Dies ist dein erster automatisch erzeugter Artikel.  
+Hier kannst du sofort sehen, wie Inhalte angezeigt werden.
+
+👉 Bald kommen hier automatisch neue Artikel mit Tipps und Affiliate-Links!
 `;
+    await fs.writeFile(demoPath, demoMd, "utf8");
+    console.log("✅ Demo-Artikel erstellt:", demoPath);
+  }
 
-  const outDir = path.join(process.cwd(), "..", "content");
-  await fs.ensureDir(outDir);
-  const outPath = path.join(outDir, `${slug}.md`);
-  await fs.writeFile(outPath, md, "utf8");
-
-  console.log("✅ Artikel gespeichert unter:", outPath);
-}
-
-// Hauptfunktion
-async function generateArticle() {
+  // 📌 Neuen Artikel generieren
   const isLong = needsLongForm();
-  const { topic, prompt } = makePrompt(isLong ? "long" : "short");
-  const slug = slugify(topic, { lower: true, strict: true });
+  const prompt = makePrompt(isLong ? "long" : "short");
 
-  console.log("📝 Generiere Artikel:", topic);
+  console.log("⏳ Generiere Artikel...");
 
-  const response = await client.chat.completions.create({
+  const completion = await client.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ role: "user", content: prompt }],
   });
 
-  const content = response.choices[0].message.content;
-  await saveArticle(topic, slug, content);
+  const md = completion.choices[0].message.content;
+  const firstLine = md.split("\n")[0] || "";
+  let title = "Automatischer Artikel";
+
+  if (firstLine.startsWith("META:")) {
+    title = md.split("\n")[1]?.replace(/^#\s*/, "") || title;
+  } else if (firstLine.startsWith("#")) {
+    title = firstLine.replace(/^#\s*/, "");
+  }
+
+  const slug = slugify(title, { lower: true, strict: true });
+  const outPath = path.join(contentDir, `${slug}.md`);
+  await fs.writeFile(outPath, md, "utf8");
+
+  console.log("✅ Artikel gespeichert:", outPath);
 }
 
-generateArticle().catch(err => {
+generateArticle().catch((err) => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
-});
 });

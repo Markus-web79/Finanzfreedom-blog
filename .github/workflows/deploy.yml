@@ -1,14 +1,14 @@
-name: Deploy Blog to Vercel
+name: Deploy Blog to name: Generate & Deploy Blog
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "0 8 * * *"   # Täglich um 08:00 UTC
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,10 +18,27 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install root deps
         run: npm install
 
-      - name: Build project
+      - name: Generate Article
+        working-directory: ./generator
+        run: |
+          npm install
+          node generate.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit new Article
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          mkdir -p content
+          git add content/
+          git commit -m "Auto: neuer AI-Artikel" || echo "Keine Änderungen"
+          git push || true
+
+      - name: Build
         run: npm run build
 
       - name: Deploy to Vercel

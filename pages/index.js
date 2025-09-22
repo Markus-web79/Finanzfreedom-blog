@@ -10,26 +10,27 @@ export async function getStaticProps() {
   const posts = files.map((file) => {
     const filePath = path.join(contentDir, file);
     const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
+    const { data, content } = matter(fileContents);
 
     return {
       slug: data.slug || file.replace(/\.md$/, ""),
       title: data.title || "Automatischer Artikel",
       date: data.date || null,
-      excerpt: data.excerpt || "",
+      excerpt: data.excerpt || content.slice(0, 120),
     };
   });
 
-  // Willkommens-Artikel nach oben setzen
-  const welcome = posts.find(p => p.slug === "willkommen");
-  const others = posts.filter(p => p.slug !== "willkommen");
+  // sortieren: neueste zuerst
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Andere nach Datum sortieren
-  others.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Willkommen-Artikel immer ganz oben
+  const welcomeIndex = posts.findIndex(p => p.slug === "willkommen");
+  if (welcomeIndex > -1) {
+    const [welcomePost] = posts.splice(welcomeIndex, 1);
+    posts.unshift(welcomePost);
+  }
 
-  const orderedPosts = welcome ? [welcome, ...others] : others;
-
-  return { props: { posts: orderedPosts } };
+  return { props: { posts } };
 }
 
 export default function Home({ posts }) {
@@ -46,8 +47,8 @@ export default function Home({ posts }) {
                 {post.title}
               </Link>
             </h2>
+            {post.date && <p><small>{post.date}</small></p>}
             <p>{post.excerpt}</p>
-            <small>{post.date}</small>
           </li>
         ))}
       </ul>

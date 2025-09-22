@@ -5,48 +5,77 @@ import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+// Hilfsfunktion → Slug erstellen
+function makeSlug(title) {
+  return slugify(title, { lower: true, strict: true });
+}
+
+// Artikel-Themenliste
+const topics = [
+  "ETFs für Einsteiger: So startest du mit einem Sparplan",
+  "Dividendenstrategie: Monatliche Ausschüttungen clever nutzen",
+  "5 Wege zu passivem Einkommen ohne Startkapital",
+  "Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen",
+  "Fehler, die Anfänger beim Investieren vermeiden sollten",
+  "Passives Einkommen mit digitalen Produkten (E-Book, Vorlagen)",
+  "ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?",
+  "Inflation & Zinsen: So schützt du dein Erspartes",
+  "Automatisierte Sparpläne: Tipps & Tools",
+  "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
+];
+
+// Zufälliges Thema auswählen
+function pickTopic() {
+  return topics[Math.floor(Math.random() * topics.length)];
+}
+
 async function generateArticle() {
-  const outDir = path.join(process.cwd(), "..", "content");
-  await fs.ensureDir(outDir);
+  const title = pickTopic();
+  const slug = makeSlug(title);
 
-  // Beispiel-Prompt
   const prompt = `
-Schreibe einen SEO-optimierten Finanzartikel mit Überschrift (H1), 
-klaren Abschnitten (H2/H3), Meta-Description und einem Teaser.
-`;
+  Du bist Finanz-Redakteur. Schreibe einen Blogartikel mit folgendem Titel:
+  "${title}".
 
-  const response = await client.chat.completions.create({
+  Anforderungen:
+  - Schreibe SEO-optimiert.
+  - Nutze klare Überschriften (H2, H3).
+  - Schreibe ein kurzes Intro.
+  - Baue eine Meta-Beschreibung ein (max. 160 Zeichen, mit "META:").
+  - Füge 1-2 Hinweise auf Risiken ein.
+  - Schreibe in freundlichem, verständlichem Deutsch.
+  `;
+
+  const completion = await client.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ role: "user", content: prompt }],
   });
 
-  const raw = response.choices[0].message.content.trim();
+  const content = completion.choices[0].message.content;
 
-  // Extrahiere ersten Titel für slug
-  const titleMatch = raw.match(/^#\s+(.+)/m);
-  const title = titleMatch ? titleMatch[1].trim() : "Automatischer Artikel";
+  // Ordner sicherstellen
+  const contentDir = path.join(process.cwd(), "..", "content");
+  await fs.ensureDir(contentDir);
 
-  const slug = slugify(title, { lower: true, strict: true });
+  // Dateipfad
+  const filePath = path.join(contentDir, `${slug}.md`);
 
-  const excerptMatch = raw.match(/META:\s*(.+)/i);
-  const excerpt = excerptMatch ? excerptMatch[1].trim() : "Kurzbeschreibung folgt.";
-
+  // Markdown-Datei
   const md = `---
 title: "${title}"
 date: "${new Date().toISOString().split("T")[0]}"
-excerpt: "${excerpt}"
+excerpt: "${title} – ein automatisch erstellter Artikel."
 slug: "${slug}"
 ---
 
-${raw}
+${content}
 `;
 
-  const outPath = path.join(outDir, `${slug}.md`);
-  await fs.writeFile(outPath, md, "utf8");
-  console.log("✅ Artikel gespeichert:", outPath);
+  await fs.writeFile(filePath, md, "utf8");
+  console.log("✅ Artikel gespeichert:", filePath);
 }
 
-generateArticle().catch(err => {
+generateArticle().catch((err) => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
 });

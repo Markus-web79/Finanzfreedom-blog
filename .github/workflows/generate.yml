@@ -1,5 +1,3 @@
-name: Generate & Deploy Blog
-
 on:
   schedule:
     - cron: "0 8 * * *"  # täglich um 08:00 UTC
@@ -41,8 +39,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./

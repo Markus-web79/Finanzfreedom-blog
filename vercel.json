@@ -1,0 +1,9 @@
+ {
+  "version": 2,
+  "framework": "nextjs",
+  "buildCommand": "npm run build && npm run export",
+  "outputDirectory": "out",
+  "github": {
+    "enabled": true
+  }
+}

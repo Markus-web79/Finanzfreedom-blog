@@ -1,36 +1,29 @@
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md"));
 
-  const posts = files.map(file => {
+  const posts = files.map((file) => {
     const filePath = path.join(contentDir, file);
     const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
+    const { data, content } = matter(fileContents);
 
     return {
       slug: data.slug || file.replace(/\.md$/, ""),
       title: data.title || "Unbenannter Artikel",
       date: data.date || "1970-01-01",
-      excerpt: data.excerpt || "",
+      excerpt: data.excerpt || content.substring(0, 150) + "...",
     };
   });
 
-  // "Willkommen" finden
-  const welcome = posts.find(p => p.slug === "willkommen");
+  // Neueste zuerst
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Rest nach Datum sortieren
-  const others = posts
-    .filter(p => p.slug !== "willkommen")
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const orderedPosts = welcome ? [welcome, ...others] : others;
-
-  return { props: { posts: orderedPosts } };
+  return { props: { posts } };
 }
 
 export default function Home({ posts }) {
@@ -40,14 +33,22 @@ export default function Home({ posts }) {
       <p>Automatisch generierte Artikel über Finanzen & passives Einkommen.</p>
 
       <ul style={{ listStyle: "none", padding: 0 }}>
-        {posts.map(post => (
+        {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`/pages/${post.slug}`}>
-                {post.title}
+              <Link href={`/pages/${post.slug}`} legacyBehavior>
+                <a style={{ textDecoration: "none", color: "#0366d6" }}>
+                  {post.title}
+                </a>
               </Link>
             </h2>
-            <p><em>{post.date}</em></p>
+            <small style={{ color: "gray" }}>
+              {new Date(post.date).toLocaleDateString("de-DE", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </small>
             <p>{post.excerpt}</p>
           </li>
         ))}

@@ -5,22 +5,13 @@ import { marked } from "marked";
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+  const files = fs.readdirSync(contentDir).filter((file) => file.endsWith(".md"));
 
-  const paths = files.map(filename => {
-    const filePath = path.join(contentDir, filename);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
+  const paths = files.map((file) => ({
+    params: { slug: file.replace(/\.md$/, "") },
+  }));
 
-    return {
-      params: { slug: data.slug || filename.replace(/\.md$/, "") },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
@@ -29,33 +20,28 @@ export async function getStaticProps({ params }) {
   const fileContents = fs.readFileSync(filePath, "utf8");
 
   const { data, content } = matter(fileContents);
+  const contentHtml = marked(content);
 
   return {
     props: {
       frontmatter: {
         title: data.title || "Unbenannter Artikel",
-        date: data.date || "",
+        date: data.date || null,
         excerpt: data.excerpt || "",
       },
-      slug: params.slug,
-      content,
+      contentHtml,
     },
   };
 }
 
-export default function PostPage({ frontmatter, content }) {
+export default function PostPage({ frontmatter, contentHtml }) {
   return (
-    <div style={{ fontFamily: "sans-serif", maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
-      <h1>{frontmatter.title}</h1>
-      {frontmatter.date && (
-        <p style={{ color: "#555" }}>
-          📅 {new Date(frontmatter.date).toLocaleDateString("de-DE")}
-        </p>
-      )}
-      <article
-        dangerouslySetInnerHTML={{ __html: marked(content) }}
-        style={{ lineHeight: "1.7", marginTop: "2rem" }}
-      />
+    <div style={{ fontFamily: "Inter, Arial, sans-serif", padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
+      <article>
+        <h1>{frontmatter.title}</h1>
+        {frontmatter.date && <p style={{ color: "#666", fontSize: "0.9rem" }}>{frontmatter.date}</p>}
+        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      </article>
     </div>
   );
 }

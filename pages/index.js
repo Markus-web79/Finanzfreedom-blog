@@ -1,4 +1,3 @@
-// pages/index.js
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -15,20 +14,22 @@ export async function getStaticProps() {
 
     return {
       slug: data.slug || file.replace(/\.md$/, ""),
-      title: data.title || "Unbenannter Artikel",
+      title: data.title || "Automatischer Artikel",
       date: data.date || null,
       excerpt: data.excerpt || "",
     };
   });
 
-  // Sortierung: Willkommen immer ganz oben
-  posts.sort((a, b) => {
-    if (a.slug === "willkommen") return -1;
-    if (b.slug === "willkommen") return 1;
-    return new Date(b.date) - new Date(a.date);
-  });
+  // Willkommens-Artikel nach oben setzen
+  const welcome = posts.find(p => p.slug === "willkommen");
+  const others = posts.filter(p => p.slug !== "willkommen");
 
-  return { props: { posts } };
+  // Andere nach Datum sortieren
+  others.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const orderedPosts = welcome ? [welcome, ...others] : others;
+
+  return { props: { posts: orderedPosts } };
 }
 
 export default function Home({ posts }) {
@@ -41,9 +42,12 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
-              <Link href={`/pages/${post.slug}`}>{post.title}</Link>
+              <Link href={`/pages/${post.slug}`}>
+                {post.title}
+              </Link>
             </h2>
             <p>{post.excerpt}</p>
+            <small>{post.date}</small>
           </li>
         ))}
       </ul>

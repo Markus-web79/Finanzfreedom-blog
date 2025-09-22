@@ -5,24 +5,26 @@ import OpenAI from "openai";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Prüfen: nach 3 kurzen Artikeln ein langer
+// 📌 Entscheidet: 3 kurze Artikel, dann 1 langer
 function needsLongForm() {
   const stampPath = path.join(process.cwd(), ".pattern.json");
   let state = { counter: 0 };
   if (fs.existsSync(stampPath)) state = fs.readJsonSync(stampPath);
   state.counter = (state.counter || 0) + 1;
+
   let isLong = false;
   if (state.counter >= 4) {
     isLong = true;
     state.counter = 0;
   }
+
   fs.writeJsonSync(stampPath, state);
   return isLong;
 }
 
-// Prompt-Erstellung
+// 📌 Prompt-Erstellung
 function makePrompt(length = "short") {
-  const base = `Du bist ein deutscher Finanz-Redakteur. Schreibe einen SEO-optimierten Blogartikel über Finanzen & passives Einkommen. Verwende klare Überschriften (H2/H3), Listen und Beispiele. Füge am Anfang 'META: ...' mit einer kurzen Meta-Beschreibung ein. Baue 1–2 Hinweise auf Risiken ein.`;
+  const base = `Du bist ein deutscher Finanz-Redakteur. Schreibe einen SEO-optimierten Blogartikel über Finanzen & passives Einkommen. Verwende klare Überschriften (H2/H3), Listen und Beispiele. Füge am Anfang 'META: ...' mit einer kurzen Meta-Beschreibung ein.`;
 
   const topics = [
     "ETFs für Einsteiger: So startest du mit einem Sparplan",
@@ -34,63 +36,70 @@ function makePrompt(length = "short") {
     "ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?",
     "Inflation & Zinsen: So schützt du dein Erspartes",
     "Automatisierte Sparpläne: Tipps & Tools",
-    "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
+    "Steuern auf Kapitalerträge: Grundlagen für Einsteiger",
+    "Die Zukunft der Finanzberatung: Digital vs. Traditionell",
+    "Finanzielle Freiheit: Realistische Schritte in 5 Jahren",
   ];
 
   const topic = topics[Math.floor(Math.random() * topics.length)];
-  const lengthInfo = length === "long" ? "Langer Artikel (ca. 1200 Wörter)" : "Kurzer Artikel (ca. 600 Wörter)";
-  return `${base}\n\nThema: ${topic}\n\n${lengthInfo}`;
+  return `${base}\n\nThema: ${topic}\n\nLänge: ${
+    length === "long" ? "ca. 1200 Wörter" : "ca. 500 Wörter"
+  }`;
 }
 
-// Hauptfunktion
-async function generateArticle() {
-  const longForm = needsLongForm();
-  const prompt = makePrompt(longForm ? "long" : "short");
+// 📌 Speichern des Artikels
+async function saveArticle(title, content) {
+  const contentDir = path.join(process.cwd(), "..", "content");
+  await fs.ensureDir(contentDir);
 
-  const res = await client.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [{ role: "user", content: prompt }],
-  });
+  const slug = slugify(title || "automatischer-artikel", { lower: true, strict: true });
 
-  let content = res.choices[0].message?.content || "";
-
-  // Titel & Meta herausziehen
-  const titleMatch = content.match(/^#\s*(.*)/m);
-  let title = titleMatch ? titleMatch[1].trim() : null;
-
-  if (!title) {
-    // Fallback-Titel
-    title = `Artikel über Finanzen & passives Einkommen (${new Date().toISOString().split("T")[0]})`;
-  }
-
-  const excerptMatch = content.match(/META:\s*(.*)/i);
-  const excerpt = excerptMatch ? excerptMatch[1].trim() : "Automatisch generierter Finanzartikel";
-
-  const slug = slugify(title, { lower: true, strict: true });
-
-  // Markdown-Datei vorbereiten
   const md = `---
-title: "${title}"
+title: "${title || "Automatischer Artikel"}"
 slug: "${slug}"
 date: "${new Date().toISOString().split("T")[0]}"
-excerpt: "${excerpt}"
+excerpt: "${content.slice(0, 140).replace(/\n/g, " ")}..."
 ---
 
 ${content}
 `;
 
-  // 📌 Speichern im content/ Ordner
-  const contentDir = path.join(process.cwd(), "..", "content");
-  await fs.ensureDir(contentDir);
-
   const outPath = path.join(contentDir, `${slug}.md`);
   await fs.writeFile(outPath, md, "utf8");
-
-  console.log("✅ Artikel gespeichert unter:", outPath);
+  console.log("✅ Artikel gespeichert:", outPath);
 }
 
-// Start
-generateArticle().catch(err => {
+// 📌 Hauptfunktion
+async function generateArticle() {
+  const isLong = needsLongForm();
+  const prompt = makePrompt(isLong ? "long" : "short");
+
+  console.log("⏳ Generiere Artikel...");
+  const res = await client.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  const raw = res.choices[0].message.content.trim();
+
+  // META-Zeile rausziehen
+  let title = "Automatischer Artikel";
+  let content = raw;
+
+  if (raw.startsWith("META:")) {
+    const lines = raw.split("\n");
+    lines.shift(); // erste Zeile mit META entfernen
+    content = lines.join("\n").trim();
+
+    // Erster H1 oder H2 als Titel
+    const heading = content.match(/^#\s+(.*)/m) || content.match(/^##\s+(.*)/m);
+    if (heading) title = heading[1].trim();
+  }
+
+  await saveArticle(title, content);
+}
+
+generateArticle().catch((err) => {
   console.error("❌ Fehler beim Generieren:", err);
   process.exit(1);
 });

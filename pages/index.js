@@ -5,32 +5,32 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir).filter(file => file.endsWith(".md"));
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
 
-  const posts = files.map((file) => {
+  const posts = files.map(file => {
     const filePath = path.join(contentDir, file);
     const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContents);
+    const { data } = matter(fileContents);
 
     return {
       slug: data.slug || file.replace(/\.md$/, ""),
-      title: data.title || "Automatischer Artikel",
-      date: data.date || null,
-      excerpt: data.excerpt || content.slice(0, 120),
+      title: data.title || "Unbenannter Artikel",
+      date: data.date || "1970-01-01",
+      excerpt: data.excerpt || "",
     };
   });
 
-  // sortieren: neueste zuerst
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // "Willkommen" finden
+  const welcome = posts.find(p => p.slug === "willkommen");
 
-  // Willkommen-Artikel immer ganz oben
-  const welcomeIndex = posts.findIndex(p => p.slug === "willkommen");
-  if (welcomeIndex > -1) {
-    const [welcomePost] = posts.splice(welcomeIndex, 1);
-    posts.unshift(welcomePost);
-  }
+  // Rest nach Datum sortieren
+  const others = posts
+    .filter(p => p.slug !== "willkommen")
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  return { props: { posts } };
+  const orderedPosts = welcome ? [welcome, ...others] : others;
+
+  return { props: { posts: orderedPosts } };
 }
 
 export default function Home({ posts }) {
@@ -40,14 +40,14 @@ export default function Home({ posts }) {
       <p>Automatisch generierte Artikel über Finanzen & passives Einkommen.</p>
 
       <ul style={{ listStyle: "none", padding: 0 }}>
-        {posts.map((post) => (
+        {posts.map(post => (
           <li key={post.slug} style={{ marginBottom: "1.5rem" }}>
             <h2>
               <Link href={`/pages/${post.slug}`}>
                 {post.title}
               </Link>
             </h2>
-            {post.date && <p><small>{post.date}</small></p>}
+            <p><em>{post.date}</em></p>
             <p>{post.excerpt}</p>
           </li>
         ))}

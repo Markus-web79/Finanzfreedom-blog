@@ -2,12 +2,13 @@ name: Generate & Deploy Blog
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # täglich um 08:00 UTC
+    - cron: "0 8 * * *"   # täglich um 08:00 UTC
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,4 +42,4 @@ jobs:
         run: npm run build
 
       - name: Deploy to Vercel
-        run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }} -A vercel.json
+        run: npx vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope ${{ secrets.VERCEL_SCOPE }} -A vercel.json

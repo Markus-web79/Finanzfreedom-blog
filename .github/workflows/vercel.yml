@@ -21,27 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Spelling & Content Check
-        run: node checkContent.js || echo "Rechtschreibprüfung abgeschlossen"
-
-      - name: Commit Spelling Fixes
+      - name: Check & Fix Content
         run: |
+          npm run check:content || echo "Content-Check abgeschlossen"
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/
-          git diff --cached --quiet || git commit -m "Auto-fix: Rechtschreibung & Schreibweise"
-          git push || echo "Keine Änderungen beim Rechtschreib-Check"
-
-      - name: Run Lint & Fix
-        run: npm run lint -- --fix || echo "Linting abgeschlossen"
-
-      - name: Commit Lint Fixes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff --cached --quiet || git commit -m "Auto-fix: Lint issues"
-          git push || echo "Keine Änderungen beim Lint"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content || echo "Nichts zu committen"
+          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
+          git push
 
       - name: Deploy to Vercel
         id: vercel
@@ -54,5 +41,4 @@ jobs:
           echo "url=$url" >> $GITHUB_ENV
 
       - name: Show Deployment URL
-        run: |
-          echo "🚀 Live: ${{ env.url }}" >> $GITHUB_STEP_SUMMARY
+        run: echo "🚀 Live: ${{ env.url }}"

@@ -3,33 +3,23 @@ name: Deploy to Vercel
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm ci || npm install
 
-      - name: Deploy to Vercel
-        id: vercel
-        run: |
-          npx vercel --prod --yes \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} \
-            -A vercel.json > deployment.txt
-          url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)
-          echo "url=$url" >> $GITHUB_ENV
+      - name: Deploy to Vercel (prod)
+        shell: bash
+        run: npx vercel --prod --yes -A vercel.json --token="${{ secrets.VERCEL_TOKEN }}" --scope="${{ secrets.VERCEL_SCOPE }}" > deployment.txt && echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> "$GITHUB_ENV"
 
       - name: Show Deployment URL
-        run: echo "🚀 Live Deployment: ${{ env.url }}"
+        run: echo "🚀 Live: ${{ env.url }}"

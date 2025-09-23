@@ -1,39 +1,62 @@
-// checkContent.js
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
-const contentDir = path.join(process.cwd(), "content");
+function fixText(text) {
+  // Ersetzungen für Umlaute
+  text = text.replace(/\bue\b/g, "ü")
+             .replace(/\bUe\b/g, "Ü")
+             .replace(/\boe\b/g, "ö")
+             .replace(/\bOe\b/g, "Ö")
+             .replace(/\bae\b/g, "ä")
+             .replace(/\bAe\b/g, "Ä");
 
-function fixUmlauts(text) {
-  return text
-    // Vorsicht: nur "ae" ersetzen, wenn nicht Teil von "neue" usw.
-    .replace(/\bAe/g, "Ä")
-    .replace(/\bae/g, "ä")
-    .replace(/\bOe/g, "Ö")
-    .replace(/\boe/g, "ö")
-    .replace(/\bUe/g, "Ü")
-    .replace(/\bue/g, "ü");
+  // Allgemeiner: auch mitten im Wort ersetzen
+  text = text.replace(/ue/g, "ü")
+             .replace(/Ue/g, "Ü")
+             .replace(/oe/g, "ö")
+             .replace(/Oe/g, "Ö")
+             .replace(/ae/g, "ä")
+             .replace(/Ae/g, "Ä");
+
+  // Doppelte Leerzeichen entfernen
+  text = text.replace(/ {2,}/g, " ");
+
+  // Sicherstellen, dass META-Zeile oben ist
+  if (!text.startsWith("META:")) {
+    text = "META: Bitte META-Beschreibung ergänzen\n\n" + text;
+  }
+
+  return text;
 }
 
-function walkDir(dir, callback) {
-  fs.readdirSync(dir).forEach((file) => {
-    const filepath = path.join(dir, file);
-    const stat = fs.statSync(filepath);
-    if (stat.isDirectory()) {
-      walkDir(filepath, callback);
+function checkContent() {
+  const contentDir = path.join(process.cwd(), "content");
+
+  if (!fs.existsSync(contentDir)) {
+    console.error("❌ Ordner 'content/' nicht gefunden!");
+    process.exit(1);
+  }
+
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+
+  if (files.length === 0) {
+    console.log("⚠️ Keine Markdown-Dateien in 'content/' gefunden.");
+    return;
+  }
+
+  for (const file of files) {
+    const filePath = path.join(contentDir, file);
+    let text = fs.readFileSync(filePath, "utf-8");
+
+    const fixed = fixText(text);
+
+    if (fixed !== text) {
+      fs.writeFileSync(filePath, fixed, "utf-8");
+      console.log(`✅ ${file} wurde korrigiert`);
     } else {
-      callback(filepath);
-    }
-  });
-}
-
-walkDir(contentDir, (file) => {
-  if (file.endsWith(".md")) {
-    let content = fs.readFileSync(file, "utf8");
-    const fixed = fixUmlauts(content);
-    if (content !== fixed) {
-      console.log(`✅ Fixing Umlaute in: ${file}`);
-      fs.writeFileSync(file, fixed, "utf8");
+      console.log(`ℹ️ ${file} war bereits in Ordnung`);
     }
   }
-});
+}
+
+checkContent();

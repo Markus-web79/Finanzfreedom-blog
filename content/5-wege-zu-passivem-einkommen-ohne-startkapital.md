@@ -1,6 +1,6 @@
 META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives Einkommen aufbaün kannst.
 
-# 5 Wege zu passivem Einkommen ohne Startkapital
+# 5 Wege zu Passivem Einkommen ohne Startkapital
 
 Viele Menschen glauben, dass man viel Geld braucht, um ein passives Einkommen aufzubaün. 
 Doch es gibt Strategien, mit denen du **ohne Startkapital** beginnen kannst. 

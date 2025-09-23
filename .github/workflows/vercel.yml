@@ -31,7 +31,8 @@ jobs:
             --token=${{ secrets.VERCEL_TOKEN }} \
             --scope=${{ secrets.VERCEL_SCOPE }} \
             -A vercel.json > deployment.txt
-          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_OUTPUT
+          url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)
+          echo "url=$url" >> $GITHUB_ENV
 
       - name: Show Deployment URL
-        run: echo "🚀 Live: ${{ steps.vercel.outputs.url }}"
+        run: echo "🚀 Live: ${{ env.url }}"

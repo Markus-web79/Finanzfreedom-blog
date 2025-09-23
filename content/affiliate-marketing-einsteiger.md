@@ -33,7 +33,7 @@ Dabei empfiehlst du Produkte oder Dienstleistungen und erhältst eine Provision,
    - Erstelle Videos  
    - Nutze Social Media  
 
-4. **Traffic aufbauen**  
+4. **Traffic aufbaün**  
    - SEO (Suchmaschinenoptimierung)  
    - Social Media Marketing  
    - E-Mail-Marketing  

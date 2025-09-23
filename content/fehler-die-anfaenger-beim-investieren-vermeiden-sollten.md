@@ -1,4 +1,4 @@
-META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und baue dir ein solides Fundament für deinen Vermögensaufbau.
+META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und baü dir ein solides Fundament für deinen Vermögensaufbau.
 
 # Fehler, die Anfänger beim Investieren vermeiden sollten
 
@@ -20,8 +20,8 @@ Viele erwarten schnelle Gewinne und verkaufen in Panik, wenn die Kurse fallen.
 "Insider-Tipps" von Freunden oder Social Media sind oft riskant.  
 👉 **Tipp:** Informiere dich selbst und bilde dir deine eigene Meinung.
 
-## 5. Gebühren und Steuern ignorieren
-Hohe Orderkosten oder unnötige Steuern können deine Rendite auffressen.  
+## 5. Gebühren und Steürn ignorieren
+Hohe Orderkosten oder unnötige Steürn können deine Rendite auffressen.  
 👉 **Tipp:** Achte auf günstige Broker und nutze Freibeträge.
 
 ---

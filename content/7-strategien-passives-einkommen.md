@@ -1,4 +1,4 @@
-META: Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen aufbauen kannst – auch neben deinem Hauptjob.
+META: Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen aufbaün kannst – auch neben deinem Hauptjob.
 
 # 7 Strategien für passives Einkommen
 
@@ -44,14 +44,14 @@ Hier sind 7 Strategien, mit denen du starten kannst.
 
 ## 7. Nischenwebseiten & Blogs
 
-- Baue eine Webseite zu einem bestimmten Thema auf.  
+- Baü eine Webseite zu einem bestimmten Thema auf.  
 - Einnahmen durch **Werbung (Google AdSense)** oder Affiliate-Links.  
 - Mit SEO kannst du dir langfristig Besucher sichern.
 
 ---
 
 👉 **Fazit:**  
-Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategie klein anzufangen** und diese konsequent auszubauen.  
+Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategie klein anzufangen** und diese konseqünt auszubaün.  
 Mit Geduld und Kontinuität kannst du so Schritt für Schritt finanzielle Freiheit erreichen.
 
 ---

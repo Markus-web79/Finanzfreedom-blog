@@ -1,48 +1,43 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
-const contentDir = "./content";
+// Pfad zum content-Ordner
+const contentDir = path.join(__dirname, "content");
 
-function checkArticles() {
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+// Funktion: Alle Dateien im content-Ordner prüfen
+function checkContentFiles() {
+  const files = fs.readdirSync(contentDir);
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const filePath = path.join(contentDir, file);
-    const text = fs.readFileSync(filePath, "utf-8");
+    const content = fs.readFileSync(filePath, "utf-8");
 
-    console.log(`\n🔍 Prüfe: ${file}`);
+    console.log(`🔎 Prüfe: ${file}`);
 
-    // --- META
-    if (!text.includes("META:")) {
-      console.warn("⚠️ Keine META-Zeile gefunden!");
+    // Check 1: Enthält META
+    if (!content.includes("META:")) {
+      console.warn(`⚠️  WARNUNG: ${file} hat keine META-Zeile!`);
     }
 
-    // --- Titel
-    if (!text.match(/^# /m)) {
-      console.warn("⚠️ Kein Titel (# Überschrift) gefunden!");
+    // Check 2: Hat eine H1-Überschrift (# ...)
+    if (!content.match(/^# /m)) {
+      console.warn(`⚠️  WARNUNG: ${file} hat keine Hauptüberschrift (# ...)`);
     }
 
-    // --- Länge
-    if (text.length < 200) {
-      console.warn("⚠️ Artikel scheint sehr kurz zu sein.");
-    }
+    // Check 3: Korrigiere Schreibweise (ü statt ue, ö statt oe, ä statt ae)
+    const corrected = content
+      .replace(/ue/g, "ü")
+      .replace(/oe/g, "ö")
+      .replace(/ae/g, "ä");
 
-    // --- Umlaute
-    const wrongUmlauts = {
-      ue: "ü",
-      ae: "ä",
-      oe: "ö",
-      Ue: "Ü",
-      Ae: "Ä",
-      Oe: "Ö"
-    };
-
-    for (const [wrong, right] of Object.entries(wrongUmlauts)) {
-      if (text.includes(wrong)) {
-        console.warn(`⚠️ Falsch geschrieben: "${wrong}" → bitte ersetzen durch "${right}"`);
-      }
+    if (corrected !== content) {
+      fs.writeFileSync(filePath, corrected, "utf-8");
+      console.log(`✅ Schreibweise in ${file} korrigiert (ü/ö/ä).`);
     }
   });
+
+  console.log("✨ Check abgeschlossen!");
 }
 
-checkArticles();
+// Script starten
+checkContentFiles();

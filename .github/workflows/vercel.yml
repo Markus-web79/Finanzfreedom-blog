@@ -2,6 +2,9 @@ name: Test Workflow
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -10,6 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show Deployment URL
+      - name: Run simple test
         run: |
-          echo "🚀 Live-Test: Alles funktioniert!"
+          echo "✅ GitHub Actions läuft!"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"

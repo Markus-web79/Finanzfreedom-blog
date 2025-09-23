@@ -1,90 +1,57 @@
+// checkContent.cjs
 const fs = require("fs");
 const path = require("path");
 
-// Ordner mit Artikeln
-const contentDir = path.join(__dirname, "content");
-
-// Liste mit Korrekturen für Umlaute und typische Finanz-Tippfehler
-const typoCorrections = {
-  // Umlaute
-  ae: "ä",
-  oe: "ö",
-  ue: "ü",
-  Ae: "Ä",
-  Oe: "Ö",
-  Ue: "Ü",
-  ss: "ß",
-
-  // Kapitalerträge & Steuern
-  kapitalertäge: "Kapitalerträge",
-  kapitalertrage: "Kapitalerträge",
-  kapitalertraege: "Kapitalerträge",
-  sparerpauschbetrag: "Sparer-Pauschbetrag",
-  abgeltungssteur: "Abgeltungssteuer",
-  abgeltungssteuern: "Abgeltungssteuer",
-
-  // Rendite & Gewinn
-  rendiete: "Rendite",
-  rendieten: "Renditen",
-  gewinne: "Gewinne",
-  verlus: "Verlust",
-  verluste: "Verluste",
-
-  // Börse & Aktien
-  börsse: "Börse",
-  boerse: "Börse",
-  aktiën: "Aktien",
-  aktiens: "Aktien",
-  dividenen: "Dividenden",
-  divedende: "Dividende",
-
-  // Sparen & Investieren
-  sparplanen: "Sparplänen",
-  sparplann: "Sparplan",
-  invstitieren: "Investieren",
-  invstieren: "Investieren",
-
-  // Inflation & Wirtschaft
-  inflationn: "Inflation",
-  inflazion: "Inflation",
-  wirtschafts: "Wirtschaft",
-  konjuktur: "Konjunktur",
-
-  // Passives Einkommen
-  "passivem einkommen": "Passivem Einkommen",
-  "pasives einkommen": "Passives Einkommen",
-  passiev: "Passiv",
-
-  // Digitales & Krypto
-  "bit coin": "Bitcoin",
-  etherum: "Ethereum",
-  "block chain": "Blockchain",
-  cryptowährung: "Kryptowährung",
-  nfts: "NFTs",
+// Wörterbuch mit Korrekturen (kannst du erweitern)
+const corrections = {
+  "\\bteh\\b": "the",
+  "\\brecieve\\b": "receive",
+  "\\bfreedomm\\b": "freedom",
 };
 
-// Funktion zum Korrigieren von Text
-function correctText(text) {
-  let corrected = text;
-  for (const [wrong, right] of Object.entries(typoCorrections)) {
-    const regex = new RegExp(`\\b${wrong}\\b`, "gi");
-    corrected = corrected.replace(regex, right);
-  }
-  return corrected;
+// Umlaute ersetzen (ue -> ü, ae -> ä, oe -> ö, ss bleibt gleich)
+function replaceUmlauts(text) {
+  return text
+    .replace(/ae/g, "ä")
+    .replace(/oe/g, "ö")
+    .replace(/ue/g, "ü");
 }
 
-// Alle Artikel prüfen und ggf. überschreiben
-fs.readdirSync(contentDir).forEach((file) => {
-  if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    let content = fs.readFileSync(filePath, "utf-8");
-    const newContent = correctText(content);
-
-    if (newContent !== content) {
-      fs.writeFileSync(filePath, newContent, "utf-8");
-      console.log(`✅ Korrigiert: ${file}`);
-    } else {
-      console.log(`ℹ️ Keine Änderungen: ${file}`);
-    }
+// Rechtschreibung korrigieren
+function fixTypos(text) {
+  for (const [wrong, correct] of Object.entries(corrections)) {
+    const regex = new RegExp(wrong, "gi");
+    text = text.replace(regex, correct);
   }
-});
+  return text;
+}
+
+function processFile(filePath) {
+  let content = fs.readFileSync(filePath, "utf8");
+
+  const original = content;
+  content = replaceUmlauts(content);
+  content = fixTypos(content);
+
+  if (content !== original) {
+    fs.writeFileSync(filePath, content, "utf8");
+    console.log(`✅ Korrigiert: ${filePath}`);
+  } else {
+    console.log(`ℹ️ Keine Änderungen: ${filePath}`);
+  }
+}
+
+function walkDir(dir) {
+  fs.readdirSync(dir).forEach((file) => {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      walkDir(fullPath);
+    } else if (fullPath.endsWith(".md")) {
+      processFile(fullPath);
+    }
+  });
+}
+
+console.log("🔍 Starte Content-Check...");
+walkDir(path.join(__dirname, "content"));
+console.log("✅ Content-Check abgeschlossen.");

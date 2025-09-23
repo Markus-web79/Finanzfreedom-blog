@@ -25,8 +25,15 @@ jobs:
         run: npm run lint -- --fix || echo "Linting abgeschlossen"
 
       - name: Deploy to Vercel
+        id: vercel
         run: |
           npx vercel --prod --yes \
             --token=${{ secrets.VERCEL_TOKEN }} \
             --scope=${{ secrets.VERCEL_SCOPE }} \
-            -A vercel.json
+            -A vercel.json > deployment.txt
+          url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)
+          echo "url=$url" >> $GITHUB_ENV
+
+      - name: Show Deployment URL
+        run: |
+          echo "🚀 Live: ${{ env.url }}" >> $GITHUB_STEP_SUMMARY

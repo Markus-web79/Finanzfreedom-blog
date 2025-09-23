@@ -1,0 +1,10 @@
+{
+  "version": "0.2",
+  "language": "de",
+  "words": [
+    "FinanzFreedom",
+    "ETF",
+    "ETFs"
+  ],
+  "ignorePaths": ["node_modules", "package-lock.json"]
+}

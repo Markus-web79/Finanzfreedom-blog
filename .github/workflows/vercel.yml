@@ -42,6 +42,3 @@ jobs:
 
       - name: Show Deployment URL
         run: echo "🚀 Live: ${{ env.url }}"
-
-      - name: Show Deployment URL
-        run: echo "🚀 Live: ${{ env.url }}"

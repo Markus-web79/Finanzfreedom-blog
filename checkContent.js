@@ -1,43 +1,59 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import Typo from "typo-js";
 
-// Pfad zum content-Ordner
-const contentDir = path.join(__dirname, "content");
+const dictionary = new Typo("de_DE"); // Deutsches Wörterbuch
 
-// Funktion: Alle Dateien im content-Ordner prüfen
-function checkContentFiles() {
-  const files = fs.readdirSync(contentDir);
+const contentDir = path.join(process.cwd(), "content");
 
-  files.forEach((file) => {
-    const filePath = path.join(contentDir, file);
-    const content = fs.readFileSync(filePath, "utf-8");
-
-    console.log(`🔎 Prüfe: ${file}`);
-
-    // Check 1: Enthält META
-    if (!content.includes("META:")) {
-      console.warn(`⚠️  WARNUNG: ${file} hat keine META-Zeile!`);
-    }
-
-    // Check 2: Hat eine H1-Überschrift (# ...)
-    if (!content.match(/^# /m)) {
-      console.warn(`⚠️  WARNUNG: ${file} hat keine Hauptüberschrift (# ...)`);
-    }
-
-    // Check 3: Korrigiere Schreibweise (ü statt ue, ö statt oe, ä statt ae)
-    const corrected = content
-      .replace(/ue/g, "ü")
-      .replace(/oe/g, "ö")
-      .replace(/ae/g, "ä");
-
-    if (corrected !== content) {
-      fs.writeFileSync(filePath, corrected, "utf-8");
-      console.log(`✅ Schreibweise in ${file} korrigiert (ü/ö/ä).`);
-    }
-  });
-
-  console.log("✨ Check abgeschlossen!");
+// Hilfsfunktion: deutsche Umlaute ersetzen
+function fixUmlaute(text) {
+  return text
+    .replace(/\bue\b/gi, "ü")
+    .replace(/\boe\b/gi, "ö")
+    .replace(/\bae\b/gi, "ä")
+    .replace(/\bss\b/gi, "ß");
 }
 
-// Script starten
-checkContentFiles();
+// Hilfsfunktion: Markdown-Überschriften korrigieren
+function fixHeadings(text) {
+  return text.replace(/(#+)([^\s#])/g, (_, hashes, title) => `${hashes} ${title}`);
+}
+
+// Hilfsfunktion: einfache Rechtschreibprüfung
+function spellCheck(text) {
+  return text
+    .split(/\s+/)
+    .map((word) => {
+      if (!dictionary.check(word)) {
+        let suggestions = dictionary.suggest(word);
+        if (suggestions.length > 0) {
+          return suggestions[0];
+        }
+      }
+      return word;
+    })
+    .join(" ");
+}
+
+// Dateien durchgehen
+fs.readdirSync(contentDir).forEach((file) => {
+  if (file.endsWith(".md")) {
+    let filePath = path.join(contentDir, file);
+    let content = fs.readFileSync(filePath, "utf-8");
+
+    let fixed = content;
+    fixed = fixUmlaute(fixed);
+    fixed = fixed.replace(/\s{2,}/g, " "); // doppelte Leerzeichen
+    fixed = fixed.replace(/\n{3,}/g, "\n\n"); // zu viele Leerzeilen
+    fixed = fixHeadings(fixed);
+    fixed = spellCheck(fixed);
+
+    if (fixed !== content) {
+      fs.writeFileSync(filePath, fixed, "utf-8");
+      console.log(`✅ Korrigiert: ${file}`);
+    } else {
+      console.log(`👌 Schon okay: ${file}`);
+    }
+  }
+});

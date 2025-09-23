@@ -27,5 +27,5 @@ Passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du stän
 
 ---
 
-👉 **Fazit:**  
+👉 **Fazit:** 
 Kombiniere solides Finanzmanagement mit dem Aufbau von passivem Einkommen. So kommst du Schritt für Schritt näher an echte finanzielle Freiheit.

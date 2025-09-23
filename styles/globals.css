@@ -1,26 +1,37 @@
-/* Basis-Styles für die ganze // pages/_app.js
-import "../styles/globals.css";
+/* Globales Styling für den FinanzFreedom Blog */
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      {/* Header – kannst du nach Belieben ändern */}
-      <header style={{ padding: "20px", textAlign: "center", background: "#f4f4f4" }}>
-        <h1>📈 FinanzFreedom Blog</h1>
-        <p>Automatisch generierte Artikel über Finanzen & passives Einkommen</p>
-      </header>
-
-      {/* Hauptbereich – hier werden die einzelnen Seiten/Artikel geladen */}
-      <main style={{ maxWidth: "800px", margin: "20px auto", padding: "0 20px" }}>
-        <Component {...pageProps} />
-      </main>
-
-      {/* Footer – kannst du ebenfalls anpassen */}
-      <footer style={{ padding: "20px", textAlign: "center", background: "#f4f4f4", marginTop: "40px" }}>
-        <p>© {new Date().getFullYear()} FinanzFreedom Blog – Alle Rechte vorbehalten</p>
-      </footer>
-    </>
-  );
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  line-height: 1.6;
 }
 
-export default MyApp;
+/* Links */
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+header {
+  padding: 20px;
+  text-align: center;
+  background: #f4f4f4;
+}
+header h1 {
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}

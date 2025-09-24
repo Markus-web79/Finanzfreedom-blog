@@ -1,34 +1,38 @@
-// checkContent.js
 const fs = require("fs");
 const path = require("path");
 
-// Wörterbuch für häufige Fehler
-const corrections = {
+// Ordner mit Artikeln
+const CONTENT_DIR = path.join(__dirname, "content");
+
+// Wörterbuch für automatische Korrekturen
+const replacements = {
   "Steür": "Steuer",
+  "steür": "steuer",
+  "Steüroptimierung": "Steueroptimierung",
+  "Steürpflicht": "Steuerpflicht",
+  "paßiv": "passiv",
+  "Paßiv": "Passiv",
+  "muß": "muss",
+  "müßen": "müssen",
+  "auß": "auss",
+  "wißen": "wissen",
+  "laßen": "lassen",
+  "qülle": "Quelle",
+  "Fuehr": "Führ",
   "Vermoegen": "Vermögen",
-  "Vermögen aufbaün": "Vermögen aufbauen",
-  "Fuehren": "Führen",
-  "Oekonomie": "Ökonomie",
-  "ue": "ü",
-  "oe": "ö",
-  "ae": "ä",
-  "Ae": "Ä",
-  "Oe": "Ö",
-  "Ue": "Ü"
+  "Oekonomie": "Ökonomie"
 };
 
-const contentDir = path.join(__dirname, "content");
-
-// Alle .md Dateien durchgehen
-fs.readdirSync(contentDir).forEach(file => {
+// Alle Dateien im content-Ordner durchgehen
+fs.readdirSync(CONTENT_DIR).forEach(file => {
   if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
+    const filePath = path.join(CONTENT_DIR, file);
     let content = fs.readFileSync(filePath, "utf8");
 
     let changed = false;
-    for (const [wrong, right] of Object.entries(corrections)) {
+    for (const [wrong, correct] of Object.entries(replacements)) {
       if (content.includes(wrong)) {
-        content = content.split(wrong).join(right);
+        content = content.replace(new RegExp(wrong, "g"), correct);
         changed = true;
       }
     }
@@ -37,7 +41,7 @@ fs.readdirSync(contentDir).forEach(file => {
       fs.writeFileSync(filePath, content, "utf8");
       console.log(`✅ ${file} korrigiert`);
     } else {
-      console.log(`ℹ️ ${file} unverändert`);
+      console.log(`ℹ️ ${file} keine Änderungen nötig`);
     }
   }
 });

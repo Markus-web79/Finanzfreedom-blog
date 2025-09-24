@@ -1,60 +1,35 @@
-// checkContent.js
 import fs from "fs";
+import path from "path";
 
-const dictionaryPath = "./cspell.json";
+const contentDir = path.join(process.cwd(), "content");
 
-// Wörterbuch laden oder neu anlegen
-let dictionary = { words: [] };
-if (fs.existsSync(dictionaryPath)) {
-  dictionary = JSON.parse(fs.readFileSync(dictionaryPath, "utf-8"));
+function fixText(text) {
+  return text
+    .replace(/Steuern/g, "Steuern")
+    .replace(/Steürn/g, "Steuern")
+    .replace(/Steür/g, "Steuer")
+    .replace(/Vermoegen/g, "Vermögen")
+    .replace(/Fuehren/g, "Führen")
+    .replace(/ue/g, "ü")
+    .replace(/ae/g, "ä")
+    .replace(/oe/g, "ö");
 }
 
-// Standard-Korrekturen für Umlaute und typische Fehler
-const replacements = {
-  "Steür": "Steuer",
-  "Steürn": "Steuern",
-  "Steürsatz": "Steuersatz",
-  "Steürzahler": "Steuerzahler",
-  "Fuehren": "Führen",
-  "Vermoegen": "Vermögen",
-  "ueber": "über",
-  "ae": "ä",
-  "oe": "ö",
-  "ue": "ü",
-};
+function checkFiles() {
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
 
-// Hilfsfunktion: Wörterbuch automatisch erweitern
-function addToDictionary(word) {
-  if (!dictionary.words.includes(word)) {
-    dictionary.words.push(word);
-    fs.writeFileSync(dictionaryPath, JSON.stringify(dictionary, null, 2));
-    console.log(`📖 Neues Wort ins Wörterbuch aufgenommen: ${word}`);
+  for (const file of files) {
+    const filePath = path.join(contentDir, file);
+    let text = fs.readFileSync(filePath, "utf-8");
+    const fixed = fixText(text);
+
+    if (fixed !== text) {
+      fs.writeFileSync(filePath, fixed, "utf-8");
+      console.log(`✅ Korrigiert: ${file}`);
+    } else {
+      console.log(`✔️ OK: ${file}`);
+    }
   }
 }
 
-// Content-Dateien prüfen
-const files = fs.readdirSync("./content");
-
-files.forEach((file) => {
-  if (!file.endsWith(".md")) return;
-
-  let content = fs.readFileSync(`./content/${file}`, "utf-8");
-
-  // Feste Korrekturen anwenden
-  for (const [wrong, correct] of Object.entries(replacements)) {
-    if (content.includes(wrong)) {
-      content = content.replaceAll(wrong, correct);
-      console.log(`✅ ${file}: "${wrong}" → "${correct}" ersetzt`);
-    }
-  }
-
-  // Wörter durchgehen und ins Wörterbuch aufnehmen
-  const words = content.split(/\W+/);
-  words.forEach((word) => {
-    if (word.length > 3 && !dictionary.words.includes(word)) {
-      addToDictionary(word);
-    }
-  });
-
-  fs.writeFileSync(`./content/${file}`, content);
-});
+checkFiles();

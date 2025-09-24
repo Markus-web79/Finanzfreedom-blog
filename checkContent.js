@@ -1,44 +1,61 @@
+// checkContent.js
 import fs from "fs";
 import path from "path";
 
-// Wörterbuch laden
-const dictionary = JSON.parse(fs.readFileSync("dictionary.json", "utf8"));
-
-// Ordner mit Artikeln
 const contentDir = path.join(process.cwd(), "content");
+const logFile = path.join(process.cwd(), "corrections.log");
 
-// Änderungen sammeln
-let changes = [];
+// Alle bisherigen Logs löschen
+if (fs.existsSync(logFile)) {
+  fs.unlinkSync(logFile);
+}
 
-// Alle Dateien im content-Verzeichnis durchgehen
-fs.readdirSync(contentDir).forEach((file) => {
-  if (file.endsWith(".md")) {
-    let filePath = path.join(contentDir, file);
-    let content = fs.readFileSync(filePath, "utf8");
-    let original = content;
+function logCorrection(file, before, after) {
+  const entry = `📄 ${file}\n   - ${before} 👉 ${after}\n`;
+  fs.appendFileSync(logFile, entry);
+}
 
-    // Wörter ersetzen
-    for (const [wrong, correct] of Object.entries(dictionary)) {
-      const regex = new RegExp("\\b" + wrong + "\\b", "gi");
-      if (regex.test(content)) {
-        content = content.replace(regex, correct);
-        changes.push(`${wrong} → ${correct} in ${file}`);
-      }
-    }
+function checkAndFixFile(filePath) {
+  let content = fs.readFileSync(filePath, "utf8");
+  let originalContent = content;
 
-    // Datei nur überschreiben, wenn etwas geändert wurde
-    if (content !== original) {
-      fs.writeFileSync(filePath, content, "utf8");
+  // Regeln: Umlaute und typische Schreibweisen
+  const rules = [
+    { regex: /\bSteur\b/g, replace: "Steuer" },
+    { regex: /\bSteür/g, replace: "Steuer" },
+    { regex: /\bVermoegen\b/g, replace: "Vermögen" },
+    { regex: /\bFuehren\b/g, replace: "Führen" },
+    { regex: /\bOekonomie\b/g, replace: "Ökonomie" },
+    { regex: /\baufbaün\b/g, replace: "aufbauen" },
+    { regex: /\bü\b/g, replace: "ü" },
+    { regex: /\bü\b/g, replace: "ü" },
+    { regex: /\boe\b/g, replace: "ö" },
+    { regex: /\bae\b/g, replace: "ä" },
+  ];
+
+  for (const { regex, replace } of rules) {
+    if (regex.test(content)) {
+      content = content.replace(regex, replace);
+      logCorrection(path.basename(filePath), regex, replace);
     }
   }
-});
 
-// Änderungen für GitHub Actions ausgeben
-if (changes.length > 0) {
-  console.log("Gefundene & korrigierte Wörter:");
-  changes.forEach(c => console.log("- " + c));
-  // Ergebnis in eine Datei schreiben, damit der Workflow es ins Commit packen kann
-  fs.writeFileSync("corrections.log", changes.join("\n"));
-} else {
-  console.log("Keine Fehler gefunden ✅");
+  if (content !== originalContent) {
+    fs.writeFileSync(filePath, content, "utf8");
+  }
 }
+
+function run() {
+  const files = fs.readdirSync(contentDir);
+
+  files.forEach((file) => {
+    if (file.endsWith(".md")) {
+      const filePath = path.join(contentDir, file);
+      checkAndFixFile(filePath);
+    }
+  });
+
+  console.log("✅ Content-Check abgeschlossen.");
+}
+
+run();

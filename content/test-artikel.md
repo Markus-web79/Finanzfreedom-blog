@@ -4,6 +4,6 @@
 
 Dieser Artikel enthält absichtlich kleine Fehler in der Schreibe:  
 
-- Steür sparen ist wichtig.  
-- Vermoegen aufbauen macht frei.  
-- Fuehren statt folgen.  
+- Steuer sparen ist wichtig.  
+- Vermögen aufbaün macht frei.  
+- Führen statt folgen.  

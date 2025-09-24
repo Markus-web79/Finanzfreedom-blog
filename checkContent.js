@@ -1,34 +1,35 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
-const contentDir = "./content";
+// Pfad zum content-Ordner
+const contentDir = path.join(__dirname, "content");
 
-// Funktion: Umlaute ersetzen (aber Steuern-Logik beachten)
-function fixUmlauts(text) {
+// Hilfsfunktion: Texte normalisieren (z. B. ue → ü, ae → ä, oe → ö)
+function normalizeText(text) {
   return text
-    // Umlaute
-    .replace(/\bae/g, "ä")
-    .replace(/\boe/g, "ö")
-    .replace(/\bue/g, "ü")
-    // Steuer-Fälle explizit korrekt halten
-    .replace(/Steürn/g, "Steuern")
-    .replace(/Steür/g, "Steuer")
-    .replace(/Besteürung/g, "Besteuerung");
+    .replace(/\bSteür/g, "Steuer")
+    .replace(/\bsteür/g, "steuer")
+    .replace(/ue/g, "ü")
+    .replace(/ae/g, "ä")
+    .replace(/oe/g, "ö")
+    .replace(/Ae/g, "Ä")
+    .replace(/Ue/g, "Ü")
+    .replace(/Oe/g, "Ö");
 }
 
-// Alle Dateien durchgehen
+// Alle Dateien im content-Ordner durchgehen
 fs.readdirSync(contentDir).forEach((file) => {
+  const filePath = path.join(contentDir, file);
+
   if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    let content = fs.readFileSync(filePath, "utf8");
+    let content = fs.readFileSync(filePath, "utf-8");
+    const normalized = normalizeText(content);
 
-    const fixed = fixUmlauts(content);
-
-    if (fixed !== content) {
-      fs.writeFileSync(filePath, fixed, "utf8");
-      console.log(`✔ Korrigiert: ${file}`);
+    if (content !== normalized) {
+      fs.writeFileSync(filePath, normalized, "utf-8");
+      console.log(`✅ Datei korrigiert: ${file}`);
     } else {
-      console.log(`OK: ${file}`);
+      console.log(`ℹ️ Keine Änderungen: ${file}`);
     }
   }
 });

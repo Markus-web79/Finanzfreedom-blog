@@ -1,47 +1,43 @@
+// checkContent.js
 const fs = require("fs");
 const path = require("path");
 
-// Ordner mit Artikeln
-const contentDir = path.join(__dirname, "content");
-
-// Wörterbuch mit Korrekturen
+// Wörterbuch für häufige Fehler
 const corrections = {
   "Steür": "Steuer",
-  "steür": "steuer",
   "Vermoegen": "Vermögen",
-  "vermoegen": "vermögen",
+  "Vermögen aufbaün": "Vermögen aufbauen",
   "Fuehren": "Führen",
-  "fuehren": "führen",
   "Oekonomie": "Ökonomie",
-  "oekonomie": "ökonomie",
-  "aufbaün": "aufbauen"
+  "ue": "ü",
+  "oe": "ö",
+  "ae": "ä",
+  "Ae": "Ä",
+  "Oe": "Ö",
+  "Ue": "Ü"
 };
 
-// Hilfsfunktion: korrigiert Text
-function fixText(text) {
-  let fixed = text;
-  for (const wrong in corrections) {
-    const right = corrections[wrong];
-    const regex = new RegExp(wrong, "g");
-    fixed = fixed.replace(regex, right);
-  }
-  return fixed;
-}
+const contentDir = path.join(__dirname, "content");
 
-// Alle Dateien im content-Ordner laden
-fs.readdirSync(contentDir).forEach((file) => {
+// Alle .md Dateien durchgehen
+fs.readdirSync(contentDir).forEach(file => {
   if (file.endsWith(".md")) {
     const filePath = path.join(contentDir, file);
-    const original = fs.readFileSync(filePath, "utf8");
-    const fixed = fixText(original);
+    let content = fs.readFileSync(filePath, "utf8");
 
-    if (original !== fixed) {
-      fs.writeFileSync(filePath, fixed, "utf8");
-      console.log(`✅ Korrigiert: ${file}`);
+    let changed = false;
+    for (const [wrong, right] of Object.entries(corrections)) {
+      if (content.includes(wrong)) {
+        content = content.split(wrong).join(right);
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      fs.writeFileSync(filePath, content, "utf8");
+      console.log(`✅ ${file} korrigiert`);
     } else {
-      console.log(`ℹ️ Keine Änderungen: ${file}`);
+      console.log(`ℹ️ ${file} unverändert`);
     }
   }
 });
-
-console.log("🔍 Content-Check abgeschlossen.");

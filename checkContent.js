@@ -1,24 +1,44 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 // Wörterbuch laden
-const dict = JSON.parse(fs.readFileSync("dictionary.json", "utf8"));
+const dictionary = JSON.parse(fs.readFileSync("dictionary.json", "utf8"));
 
-const contentDir = path.join(__dirname, "content");
-const files = fs.readdirSync(contentDir);
+// Ordner mit Artikeln
+const contentDir = path.join(process.cwd(), "content");
 
-files.forEach(file => {
+// Änderungen sammeln
+let changes = [];
+
+// Alle Dateien im content-Verzeichnis durchgehen
+fs.readdirSync(contentDir).forEach((file) => {
   if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    let text = fs.readFileSync(filePath, "utf8");
+    let filePath = path.join(contentDir, file);
+    let content = fs.readFileSync(filePath, "utf8");
+    let original = content;
 
     // Wörter ersetzen
-    for (const [wrong, correct] of Object.entries(dict)) {
-      const regex = new RegExp(wrong, "g");
-      text = text.replace(regex, correct);
+    for (const [wrong, correct] of Object.entries(dictionary)) {
+      const regex = new RegExp("\\b" + wrong + "\\b", "gi");
+      if (regex.test(content)) {
+        content = content.replace(regex, correct);
+        changes.push(`${wrong} → ${correct} in ${file}`);
+      }
     }
 
-    fs.writeFileSync(filePath, text, "utf8");
-    console.log(`✅ Korrigiert: ${file}`);
+    // Datei nur überschreiben, wenn etwas geändert wurde
+    if (content !== original) {
+      fs.writeFileSync(filePath, content, "utf8");
+    }
   }
 });
+
+// Änderungen für GitHub Actions ausgeben
+if (changes.length > 0) {
+  console.log("Gefundene & korrigierte Wörter:");
+  changes.forEach(c => console.log("- " + c));
+  // Ergebnis in eine Datei schreiben, damit der Workflow es ins Commit packen kann
+  fs.writeFileSync("corrections.log", changes.join("\n"));
+} else {
+  console.log("Keine Fehler gefunden ✅");
+}

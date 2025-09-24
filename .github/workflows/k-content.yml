@@ -1,16 +1,13 @@
 name: Check Content
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-    paths:
-      - "content/**"
-      - "checkContent.js"
+  workflow_dispatch:
 
 jobs:
-  check:
+  content-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,7 +24,7 @@ jobs:
       - name: Run Content Check
         run: node checkContent.js
 
-      - name: Commit & Push corrections
+      - name: Commit & Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"

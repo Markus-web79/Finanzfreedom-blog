@@ -2,47 +2,46 @@ const fs = require("fs");
 const path = require("path");
 
 // Ordner mit Artikeln
-const CONTENT_DIR = path.join(__dirname, "content");
+const contentDir = path.join(__dirname, "content");
 
-// Ersetzungen definieren
-const replacements = [
-  { wrong: "Steür", correct: "Steuer" },
-  { wrong: "steür", correct: "steuer" },
-  { wrong: "Vermoegen", correct: "Vermögen" },
-  { wrong: "Fuehren", correct: "Führen" },
-  { wrong: "Oekonomie", correct: "Ökonomie" },
-  { wrong: "ue", correct: "ü" },
-  { wrong: "oe", correct: "ö" },
-  { wrong: "ae", correct: "ä" }
-];
+// Wörterbuch mit Korrekturen
+const corrections = {
+  "Steür": "Steuer",
+  "steür": "steuer",
+  "Vermoegen": "Vermögen",
+  "vermoegen": "vermögen",
+  "Fuehren": "Führen",
+  "fuehren": "führen",
+  "Oekonomie": "Ökonomie",
+  "oekonomie": "ökonomie",
+  "aufbaün": "aufbauen"
+};
 
-// Funktion: Alle Dateien im content-Ordner laden
-function getMarkdownFiles(dir) {
-  return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
-}
-
-// Dateien durchgehen und Inhalte korrigieren
-function fixFile(filePath) {
-  let content = fs.readFileSync(filePath, "utf8");
-  let original = content;
-
-  replacements.forEach(({ wrong, correct }) => {
+// Hilfsfunktion: korrigiert Text
+function fixText(text) {
+  let fixed = text;
+  for (const wrong in corrections) {
+    const right = corrections[wrong];
     const regex = new RegExp(wrong, "g");
-    content = content.replace(regex, correct);
-  });
-
-  if (content !== original) {
-    fs.writeFileSync(filePath, content, "utf8");
-    console.log(`✅ Korrigiert: ${filePath}`);
-  } else {
-    console.log(`ℹ️ Keine Änderungen: ${filePath}`);
+    fixed = fixed.replace(regex, right);
   }
+  return fixed;
 }
 
-// Main-Run
-function run() {
-  const files = getMarkdownFiles(CONTENT_DIR);
-  files.forEach((file) => fixFile(path.join(CONTENT_DIR, file)));
-}
+// Alle Dateien im content-Ordner laden
+fs.readdirSync(contentDir).forEach((file) => {
+  if (file.endsWith(".md")) {
+    const filePath = path.join(contentDir, file);
+    const original = fs.readFileSync(filePath, "utf8");
+    const fixed = fixText(original);
 
-run();
+    if (original !== fixed) {
+      fs.writeFileSync(filePath, fixed, "utf8");
+      console.log(`✅ Korrigiert: ${file}`);
+    } else {
+      console.log(`ℹ️ Keine Änderungen: ${file}`);
+    }
+  }
+});
+
+console.log("🔍 Content-Check abgeschlossen.");

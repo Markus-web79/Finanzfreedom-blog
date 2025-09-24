@@ -1,9 +1,13 @@
 name: Check Content
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/**"
+      - "checkContent.js"
 
 jobs:
   check:
@@ -17,10 +21,13 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install dependencies
+        run: npm ci || npm install
+
       - name: Run Content Check
         run: node checkContent.js
 
-      - name: Commit changes
+      - name: Commit & Push corrections
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"

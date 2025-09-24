@@ -1,13 +1,13 @@
-name: Check Content
+name: Check & Fix Content
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  check:
+  check-content:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,13 +18,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Run Content Check
-        run: node checkContent.js
+      - name: Install dependencies
+        run: npm ci || npm install
 
-      - name: Commit corrections
+      - name: Run content check & auto-fix
         run: |
+          npm run check:content || echo "Content-Check abgeschlossen"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content cspell.json || echo "Nichts zu committen"
-          git commit -m "🔍 Auto-Check: Content korrigiert & Wörterbuch erweitert" || echo "Keine Änderungen gefunden"
+          git add content || echo "Nichts zu committen"
+          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push

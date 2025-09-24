@@ -1,35 +1,49 @@
-const fs = require("fs");
-const path = require("path");
+// checkContent.js
+import fs from "fs";
+import path from "path";
 
-// Pfad zum content-Ordner
-const contentDir = path.join(__dirname, "content");
+const contentDir = path.join(process.cwd(), "content");
 
-// Hilfsfunktion: Texte normalisieren (z. B. ue → ü, ae → ä, oe → ö)
-function normalizeText(text) {
-  return text
-    .replace(/\bSteür/g, "Steuer")
-    .replace(/\bsteür/g, "steuer")
-    .replace(/ue/g, "ü")
-    .replace(/ae/g, "ä")
-    .replace(/oe/g, "ö")
-    .replace(/Ae/g, "Ä")
-    .replace(/Ue/g, "Ü")
-    .replace(/Oe/g, "Ö");
+// Wörterbuch für automatische Korrekturen
+const replacements = {
+  "Steür": "Steuer",
+  "steür": "steuer",
+  "Steürn": "Steuern",
+  "steürn": "steuern",
+  "ae": "ä",
+  "oe": "ö",
+  "ue": "ü",
+  "Ae": "Ä",
+  "Oe": "Ö",
+  "Ue": "Ü"
+};
+
+function fixContent(text) {
+  let fixed = text;
+  for (const [wrong, correct] of Object.entries(replacements)) {
+    const regex = new RegExp(wrong, "g");
+    fixed = fixed.replace(regex, correct);
+  }
+  return fixed;
 }
 
-// Alle Dateien im content-Ordner durchgehen
-fs.readdirSync(contentDir).forEach((file) => {
-  const filePath = path.join(contentDir, file);
+function checkFiles() {
+  const files = fs.readdirSync(contentDir);
 
-  if (file.endsWith(".md")) {
-    let content = fs.readFileSync(filePath, "utf-8");
-    const normalized = normalizeText(content);
+  files.forEach((file) => {
+    if (file.endsWith(".md")) {
+      const filePath = path.join(contentDir, file);
+      const content = fs.readFileSync(filePath, "utf8");
+      const fixedContent = fixContent(content);
 
-    if (content !== normalized) {
-      fs.writeFileSync(filePath, normalized, "utf-8");
-      console.log(`✅ Datei korrigiert: ${file}`);
-    } else {
-      console.log(`ℹ️ Keine Änderungen: ${file}`);
+      if (content !== fixedContent) {
+        fs.writeFileSync(filePath, fixedContent, "utf8");
+        console.log(`✅ Korrigiert: ${file}`);
+      } else {
+        console.log(`👌 Keine Änderungen: ${file}`);
+      }
     }
-  }
-});
+  });
+}
+
+checkFiles();

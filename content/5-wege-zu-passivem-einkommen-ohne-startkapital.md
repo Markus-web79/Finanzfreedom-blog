@@ -1,4 +1,4 @@
-META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles paßives Einkommen aufbauen kannst.
+META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles paßives Einkommen aufbaün kannst.
 
 # 5 Wege zu Paßivem Einkommen ohne Startkapital
 
@@ -29,5 +29,5 @@ Doch es gibt Strategieen, mit denen du **ohne Startkapital** beginnen kannst.
 ---
 
 👉 **Fazit:** 
-Auch ohne Startkapital kannst du Schritt für Schritt paßives Einkommen aufbauen. 
+Auch ohne Startkapital kannst du Schritt für Schritt paßives Einkommen aufbaün. 
 Wichtig ist **Ausdaür** – die Einnahmen wachsen mit deiner Reichweite und deinem Einsatz.

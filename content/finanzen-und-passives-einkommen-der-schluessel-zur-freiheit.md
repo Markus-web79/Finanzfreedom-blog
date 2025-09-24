@@ -18,7 +18,7 @@ Paßives Einkommen sind Einnahmen, die regelmäßig fließen, ohne daß du stän
 ## Vorteile von Paßivem Einkommen
 - **Zeitliche Freiheit:** Du kannst selbst entscheiden, wie du deine Zeit nutzt.
 - **Sicherheit:** Mehrere Einkommensqüllen schützen vor Risiken.
-- **Vermögensaufbau:** Paßives Einkommen läßt dich langfristig Wohlstand aufbauen.
+- **Vermögensaufbau:** Paßives Einkommen läßt dich langfristig Wohlstand aufbaün.
 
 ## Erste Schritte
 1. Analysiere deine Finanzen.

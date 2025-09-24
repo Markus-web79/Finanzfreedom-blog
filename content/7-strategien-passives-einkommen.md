@@ -1,4 +1,4 @@
-META: Entdecke 7 erprobte Strategieen, wie du ein stabiles paßives Einkommen aufbauen kannst – auch neben deinem Hauptjob.
+META: Entdecke 7 erprobte Strategieen, wie du ein stabiles paßives Einkommen aufbaün kannst – auch neben deinem Hauptjob.
 
 # 7 Strategieen für paßives Einkommen
 

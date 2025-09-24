@@ -16,7 +16,7 @@ Gerade Einsteiger profitieren davon, daß sie kein eigenes Produkt entwickeln m�
 - Digistore24 / CopeCart → für digitale Produkte (Kurse, E-Books). 
 - Awin → für große Marken und Dienstleistungen. 
 
-## Schritt 3: Plattform aufbauen
+## Schritt 3: Plattform aufbaün
 
 - Erstelle einen Blog oder eine Website. 
 - Alternativ: Starte mit Social Media oder YouTube. 
@@ -27,7 +27,7 @@ Gerade Einsteiger profitieren davon, daß sie kein eigenes Produkt entwickeln m�
 - Integriere Affiliate-Links sinnvoll in deine Texte. 
 - Nutze Call-to-Actions („Hier kannst du es bestellen“). 
 
-## Schritt 5: Traffic aufbauen
+## Schritt 5: Traffic aufbaün
 
 - **SEO**: Optimiere deine Inhalte für Google. 
 - **Social Media**: Nutze Instagram, TikTok oder Pinterest. 
@@ -42,5 +42,5 @@ Gerade Einsteiger profitieren davon, daß sie kein eigenes Produkt entwickeln m�
 ---
 
 👉 **Fazit:** 
-Mit Geduld und der richtigen Strategiee kannst du dir mit Affiliate-Marketing ein stetiges Einkommen aufbauen. 
+Mit Geduld und der richtigen Strategiee kannst du dir mit Affiliate-Marketing ein stetiges Einkommen aufbaün. 
 Starte mit kleinen Schritten – dein erster Verkauf motiviert dich, weiterzumachen!

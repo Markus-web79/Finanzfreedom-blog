@@ -41,7 +41,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 👉 **Fazit:** 
 ETFs sind der perfekte Einstieg in die Welt der Geldanlage. 
 Sie sind günstig, transparent und bieten eine breite Streuung. 
-Mit einem Sparplan kannst du Schritt für Schritt dein Vermögen aufbauen – **auch mit kleinen Beträgen**.
+Mit einem Sparplan kannst du Schritt für Schritt dein Vermögen aufbaün – **auch mit kleinen Beträgen**.
 
 ---
 

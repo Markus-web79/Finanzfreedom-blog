@@ -18,7 +18,7 @@ Passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du stän
 ## Vorteile von Passivem Einkommen
 - **Zeitliche Freiheit:** Du kannst selbst entscheiden, wie du deine Zeit nutzt.
 - **Sicherheit:** Mehrere EinkommensQüllen schützen vor Risiken.
-- **Vermögensaufbau:** Passives Einkommen läßt dich langfristig Wohlstand aufbaün.
+- **Vermögensaufbau:** Passives Einkommen läßt dich langfristig Wohlstand aufbauen.
 
 ## Erste Schritte
 1. Analysiere deine Finanzen.

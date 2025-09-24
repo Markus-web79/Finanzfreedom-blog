@@ -4,7 +4,10 @@
   "words": [
     "FinanzFreedom",
     "ETF",
-    "ETFs"
+    "ETFs",
+    "Sparplan",
+    "Dividenden",
+    "Kapitalerträge"
   ],
-  "ignorePaths": ["node_modules", "package-lock.json"]
+  "flagWords": []
 }

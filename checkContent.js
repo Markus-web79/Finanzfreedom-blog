@@ -12,6 +12,8 @@ const replacements = {
   "Steürpflicht": "Steuerpflicht",
   "paßiv": "passiv",
   "Paßiv": "Passiv",
+  "paßives": "passives",
+  "Paßives": "Passives",
   "muß": "muss",
   "müßen": "müssen",
   "auß": "auss",
@@ -19,6 +21,7 @@ const replacements = {
   "laßen": "lassen",
   "qülle": "Quelle",
   "Fuehr": "Führ",
+  "Fuehren": "Führen",
   "Vermoegen": "Vermögen",
   "Oekonomie": "Ökonomie"
 };

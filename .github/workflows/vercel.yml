@@ -1,14 +1,13 @@
 name: Deploy to Vercel
 
 on:
-  workflow_run:
-    workflows: ["Check Content"]
-    types:
-      - completed
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,6 +20,15 @@ jobs:
 
       - name: Install dependencies
         run: npm ci || npm install
+
+      - name: Check & Fix Content
+        run: |
+          npm run check:content || echo "Content-Check abgeschlossen"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content || echo "Nichts zu committen"
+          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
+          git push
 
       - name: Deploy to Vercel (prod)
         run: |

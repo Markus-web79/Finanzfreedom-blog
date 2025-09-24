@@ -1,4 +1,4 @@
-META: Entdecke Strategien, wie du dein Erspartes vor Inflation und steigenden Zinsen schützen kannst.
+META: Entdecke Strategieen, wie du dein Erspartes vor Inflation und steigenden Zinsen schützen kannst.
 
 # Inflation & Zinsen: So schützt du dein Erspartes
 
@@ -16,9 +16,9 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
-- **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
+- **Einfluß der Zentralbanken**: Zinspolitik steürt Inflation und Wirtschaftswachstum.
 
-## 3. Strategien zum Schutz deines Geldes
+## 3. Strategieen zum Schutz deines Geldes
 
 1. **Investiere in Sachwerte** 
  Immobilien, Aktien und ETFs gelten als inflationßichere Anlagen. 

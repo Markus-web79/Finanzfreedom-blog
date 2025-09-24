@@ -1,10 +1,10 @@
-META: Entdecke 7 erprobte Strategien, wie du ein stabiles paßives Einkommen aufbaün kannst – auch neben deinem Hauptjob.
+META: Entdecke 7 erprobte Strategieen, wie du ein stabiles paßives Einkommen aufbaün kannst – auch neben deinem Hauptjob.
 
-# 7 Strategien für paßives Einkommen
+# 7 Strategieen für paßives Einkommen
 
 Viele Menschen träumen davon, **finanzielle Freiheit** zu erreichen. 
 Paßives Einkommen ist dabei der Schlüßel – Geld, das auch dann fließt, wenn du gerade nicht arbeitest. 
-Hier sind 7 Strategien, mit denen du starten kannst.
+Hier sind 7 Strategieen, mit denen du starten kannst.
 
 ## 1. Dividendenaktien kaufen
 
@@ -51,7 +51,7 @@ Hier sind 7 Strategien, mit denen du starten kannst.
 ---
 
 👉 **Fazit:** 
-Es gibt viele Wege zum paßiven Einkommen. Wichtig ist, **mit einer Strategie klein anzufangen** und diese konseqünt auszubaün. 
+Es gibt viele Wege zum paßiven Einkommen. Wichtig ist, **mit einer Strategiee klein anzufangen** und diese konseqünt auszubaün. 
 Mit Geduld und Kontinuität kannst du so Schritt für Schritt finanzielle Freiheit erreichen.
 
 ---

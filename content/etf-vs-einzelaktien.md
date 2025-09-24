@@ -2,7 +2,7 @@ META: Solltest du lieber in ETFs oder Einzelaktien investieren? Hier sind die Vo
 
 # ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?
 
-Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt in einzelne Aktien investieren oder lieber auf ETFs setzen? Beide Strategien haben ihre Vor- und Nachteile.
+Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt in einzelne Aktien investieren oder lieber auf ETFs setzen? Beide Strategieen haben ihre Vor- und Nachteile.
 
 ## Vorteile von ETFs
 - **Diversifikation**: Du investierst automatisch in viele Unternehmen gleichzeitig. 

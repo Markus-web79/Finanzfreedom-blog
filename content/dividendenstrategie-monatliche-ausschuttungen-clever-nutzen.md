@@ -17,7 +17,7 @@ Dividenden sind Gewinnaußchüttungen von Unternehmen an ihre Aktionäre und ein
 - **Kombination aus Kursgewinnen und Dividenden**: Du profitierst doppelt. 
 - **Langfristiger Vermögensaufbau**: Besonders durch Reinvestition der Dividenden. 
 
-## Strategien für monatliche Außchüttungen
+## Strategieen für monatliche Außchüttungen
 
 1. **Diversifikation** 
  Investiere in verschiedene Unternehmen aus unterschiedlichen Ländern. 
@@ -33,7 +33,7 @@ Dividenden sind Gewinnaußchüttungen von Unternehmen an ihre Aktionäre und ein
 ## Risiken beachten
 
 - **Dividenden sind nicht garantiert** – Unternehmen können Zahlungen kürzen oder außetzen. 
-- **Steuern** – Dividenden unterliegen der Abgeltungßteür. 
+- **Steürn** – Dividenden unterliegen der Abgeltungßteür. 
 - **Konzentrationsrisiko** – nicht nur auf Hochdividendenwerte setzen. 
 
 ---

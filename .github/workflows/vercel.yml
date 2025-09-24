@@ -1,32 +1,16 @@
-name: Deploy to Vercel
-
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm ci || npm install
-
-      - name: Deploy to Vercel (prod)
-        run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
-          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
-
-      - name: Show Deployment URL
-        run: echo "🚀 Live: ${{ env.url }}"
+{
+  "name": "finanzfreedom-blog",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "check:content": "node checkContent.js"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}

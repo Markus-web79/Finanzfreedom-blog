@@ -1,47 +1,48 @@
-// checkContent.js
 const fs = require("fs");
 const path = require("path");
 
-const contentDir = path.join(__dirname, "content");
+// Ordner mit Artikeln
+const CONTENT_DIR = path.join(__dirname, "content");
 
-// Wörterbuch für Korrekturen
-const replacements = {
-  "Steür": "Steuer",
-  "steür": "steuer",
-  "Steürn": "Steuern",
-  "Fuehren": "Führen",
-  "fuehren": "führen",
-  "Vermoegen": "Vermögen",
-  "Oekonomie": "Ökonomie",
-  "ue": "ü",
-  "ae": "ä",
-  "oe": "ö",
-  "Ae": "Ä",
-  "Ue": "Ü",
-  "Oe": "Ö"
-};
+// Ersetzungen definieren
+const replacements = [
+  { wrong: "Steür", correct: "Steuer" },
+  { wrong: "steür", correct: "steuer" },
+  { wrong: "Vermoegen", correct: "Vermögen" },
+  { wrong: "Fuehren", correct: "Führen" },
+  { wrong: "Oekonomie", correct: "Ökonomie" },
+  { wrong: "ue", correct: "ü" },
+  { wrong: "oe", correct: "ö" },
+  { wrong: "ae", correct: "ä" }
+];
 
-function correctText(text) {
-  let corrected = text;
-  for (const [wrong, right] of Object.entries(replacements)) {
-    const regex = new RegExp(wrong, "g");
-    corrected = corrected.replace(regex, right);
-  }
-  return corrected;
+// Funktion: Alle Dateien im content-Ordner laden
+function getMarkdownFiles(dir) {
+  return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 }
 
-// Alle .md Dateien im content-Ordner durchgehen
-fs.readdirSync(contentDir).forEach((file) => {
-  if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    const originalContent = fs.readFileSync(filePath, "utf8");
-    const correctedContent = correctText(originalContent);
+// Dateien durchgehen und Inhalte korrigieren
+function fixFile(filePath) {
+  let content = fs.readFileSync(filePath, "utf8");
+  let original = content;
 
-    if (originalContent !== correctedContent) {
-      fs.writeFileSync(filePath, correctedContent, "utf8");
-      console.log(`✅ Datei korrigiert: ${file}`);
-    } else {
-      console.log(`ℹ️ Keine Änderungen nötig: ${file}`);
-    }
+  replacements.forEach(({ wrong, correct }) => {
+    const regex = new RegExp(wrong, "g");
+    content = content.replace(regex, correct);
+  });
+
+  if (content !== original) {
+    fs.writeFileSync(filePath, content, "utf8");
+    console.log(`✅ Korrigiert: ${filePath}`);
+  } else {
+    console.log(`ℹ️ Keine Änderungen: ${filePath}`);
   }
-});
+}
+
+// Main-Run
+function run() {
+  const files = getMarkdownFiles(CONTENT_DIR);
+  files.forEach((file) => fixFile(path.join(CONTENT_DIR, file)));
+}
+
+run();

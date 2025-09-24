@@ -1,61 +1,36 @@
 // checkContent.js
-import fs from "fs";
-import path from "path";
+// Läuft automatisch im Workflow: korrigiert Schreibweisen & ersetzt Umlaute
 
-const contentDir = path.join(process.cwd(), "content");
-const logFile = path.join(process.cwd(), "corrections.log");
+const fs = require("fs");
+const path = require("path");
 
-// Alle bisherigen Logs löschen
-if (fs.existsSync(logFile)) {
-  fs.unlinkSync(logFile);
-}
+const CONTENT_DIR = path.join(__dirname, "content");
 
-function logCorrection(file, before, after) {
-  const entry = `📄 ${file}\n   - ${before} 👉 ${after}\n`;
-  fs.appendFileSync(logFile, entry);
-}
+// Wörterbuch mit Auto-Korrekturen
+const replacements = {
+  "Steür": "Steuer",
+  "Vermoegen": "Vermögen",
+  "Fuehren": "Führen",
+  "Fuehrung": "Führung",
+  "Oekonomie": "Ökonomie",
+  "ue": "ü",
+  "ae": "ä",
+  "oe": "ö"
+};
 
-function checkAndFixFile(filePath) {
-  let content = fs.readFileSync(filePath, "utf8");
-  let originalContent = content;
+// Alle Dateien im content-Ordner durchgehen
+fs.readdirSync(CONTENT_DIR).forEach((file) => {
+  if (file.endsWith(".md")) {
+    const filePath = path.join(CONTENT_DIR, file);
+    let content = fs.readFileSync(filePath, "utf8");
 
-  // Regeln: Umlaute und typische Schreibweisen
-  const rules = [
-    { regex: /\bSteur\b/g, replace: "Steuer" },
-    { regex: /\bSteür/g, replace: "Steuer" },
-    { regex: /\bVermoegen\b/g, replace: "Vermögen" },
-    { regex: /\bFuehren\b/g, replace: "Führen" },
-    { regex: /\bOekonomie\b/g, replace: "Ökonomie" },
-    { regex: /\baufbaün\b/g, replace: "aufbauen" },
-    { regex: /\bü\b/g, replace: "ü" },
-    { regex: /\bü\b/g, replace: "ü" },
-    { regex: /\boe\b/g, replace: "ö" },
-    { regex: /\bae\b/g, replace: "ä" },
-  ];
+    // Korrekturen anwenden
+    Object.entries(replacements).forEach(([wrong, right]) => {
+      const regex = new RegExp(wrong, "g");
+      content = content.replace(regex, right);
+    });
 
-  for (const { regex, replace } of rules) {
-    if (regex.test(content)) {
-      content = content.replace(regex, replace);
-      logCorrection(path.basename(filePath), regex, replace);
-    }
-  }
-
-  if (content !== originalContent) {
     fs.writeFileSync(filePath, content, "utf8");
+    console.log(`✅ Korrigiert: ${file}`);
   }
-}
-
-function run() {
-  const files = fs.readdirSync(contentDir);
-
-  files.forEach((file) => {
-    if (file.endsWith(".md")) {
-      const filePath = path.join(contentDir, file);
-      checkAndFixFile(filePath);
-    }
-  });
-
-  console.log("✅ Content-Check abgeschlossen.");
-}
-
-run();
+});

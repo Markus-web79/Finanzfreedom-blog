@@ -2,13 +2,13 @@ META: Entdecke Strategien, wie du dein Erspartes vor Inflation und steigenden Zi
 
 # Inflation & Zinsen: So schützt du dein Erspartes
 
-Die Themen **Inflation** und **Zinsen** sind für jeden Anleger wichtig, denn sie beeinflussen direkt die Kaufkraft deines Geldes. 
+Die Themen **Inflation** und **Zinsen** sind für jeden Anleger wichtig, denn sie beeinflußen direkt die Kaufkraft deines Geldes. 
 Während Inflation den Wert deines Geldes schmälert, können steigende Zinsen deine Finanzierungskosten erhöhen. 
 In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 ## 1. Was ist Inflation?
 
-- **Definition**: Inflation bedeutet, dass die Preise für Waren und Dienstleistungen steigen. 
+- **Definition**: Inflation bedeutet, daß die Preise für Waren und Dienstleistungen steigen. 
 - **Auswirkung**: Dein Geld verliert an Kaufkraft – du kannst dir für denselben Betrag weniger leisten. 
 - **Beispiel**: Bei 3 % Inflation kostet etwas, das heute 100 € kostet, in 10 Jahren rund 134 €.
 
@@ -16,15 +16,15 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
-- **Einfluss der Zentralbanken**: Zinspolitik steürt Inflation und Wirtschaftswachstum.
+- **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
 
 ## 3. Strategien zum Schutz deines Geldes
 
 1. **Investiere in Sachwerte** 
- Immobilien, Aktien und ETFs gelten als inflationssichere Anlagen. 
+ Immobilien, Aktien und ETFs gelten als inflationßichere Anlagen. 
 
 2. **Diversifikation** 
- Streü dein Vermögen auf verschiedene Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
+ Streü dein Vermögen auf verschiedene Anlageklaßen (Aktien, Rohstoffe, Immobilienfonds). 
 
 3. **ETFs & Indexfonds nutzen** 
  Mit globalen ETFs kannst du langfristig eine Rendite oberhalb der Inflation erzielen. 
@@ -32,7 +32,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 4. **Notgroschen behalten** 
  Halte einen Teil deines Geldes (z. B. 3 Monatsgehälter) liquide auf einem Tagesgeldkonto. 
 
-## 4. Beispiel für inflationssichere Anlagen
+## 4. Beispiel für inflationßichere Anlagen
 
 - **iShares Physical Gold ETC** (Rohstoffe) 
 - **Vanguard FTSE All-World UCITS ETF** (Aktien weltweit) 
@@ -41,5 +41,5 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 ---
 
 👉 **Fazit:** 
-Inflation und Zinsen haben großen Einfluss auf dein Vermögen. 
+Inflation und Zinsen haben großen Einfluß auf dein Vermögen. 
 Mit einer **cleveren Anlagestrategie** und einer guten Mischung aus ETFs, Rohstoffen und liquiden Mitteln kannst du dein Geld schützen und langfristig sicher vermehren.

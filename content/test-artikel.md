@@ -1,9 +1,9 @@
- META: Steür und Vermögen für Einsteiger
+ META: Steuer und Vermögen für Einsteiger
 
 # Testartikel
 
 Dieser Artikel enthält absichtlich kleine Fehler in der Schreibe:  
 
-- Steür sparen ist wichtig.  
+- Steuer sparen ist wichtig.  
 - Vermögen aufbaün macht frei.  
 - Führen statt folgen.  

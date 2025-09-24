@@ -20,7 +20,7 @@ Dabei empfiehlst du Produkte oder Dienstleistungen und erhältst eine Provision,
 ## Erste Schritte
 
 1. **Nische wählen** 
- Überlege dir ein Thema, das dich interessiert (z. B. Finanzen, Fitness, Reisen). 
+ Überlege dir ein Thema, das dich intereßiert (z. B. Finanzen, Fitneß, Reisen). 
 
 2. **Programm auswählen** 
  Melde dich bei einem Partnerprogramm an. Beliebt sind: 
@@ -40,5 +40,5 @@ Dabei empfiehlst du Produkte oder Dienstleistungen und erhältst eine Provision,
 
 ---
 
-👉 **Tipp:** Starte klein und fokussiere dich auf wenige Produkte, die du wirklich empfehlen kannst. 
-So baust du **Glaubwürdigkeit** auf und verdienst mit der Zeit dein erstes passives Einkommen.
+👉 **Tipp:** Starte klein und fokußiere dich auf wenige Produkte, die du wirklich empfehlen kannst. 
+So baust du **Glaubwürdigkeit** auf und verdienst mit der Zeit dein erstes paßives Einkommen.

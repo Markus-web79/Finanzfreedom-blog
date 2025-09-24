@@ -28,7 +28,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 - Schon ab **25 € im Monat** kannst du starten. 
 - Durch regelmäßige Einzahlungen profitierst du vom **Cost-Average-Effekt**. 
-- Automatisiere den Prozess, um diszipliniert zu bleiben.
+- Automatisiere den Prozeß, um diszipliniert zu bleiben.
 
 ## 5. Investiere langfristig
 

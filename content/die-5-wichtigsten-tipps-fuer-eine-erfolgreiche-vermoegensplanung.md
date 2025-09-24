@@ -20,11 +20,11 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
 
 ## 3. Diversifikation nutzen
 
-- Verteile dein Geld auf mehrere Anlageklassen: 
+- Verteile dein Geld auf mehrere Anlageklaßen: 
  - **Aktien & ETFs** (Wachstum) 
  - **Anleihen** (Sicherheit) 
  - **Immobilien** (Sachwert) 
- - **Rohstoffe** (Inflationsschutz) 
+ - **Rohstoffe** (Inflationßchutz) 
 - Dadurch minimierst du das Risiko.
 
 ## 4. Automatisierung einrichten
@@ -33,10 +33,10 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
 - So investierst du regelmäßig und profitierst vom **Cost-Average-Effekt**. 
 - Beispiel: 100 € monatlich in einen MSCI World ETF.
 
-## 5. Regelmäßige Kontrolle und Anpassung
+## 5. Regelmäßige Kontrolle und Anpaßung
 
 - Überprüfe 1–2 Mal pro Jahr dein Portfolio. 
-- Passe deine Strategie an Lebensumstände und Ziele an. 
+- Paße deine Strategie an Lebensumstände und Ziele an. 
 - Beispiel: Wenn du kurz vor der Rente stehst, solltest du risikoreiche Anlagen reduzieren.
 
 ---

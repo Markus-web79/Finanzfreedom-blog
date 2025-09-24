@@ -1,46 +1,60 @@
 // checkContent.js
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
 
-const contentDir = path.join(__dirname, "content");
+const dictionaryPath = "./cspell.json";
 
-// Ersetzungen definieren (Umlaute etc.)
-const replacements = {
-  "ue": "ü",
-  "ae": "ä",
-  "oe": "ö",
-  "Ue": "Ü",
-  "Ae": "Ä",
-  "Oe": "Ö",
-  "Steür": "Steuer",
-  "steür": "steuer",
-  "Steürn": "Steuern",
-  "steürn": "steuern"
-};
-
-// Prüfen + Fixen
-function checkAndFixContent() {
-  const files = fs.readdirSync(contentDir);
-
-  files.forEach((file) => {
-    if (file.endsWith(".md")) {
-      const filePath = path.join(contentDir, file);
-      let content = fs.readFileSync(filePath, "utf8");
-      let originalContent = content;
-
-      for (const [wrong, correct] of Object.entries(replacements)) {
-        const regex = new RegExp(wrong, "g");
-        content = content.replace(regex, correct);
-      }
-
-      if (content !== originalContent) {
-        fs.writeFileSync(filePath, content, "utf8");
-        console.log(`✅ Korrigiert: ${file}`);
-      } else {
-        console.log(`ℹ️ Keine Änderungen: ${file}`);
-      }
-    }
-  });
+// Wörterbuch laden oder neu anlegen
+let dictionary = { words: [] };
+if (fs.existsSync(dictionaryPath)) {
+  dictionary = JSON.parse(fs.readFileSync(dictionaryPath, "utf-8"));
 }
 
-checkAndFixContent();
+// Standard-Korrekturen für Umlaute und typische Fehler
+const replacements = {
+  "Steür": "Steuer",
+  "Steürn": "Steuern",
+  "Steürsatz": "Steuersatz",
+  "Steürzahler": "Steuerzahler",
+  "Fuehren": "Führen",
+  "Vermoegen": "Vermögen",
+  "ueber": "über",
+  "ae": "ä",
+  "oe": "ö",
+  "ue": "ü",
+};
+
+// Hilfsfunktion: Wörterbuch automatisch erweitern
+function addToDictionary(word) {
+  if (!dictionary.words.includes(word)) {
+    dictionary.words.push(word);
+    fs.writeFileSync(dictionaryPath, JSON.stringify(dictionary, null, 2));
+    console.log(`📖 Neues Wort ins Wörterbuch aufgenommen: ${word}`);
+  }
+}
+
+// Content-Dateien prüfen
+const files = fs.readdirSync("./content");
+
+files.forEach((file) => {
+  if (!file.endsWith(".md")) return;
+
+  let content = fs.readFileSync(`./content/${file}`, "utf-8");
+
+  // Feste Korrekturen anwenden
+  for (const [wrong, correct] of Object.entries(replacements)) {
+    if (content.includes(wrong)) {
+      content = content.replaceAll(wrong, correct);
+      console.log(`✅ ${file}: "${wrong}" → "${correct}" ersetzt`);
+    }
+  }
+
+  // Wörter durchgehen und ins Wörterbuch aufnehmen
+  const words = content.split(/\W+/);
+  words.forEach((word) => {
+    if (word.length > 3 && !dictionary.words.includes(word)) {
+      addToDictionary(word);
+    }
+  });
+
+  fs.writeFileSync(`./content/${file}`, content);
+});

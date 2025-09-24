@@ -1,38 +1,54 @@
+// checkContent.js
+// Läuft im Workflow: prüft & korrigiert Content
+
 const fs = require("fs");
 const path = require("path");
 
-// Ordner mit Artikeln
+// Ordner mit den Artikeln
 const contentDir = path.join(__dirname, "content");
 
-// Wörter, die ersetzt werden sollen
+// Mapping für Umlaute und ß
 const replacements = {
-  "Steür": "Steuer",
-  "Vermoegen": "Vermögen",
-  "Fuehren": "Führen",
-  "ue": "ü",
-  "oe": "ö",
-  "ae": "ä"
+  ae: "ä",
+  oe: "ö",
+  ue: "ü",
+  Ae: "Ä",
+  Oe: "Ö",
+  Ue: "Ü",
+  ss: "ß",
 };
 
-// Alle Dateien im content-Ordner durchgehen
+// Hilfsfunktion: Text korrigieren
+function fixText(text) {
+  let fixed = text;
+
+  // Ersetzungen für Umlaute
+  for (const [wrong, right] of Object.entries(replacements)) {
+    const regex = new RegExp(wrong, "g");
+    fixed = fixed.replace(regex, right);
+  }
+
+  // Rechtschreibkorrektur: steür → Steuer
+  fixed = fixed.replace(/Steür/g, "Steuer");
+  fixed = fixed.replace(/steür/g, "steuer");
+
+  return fixed;
+}
+
+// Alle .md Dateien im content-Ordner durchgehen
 fs.readdirSync(contentDir).forEach((file) => {
-  const filePath = path.join(contentDir, file);
-  if (fs.lstatSync(filePath).isFile() && file.endsWith(".md")) {
-    let content = fs.readFileSync(filePath, "utf8");
-    let updated = content;
+  if (file.endsWith(".md")) {
+    const filePath = path.join(contentDir, file);
+    const original = fs.readFileSync(filePath, "utf8");
+    const fixed = fixText(original);
 
-    // Ersetzungen anwenden
-    for (const [wrong, correct] of Object.entries(replacements)) {
-      const regex = new RegExp(wrong, "g");
-      updated = updated.replace(regex, correct);
-    }
-
-    // Wenn Änderungen gemacht wurden → Datei überschreiben
-    if (updated !== content) {
-      fs.writeFileSync(filePath, updated, "utf8");
+    if (original !== fixed) {
+      fs.writeFileSync(filePath, fixed, "utf8");
       console.log(`✅ Korrigiert: ${file}`);
     } else {
       console.log(`ℹ️ Keine Änderungen: ${file}`);
     }
   }
 });
+
+console.log("🔍 Content-Check abgeschlossen!");

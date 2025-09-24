@@ -9,7 +9,7 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. d
 - **Zinsen** aus Sparanlagen oder Anleihen 
 - **Kursgewinne** beim Verkauf von Aktien oder ETFs 
 
-## Abgeltungßteür in Deutschland
+## Abgeltungssteuer in Deutschland
 - Einheitlicher Steuersatz von **25 %** auf Kapitalerträge 
 - Zusätzlich: Solidaritätszuschlag & ggf. Kirchensteuer 
 - Wird meist **direkt von der Bank** abgeführt 

@@ -33,7 +33,7 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 ## Risiken beachten
 
 - **Dividenden sind nicht garantiert** – Unternehmen können Zahlungen kürzen oder aussetzen. 
-- **Steuern** – Dividenden unterliegen der Abgeltungßteür. 
+- **Steuern** – Dividenden unterliegen der Abgeltungssteuer. 
 - **Konzentrationsrisiko** – nicht nur auf Hochdividendenwerte setzen. 
 
 ---

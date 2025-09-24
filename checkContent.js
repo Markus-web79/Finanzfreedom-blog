@@ -1,57 +1,34 @@
-// checkContent.cjs
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-// Wörterbuch mit Korrekturen (kannst du erweitern)
-const corrections = {
-  "\\bteh\\b": "the",
-  "\\brecieve\\b": "receive",
-  "\\bfreedomm\\b": "freedom",
-};
+const contentDir = "./content";
 
-// Umlaute ersetzen (ue -> ü, ae -> ä, oe -> ö, ss bleibt gleich)
-function replaceUmlauts(text) {
+// Funktion: Umlaute ersetzen (aber Steuern-Logik beachten)
+function fixUmlauts(text) {
   return text
-    .replace(/ae/g, "ä")
-    .replace(/oe/g, "ö")
-    .replace(/ue/g, "ü");
+    // Umlaute
+    .replace(/\bae/g, "ä")
+    .replace(/\boe/g, "ö")
+    .replace(/\bue/g, "ü")
+    // Steuer-Fälle explizit korrekt halten
+    .replace(/Steürn/g, "Steuern")
+    .replace(/Steür/g, "Steuer")
+    .replace(/Besteürung/g, "Besteuerung");
 }
 
-// Rechtschreibung korrigieren
-function fixTypos(text) {
-  for (const [wrong, correct] of Object.entries(corrections)) {
-    const regex = new RegExp(wrong, "gi");
-    text = text.replace(regex, correct);
-  }
-  return text;
-}
+// Alle Dateien durchgehen
+fs.readdirSync(contentDir).forEach((file) => {
+  if (file.endsWith(".md")) {
+    const filePath = path.join(contentDir, file);
+    let content = fs.readFileSync(filePath, "utf8");
 
-function processFile(filePath) {
-  let content = fs.readFileSync(filePath, "utf8");
+    const fixed = fixUmlauts(content);
 
-  const original = content;
-  content = replaceUmlauts(content);
-  content = fixTypos(content);
-
-  if (content !== original) {
-    fs.writeFileSync(filePath, content, "utf8");
-    console.log(`✅ Korrigiert: ${filePath}`);
-  } else {
-    console.log(`ℹ️ Keine Änderungen: ${filePath}`);
-  }
-}
-
-function walkDir(dir) {
-  fs.readdirSync(dir).forEach((file) => {
-    const fullPath = path.join(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      walkDir(fullPath);
-    } else if (fullPath.endsWith(".md")) {
-      processFile(fullPath);
+    if (fixed !== content) {
+      fs.writeFileSync(filePath, fixed, "utf8");
+      console.log(`✔ Korrigiert: ${file}`);
+    } else {
+      console.log(`OK: ${file}`);
     }
-  });
-}
-
-console.log("🔍 Starte Content-Check...");
-walkDir(path.join(__dirname, "content"));
-console.log("✅ Content-Check abgeschlossen.");
+  }
+});

@@ -16,14 +16,14 @@ Kapitalerträge sind für viele Anleger eine wichtige EinkommensQuelle. Ob Zinse
 Kapitalerträge sind Einkünfte, die Sie durch Geldanlage generieren. Dazu zählen:
 
 - **Zinsen**: Erträge aus Sparbeträgen oder Anleihen.
-- **Dividenden**: Außchüttungen von Aktiengesellschaften an ihre Aktionäre.
+- **Dividenden**: Ausschüttungen von Aktiengesellschaften an ihre Aktionäre.
 - **Veräußungsgewinne**: Gewinne aus dem Verkauf von Aktien, Fonds oder anderen Anlageformen.
 
 ### Unterschiedliche Arten von Kapitalerträgen
 
 1. **Zinseinkünfte**: Erträge aus Spareinlagen, Festgeld oder Anleihen.
 2. **Aktiengewinne**: Gewinne, die durch den Verkauf von Aktien erzielt werden.
-3. **Dividenden**: Regelmäßige Außchüttungen, die Aktionäre von Unternehmen erhalten.
+3. **Dividenden**: Regelmäßige Ausschüttungen, die Aktionäre von Unternehmen erhalten.
 
 ## Steuerliche Behandlung von Kapitalerträgen
 

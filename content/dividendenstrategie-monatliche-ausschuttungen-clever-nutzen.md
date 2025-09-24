@@ -1,6 +1,6 @@
 META: Lerne, wie du mit einer cleveren Dividendenstrategie regelmäßige Einnahmen generierst.
 
-# Dividendenstrategie: Monatliche Außchüttungen clever nutzen
+# Dividendenstrategie: Monatliche Ausschüttungen clever nutzen
 
 Eine durchdachte Dividendenstrategie kann dir helfen, ein **stabiles passives Einkommen** aufzubaün. 
 Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und eine beliebte EinnahmeQuelle für Anleger.
@@ -8,20 +8,20 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 ## Was sind Dividenden?
 
 - **Definition**: Teil des Unternehmensgewinns, der an die Aktionäre ausgezahlt wird. 
-- **Häufigkeit**: Außchüttungen erfolgen meist quartalsweise, halbjährlich oder jährlich. 
+- **Häufigkeit**: Ausschüttungen erfolgen meist quartalsweise, halbjährlich oder jährlich. 
 - **Höhe**: Abhängig vom Unternehmen und seiner Gewinnsituation. 
 
 ## Vorteile einer Dividendenstrategie
 
-- **Regelmäßiges Einkommen**: Planbare Cashflows durch Außchüttungen. 
+- **Regelmäßiges Einkommen**: Planbare Cashflows durch Ausschüttungen. 
 - **Kombination aus Kursgewinnen und Dividenden**: Du profitierst doppelt. 
 - **Langfristiger Vermögensaufbau**: Besonders durch Reinvestition der Dividenden. 
 
-## Strategieen für monatliche Außchüttungen
+## Strategieen für monatliche Ausschüttungen
 
 1. **Diversifikation** 
  Investiere in verschiedene Unternehmen aus unterschiedlichen Ländern. 
- So kannst du durch die unterschiedlichen Außchüttungstermine monatliche Zahlungen erhalten. 
+ So kannst du durch die unterschiedlichen Ausschüttungstermine monatliche Zahlungen erhalten. 
 
 2. **Dividenden-ETFs** 
  ETFs wie der **Vanguard FTSE All-World High Dividend Yield** bündeln Dividendenaktien weltweit. 
@@ -40,4 +40,4 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 
 👉 **Fazit:** 
 Eine Dividendenstrategie eignet sich ideal für Anleger, die regelmäßige Einnahmen und langfristigen Vermögensaufbau kombinieren wollen. 
-Besonders durch kluge Diversifikation kannst du dir monatliche Außchüttungen sichern.
+Besonders durch kluge Diversifikation kannst du dir monatliche Ausschüttungen sichern.

@@ -1,4 +1,4 @@
-META: Entdecke 7 erprobte Strategieen, wie du ein stabiles passives Einkommen aufbaün kannst – auch neben deinem Hauptjob.
+META: Entdecke 7 erprobte Strategieen, wie du ein stabiles passives Einkommen aufbauen kannst – auch neben deinem Hauptjob.
 
 # 7 Strategieen für passives Einkommen
 
@@ -12,7 +12,7 @@ Hier sind 7 Strategieen, mit denen du starten kannst.
 - Beispiel: Energie- oder Konsumgüterkonzerne. 
 - Dividenden bringen dir stetige Einnahmen.
 
-## 2. ETFs mit Außchüttung
+## 2. ETFs mit Ausschüttung
 
 - Kaufe **ausschüttende ETFs** (z. B. MSCI World). 
 - Mehrfach im Jahr bekommst du automatisch Geld auf dein Konto. 

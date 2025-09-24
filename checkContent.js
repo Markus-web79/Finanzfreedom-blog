@@ -1,35 +1,38 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
-const contentDir = path.join(process.cwd(), "content");
+// Ordner mit Artikeln
+const contentDir = path.join(__dirname, "content");
 
-function fixText(text) {
-  return text
-    .replace(/Steuern/g, "Steuern")
-    .replace(/Steürn/g, "Steuern")
-    .replace(/Steür/g, "Steuer")
-    .replace(/Vermoegen/g, "Vermögen")
-    .replace(/Fuehren/g, "Führen")
-    .replace(/ue/g, "ü")
-    .replace(/ae/g, "ä")
-    .replace(/oe/g, "ö");
-}
+// Wörter, die ersetzt werden sollen
+const replacements = {
+  "Steür": "Steuer",
+  "Vermoegen": "Vermögen",
+  "Fuehren": "Führen",
+  "ue": "ü",
+  "oe": "ö",
+  "ae": "ä"
+};
 
-function checkFiles() {
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+// Alle Dateien im content-Ordner durchgehen
+fs.readdirSync(contentDir).forEach((file) => {
+  const filePath = path.join(contentDir, file);
+  if (fs.lstatSync(filePath).isFile() && file.endsWith(".md")) {
+    let content = fs.readFileSync(filePath, "utf8");
+    let updated = content;
 
-  for (const file of files) {
-    const filePath = path.join(contentDir, file);
-    let text = fs.readFileSync(filePath, "utf-8");
-    const fixed = fixText(text);
+    // Ersetzungen anwenden
+    for (const [wrong, correct] of Object.entries(replacements)) {
+      const regex = new RegExp(wrong, "g");
+      updated = updated.replace(regex, correct);
+    }
 
-    if (fixed !== text) {
-      fs.writeFileSync(filePath, fixed, "utf-8");
+    // Wenn Änderungen gemacht wurden → Datei überschreiben
+    if (updated !== content) {
+      fs.writeFileSync(filePath, updated, "utf8");
       console.log(`✅ Korrigiert: ${file}`);
     } else {
-      console.log(`✔️ OK: ${file}`);
+      console.log(`ℹ️ Keine Änderungen: ${file}`);
     }
   }
-}
-
-checkFiles();
+});

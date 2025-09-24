@@ -1,50 +1,59 @@
-const fs = require("fs");
-const path = require("path");
-
-// Ordner mit Artikeln
-const CONTENT_DIR = path.join(__dirname, "content");
-
-// Wörterbuch für automatische Korrekturen
 const replacements = {
+  // Umlaute und ß
+  "ae": "ä",
+  "oe": "ö",
+  "ue": "ü",
+  "Ae": "Ä",
+  "Oe": "Ö",
+  "Ue": "Ü",
+  "ss": "ß",
+
+  // Häufige Schreibfehler durch alte Tastaturgewohnheiten
   "Steür": "Steuer",
   "steür": "steuer",
   "Steüroptimierung": "Steueroptimierung",
   "Steürpflicht": "Steuerpflicht",
+
+  // ß und ss
+  "muß": "muss",
+  "Muß": "Muss",
+  "müßen": "müssen",
+  "Müßen": "Müssen",
+
+  // ß / ss Varianten
   "paßiv": "passiv",
   "Paßiv": "Passiv",
   "paßives": "passives",
   "Paßives": "Passives",
-  "muß": "muss",
-  "müßen": "müssen",
+
+  // ß bei Verben
   "auß": "auss",
-  "wißen": "wissen",
+  "Auß": "Auss",
   "laßen": "lassen",
+  "Laßen": "Lassen",
+
+  // wißen → wissen
+  "wißen": "wissen",
+  "Wißen": "Wissen",
+
+  // qülle → Quelle
   "qülle": "Quelle",
+  "Qülle": "Quelle",
+
+  // Führen/Fuehren
   "Fuehr": "Führ",
   "Fuehren": "Führen",
+  "fuehren": "führen",
+
+  // Vermoegen
   "Vermoegen": "Vermögen",
-  "Oekonomie": "Ökonomie"
+  "vermoegen": "vermögen",
+
+  // Oekonomie
+  "Oekonomie": "Ökonomie",
+  "oekonomie": "ökonomie",
+
+  // Sonstige Testfehler
+  "aufbaün": "aufbauen",
+  "aufbaen": "aufbauen",
 };
-
-// Alle Dateien im content-Ordner durchgehen
-fs.readdirSync(CONTENT_DIR).forEach(file => {
-  if (file.endsWith(".md")) {
-    const filePath = path.join(CONTENT_DIR, file);
-    let content = fs.readFileSync(filePath, "utf8");
-
-    let changed = false;
-    for (const [wrong, correct] of Object.entries(replacements)) {
-      if (content.includes(wrong)) {
-        content = content.replace(new RegExp(wrong, "g"), correct);
-        changed = true;
-      }
-    }
-
-    if (changed) {
-      fs.writeFileSync(filePath, content, "utf8");
-      console.log(`✅ ${file} korrigiert`);
-    } else {
-      console.log(`ℹ️ ${file} keine Änderungen nötig`);
-    }
-  }
-});

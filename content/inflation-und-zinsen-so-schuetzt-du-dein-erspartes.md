@@ -16,7 +16,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
-- **Einfluß der Zentralbanken**: Zinspolitik steürt Inflation und Wirtschaftswachstum.
+- **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
 
 ## 3. Strategieen zum Schutz deines Geldes
 

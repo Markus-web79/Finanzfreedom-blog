@@ -1,14 +1,14 @@
-META: Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und wie du langfristig Wohlstand aufbauen kannst.
+META: Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und wie du langfristig Wohlstand aufbaün kannst.
 
 # Die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung
 
 Eine **kluge Vermögensplanung** ist die Basis für finanzielle Sicherheit und Freiheit. 
 Viele Menschen konzentrieren sich nur auf kurzfristige Ziele und verlieren dabei den langfristigen Blick. 
-Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich aufbauen.
+Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich aufbaün.
 
 ## 1. Ziele definieren
 
-- Lege fest, **warum** du Vermögen aufbauen willst (z. B. Altersvorsorge, Immobilie, Reisen). 
+- Lege fest, **warum** du Vermögen aufbaün willst (z. B. Altersvorsorge, Immobilie, Reisen). 
 - Teile deine Ziele in **kurzfristig**, **mittelfristig** und **langfristig** auf. 
 - Beispiel: In 2 Jahren ein Auto kaufen, in 10 Jahren schuldenfrei sein, in 30 Jahren finanzielle Freiheit.
 

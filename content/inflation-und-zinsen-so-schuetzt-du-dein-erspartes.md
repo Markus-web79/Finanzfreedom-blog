@@ -8,7 +8,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 ## 1. Was ist Inflation?
 
-- **Definition**: Inflation bedeutet, daß die Preise für Waren und Dienstleistungen steigen. 
+- **Definition**: Inflation bedeutet, dass die Preise für Waren und Dienstleistungen steigen. 
 - **Auswirkung**: Dein Geld verliert an Kaufkraft – du kannst dir für denselben Betrag weniger leisten. 
 - **Beispiel**: Bei 3 % Inflation kostet etwas, das heute 100 € kostet, in 10 Jahren rund 134 €.
 
@@ -16,7 +16,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
-- **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
+- **Einfluß der Zentralbanken**: Zinspolitik steürt Inflation und Wirtschaftswachstum.
 
 ## 3. Strategieen zum Schutz deines Geldes
 

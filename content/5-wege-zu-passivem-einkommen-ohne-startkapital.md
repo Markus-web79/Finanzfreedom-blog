@@ -1,8 +1,8 @@
-META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives Einkommen aufbauen kannst.
+META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives Einkommen aufbaün kannst.
 
 # 5 Wege zu Passivem Einkommen ohne Startkapital
 
-Viele Menschen glauben, daß man viel Geld braucht, um ein passives Einkommen aufzubaün. 
+Viele Menschen glauben, dass man viel Geld braucht, um ein passives Einkommen aufzubaün. 
 Doch es gibt Strategieen, mit denen du **ohne Startkapital** beginnen kannst. 
 
 ## 1. Affiliate-Marketing starten
@@ -29,5 +29,5 @@ Doch es gibt Strategieen, mit denen du **ohne Startkapital** beginnen kannst.
 ---
 
 👉 **Fazit:** 
-Auch ohne Startkapital kannst du Schritt für Schritt passives Einkommen aufbauen. 
+Auch ohne Startkapital kannst du Schritt für Schritt passives Einkommen aufbaün. 
 Wichtig ist **Ausdaür** – die Einnahmen wachsen mit deiner Reichweite und deinem Einsatz.

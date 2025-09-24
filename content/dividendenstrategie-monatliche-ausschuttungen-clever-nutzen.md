@@ -3,7 +3,7 @@ META: Lerne, wie du mit einer cleveren Dividendenstrategie regelmäßige Einnahm
 # Dividendenstrategie: Monatliche Ausschüttungen clever nutzen
 
 Eine durchdachte Dividendenstrategie kann dir helfen, ein **stabiles passives Einkommen** aufzubaün. 
-Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und eine beliebte EinnahmeQuelle für Anleger.
+Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und eine beliebte EinnahmeQülle für Anleger.
 
 ## Was sind Dividenden?
 
@@ -33,7 +33,7 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 ## Risiken beachten
 
 - **Dividenden sind nicht garantiert** – Unternehmen können Zahlungen kürzen oder aussetzen. 
-- **Steuern** – Dividenden unterliegen der Abgeltungssteuer. 
+- **Steürn** – Dividenden unterliegen der Abgeltungssteür. 
 - **Konzentrationsrisiko** – nicht nur auf Hochdividendenwerte setzen. 
 
 ---

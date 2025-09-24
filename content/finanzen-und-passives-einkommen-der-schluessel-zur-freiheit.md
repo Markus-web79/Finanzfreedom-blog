@@ -10,15 +10,15 @@ Der Weg zur finanziellen Freiheit beginnt mit zwei Säulen: soliden Finanzen und
 - **Sparen:** Lege Rücklagen für Notfälle an.
 
 ## Was ist passives Einkommen?
-Passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne daß du ständig aktiv dafür arbeiten musst. Beispiele:
+Passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du ständig aktiv dafür arbeiten musst. Beispiele:
 - Dividenden aus Aktien
 - Einnahmen aus Immobilien
 - Affiliate-Marketing oder digitale Produkte
 
 ## Vorteile von Passivem Einkommen
 - **Zeitliche Freiheit:** Du kannst selbst entscheiden, wie du deine Zeit nutzt.
-- **Sicherheit:** Mehrere EinkommensQuellen schützen vor Risiken.
-- **Vermögensaufbau:** Passives Einkommen läßt dich langfristig Wohlstand aufbauen.
+- **Sicherheit:** Mehrere EinkommensQüllen schützen vor Risiken.
+- **Vermögensaufbau:** Passives Einkommen läßt dich langfristig Wohlstand aufbaün.
 
 ## Erste Schritte
 1. Analysiere deine Finanzen.

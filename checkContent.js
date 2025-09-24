@@ -1,36 +1,47 @@
 // checkContent.js
-// Läuft automatisch im Workflow: korrigiert Schreibweisen & ersetzt Umlaute
-
 const fs = require("fs");
 const path = require("path");
 
-const CONTENT_DIR = path.join(__dirname, "content");
+const contentDir = path.join(__dirname, "content");
 
-// Wörterbuch mit Auto-Korrekturen
+// Wörterbuch für Korrekturen
 const replacements = {
   "Steür": "Steuer",
-  "Vermoegen": "Vermögen",
+  "steür": "steuer",
+  "Steürn": "Steuern",
   "Fuehren": "Führen",
-  "Fuehrung": "Führung",
+  "fuehren": "führen",
+  "Vermoegen": "Vermögen",
   "Oekonomie": "Ökonomie",
   "ue": "ü",
   "ae": "ä",
-  "oe": "ö"
+  "oe": "ö",
+  "Ae": "Ä",
+  "Ue": "Ü",
+  "Oe": "Ö"
 };
 
-// Alle Dateien im content-Ordner durchgehen
-fs.readdirSync(CONTENT_DIR).forEach((file) => {
+function correctText(text) {
+  let corrected = text;
+  for (const [wrong, right] of Object.entries(replacements)) {
+    const regex = new RegExp(wrong, "g");
+    corrected = corrected.replace(regex, right);
+  }
+  return corrected;
+}
+
+// Alle .md Dateien im content-Ordner durchgehen
+fs.readdirSync(contentDir).forEach((file) => {
   if (file.endsWith(".md")) {
-    const filePath = path.join(CONTENT_DIR, file);
-    let content = fs.readFileSync(filePath, "utf8");
+    const filePath = path.join(contentDir, file);
+    const originalContent = fs.readFileSync(filePath, "utf8");
+    const correctedContent = correctText(originalContent);
 
-    // Korrekturen anwenden
-    Object.entries(replacements).forEach(([wrong, right]) => {
-      const regex = new RegExp(wrong, "g");
-      content = content.replace(regex, right);
-    });
-
-    fs.writeFileSync(filePath, content, "utf8");
-    console.log(`✅ Korrigiert: ${file}`);
+    if (originalContent !== correctedContent) {
+      fs.writeFileSync(filePath, correctedContent, "utf8");
+      console.log(`✅ Datei korrigiert: ${file}`);
+    } else {
+      console.log(`ℹ️ Keine Änderungen nötig: ${file}`);
+    }
   }
 });

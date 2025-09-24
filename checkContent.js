@@ -1,33 +1,24 @@
-name: Check Content
+const fs = require("fs");
+const path = require("path");
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+// Wörterbuch laden
+const dict = JSON.parse(fs.readFileSync("dictionary.json", "utf8"));
 
-jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+const contentDir = path.join(__dirname, "content");
+const files = fs.readdirSync(contentDir);
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+files.forEach(file => {
+  if (file.endsWith(".md")) {
+    const filePath = path.join(contentDir, file);
+    let text = fs.readFileSync(filePath, "utf8");
 
-      - name: Install dependencies
-        run: npm ci || npm install
+    // Wörter ersetzen
+    for (const [wrong, correct] of Object.entries(dict)) {
+      const regex = new RegExp(wrong, "g");
+      text = text.replace(regex, correct);
+    }
 
-      - name: Run Content Check
-        run: node checkContent.js
-
-      - name: Commit & Push Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content || echo "Nichts zu committen"
-          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
-          git push
+    fs.writeFileSync(filePath, text, "utf8");
+    console.log(`✅ Korrigiert: ${file}`);
+  }
+});

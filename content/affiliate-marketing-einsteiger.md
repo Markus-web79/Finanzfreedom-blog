@@ -41,4 +41,4 @@ Dabei empfiehlst du Produkte oder Dienstleistungen und erhältst eine Provision,
 ---
 
 👉 **Tipp:** Starte klein und fokußiere dich auf wenige Produkte, die du wirklich empfehlen kannst. 
-So baust du **Glaubwürdigkeit** auf und verdienst mit der Zeit dein erstes paßives Einkommen.
+So baust du **Glaubwürdigkeit** auf und verdienst mit der Zeit dein erstes passives Einkommen.

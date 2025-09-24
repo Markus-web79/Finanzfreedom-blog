@@ -16,7 +16,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
-- **Einfluß der Zentralbanken**: Zinspolitik steürt Inflation und Wirtschaftswachstum.
+- **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
 
 ## 3. Strategieen zum Schutz deines Geldes
 
@@ -24,7 +24,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
  Immobilien, Aktien und ETFs gelten als inflationßichere Anlagen. 
 
 2. **Diversifikation** 
- Streü dein Vermögen auf verschiedene Anlageklaßen (Aktien, Rohstoffe, Immobilienfonds). 
+ Streü dein Vermögen auf verschiedene Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
 
 3. **ETFs & Indexfonds nutzen** 
  Mit globalen ETFs kannst du langfristig eine Rendite oberhalb der Inflation erzielen. 

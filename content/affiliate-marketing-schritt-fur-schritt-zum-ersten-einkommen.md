@@ -3,7 +3,7 @@ META: Affiliate-Marketing Schritt für Schritt erklärt – so baust du dein ers
 # Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen
 
 Affiliate-Marketing ist eine lukrative Möglichkeit, im Internet Geld zu verdienen. 
-Gerade Einsteiger profitieren davon, daß sie kein eigenes Produkt entwickeln müßen, sondern bestehende Produkte bewerben können. 
+Gerade Einsteiger profitieren davon, daß sie kein eigenes Produkt entwickeln müssen, sondern bestehende Produkte bewerben können. 
 
 ## Schritt 1: Wähle deine Nische
 

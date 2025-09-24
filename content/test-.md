@@ -5,7 +5,7 @@
 Dieser Artikel dient nur als Test für den Content-Check.  
 Hier ein paar typische Fehler:
 
-- Steür sparen ist wichtig.  
+- Steuer sparen ist wichtig.  
 - Vermögen aufbaün macht frei.  
 - Führen statt folgen.  
 - Ökonomie verstehen bringt Vorteile.  

@@ -35,4 +35,4 @@ Die Zukunft liegt wahrscheinlich in **Hybrid-Modellen**, die das Beste aus beide
 ---
 
 👉 **Fazit:** 
-Die Zukunft der Finanzberatung wird **hybrid** sein. Anleger profitieren von der Effizienz digitaler Lösungen, ohne auf persönliche Expertise verzichten zu müßen.
+Die Zukunft der Finanzberatung wird **hybrid** sein. Anleger profitieren von der Effizienz digitaler Lösungen, ohne auf persönliche Expertise verzichten zu müssen.

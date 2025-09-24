@@ -20,7 +20,7 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
 
 ## 3. Diversifikation nutzen
 
-- Verteile dein Geld auf mehrere Anlageklaßen: 
+- Verteile dein Geld auf mehrere Anlageklassen: 
  - **Aktien & ETFs** (Wachstum) 
  - **Anleihen** (Sicherheit) 
  - **Immobilien** (Sachwert) 

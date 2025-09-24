@@ -23,12 +23,12 @@ jobs:
 
       - name: Check & Fix Content
         run: |
-          npm run check:content || echo "Content-Check abgeschlossen"
+          node checkContent.js || echo "Content-Check abgeschlossen"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content || echo "Nichts zu committen"
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
-          git push
+          git push || echo "Nichts zu pushen"
 
       - name: Deploy to Vercel (prod)
         run: |
@@ -38,5 +38,4 @@ jobs:
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Deployment URL
-        run: |
-          echo "🚀 Live: ${{ env.url }}"
+        run: echo "🚀 Live: ${{ env.url }}"

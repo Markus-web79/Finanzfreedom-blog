@@ -1,49 +1,57 @@
+// checkContent.js
+// Läuft automatisch im GitHub Action Workflow, korrigiert Rechtschreibung & Umlaute in allen Markdown-Artikeln im content/-Ordner.
+
 const fs = require("fs");
 const path = require("path");
 
-const contentDir = path.join(__dirname, "content");
-
-// Wörterbuch mit Ersetzungen
-const replacements = {
+// Fehler -> Korrektur
+const corrections = {
   "Steür": "Steuer",
-  "steür": "steuer",
   "Steürn": "Steuern",
+  "steür": "steuer",
   "steürn": "steuern",
-  "Abgeltungßteür": "Abgeltungssteuer",
-  "Kirchensteür": "Kirchensteuer",
-  "Solidaritätszuschlag & ggf. Kirchensteür": "Solidaritätszuschlag & ggf. Kirchensteuer",
+  "paßiv": "passiv",
+  "auß": "aus",
+  "muß": "muss",
+  "mußen": "müssen",
+  "daß": "dass",
+  "wißen": "wissen",
+  "Qülle": "Quelle",
+  "laßen": "lassen",
   "Vermoegen": "Vermögen",
   "vermoegen": "vermögen",
   "Fuehren": "Führen",
   "fuehren": "führen",
   "Oekonomie": "Ökonomie",
   "oekonomie": "ökonomie",
-  "paßiv": "passiv",
-  "Paßiv": "Passiv",
-  "laßen": "lassen",
-  "muß": "muss",
-  "Muß": "Muss"
+  "ae": "ä",
+  "oe": "ö",
+  "ue": "ü"
 };
 
-// Alle Dateien im content-Ordner durchgehen
-fs.readdirSync(contentDir).forEach(file => {
-  if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    let content = fs.readFileSync(filePath, "utf8");
+// Funktion zur Korrektur von Text
+function correctText(text) {
+  let corrected = text;
+  for (const [wrong, right] of Object.entries(corrections)) {
+    const regex = new RegExp(wrong, "g");
+    corrected = corrected.replace(regex, right);
+  }
+  return corrected;
+}
 
-    let changed = false;
-    for (const [wrong, correct] of Object.entries(replacements)) {
-      if (content.includes(wrong)) {
-        content = content.split(wrong).join(correct);
-        changed = true;
-      }
-    }
+// content/-Ordner durchlaufen
+const contentDir = path.join(__dirname, "content");
+const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
 
-    if (changed) {
-      fs.writeFileSync(filePath, content, "utf8");
-      console.log(`✅ ${file} korrigiert`);
-    } else {
-      console.log(`ℹ️ ${file} ohne Änderungen`);
-    }
+files.forEach(file => {
+  const filePath = path.join(contentDir, file);
+  const content = fs.readFileSync(filePath, "utf8");
+  const corrected = correctText(content);
+
+  if (content !== corrected) {
+    fs.writeFileSync(filePath, corrected, "utf8");
+    console.log(`✅ Korrigiert: ${file}`);
+  } else {
+    console.log(`ℹ️ Keine Fehler in: ${file}`);
   }
 });

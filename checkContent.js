@@ -1,54 +1,33 @@
-// checkContent.js
-// Läuft im Workflow: prüft & korrigiert Content
+name: Check Content
 
-const fs = require("fs");
-const path = require("path");
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
-// Ordner mit den Artikeln
-const contentDir = path.join(__dirname, "content");
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-// Mapping für Umlaute und ß
-const replacements = {
-  ae: "ä",
-  oe: "ö",
-  ue: "ü",
-  Ae: "Ä",
-  Oe: "Ö",
-  Ue: "Ü",
-  ss: "ß",
-};
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-// Hilfsfunktion: Text korrigieren
-function fixText(text) {
-  let fixed = text;
+      - name: Install dependencies
+        run: npm ci || npm install
 
-  // Ersetzungen für Umlaute
-  for (const [wrong, right] of Object.entries(replacements)) {
-    const regex = new RegExp(wrong, "g");
-    fixed = fixed.replace(regex, right);
-  }
+      - name: Run Content Check
+        run: node checkContent.js
 
-  // Rechtschreibkorrektur: steür → Steuer
-  fixed = fixed.replace(/Steür/g, "Steuer");
-  fixed = fixed.replace(/steür/g, "steuer");
-
-  return fixed;
-}
-
-// Alle .md Dateien im content-Ordner durchgehen
-fs.readdirSync(contentDir).forEach((file) => {
-  if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    const original = fs.readFileSync(filePath, "utf8");
-    const fixed = fixText(original);
-
-    if (original !== fixed) {
-      fs.writeFileSync(filePath, fixed, "utf8");
-      console.log(`✅ Korrigiert: ${file}`);
-    } else {
-      console.log(`ℹ️ Keine Änderungen: ${file}`);
-    }
-  }
-});
-
-console.log("🔍 Content-Check abgeschlossen!");
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content || echo "Nichts zu committen"
+          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
+          git push

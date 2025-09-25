@@ -1,65 +1,58 @@
 // scripts/fixContent.js
-
 const fs = require("fs");
 const path = require("path");
 
-// Korrekturen definieren
-const corrections = {
-  "Steür": "Steuer",
-  "Steürn": "Steuern",
-  "steür": "steuer",
-  "steürt": "steuert",
-  "steürlich": "steuerlich",
-  "Vermoegen": "Vermögen",
-  "Vermoegen": "Vermögen",
-  "aufbaün": "aufbauen",
-  "Fuehren": "Führen",
-  "Oekonomie": "Ökonomie",
-  "paßiv": "passiv",
-  "muß": "muss",
-  "Muß": "Muss",
-  "laßen": "lassen",
-  "wißen": "wissen",
-  "daß": "dass",
-  "auß": "aus",
-  "ßichere": "sichere",
-  "Stratgegieen": "Strategien",
-  "Steürsatz": "Steuersatz",
-  "Kirchensteür": "Kirchensteuer",
-  "Steürpflicht": "Steuerpflicht",
-  "Steüroptimierung": "Steueroptimierung",
-  "Steürlast": "Steuerlast",
-  "Steürfrei": "steuerfrei",
-};
+// Wörterbuch laden
+const dictionaryPath = path.join(__dirname, "..", "dictionary.json");
+const dictionary = JSON.parse(fs.readFileSync(dictionaryPath, "utf8"));
 
-// Alle Dateien im content-Verzeichnis holen
+// Content-Ordner
 const contentDir = path.join(__dirname, "..", "content");
 
-function fixFile(filePath) {
-  let text = fs.readFileSync(filePath, "utf8");
-  let fixed = text;
-
-  for (const [wrong, right] of Object.entries(corrections)) {
-    const regex = new RegExp(wrong, "g");
-    fixed = fixed.replace(regex, right);
-  }
-
-  if (fixed !== text) {
-    fs.writeFileSync(filePath, fixed, "utf8");
-    console.log(`✔ Korrigiert: ${filePath}`);
-  }
-}
-
-function walkDir(dir) {
-  fs.readdirSync(dir).forEach((file) => {
-    const filePath = path.join(dir, file);
-    if (fs.statSync(filePath).isDirectory()) {
-      walkDir(filePath);
-    } else if (filePath.endsWith(".md")) {
-      fixFile(filePath);
+// Alle Dateien im Content-Ordner durchgehen
+function getAllMarkdownFiles(dir) {
+  return fs.readdirSync(dir).flatMap(file => {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      return getAllMarkdownFiles(fullPath);
+    } else if (file.endsWith(".md")) {
+      return [fullPath];
+    } else {
+      return [];
     }
   });
 }
 
-walkDir(contentDir);
-console.log("✅ Alle Artikel im content/ Ordner geprüft und korrigiert.");
+// Wörter ersetzen
+function fixContent(text) {
+  let fixed = text;
+  for (const [wrong, correct] of Object.entries(dictionary)) {
+    const regex = new RegExp(`\\b${wrong}\\b`, "gi"); // Wortgrenzen beachten
+    fixed = fixed.replace(regex, correct);
+  }
+  return fixed;
+}
+
+// Dateien korrigieren
+const files = getAllMarkdownFiles(contentDir);
+let changedFiles = [];
+
+files.forEach(file => {
+  let content = fs.readFileSync(file, "utf8");
+  const fixedContent = fixContent(content);
+
+  if (content !== fixedContent) {
+    fs.writeFileSync(file, fixedContent, "utf8");
+    changedFiles.push(file);
+  }
+});
+
+// Ergebnis anzeigen
+if (changedFiles.length > 0) {
+  console.log("✅ Korrigierte Dateien:");
+  changedFiles.forEach(f => console.log(" - " + f));
+  process.exit(0);
+} else {
+  console.log("✨ Keine Änderungen notwendig.");
+  process.exit(0);
+}

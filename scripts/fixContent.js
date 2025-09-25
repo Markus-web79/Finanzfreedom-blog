@@ -1,42 +1,35 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
 // Wörterbuch laden
-const dictPath = path.join(process.cwd(), "dictionary.json");
-const dictionary = JSON.parse(fs.readFileSync(dictPath, "utf8"));
+const dictionaryPath = path.join(__dirname, "..", "dictionary.json");
+const dictionary = JSON.parse(fs.readFileSync(dictionaryPath, "utf8"));
 
-// Funktion zum Ersetzen
-function fixText(text, dictionary) {
+// Content-Ordner
+const contentDir = path.join(__dirname, "..", "content");
+
+// Funktion zum Korrigieren
+function fixText(text) {
   let fixed = text;
   for (const [wrong, correct] of Object.entries(dictionary)) {
-    const regex = new RegExp(wrong, "gi");
+    const regex = new RegExp("\\b" + wrong + "\\b", "gi");
     fixed = fixed.replace(regex, correct);
   }
   return fixed;
 }
 
-// Content-Ordner durchgehen
-const contentDir = path.join(process.cwd(), "content");
-const files = fs.readdirSync(contentDir).filter((file) => file.endsWith(".md"));
+// Alle Markdown-Dateien laden und korrigieren
+fs.readdirSync(contentDir).forEach((file) => {
+  if (file.endsWith(".md")) {
+    const filePath = path.join(contentDir, file);
+    const content = fs.readFileSync(filePath, "utf8");
+    const fixed = fixText(content);
 
-let changes = 0;
-
-files.forEach((file) => {
-  const filePath = path.join(contentDir, file);
-  let content = fs.readFileSync(filePath, "utf8");
-  const fixed = fixText(content, dictionary);
-
-  if (content !== fixed) {
-    fs.writeFileSync(filePath, fixed, "utf8");
-    console.log(`✅ Korrigiert: ${file}`);
-    changes++;
-  } else {
-    console.log(`ℹ️ Keine Änderungen: ${file}`);
+    if (content !== fixed) {
+      fs.writeFileSync(filePath, fixed, "utf8");
+      console.log(`✅ Korrigiert: ${file}`);
+    } else {
+      console.log(`ℹ️ Keine Änderungen: ${file}`);
+    }
   }
 });
-
-if (changes === 0) {
-  console.log("🎉 Alle Dateien waren schon korrekt.");
-} else {
-  console.log(`🔍 Fertig! ${changes} Dateien wurden korrigiert.`);
-}

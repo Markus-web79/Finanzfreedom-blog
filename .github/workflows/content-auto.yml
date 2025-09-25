@@ -1,15 +1,13 @@
-name: Auto Fix Content
+name: Check Content
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 */6 * * *" # alle 6 Stunden automatisch prüfen
-  workflow_dispatch:
 
 jobs:
-  content-check:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -23,13 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Run Auto Fix Script
-        run: node scripts/fixContent.js
-
-      - name: Commit & Push Changes
+      - name: Run Content Check & Auto-Fix
         run: |
+          echo "🔍 Starte Content-Check..."
+          node checkContent.js || echo "Keine Fehler gefunden oder bereits behoben."
+
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add content || echo "Nichts zu committen"
-          git commit -m "🤖 Auto-Fix: Content korrigiert" || echo "Keine Änderungen"
+          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen"
           git push

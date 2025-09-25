@@ -41,4 +41,5 @@ jobs:
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Deployment URL
-        run: echo "🚀 Live: ${{ env.url }}"
+        run: |
+          echo "🚀 Live: ${{ env.url }}"

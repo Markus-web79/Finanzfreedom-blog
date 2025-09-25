@@ -3,56 +3,34 @@ const fs = require("fs");
 const path = require("path");
 
 // Wörterbuch laden
-const dictionaryPath = path.join(__dirname, "..", "dictionary.json");
-const dictionary = JSON.parse(fs.readFileSync(dictionaryPath, "utf8"));
+const dictionary = require("../dictionary.json");
 
-// Content-Ordner
+// Ordner mit Artikeln
 const contentDir = path.join(__dirname, "..", "content");
 
-// Alle Dateien im Content-Ordner durchgehen
-function getAllMarkdownFiles(dir) {
-  return fs.readdirSync(dir).flatMap(file => {
-    const fullPath = path.join(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      return getAllMarkdownFiles(fullPath);
-    } else if (file.endsWith(".md")) {
-      return [fullPath];
-    } else {
-      return [];
-    }
-  });
-}
+// Alle Dateien im content-Verzeichnis holen
+const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
 
-// Wörter ersetzen
-function fixContent(text) {
+// Funktion zur Korrektur eines Textes
+function fixText(text) {
   let fixed = text;
   for (const [wrong, correct] of Object.entries(dictionary)) {
-    const regex = new RegExp(`\\b${wrong}\\b`, "gi"); // Wortgrenzen beachten
+    const regex = new RegExp(wrong, "gi");
     fixed = fixed.replace(regex, correct);
   }
   return fixed;
 }
 
-// Dateien korrigieren
-const files = getAllMarkdownFiles(contentDir);
-let changedFiles = [];
+// Alle Dateien durchgehen und korrigieren
+for (const file of files) {
+  const filePath = path.join(contentDir, file);
+  const original = fs.readFileSync(filePath, "utf8");
+  const fixed = fixText(original);
 
-files.forEach(file => {
-  let content = fs.readFileSync(file, "utf8");
-  const fixedContent = fixContent(content);
-
-  if (content !== fixedContent) {
-    fs.writeFileSync(file, fixedContent, "utf8");
-    changedFiles.push(file);
+  if (original !== fixed) {
+    fs.writeFileSync(filePath, fixed, "utf8");
+    console.log(`✅ Korrigiert: ${file}`);
+  } else {
+    console.log(`ℹ️ Keine Änderungen: ${file}`);
   }
-});
-
-// Ergebnis anzeigen
-if (changedFiles.length > 0) {
-  console.log("✅ Korrigierte Dateien:");
-  changedFiles.forEach(f => console.log(" - " + f));
-  process.exit(0);
-} else {
-  console.log("✨ Keine Änderungen notwendig.");
-  process.exit(0);
 }

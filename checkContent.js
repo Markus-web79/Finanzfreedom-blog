@@ -1,52 +1,52 @@
 // checkContent.js
-// Läuft durch alle Dateien im content/-Ordner und korrigiert Schreibfehler
-
 const fs = require("fs");
 const path = require("path");
 
+// Ordner mit den Artikeln
 const contentDir = path.join(__dirname, "content");
 
-// Liste der Ersetzungen (immer erweiterbar)
-const replacements = {
-  "Steür": "Steuer",
-  "steür": "steuer",
-  "Vermoegen": "Vermögen",
-  "vermoegen": "vermögen",
-  "Fuehren": "Führen",
-  "fuehren": "führen",
-  "Oekonomie": "Ökonomie",
-  "aufbaün": "aufbauen",
-  "paßiv": "passiv",
-  "auß": "aus",
-  "muß": "muss",
-  "Muß": "Muss",
-  "daß": "dass",
-  "wißen": "wissen",
-  "laßen": "lassen"
-};
+// Liste einfacher Korrekturen (Rechtschreibung & Umlaute)
+const corrections = [
+  { wrong: /Steür/g, right: "Steuer" },
+  { wrong: /steür/g, right: "steuer" },
+  { wrong: /Steürn/g, right: "Steuern" },
+  { wrong: /Vermoegen/g, right: "Vermögen" },
+  { wrong: /vermoegen/g, right: "vermögen" },
+  { wrong: /Fuehren/g, right: "Führen" },
+  { wrong: /fuehren/g, right: "führen" },
+  { wrong: /Oekonomie/g, right: "Ökonomie" },
+  { wrong: /oekonomie/g, right: "ökonomie" },
+  { wrong: /paßiv/g, right: "passiv" },
+  { wrong: /ßich/g, right: "sich" },
+  { wrong: /auß/g, right: "aus" },
+  { wrong: /daß/g, right: "dass" },
+  { wrong: /muß/g, right: "muss" },
+  { wrong: /Strate?gieen/g, right: "Strategien" },
+];
 
-// Funktion zum Korrigieren einer Datei
-function fixFile(filePath) {
-  let content = fs.readFileSync(filePath, "utf8");
-  let updated = content;
-
-  for (const [wrong, correct] of Object.entries(replacements)) {
-    const regex = new RegExp(wrong, "g");
-    updated = updated.replace(regex, correct);
-  }
-
-  if (updated !== content) {
-    fs.writeFileSync(filePath, updated, "utf8");
-    console.log(`✅ Korrigiert: ${filePath}`);
-  } else {
-    console.log(`ℹ️ Keine Änderungen: ${filePath}`);
-  }
+// Hilfsfunktion: Text korrigieren
+function correctText(text) {
+  let newText = text;
+  corrections.forEach(({ wrong, right }) => {
+    newText = newText.replace(wrong, right);
+  });
+  return newText;
 }
 
-// Alle Dateien im content/-Ordner durchgehen
+// Alle .md-Dateien im content-Ordner einlesen
 fs.readdirSync(contentDir).forEach((file) => {
   if (file.endsWith(".md")) {
     const filePath = path.join(contentDir, file);
-    fixFile(filePath);
+    let content = fs.readFileSync(filePath, "utf-8");
+    const corrected = correctText(content);
+
+    if (content !== corrected) {
+      fs.writeFileSync(filePath, corrected, "utf-8");
+      console.log(`✅ Korrigiert: ${file}`);
+    } else {
+      console.log(`ℹ️ Keine Änderungen: ${file}`);
+    }
   }
 });
+
+console.log("🔍 Content-Check abgeschlossen.");

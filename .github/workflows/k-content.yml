@@ -1,10 +1,10 @@
 name: Check Content
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   content-check:
@@ -21,14 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Run cspell check
-        run: npx cspell "content/**/*.md" --unique --words-only > new-words.txt || true
+      - name: Run spell check
+        run: npx cspell "content/**/*.md" --unique --words-only > new-words.txt
 
       - name: Add new words to dictionary
         run: |
           node scripts/addWords.js new-words.txt
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dictionary.json
-          git commit -m "📖 Wörterbuch automatisch erweitert" || echo "Keine Änderungen"
+          git add dictionary.json || echo "Nichts zu committen"
+          git commit -m "🔤 Wörterbuch automatisch erweitert" || echo "Keine Änderungen"
           git push

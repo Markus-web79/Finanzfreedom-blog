@@ -1,0 +1,76 @@
+// scripts/fixContent.js
+const fs = require("fs");
+const path = require("path");
+
+const contentDir = path.join(__dirname, "..", "content");
+
+// Typische Fehler & Ersetzungen
+const corrections = {
+  // Umlaute
+  "ae": "ä",
+  "oe": "ö",
+  "ue": "ü",
+  "Ae": "Ä",
+  "Oe": "Ö",
+  "Ue": "Ü",
+
+  // ß statt ss
+  "ss": "ß",
+
+  // Häufige Schreibfehler
+  "Steür": "Steuer",
+  "steür": "steuer",
+  "Steüern": "Steuern",
+  "steüern": "steuern",
+  "Steürn": "Steuern",
+  "Vermoegen": "Vermögen",
+  "vermoegen": "vermögen",
+  "Fuehren": "Führen",
+  "fuehren": "führen",
+  "Oekonomie": "Ökonomie",
+  "oekonomie": "ökonomie",
+  "aufbaün": "aufbauen",
+  "paßiv": "passiv",
+  "Paßiv": "Passiv",
+  "ßicher": "sicher",
+  "ßparen": "sparen",
+  "ßtrategie": "Strategie",
+  "auß": "aus",
+  "Auß": "Aus",
+  "wißen": "wissen",
+  "Wißen": "Wissen",
+  "muß": "muss",
+  "Muß": "Muss",
+  "daß": "dass",
+  "Daß": "Dass",
+  "Strategein": "Strategien",
+  "Strategeen": "Strategien",
+  "Stratee": "Strategie"
+};
+
+function fixText(text) {
+  let result = text;
+  for (const [wrong, right] of Object.entries(corrections)) {
+    result = result.replace(new RegExp(wrong, "g"), right);
+  }
+  return result;
+}
+
+function processFiles(dir) {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    if (fs.lstatSync(fullPath).isDirectory()) {
+      processFiles(fullPath);
+    } else if (file.endsWith(".md")) {
+      let content = fs.readFileSync(fullPath, "utf-8");
+      const fixed = fixText(content);
+      if (content !== fixed) {
+        fs.writeFileSync(fullPath, fixed, "utf-8");
+        console.log(`✅ Korrigiert: ${file}`);
+      }
+    }
+  }
+}
+
+processFiles(contentDir);

@@ -2,8 +2,7 @@ name: Check Content
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -21,10 +20,10 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Run content fixer
+      - name: Run Content Fix
         run: node scripts/fixContent.js
 
-      - name: Commit & Push fixes
+      - name: Commit & Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"

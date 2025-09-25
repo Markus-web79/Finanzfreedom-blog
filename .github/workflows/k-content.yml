@@ -1,4 +1,4 @@
-name: Check & Fix Content
+name: Check Content
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  content-check:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,7 +24,7 @@ jobs:
       - name: Run content fixer
         run: node scripts/fixContent.js
 
-      - name: Commit & Push changes
+      - name: Commit & Push fixes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -1,10 +1,10 @@
 name: Blog Pipeline
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   blog:
@@ -22,11 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Check & Fix Content
+      - name: Fix Content automatisch
         run: |
-          echo "🔍 Starte Content-Check..."
-          npm run check:content || echo "Content-Check abgeschlossen"
-          node scripts/fixContent.js || echo "Keine Fixes nötig"
+          echo "🔍 Starte Content-Fixer..."
+          node scripts/fixContent.js
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content || echo "Nichts zu committen"
@@ -41,5 +40,4 @@ jobs:
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Deployment URL
-        run: |
-          echo "🚀 Live: ${{ env.url }}"
+        run: echo "🚀 Live: ${{ env.url }}"

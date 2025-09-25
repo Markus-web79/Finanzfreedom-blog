@@ -1,36 +1,61 @@
-const fs = require("fs");
+// scripts/addWords.js
+// Liest neue Wörter aus "new-words.txt" und fügt sie in dictionary.json hinzu
 
-const file = process.argv[2] || "new-words.txt";
-const dictPath = "dictionary.json";
+import fs from "fs";
+import path from "path";
 
-// Neue Wörter einlesen
-let newWords = [];
-if (fs.existsSync(file)) {
-  newWords = fs.readFileSync(file, "utf-8")
-    .split("\n")
-    .map(w => w.trim())
-    .filter(w => w.length > 0);
-}
+const dictPath = path.join(process.cwd(), "dictionary.json");
+const newWordsPath = path.join(process.cwd(), "new-words.txt");
 
-// Wörterbuch laden
-let dict = { words: [] };
-if (fs.existsSync(dictPath)) {
-  dict = JSON.parse(fs.readFileSync(dictPath, "utf-8"));
-}
-
-// Wörter hinzufügen
-let added = 0;
-newWords.forEach(word => {
-  if (!dict.words.includes(word)) {
-    dict.words.push(word);
-    added++;
+function loadJson(filePath, fallback) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
   }
-});
-
-// Wörterbuch speichern
-if (added > 0) {
-  fs.writeFileSync(dictPath, JSON.stringify(dict, null, 2));
-  console.log(`✅ ${added} Wörter ins Wörterbuch übernommen`);
-} else {
-  console.log("ℹ️ Keine neuen Wörter gefunden`);
 }
+
+function saveJson(filePath, data) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+}
+
+function run() {
+  if (!fs.existsSync(newWordsPath)) {
+    console.log("⚠️ Keine neuen Wörter gefunden.");
+    return;
+  }
+
+  const newWords = fs
+    .readFileSync(newWordsPath, "utf8")
+    .split("\n")
+    .map((w) => w.trim().toLowerCase())
+    .filter((w) => w.length > 2);
+
+  if (newWords.length === 0) {
+    console.log("ℹ️ Keine gültigen Wörter in new-words.txt");
+    return;
+  }
+
+  const dictionary = loadJson(dictPath, { corrections: {}, words: [] });
+
+  // Bestehende Wörter als Set (schneller Vergleich)
+  const wordSet = new Set(dictionary.words || []);
+
+  let added = 0;
+  for (const word of newWords) {
+    if (!wordSet.has(word)) {
+      dictionary.words.push(word);
+      wordSet.add(word);
+      added++;
+    }
+  }
+
+  if (added > 0) {
+    saveJson(dictPath, dictionary);
+    console.log(`📖 Wörterbuch aktualisiert: ${added} Wörter hinzugefügt.`);
+  } else {
+    console.log("✅ Keine neuen Wörter zum Wörterbuch hinzugefügt.");
+  }
+}
+
+run();

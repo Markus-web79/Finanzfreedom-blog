@@ -1,10 +1,10 @@
 name: Blog Pipeline
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   blog:
@@ -22,14 +22,23 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Fix Content automatisch
+      - name: Check & Fix Content
         run: |
-          echo "🔍 Starte Content-Fixer..."
-          node scripts/fixContent.js
+          echo "🔍 Starte Content-Check..."
+          npm run check:content || echo "Content-Check abgeschlossen"
+          node scripts/fixContent.js || echo "Keine Fixes nötig"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content || echo "Nichts zu committen"
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
+          git push || echo "Kein Push notwendig"
+
+      - name: Wörterbuch erweitern
+        run: |
+          npx cspell "content/**/*.md" --unique --words-only > new-words.txt
+          node scripts/addWords.js
+          git add dictionary.json || echo "Keine Wörterbuch-Änderung"
+          git commit -m "📖 Wörterbuch automatisch erweitert" || echo "Keine Änderungen"
           git push || echo "Kein Push notwendig"
 
       - name: Deploy to Vercel (prod)

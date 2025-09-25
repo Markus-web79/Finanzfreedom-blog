@@ -3,27 +3,50 @@ const path = require("path");
 
 const contentDir = path.join(__dirname, "content");
 
-// Liste fester Korrekturen
+// Liste fester Korrekturen (wird automatisch auf alle Artikel angewendet)
 const corrections = {
+  // Umlaute & Sonderzeichen
+  "ae": "ä",
+  "oe": "ö",
+  "ue": "ü",
+  "Ae": "Ä",
+  "Oe": "Ö",
+  "Ue": "Ü",
+
+  // Häufige Fehler mit ß/ss
+  "strasse": "Straße",
+  "Strasse": "Straße",
+  "daß": "dass",
+  "muß": "muss",
+  "Muß": "Muss",
+
+  // Typische Tippfehler im Finanzbereich
   "Steür": "Steuer",
   "steür": "steuer",
+  "Steürn": "Steuern",
+  "steürn": "steuern",
   "Vermoegen": "Vermögen",
   "vermoegen": "vermögen",
   "aufbaün": "aufbauen",
+  "paßives": "passives",
+  "paßiv": "passiv",
+  "wißen": "wissen",
+  "Wißen": "Wissen",
+  "laßen": "lassen",
+  "Laßen": "Lassen",
+  "mußen": "müssen",
+
+  // Häufige Stilfehler
   "Fuehren": "Führen",
   "fuehren": "führen",
   "Oekonomie": "Ökonomie",
-  "oekonomie": "ökonomie",
-  "paßives": "passives",
-  "mußen": "müssen",
-  "laßen": "lassen",
-  "wißen": "wissen",
+  "oekonomie": "Ökonomie",
   "außchöpfen": "ausschöpfen",
   "Außchüttungen": "Ausschüttungen",
   "strategieen": "Strategien",
   "haltedaür": "Haltedauer",
+  "Kapitalertrage": "Kapitalerträge",
   "kapitalertrage": "Kapitalerträge",
-  "steürn": "Steuern",
 };
 
 // Alle Markdown-Dateien im content-Ordner finden
@@ -47,7 +70,6 @@ function checkAndFixFiles() {
       content = content.replace(regex, right);
     }
 
-    // Wenn Änderungen gemacht wurden → zurückschreiben
     if (content !== original) {
       fs.writeFileSync(filePath, content, "utf8");
       console.log(`✅ Korrigiert: ${file}`);

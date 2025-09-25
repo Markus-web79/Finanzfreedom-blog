@@ -1,52 +1,65 @@
-// checkContent.js
 const fs = require("fs");
 const path = require("path");
 
-// Ordner mit den Artikeln
 const contentDir = path.join(__dirname, "content");
 
-// Liste einfacher Korrekturen (Rechtschreibung & Umlaute)
-const corrections = [
-  { wrong: /Steür/g, right: "Steuer" },
-  { wrong: /steür/g, right: "steuer" },
-  { wrong: /Steürn/g, right: "Steuern" },
-  { wrong: /Vermoegen/g, right: "Vermögen" },
-  { wrong: /vermoegen/g, right: "vermögen" },
-  { wrong: /Fuehren/g, right: "Führen" },
-  { wrong: /fuehren/g, right: "führen" },
-  { wrong: /Oekonomie/g, right: "Ökonomie" },
-  { wrong: /oekonomie/g, right: "ökonomie" },
-  { wrong: /paßiv/g, right: "passiv" },
-  { wrong: /ßich/g, right: "sich" },
-  { wrong: /auß/g, right: "aus" },
-  { wrong: /daß/g, right: "dass" },
-  { wrong: /muß/g, right: "muss" },
-  { wrong: /Strate?gieen/g, right: "Strategien" },
-];
+// Liste fester Korrekturen
+const corrections = {
+  "Steür": "Steuer",
+  "steür": "steuer",
+  "Vermoegen": "Vermögen",
+  "vermoegen": "vermögen",
+  "aufbaün": "aufbauen",
+  "Fuehren": "Führen",
+  "fuehren": "führen",
+  "Oekonomie": "Ökonomie",
+  "oekonomie": "ökonomie",
+  "paßives": "passives",
+  "mußen": "müssen",
+  "laßen": "lassen",
+  "wißen": "wissen",
+  "außchöpfen": "ausschöpfen",
+  "Außchüttungen": "Ausschüttungen",
+  "strategieen": "Strategien",
+  "haltedaür": "Haltedauer",
+  "kapitalertrage": "Kapitalerträge",
+  "steürn": "Steuern",
+};
 
-// Hilfsfunktion: Text korrigieren
-function correctText(text) {
-  let newText = text;
-  corrections.forEach(({ wrong, right }) => {
-    newText = newText.replace(wrong, right);
-  });
-  return newText;
+// Alle Markdown-Dateien im content-Ordner finden
+function getMarkdownFiles(dir) {
+  return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 }
 
-// Alle .md-Dateien im content-Ordner einlesen
-fs.readdirSync(contentDir).forEach((file) => {
-  if (file.endsWith(".md")) {
-    const filePath = path.join(contentDir, file);
-    let content = fs.readFileSync(filePath, "utf-8");
-    const corrected = correctText(content);
+// Dateien prüfen und korrigieren
+function checkAndFixFiles() {
+  const files = getMarkdownFiles(contentDir);
+  let changed = false;
 
-    if (content !== corrected) {
-      fs.writeFileSync(filePath, corrected, "utf-8");
+  files.forEach((file) => {
+    const filePath = path.join(contentDir, file);
+    let content = fs.readFileSync(filePath, "utf8");
+    let original = content;
+
+    // Feste Korrekturen anwenden
+    for (const [wrong, right] of Object.entries(corrections)) {
+      const regex = new RegExp(wrong, "g");
+      content = content.replace(regex, right);
+    }
+
+    // Wenn Änderungen gemacht wurden → zurückschreiben
+    if (content !== original) {
+      fs.writeFileSync(filePath, content, "utf8");
       console.log(`✅ Korrigiert: ${file}`);
+      changed = true;
     } else {
       console.log(`ℹ️ Keine Änderungen: ${file}`);
     }
-  }
-});
+  });
 
-console.log("🔍 Content-Check abgeschlossen.");
+  if (!changed) {
+    console.log("Keine Korrekturen nötig.");
+  }
+}
+
+checkAndFixFiles();

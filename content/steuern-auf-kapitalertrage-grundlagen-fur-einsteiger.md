@@ -1,6 +1,6 @@
 ---
 title: "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
-slug: "steuern-auf-kapitalertrage-grundlagen-fur-einsteiger"
+slug: "steuern-auf-Kapitalerträge-grundlagen-fur-einsteiger"
 date: "2025-09-24"
 excerpt: "Erfahren Sie in diesem Artikel alles über Steuern auf Kapitalerträge. Lernen Sie die Grundlagen für Einsteiger kennen und entdecken Sie, wie Sie Ihr passives Einkommen optimal nutzen können – inklusive wichtiger Tipps und Hinweise zu Risiken."
 ---

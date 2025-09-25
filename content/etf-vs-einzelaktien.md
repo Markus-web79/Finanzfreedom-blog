@@ -7,7 +7,7 @@ Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt i
 ## Vorteile von ETFs
 - **Diversifikation**: Du investierst automatisch in viele Unternehmen gleichzeitig. 
 - **Geringes Risiko**: Ein einzelner Unternehmensverlust wirkt sich weniger stark aus. 
-- **Einfachheit**: Ideal für Einsteiger ohne tiefes Börsenwißen. 
+- **Einfachheit**: Ideal für Einsteiger ohne tiefes Börsenwissen. 
 
 ## Nachteile von ETFs
 - **Begrenzte Rendite**: Du wirst nie beßer abschneiden als der Markt, den der ETF abbildet. 
@@ -20,7 +20,7 @@ Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt i
 
 ## Nachteile von Einzelaktien
 - **Hohes Risiko**: Ein Unternehmen kann Pleite gehen und deine Investition wertlos machen. 
-- **Zeitaufwand**: Du mußt dich aktiv informieren und dein Portfolio überwachen. 
+- **Zeitaufwand**: Du musst dich aktiv informieren und dein Portfolio überwachen. 
 - **Schwankungen**: Stärkere Kurßchwankungen im Vergleich zu ETFs. 
 
 ---

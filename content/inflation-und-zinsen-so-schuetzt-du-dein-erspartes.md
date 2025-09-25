@@ -1,4 +1,4 @@
-META: Entdecke Strategieen, wie du dein Erspartes vor Inflation und steigenden Zinsen schützen kannst.
+META: Entdecke Strategien, wie du dein Erspartes vor Inflation und steigenden Zinsen schützen kannst.
 
 # Inflation & Zinsen: So schützt du dein Erspartes
 
@@ -18,10 +18,10 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
 - **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
 
-## 3. Strategieen zum Schutz deines Geldes
+## 3. Strategien zum Schutz deines Geldes
 
 1. **Investiere in Sachwerte** 
- Immobilien, Aktien und ETFs gelten als inflationßichere Anlagen. 
+ Immobilien, Aktien und ETFs gelten als inflationsichere Anlagen. 
 
 2. **Diversifikation** 
  Streü dein Vermögen auf verschiedene Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
@@ -32,7 +32,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 4. **Notgroschen behalten** 
  Halte einen Teil deines Geldes (z. B. 3 Monatsgehälter) liquide auf einem Tagesgeldkonto. 
 
-## 4. Beispiel für inflationßichere Anlagen
+## 4. Beispiel für inflationsichere Anlagen
 
 - **iShares Physical Gold ETC** (Rohstoffe) 
 - **Vanguard FTSE All-World UCITS ETF** (Aktien weltweit) 

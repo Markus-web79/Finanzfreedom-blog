@@ -17,7 +17,7 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 - **Kombination aus Kursgewinnen und Dividenden**: Du profitierst doppelt. 
 - **Langfristiger Vermögensaufbau**: Besonders durch Reinvestition der Dividenden. 
 
-## Strategieen für monatliche Ausschüttungen
+## Strategien für monatliche Ausschüttungen
 
 1. **Diversifikation** 
  Investiere in verschiedene Unternehmen aus unterschiedlichen Ländern. 

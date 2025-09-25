@@ -44,7 +44,7 @@ Es ist wichtig, zu wissen, welche Erträge tatsächlich steuerpflichtig sind. Zu
 
 ## Tipps zur Steueroptimierung
 
-Um Ihre Steuerlast zu minimieren, können Sie einige Strategieen anwenden:
+Um Ihre Steuerlast zu minimieren, können Sie einige Strategien anwenden:
 
 1. **Sparerpauschbetrag nutzen**: Achten Sie darauf, dass Sie den Freibetrag in vollem Umfang ausschöpfen. Bei Bedarf können Sie auch ein Freistellungsauftrag bei Ihrer Bank einreichen.
   

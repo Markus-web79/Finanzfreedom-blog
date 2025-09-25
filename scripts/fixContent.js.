@@ -1,64 +1,65 @@
 // scripts/fixContent.js
-import fs from "fs";
-import path from "path";
 
-// Wörterbuch mit Korrekturen
+const fs = require("fs");
+const path = require("path");
+
+// Korrekturen definieren
 const corrections = {
   "Steür": "Steuer",
   "Steürn": "Steuern",
   "steür": "steuer",
-  "steürn": "steuern",
+  "steürt": "steuert",
+  "steürlich": "steuerlich",
   "Vermoegen": "Vermögen",
-  "vermoegen": "vermögen",
+  "Vermoegen": "Vermögen",
   "aufbaün": "aufbauen",
   "Fuehren": "Führen",
-  "fuehren": "führen",
   "Oekonomie": "Ökonomie",
-  "oekonomie": "ökonomie",
   "paßiv": "passiv",
-  "mußen": "müssen",
+  "muß": "muss",
+  "Muß": "Muss",
   "laßen": "lassen",
   "wißen": "wissen",
-  "außch": "ausch", // ersetzt „außch“ → „ausch“
-  "strategieen": "Strategien",
-  "daür": "dauer",
-  "Inflationßicher": "Inflationssicher",
-  "ßich": "sich" // Sicherheitsfix für falsche ß-Kombi
+  "daß": "dass",
+  "auß": "aus",
+  "ßichere": "sichere",
+  "Stratgegieen": "Strategien",
+  "Steürsatz": "Steuersatz",
+  "Kirchensteür": "Kirchensteuer",
+  "Steürpflicht": "Steuerpflicht",
+  "Steüroptimierung": "Steueroptimierung",
+  "Steürlast": "Steuerlast",
+  "Steürfrei": "steuerfrei",
 };
 
-// Pfad zum Content-Ordner
-const contentDir = path.join(process.cwd(), "content");
+// Alle Dateien im content-Verzeichnis holen
+const contentDir = path.join(__dirname, "..", "content");
 
-// Alle Markdown-Dateien holen
-function getMarkdownFiles(dir) {
-  return fs.readdirSync(dir).filter(file => file.endsWith(".md"));
-}
-
-// Datei-Inhalt korrigieren
 function fixFile(filePath) {
-  let content = fs.readFileSync(filePath, "utf8");
-  let fixed = content;
+  let text = fs.readFileSync(filePath, "utf8");
+  let fixed = text;
 
-  for (const [wrong, correct] of Object.entries(corrections)) {
+  for (const [wrong, right] of Object.entries(corrections)) {
     const regex = new RegExp(wrong, "g");
-    fixed = fixed.replace(regex, correct);
+    fixed = fixed.replace(regex, right);
   }
 
-  if (fixed !== content) {
+  if (fixed !== text) {
     fs.writeFileSync(filePath, fixed, "utf8");
-    console.log(`✅ Korrigiert: ${filePath}`);
-  } else {
-    console.log(`ℹ️ Keine Änderungen: ${filePath}`);
+    console.log(`✔ Korrigiert: ${filePath}`);
   }
 }
 
-// Alle Dateien durchgehen
-function run() {
-  const files = getMarkdownFiles(contentDir);
-  files.forEach(file => {
-    const filePath = path.join(contentDir, file);
-    fixFile(filePath);
+function walkDir(dir) {
+  fs.readdirSync(dir).forEach((file) => {
+    const filePath = path.join(dir, file);
+    if (fs.statSync(filePath).isDirectory()) {
+      walkDir(filePath);
+    } else if (filePath.endsWith(".md")) {
+      fixFile(filePath);
+    }
   });
 }
 
-run();
+walkDir(contentDir);
+console.log("✅ Alle Artikel im content/ Ordner geprüft und korrigiert.");

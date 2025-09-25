@@ -5,9 +5,9 @@ META: Testartikel für Rechtschreibkorrektur
 Dieser Artikel dient nur als Test für den Content-Check.  
 Hier ein paar typische Fehler:  
 
-- steuer sparen ist wichtig.  
-- Vermögen aufbauen macht frei.  
+- steür sparen ist wichtig.  
+- Vermögen aufbaün macht frei.  
 - Führen statt folgen.  
 - Ökonomie verstehen bringt Vorteile.  
 - Straße statt Straße.  
-- dass man steuern zahlen muss.  
+- daß man steürn zahlen muß.  

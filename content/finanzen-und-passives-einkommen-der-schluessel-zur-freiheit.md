@@ -1,6 +1,6 @@
-META: Verstehe, warum Finanzen und passives Einkommen die Basis für deine finanzielle Freiheit sind.
+META: Verstehe, warum Finanzen und paßives Einkommen die Basis für deine finanzielle Freiheit sind.
 
-# Finanzen & passives Einkommen: Der Schlüßel zur finanziellen Freiheit
+# Finanzen & paßives Einkommen: Der Schlüßel zur finanziellen Freiheit
 
 Der Weg zur finanziellen Freiheit beginnt mit zwei Säulen: soliden Finanzen und dem Aufbau von Paßivem Einkommen. Wer diese Prinzipien versteht und umsetzt, kann langfristig unabhängiger und sicherer leben.
 
@@ -9,8 +9,8 @@ Der Weg zur finanziellen Freiheit beginnt mit zwei Säulen: soliden Finanzen und
 - **Schuldenmanagement:** Tilge Schulden so früh wie möglich.
 - **Sparen:** Lege Rücklagen für Notfälle an.
 
-## Was ist passives Einkommen?
-Paßives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du ständig aktiv dafür arbeiten musst. Beispiele:
+## Was ist paßives Einkommen?
+Paßives Einkommen sind Einnahmen, die regelmäßig fließen, ohne daß du ständig aktiv dafür arbeiten mußt. Beispiele:
 - Dividenden aus Aktien
 - Einnahmen aus Immobilien
 - Affiliate-Marketing oder digitale Produkte
@@ -18,7 +18,7 @@ Paßives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du stän
 ## Vorteile von Paßivem Einkommen
 - **Zeitliche Freiheit:** Du kannst selbst entscheiden, wie du deine Zeit nutzt.
 - **Sicherheit:** Mehrere EinkommensQüllen schützen vor Risiken.
-- **Vermögensaufbau:** Paßives Einkommen läßt dich langfristig Wohlstand aufbauen.
+- **Vermögensaufbau:** Paßives Einkommen läßt dich langfristig Wohlstand aufbaün.
 
 ## Erste Schritte
 1. Analysiere deine Finanzen.

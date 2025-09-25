@@ -10,7 +10,7 @@ Viele fangen an zu investieren, ohne klare Ziele zu haben.
 
 ## 2. Alles auf eine Karte setzen
 Nur eine Aktie oder ein Coin im Portfolio? Das Risiko ist extrem hoch. 
-👉 **Tipp:** Diversifiziere dein Geld über verschiedene Anlageklassen (ETFs, Aktien, evtl. Immobilien).
+👉 **Tipp:** Diversifiziere dein Geld über verschiedene Anlageklaßen (ETFs, Aktien, evtl. Immobilien).
 
 ## 3. Kurzfristig denken
 Viele erwarten schnelle Gewinne und verkaufen in Panik, wenn die Kurse fallen. 
@@ -20,8 +20,8 @@ Viele erwarten schnelle Gewinne und verkaufen in Panik, wenn die Kurse fallen.
 "Insider-Tipps" von Freunden oder Social Media sind oft riskant. 
 👉 **Tipp:** Informiere dich selbst und bilde dir deine eigene Meinung.
 
-## 5. Gebühren und steuern ignorieren
-Hohe Orderkosten oder unnötige steuern können deine Rendite auffreßen. 
+## 5. Gebühren und steürn ignorieren
+Hohe Orderkosten oder unnötige steürn können deine Rendite auffreßen. 
 👉 **Tipp:** Achte auf günstige Broker und nutze Freibeträge.
 
 ---

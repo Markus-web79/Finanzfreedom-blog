@@ -8,7 +8,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 ## 1. Was ist Inflation?
 
-- **Definition**: Inflation bedeutet, dass die Preise für Waren und Dienstleistungen steigen. 
+- **Definition**: Inflation bedeutet, daß die Preise für Waren und Dienstleistungen steigen. 
 - **Auswirkung**: Dein Geld verliert an Kaufkraft – du kannst dir für denselben Betrag weniger leisten. 
 - **Beispiel**: Bei 3 % Inflation kostet etwas, das heute 100 € kostet, in 10 Jahren rund 134 €.
 
@@ -16,7 +16,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
 - **Hohe Zinsen**: Gut für Sparer, aber Kredite werden teurer. 
-- **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
+- **Einfluß der Zentralbanken**: Zinspolitik steürt Inflation und Wirtschaftswachstum.
 
 ## 3. Strategien zum Schutz deines Geldes
 
@@ -24,7 +24,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
  Immobilien, Aktien und ETFs gelten als inflationsichere Anlagen. 
 
 2. **Diversifikation** 
- Streü dein Vermögen auf verschiedene Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
+ Streü dein Vermögen auf verschiedene Anlageklaßen (Aktien, Rohstoffe, Immobilienfonds). 
 
 3. **ETFs & Indexfonds nutzen** 
  Mit globalen ETFs kannst du langfristig eine Rendite oberhalb der Inflation erzielen. 

@@ -1,6 +1,6 @@
-META: Verstehe die Grundlagen der Besteürung von Kapitalerträgen und wie du legal Steürn sparen kannst.
+META: Verstehe die Grundlagen der Besteürung von Kapitalerträgen und wie du legal steürn sparen kannst.
 
-# Steürn auf Kapitalerträge: Grundlagen für Einsteiger
+# steürn auf Kapitalerträge: Grundlagen für Einsteiger
 
 Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. durch Zinsen, Dividenden oder Kursgewinne. Damit verbunden sind steürliche Pflichten, die jeder Anleger kennen sollte.
 
@@ -10,17 +10,17 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. d
 - **Kursgewinne** beim Verkauf von Aktien oder ETFs 
 
 ## Abgeltungßteür in Deutschland
-- Einheitlicher Steürsatz von **25 %** auf Kapitalerträge 
+- Einheitlicher steürsatz von **25 %** auf Kapitalerträge 
 - Zusätzlich: Solidaritätszuschlag & ggf. Kirchensteür 
 - Wird meist **direkt von der Bank** abgeführt 
 
 ## Freibeträge
-- Jeder Steürzahler hat einen **Sparer-Pauschbetrag**: 
+- Jeder steürzahler hat einen **Sparer-Pauschbetrag**: 
  - **1.000 €** pro Jahr für Singles 
  - **2.000 €** pro Jahr für Ehepaare 
 - Wichtig: **Freistellungsauftrag** bei der Bank einreichen 
 
-## Möglichkeiten Steürn zu sparen
+## Möglichkeiten steürn zu sparen
 1. **Freibetrag außchöpfen** 
  Reiche bei deiner Bank einen Freistellungsauftrag ein. 
 2. **Verlustverrechnung** 
@@ -32,4 +32,4 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. d
 
 👉 **Fazit:** 
 Wer die Grundlagen der Kapitalertragßteür kennt, kann clever planen und so seine Rendite steigern. 
-Steürn laßen sich nicht vermeiden – aber mit **Freibeträgen und smarter Strategiee** deutlich reduzieren.
+steürn laßen sich nicht vermeiden – aber mit **Freibeträgen und smarter Strategiee** deutlich reduzieren.

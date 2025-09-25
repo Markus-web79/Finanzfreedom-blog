@@ -20,8 +20,8 @@ Viele erwarten schnelle Gewinne und verkaufen in Panik, wenn die Kurse fallen.
 "Insider-Tipps" von Freunden oder Social Media sind oft riskant. 
 👉 **Tipp:** Informiere dich selbst und bilde dir deine eigene Meinung.
 
-## 5. Gebühren und Steürn ignorieren
-Hohe Orderkosten oder unnötige Steürn können deine Rendite auffreßen. 
+## 5. Gebühren und steürn ignorieren
+Hohe Orderkosten oder unnötige steürn können deine Rendite auffreßen. 
 👉 **Tipp:** Achte auf günstige Broker und nutze Freibeträge.
 
 ---

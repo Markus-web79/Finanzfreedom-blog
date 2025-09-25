@@ -7,18 +7,20 @@ export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
-  const posts = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContents);
+  const posts = filenames
+    .filter((filename) => filename.endsWith(".md")) // ✅ nur Markdown-Dateien berücksichtigen
+    .map((filename) => {
+      const filePath = path.join(postsDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, "utf8");
+      const { data, content } = matter(fileContents);
 
-    return {
-      slug: filename.replace(/\.md$/, ""),
-      title: data.title || "Unbenannter Artikel",
-      date: data.date || "1970-01-01",
-      excerpt: data.excerpt || content.slice(0, 150) + "...",
-    };
-  });
+      return {
+        slug: filename.replace(/\.md$/, ""),
+        title: data.title || "Unbenannter Artikel",
+        date: data.date || "1970-01-01",
+        excerpt: data.excerpt || content.slice(0, 150) + "...",
+      };
+    });
 
   // sortiere nach Datum (neueste zuerst)
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));

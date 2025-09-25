@@ -5,7 +5,7 @@ META: Testartikel für automatische Rechtschreibkorrektur
 Dieser Artikel dient zum Testen des Content-Checks.  
 Absichtlich mit Fehlern geschrieben:
 
-- Steür sparen ist wichtig.  
+- Steuer sparen ist wichtig.  
 - Paßives Einkommen bringt Sicherheit.  
-- Vermögen aufbaün macht frei.  
-- Oekonomie verstehen lohnt sich.  
+- Vermögen aufbauen macht frei.  
+- Ökonomie verstehen lohnt sich.  

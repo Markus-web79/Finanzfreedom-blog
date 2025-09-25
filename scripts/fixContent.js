@@ -1,18 +1,12 @@
-// scripts/fixContent.js
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 // Wörterbuch laden
-const dictionary = require("../dictionary.json");
+const dictPath = path.join(process.cwd(), "dictionary.json");
+const dictionary = JSON.parse(fs.readFileSync(dictPath, "utf8"));
 
-// Ordner mit Artikeln
-const contentDir = path.join(__dirname, "..", "content");
-
-// Alle Dateien im content-Verzeichnis holen
-const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
-
-// Funktion zur Korrektur eines Textes
-function fixText(text) {
+// Funktion zum Ersetzen
+function fixText(text, dictionary) {
   let fixed = text;
   for (const [wrong, correct] of Object.entries(dictionary)) {
     const regex = new RegExp(wrong, "gi");
@@ -21,16 +15,28 @@ function fixText(text) {
   return fixed;
 }
 
-// Alle Dateien durchgehen und korrigieren
-for (const file of files) {
-  const filePath = path.join(contentDir, file);
-  const original = fs.readFileSync(filePath, "utf8");
-  const fixed = fixText(original);
+// Content-Ordner durchgehen
+const contentDir = path.join(process.cwd(), "content");
+const files = fs.readdirSync(contentDir).filter((file) => file.endsWith(".md"));
 
-  if (original !== fixed) {
+let changes = 0;
+
+files.forEach((file) => {
+  const filePath = path.join(contentDir, file);
+  let content = fs.readFileSync(filePath, "utf8");
+  const fixed = fixText(content, dictionary);
+
+  if (content !== fixed) {
     fs.writeFileSync(filePath, fixed, "utf8");
     console.log(`✅ Korrigiert: ${file}`);
+    changes++;
   } else {
     console.log(`ℹ️ Keine Änderungen: ${file}`);
   }
+});
+
+if (changes === 0) {
+  console.log("🎉 Alle Dateien waren schon korrekt.");
+} else {
+  console.log(`🔍 Fertig! ${changes} Dateien wurden korrigiert.`);
 }

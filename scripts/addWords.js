@@ -1,11 +1,36 @@
-import fs from "fs";
+const fs = require("fs");
 
-const wordsFile = process.argv[2];
-const words = fs.readFileSync(wordsFile, "utf-8").split("\n").filter(Boolean);
+const file = process.argv[2] || "new-words.txt";
+const dictPath = "dictionary.json";
 
-const cspell = JSON.parse(fs.readFileSync("cspell.json", "utf-8"));
+// Neue Wörter einlesen
+let newWords = [];
+if (fs.existsSync(file)) {
+  newWords = fs.readFileSync(file, "utf-8")
+    .split("\n")
+    .map(w => w.trim())
+    .filter(w => w.length > 0);
+}
 
-cspell.words = Array.from(new Set([...(cspell.words || []), ...words]));
+// Wörterbuch laden
+let dict = { words: [] };
+if (fs.existsSync(dictPath)) {
+  dict = JSON.parse(fs.readFileSync(dictPath, "utf-8"));
+}
 
-fs.writeFileSync("cspell.json", JSON.stringify(cspell, null, 2));
-console.log(`✅ ${words.length} Wörter zum Wörterbuch hinzugefügt`);
+// Wörter hinzufügen
+let added = 0;
+newWords.forEach(word => {
+  if (!dict.words.includes(word)) {
+    dict.words.push(word);
+    added++;
+  }
+});
+
+// Wörterbuch speichern
+if (added > 0) {
+  fs.writeFileSync(dictPath, JSON.stringify(dict, null, 2));
+  console.log(`✅ ${added} Wörter ins Wörterbuch übernommen`);
+} else {
+  console.log("ℹ️ Keine neuen Wörter gefunden`);
+}

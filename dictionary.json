@@ -5,17 +5,33 @@
     "paßiv": "passiv",
     "paßives": "passives",
     "paßivem": "passivem",
+    "paßiver": "passiver",
+    "paßiven": "passiven",
+    "paßive": "passive",
     "aufbaün": "aufbauen",
+    "aufbaü": "aufbau",
+    "aufbaüt": "aufbaut",
     "läßt": "lässt",
+    "muß": "muss",
     "mußt": "musst",
     "wißen": "wissen",
+    "einkommensqüllen": "einkommensquellen",
+    "qüllen": "quellen",
+    "qül": "quell",
+    "außchüttung": "ausschüttung",
+    "außchüttungen": "ausschüttungen",
+    "außchöpfen": "ausschöpfen",
+    "vermögensaufbaü": "vermögensaufbau",
     "Qüllen": "Quellen",
-    "vermoegen": "Vermögen",
     "schaü": "schau",
     "artíkel": "artikel",
     "strategíe": "strategie",
     "kapitalertragssteür": "kapitalertragssteuer",
-    "kapitalertragssteüren": "kapitalertragssteuern"
+    "kapitalertragssteüren": "kapitalertragssteuern",
+    "ökonomie": "Ökonomie",
+    "führe": "führe",
+    "führt": "führt",
+    "fuehren": "führen"
   },
   "words": [
     "ETF",
@@ -28,34 +44,6 @@
     "Indexfonds",
     "Tagesgeldkonto",
     "Solidaritätszuschlag",
-    "Freistellungsauftrag",
-  "paßives": "passives",
-  "paßivem": "passivem",
-  "paßiver": "passiver",
-  "paßiven": "passiven",
-  "paßive": "passive",
-  "paßiv": "passiv",
-
-  "läßt": "lässt",
-  "muß": "muss",
-  "mußt": "musst",
-
-  "aufbaün": "aufbauen",
-  "aufbaü": "aufbau",
-  "aufbaüt": "aufbaut",
-
-  "einkommensqüllen": "einkommensquellen",
-  "qüllen": "quellen",
-  "qül": "quell",
-
-  "außchüttung": "ausschüttung",
-  "außchüttungen": "ausschüttungen",
-  "außchöpfen": "ausschöpfen",
-
-  "vermögensaufbaü": "vermögensaufbau",
-  "ökonomie": "ökonomie",
-  "führe": "führe",
-  "führt": "führt",
-  "fuehren": "führen"
+    "Freistellungsauftrag"
+  ]
 }
-

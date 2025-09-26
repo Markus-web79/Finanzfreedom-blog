@@ -9,7 +9,7 @@ META: Erfahren Sie in diesem Artikel alles über steuern auf Kapitalerträge. Le
 
 # steuern auf Kapitalerträge: Grundlagen für Einsteiger
 
-Kapitalerträge sind für viele Anleger eine wichtige EinkommensQülle. Ob Zinsen, Dividenden oder Gewinne aus dem Verkauf von Wertpapieren – all dies kann zu einem passiven Einkommen führen. Doch bei allen Vorteilen, die Kapitalerträge mit sich bringen, sollten Sie auch die steuerlichen Aspekte nicht außer Acht lassen. In diesem Artikel erfahren Sie alles Wichtige zu den steuern auf Kapitalerträge – besonders für Einsteiger.
+Kapitalerträge sind für viele Anleger eine wichtige Einkommensquelle. Ob Zinsen, Dividenden oder Gewinne aus dem Verkauf von Wertpapieren – all dies kann zu einem passiven Einkommen führen. Doch bei allen Vorteilen, die Kapitalerträge mit sich bringen, sollten Sie auch die steuerlichen Aspekte nicht außer Acht lassen. In diesem Artikel erfahren Sie alles Wichtige zu den steuern auf Kapitalerträge – besonders für Einsteiger.
 
 ## Was sind Kapitalerträge?
 
@@ -32,7 +32,7 @@ In Deutschland müßen Kapitalerträge versteuert werden. Die wichtigste steuer 
 ### Abgeltungsteuer
 
 - **steuersatz**: 26,375 % (inklusive Solidaritätszuschlag und gegebenenfalls Kirchensteuer).
-- **Freibetrag**: Jeder Anleger hat einen Sparerpauschbetrag von 1.000 Euro (2.000 Euro für Ehepaare). Das bedeutet, dass Kapitalerträge bis zu dieser Höhe steuerfrei sind.
+- **Freibetrag**: Jeder Anleger hat einen sparer-pauschbetrag von 1.000 Euro (2.000 Euro für Ehepaare). Das bedeutet, dass Kapitalerträge bis zu dieser Höhe steuerfrei sind.
 
 ### steuerpflichtige Einnahmen
 
@@ -46,7 +46,7 @@ Es ist wichtig, zu wissen, welche Erträge tatsächlich steuerpflichtig sind. Zu
 
 Um Ihre steuerlast zu minimieren, können Sie einige Strategien anwenden:
 
-1. **Sparerpauschbetrag nutzen**: Achten Sie darauf, dass Sie den Freibetrag in vollem Umfang ausschöpfen. Bei Bedarf können Sie auch ein Freistellungsauftrag bei Ihrer Bank einreichen.
+1. **sparer-pauschbetrag nutzen**: Achten Sie darauf, dass Sie den Freibetrag in vollem Umfang ausschöpfen. Bei Bedarf können Sie auch ein Freistellungsauftrag bei Ihrer Bank einreichen.
   
 2. **Verluste ausgleichen**: Verluste aus dem Verkauf von Wertpapieren können mit Gewinnen aus anderen Investments verrechnet werden, um die steuerlast zu senken.
 

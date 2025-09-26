@@ -28,6 +28,34 @@
     "Indexfonds",
     "Tagesgeldkonto",
     "Solidaritätszuschlag",
-    "Freistellungsauftrag"
-  ]
+    "Freistellungsauftrag",
+  "paßives": "passives",
+  "paßivem": "passivem",
+  "paßiver": "passiver",
+  "paßiven": "passiven",
+  "paßive": "passive",
+  "paßiv": "passiv",
+
+  "läßt": "lässt",
+  "muß": "muss",
+  "mußt": "musst",
+
+  "aufbaün": "aufbauen",
+  "aufbaü": "aufbau",
+  "aufbaüt": "aufbaut",
+
+  "einkommensqüllen": "einkommensquellen",
+  "qüllen": "quellen",
+  "qül": "quell",
+
+  "außchüttung": "ausschüttung",
+  "außchüttungen": "ausschüttungen",
+  "außchöpfen": "ausschöpfen",
+
+  "vermögensaufbaü": "vermögensaufbau",
+  "ökonomie": "ökonomie",
+  "führe": "führe",
+  "führt": "führt",
+  "fuehren": "führen"
+}
 }

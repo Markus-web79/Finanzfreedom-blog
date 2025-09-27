@@ -1,6 +1,8 @@
 /**
  * fixContent.js
  * Läuft in GitHub Actions, korrigiert alle .md-Dateien im content/-Ordner
+ * - Unicode-sichere "Wortgrenzen"
+ * - Längere Treffer zuerst
  */
 
 import fs from "fs";
@@ -24,19 +26,50 @@ try {
 
 // Alle Korrekturen extrahieren
 const corrections = dictionary.corrections || {};
+// optionales Wörterbuch (derzeit nicht benutzt, aber geladen)
 const allowedWords = new Set(dictionary.words || []);
 
-// Funktion zur Autokorrektur
+// Regex-Helper: Sonderzeichen im Suchbegriff escapen
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Unicode-sichere Wortgrenzen:
+ * (^|nicht-Buchstabe/Ziffer/Unterstrich)  +  ziel  +  (nicht-Buchstabe/Ziffer/Unterstrich|$)
+ * => vermeidet \b, das bei Umlauten/ß oft nicht greift
+ *
+ * Flags:
+ *  - g: global
+ *  - i: case-insensitive
+ *  - u: Unicode
+ */
+function makeWordRegex(word) {
+  const w = escapeRegex(word);
+  return new RegExp(`(^|[^\\p{L}\\p{N}_])(${w})(?=([^\\p{L}\\p{N}_]|$))`, "giu");
+}
+
+// Ersetzung mit Erhalt der Ränder (Gruppe 1 = linker Rand, Gruppe 2 = Wort)
+function replaceWordBounded(text, wrong, right) {
+  const rx = makeWordRegex(wrong);
+  return text.replace(rx, (_, left, _mid) => `${left}${right}`);
+}
+
+// Funktion zur Autokorrektur (längere Keys zuerst)
 function fixText(text) {
   let fixed = text;
-  for (const [wrong, correct] of Object.entries(corrections)) {
-    const regex = new RegExp(`\\b${wrong}\\b`, "gi");
-    fixed = fixed.replace(regex, correct);
+
+  const entries = Object.entries(corrections)
+    .filter(([wrong, right]) => wrong && right)
+    .sort((a, b) => b[0].length - a[0].length); // lang -> kurz
+
+  for (const [wrong, correct] of entries) {
+    fixed = replaceWordBounded(fixed, wrong, correct);
   }
   return fixed;
 }
 
-// Alle Markdown-Dateien finden
+// Alle Markdown-Dateien finden (nur oberste Ebene)
 function getMarkdownFiles(dir) {
   return fs
     .readdirSync(dir)

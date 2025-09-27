@@ -15,7 +15,7 @@ Viele Leute wissen nicht, wie man passiv Vermögen aufbauen kann und machen unn�
    – Statt in ETFs und Dividendenaktien zu investieren, legen einige alles in eine Einzelaktie.
 
 4. Keine Nutzung von Daueraufträgen  
-   – Ein Dauerauftrag hilft dabei, regelmäßig Geld in den Vermögensaufbaü zu leiten.
+   – Ein Dauerauftrag hilft dabei, regelmäßig Geld in den Vermögensaufbau zu leiten.
 
 5. Falsche Beratun  
    – Manchmal verlässt man sich auf unseriöse Berater ohne genügende erfahrung.

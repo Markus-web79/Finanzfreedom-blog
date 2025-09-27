@@ -1,6 +1,6 @@
 META: Dies ist ein TeStartikel mit absichtlichen Fehlern für die Autokorrektur.
 
-Die Zukunft der Finanzberatungggg wird immer digitaler, doch die klassische Art bleibt trotzdem wichtig.  
+Die Zukunft der Finanzberatunggggg wird immer digitaler, doch die klassische Art bleibt trotzdem wichtig.  
 Viele Leute wissen nicht, wie man passiv Vermögen aufbauen kann und machen unnötige Fehler.
 
 ## Häufige Probleme

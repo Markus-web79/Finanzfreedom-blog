@@ -17,12 +17,12 @@ Kapitalerträge sind Einkünfte, die Sie durch Geldanlage generieren. Dazu zähl
 
 - **Zinsen**: Erträge aus Sparbeträgen oder Anleihen.
 - **Dividenden**: Ausschüttungen von Aktiengesellschaften an ihre Aktionäre.
-- **Veräußungsgewinne**: Gewinne aus dem Verkauf von Aktien, Fonds oder anderen Anlageformen.
+- **VeräußungsGewinne**: Gewinne aus dem Verkauf von Aktien, Fonds oder anderen Anlageformen.
 
 ### Unterschiedliche Arten von Kapitalerträgen
 
 1. **Zinseinkünfte**: Erträge aus Spareinlagen, Festgeld oder Anleihen.
-2. **Aktiengewinne**: Gewinne, die durch den Verkauf von Aktien erzielt werden.
+2. **AktienGewinne**: Gewinne, die durch den Verkauf von Aktien erZielt werden.
 3. **Dividenden**: Regelmäßige Ausschüttungen, die Aktionäre von Unternehmen erhalten.
 
 ## steuerliche Behandlung von Kapitalerträgen
@@ -40,7 +40,7 @@ Es ist wichtig, zu wissen, welche Erträge tatsächlich steuerpflichtig sind. Zu
 
 - Zinsen von Spar- und Tagesgeldkonten.
 - Erträge aus Fonds und Aktien.
-- Gewinne, die beim Verkauf von Wertpapieren erzielt werden.
+- Gewinne, die beim Verkauf von Wertpapieren erZielt werden.
 
 ## Tipps zur steueroptimierung
 

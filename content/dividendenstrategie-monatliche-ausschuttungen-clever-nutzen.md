@@ -7,14 +7,14 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 
 ## Was sind Dividenden?
 
-- **Definition**: Teil des Unternehmensgewinns, der an die Aktionäre ausgezahlt wird. 
+- **Definition**: Teil des UnternehmensGewinns, der an die Aktionäre ausgezahlt wird. 
 - **Häufigkeit**: Ausschüttungen erfolgen meist quartalsweise, halbjährlich oder jährlich. 
 - **Höhe**: Abhängig vom Unternehmen und seiner Gewinnsituation. 
 
 ## Vorteile einer Dividendenstrategie
 
 - **Regelmäßiges Einkommen**: Planbare Cashflows durch Ausschüttungen. 
-- **Kombination aus Kursgewinnen und Dividenden**: Du profitierst doppelt. 
+- **Kombination aus KursGewinnen und Dividenden**: Du profitierst doppelt. 
 - **Langfristiger Vermögensaufbau**: Besonders durch Reinvestition der Dividenden. 
 
 ## Strategien für monatliche Ausschüttungen

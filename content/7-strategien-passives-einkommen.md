@@ -2,9 +2,9 @@ META: Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen auf
 
 # 7 Strategien für passives Einkommen
 
-Viele Menschen träumen davon, **finanzielle Freiheit** zu erreichen. 
+Viele Menschen träumen davon, **finanZielle Freiheit** zu erreichen. 
 Passives Einkommen ist dabei der Schlüssel – Geld, das auch dann fließt, wenn du gerade nicht arbeitest. 
-Hier sind 7 Strategien, mit denen du starten kannst.
+Hier sind 7 Strategien, mit denen du Starten kannst.
 
 ## 1. Dividendenaktien kaufen
 
@@ -46,13 +46,13 @@ Hier sind 7 Strategien, mit denen du starten kannst.
 
 - bau eine Webseite zu einem bestimmten Thema auf. 
 - Einnahmen durch **Werbung (Google AdSense)** oder Affiliate-Links. 
-- Mit SEO kannst du dir langfristig Besucher sichern.
+- Mit SEO kannst du dir langfristig BeSucher sichern.
 
 ---
 
 👉 **Fazit:** 
 Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategie klein anzufangen** und diese konsequent auszubauen. 
-Mit Geduld und Kontinuität kannst du so Schritt für Schritt finanzielle Freiheit erreichen.
+Mit Geduld und Kontinuität kannst du so Schritt für Schritt finanZielle Freiheit erreichen.
 
 ---
 

@@ -1,6 +1,6 @@
-META: Testartikel mit absichtlichen Fehlern für den Auto-Check
+META: TeStartikel mit absichtlichen Fehlern für den Auto-Check
 
-# Testartikel: führen statt folgen
+# TeStartikel: führen statt folgen
 
 Dieser Artikel dient nur als Test für den Content-Check.  
 Hier ein paar typische Fehler:

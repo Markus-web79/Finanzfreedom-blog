@@ -1,4 +1,4 @@
-META: So startest du Schritt für Schritt mit Affiliate-Marketing und baust dir ein erstes Einkommen auf.
+META: So Startest du Schritt für Schritt mit Affiliate-Marketing und baust dir ein erstes Einkommen auf.
 
 # Affiliate Marketing für Einsteiger
 
@@ -15,7 +15,7 @@ Dabei empfiehlst du Produkte oder Dienstleistungen und erhältst eine Provision,
 
 - **Kein eigenes Produkt** nötig. 
 - **Schneller Start** mit nur wenigen Klicks. 
-- **Skalierbar**: je mehr Besucher, desto mehr Einnahmen. 
+- **Skalierbar**: je mehr BeSucher, desto mehr Einnahmen. 
 
 ## Erste Schritte
 

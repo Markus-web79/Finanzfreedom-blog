@@ -27,7 +27,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
  Streü dein Vermögen auf verschiedene Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
 
 3. **ETFs & Indexfonds nutzen** 
- Mit globalen ETFs kannst du langfristig eine Rendite oberhalb der Inflation erzielen. 
+ Mit globalen ETFs kannst du langfristig eine Rendite oberhalb der Inflation erZielen. 
 
 4. **Notgroschen behalten** 
  Halte einen Teil deines Geldes (z. B. 3 Monatsgehälter) liquide auf einem Tagesgeldkonto. 

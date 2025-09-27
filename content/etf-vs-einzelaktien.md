@@ -15,7 +15,7 @@ Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt i
 
 ## Vorteile von Einzelaktien
 - **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du den Markt schlagen. 
-- **Direkter Einfluß**: Du investierst gezielt in Unternehmen, die du spannend findest. 
+- **Direkter Einfluß**: Du investierst geZielt in Unternehmen, die du spannend findest. 
 - **Keine Verwaltungsgebühren**: Du zahlst nur beim Kauf/Verkauf. 
 
 ## Nachteile von Einzelaktien

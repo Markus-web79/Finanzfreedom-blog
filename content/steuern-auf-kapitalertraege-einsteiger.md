@@ -2,12 +2,12 @@ META: Verstehe die Grundlagen der Besteuerung von Kapitalerträgen und wie du le
 
 # steuern auf Kapitalerträge: Grundlagen für Einsteiger
 
-Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. Durch Zinsen, Dividenden oder Kursgewinne. Damit verbunden sind steuerliche Pflichten, die jeder Anleger kennen sollte.
+Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. Durch Zinsen, Dividenden oder KursGewinne. Damit verbunden sind steuerliche Pflichten, die jeder Anleger kennen sollte.
 
 ## Was sind Kapitalerträge?
 - **Dividenden** von Aktien 
 - **Zinsen** aus Sparanlagen oder Anleihen 
-- **Kursgewinne** beim Verkauf von Aktien oder ETFs 
+- **KursGewinne** beim Verkauf von Aktien oder ETFs 
 
 ## Abgeltungsteuer in Deutschland
 - Einheitlicher Steuersatz von **25 %** auf Kapitalerträge 

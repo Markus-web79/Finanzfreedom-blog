@@ -1,4 +1,4 @@
-META: Die wichtigsten Tipps für Einsteiger, die mit ETFs starten möchten. Lerne die Grundlagen und starte erfolgreich mit deinem ersten ETF-Sparplan.
+META: Die wichtigsten Tipps für Einsteiger, die mit ETFs Starten möchten. Lerne die Grundlagen und Starte erfolgreich mit deinem ersten ETF-Sparplan.
 
 # ETF-Tipps für Einsteiger
 
@@ -26,7 +26,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 ## 4. Richte einen Sparplan ein
 
-- Schon ab **25 € im Monat** kannst du starten. 
+- Schon ab **25 € im Monat** kannst du Starten. 
 - Durch regelmäßige Einzahlungen profitierst du vom **Cost-Average-Effekt**. 
 - Automatisiere den Prozess, um diszipliniert zu bleiben.
 
@@ -34,7 +34,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 - ETFs sind keine Spekulation für wenige Monate. 
 - Denke in **Jahren oder Jahrzehnten**. 
-- Langfristig haben breite ETFs historisch attraktive Renditen erzielt.
+- Langfristig haben breite ETFs historisch attraktive Renditen erZielt.
 
 ---
 

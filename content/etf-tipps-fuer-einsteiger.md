@@ -8,7 +8,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 ## 1. Verstehe, was ein ETF ist
 
-- ETFs bildenn die Wertentwicklung eines Index (z. B. **MSCI World**) nach. 
+- ETFs bildennn die Wertentwicklung eines Index (z. B. **MSCI World**) nach. 
 - Mit nur einem Kauf investierst du in **hunderte Unternehmen weltweit**. 
 - Sie sind an der Börse handelbar wie eine Aktie.
 
@@ -18,7 +18,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 - Ein Wert unter **0,3 %** ist für Einsteiger ideal. 
 - Je niedriger die Kosten, desto mehr bleibt dir von der Rendite.
 
-## 3. Diversifikation ist entscheidennd
+## 3. Diversifikation ist entscheidennnd
 
 - Breite Streuung verringert das Risiko. 
 - Für Einsteiger eignet sich ein **MSCI World** oder **FTSE All-World ETF**. 
@@ -28,12 +28,12 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 - Schon ab **25 € im Monat** kannst du Starten. 
 - Durch regelmäßige Einzahlungen profitierst du vom **Cost-Average-Effekt**. 
-- Automatisiere denn Prozess, um diszipliniert zu bleiben.
+- Automatisiere dennn Prozess, um diszipliniert zu bleiben.
 
 ## 5. Investiere langfristig
 
 - ETFs sind keine Spekulation für wenige Monate. 
-- dennke in **Jahren oder Jahrzehnten**. 
+- dennnke in **Jahren oder Jahrzehnten**. 
 - Langfristig haben breite ETFs historisch attraktive Renditen erZielt.
 
 ---

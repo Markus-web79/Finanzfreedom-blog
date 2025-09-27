@@ -10,11 +10,11 @@ Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt i
 - **Einfachheit**: Ideal für Einsteiger ohne tiefes Börsenwissen. 
 
 ## Nachteile von ETFs
-- **Begrenzte Rendite**: Du wirst nie beßer abschneidenn als der Markt, denn der ETF abbildet. 
+- **Begrenzte Rendite**: Du wirst nie beßer abschneidennn als der Markt, dennn der ETF abbildet. 
 - **Kosten**: Auch wenn sie gering sind, fallen Verwaltungsgebühren (TER) an. 
 
 ## Vorteile von Einzelaktien
-- **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du denn Markt schlagen. 
+- **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du dennn Markt schlagen. 
 - **Direkter Einfluß**: Du investierst geZielt in Unternehmen, die du spannend findest. 
 - **Keine Verwaltungsgebühren**: Du zahlst nur beim Kauf/Verkauf. 
 

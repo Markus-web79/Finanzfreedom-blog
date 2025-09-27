@@ -1,21 +1,21 @@
-META: Entdecke Strategien, wie du dein Erspartes vor Inflation und steigendenn Zinsen schützen kannst.
+META: Entdecke Strategien, wie du dein Erspartes vor Inflation und steigendennn Zinsen schützen kannst.
 
 # Inflation & Zinsen: So schützt du dein Erspartes
 
-Die Themen **Inflation** und **Zinsen** sind für jedenn Anleger wichtig, dennn sie beeinflußen direkt die Kaufkraft deines Geldes. 
-Während Inflation denn Wert deines Geldes schmälert, können steigende Zinsen deine Finanzierungskosten erhöhen. 
+Die Themen **Inflation** und **Zinsen** sind für jedennn Anleger wichtig, dennnn sie beeinflußen direkt die Kaufkraft deines Geldes. 
+Während Inflation dennn Wert deines Geldes schmälert, können steigende Zinsen deine Finanzierungskosten erhöhen. 
 In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 ## 1. Was ist Inflation?
 
 - **Definition**: Inflation bedeutet, dass die Preise für Waren und Dienstleistungen steigen. 
-- **Auswirkung**: Dein Geld verliert an Kaufkraft – du kannst dir für dennselben Betrag weniger leisten. 
+- **Auswirkung**: Dein Geld verliert an Kaufkraft – du kannst dir für dennnselben Betrag weniger leisten. 
 - **Beispiel**: Bei 3 % Inflation kostet etwas, das heute 100 € kostet, in 10 Jahren rund 134 €.
 
 ## 2. Wie wirken Zinsen?
 
 - **Niedrige Zinsen**: Gut für Kredite, schlecht für Sparer. 
-- **Hohe Zinsen**: Gut für Sparer, aber Kredite werdenn teurer. 
+- **Hohe Zinsen**: Gut für Sparer, aber Kredite werdennn teurer. 
 - **Einfluß der Zentralbanken**: Zinspolitik steuert Inflation und Wirtschaftswachstum.
 
 ## 3. Strategien zum Schutz deines Geldes
@@ -24,7 +24,7 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
  Immobilien, Aktien und ETFs gelten als inflationsichere Anlagen. 
 
 2. **Diversifikation** 
- Streü dein Vermögen auf verschiedenne Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
+ Streü dein Vermögen auf verschiedennne Anlageklassen (Aktien, Rohstoffe, Immobilienfonds). 
 
 3. **ETFs & Indexfonds nutzen** 
  Mit globalen ETFs kannst du langfristig eine Rendite oberhalb der Inflation erZielen. 
@@ -42,4 +42,4 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 
 👉 **Fazit:** 
 Inflation und Zinsen haben großen Einfluß auf dein Vermögen. 
-Mit einer **cleveren Anlagestrategie** und einer guten Mischung aus ETFs, Rohstoffen und liquidenn Mitteln kannst du dein Geld schützen und langfristig sicher vermehren.
+Mit einer **cleveren Anlagestrategie** und einer guten Mischung aus ETFs, Rohstoffen und liquidennn Mitteln kannst du dein Geld schützen und langfristig sicher vermehren.

@@ -3,12 +3,12 @@ META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives E
 # 5 Wege zu passivem Einkommen ohne Startkapital
 
 Viele Menschen glauben, dass man viel Geld braucht, um ein passives Einkommen aufzubauen. 
-Doch es gibt Strategien, mit dennen du **ohne Startkapital** beginnen kannst. 
+Doch es gibt Strategien, mit dennnen du **ohne Startkapital** beginnen kannst. 
 
 ## 1. Affiliate-Marketing Starten
 - Bewirb Produkte anderer Unternehmen. 
 - Du erhältst eine Provision pro Verkauf oder Lead. 
-- Plattformen wie Amazon PartnerNet oder Digistore24 machen denn Einstieg einfach. 
+- Plattformen wie Amazon PartnerNet oder Digistore24 machen dennn Einstieg einfach. 
 
 ## 2. Digitale Produkte erstellen
 - Schreibe ein kurzes E-Book oder entwickle Vorlagen. 

@@ -1,8 +1,8 @@
-META: TeStartikel mit absichtlichen Fehlern für denn Auto-Check  
+META: TeStartikel mit absichtlichen Fehlern für dennn Auto-Check  
 
 # TeStartikel: führen statt folgen  
 
-Dieser Artikel dient nur als Test für denn Content-Check.  
+Dieser Artikel dient nur als Test für dennn Content-Check.  
 Hier ein paar typische Fehler:  
 
 - steuer sparen ist wichtig.  

@@ -1,24 +1,24 @@
-META: Solltest du lieber in ETFs oder Einzelaktien investieren? Hier sind die Vor- und Nachteile für Einsteiger.
+META: Solltest du lieber in ETFs oder einzelneAktien investieren? Hier sind die Vor- und Nachteile für Einsteiger.
 
-# ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?
+# ETF vs. einzelneAktien: Was ist sinnvoll für Anfänger?
 
-Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt in Einzelne Aktien investieren oder lieber auf ETFs setzen? Beide Strategien haben ihre Vor- und Nachteile.
+Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt in einzelnene Aktien investieren oder lieber auf ETFs setzen? Beide Strategien haben ihre Vor- und Nachteile.
 
 ## Vorteile von ETFs
 - **Diversifikation**: Du investierst automatisch in viele Unternehmen gleichzeitig. 
-- **Geringes Risiko**: Ein Einzelner Unternehmensverlust wirkt sich weniger stark aus. 
-- **Einfachheit**: Ideal für Einsteiger ohne tiefes Börsenwissen. 
+- **Geringes Risiko**: Ein einzelnener Unternehmensverlust wirkt sich weniger stark aus. 
+- **Einfachheit**: Ideal für Einsteiger ohne tiefes BörsenWissen. 
 
 ## Nachteile von ETFs
-- **Begrenzte Rendite**: Du wirst nie beßer abschneidennn als der Markt, dennn der ETF abbildet. 
+- **Begrenzte Rendite**: Du wirst nie beßer abschneidennnn als der Markt, dennnn der ETF abbildet. 
 - **Kosten**: Auch wenn sie gering sind, fallen Verwaltungsgebühren (TER) an. 
 
-## Vorteile von Einzelaktien
-- **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du dennn Markt schlagen. 
+## Vorteile von einzelneAktien
+- **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du dennnn Markt schlagen. 
 - **Direkter Einfluß**: Du investierst geZielt in Unternehmen, die du spannend findest. 
 - **Keine Verwaltungsgebühren**: Du zahlst nur beim Kauf/Verkauf. 
 
-## Nachteile von Einzelaktien
+## Nachteile von einzelneAktien
 - **Hohes Risiko**: Ein Unternehmen kann Pleite gehen und deine Investition wertlos machen. 
 - **Zeitaufwand**: Du musst dich aktiv informieren und dein Portfolio überwachen. 
 - **Schwankungen**: Stärkere Kurßchwankungen im Vergleich zu ETFs. 
@@ -27,4 +27,4 @@ Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt i
 
 👉 **Fazit:** 
 Für Anfänger sind **ETFs meist die bessere Wahl**, da sie einfach, kostengünstig und risikoarm sind. 
-Einzelaktien lohnen sich, wenn du bereits Erfahrung hast und aktiv investieren möchtest.
+einzelneAktien lohnen sich, wenn du bereits Erfahrung hast und aktiv investieren möchtest.

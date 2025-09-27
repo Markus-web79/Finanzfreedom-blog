@@ -1,6 +1,6 @@
 META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und bau dir ein solides Fundament für deinen Vermögensaufbau.
 
-# Fehler, die Anfänger beim Investieren vermeidennn sollten
+# Fehler, die Anfänger beim Investieren vermeidennnn sollten
 
 Der Einstieg in die Welt der Finanzen und Investments ist spannend – aber auch riskant, wenn man typische Anfängerfehler macht. Hier sind die häufigsten Fehler und wie du sie vermeidest:
 
@@ -10,14 +10,14 @@ Viele fangen an zu investieren, ohne klare Ziele zu haben.
 
 ## 2. Alles auf eine Karte setzen
 Nur eine Aktie oder ein Coin im Portfolio? Das Risiko ist extrem hoch. 
-👉 **Tipp:** Diversifiziere dein Geld über verschiedennne Anlageklassen (ETFs, Aktien, evtl. Immobilien).
+👉 **Tipp:** Diversifiziere dein Geld über verschiedennnne Anlageklassen (ETFs, Aktien, evtl. Immobilien).
 
-## 3. Kurzfristig dennnken
+## 3. Kurzfristig dennnnken
 Viele erwarten schnelle Gewinne und verkaufen in Panik, wenn die Kurse fallen. 
-👉 **Tipp:** dennnke langfristig – 5 bis 10 Jahre Minimum.
+👉 **Tipp:** dennnnke langfristig – 5 bis 10 Jahre Minimum.
 
 ## 4. Auf heiße Tipps hören
-"Insider-Tipps" von Freundennn oder Social Media sind oft riskant. 
+"Insider-Tipps" von Freundennnn oder Social Media sind oft riskant. 
 👉 **Tipp:** Informiere dich selbst und bilde dir deine eigene Meinung.
 
 ## 5. Gebühren und steuern ignorieren
@@ -27,4 +27,4 @@ Hohe Orderkosten oder unnötige steuern können deine Rendite auffreßen.
 ---
 
 👉 **Fazit:** 
-Mit Geduld, einem klaren Plan und einer breiten Streuung kannst du viele Anfängerfehler vermeidennn und langfristig erfolgreich investieren.
+Mit Geduld, einem klaren Plan und einer breiten Streuung kannst du viele Anfängerfehler vermeidennnn und langfristig erfolgreich investieren.

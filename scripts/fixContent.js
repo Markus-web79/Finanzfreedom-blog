@@ -1,39 +1,38 @@
-// scripts/fixContent.js – liest Wörterbuch aus dictionary.json
-
+// scripts/fixContent.js – ES-Module
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Hilfsvariablen für Pfade
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const contentDir = path.join(__dirname, "..", "content");
-const dictionaryPath = path.join(__dirname, "..", "dictionary.json");
 
-// --- Wörterbuch laden ---
-let corrections = {};
-try {
-  const dictRaw = fs.readFileSync(dictionaryPath, "utf8");
-  const dict = JSON.parse(dictRaw);
-  corrections = dict.corrections || {};
-  console.log(`📚 Wörterbuch geladen: ${Object.keys(corrections).length} Korrekturen gefunden`);
-} catch (err) {
-  console.error("⚠️ Konnte dictionary.json nicht laden:", err.message);
-  process.exit(1);
-}
+// Wörterbuch laden
+const dictPath = path.join(__dirname, "..", "dictionary.json");
+const dictionary = JSON.parse(fs.readFileSync(dictPath, "utf8"));
+const corrections = dictionary.corrections || {};
 
-// --- Hilfsfunktion für den Textaustausch ---
+// -------- Text-Korrektur ----------
 function fixText(text) {
   let result = text;
+
+  // 1. Wörterbuch anwenden
   for (const [wrong, right] of Object.entries(corrections)) {
     const regex = new RegExp(wrong, "gi");
     result = result.replace(regex, right);
   }
+
+  // 2. Satzanfang großschreiben (nach Punkt/Frage-/Ausrufezeichen oder Zeilenbeginn)
+  result = result.replace(
+    /(^|[.!?]\s+)([a-zäöüß])/g,
+    (match, p1, p2) => p1 + p2.toUpperCase()
+  );
+
   return result;
 }
 
-// --- Alle .md-Dateien im content-Ordner korrigieren ---
+// -------- Alle Markdown-Dateien bearbeiten ----------
 function fixAllFiles() {
   const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
   let changed = 0;
@@ -49,12 +48,11 @@ function fixAllFiles() {
     }
   }
 
-  if (changed === 0) {
-    console.log("Keine Änderungen erforderlich ✅");
-  } else {
-    console.log(`Fertig! ${changed} Datei(en) korrigiert.`);
-  }
+  console.log(
+    changed === 0
+      ? "✅ Keine Änderungen erforderlich."
+      : `✅ Fertig! ${changed} Datei(en) korrigiert.`
+  );
 }
 
-// --- Start ---
 fixAllFiles();

@@ -10,7 +10,7 @@ Der Weg zur finanziellen Freiheit beginnt mit zwei Säulen: soliden Finanzen und
 - **Sparen:** Lege Rücklagen für Notfälle an.
 
 ## Was ist passives Einkommen?
-passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du ständig aktiv dafür arbeiten musst. Beispiele:
+Passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du ständig aktiv dafür arbeiten musst. Beispiele:
 - Dividenden aus Aktien
 - Einnahmen aus Immobilien
 - Affiliate-Marketing oder digitale Produkte

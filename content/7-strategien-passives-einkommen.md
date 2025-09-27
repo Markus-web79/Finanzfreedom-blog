@@ -3,7 +3,7 @@ META: Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen auf
 # 7 Strategien für passives Einkommen
 
 Viele Menschen träumen davon, **finanzielle Freiheit** zu erreichen. 
-passives Einkommen ist dabei der schlüssel – Geld, das auch dann fließt, wenn du gerade nicht arbeitest. 
+Passives Einkommen ist dabei der schlüssel – Geld, das auch dann fließt, wenn du gerade nicht arbeitest. 
 Hier sind 7 Strategien, mit denen du starten kannst.
 
 ## 1. Dividendenaktien kaufen

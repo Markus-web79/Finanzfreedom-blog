@@ -9,13 +9,13 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. D
 - **Zinsen** aus Sparanlagen oder Anleihen 
 - **Kursgewinne** beim Verkauf von Aktien oder ETFs 
 
-## Abgeltungßteür in Deutschland
-- Einheitlicher steuersatz von **25 %** auf Kapitalerträge 
+## Abgeltungsteuer in Deutschland
+- Einheitlicher Steuersatz von **25 %** auf Kapitalerträge 
 - Zusätzlich: Solidaritätszuschlag & ggf. Kirchensteuer 
 - Wird meist **direkt von der Bank** abgeführt 
 
 ## Freibeträge
-- Jeder steuerzahler hat einen **Sparer-Pauschbetrag**: 
+- Jeder Steuerzahler hat einen **Sparer-Pauschbetrag**: 
  - **1.000 €** pro Jahr für Singles 
  - **2.000 €** pro Jahr für Ehepaare 
 - Wichtig: **Freistellungsauftrag** bei der Bank einreichen 
@@ -31,5 +31,5 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. D
 ---
 
 👉 **Fazit:** 
-Wer die Grundlagen der Kapitalertragßteür kennt, kann clever planen und so seine Rendite steigern. 
+Wer die Grundlagen der Kapitalertragsteuer kennt, kann clever planen und so seine Rendite steigern. 
 Steuern lassen sich nicht vermeiden – aber mit **Freibeträgen und smarter Strategie** deutlich reduzieren.

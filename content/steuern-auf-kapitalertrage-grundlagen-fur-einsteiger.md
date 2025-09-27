@@ -31,8 +31,8 @@ In Deutschland müßen Kapitalerträge versteuert werden. Die wichtigste steuer 
 
 ### Abgeltungsteuer
 
-- **steuersatz**: 26,375 % (inklusive Solidaritätszuschlag und gegebenenfalls Kirchensteuer).
-- **Freibetrag**: Jeder Anleger hat einen sparer-pauschbetrag von 1.000 Euro (2.000 Euro für Ehepaare). Das bedeutet, dass Kapitalerträge bis zu dieser Höhe steuerfrei sind.
+- **Steuersatz**: 26,375 % (inklusive Solidaritätszuschlag und gegebenenfalls Kirchensteuer).
+- **Freibetrag**: Jeder Anleger hat einen Sparer-Pauschbetrag von 1.000 Euro (2.000 Euro für Ehepaare). Das bedeutet, dass Kapitalerträge bis zu dieser Höhe steuerfrei sind.
 
 ### steuerpflichtige Einnahmen
 
@@ -46,7 +46,7 @@ Es ist wichtig, zu wissen, welche Erträge tatsächlich steuerpflichtig sind. Zu
 
 Um Ihre steuerlast zu minimieren, können Sie einige Strategien anwenden:
 
-1. **sparer-pauschbetrag nutzen**: Achten Sie darauf, dass Sie den Freibetrag in vollem Umfang ausschöpfen. Bei Bedarf können Sie auch ein Freistellungsauftrag bei Ihrer Bank einreichen.
+1. **Sparer-Pauschbetrag nutzen**: Achten Sie darauf, dass Sie den Freibetrag in vollem Umfang ausschöpfen. Bei Bedarf können Sie auch ein Freistellungsauftrag bei Ihrer Bank einreichen.
   
 2. **Verluste ausgleichen**: Verluste aus dem Verkauf von Wertpapieren können mit Gewinnen aus anderen Investments verrechnet werden, um die steuerlast zu senken.
 

@@ -8,4 +8,4 @@ Hier ein paar typische Fehler:
 - Steuer sparen macht frei.  
 - Ökonomie ist nicht schwer zu verstähn.  
 - Vermögen aufbauen lohnt sich.  
-- Führen statt folgen bringt Erfoĺg.  
+- führen statt folgen bringt Erfoĺg.  

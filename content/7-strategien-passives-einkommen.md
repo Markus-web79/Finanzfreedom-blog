@@ -12,7 +12,7 @@ Hier sind 7 Strategien, mit denen du starten kannst.
 - Beispiel: Energie- oder Konsumgüterkonzerne. 
 - Dividenden bringen dir stetige Einnahmen.
 
-## 2. ETFs mit Außchüttung
+## 2. ETFs mit ausschüttung
 
 - Kaufe **außchüttende ETFs** (z. B. MSCI World). 
 - Mehrfach im Jahr bekommst du automatisch Geld auf dein Konto. 

@@ -24,19 +24,19 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
  - **Aktien & ETFs** (Wachstum) 
  - **Anleihen** (Sicherheit) 
  - **Immobilien** (Sachwert) 
- - **Rohstoffe** (Inflationßchutz) 
+ - **Rohstoffe** (Inflationsschutz) 
 - Dadurch minimierst du das Risiko.
 
 ## 4. Automatisierung einrichten
 
-- Richte **Daüraufträge** oder **Sparpläne** ein. 
+- Richte **Daueraufträge** oder **Sparpläne** ein. 
 - So investierst du regelmäßig und profitierst vom **Cost-Average-Effekt**. 
 - Beispiel: 100 € monatlich in einen MSCI World ETF.
 
-## 5. Regelmäßige Kontrolle und Anpaßung
+## 5. Regelmäßige Kontrolle und Anpassung
 
 - Überprüfe 1–2 Mal pro Jahr dein Portfolio. 
-- Paße deine Strategie an Lebensumstände und Ziele an. 
+- Passe deine Strategie an Lebensumstände und Ziele an. 
 - Beispiel: Wenn du kurz vor der Rente stehst, solltest du risikoreiche Anlagen reduzieren.
 
 ---

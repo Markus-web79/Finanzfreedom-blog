@@ -26,5 +26,5 @@ Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt i
 ---
 
 👉 **Fazit:** 
-Für Anfänger sind **ETFs meist die beßere Wahl**, da sie einfach, kostengünstig und risikoarm sind. 
+Für Anfänger sind **ETFs meist die bessere Wahl**, da sie einfach, kostengünstig und risikoarm sind. 
 Einzelaktien lohnen sich, wenn du bereits Erfahrung hast und aktiv investieren möchtest.

@@ -1,8 +1,8 @@
-META: Erfahre, wie sich Finanzberatung in Zukunft entwickeln wird – zwischen digitalen Tools und klaßischer persönlicher Beratung.
+META: Erfahre, wie sich Finanzberatung in Zukunft entwickeln wird – zwischen digitalen Tools und klassischer persönlicher Beratung.
 
 # Die Zukunft der Finanzberatung: Digital vs. Traditionell
 
-Die Finanzbranche verändert sich rasant. Immer mehr digitale Tools drängen auf den Markt und stellen die klaßische Finanzberatung vor neu Herausforderungen. Doch welche Form ist die beßere?
+Die Finanzbranche verändert sich rasant. Immer mehr digitale Tools drängen auf den Markt und stellen die klassische Finanzberatung vor neue Herausforderungen. Doch welche Form ist die bessere?
 
 ## Digitale Finanzberatung
 
@@ -13,13 +13,13 @@ Die Finanzbranche verändert sich rasant. Immer mehr digitale Tools drängen auf
 
 - **Nachteile**:
  - Weniger persönliche Betreuung
- - Standardisierte Lösungen, nicht immer individüll
+ - Standardisierte Lösungen, nicht immer individuell
 
 ## Traditionelle Finanzberatung
 
 - **Vorteile**:
  - Persönlicher Kontakt und maßgeschneiderte Beratung
- - Vertraünsaufbau über Jahre möglich
+ - Vertrauensaufbau über Jahre möglich
  - Geeignet bei komplexen Finanzsituationen
 
 - **Nachteile**:

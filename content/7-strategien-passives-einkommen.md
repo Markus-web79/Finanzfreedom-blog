@@ -3,18 +3,18 @@ META: Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen auf
 # 7 Strategien für passives Einkommen
 
 Viele Menschen träumen davon, **finanzielle Freiheit** zu erreichen. 
-passives Einkommen ist dabei der Schlüßel – Geld, das auch dann fließt, wenn du gerade nicht arbeitest. 
+passives Einkommen ist dabei der schlüssel – Geld, das auch dann fließt, wenn du gerade nicht arbeitest. 
 Hier sind 7 Strategien, mit denen du starten kannst.
 
 ## 1. Dividendenaktien kaufen
 
-- Investiere in Unternehmen, die regelmäßig **Dividenden** außchütten. 
+- Investiere in Unternehmen, die regelmäßig **Dividenden** ausschütten. 
 - Beispiel: Energie- oder Konsumgüterkonzerne. 
 - Dividenden bringen dir stetige Einnahmen.
 
 ## 2. ETFs mit ausschüttung
 
-- Kaufe **außchüttende ETFs** (z. B. MSCI World). 
+- Kaufe **ausschüttende ETFs** (z. B. MSCI World). 
 - Mehrfach im Jahr bekommst du automatisch Geld auf dein Konto. 
 - Ideal für langfristigen Vermögensaufbau.
 
@@ -51,9 +51,9 @@ Hier sind 7 Strategien, mit denen du starten kannst.
 ---
 
 👉 **Fazit:** 
-Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategiee klein anzufangen** und diese konseqünt auszubaun. 
+Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategiee klein anzufangen** und diese konsequent auszubauen. 
 Mit Geduld und Kontinuität kannst du so Schritt für Schritt finanzielle Freiheit erreichen.
 
 ---
 
-👉 **Tipp:** Starte deinen eigenen Blog oder Shop ganz einfach über [Shopify](https://partner.shopify.com/dein-link) oder [WordPreß Hosting](https://partner.wordpreß.com/dein-link).
+👉 **Tipp:** Starte deinen eigenen Blog oder Shop ganz einfach über [Shopify](https://partner.shopify.com/dein-link) oder [WordPress Hosting](https://partner.WordPress.com/dein-link).

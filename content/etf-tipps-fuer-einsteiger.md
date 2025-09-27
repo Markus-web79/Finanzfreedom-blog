@@ -2,7 +2,7 @@ META: Die wichtigsten Tipps für Einsteiger, die mit ETFs starten möchten. Lern
 
 # ETF Tipps für Einsteiger
 
-ETFs (Exchange Traded Funds) sind eine der beliebtesten Möglichkeiten, langfristig Vermögen aufzubaun. 
+ETFs (Exchange Traded Funds) sind eine der beliebtesten Möglichkeiten, langfristig Vermögen aufzubauen. 
 Sie bieten eine kostengünstige und einfache Möglichkeit, breit gestreut in die Märkte zu investieren. 
 Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 

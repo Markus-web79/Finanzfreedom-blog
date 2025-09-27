@@ -21,7 +21,7 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 
 1. **Diversifikation** 
  Investiere in verschiedene Unternehmen aus unterschiedlichen Ländern. 
- So kannst du durch die unterschiedlichen ausschüttungstermine monatliche Zahlungen erhalten. 
+ So kannst du durch die unterschiedlichen Ausschüttungstermine monatliche Zahlungen erhalten. 
 
 2. **Dividenden-ETFs** 
  ETFs wie der **Vanguard FTSE All-World High Dividend Yield** bündeln Dividendenaktien weltweit. 
@@ -32,7 +32,7 @@ Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und ein
 
 ## Risiken beachten
 
-- **Dividenden sind nicht garantiert** – Unternehmen können Zahlungen kürzen oder außetzen. 
+- **Dividenden sind nicht garantiert** – Unternehmen können Zahlungen kürzen oder aussetzen. 
 - **steuern** – Dividenden unterliegen der Abgeltungsteuer. 
 - **Konzentrationsrisiko** – nicht nur auf Hochdividendenwerte setzen. 
 

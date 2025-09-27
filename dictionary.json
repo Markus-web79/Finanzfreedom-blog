@@ -15,20 +15,25 @@
     "freistellungsaufträg": "Freistellungsauftrag",
     "solidaritätszuschlag": "Solidaritätszuschlag",
     "kirchensteür": "Kirchensteuer",
+
     "außetzen": "aussetzen",
     "ausschüttungstermine": "Ausschüttungstermine",
+
     "paßiv": "passiv",
     "paßive": "passive",
     "paßiver": "passiver",
     "paßives": "passives",
     "paßivem": "passivem",
+
     "aufbaün": "aufbauen",
     "aufbaü": "aufbau",
     "aufbaüt": "aufbaut",
+
     "inflationßchutz": "Inflationsschutz",
     "daüraufträge": "Daueraufträge",
     "anpaßung": "Anpassung",
     "paße": "Passe",
+
     "läßt": "lässt",
     "muß": "muss",
     "mußt": "musst",
@@ -37,21 +42,26 @@
     "meßen": "messen",
     "adreßen": "Adressen",
     "Paßende": "Passende",
+
     "einkommensqüllen": "einkommensquellen",
     "qüllen": "quellen",
     "qül": "quell",
     "Qüllen": "Quellen",
+
     "außchüttung": "Ausschüttung",
     "außchüttungen": "Ausschüttungen",
     "außchütten": "Ausschütten",
     "außchöpfen": "ausschöpfen",
+
     "vermögensaufbaü": "Vermögensaufbau",
     "schaü": "schau",
     "artíkel": "Artikel",
     "strategíe": "Strategie",
+
     "ökonomie": "Ökonomie",
     "baü": "Bau",
     "taßen": "Tassen",
+
     "schlüssel": "Schlüssel",
     "strategiee": "Strategie",
     "anzufangenund": "anzufangen und",
@@ -59,6 +69,7 @@
     "ausdaür": "Ausdauer",
     "konseqünt": "konsequent",
     "schlüßel": "Schlüssel",
+
     "belibtheit": "Beliebtheit",
     "briliant": "brillant",
     "brillianz": "Brillanz",
@@ -190,8 +201,12 @@
     "vortzeile": "Vorteile",
     "widerrum": "wiederum",
     "wiederrum": "wiederum",
-    "ziemmlich": "ziemlich"
+    "ziemmlich": "ziemlich",
+
+    "prozeß": "Prozess",
+    "etf tipps": "ETF-Tipps"
   },
+
   "words": [
     "ETF",
     "ETFs",

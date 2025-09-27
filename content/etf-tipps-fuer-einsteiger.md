@@ -1,6 +1,6 @@
 META: Die wichtigsten Tipps für Einsteiger, die mit ETFs starten möchten. Lerne die Grundlagen und starte erfolgreich mit deinem ersten ETF-Sparplan.
 
-# ETF Tipps für Einsteiger
+# ETF-Tipps für Einsteiger
 
 ETFs (Exchange Traded Funds) sind eine der beliebtesten Möglichkeiten, langfristig Vermögen aufzubauen. 
 Sie bieten eine kostengünstige und einfache Möglichkeit, breit gestreut in die Märkte zu investieren. 
@@ -28,7 +28,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 - Schon ab **25 € im Monat** kannst du starten. 
 - Durch regelmäßige Einzahlungen profitierst du vom **Cost-Average-Effekt**. 
-- Automatisiere den Prozeß, um diszipliniert zu bleiben.
+- Automatisiere den Prozess, um diszipliniert zu bleiben.
 
 ## 5. Investiere langfristig
 

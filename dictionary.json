@@ -15,20 +15,18 @@
     "freistellungsaufträg": "Freistellungsauftrag",
     "solidaritätszuschlag": "Solidaritätszuschlag",
     "kirchensteür": "Kirchensteuer",
-
     "außetzen": "aussetzen",
     "ausschüttungstermine": "Ausschüttungstermine",
 
     "paßiv": "passiv",
     "paßive": "passive",
-    "paßiver": "passiver",
     "paßives": "passives",
     "paßivem": "passivem",
+    "paßiver": "passiver",
 
     "aufbaün": "aufbauen",
     "aufbaü": "aufbau",
     "aufbaüt": "aufbaut",
-
     "inflationßchutz": "Inflationsschutz",
     "daüraufträge": "Daueraufträge",
     "anpaßung": "Anpassung",
@@ -201,10 +199,7 @@
     "vortzeile": "Vorteile",
     "widerrum": "wiederum",
     "wiederrum": "wiederum",
-    "ziemmlich": "ziemlich",
-
-    "prozeß": "Prozess",
-    "etf tipps": "ETF-Tipps"
+    "ziemmlich": "ziemlich"
   },
 
   "words": [
@@ -213,6 +208,9 @@
     "Finanzfreedom",
     "Dividenden",
     "Kapitalerträge",
+    "Abgeltungsteuer",
+    "Ausschüttungstermine",
+    "Vermögensaufbau",
     "Inflation",
     "Immobilienfonds",
     "Indexfonds",

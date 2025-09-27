@@ -1,4 +1,4 @@
-// scripts/fixContent.js – ES-Module-Variante
+// scripts/fixContent.js – liest Wörterbuch aus dictionary.json
 
 import fs from "fs";
 import path from "path";
@@ -9,26 +9,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const contentDir = path.join(__dirname, "..", "content");
+const dictionaryPath = path.join(__dirname, "..", "dictionary.json");
 
-// --- Wörterbuch mit typischen Fehlern ---
-const corrections = {
-  "paßiv": "passiv",
-  "paßives": "passives",
-  "paßivem": "passivem",
-  "läßt": "lässt",
-  "muß": "muss",
-  "mußt": "musst",
-  "aufbaün": "aufbauen",
-  "aufbaün.": "aufbauen.",
-  "qülle": "quelle",
-  "Qüllen": "Quellen",
-  "neü": "neu",
-  "steür": "steuer",
-  "steüren": "steuern",
-  "solizuschlag": "solidaritätszuschlag",
-  "sparerpauschbetrag": "sparer-pauschbetrag"
-  // … hier kannst du beliebig ergänzen
-};
+// --- Wörterbuch laden ---
+let corrections = {};
+try {
+  const dictRaw = fs.readFileSync(dictionaryPath, "utf8");
+  const dict = JSON.parse(dictRaw);
+  corrections = dict.corrections || {};
+  console.log(`📚 Wörterbuch geladen: ${Object.keys(corrections).length} Korrekturen gefunden`);
+} catch (err) {
+  console.error("⚠️ Konnte dictionary.json nicht laden:", err.message);
+  process.exit(1);
+}
 
 // --- Hilfsfunktion für den Textaustausch ---
 function fixText(text) {

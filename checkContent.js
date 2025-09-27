@@ -1,87 +1,55 @@
-const fs = require("fs");
-const path = require("path");
+// checkContent.js – ES-Module kompatibel
 
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Pfad-Helfer (da ES-Module kein __dirname haben)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// content-Ordner
 const contentDir = path.join(__dirname, "content");
 
-// Liste fester Korrekturen (wird automatisch auf alle Artikel angewendet)
-const corrections = {
-  // Umlaute & Sonderzeichen
-  "ae": "ä",
-  "oe": "ö",
-  "ue": "ü",
-  "Ae": "Ä",
-  "Oe": "Ö",
-  "Ue": "Ü",
+// --- Dateien prüfen ---
+function checkContent() {
+  console.log("🔍 Starte Content-Check...");
 
-  // Häufige Fehler mit ß/ss
-  "strasse": "Straße",
-  "Strasse": "Straße",
-  "daß": "dass",
-  "muß": "muss",
-  "Muß": "Muss",
+  if (!fs.existsSync(contentDir)) {
+    console.log("❌ Kein content-Ordner gefunden.");
+    process.exit(1);
+  }
 
-  // Typische Tippfehler im Finanzbereich
-  "Steür": "Steuer",
-  "steür": "steuer",
-  "Steürn": "Steuern",
-  "steürn": "steuern",
-  "Vermoegen": "Vermögen",
-  "vermoegen": "vermögen",
-  "aufbaün": "aufbauen",
-  "paßives": "passives",
-  "paßiv": "passiv",
-  "wißen": "wissen",
-  "Wißen": "Wissen",
-  "laßen": "lassen",
-  "Laßen": "Lassen",
-  "mußen": "müssen",
+  const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md"));
 
-  // Häufige Stilfehler
-  "Fuehren": "Führen",
-  "fuehren": "führen",
-  "Oekonomie": "Ökonomie",
-  "oekonomie": "Ökonomie",
-  "außchöpfen": "ausschöpfen",
-  "Außchüttungen": "Ausschüttungen",
-  "strategieen": "Strategien",
-  "haltedaür": "Haltedauer",
-  "Kapitalertrage": "Kapitalerträge",
-  "kapitalertrage": "Kapitalerträge",
-};
+  if (files.length === 0) {
+    console.log("⚠️ Keine Markdown-Dateien im content-Ordner gefunden.");
+    return;
+  }
 
-// Alle Markdown-Dateien im content-Ordner finden
-function getMarkdownFiles(dir) {
-  return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
-}
+  let totalIssues = 0;
 
-// Dateien prüfen und korrigieren
-function checkAndFixFiles() {
-  const files = getMarkdownFiles(contentDir);
-  let changed = false;
-
-  files.forEach((file) => {
+  for (const file of files) {
     const filePath = path.join(contentDir, file);
-    let content = fs.readFileSync(filePath, "utf8");
-    let original = content;
+    const text = fs.readFileSync(filePath, "utf8");
 
-    // Feste Korrekturen anwenden
-    for (const [wrong, right] of Object.entries(corrections)) {
-      const regex = new RegExp(wrong, "g");
-      content = content.replace(regex, right);
+    // Beispiel-Prüfung: leere Datei
+    if (!text.trim()) {
+      console.log(`⚠️ ${file}: Datei ist leer`);
+      totalIssues++;
     }
-
-    if (content !== original) {
-      fs.writeFileSync(filePath, content, "utf8");
-      console.log(`✅ Korrigiert: ${file}`);
-      changed = true;
-    } else {
-      console.log(`ℹ️ Keine Änderungen: ${file}`);
+    // Beispiel-Prüfung: META-Zeile vorhanden?
+    if (!text.includes("META:")) {
+      console.log(`⚠️ ${file}: META-Zeile fehlt`);
+      totalIssues++;
     }
-  });
+  }
 
-  if (!changed) {
-    console.log("Keine Korrekturen nötig.");
+  if (totalIssues === 0) {
+    console.log("✅ Keine Fehler gefunden oder bereits behoben.");
+  } else {
+    console.log(`🚩 Insgesamt ${totalIssues} potenzielle Probleme gefunden.`);
   }
 }
 
-checkAndFixFiles();
+checkContent();

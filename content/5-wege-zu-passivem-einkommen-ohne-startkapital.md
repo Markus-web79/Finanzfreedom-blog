@@ -30,4 +30,4 @@ Doch es gibt Strategien, mit denen du **ohne Startkapital** beginnen kannst.
 
 👉 **Fazit:** 
 Auch ohne Startkapital kannst du Schritt für Schritt passives Einkommen aufbauen. 
-Wichtig ist **ausdauer** – die Einnahmen wachsen mit deiner Reichweite und deinem Einsatz.
+Wichtig ist **Ausdauer** – die Einnahmen wachsen mit deiner Reichweite und deinem Einsatz.

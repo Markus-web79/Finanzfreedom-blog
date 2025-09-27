@@ -27,7 +27,7 @@ Kapitalerträge sind Einkünfte, die Sie durch Geldanlage generieren. Dazu zähl
 
 ## steuerliche Behandlung von Kapitalerträgen
 
-In Deutschland müßen Kapitalerträge versteuert werden. Die wichtigste steuer in diesem Zusammenhang ist die Abgeltungsteuer. Hier sind die Hauptpunkte, die Sie wissen sollten:
+In Deutschland müssen Kapitalerträge versteuert werden. Die wichtigste steuer in diesem Zusammenhang ist die Abgeltungsteuer. Hier sind die Hauptpunkte, die Sie wissen sollten:
 
 ### Abgeltungsteuer
 

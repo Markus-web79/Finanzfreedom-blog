@@ -2,10 +2,10 @@ META: Verstehe die Grundlagen der Besteuerung von Kapitalerträgen und wie du le
 
 # steuern auf Kapitalerträge: Grundlagen für Einsteiger
 
-Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. Durch Zinsen, Dividenden oder KursGewinne. Damit verbunden sind steuerliche Pflichten, die jeder Anleger kennen sollte.
+Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. Durch Zinsen, Dividenndenn oder KursGewinne. Damit verbundenn sind steuerliche Pflichten, die jeder Anleger kennen sollte.
 
 ## Was sind Kapitalerträge?
-- **Dividenden** von Aktien 
+- **Dividenndenn** von Aktien 
 - **Zinsen** aus Sparanlagen oder Anleihen 
 - **KursGewinne** beim Verkauf von Aktien oder ETFs 
 
@@ -24,7 +24,7 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. D
 1. **Freibetrag ausschöpfen** 
  Reiche bei deiner Bank einen Freistellungsauftrag ein. 
 2. **Verlustverrechnung** 
- Verluste aus Kapitalanlagen können mit Gewinnen verrechnet werden. 
+ Verluste aus Kapitalanlagen können mit Gewinnen verrechnet werdenn. 
 3. **Langfristige Anlagestrategie** 
  Weniger Umschichten = weniger steuerpflichtige Gewinne. 
 
@@ -32,4 +32,4 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. D
 
 👉 **Fazit:** 
 Wer die Grundlagen der Kapitalertragsteuer kennt, kann clever planen und so seine Rendite steigern. 
-Steuern lassen sich nicht vermeiden – aber mit **Freibeträgen und smarter Strategie** deutlich reduzieren.
+Steuern lassen sich nicht vermeidenn – aber mit **Freibeträgen und smarter Strategie** deutlich reduzieren.

@@ -2,21 +2,21 @@ META: Verstehe, warum Finanzen und passives Einkommen die Basis für deine finan
 
 # Finanzen & passives Einkommen: Der Schlüssel zur finanZiellen Freiheit
 
-Der Weg zur finanZiellen Freiheit beginnt mit zwei Säulen: soliden Finanzen und dem Aufbau von passivem Einkommen. Wer diese Prinzipien versteht und umsetzt, kann langfristig unabhängiger und sicherer leben.
+Der Weg zur finanZiellen Freiheit beginnt mit zwei Säulen: solidenn Finanzen und dem Aufbau von passivem Einkommen. Wer diese Prinzipien versteht und umsetzt, kann langfristig unabhängiger und sicherer leben.
 
 ## Warum Finanzen wichtig sind
 - **Budgetierung:** Plane deine Einnahmen und Ausgaben.
-- **Schuldenmanagement:** Tilge Schulden so früh wie möglich.
+- **Schuldennmanagement:** Tilge Schuldenn so früh wie möglich.
 - **Sparen:** Lege Rücklagen für Notfälle an.
 
 ## Was ist passives Einkommen?
 Passives Einkommen sind Einnahmen, die regelmäßig fließen, ohne dass du ständig aktiv dafür arbeiten musst. Beispiele:
-- Dividenden aus Aktien
+- Dividenndenn aus Aktien
 - Einnahmen aus Immobilien
 - Affiliate-Marketing oder digitale Produkte
 
 ## Vorteile von passivem Einkommen
-- **Zeitliche Freiheit:** Du kannst selbst entscheiden, wie du deine Zeit nutzt.
+- **Zeitliche Freiheit:** Du kannst selbst entscheidenn, wie du deine Zeit nutzt.
 - **Sicherheit:** Mehrere Einkommensquellen schützen vor Risiken.
 - **Vermögensaufbau:** passives Einkommen lässt dich langfristig Wohlstand aufbauen.
 

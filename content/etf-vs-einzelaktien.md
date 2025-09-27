@@ -2,19 +2,19 @@ META: Solltest du lieber in ETFs oder Einzelaktien investieren? Hier sind die Vo
 
 # ETF vs. Einzelaktien: Was ist sinnvoll für Anfänger?
 
-Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt in einzelne Aktien investieren oder lieber auf ETFs setzen? Beide Strategien haben ihre Vor- und Nachteile.
+Viele Einsteiger im Investment-Bereich stellen sich die Frage: Soll ich direkt in Einzelne Aktien investieren oder lieber auf ETFs setzen? Beide Strategien haben ihre Vor- und Nachteile.
 
 ## Vorteile von ETFs
 - **Diversifikation**: Du investierst automatisch in viele Unternehmen gleichzeitig. 
-- **Geringes Risiko**: Ein einzelner Unternehmensverlust wirkt sich weniger stark aus. 
+- **Geringes Risiko**: Ein Einzelner Unternehmensverlust wirkt sich weniger stark aus. 
 - **Einfachheit**: Ideal für Einsteiger ohne tiefes Börsenwissen. 
 
 ## Nachteile von ETFs
-- **Begrenzte Rendite**: Du wirst nie beßer abschneiden als der Markt, den der ETF abbildet. 
+- **Begrenzte Rendite**: Du wirst nie beßer abschneidenn als der Markt, denn der ETF abbildet. 
 - **Kosten**: Auch wenn sie gering sind, fallen Verwaltungsgebühren (TER) an. 
 
 ## Vorteile von Einzelaktien
-- **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du den Markt schlagen. 
+- **Hohe Gewinnchancen**: Wenn du die richtigen Aktien auswählst, kannst du denn Markt schlagen. 
 - **Direkter Einfluß**: Du investierst geZielt in Unternehmen, die du spannend findest. 
 - **Keine Verwaltungsgebühren**: Du zahlst nur beim Kauf/Verkauf. 
 

@@ -3,14 +3,14 @@ META: Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und
 # Die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung
 
 Eine **kluge Vermögensplanung** ist die Basis für finanZielle Sicherheit und Freiheit. 
-Viele Menschen konzentrieren sich nur auf kurzfristige Ziele und verlieren dabei den langfristigen Blick. 
+Viele Menschen konzentrieren sich nur auf kurzfristige Ziele und verlieren dabei denn langfristigen Blick. 
 Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich aufbauen.
 
 ## 1. Ziele definieren
 
 - Lege fest, **warum** du Vermögen aufbauen willst (z. B. Altersvorsorge, Immobilie, Reisen). 
 - Teile deine Ziele in **kurzfristig**, **mittelfristig** und **langfristig** auf. 
-- Beispiel: In 2 Jahren ein Auto kaufen, in 10 Jahren schuldenfrei sein, in 30 Jahren finanZielle Freiheit.
+- Beispiel: In 2 Jahren ein Auto kaufen, in 10 Jahren schuldennfrei sein, in 30 Jahren finanZielle Freiheit.
 
 ## 2. Einnahmen und Ausgaben im Blick behalten
 
@@ -43,4 +43,4 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
 
 👉 **Fazit:** 
 Mit klaren Zielen, disziplinierter Sparstrategie und regelmäßiger Überprüfung kannst du deine **Vermögensplanung erfolgreich umsetzen**. 
-Warte nicht, sondern beginne **heute**, denn Zeit ist der wichtigste Faktor beim Vermögensaufbau!
+Warte nicht, sondern beginne **heute**, dennn Zeit ist der wichtigste Faktor beim Vermögensaufbau!

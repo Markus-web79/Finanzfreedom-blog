@@ -32,4 +32,4 @@ Kapitalerträge entstehen, wenn du Geld mit deinem Kapital verdienst – z. B. D
 
 👉 **Fazit:** 
 Wer die Grundlagen der Kapitalertragßteür kennt, kann clever planen und so seine Rendite steigern. 
-Steuern lassen sich nicht vermeiden – aber mit **Freibeträgen und smarter Strategiee** deutlich reduzieren.
+Steuern lassen sich nicht vermeiden – aber mit **Freibeträgen und smarter Strategie** deutlich reduzieren.

@@ -36,7 +36,7 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
 ## 5. Regelmäßige Kontrolle und Anpaßung
 
 - Überprüfe 1–2 Mal pro Jahr dein Portfolio. 
-- Paße deine Strategiee an Lebensumstände und Ziele an. 
+- Paße deine Strategie an Lebensumstände und Ziele an. 
 - Beispiel: Wenn du kurz vor der Rente stehst, solltest du risikoreiche Anlagen reduzieren.
 
 ---

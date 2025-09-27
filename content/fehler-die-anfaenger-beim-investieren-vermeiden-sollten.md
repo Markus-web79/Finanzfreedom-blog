@@ -4,7 +4,7 @@ META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen
 
 Der Einstieg in die Welt der Finanzen und Investments ist spannend – aber auch riskant, wenn man typische Anfängerfehler macht. Hier sind die häufigsten Fehler und wie du sie vermeidest:
 
-## 1. Kein Plan und keine Strategiee
+## 1. Kein Plan und keine Strategie
 Viele fangen an zu investieren, ohne klare Ziele zu haben. 
 👉 **Tipp:** Überlege dir, ob du für die Rente, eine größere Anschaffung oder einfach Vermögensaufbau sparen willst.
 

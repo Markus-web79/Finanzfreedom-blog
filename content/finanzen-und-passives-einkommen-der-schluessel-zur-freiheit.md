@@ -1,6 +1,6 @@
 META: Verstehe, warum Finanzen und passives Einkommen die Basis für deine finanzielle Freiheit sind.
 
-# Finanzen & passives Einkommen: Der schlüssel zur finanziellen Freiheit
+# Finanzen & passives Einkommen: Der Schlüssel zur finanziellen Freiheit
 
 Der Weg zur finanziellen Freiheit beginnt mit zwei Säulen: soliden Finanzen und dem Aufbau von passivem Einkommen. Wer diese Prinzipien versteht und umsetzt, kann langfristig unabhängiger und sicherer leben.
 

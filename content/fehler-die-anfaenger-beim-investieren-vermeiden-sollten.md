@@ -1,4 +1,4 @@
-META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und baü dir ein solides Fundament für deinen Vermögensaufbau.
+META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und bau dir ein solides Fundament für deinen Vermögensaufbau.
 
 # Fehler, die Anfänger beim Investieren vermeiden sollten
 

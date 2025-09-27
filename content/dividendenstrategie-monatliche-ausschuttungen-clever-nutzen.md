@@ -2,7 +2,7 @@ META: Lerne, wie du mit einer cleveren Dividendenstrategie regelmäßige Einnahm
 
 # Dividendenstrategie: Monatliche Ausschüttungen clever nutzen
 
-Eine durchdachte Dividendenstrategie kann dir helfen, ein **stabiles passives Einkommen** aufzubaün. 
+Eine durchdachte Dividendenstrategie kann dir helfen, ein **stabiles passives Einkommen** aufzubaun. 
 Dividenden sind Gewinnausschüttungen von Unternehmen an ihre Aktionäre und eine beliebte Einnahmequelle für Anleger.
 
 ## Was sind Dividenden?

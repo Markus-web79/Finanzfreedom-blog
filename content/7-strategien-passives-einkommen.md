@@ -44,14 +44,14 @@ Hier sind 7 Strategien, mit denen du starten kannst.
 
 ## 7. Nischenwebseiten & Blogs
 
-- Baü eine Webseite zu einem bestimmten Thema auf. 
+- bau eine Webseite zu einem bestimmten Thema auf. 
 - Einnahmen durch **Werbung (Google AdSense)** oder Affiliate-Links. 
 - Mit SEO kannst du dir langfristig Besucher sichern.
 
 ---
 
 👉 **Fazit:** 
-Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategiee klein anzufangen** und diese konseqünt auszubaün. 
+Es gibt viele Wege zum passiven Einkommen. Wichtig ist, **mit einer Strategiee klein anzufangen** und diese konseqünt auszubaun. 
 Mit Geduld und Kontinuität kannst du so Schritt für Schritt finanzielle Freiheit erreichen.
 
 ---

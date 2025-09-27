@@ -2,21 +2,21 @@
   "corrections": {
     "steür": "steuer",
     "steürn": "steuern",
-{
-  "abgeltungßteür": "Abgeltungsteuer",
-  "abgeltungssteuer": "Abgeltungsteuer",
-  "kapitalertragßteür": "Kapitalertragsteuer",
-  "kapitalertragssteür": "Kapitalertragssteuer",
-  "kapitalertragssteüren": "Kapitalertragssteuern",
-  "steuersatz": "Steuersatz",
-  "steuersätze": "Steuersätze",
-  "steuerzahler": "Steuerzahler",
-  "sparer-pauschbetrag": "Sparer-Pauschbetrag",
-  "freistellungsauftraag": "Freistellungsauftrag",
-  "freistellungsaufträg": "Freistellungsauftrag",
-  "solidaritätszuschlag": "Solidaritätszuschlag",
-  "kirchensteür": "Kirchensteuer"
-}
+
+    "abgeltungßteür": "Abgeltungsteuer",
+    "abgeltungssteuer": "Abgeltungsteuer",
+    "kapitalertragßteür": "Kapitalertragsteuer",
+    "kapitalertragssteür": "Kapitalertragssteuer",
+    "kapitalertragssteüren": "Kapitalertragssteuern",
+    "steuersatz": "Steuersatz",
+    "steuersätze": "Steuersätze",
+    "steuerzahler": "Steuerzahler",
+    "sparer-pauschbetrag": "Sparer-Pauschbetrag",
+    "freistellungsauftraag": "Freistellungsauftrag",
+    "freistellungsaufträg": "Freistellungsauftrag",
+    "solidaritätszuschlag": "Solidaritätszuschlag",
+    "kirchensteür": "Kirchensteuer",
+
     "paßiv": "passiv",
     "paßives": "passives",
     "paßivem": "passivem",
@@ -47,8 +47,7 @@
     "schaü": "schau",
     "artíkel": "Artikel",
     "strategíe": "Strategie",
-    "kapitalertragssteür": "Kapitalertragssteuer",
-    "kapitalertragssteüren": "Kapitalertragssteuern",
+
     "ökonomie": "Ökonomie",
 
     "führe": "führe",

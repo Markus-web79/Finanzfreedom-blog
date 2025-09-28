@@ -1,60 +1,65 @@
-name: Blog Pipeline
+/**
+ * fixContent.js
+ * Läuft in GitHub Actions, korrigiert alle .md-Dateien im content/-Ordner
+ */
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-jobs:
-  blog:
-    runs-on: ubuntu-latest
+// Pfad ermitteln
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const CONTENT_DIR = path.resolve(__dirname, "../content");
 
-    steps:
-      # 1️⃣ Repository auschecken
-      - name: Checkout repository
-        uses: actions/checkout@v4
+// Dictionary laden
+const DICT_PATH = path.resolve(__dirname, "../dictionary.json");
+let dictionary = {};
+try {
+  dictionary = JSON.parse(fs.readFileSync(DICT_PATH, "utf-8"));
+} catch (err) {
+  console.error("❌ Konnte dictionary.json nicht laden:", err);
+  process.exit(1);
+}
 
-      # 2️⃣ Node.js installieren
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+// Alle Korrekturen extrahieren
+const corrections = dictionary.corrections || {};
+const allowedWords = new Set(dictionary.words || []);
 
-      # 3️⃣ Abhängigkeiten installieren
-      - name: Install dependencies
-        run: npm ci || npm install
+// Funktion zur Autokorrektur
+function fixText(text) {
+  let fixed = text;
+  for (const [wrong, correct] of Object.entries(corrections)) {
+    const regex = new RegExp(`\\b${wrong}\\b`, "gi");
+    fixed = fixed.replace(regex, correct);
+  }
+  return fixed;
+}
 
-      # 4️⃣ Rechtschreibprüfung & Auto-Fix
-      - name: Check & Fix Content
-        run: |
-          echo "🔍 Starte Rechtschreibprüfung & Auto-Fix..."
-          node scripts/fixContent.js || echo "Keine Änderungen gefunden"
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content || echo "Nichts zu committen"
-          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
-          git push || echo "Kein Push notwendig"
+// Alle Markdown-Dateien finden
+function getMarkdownFiles(dir) {
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => path.join(dir, f));
+}
 
-      # 5️⃣ Fehlende YAML-Header (Frontmatter) hinzufügen
-      - name: Fix Frontmatter (Titles)
-        run: |
-          echo "📝 Füge fehlende Titel & Meta-Header hinzu..."
-          node scripts/fixFrontmatter.js
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content
-          git commit -m "📝 Frontmatter hinzugefügt" || echo "Keine Änderungen"
-          git push || echo "Kein Push notwendig"
+// Hauptlauf
+let changedFiles = [];
+const files = getMarkdownFiles(CONTENT_DIR);
 
-      # 6️⃣ Deploy zu Vercel (Prod)
-      - name: Deploy to Vercel (prod)
-        run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
-          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
+for (const file of files) {
+  const original = fs.readFileSync(file, "utf-8");
+  const fixed = fixText(original);
+  if (fixed !== original) {
+    fs.writeFileSync(file, fixed, "utf-8");
+    changedFiles.push(path.basename(file));
+    console.log(`✔ Korrigiert: ${path.basename(file)}`);
+  }
+}
 
-      # 7️⃣ URL anzeigen
-      - name: Show Deployment URL
-        run: echo "🚀 Live: ${{ env.url }}"
+if (changedFiles.length === 0) {
+  console.log("✅ Keine Änderungen nötig.");
+} else {
+  console.log(`✅ Fertig! ${changedFiles.length} Datei(en) korrigiert.`);
+}

@@ -1,3 +1,9 @@
+---
+title: "Affiliate-Marketing Schritt für Schritt erklärt"
+date: 2025-09-28
+meta: "Affiliate-Marketing Schritt für Schritt erklärt – so baust du dein erstes Einkommen auf."
+---
+
 META: Affiliate-Marketing Schritt für Schritt erklärt – so baust du dein erstes Einkommen auf.
 
 # Affiliate-Marketing: Schritt für Schritt zum ersten Einkommen

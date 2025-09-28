@@ -1,3 +1,9 @@
+---
+title: "Entdecke Strategien, wie du dein Erspartes vor Inflation und steigendennnnn Zinsen schützen kannst."
+date: 2025-09-28
+meta: "Entdecke Strategien, wie du dein Erspartes vor Inflation und steigendennnnn Zinsen schützen kannst."
+---
+
 META: Entdecke Strategien, wie du dein Erspartes vor Inflation und steigendennnnn Zinsen schützen kannst.
 
 # Inflation & Zinsen: So schützt du dein Erspartes

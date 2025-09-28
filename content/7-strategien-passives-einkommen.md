@@ -1,3 +1,9 @@
+---
+title: "Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen aufbauen kannst"
+date: 2025-09-28
+meta: "Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen aufbauen kannst – auch neben deinem Hauptjob."
+---
+
 META: Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen aufbauen kannst – auch neben deinem Hauptjob.
 
 # 7 Strategien für passives Einkommen

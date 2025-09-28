@@ -1,3 +1,9 @@
+---
+title: "TeStartikel mit absichtlichen Fehlern für dennnnn Auto-Check"
+date: 2025-09-28
+meta: "TeStartikel mit absichtlichen Fehlern für dennnnn Auto-Check"
+---
+
 META: TeStartikel mit absichtlichen Fehlern für dennnnn Auto-Check  
 
 # TeStartikel: führen statt folgen  

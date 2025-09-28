@@ -1,3 +1,9 @@
+---
+title: "Verstehe, warum Finanzen und passives Einkommen die Basis für deine finanZielle Freiheit sind."
+date: 2025-09-28
+meta: "Verstehe, warum Finanzen und passives Einkommen die Basis für deine finanZielle Freiheit sind."
+---
+
 META: Verstehe, warum Finanzen und passives Einkommen die Basis für deine finanZielle Freiheit sind.
 
 # Finanzen & passives Einkommen: Der Schlüssel zur finanZiellen Freiheit

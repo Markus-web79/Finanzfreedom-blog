@@ -1,3 +1,9 @@
+---
+title: "Dies ist ein TeStartikel mit absichtlichen Fehlern für die Autokorrektur."
+date: 2025-09-28
+meta: "Dies ist ein TeStartikel mit absichtlichen Fehlern für die Autokorrektur."
+---
+
 META: Dies ist ein TeStartikel mit absichtlichen Fehlern für die Autokorrektur.
 
 Die Zukunft der FinanzBeratunggggggggggggg wird immer digitaler, doch die klassische Art bleibt trotzdem wichtig.  

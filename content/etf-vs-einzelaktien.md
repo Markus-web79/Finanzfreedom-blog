@@ -1,3 +1,9 @@
+---
+title: "Solltest du lieber in ETFs oder einzelneneAktien investieren? Hier sind die Vor- und Nachteile für Einsteiger."
+date: 2025-09-28
+meta: "Solltest du lieber in ETFs oder einzelneneAktien investieren? Hier sind die Vor- und Nachteile für Einsteiger."
+---
+
 META: Solltest du lieber in ETFs oder einzelneneAktien investieren? Hier sind die Vor- und Nachteile für Einsteiger.
 
 # ETF vs. einzelneneAktien: Was ist sinnvoll für Anfänger?

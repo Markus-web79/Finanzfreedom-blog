@@ -1,3 +1,9 @@
+---
+title: "Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und wie du langfristig Wohlstand aufbauen kannst."
+date: 2025-09-28
+meta: "Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und wie du langfristig Wohlstand aufbauen kannst."
+---
+
 META: Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und wie du langfristig Wohlstand aufbauen kannst.
 
 # Die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung

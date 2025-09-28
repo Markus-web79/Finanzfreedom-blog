@@ -1,3 +1,9 @@
+---
+title: "Willkommen auf dem FinanzFreedom Blog"
+date: 2025-09-28
+meta: "Willkommen auf dem FinanzFreedom Blog – dein Startpunkt für Finanzen und passives Einkommen."
+---
+
 META: Willkommen auf dem FinanzFreedom Blog – dein Startpunkt für Finanzen und passives Einkommen.
 
 # Willkommen auf dem FinanzFreedom Blog

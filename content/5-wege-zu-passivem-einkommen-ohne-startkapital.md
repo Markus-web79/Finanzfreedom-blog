@@ -1,3 +1,9 @@
+---
+title: "Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives Einkommen aufbauen kannst."
+date: 2025-09-28
+meta: "Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives Einkommen aufbauen kannst."
+---
+
 META: Entdecke 5 erprobte Wege, wie du ohne Startkapital ein stabiles passives Einkommen aufbauen kannst.
 
 # 5 Wege zu passivem Einkommen ohne Startkapital

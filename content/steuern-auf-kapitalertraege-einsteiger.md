@@ -1,3 +1,9 @@
+---
+title: "Verstehe die Grundlagen der Besteuerung von Kapitalerträgen und wie du legal steuern sparen kannst."
+date: 2025-09-28
+meta: "Verstehe die Grundlagen der Besteuerung von Kapitalerträgen und wie du legal steuern sparen kannst."
+---
+
 META: Verstehe die Grundlagen der Besteuerung von Kapitalerträgen und wie du legal steuern sparen kannst.
 
 # steuern auf Kapitalerträge: Grundlagen für Einsteiger

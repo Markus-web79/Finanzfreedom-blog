@@ -1,3 +1,9 @@
+---
+title: "Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und bau dir ein solides Fundament für deinen Vermögensaufbau."
+date: 2025-09-28
+meta: "Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und bau dir ein solides Fundament für deinen Vermögensaufbau."
+---
+
 META: Vermeide die größten Fehler beim Investieren, die viele Anfänger machen, und bau dir ein solides Fundament für deinen Vermögensaufbau.
 
 # Fehler, die Anfänger beim Investieren vermeidennnnn sollten

@@ -10,7 +10,7 @@ Gerade Einsteiger profitieren davon, dass sie kein eigenes Produkt entwickeln m�
 - Überlege, in welchem Bereich du Inhalte erstellen möchtest. 
 - Achte auf eine Nische mit **Nachfrage** (z. B. Finanzen, Gesundheit, Reisen). 
 
-## Schritt 2: Passende Partnerprogramme findennnn
+## Schritt 2: Passende Partnerprogramme findennnnn
 
 - Amazon PartnerNet → für physische Produkte. 
 - Digistore24 / CopeCart → für digitale Produkte (Kurse, E-Books). 

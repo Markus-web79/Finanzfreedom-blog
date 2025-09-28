@@ -1,60 +1,60 @@
-/**
- * fixFrontmatter.js
- * Fügt fehlende YAML-Header in allen Markdown-Dateien im /content Ordner hinzu
- * Nutzt die META:-Zeile, um title & meta zu erzeugen
- */
+name: Blog Pipeline
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const CONTENT_DIR = path.resolve(__dirname, "../content");
+jobs:
+  blog:
+    runs-on: ubuntu-latest
 
-function getMarkdownFiles(dir) {
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => path.join(dir, f));
-}
+    steps:
+      # 1️⃣ Repository auschecken
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-function slugToTitle(slug) {
-  return slug
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
+      # 2️⃣ Node.js installieren
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-const files = getMarkdownFiles(CONTENT_DIR);
-let changed = 0;
+      # 3️⃣ Abhängigkeiten installieren
+      - name: Install dependencies
+        run: npm ci || npm install
 
-for (const file of files) {
-  let text = fs.readFileSync(file, "utf-8");
+      # 4️⃣ Rechtschreibprüfung & Auto-Fix
+      - name: Check & Fix Content
+        run: |
+          echo "🔍 Starte Rechtschreibprüfung & Auto-Fix..."
+          node scripts/fixContent.js || echo "Keine Änderungen gefunden"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content || echo "Nichts zu committen"
+          git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
+          git push || echo "Kein Push notwendig"
 
-  // Skip if YAML-Header schon vorhanden
-  if (text.startsWith("---")) continue;
+      # 5️⃣ Fehlende YAML-Header (Frontmatter) hinzufügen
+      - name: Fix Frontmatter (Titles)
+        run: |
+          echo "📝 Füge fehlende Titel & Meta-Header hinzu..."
+          node scripts/fixFrontmatter.js
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content
+          git commit -m "📝 Frontmatter hinzugefügt" || echo "Keine Änderungen"
+          git push || echo "Kein Push notwendig"
 
-  const lines = text.split("\n");
-  const metaLine = lines.find((l) => l.startsWith("META:"));
-  const meta = metaLine ? metaLine.replace("META:", "").trim() : "";
+      # 6️⃣ Deploy zu Vercel (Prod)
+      - name: Deploy to Vercel (prod)
+        run: |
+          npx vercel --prod --yes -A vercel.json \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
+          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
-  // Titel aus META oder aus Dateiname
-  const title = meta
-    ? meta.split("–")[0].trim()
-    : slugToTitle(path.basename(file, ".md"));
-
-  const today = new Date().toISOString().slice(0, 10);
-
-  const header = `---\ntitle: "${title}"\ndate: ${today}\nmeta: "${meta}"\n---\n\n`;
-
-  text = header + text;
-  fs.writeFileSync(file, text, "utf-8");
-  changed++;
-  console.log(`✔ Header hinzugefügt: ${path.basename(file)}`);
-}
-
-if (changed === 0) {
-  console.log("✅ Alle Dateien hatten bereits einen Header.");
-} else {
-  console.log(`✅ Fertig! ${changed} Datei(en) aktualisiert.`);
-}
+      # 7️⃣ URL anzeigen
+      - name: Show Deployment URL
+        run: echo "🚀 Live: ${{ env.url }}"

@@ -29,7 +29,7 @@ Viele Anfänger träumen von schnellen Gewinnen und setzen dabei unrealistische 
 
 ### Tipp:
 
-Setzen Sie sich realistische Ziele. Durchschnittliche jährliche Renditen von etwa 5-7% sind für viele Anlagen realistisch. Vermeiden Sie den Drang, in „heiße“ Investments einzusteigen, nur weil andere dies tun.
+Setzen Sie sich realistische Ziele. Durchschnittliche jährliche Renditen von etwa 5-7% sind für viele Anlagen realistisch. Vermeiden Sie denn Drang, in „heiße“ Investments einzusteigen, nur weil andere dies tun.
 
 ## 3. Mangelnde Diversifikation
 
@@ -39,7 +39,7 @@ Ein häufiger Fehler ist das Setzen auf nur eine oder wenige Anlagen. Wenn diese
 
 ### Tipp:
 
-Streuen Sie Ihr Portfolio über verschiedene Anlageklassen wie Aktien, Anleihen, Immobilien oder Rohstoffe. Dies hilft, das Risiko zu verteilen und gibt Ihnen die Möglichkeit, in verschiedenen Marktbedingungen zu wachsen.
+Streuen Sie Ihr Portfolio über verschiedene Anlageklassen wie Aktien, Anleihen, Immobilien oder Rohstoffe. Dies hilft, das Risiko zu verteilen und gibt Ihnen die Möglichkeit, in verschiedenen Marktbedingungen zu Wachstum.
 
 ## 4. Emotionale Entscheidungen treffen
 

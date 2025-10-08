@@ -1,0 +1,40 @@
+name: 🚀 Deploy Blog to Vercel
+
+on:
+  push:
+    branches:
+      - main         # immer wenn auf main gepusht wird
+  workflow_dispatch: # zusätzlich manuell auslösbar
+  schedule:
+    - cron: "0 */6 * * *"   # optional: alle 6 Stunden ausführen
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      # Build-Schritt (falls dein Blog einen Build braucht, sonst kann dieser Step weg)
+      - name: Build project
+        run: npm run build || echo "Kein Build notwendig"
+
+      - name: Deploy to Vercel
+        run: |
+          echo "🚀 Starte Deployment zu Vercel..."
+          npx vercel --prod --yes -A vercel.json \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
+          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
+
+      - name: Show Live URL
+        run: echo "✅ Live-URL: ${{ env.url }}"

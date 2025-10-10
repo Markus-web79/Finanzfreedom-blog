@@ -1,4 +1,4 @@
-name: 🚀 Deploy Blog to Vercel
+name: 🚀 Deploy Blog (Fix)
 
 on:
   workflow_dispatch:

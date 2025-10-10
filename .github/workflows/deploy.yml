@@ -1,9 +1,10 @@
-name: Deploy to Vercel
+name: 🚀 Deploy to Vercel
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -21,12 +22,15 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Deploy to Vercel (prod)
+      - name: Deploy to Vercel (Production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
+          echo "🚀 Starte Vercel-Deployment..."
+          npx vercel --prod --yes -A vercel.json --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE" > deployment.txt
+          cat deployment.txt || true
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Live URL
-        run: echo "✅ Live-URL: ${{ env.url }}"
+        run: echo "✅ Live unter: ${{ env.url }}"

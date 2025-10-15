@@ -1,3 +1,4 @@
+---
 name: "🚀 Deploy Blog to Vercel"
 # force reload
 on:
@@ -31,3 +32,6 @@ jobs:
 
       - name: Show Live URL
         run: echo "✅ Live URL: ${{ env.url }}"
+        # end of workflow
+        
+        

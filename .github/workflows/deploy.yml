@@ -25,9 +25,7 @@ jobs:
 
       - name: Deploy to Vercel (prod)
         run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token="${{ secrets.VERCEL_TOKEN }}" \
-            --scope="${{ secrets.VERCEL_SCOPE }}" > deployment.txt
+          npx vercel --prod --yes -A vercel.json --token="${{ secrets.VERCEL_TOKEN }}" --scope="${{ secrets.VERCEL_SCOPE }}" > deployment.txt
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Live URL

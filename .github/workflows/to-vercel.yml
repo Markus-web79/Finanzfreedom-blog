@@ -1,4 +1,4 @@
-name: "🚀 Deploy Blog to Vercel"
+name: 🚀 Deploy Blog to Vercel
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,17 +19,14 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          npm ci || npm install
+        run: npm ci || npm install
 
       - name: Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=$VERCEL_TOKEN \
-            --scope=$VERCEL_SCOPE > deployment.txt
+          npx vercel --prod --yes -A vercel.json --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE > deployment.txt
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Live URL

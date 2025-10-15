@@ -14,10 +14,18 @@ export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
+      // 🔧 Stelle sicher, dass date ein String ist, kein Date-Objekt
+      let dateValue = data.date;
+      if (dateValue instanceof Date) {
+        dateValue = dateValue.toISOString().split("T")[0];
+      } else if (typeof dateValue !== "string") {
+        dateValue = "1970-01-01";
+      }
+
       return {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
-        date: data.date || "1970-01-01",
+        date: dateValue,
         excerpt: data.excerpt || content.slice(0, 150) + "...",
       };
     });
@@ -32,7 +40,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: sortedPosts,
+      // 🔧 JSON-Serializable machen (verhindert Build-Fehler)
+      posts: JSON.parse(JSON.stringify(sortedPosts)),
     },
   };
 }

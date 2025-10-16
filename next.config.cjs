@@ -1,6 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // keine "output: export" mehr – Vercel baut Next.js selbst
+// ✅ Next.js Konfiguration für statischen Export (CommonJS-Version)
+module.exports = {
+  output: "export", // sorgt für statische HTML-Erstellung
+  trailingSlash: true, // URLs enden mit /
+  reactStrictMode: true,
+  swcMinify: true,
 };
-
-module.exports = nextConfig;

@@ -11,9 +11,7 @@ export async function getStaticPaths() {
   const paths = filenames
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => ({
-      params: {
-        slug: filename.replace(/\.md$/, ""),
-      },
+      params: { slug: filename.replace(/\.md$/, "") },
     }));
 
   console.log("🧭 Generierte Paths für Export:", paths);
@@ -28,6 +26,7 @@ export async function getStaticProps({ params }) {
   const postsDirectory = path.join(process.cwd(), "content");
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
   const fileContents = fs.readFileSync(filePath, "utf8");
+
   const { data, content } = matter(fileContents);
 
   return {

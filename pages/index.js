@@ -8,13 +8,13 @@ export async function getStaticProps() {
   const filenames = fs.readdirSync(postsDirectory);
 
   const posts = filenames
-    .filter((filename) => filename.endsWith(".md")) // ✅ nur Markdown-Dateien berücksichtigen
+    .filter((filename) => filename.endsWith(".md"))
     .map((filename) => {
       const filePath = path.join(postsDirectory, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
-      // 🔧 Stelle sicher, dass date ein String ist, kein Date-Objekt
+      // 🔧 Sicherstellen, dass date ein String ist
       let dateValue = data.date;
       if (dateValue instanceof Date) {
         dateValue = dateValue.toISOString().split("T")[0];
@@ -33,14 +33,12 @@ export async function getStaticProps() {
   // sortiere nach Datum (neueste zuerst)
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // "Willkommen" an den Anfang setzen
   const welcomePost = posts.find((post) => post.slug === "willkommen");
   const otherPosts = posts.filter((post) => post.slug !== "willkommen");
   const sortedPosts = welcomePost ? [welcomePost, ...otherPosts] : posts;
 
   return {
     props: {
-      // 🔧 JSON-Serializable machen (verhindert Build-Fehler)
       posts: JSON.parse(JSON.stringify(sortedPosts)),
     },
   };
@@ -48,17 +46,17 @@ export async function getStaticProps() {
 
 export default function Home({ posts }) {
   return (
-    <div>
+    <div style={{ maxWidth: "800px", margin: "2rem auto", fontFamily: "system-ui, sans-serif" }}>
       <h1>📈 FinanzFreedom Blog</h1>
       <p>Automatisch generierte Artikel über Finanzen & passives Einkommen.</p>
 
-      <ul>
+      <ul style={{ listStyle: "none", padding: 0 }}>
         {posts.map((post) => (
-          <li key={post.slug}>
-            <Link href={`/pages/${post.slug}`}>
-              <h2>{post.title}</h2>
+          <li key={post.slug} style={{ marginBottom: "2rem" }}>
+            <Link href={`/${post.slug}`}>
+              <h2 style={{ color: "#0070f3", cursor: "pointer" }}>{post.title}</h2>
             </Link>
-            <p>{post.date}</p>
+            <p style={{ color: "#666" }}>{post.date}</p>
             <p>{post.excerpt}</p>
           </li>
         ))}

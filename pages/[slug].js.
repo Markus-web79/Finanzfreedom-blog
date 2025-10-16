@@ -3,11 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
+// 🔹 Alle möglichen Artikel-Pfade generieren
 export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
-  // ✅ nur Markdown-Dateien berücksichtigen
   const paths = filenames
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => ({
@@ -16,45 +16,45 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, // keine dynamischen Seiten
+    fallback: "blocking", // 🔧 wichtig für statischen Export
   };
 }
 
+// 🔹 Inhalte und Metadaten pro Artikel laden
 export async function getStaticProps({ params }) {
   const postsDirectory = path.join(process.cwd(), "content");
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
   const fileContents = fs.readFileSync(filePath, "utf8");
-
   const { data, content } = matter(fileContents);
 
   return {
     props: {
-      frontmatter: {
-        title: data.title || "Unbenannter Artikel",
-        date: data.date || "1970-01-01",
-      },
-      content: marked(content), // ✅ Markdown in HTML umwandeln
+      title: data.title || "Unbenannter Artikel",
+      date: data.date || "1970-01-01",
+      htmlContent: marked(content), // Markdown → HTML
     },
   };
 }
 
-export default function Post({ frontmatter, content }) {
+// 🔹 Einzelner Blogartikel (mit Markdown-Rendering)
+export default function Post({ title, date, htmlContent }) {
   return (
     <article
       style={{
         maxWidth: "800px",
         margin: "2rem auto",
+        padding: "1rem",
         lineHeight: "1.7",
         fontFamily: "system-ui, sans-serif",
       }}
     >
-      <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-        {frontmatter.title}
-      </h1>
-      <p style={{ color: "#666", marginBottom: "2rem" }}>{frontmatter.date}</p>
+      <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>{title}</h1>
+      <p style={{ color: "#666", marginBottom: "2rem" }}>
+        📅 {date}
+      </p>
       <div
         className="markdown-body"
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
     </article>
   );

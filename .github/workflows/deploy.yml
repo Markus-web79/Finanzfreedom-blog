@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,14 +20,17 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          npm ci || npm install
+        run: npm ci || npm install
+
+      - name: Build static site
+        run: npm run build
 
       - name: Deploy to Vercel (prod)
         run: |
-          npx vercel --prod --yes -A vercel.json --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
+          npx vercel --prod --yes -A vercel.json \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: Show Live URL
-        run: |
-          echo "✅ Live URL: ${{ env.url }}"
+        run: echo "✅ Live URL: ${{ env.url }}"

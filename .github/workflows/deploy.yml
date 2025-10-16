@@ -22,10 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build static site
+      - name: Build & Export static site
         run: npm run build
 
-      - name: Deploy to Vercel (prod)
+      - name: Deploy to Vercel (production)
         run: |
           npx vercel --prod --yes -A vercel.json \
             --token=${{ secrets.VERCEL_TOKEN }} \

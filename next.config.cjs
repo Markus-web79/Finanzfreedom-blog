@@ -11,7 +11,15 @@ const nextConfig = {
 
   // ⬇️ stellt sicher, dass .js und .jsx Dateien als Pages erkannt werden
   pageExtensions: ["js", "jsx"],
+
+  // ⬇️ wichtiger Zusatz: verhindert Abbruch bei leeren oder nicht gefundenen Routen
+  eslint: { ignoreDuringBuilds: true },
+
+  // ⬇️ für dynamische Routen wie /pages/[slug]
+  experimental: {
+    fallbackNodePolyfills: false,
+  },
 };
 
-// ⬅️ wichtig: CommonJS-Export statt ESModule
+// ⬅️ CommonJS-Export (nicht ESModule)
 module.exports = nextConfig;

@@ -1,68 +1,54 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
 
-// 🔹 Alle möglichen Artikel-Pfade generieren
 export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
+  console.log("📂 Gefundene Dateien im content-Ordner:", filenames);
+
   const paths = filenames
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => ({
-      params: { slug: filename.replace(/\.md$/, "") },
+      params: {
+        slug: filename.replace(/\.md$/, ""),
+      },
     }));
+
+  console.log("🧭 Generierte Paths für Export:", paths);
 
   return {
     paths,
-    fallback: true, // ⬅️ Erzeugt statische Seiten bei Bedarf
+    fallback: false,
   };
 }
 
-// 🔹 Inhalte und Metadaten pro Artikel laden
 export async function getStaticProps({ params }) {
-  try {
-    const postsDirectory = path.join(process.cwd(), "content");
-    const filePath = path.join(postsDirectory, `${params.slug}.md`);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContents);
+  const postsDirectory = path.join(process.cwd(), "content");
+  const filePath = path.join(postsDirectory, `${params.slug}.md`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(fileContents);
 
-    return {
-      props: {
-        title: data.title || "Unbenannter Artikel",
-        date: data.date || "1970-01-01",
-        htmlContent: marked(content || ""),
-      },
-    };
-  } catch (err) {
-    console.error("⚠️ Fehler beim Laden des Artikels:", err);
-    return { notFound: true };
-  }
+  return {
+    props: {
+      title: data.title || "Unbenannter Artikel",
+      date: data.date || "1970-01-01",
+      content,
+    },
+  };
 }
 
-// 🔹 Einzelner Blogartikel mit Fallback-Anzeige
-export default function Post({ title, date, htmlContent }) {
-  if (!title) {
-    return <p style={{ textAlign: "center", marginTop: "2rem" }}>⏳ Lade Artikel...</p>;
-  }
-
+export default function Post({ title, date, content }) {
   return (
-    <article
-      style={{
-        maxWidth: "800px",
-        margin: "2rem auto",
-        padding: "1rem",
-        lineHeight: "1.7",
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>{title}</h1>
-      <p style={{ color: "#666", marginBottom: "2rem" }}>📅 {date}</p>
-      <div
-        className="markdown-body"
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
-      />
+    <article style={{ maxWidth: "800px", margin: "2rem auto", lineHeight: "1.7" }}>
+      <h1>{title}</h1>
+      <p style={{ color: "#666" }}>{date}</p>
+      <div>
+        {content.split("\n").map((line, idx) => (
+          <p key={idx}>{line}</p>
+        ))}
+      </div>
     </article>
   );
 }

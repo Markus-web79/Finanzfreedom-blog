@@ -4,20 +4,25 @@ import matter from "gray-matter";
 import { marked } from "marked";
 
 export async function getStaticPaths() {
-  // 👇 Absoluter Pfad zu deinem Content-Ordner
   const postsDirectory = path.join(process.cwd(), "content");
+  console.log("🔍 postsDirectory:", postsDirectory);
 
-  // 👇 Alle Markdown-Dateien im Content-Ordner lesen
+  if (!fs.existsSync(postsDirectory)) {
+    console.log("❌ content folder not found!");
+    return { paths: [], fallback: false };
+  }
+
   const filenames = fs
     .readdirSync(postsDirectory)
     .filter((filename) => filename.endsWith(".md"));
 
-  console.log("Found Markdown files:", filenames);
+  console.log("✅ Found Markdown files:", filenames);
 
-  // 👇 Für jede Datei einen Slug erzeugen
   const paths = filenames.map((filename) => ({
     params: { slug: filename.replace(/\.md$/, "") },
   }));
+
+  console.log("✅ Paths generated for Next.js:", paths);
 
   return {
     paths,

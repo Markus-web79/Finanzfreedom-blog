@@ -3,17 +3,16 @@
  * Läuft in GitHub Actions, korrigiert alle .md-Dateien im content/-Ordner
  */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+const fs = require("fs");
+const path = require("path");
 
-// Pfad ermitteln
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Pfad zum content/-Ordner ermitteln
 const CONTENT_DIR = path.resolve(__dirname, "../content");
 
-// Dictionary laden
+// Pfad zur dictionary.json
 const DICT_PATH = path.resolve(__dirname, "../dictionary.json");
+
+// Dictionary laden
 let dictionary = {};
 try {
   dictionary = JSON.parse(fs.readFileSync(DICT_PATH, "utf-8"));
@@ -36,7 +35,7 @@ function fixText(text) {
   return fixed;
 }
 
-// Alle Markdown-Dateien finden
+// Alle Markdown-Dateien im content/-Ordner finden
 function getMarkdownFiles(dir) {
   return fs
     .readdirSync(dir)
@@ -58,6 +57,7 @@ for (const file of files) {
   }
 }
 
+// Ergebnis ausgeben
 if (changedFiles.length === 0) {
   console.log("✅ Keine Änderungen nötig.");
 } else {

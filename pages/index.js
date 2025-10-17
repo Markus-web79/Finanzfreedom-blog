@@ -14,8 +14,7 @@ export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
-      // 🔧 Sicherstellen, dass date ein String ist
-      let dateValue = data.date;
+      let dateValue = data?.date;
       if (dateValue instanceof Date) {
         dateValue = dateValue.toISOString().split("T")[0];
       } else if (typeof dateValue !== "string") {
@@ -24,40 +23,36 @@ export async function getStaticProps() {
 
       return {
         slug: filename.replace(/\.md$/, ""),
-        title: data.title || "Unbenannter Artikel",
+        title: data?.title || "Unbenannter Artikel",
         date: dateValue,
-        excerpt: data.excerpt || content.slice(0, 150) + "...",
+        excerpt: data?.excerpt || content.slice(0, 150) + "...",
       };
     });
 
-  // sortiere nach Datum (neueste zuerst)
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const welcomePost = posts.find((post) => post.slug === "willkommen");
-  const otherPosts = posts.filter((post) => post.slug !== "willkommen");
-  const sortedPosts = welcomePost ? [welcomePost, ...otherPosts] : posts;
+  const welcomePost = posts.find((p) => p.slug === "willkommen");
+  const otherPosts = posts.filter((p) => p.slug !== "willkommen");
+  const sorted = welcomePost ? [welcomePost, ...otherPosts] : posts;
 
-  return {
-    props: {
-      posts: JSON.parse(JSON.stringify(sortedPosts)),
-    },
-  };
+  return { props: { posts: JSON.parse(JSON.stringify(sorted)) } };
 }
 
 export default function Home({ posts }) {
   return (
-    <div style={{ maxWidth: "800px", margin: "2rem auto", fontFamily: "system-ui, sans-serif" }}>
+    <div>
       <h1>📈 FinanzFreedom Blog</h1>
       <p>Automatisch generierte Artikel über Finanzen & passives Einkommen.</p>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul>
         {posts.map((post) => (
-          <li key={post.slug} style={{ marginBottom: "2rem" }}>
+          <li key={post.slug} style={{ marginBottom: "1rem" }}>
+            {/* ⬇️ WICHTIG: richtiger Pfad */}
             <Link href={`/${post.slug}`}>
-              <h2 style={{ color: "#0070f3", cursor: "pointer" }}>{post.title}</h2>
+              <h2 style={{ margin: 0 }}>{post.title}</h2>
             </Link>
-            <p style={{ color: "#666" }}>{post.date}</p>
-            <p>{post.excerpt}</p>
+            <p style={{ margin: "0.25rem 0", color: "#555" }}>{post.date}</p>
+            <p style={{ margin: 0 }}>{post.excerpt}</p>
           </li>
         ))}
       </ul>

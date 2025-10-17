@@ -25,27 +25,19 @@ jobs:
       - name: Check & Fix Content
         run: |
           echo "🔍 Starte Rechtschreibprüfung & Auto-Fix..."
-          # Rechtschreibprüfung ausführen
           node scripts/fixContent.js || echo "Keine Änderungen gefunden"
-
-          # Git konfigurieren
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Vor dem Commit den aktuellen Stand vom Remote holen
           git pull origin main || true
-
-          # Änderungen committen und pushen
           git add content || echo "Nichts zu committen"
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
 
+      - name: Build and Export static site
+        run: |
+          npm run build
+          npm run export
+
       - name: Deploy to Vercel (prod)
         run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
-          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
-
-      - name: Show Deployment URL
-        run: echo "🚀 Live: ${{ env.url }}"
+          npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}

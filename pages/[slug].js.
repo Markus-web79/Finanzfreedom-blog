@@ -1,64 +1,49 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), "./content");
+  const postsDirectory = path.join(process.cwd(), "content");
+  const filenames = fs.readdirSync(postsDirectory);
 
-  // 🩵 Debug-Ausgabe: prüfen, ob der Ordner gefunden wird
-  console.log("📂 Absoluter Pfad zu Content:", postsDirectory);
-  console.log("📁 Existiert:", fs.existsSync(postsDirectory));
-
-  const filenames = fs.existsSync(postsDirectory)
-    ? fs.readdirSync(postsDirectory)
-    : [];
-
-  // ✅ nur .md-Dateien berücksichtigen
   const paths = filenames
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => ({
       params: { slug: filename.replace(/\.md$/, "") },
     }));
 
-  // 🩵 Debug-Ausgabe: zeigt, welche Slugs erkannt wurden
-  console.log("🧭 Generierte Paths für Export:", paths);
-
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const postsDirectory = path.join(process.cwd(), "./content");
+  const postsDirectory = path.join(process.cwd(), "content");
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
-
-  // 🩵 Debug-Ausgabe
-  console.log("📄 Lade Datei:", filePath);
-  console.log("📘 Existiert Datei:", fs.existsSync(filePath));
-
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
+  let dateValue = data?.date;
+  if (dateValue instanceof Date) {
+    dateValue = dateValue.toISOString().split("T")[0];
+  } else if (typeof dateValue !== "string") {
+    dateValue = "1970-01-01";
+  }
+
   return {
     props: {
-      title: data.title || "Unbenannter Artikel",
-      date: data.date || "1970-01-01",
-      content,
+      title: data?.title || "Unbenannter Artikel",
+      date: dateValue,
+      html: marked.parse(content || ""),
     },
   };
 }
 
-export default function Post({ title, date, content }) {
+export default function Post({ title, date, html }) {
   return (
-    <article style={{ maxWidth: "800px", margin: "2rem auto", lineHeight: "1.7" }}>
+    <article style={{ maxWidth: "800px", margin: "2rem auto", lineHeight: 1.7 }}>
       <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>{title}</h1>
       <p style={{ color: "#666", marginBottom: "2rem" }}>{date}</p>
-      <div>
-        {content.split("\n").map((line, idx) => (
-          <p key={idx}>{line}</p>
-        ))}
-      </div>
+      <div className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
     </article>
   );
 }

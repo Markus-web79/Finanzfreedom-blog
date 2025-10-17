@@ -1,4 +1,4 @@
- import fs from "fs";
+import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
@@ -7,13 +7,10 @@ export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
-  // ✅ Erstelle URLs im Stil /posts/<slug>
   const paths = filenames
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => ({
-      params: {
-        slug: filename.replace(/\.md$/, ""),
-      },
+      params: { slug: filename.replace(/\.md$/, "") },
     }));
 
   return {
@@ -28,10 +25,21 @@ export async function getStaticProps({ params }) {
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
+  // JSON-serialisierbare Werte sicherstellen
+  const dateValue =
+    data.date instanceof Date
+      ? data.date.toISOString().split("T")[0]
+      : typeof data.date === "string"
+      ? data.date
+      : "1970-01-01";
+
   return {
     props: {
-      frontmatter: data,
-      content: marked(content),
+      frontmatter: {
+        title: data.title || "Unbenannter Artikel",
+        date: dateValue,
+      },
+      content: marked.parse(content || ""),
     },
   };
 }
@@ -42,9 +50,7 @@ export default function Post({ frontmatter, content }) {
       <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
         {frontmatter.title}
       </h1>
-      <p style={{ color: "#666", marginBottom: "2rem" }}>
-        {frontmatter.date}
-      </p>
+      <p style={{ color: "#666", marginBottom: "2rem" }}>{frontmatter.date}</p>
       <div
         className="markdown-body"
         dangerouslySetInnerHTML={{ __html: content }}

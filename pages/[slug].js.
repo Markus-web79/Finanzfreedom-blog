@@ -4,29 +4,32 @@ import matter from "gray-matter";
 import { marked } from "marked";
 
 export async function getStaticPaths() {
+  // 👇 Absoluter Pfad zu deinem Content-Ordner
   const postsDirectory = path.join(process.cwd(), "content");
-  const filenames = fs.readdirSync(postsDirectory);
 
-  // 👇 Nur Markdown-Dateien nehmen und richtige Slugs zurückgeben
-  const paths = filenames
-    .filter((filename) => filename.endsWith(".md"))
-    .map((filename) => ({
-      params: { slug: filename.replace(/\.md$/, "") },
-    }));
+  // 👇 Alle Markdown-Dateien im Content-Ordner lesen
+  const filenames = fs
+    .readdirSync(postsDirectory)
+    .filter((filename) => filename.endsWith(".md"));
 
-  console.log("Generated paths:", paths);
+  console.log("Found Markdown files:", filenames);
+
+  // 👇 Für jede Datei einen Slug erzeugen
+  const paths = filenames.map((filename) => ({
+    params: { slug: filename.replace(/\.md$/, "") },
+  }));
 
   return {
     paths,
-    fallback: false, // keine dynamischen Routen nachträglich
+    fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
   const postsDirectory = path.join(process.cwd(), "content");
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
-
   const fileContents = fs.readFileSync(filePath, "utf8");
+
   const { data, content } = matter(fileContents);
 
   return {

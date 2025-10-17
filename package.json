@@ -2,19 +2,18 @@
   "name": "finanzfreedom-blog",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "serve out -l 3000"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^12.0.2",
     "next": "14.2.5",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "gray-matter": "^4.0.3",
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "react-dom": "18.3.1"
   },
-  "devDependencies": {},
-  "type": "module"
+  "devDependencies": {}
 }

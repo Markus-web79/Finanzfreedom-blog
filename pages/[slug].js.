@@ -7,13 +7,19 @@ export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
+  // 👇 Nur Markdown-Dateien nehmen und richtige Slugs zurückgeben
   const paths = filenames
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => ({
       params: { slug: filename.replace(/\.md$/, "") },
     }));
 
-  return { paths, fallback: false };
+  console.log("Generated paths:", paths);
+
+  return {
+    paths,
+    fallback: false, // keine dynamischen Routen nachträglich
+  };
 }
 
 export async function getStaticProps({ params }) {

@@ -3,8 +3,9 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), "content");
+const postsDirectory = path.join(process.cwd(), "content");
+
+export function getStaticPaths() {
   const filenames = fs.readdirSync(postsDirectory);
 
   const paths = filenames
@@ -13,19 +14,14 @@ export async function getStaticPaths() {
       params: { slug: filename.replace(/\.md$/, "") },
     }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }) {
-  const postsDirectory = path.join(process.cwd(), "content");
+export function getStaticProps({ params }) {
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
-  // JSON-serialisierbare Werte sicherstellen
   const dateValue =
     data.date instanceof Date
       ? data.date.toISOString().split("T")[0]
@@ -33,13 +29,16 @@ export async function getStaticProps({ params }) {
       ? data.date
       : "1970-01-01";
 
+  // 👇 Wichtig: marked(content) synchron aufrufen, nicht marked.parse()
+  const htmlContent = marked(content || "");
+
   return {
     props: {
       frontmatter: {
         title: data.title || "Unbenannter Artikel",
         date: dateValue,
       },
-      content: marked.parse(content || ""),
+      content: htmlContent,
     },
   };
 }

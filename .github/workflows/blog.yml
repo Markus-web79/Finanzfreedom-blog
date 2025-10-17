@@ -33,10 +33,9 @@ jobs:
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
 
-      - name: Build and Export static site
+      - name: Build static site
         run: |
           npm run build
-          npm run export
 
       - name: Deploy to Vercel (prod)
         run: |

@@ -7,7 +7,7 @@ const nextConfig = {
   images: { unoptimized: true },
 
   // ⬇️ sorgt für funktionierende URLs mit / am Ende
-  trailingSlash: true,
+  trailingSlash: false,
 
   // ⬇️ stellt sicher, dass .js und .jsx Dateien als Pages erkannt werden
   pageExtensions: ["js", "jsx"],

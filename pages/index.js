@@ -33,7 +33,7 @@ export async function getStaticProps() {
   // 🔧 Sortiere nach Datum (neueste zuerst)
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // "Willkommen" immer zuerst
+  // "Willkommen" immer zuerst anzeigen
   const welcomePost = posts.find((post) => post.slug === "willkommen");
   const otherPosts = posts.filter((post) => post.slug !== "willkommen");
   const sortedPosts = welcomePost ? [welcomePost, ...otherPosts] : posts;
@@ -54,7 +54,8 @@ export default function Home({ posts }) {
       <ul style={{ listStyle: "none", padding: 0 }}>
         {posts.map((post) => (
           <li key={post.slug} style={{ marginBottom: "2rem" }}>
-            <Link href={`/posts/${post.slug}`}>
+            {/* ✅ Korrigiert: direkter Link zur Slug-Seite */}
+            <Link href={`/${post.slug}`}>
               <h2 style={{ color: "#0070f3", cursor: "pointer" }}>
                 {post.title}
               </h2>

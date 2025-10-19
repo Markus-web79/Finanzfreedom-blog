@@ -3,18 +3,19 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
+// Holt alle Artikel aus dem content/-Ordner
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
   const posts = filenames
-    .filter((filename) => filename.endsWith(".md")) // ✅ Nur Markdown-Dateien
+    .filter((filename) => filename.endsWith(".md"))
     .map((filename) => {
       const filePath = path.join(postsDirectory, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
-      // 🔧 Datum sicherstellen als String (keine Date-Objekte)
+      // Datum absichern
       let dateValue = data.date;
       if (dateValue instanceof Date) {
         dateValue = dateValue.toISOString().split("T")[0];
@@ -26,45 +27,114 @@ export async function getStaticProps() {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
         date: dateValue,
-        excerpt: data.excerpt || content.slice(0, 150) + "...",
+        excerpt:
+          data.excerpt ||
+          content
+            .replace(/[#*_>\[\]\(\)`]/g, "")
+            .slice(0, 160)
+            .trim() + "...",
       };
     });
 
-  // 🔧 Sortiere nach Datum (neueste zuerst)
+  // Sortierung: neueste zuerst, "Willkommen" immer ganz oben
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const welcomePost = posts.find((p) => p.slug === "willkommen");
+  const sortedPosts = welcomePost
+    ? [welcomePost, ...posts.filter((p) => p.slug !== "willkommen")]
+    : posts;
 
-  // "Willkommen" immer zuerst anzeigen
-  const welcomePost = posts.find((post) => post.slug === "willkommen");
-  const otherPosts = posts.filter((post) => post.slug !== "willkommen");
-  const sortedPosts = welcomePost ? [welcomePost, ...otherPosts] : posts;
-
-  return {
-    props: {
-      posts: JSON.parse(JSON.stringify(sortedPosts)), // JSON-sicher
-    },
-  };
+  return { props: { posts: sortedPosts } };
 }
 
+// 🎨 Hauptkomponente (Startseite)
 export default function Home({ posts }) {
   return (
-    <div style={{ maxWidth: "800px", margin: "2rem auto", lineHeight: "1.6" }}>
-      <h1>📈 FinanzFreedom Blog</h1>
-      <p>Automatisch generierte Artikel über Finanzen & passives Einkommen.</p>
+    <div style={styles.container}>
+      <header style={styles.header}>
+        <h1 style={styles.title}>📈 FinanzFreedom Blog</h1>
+        <p style={styles.subtitle}>
+          Dein Weg zu finanzieller Freiheit – Artikel, Strategien & Inspiration.
+        </p>
+      </header>
 
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <main style={styles.grid}>
         {posts.map((post) => (
-          <li key={post.slug} style={{ marginBottom: "2rem" }}>
-            {/* ✅ Korrigiert: direkter Link zur Slug-Seite */}
-            <Link href={`/${post.slug}`}>
-              <h2 style={{ color: "#0070f3", cursor: "pointer" }}>
+          <article key={post.slug} style={styles.card}>
+            <h2 style={styles.cardTitle}>
+              <Link href={`/${post.slug}`} style={styles.link}>
                 {post.title}
-              </h2>
+              </Link>
+            </h2>
+            <p style={styles.date}>{post.date}</p>
+            <p style={styles.excerpt}>{post.excerpt}</p>
+            <Link href={`/${post.slug}`} style={styles.button}>
+              Weiterlesen →
             </Link>
-            <p style={{ color: "#555", margin: "0.5rem 0" }}>{post.date}</p>
-            <p>{post.excerpt}</p>
-          </li>
+          </article>
         ))}
-      </ul>
+      </main>
     </div>
   );
 }
+
+// 💅 Inline Styles (funktionieren beim Export)
+const styles = {
+  container: {
+    maxWidth: "900px",
+    margin: "2rem auto",
+    padding: "0 1rem",
+    fontFamily: "system-ui, sans-serif",
+    lineHeight: "1.6",
+  },
+  header: {
+    textAlign: "center",
+    marginBottom: "3rem",
+  },
+  title: {
+    fontSize: "2.5rem",
+    margin: "0 0 0.5rem",
+  },
+  subtitle: {
+    color: "#666",
+    fontSize: "1.1rem",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "2rem",
+  },
+  card: {
+    background: "#fff",
+    border: "1px solid #eee",
+    borderRadius: "10px",
+    padding: "1.5rem",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+  cardTitle: {
+    fontSize: "1.3rem",
+    marginBottom: "0.5rem",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#0070f3",
+  },
+  date: {
+    fontSize: "0.9rem",
+    color: "#999",
+    marginBottom: "1rem",
+  },
+  excerpt: {
+    color: "#333",
+    marginBottom: "1.5rem",
+  },
+  button: {
+    display: "inline-block",
+    backgroundColor: "#0070f3",
+    color: "#fff",
+    padding: "0.5rem 1rem",
+    borderRadius: "5px",
+    textDecoration: "none",
+    fontSize: "0.9rem",
+  },
+};

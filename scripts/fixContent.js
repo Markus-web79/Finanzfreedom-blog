@@ -1,18 +1,42 @@
 /**
  * fixContent.js
- * Läuft in GitHub Actions, korrigiert alle .md-Dateien im content/-Ordner
+ * Korrigiert Markdown-Dateien im content/-Ordner
+ * und erstellt automatische Backups von dictionary.json
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-// Pfad zum content/-Ordner ermitteln
+// Pfade ermitteln
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const CONTENT_DIR = path.resolve(__dirname, "../content");
 
-// Pfad zur dictionary.json
+// Dictionary-Pfad
 const DICT_PATH = path.resolve(__dirname, "../dictionary.json");
 
-// Dictionary laden
+// 🔒 BACKUP-Funktion
+function backupDictionary() {
+  if (fs.existsSync(DICT_PATH)) {
+    const timestamp = new Date()
+      .toISOString()
+      .replace(/[:.]/g, "-")
+      .slice(0, 16);
+    const backupPath = path.resolve(
+      __dirname,
+      `../dictionary-backup-${timestamp}.json`
+    );
+    fs.copyFileSync(DICT_PATH, backupPath);
+    console.log(`🛟 Backup erstellt: ${backupPath}`);
+  } else {
+    console.warn("⚠️ Kein dictionary.json gefunden – Backup übersprungen.");
+  }
+}
+
+// Dictionary laden (nach Backup)
+backupDictionary();
+
 let dictionary = {};
 try {
   dictionary = JSON.parse(fs.readFileSync(DICT_PATH, "utf-8"));
@@ -21,7 +45,6 @@ try {
   process.exit(1);
 }
 
-// Alle Korrekturen extrahieren
 const corrections = dictionary.corrections || {};
 const allowedWords = new Set(dictionary.words || []);
 
@@ -44,8 +67,8 @@ function getMarkdownFiles(dir) {
 }
 
 // Hauptlauf
-let changedFiles = [];
 const files = getMarkdownFiles(CONTENT_DIR);
+let changedFiles = [];
 
 for (const file of files) {
   const original = fs.readFileSync(file, "utf-8");
@@ -57,7 +80,6 @@ for (const file of files) {
   }
 }
 
-// Ergebnis ausgeben
 if (changedFiles.length === 0) {
   console.log("✅ Keine Änderungen nötig.");
 } else {

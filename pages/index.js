@@ -2,8 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import Header from "../components/Header"; // 👈 Header einbinden
 
-// Holt alle Artikel aus dem content/-Ordner
+// 📄 Artikel aus content/-Ordner laden
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
@@ -36,7 +37,7 @@ export async function getStaticProps() {
       };
     });
 
-  // Sortierung: neueste zuerst, "Willkommen" immer ganz oben
+  // Sortierung: neueste zuerst, "Willkommen" immer oben
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   const welcomePost = posts.find((p) => p.slug === "willkommen");
   const sortedPosts = welcomePost
@@ -46,38 +47,42 @@ export async function getStaticProps() {
   return { props: { posts: sortedPosts } };
 }
 
-// 🎨 Hauptkomponente (Startseite)
+// 🏠 Startseite-Komponente
 export default function Home({ posts }) {
   return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>📈 FinanzFreedom Blog</h1>
-        <p style={styles.subtitle}>
-          Dein Weg zu finanzieller Freiheit – Artikel, Strategien & Inspiration.
-        </p>
-      </header>
+    <>
+      <Header /> {/* 👆 Header oben */}
+      <div style={styles.container}>
+        <header style={styles.header}>
+          <h1 style={styles.title}>📈 FinanzFreedom Blog</h1>
+          <p style={styles.subtitle}>
+            Dein Weg zu finanzieller Freiheit – Strategien, Ideen und echte
+            Tipps für passives Einkommen.
+          </p>
+        </header>
 
-      <main style={styles.grid}>
-        {posts.map((post) => (
-          <article key={post.slug} style={styles.card}>
-            <h2 style={styles.cardTitle}>
-              <Link href={`/${post.slug}`} style={styles.link}>
-                {post.title}
+        <main style={styles.grid}>
+          {posts.map((post) => (
+            <article key={post.slug} style={styles.card}>
+              <h2 style={styles.cardTitle}>
+                <Link href={`/${post.slug}`} style={styles.link}>
+                  {post.title}
+                </Link>
+              </h2>
+              <p style={styles.date}>{post.date}</p>
+              <p style={styles.excerpt}>{post.excerpt}</p>
+              <Link href={`/${post.slug}`} style={styles.button}>
+                Weiterlesen →
               </Link>
-            </h2>
-            <p style={styles.date}>{post.date}</p>
-            <p style={styles.excerpt}>{post.excerpt}</p>
-            <Link href={`/${post.slug}`} style={styles.button}>
-              Weiterlesen →
-            </Link>
-          </article>
-        ))}
-      </main>
-    </div>
+            </article>
+          ))}
+        </main>
+      </div>
+    </>
   );
 }
 
-// 💅 Inline Styles (funktionieren beim Export)
+// 💅 Inline Styles (funktionieren beim static export)
 const styles = {
   container: {
     maxWidth: "900px",

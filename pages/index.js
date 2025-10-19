@@ -1,9 +1,9 @@
-import NewsletterFooter from "../components/NewsletterFooter";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import Header from "../components/Header"; // 👈 Header einbinden
+import Header from "../components/Header";
+import NewsletterFooter from "../components/NewsletterFooter";
 
 // 📄 Artikel aus content/-Ordner laden
 export async function getStaticProps() {
@@ -52,7 +52,7 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
   return (
     <>
-      <Header /> {/* 👆 Header oben */}
+      <Header />
       <div style={styles.container}>
         <header style={styles.header}>
           <h1 style={styles.title}>📈 FinanzFreedom Blog</h1>
@@ -79,6 +79,7 @@ export default function Home({ posts }) {
           ))}
         </main>
       </div>
+      <NewsletterFooter /> {/* 👇 sauber integrierter Footer */}
     </>
   );
 }

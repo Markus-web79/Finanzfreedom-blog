@@ -1,3 +1,4 @@
+// trigger rebuild after footer fix
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";

@@ -22,9 +22,9 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci || npm install
 
-      # 🧹 Cache leeren, um Build-Fehler zu verhindern
-      - name: 🧹 Clear Next.js & Node Cache
+      - name: 🧹 Clear Build & Next.js Cache
         run: |
+          echo "🧹 Leere alte Build-Dateien und Caches..."
           rm -rf .next || true
           rm -rf node_modules/.cache || true
 
@@ -40,12 +40,20 @@ jobs:
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
 
-      - name: 🚀 Deploy to Vercel (prod)
+      - name: 🚀 Deploy to Vercel (Production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
-          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
+          echo "🚀 Starte Deployment zu Vercel..."
+          npx vercel --prod --yes -A vercel.json --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE > deployment.txt || {
+            echo "❌ Deployment fehlgeschlagen. Prüfe dein Token oder Vercel Scope."
+            cat deployment.txt
+            exit 1
+          }
+
+          DEPLOY_URL=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)
+          echo "url=$DEPLOY_URL" >> $GITHUB_ENV
 
       - name: 🔗 Show Deployment URL
         run: echo "✅ Live: ${{ env.url }}"

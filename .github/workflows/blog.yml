@@ -27,7 +27,6 @@ jobs:
         run: |
           rm -rf .next || true
           rm -rf node_modules/.cache || true
-          echo "🧼 Cache gelöscht!"
 
       - name: 🔍 Check & Fix Content
         run: |

@@ -3,9 +3,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import Header from "../components/Header";
-import NewsletterFooterFixed from "../components/NewsletterFooterFixed";
-
+import Header from "../components/
+import NewsletterFooterFixed from "../components/NewsletterFooter";
+Header";
 // 📄 Artikel aus content/-Ordner laden
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");

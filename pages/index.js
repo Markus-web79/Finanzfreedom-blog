@@ -3,9 +3,10 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooterFixed";
+import NewsletterFooter from "../components/NewsletterFooter";
+import "../styles/Home.css"; // Neu: eigenes CSS für modernes Layout
 
-// 📄 Artikel aus content/-Ordner laden
+// 🧠 Artikel aus content/-Ordner laden
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
@@ -28,53 +29,44 @@ export async function getStaticProps() {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
         date: dateValue,
-        excerpt: data.excerpt || content.slice(0, 160) + "...",
+        excerpt: data.excerpt || content.slice(0, 150) + "...",
       };
-    });
-
-  // 🔧 Nach Datum sortieren
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  // "Willkommen"-Artikel immer zuerst
-  const welcomePost = posts.find((p) => p.slug === "willkommen");
-  const otherPosts = posts.filter((p) => p.slug !== "willkommen");
-  const sortedPosts = welcomePost ? [welcomePost, ...otherPosts] : posts;
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(sortedPosts)),
+      posts: JSON.parse(JSON.stringify(posts)),
     },
   };
 }
 
-// 🧱 React-Komponente: Startseite
 export default function Home({ posts }) {
   return (
     <>
       <Header />
-      <main style={{ maxWidth: "800px", margin: "2rem auto", lineHeight: "1.6" }}>
-        <h1>📈 FinanzFreedom Blog</h1>
-        <p>Dein Weg zu finanzieller Freiheit – Strategien, Ideen und echte Tipps für passives Einkommen.</p>
+      <main className="container">
+        <section className="intro">
+          <h1>📈 FinanzFreedom Blog</h1>
+          <p>Dein Weg zu finanzieller Freiheit – Strategien, Ideen und echte Tipps für passives Einkommen.</p>
+        </section>
 
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <section className="grid">
           {posts.map((post) => (
-            <li key={post.slug} style={{ marginBottom: "2rem" }}>
-              <Link href={`/${post.slug}`}>
-                <h2 style={{ color: "#0070f3", cursor: "pointer" }}>{post.title}</h2>
+            <article key={post.slug} className="card">
+              <Link href={`/posts/${post.slug}`}>
+                <h2>{post.title}</h2>
               </Link>
-              <p style={{ color: "#555", margin: "0.5rem 0" }}>{post.date}</p>
-              <p>{post.excerpt}</p>
-              <Link href={`/${post.slug}`}>
-                <span style={{
-                  color: "#0070f3",
-                  textDecoration: "underline",
-                  cursor: "pointer"
-                }}>Weiterlesen →</span>
+              <p className="date">{post.date}</p>
+              <p className="excerpt">{post.excerpt}</p>
+              <Link href={`/posts/${post.slug}`} className="read-more">
+                Weiterlesen →
               </Link>
-            </li>
+            </article>
           ))}
-        </ul>
+        </section>
       </main>
+
       <NewsletterFooter />
     </>
   );

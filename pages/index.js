@@ -4,7 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooter";
+import NewsletterFooterFixed from "../components/NewsletterFooterFixed";
 
 // 📄 Artikel aus content/-Ordner laden
 export async function getStaticProps() {
@@ -80,7 +80,7 @@ export default function Home({ posts }) {
           ))}
         </main>
       </div>
-      <NewsletterFooter /> {/* 👇 sauber integrierter Footer */}
+      fix: use new footer component to bypass case cache issue
     </>
   );
 }

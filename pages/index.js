@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
 import NewsletterFooter from "../components/NewsletterFooter.js"; // <— exakt dieser Name!
-import "../styles/Home.css"; // korrektes CSS
+
 
 // 📄 Artikel aus content/-Ordner laden
 export async function getStaticProps() {

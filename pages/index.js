@@ -4,7 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooter.js"; // 🔧 wichtig: .js erzwingt neuen Cache-Eintrag
+import NewsletterFooter from "../components/NewsletterFooterNew.js";
 import "../styles/Home.css";
 
 // 🧠 Artikel aus content/-Ordner laden

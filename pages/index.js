@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooter";
+import NewsletterFooter from "../components/NewsletterFooter.js";
 import "../styles/Home.css"; // Neu: eigenes CSS für modernes Layout
 
 // 🧠 Artikel aus content/-Ordner laden

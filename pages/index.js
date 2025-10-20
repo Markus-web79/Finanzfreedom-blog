@@ -3,8 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooterFixed from "../components/NewsletterFooterFixed.js";
-
+import NewsletterFooter from "../components/NewsletterFooter.js"; // <— exakt dieser Name!
+import "../styles/Home.css"; // korrektes CSS
 
 // 📄 Artikel aus content/-Ordner laden
 export async function getStaticProps() {
@@ -30,43 +30,35 @@ export async function getStaticProps() {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
         date: dateValue,
-        excerpt: content.slice(0, 200) + "...",
+        excerpt: content.substring(0, 180) + "...",
       };
-    });
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Neueste Artikel zuerst
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  return {
-    props: {
-      posts,
-    },
-  };
+  return { props: { posts } };
 }
 
-// 🏠 Startseiten-Komponente
 export default function Home({ posts }) {
   return (
-    <div>
+    <div className="container">
       <Header />
-      <main>
+      <section className="intro">
         <h1>📈 FinanzFreedom Blog</h1>
-        <p>
-          Dein Weg zu finanzieller Freiheit – Strategien, Ideen und echte Tipps
-          für passives Einkommen.
-        </p>
+        <p>Dein Weg zu finanzieller Freiheit – Strategien, Ideen und echte Tipps für passives Einkommen.</p>
+      </section>
 
-        <div className="post-list">
-          {posts.map((post) => (
-            <div key={post.slug} className="post-card">
-              <h2>{post.title}</h2>
-              <p className="date">{post.date}</p>
-              <p>{post.excerpt}</p>
-              <Link href={`/${post.slug}`}>Weiterlesen →</Link>
-            </div>
-          ))}
-        </div>
-      </main>
+      <div className="grid">
+        {posts.map((post) => (
+          <div key={post.slug} className="card">
+            <h2>{post.title}</h2>
+            <p className="date">{post.date}</p>
+            <p>{post.excerpt}</p>
+            <Link href={`/${post.slug}`} className="read-more">
+              Weiterlesen →
+            </Link>
+          </div>
+        ))}
+      </div>
 
       <NewsletterFooter />
     </div>

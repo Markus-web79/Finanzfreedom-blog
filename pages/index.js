@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooterFixed";
+import NewsletterFooterFixed from "../components/NewsletterFooterFixed.js";
 
 
 // 📄 Artikel aus content/-Ordner laden

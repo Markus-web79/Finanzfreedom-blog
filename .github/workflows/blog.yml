@@ -21,8 +21,14 @@ jobs:
 
       - name: 📦 Install dependencies
         run: npm ci || npm install
-      - name: 🧹 Clear Next.js cache
-        run: rm -rf .next || true
+
+      # 🧹 Cache leeren, um Build-Fehler zu verhindern
+      - name: 🧹 Clear Next.js & Node Cache
+        run: |
+          rm -rf .next || true
+          rm -rf node_modules/.cache || true
+          echo "🧼 Cache gelöscht!"
+
       - name: 🔍 Check & Fix Content
         run: |
           echo "🚀 Starte Rechtschreibprüfung & Auto-Fix..."
@@ -37,7 +43,9 @@ jobs:
 
       - name: 🚀 Deploy to Vercel (prod)
         run: |
-          npx vercel --prod --yes -A vercel.json --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
+          npx vercel --prod --yes -A vercel.json \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
           echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
 
       - name: 🔗 Show Deployment URL

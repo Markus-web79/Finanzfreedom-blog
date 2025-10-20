@@ -1,10 +1,11 @@
+// --- Komponenten & Layout ---
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooter.js";
-import "../styles/Home.css"; // Neu: eigenes CSS für modernes Layout
+import NewsletterFooter from "../components/NewsletterFooter.js"; // 🔧 wichtig: .js erzwingt neuen Cache-Eintrag
+import "../styles/Home.css";
 
 // 🧠 Artikel aus content/-Ordner laden
 export async function getStaticProps() {

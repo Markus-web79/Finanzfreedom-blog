@@ -48,15 +48,15 @@ export default function Home({ posts }) {
       </header>
 
       <main className="main">
-        <div className="articles-grid">
-          {posts.map((post) => (
-            <article key={post.slug} className="article-card">
-              <h2>{post.title}</h2>
-              <p>{post.excerpt}</p>
-              <Link href={`/${post.slug}`}>Weiterlesen</Link>
-            </article>
-          ))}
-        </div>
+<div className="articles-grid">
+  {posts.map((post) => (
+    <article key={post.slug} className="article-card fade-in">
+      <h2>{post.title}</h2>
+      <p>{post.excerpt}</p>
+      <Link href={`/${post.slug}`}>Weiterlesen</Link>
+    </article>
+  ))}
+</div>
       </main>
 
       <section className="newsletter">

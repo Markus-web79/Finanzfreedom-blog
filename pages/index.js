@@ -14,7 +14,7 @@ export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContents);
 
-      // 🔒 JSON-serialisierbare Werte erzwingen
+      // 🔒 Nur serialisierbare Werte
       const dateValue =
         data.date instanceof Date
           ? data.date.toISOString().split("T")[0]
@@ -30,16 +30,6 @@ export async function getStaticProps() {
       };
     });
 
-  const sortedPosts = posts.sort((a, b) =>
-    a.date < b.date ? 1 : a.date > b.date ? -1 : 0
-  );
-
-  return {
-    props: { posts: sortedPosts },
-  };
-}
-
-  // Nach Datum sortieren (optional)
   const sortedPosts = posts.sort((a, b) =>
     a.date < b.date ? 1 : a.date > b.date ? -1 : 0
   );
@@ -69,27 +59,27 @@ export default function Home({ posts }) {
         </div>
       </main>
 
-<section className="newsletter">
-  <h2>💌 Newsletter</h2>
-  <p>
-    Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und
-    finanzieller Freiheit.
-  </p>
+      <section className="newsletter">
+        <h2>💌 Newsletter</h2>
+        <p>
+          Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und 
+          finanzieller Freiheit.
+        </p>
 
-  <form>
-    <input
-      type="email"
-      placeholder="Deine E-Mail-Adresse"
-      disabled
-    />
-    <button type="button" disabled>
-      Jetzt anmelden
-    </button>
-    <p style={{ marginTop: "1rem", color: "#777", fontSize: "0.9rem" }}>
-      (Newsletter-Funktion kommt bald)
-    </p>
-  </form>
-</section>
+        <form>
+          <input
+            type="email"
+            placeholder="Deine E-Mail-Adresse"
+            disabled
+          />
+          <button type="button" disabled>
+            Jetzt anmelden
+          </button>
+          <p style={{ marginTop: "1rem", color: "#777", fontSize: "0.9rem" }}>
+            (Newsletter-Funktion kommt bald)
+          </p>
+        </form>
+      </section>
 
       <footer>
         © {new Date().getFullYear()} FinanzFreedom. Alle Rechte vorbehalten.

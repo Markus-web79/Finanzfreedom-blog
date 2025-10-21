@@ -1,79 +1,77 @@
-/* === FinanzFreedom Blog – Clean Professional Theme === */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --link-color: #0070f3;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --text-color: #f9fafb;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --link-color: #60a5fa;
+}
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: system-ui, sans-serif;
   margin: 0;
   padding: 0;
 }
 
+/* Container & Layout */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-header {
+.intro {
   text-align: center;
-  padding: 2rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 3rem;
 }
 
-header h1 {
-  font-size: 2.4rem;
-  color: #0a2540;
-  margin-bottom: 0.5rem;
-}
-
-header p {
-  color: #666666;
-  font-size: 1.1rem;
-}
-
+/* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+/* Cards */
 .card {
-  background: #ffffff;
-  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.25s ease;
-  border: 1px solid #f1f1f1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .card h2 {
-  color: #0070f3;
-  font-size: 1.4rem;
+  color: var(--link-color);
   margin-bottom: 0.5rem;
 }
 
 .card .date {
-  color: #666666;
   font-size: 0.9rem;
+  color: #777;
   margin-bottom: 1rem;
 }
 
-.card p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
+/* Links */
 .read-more {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #0070f3;
-  font-weight: 600;
+  color: var(--link-color);
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -81,12 +79,23 @@ header p {
   text-decoration: underline;
 }
 
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 2rem 0;
-  background-color: #f8f9fa;
-  border-top: 1px solid #eee;
-  color: #666666;
-  font-size: 0.9rem;
+/* Dark Mode Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--link-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #005ad3;
 }

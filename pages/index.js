@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Header from "../components/Header";
 import NewsletterFooter from "../components/NewsletterFooter";
-import "../styles/Home.css";
 
 // 📂 Alle Blogartikel aus content/-Ordner laden
 export async function getStaticProps() {

@@ -51,17 +51,27 @@ export default function Home({ posts }) {
         </div>
       </main>
 
-      <section className="newsletter">
-        <h2>💌 Newsletter</h2>
-        <p>
-          Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und
-          finanzieller Freiheit.
-        </p>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input type="email" placeholder="Deine E-Mail-Adresse" required />
-          <button type="submit">Jetzt anmelden</button>
-        </form>
-      </section>
+<section className="newsletter">
+  <h2>💌 Newsletter</h2>
+  <p>
+    Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und
+    finanzieller Freiheit.
+  </p>
+
+  <form>
+    <input
+      type="email"
+      placeholder="Deine E-Mail-Adresse"
+      disabled
+    />
+    <button type="button" disabled>
+      Jetzt anmelden
+    </button>
+    <p style={{ marginTop: "1rem", color: "#777", fontSize: "0.9rem" }}>
+      (Newsletter-Funktion kommt bald)
+    </p>
+  </form>
+</section>
 
       <footer>
         © {new Date().getFullYear()} FinanzFreedom. Alle Rechte vorbehalten.

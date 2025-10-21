@@ -1,59 +1,55 @@
-import Link from "next/link";
-
 export default function Header() {
   return (
-    <header style={styles.header}>
-      <div style={styles.container}>
-        <Link href="/" style={styles.logo}>
-          FinanzFreedom
-        </Link>
+    <header
+      style={{
+        backgroundColor: "#f9fafb",
+        borderBottom: "1px solid #e5e7eb",
+        padding: "2rem 1rem",
+        textAlign: "center",
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "2.2rem",
+          color: "#111827",
+          marginBottom: "0.5rem",
+        }}
+      >
+        📈 FinanzFreedom Blog
+      </h1>
 
-        <nav style={styles.nav}>
-          <Link href="/" style={styles.navLink}>
-            Start
-          </Link>
-          <Link href="/about" style={styles.navLink}>
-            Über
-          </Link>
-          <Link href="/contact" style={styles.navLink}>
-            Kontakt
-          </Link>
-        </nav>
-      </div>
+      <p
+        style={{
+          color: "#4b5563",
+          fontSize: "1.1rem",
+          maxWidth: "600px",
+          margin: "0 auto",
+          lineHeight: "1.5",
+        }}
+      >
+        Dein Weg zu finanzieller Freiheit – Strategien, Ideen & echte Tipps.
+      </p>
+
+      {/* 🧭 Navigation (Platzhalter für spätere Erweiterung) */}
+      <nav
+        style={{
+          marginTop: "1.5rem",
+          display: "flex",
+          justifyContent: "center",
+          gap: "1.5rem",
+          flexWrap: "wrap",
+        }}
+      >
+        <a href="/" style={{ color: "#0070f3", textDecoration: "none" }}>
+          Startseite
+        </a>
+        <a href="/about" style={{ color: "#0070f3", textDecoration: "none" }}>
+          Über uns
+        </a>
+        <a href="/kontakt" style={{ color: "#0070f3", textDecoration: "none" }}>
+          Kontakt
+        </a>
+      </nav>
     </header>
   );
 }
-
-const styles = {
-  header: {
-    backgroundColor: "#f8f9fa",
-    borderBottom: "1px solid #e5e5e5",
-    padding: "1rem 0",
-    position: "sticky",
-    top: 0,
-    zIndex: 100,
-  },
-  container: {
-    maxWidth: "900px",
-    margin: "0 auto",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "0 1rem",
-  },
-  logo: {
-    fontSize: "1.5rem",
-    fontWeight: "600",
-    textDecoration: "none",
-    color: "#111",
-  },
-  nav: {
-    display: "flex",
-    gap: "1.5rem",
-  },
-  navLink: {
-    textDecoration: "none",
-    color: "#333",
-    fontWeight: "500",
-  },
-};

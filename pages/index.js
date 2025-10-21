@@ -3,10 +3,10 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import Header from "../components/Header";
-import NewsletterFooter from "../components/NewsletterFooter.js"; // <— exakt dieser Name!
+import NewsletterFooter from "../components/NewsletterFooter";
+import "../styles/Home.css";
 
-
-// 📄 Artikel aus content/-Ordner laden
+// 🧩 Blogartikel aus dem content/-Ordner laden
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
@@ -18,7 +18,7 @@ export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
-      // Datum absichern
+      // Datum prüfen & in korrektes Format bringen
       let dateValue = data.date;
       if (dateValue instanceof Date) {
         dateValue = dateValue.toISOString().split("T")[0];
@@ -30,35 +30,53 @@ export async function getStaticProps() {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
         date: dateValue,
-        excerpt: content.substring(0, 180) + "...",
+        excerpt: data.excerpt || content.slice(0, 150) + "...",
       };
-    })
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    });
 
-  return { props: { posts } };
+  // Nach Datum sortieren (neueste zuerst)
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // "Willkommen" immer zuerst anzeigen
+  const welcomePost = posts.find((post) => post.slug === "willkommen");
+  const otherPosts = posts.filter((post) => post.slug !== "willkommen");
+  const sortedPosts = welcomePost ? [welcomePost, ...otherPosts] : posts;
+
+  return {
+    props: {
+      posts: JSON.parse(JSON.stringify(sortedPosts)),
+    },
+  };
 }
 
+// 🏠 Hauptseite des Blogs
 export default function Home({ posts }) {
   return (
-    <div className="container">
+    <div>
       <Header />
-      <section className="intro">
-        <h1>📈 FinanzFreedom Blog</h1>
-        <p>Dein Weg zu finanzieller Freiheit – Strategien, Ideen und echte Tipps für passives Einkommen.</p>
-      </section>
 
-      <div className="grid">
-        {posts.map((post) => (
-          <div key={post.slug} className="card">
-            <h2>{post.title}</h2>
-            <p className="date">{post.date}</p>
-            <p>{post.excerpt}</p>
-            <Link href={`/${post.slug}`} className="read-more">
-              Weiterlesen →
-            </Link>
-          </div>
-        ))}
-      </div>
+      <main className="container">
+        <section className="intro">
+          <h2>📚 Neueste Artikel</h2>
+          <p>
+            Entdecke Strategien, Tipps und echte Erfahrungen rund um Finanzen,
+            Vermögensaufbau & passives Einkommen.
+          </p>
+        </section>
+
+        <section className="grid">
+          {posts.map((post) => (
+            <article key={post.slug} className="card">
+              <h2>{post.title}</h2>
+              <p className="date">{post.date}</p>
+              <p>{post.excerpt}</p>
+              <Link href={`/posts/${post.slug}`} className="read-more">
+                Weiterlesen →
+              </Link>
+            </article>
+          ))}
+        </section>
+      </main>
 
       <NewsletterFooter />
     </div>

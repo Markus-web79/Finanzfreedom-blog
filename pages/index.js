@@ -13,13 +13,31 @@ export async function getStaticProps() {
       const filePath = path.join(postsDirectory, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContents);
+
+      // 🔒 JSON-serialisierbare Werte erzwingen
+      const dateValue =
+        data.date instanceof Date
+          ? data.date.toISOString().split("T")[0]
+          : typeof data.date === "string"
+          ? data.date
+          : "";
+
       return {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
         excerpt: data.excerpt || data.description || "",
-        date: data.date || "",
+        date: dateValue,
       };
     });
+
+  const sortedPosts = posts.sort((a, b) =>
+    a.date < b.date ? 1 : a.date > b.date ? -1 : 0
+  );
+
+  return {
+    props: { posts: sortedPosts },
+  };
+}
 
   // Nach Datum sortieren (optional)
   const sortedPosts = posts.sort((a, b) =>

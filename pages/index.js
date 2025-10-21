@@ -42,27 +42,30 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
   return (
     <>
-      <header>
+      {/* Header mit Fade-In-Effekt */}
+      <header className="header-fade">
         <h1>FinanzFreedom Blog</h1>
         <p>Finanzielle Unabhängigkeit beginnt mit Wissen 💡</p>
       </header>
 
+      {/* Hauptbereich */}
       <main className="main">
-<div className="articles-grid">
-  {posts.map((post) => (
-    <article key={post.slug} className="article-card fade-in">
-      <h2>{post.title}</h2>
-      <p>{post.excerpt}</p>
-      <Link href={`/${post.slug}`}>Weiterlesen</Link>
-    </article>
-  ))}
-</div>
+        <div className="articles-grid">
+          {posts.map((post) => (
+            <article key={post.slug} className="article-card fade-in">
+              <h2>{post.title}</h2>
+              <p>{post.excerpt}</p>
+              <Link href={`/${post.slug}`}>Weiterlesen</Link>
+            </article>
+          ))}
+        </div>
       </main>
 
-      <section className="newsletter">
+      {/* Newsletter-Abschnitt mit Fade-In */}
+      <section className="newsletter fade-in">
         <h2>💌 Newsletter</h2>
         <p>
-          Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und 
+          Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und
           finanzieller Freiheit.
         </p>
 
@@ -81,6 +84,7 @@ export default function Home({ posts }) {
         </form>
       </section>
 
+      {/* Footer */}
       <footer>
         © {new Date().getFullYear()} FinanzFreedom. Alle Rechte vorbehalten.
       </footer>

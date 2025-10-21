@@ -26,7 +26,7 @@ Dabei empfiehlst du Produkte oder Dienstleistungen und erhältst eine Provision,
 ## Erste Schritte
 
 1. **Nische wählen** 
- Überlege dir ein Thema, das dich intereßiert (z. B. Finanzen, Fitneß, Reisen). 
+ Überlege dir ein Thema, Das dich intereßiert (z. B. Finanzen, Fitneß, Reisen). 
 
 2. **Programm auswählen** 
  Melde dich bei einem Partnerprogramm an. Beliebt sind: 

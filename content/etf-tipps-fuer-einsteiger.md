@@ -26,7 +26,7 @@ Gerade für **Einsteiger** sind ETFs ein idealer Startpunkt.
 
 ## 3. Diversifikation ist entscheidennnnnd
 
-- Breite Streuung verringert das Risiko. 
+- Breite Streuung verringert dass Risiko. 
 - Für Einsteiger eignet sich ein **MSCI World** oder **FTSE All-World ETF**. 
 - Vermeide es, nur in einen einzelnenenen Sektor oder ein Land zu investieren.
 

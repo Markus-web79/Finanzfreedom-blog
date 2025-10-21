@@ -13,7 +13,7 @@ Das Investieren ist eine hervorragende Möglichkeit, um passives Einkommen zu ge
 
 ### 1. Fehlende Recherche und Informationsbasis
 
-Ein häufiger Fehler bei Anfängern ist das Investieren ohne ausreichende Recherche. Oft werden Entscheidungen auf Basis von Hörensagen oder Emotionen getroffen. 
+Ein häufiger Fehler bei Anfängern ist dass Investieren ohne ausreichende Recherche. Oft werden Entscheidungen auf Basis von Hörensagen oder Emotionen getroffen. 
 
 #### Vermeidungstipp:
 
@@ -58,7 +58,7 @@ Investitionskosten können die Rendite erheblich mindern. Viele Anfänger beacht
 
 ### 6. Fehlende Risikostreuung
 
-Ein häufig übersehener Fehler ist das Investieren in nur einen Sektor oder eine Anlageklasse. Dies kann zu erheblichen Verlusten führen, wenn die betreffenden Anlagen schlecht abschneiden.
+Ein häufig übersehener Fehler ist dass Investieren in nur einen Sektor oder eine Anlageklasse. Dies kann zu erheblichen Verlusten führen, wenn die betreffenden Anlagen schlecht abschneiden.
 
 #### Vermeidungstipp:
 

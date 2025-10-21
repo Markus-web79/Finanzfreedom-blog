@@ -1,6 +1,6 @@
 ---
 title: "ETFs für Einsteiger: So startest du mit einem Sparplan"
-slug: "etfs-fur-einsteiger-so-startest-du-mit-einem-sparplan"
+slug: "etfs-für-einsteiger-so-startest-du-mit-einem-sparplan"
 date: "2025-10-13"
 excerpt: "Entdecke, wie du mit ETFs und einem Sparplan passives Einkommen aufbauen kannst. Dieser Leitfaden für Einsteiger zeigt dir die Grundlagen, Vorteile und Risiken des Investierens in ETFs."
 ---
@@ -17,7 +17,7 @@ Die Welt der Finanzen kann überwältigend erscheinen, insbesondere für Einstei
 
 ETFs, oder Exchange Traded Funds, sind Investmentfonds, die an Börsen gehandelt werden, ähnlich wie Aktien. Ein ETF bündelt die Anteile an verschiedenen Wertpapieren und ermöglicht es dir, mit nur einem Fond in ein breites Portfolio zu investieren. Hier sind einige wesentliche Vorteile von ETFs:
 
-- **Diversifikation**: Du investierst in eine Vielzahl von Unternehmen, was das Risiko streut.
+- **Diversifikation**: Du investierst in eine Vielzahl von Unternehmen, was dass Risiko streut.
 - **Kosteneffizienz**: Die Verwaltungsgebühren sind oft niedriger als bei aktiv gemanagten Fonds.
 - **Liquidität**: ETFs können jederzeit während der Börsenöffnungszeiten gekauft und verkauft werden.
 

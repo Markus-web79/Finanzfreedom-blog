@@ -30,7 +30,7 @@ Digitale Produkte bieten zahlreiche Vorteile, die sie zu einer idealen Wahl für
 
 E-Books sind eine hervorragende Möglichkeit, Wissen zu monetarisieren. Hier sind einige Schritte zum Erstellen und verkaufen eines E-Books:
 
-- **Themenfindung**: Wählen Sie ein Thema, das Sie gut kennen und das eine Nachfrage hat.
+- **Themenfindung**: Wählen Sie ein Thema, Das Sie gut kennen und dass eine Nachfrage hat.
 - **Inhalt erstellen**: Schreiben Sie verständlich und strukturiert. Verwenden Sie Grafiken und Beispiele zur Veranschaulichung.
 - **Design**: Gestalten Sie ein ansprechendes Cover und ein leserfreundliches Layout.
 - **Vertriebskanäle**: Nutzen Sie Plattformen wie Amazon Kindle Direct Publishing oder Ihre eigene Webseite.

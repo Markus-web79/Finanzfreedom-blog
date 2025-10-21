@@ -34,7 +34,7 @@ Die Finanzbranche verändert sich rasant. Immer mehr digitale Tools drängen auf
 
 ## Der Trend: Hybrid-Modelle
 
-Die Zukunft liegt wahrscheinlich in **Hybrid-Modellen**, die das Beste aus beiden Welten verbinden:
+Die Zukunft liegt wahrscheinlich in **Hybrid-Modellen**, die dass Beste aus beiden Welten verbinden:
 - Digitale Tools zur Vereinfachung und Kostenreduktion
 - Persönliche Beratung bei wichtigen Entscheidungen
 

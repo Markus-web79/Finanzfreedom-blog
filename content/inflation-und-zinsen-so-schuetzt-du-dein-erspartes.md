@@ -15,8 +15,8 @@ In diesem Artikel erfährst du, wie du dein Erspartes schützen kannst.
 ## 1. Was ist Inflation?
 
 - **Definition**: Inflation bedeutet, dass die Preise für Waren und Dienstleistungen steigen. 
-- **Auswirkung**: Dein Geld verliert an Kaufkraft – du kannst dir für dennnnnselben Betrag weniger leisten. 
-- **Beispiel**: Bei 3 % Inflation kostet etwas, das heute 100 € kostet, in 10 Jahren rund 134 €.
+- **Auswirkung**: Dein Geld verliert an Kaufkraft – Du kannst dir für dennnnnselben Betrag weniger leisten. 
+- **Beispiel**: Bei 3 % Inflation kostet etwas, Das heute 100 € kostet, in 10 Jahren rund 134 €.
 
 ## 2. Wie wirken Zinsen?
 

@@ -31,7 +31,7 @@ Mit diesen 5 Tipps kannst du deine Finanzen strategisch planen und erfolgreich a
  - **Anleihen** (Sicherheit) 
  - **Immobilien** (Sachwert) 
  - **Rohstoffe** (Inflationsschutz) 
-- Dadurch minimierst du das Risiko.
+- Dadurch minimierst du dass Risiko.
 
 ## 4. Automatisierung einrichten
 

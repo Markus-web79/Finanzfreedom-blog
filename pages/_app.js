@@ -1,9 +1,8 @@
-// ✅ Global Styles werden hier zentral importiert
-import "../styles/globals.css";
 import "../styles/Home.css";
 
-// ✅ Das ist die Haupt-App-Komponente von Next.js
-// Sie umschließt alle Seiten (z. B. index.js, [slug].js usw.)
+// 🔧 Diese Datei sorgt dafür, dass dein globales CSS (Home.css) korrekt geladen wird
+//    und für alle Seiten verfügbar ist (index.js, [slug].js etc.)
+
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }

@@ -33,7 +33,20 @@ export async function getStaticProps() {
         excerpt: data.excerpt || content.slice(0, 150) + "...",
       };
     });
-
+{/* 🌙 Theme Switch Button */}
+<button
+  className="theme-toggle"
+  onClick={() => {
+    const html = document.documentElement;
+    const newTheme =
+      html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  }}
+  title="Theme wechseln"
+>
+  🌓
+</button>
   // Nach Datum sortieren (neueste zuerst)
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 

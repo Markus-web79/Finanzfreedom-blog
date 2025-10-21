@@ -1,101 +1,141 @@
+/* --- FinanzFreedom Blog – Türkis Style --- */
+
 :root {
-  --bg-color: #ffffff;
-  --text-color: #111827;
-  --card-bg: #ffffff;
-  --card-border: #e5e7eb;
-  --link-color: #0070f3;
+  --color-primary: #1abc9c;     /* Haupttürkis */
+  --color-primary-dark: #16a085;
+  --color-bg: #ffffff;
+  --color-text: #2c3e50;
+  --color-light: #f5f7f8;
 }
 
-[data-theme="dark"] {
-  --bg-color: #0f172a;
-  --text-color: #f9fafb;
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --link-color: #60a5fa;
-}
-
+/* Allgemein */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background 0.3s ease, color 0.3s ease;
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
-/* Container & Layout */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.intro {
+/* Header */
+header {
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+  color: white;
+  padding: 3rem 1.5rem;
   text-align: center;
-  margin-bottom: 3rem;
 }
 
-/* Grid */
-.grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-/* Cards */
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-.card h2 {
-  color: var(--link-color);
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-.card .date {
-  font-size: 0.9rem;
-  color: #777;
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Artikelübersicht */
+.main {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.article-card {
+  background: var(--color-light);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.article-card h2 {
+  font-size: 1.4rem;
+  color: var(--color-primary-dark);
+  margin-top: 0;
+}
+
+.article-card p {
+  color: #555;
   margin-bottom: 1rem;
 }
 
-/* Links */
-.read-more {
-  color: var(--link-color);
-  font-weight: 500;
+.article-card a {
+  display: inline-block;
+  color: white;
+  background-color: var(--color-primary-dark);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
   text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
 }
 
-.read-more:hover {
-  text-decoration: underline;
+.article-card a:hover {
+  background-color: var(--color-primary);
 }
 
-/* Dark Mode Toggle Button */
-.theme-toggle {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background-color: var(--link-color);
-  color: #fff;
+/* Newsletter (optisch vorbereitet) */
+.newsletter {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-color: var(--color-light);
+  border-top: 1px solid #e0e0e0;
+}
+
+.newsletter h2 {
+  color: var(--color-primary-dark);
+  margin-bottom: 1rem;
+}
+
+.newsletter p {
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.newsletter input[type="email"] {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  max-width: 80%;
+  margin-right: 0.5rem;
+}
+
+.newsletter button {
+  background-color: var(--color-primary-dark);
+  color: white;
   border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 1.3rem;
+  border-radius: 6px;
+  padding: 0.8rem 1.2rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
+  transition: background 0.2s ease;
 }
 
-.theme-toggle:hover {
-  background-color: #005ad3;
+.newsletter button:hover {
+  background-color: var(--color-primary);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-primary-dark);
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 3rem;
 }

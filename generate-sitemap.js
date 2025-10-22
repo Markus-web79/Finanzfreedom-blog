@@ -4,12 +4,13 @@ import path from "path";
 
 const domain = "https://finanzfreedom-blog.vercel.app";
 const contentDir = path.join(process.cwd(), "content");
-const outDir = path.join(process.cwd(), "out");
-const sitemapPath = path.join(outDir, "sitemap.xml");
 
-// Sicherstellen, dass /out existiert
-fs.mkdirSync(outDir, { recursive: true });
+// Zieldatei in Vercels tatsächlichem statischen Verzeichnis
+const staticDir = path.join(process.cwd(), ".vercel/output/static");
+fs.mkdirSync(staticDir, { recursive: true });
+const sitemapPath = path.join(staticDir, "sitemap.xml");
 
+// Alle Blogposts einlesen
 const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md"));
 
 const urls = files.map((file) => {
@@ -21,6 +22,7 @@ const urls = files.map((file) => {
   </url>`;
 });
 
+// XML erzeugen
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -31,4 +33,4 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>`;
 
 fs.writeFileSync(sitemapPath, xml, "utf8");
-console.log("✅ Sitemap erfolgreich erstellt:", sitemapPath);
+console.log("✅ Sitemap erstellt unter:", sitemapPath);

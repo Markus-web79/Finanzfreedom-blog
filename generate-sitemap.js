@@ -1,11 +1,10 @@
-// scripts/generate-sitemap.js
 import fs from "fs";
 import path from "path";
 
 const domain = "https://finanzfreedom-blog.vercel.app";
 const contentDir = path.join(process.cwd(), "content");
 
-// Vercel-Ordner (Next.js 14) für statische Dateien
+// Vercel Output-Ordner (Next.js 14+)
 const vercelStatic = path.join(process.cwd(), ".vercel/output/static");
 fs.mkdirSync(vercelStatic, { recursive: true });
 

@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧩 Checkout repository
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v3
 
       - name: 🧰 Setup Node.js
@@ -28,16 +28,16 @@ jobs:
           rm -rf .next || true
           rm -rf node_modules/.cache || true
 
-      - name: ✅ Check & Fix Content
+      - name: ✍️ Check & Fix Content
         run: |
-          echo "🧠 Starte Rechtschreibprüfung & Auto-Fix..."
+          echo "✍️ Starte Rechtschreibprüfung & Auto-Fix..."
           npm run fix-content || echo "Keine Änderungen gefunden"
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull origin main || true
           git add content || echo "Nichts zu committen"
-          git commit -m "🧠 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
+          git commit -m "🔧 Auto-Fix: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
 
       - name: 🏗️ Build static site
@@ -46,15 +46,11 @@ jobs:
           npm run build
           npm run export || npx next export
 
-      - name: 🗺️ Generate and Move Sitemap
+      - name: 🗺️ Generate Sitemap
         run: |
           echo "🗺️ Generiere Sitemap..."
           node scripts/generate-sitemap.js
-
-          echo "📂 Kopiere Sitemap in Vercel Output..."
-          mkdir -p .vercel/output/static
-          cp out/sitemap.xml .vercel/output/static/sitemap.xml || true
-          echo "✅ Sitemap erstellt und kopiert"
+          echo "✅ Sitemap erstellt"
 
       - name: 🚀 Deploy to Vercel (Production)
         env:
@@ -63,14 +59,14 @@ jobs:
         run: |
           echo "🚀 Starte Deployment zu Vercel..."
           npx vercel --prod --yes --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE > deployment.txt || {
-            echo "❌ Deployment fehlgeschlagen. Prüfe dein Token oder Scope."
+            echo "❌ Deployment fehlgeschlagen. Prüfe deinen Token oder Scope."
             cat deployment.txt
             exit 1
           }
 
-          DEPLOY_URL=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n 1)
-          echo "🌐 Live: $DEPLOY_URL"
-          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+          DEPLOY_URL=$(grep -o 'https://[^ ]*\.vercel\.app' deployment.txt | tail -n 1)
+          echo "✅ Deployment erfolgreich: $DEPLOY_URL"
+          echo "LIVE_URL=$DEPLOY_URL" >> $GITHUB_ENV
 
-      - name: ✅ Show Deployment URL
-        run: echo "🌍 Live unter: $DEPLOY_URL"
+      - name: 🌍 Show Live URL
+        run: echo "🌍 Live erreichbar unter: ${{ env.LIVE_URL }}"

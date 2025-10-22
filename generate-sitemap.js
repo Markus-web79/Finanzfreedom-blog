@@ -4,13 +4,11 @@ import path from "path";
 
 const domain = "https://finanzfreedom-blog.vercel.app";
 const contentDir = path.join(process.cwd(), "content");
+const outDir = path.join(process.cwd(), "out");
+const sitemapPath = path.join(outDir, "sitemap.xml");
 
-// Sitemap soll in den public-Ordner geschrieben werden,
-// damit Vercel sie beim Build automatisch deployt
-const sitemapPath = path.join(process.cwd(), "public", "sitemap.xml");
-
-// Falls der public-Ordner nicht existiert, erstellen:
-fs.mkdirSync(path.join(process.cwd(), "public"), { recursive: true });
+// Sicherstellen, dass /out existiert
+fs.mkdirSync(outDir, { recursive: true });
 
 const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md"));
 
@@ -33,4 +31,4 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>`;
 
 fs.writeFileSync(sitemapPath, xml, "utf8");
-console.log("✅ Sitemap erfolgreich erstellt unter:", sitemapPath);
+console.log("✅ Sitemap erfolgreich erstellt:", sitemapPath);

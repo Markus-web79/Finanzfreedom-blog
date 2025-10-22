@@ -40,12 +40,9 @@ jobs:
           git commit -m "🔧 Auto-Fix: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
 
-      - name: 🏗️ Build static site
-        run: |
-          echo "🏗️ Baue statische Next.js-Seite..."
-          npm run build
-          npm run export || npx next export
-
+  - name: 🏗️ Build static site
+  run: |
+    npm run build
       - name: 🗺️ Generate Sitemap
         run: |
           echo "🗺️ Generiere Sitemap..."

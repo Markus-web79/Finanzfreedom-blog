@@ -45,7 +45,11 @@ jobs:
           echo "🏗️ Baue statische Next.js-Seite..."
           npm run build
           npm run export || npx next export
-
+   - name: 🗺️ Generate Sitemap
+     run: |
+       echo "🗺️ Generiere Sitemap..."
+       node scripts/generate-sitemap.js
+       echo "✅ Sitemap erstellt"
       - name: 🗺️ Generate Sitemap
         run: |
           echo "🗺️ Generiere Sitemap..."

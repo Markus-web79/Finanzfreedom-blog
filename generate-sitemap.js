@@ -1,25 +1,18 @@
 import fs from "fs";
 import path from "path";
 
-// Domain deiner Website
 const domain = "https://finanzfreedom-blog.vercel.app";
-
-// Ordner, in dem deine Markdown-Artikel liegen
 const contentDir = path.join(process.cwd(), "content");
-
-// Zielordner für die Sitemap (muss public sein!)
 const publicDir = path.join(process.cwd(), "public");
 const sitemapPath = path.join(publicDir, "sitemap.xml");
 
-// Prüfen, ob public existiert
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir);
-}
+// Sicherstellen, dass der Ordner existiert
+fs.mkdirSync(publicDir, { recursive: true });
 
-// Alle Markdown-Dateien im content-Ordner auslesen
+// Alle Markdown-Dateien im content-Ordner einlesen
 const files = fs.readdirSync(contentDir).filter((file) => file.endsWith(".md"));
 
-// URLs für alle Artikel generieren
+// URLs generieren
 const urls = files.map((file) => {
   const slug = file.replace(/\.md$/, "");
   return `
@@ -39,6 +32,10 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   ${urls.join("")}
 </urlset>`;
 
-// Sitemap speichern
-fs.writeFileSync(sitemapPath, sitemap, "utf8");
-console.log("✅ Sitemap erfolgreich generiert:", sitemapPath);
+// Datei wirklich in /public schreiben
+try {
+  fs.writeFileSync(sitemapPath, sitemap, "utf8");
+  console.log("✅ Sitemap erfolgreich in /public erstellt:", sitemapPath);
+} catch (error) {
+  console.error("❌ Fehler beim Erstellen der Sitemap:", error);
+}

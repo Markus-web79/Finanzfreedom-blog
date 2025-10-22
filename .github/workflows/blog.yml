@@ -40,11 +40,17 @@ jobs:
           git commit -m "🧠 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
 
+      - name: 🏗️ Build static site
+        run: |
+          echo "🏗️ Baue statische Next.js-Seite..."
+          npm run build
+          npm run export || npx next export
+
       - name: 🗺️ Generate Sitemap
         run: |
           echo "🗺️ Generiere Sitemap..."
-          node generate-sitemap.js
-          echo "✅ Sitemap erstellt (im /out Verzeichnis)"
+          node scripts/generate-sitemap.js
+          echo "✅ Sitemap erstellt"
 
       - name: 🚀 Deploy to Vercel (Production)
         env:

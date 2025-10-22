@@ -37,6 +37,10 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull origin main || true
           git add content || echo "Nichts zu committen"
+              - name: Generate Sitemap
+        run: |
+          echo "🗺️ Generiere Sitemap..."
+          node generate-sitemap.js
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
       - name: Generate Sitemap

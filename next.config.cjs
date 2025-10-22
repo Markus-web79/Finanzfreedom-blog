@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // <-- ersetzt "next export"
+  output: "export", // aktiviert statischen Export statt "next export"
   images: { unoptimized: true },
   trailingSlash: true
 };

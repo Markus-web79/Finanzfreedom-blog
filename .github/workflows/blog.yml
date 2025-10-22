@@ -46,11 +46,15 @@ jobs:
           npm run build
           npm run export || npx next export
 
-      - name: 🗺️ Generate Sitemap
+      - name: 🗺️ Generate and Move Sitemap
         run: |
           echo "🗺️ Generiere Sitemap..."
           node scripts/generate-sitemap.js
-          echo "✅ Sitemap erstellt"
+
+          echo "📂 Kopiere Sitemap in Vercel Output..."
+          mkdir -p .vercel/output/static
+          cp out/sitemap.xml .vercel/output/static/sitemap.xml || true
+          echo "✅ Sitemap erstellt und kopiert"
 
       - name: 🚀 Deploy to Vercel (Production)
         env:

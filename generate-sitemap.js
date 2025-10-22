@@ -5,22 +5,14 @@ import path from "path";
 const domain = "https://finanzfreedom-blog.vercel.app";
 const contentDir = path.join(process.cwd(), "content");
 
-// Vercel verwendet bei Next.js 14 das neue Output-System:
-// .vercel/output/static für statische Dateien
+// Vercel-Ordner (Next.js 14) für statische Dateien
 const vercelStatic = path.join(process.cwd(), ".vercel/output/static");
-const outDir = fs.existsSync(vercelStatic)
-  ? vercelStatic
-  : path.join(process.cwd(), "out");
+fs.mkdirSync(vercelStatic, { recursive: true });
 
-const sitemapPath = path.join(outDir, "sitemap.xml");
+const sitemapPath = path.join(vercelStatic, "sitemap.xml");
 
-// Sicherstellen, dass das Zielverzeichnis existiert
-fs.mkdirSync(outDir, { recursive: true });
-
-// Alle Markdown-Dateien (Blogposts)
 const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md"));
 
-// Sitemap-XML generieren
 const urls = files.map((file) => {
   const slug = file.replace(/\.md$/, "");
   return `
@@ -40,4 +32,4 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>`;
 
 fs.writeFileSync(sitemapPath, xml, "utf8");
-console.log(`✅ Sitemap erfolgreich erstellt unter: ${sitemapPath}`);
+console.log("✅ Sitemap erfolgreich erstellt unter:", sitemapPath);

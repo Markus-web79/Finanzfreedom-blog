@@ -1,14 +1,16 @@
+// scripts/generate-sitemap.js
 import fs from "fs";
 import path from "path";
 
 const domain = "https://finanzfreedom-blog.vercel.app";
 const contentDir = path.join(process.cwd(), "content");
 
-// Vercel Output-Ordner (Next.js 14+)
-const vercelStatic = path.join(process.cwd(), ".vercel/output/static");
-fs.mkdirSync(vercelStatic, { recursive: true });
+// Sitemap soll in den public-Ordner geschrieben werden,
+// damit Vercel sie beim Build automatisch deployt
+const sitemapPath = path.join(process.cwd(), "public", "sitemap.xml");
 
-const sitemapPath = path.join(vercelStatic, "sitemap.xml");
+// Falls der public-Ordner nicht existiert, erstellen:
+fs.mkdirSync(path.join(process.cwd(), "public"), { recursive: true });
 
 const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md"));
 

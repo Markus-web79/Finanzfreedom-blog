@@ -3,39 +3,28 @@ import fs from "fs";
 import path from "path";
 
 const baseUrl = "https://finanzfreedom-blog.vercel.app";
-
-// Pfad für die Sitemap im Export-Ordner
-const sitemapPath = path.join(process.cwd(), "out", "sitemap.xml");
-
-// Content-Ordner (Markdown-Dateien)
+const outDir = path.join(process.cwd(), "out");
+const sitemapPath = path.join(outDir, "sitemap.xml");
 const contentDir = path.join(process.cwd(), "content");
 
 function generateSitemap() {
   console.log("🗺️ Generiere Sitemap...");
 
-  // Start mit den statischen Seiten
-  let urls = [`${baseUrl}/`];
+  // ✅ Sicherstellen, dass /out existiert:
+  fs.mkdirSync(outDir, { recursive: true });
 
-  // Alle .md-Dateien durchgehen
+  // URLs sammeln
   const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
+  const urls = [`${baseUrl}/`, ...files.map(f => `${baseUrl}/${f.replace(/\.md$/, "")}`)];
 
-  for (const file of files) {
-    const slug = file.replace(/\.md$/, "");
-    urls.push(`${baseUrl}/${slug}`);
-  }
-
-  // XML-Template
+  // XML erstellen
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
-  .map(url => {
-    return `<url><loc>${url}</loc></url>`;
-  })
-  .join("\n")}
+${urls.map(u => `<url><loc>${u}</loc></url>`).join("\n")}
 </urlset>`;
 
-  // Sitemap schreiben
-  fs.writeFileSync(sitemapPath, xml);
+  // Datei schreiben
+  fs.writeFileSync(sitemapPath, xml, "utf8");
   console.log(`✅ Sitemap erstellt unter: ${sitemapPath}`);
 }
 

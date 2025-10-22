@@ -43,8 +43,13 @@ jobs:
           node generate-sitemap.js
           git commit -m "🔍 Auto-Check: Content korrigiert" || echo "Keine Änderungen gefunden"
           git push || echo "Kein Push notwendig"
-      - name: Generate Sitemap
-        run: node generate-sitemap.js
+            - name: Generate Sitemap
+        run: |
+          echo "🗺️ Generiere Sitemap..."
+          mkdir -p public
+          node generate-sitemap.js
+          echo "📦 Inhalt von /public nach dem Generieren:"
+          ls -la public
       - name: 🚀 Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

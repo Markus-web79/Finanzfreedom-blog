@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // aktiviert statischen Export statt "next export"
+  output: 'export',
+  distDir: 'out', // hierhin schreibt Next.js die statischen Dateien
+  trailingSlash: true,
   images: { unoptimized: true },
-  trailingSlash: true
 };
 
 export default nextConfig;

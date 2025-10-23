@@ -8,15 +8,13 @@ export default function Header() {
         textAlign: "center",
       }}
     >
-      <h1
-        style={{
-          fontSize: "2.2rem",
-          color: "#111827",
-          marginBottom: "0.5rem",
-        }}
-      >
-        📈 FinanzFreedom Blog
-      </h1>
+   import Link from "next/link";
+
+<h1 style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>
+  <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
+    FinanzFreedom Blog
+  </Link>
+</h1>
 
       <p
         style={{

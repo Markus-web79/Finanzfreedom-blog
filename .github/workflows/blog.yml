@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧾 Checkout repository
+      - name: 🧩 Checkout repository
         uses: actions/checkout@v3
 
       - name: ⚙️ Setup Node.js
@@ -22,34 +22,22 @@ jobs:
         run: |
           npm ci || npm install
 
-      - name: 🧹 Clear Build & Next.js Cache
+      - name: 🧹 Clear Build Cache
         run: |
-          echo "🧼 Lösche alte Dateien und Cache..."
+          echo "🧹 Leere alte Build-Dateien..."
           rm -rf .next || true
           rm -rf node_modules/.cache || true
 
-      - name: ✅ Check & Fix Content
+      - name: ✏️ Check & Fix Content
         run: |
-          echo "🪶 Starte Rechtschreibprüfung & Auto-Fix..."
+          echo "✏️ Starte Rechtschreibprüfung & Auto-Fix..."
           npm run fix-content || echo "Keine Änderungen gefunden"
 
-      - name: 🏗️ Build static site
+      - name: 🗺️ Generate Sitemap (before deploy)
         run: |
-          npm run build
-
-     - name: 🗺️ Generate Sitemap (before deploy)
-      run: |
-        echo "🗺️ Generiere Sitemap im XML-Format..."
-        node scripts/generate-sitemap.js
-        echo "✅ Sitemap wurde erzeugt."
-
-    - name: 🚀 Deploy to Vercel (Production)
-      env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
-      run: |
-        echo "🚀 Starte Deployment zu Vercel..."
-        npx vercel --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE > deployment.txt
+          echo "🗺️ Generiere Sitemap im XML-Format..."
+          node scripts/generate-sitemap.js
+          echo "✅ Sitemap wurde erzeugt."
 
       - name: 🚀 Deploy to Vercel (Production)
         env:
@@ -57,7 +45,9 @@ jobs:
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
           echo "🚀 Starte Deployment zu Vercel..."
-          npx vercel --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE
+          npx vercel --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE > deployment.txt
 
-      - name: ✅ Done
-        run: echo "✅ Deployment erfolgreich abgeschlossen!"
+      - name: 🌍 Show Live URL
+        run: |
+          DEPLOY_URL=$(grep -o 'https://[^ ]*\.vercel\.app' deployment.txt | tail -n1)
+          echo "✅ Live: $DEPLOY_URL"

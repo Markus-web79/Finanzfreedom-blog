@@ -1,5 +1,4 @@
 {
-  "version": 3,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".vercel/output/static"
+  "version": 2,
+  "public": ".vercel/output/static"
 }

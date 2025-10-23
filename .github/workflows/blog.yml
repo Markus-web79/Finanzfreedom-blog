@@ -10,51 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧾 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🧩 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
-        run: |
-          npm ci || npm install
+      - name: Install dependencies
+        run: npm ci || npm install
 
-      - name: 🧹 Clear Build & Cache
-        run: |
-          echo "🧹 Entferne alte Build-Dateien..."
-          rm -rf .next || true
-          rm -rf node_modules/.cache || true
+      - name: Build static site
+        run: npm run build
 
-      - name: ✏️ Check & Fix Content
-        run: |
-          echo "✏️ Starte Rechtschreibprüfung & Auto-Fix..."
-          npm run fix-content || echo "Keine Änderungen erforderlich."
-
-      - name: 🗺️ Generate Sitemap
-        run: |
-          echo "🗺️ Generiere Sitemap..."
-          node scripts/generate-sitemap.js || echo "Kein Sitemap-Skript gefunden."
-
-      - name: 🏗️ Build static site
-        run: |
-          echo "🏗️ Erstelle Produktionsbuild..."
-          npm run build
-
-      - name: 📤 Export static site
-        run: |
-          echo "📤 Exportiere statische Seiten..."
-          npx next export
-
-      - name: 🚀 Deploy to Vercel (Production)
+      - name: Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
-          echo "🚀 Starte Deployment aus dem ./out Ordner..."
-          npx vercel deploy ./out --prebuilt --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE || echo "⚠️ Deployment fehlgeschlagen"
-
-      - name: ✅ Show Deployment URL
-        run: echo "✅ Live unter: https://finanzfreedom-blog.vercel.app"
+          npx vercel deploy .vercel/output/static --prod --yes --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE

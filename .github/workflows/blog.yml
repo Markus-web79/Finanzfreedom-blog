@@ -37,9 +37,19 @@ jobs:
         run: |
           npm run build
 
-      - name: 🗺️ Generate Sitemap
-        run: |
-          node scripts/generate-sitemap.js
+     - name: 🗺️ Generate Sitemap (before deploy)
+      run: |
+        echo "🗺️ Generiere Sitemap im XML-Format..."
+        node scripts/generate-sitemap.js
+        echo "✅ Sitemap wurde erzeugt."
+
+    - name: 🚀 Deploy to Vercel (Production)
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
+      run: |
+        echo "🚀 Starte Deployment zu Vercel..."
+        npx vercel --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE > deployment.txt
 
       - name: 🚀 Deploy to Vercel (Production)
         env:

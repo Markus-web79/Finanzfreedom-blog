@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header
@@ -8,13 +10,11 @@ export default function Header() {
         textAlign: "center",
       }}
     >
-   import Link from "next/link";
-
-<h1 style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>
-  <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
-    FinanzFreedom Blog
-  </Link>
-</h1>
+      <h1 style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>
+        <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
+          FinanzFreedom Blog
+        </Link>
+      </h1>
 
       <p
         style={{
@@ -28,7 +28,6 @@ export default function Header() {
         Dein Weg zu finanzieller Freiheit – Strategien, Ideen & echte Tipps.
       </p>
 
-      {/* 🧭 Navigation (Platzhalter für spätere Erweiterung) */}
       <nav
         style={{
           marginTop: "1.5rem",
@@ -38,15 +37,15 @@ export default function Header() {
           flexWrap: "wrap",
         }}
       >
-        <a href="/" style={{ color: "#0070f3", textDecoration: "none" }}>
+        <Link href="/" style={{ color: "#0070f3", textDecoration: "none" }}>
           Startseite
-        </a>
-        <a href="/about" style={{ color: "#0070f3", textDecoration: "none" }}>
+        </Link>
+        <Link href="/about" style={{ color: "#0070f3", textDecoration: "none" }}>
           Über uns
-        </a>
-        <a href="/kontakt" style={{ color: "#0070f3", textDecoration: "none" }}>
+        </Link>
+        <Link href="/kontakt" style={{ color: "#0070f3", textDecoration: "none" }}>
           Kontakt
-        </a>
+        </Link>
       </nav>
     </header>
   );

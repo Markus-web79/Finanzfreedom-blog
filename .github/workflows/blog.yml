@@ -48,13 +48,12 @@ jobs:
           echo "📤 Exportiere statische Seiten..."
           npx next export
 
-      - name: 🚀 Deploy to Vercel (Production)
+        - name: 🚀 Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
           echo "🚀 Starte Deployment zu Vercel..."
-          npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE
-
+          npx vercel deploy ./out --prod --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE
       - name: ✅ Show Deployment URL
         run: echo "✅ Live unter: https://finanzfreedom-blog.vercel.app"

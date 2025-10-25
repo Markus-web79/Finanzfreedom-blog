@@ -43,11 +43,10 @@ export default function Home({ posts }) {
   return (
     <>
       {/* Header mit Fade-In-Effekt */}
-      <header className="header-fade">
-        <h1>FinanzFreedom Blog</h1>
-        <p>Finanzielle Unabhängigkeit beginnt mit Wissen 💡</p>
-      </header>
-
+   <header className="header-fade">
+  <h1 className="logo">FinanzFreedom</h1>
+  <p className="slogan">Finanzielle Freiheit beginnt mit Wissen</p>
+</header>
       {/* Hauptbereich */}
       <main className="main">
         <div className="articles-grid">

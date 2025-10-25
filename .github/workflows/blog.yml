@@ -29,4 +29,6 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}
         run: |
-          npx vercel deploy .vercel/output/static --prod --yes --token=$VERCEL_TOKEN --scope=$VERCEL_SCOPE
+- name: Deploy to Vercel (prod)
+  run: |
+    npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}

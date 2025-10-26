@@ -54,7 +54,7 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <article key={post.slug} className="article-card fade-in">
               <h2>{post.title}</h2>
-              <p>{post.excerpt}</p>
+              <p>{post.excerpt || post.title}</p>
               <Link href={`/${post.slug}`}>Weiterlesen</Link>
             </article>
           ))}

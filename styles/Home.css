@@ -333,3 +333,13 @@ h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
+main {
+  padding-top: 3rem;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}

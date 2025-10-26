@@ -284,6 +284,7 @@ footer a:hover {
   margin-top: -0.3rem;
 }
 /* === Premium Card Design – Dark Fintech Edition === */
+/* === Premium Card Design – Dark Fintech Edition === */
 .articles-grid article {
   background-color: #111;
   border: 1px solid #1e1e1e;
@@ -307,7 +308,8 @@ footer a:hover {
 
 
 /* === Premium Buttons === */
-button, .btn-primary {
+button,
+.btn-primary {
   background-color: #00b894;
   color: #000;
   font-weight: 600;
@@ -317,7 +319,8 @@ button, .btn-primary {
   transition: 0.2s ease;
 }
 
-button:hover, .btn-primary:hover {
+button:hover,
+.btn-primary:hover {
   background-color: #00d8aa;
   cursor: pointer;
   transform: translateY(-2px);
@@ -325,16 +328,22 @@ button:hover, .btn-primary:hover {
 
 
 /* === Typography – Inter + Poppins === */
-body, p {
-  font-family: 'Inter', sans-serif;
+body,
+p {
+  font-family: "Inter", sans-serif;
 }
 
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
 }
+
+
+/* === Layout Fixes === */
 main {
-  padding-top: 3rem;
+  padding-top: 4rem;
 }
 
 .articles-grid {
@@ -343,7 +352,3 @@ main {
   gap: 2rem;
   padding: 2rem;
 }
-padding: 2rem;
-}
-
-}   /* <— Diese muss dazu */

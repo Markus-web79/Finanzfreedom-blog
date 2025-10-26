@@ -1,7 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Link from "next/export async function getStaticProps() {
+import Link from "next/link";
+
+export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
@@ -12,10 +14,10 @@ import Link from "next/export async function getStaticProps() {
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
-      // META bereinigen und Excerpt erzeugen
+      // META & Markdown-Symbole entfernen
       const cleanedContent = content
-        .replace(/META:.*?#/s, "") // META raus
-        .replace(/\*\*/g, "") // Markdown-Sterne raus
+        .replace(/META:.*?#/s, "")
+        .replace(/\*\*/g, "")
         .trim();
 
       const excerpt =
@@ -30,35 +32,22 @@ import Link from "next/export async function getStaticProps() {
       };
     });
 
-  // "willkommen" Artikel ausblenden
+  // "Willkommen" Artikel nicht anzeigen
   const filteredPosts = posts.filter(
     (post) =>
       !post.slug.toLowerCase().includes("willkommen") &&
       !post.title.toLowerCase().includes("willkommen")
   );
 
-  const sortedPosts = filteredPosts.sort((a, b) =>
-    a.title.localeCompare(b.title)
-  );
-
   return {
-    props: { posts: sortedPosts },
-  };
-}
-
-  const sortedPosts = posts.sort((a, b) =>
-    a.title.localeCompare(b.title)
-  );
-
-  return {
-    props: { posts: sortedPosts },
+    props: { posts: filteredPosts },
   };
 }
 
 export default function Home({ posts }) {
   return (
     <>
-      {/* HEADER */}
+      {/* Header */}
       <header className="header-fade">
         <h1 className="logo">FinanzFreedom</h1>
         <p className="slogan">Finanzielle Freiheit beginnt mit Wissen</p>
@@ -67,7 +56,7 @@ export default function Home({ posts }) {
         </p>
       </header>
 
-      {/* ARTIKEL-GRID */}
+      {/* Artikel-Grid */}
       <main className="main">
         <div className="articles-grid">
           {posts.map((post) => (
@@ -86,12 +75,12 @@ export default function Home({ posts }) {
         <p>
           Erhalte regelmäßig Tipps zu passivem Einkommen, Investments und finanzieller Freiheit.
         </p>
-        <p style={{ color: "#777", fontSize: "0.9rem" }}>
+        <p style={{ color: "#777", fontSize: "0.85rem" }}>
           (Newsletter-Funktion kommt bald)
         </p>
       </section>
 
-      {/* FOOTER */}
+      {/* Footer */}
       <footer>
         © 2025 FinanzFreedom. Alle Rechte vorbehalten.
       </footer>

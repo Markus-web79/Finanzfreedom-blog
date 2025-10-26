@@ -1,30 +1,50 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Link from "next/link";
-
-export async function getStaticProps() {
+import Link from "next/export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "content");
   const filenames = fs.readdirSync(postsDirectory);
 
   const posts = filenames
-    .filter((file) => file.endsWith(".md"))
+    .filter((filename) => filename.endsWith(".md"))
     .map((filename) => {
       const filePath = path.join(postsDirectory, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContents);
 
+      // META bereinigen und Excerpt erzeugen
+      const cleanedContent = content
+        .replace(/META:.*?#/s, "") // META raus
+        .replace(/\*\*/g, "") // Markdown-Sterne raus
+        .trim();
+
       const excerpt =
         data.excerpt ||
         data.description ||
-        content.substring(0, 140) + "...";
+        cleanedContent.substring(0, 160) + "...";
 
       return {
         slug: filename.replace(/\.md$/, ""),
         title: data.title || "Unbenannter Artikel",
-        excerpt: excerpt,
+        excerpt,
       };
     });
+
+  // "willkommen" Artikel ausblenden
+  const filteredPosts = posts.filter(
+    (post) =>
+      !post.slug.toLowerCase().includes("willkommen") &&
+      !post.title.toLowerCase().includes("willkommen")
+  );
+
+  const sortedPosts = filteredPosts.sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
+
+  return {
+    props: { posts: sortedPosts },
+  };
+}
 
   const sortedPosts = posts.sort((a, b) =>
     a.title.localeCompare(b.title)

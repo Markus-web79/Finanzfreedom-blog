@@ -60,20 +60,18 @@ export default function Post({ frontmatter, content }) {
   if (!frontmatter) return <p>Artikel nicht gefunden.</p>;
 
   return (
-    <article style={{ maxWidth: "800px", margin: "2rem auto", lineHeight: "1.7" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-        {frontmatter.title}
-      </h1>
-      {frontmatter.date && (
-        <p style={{ color: "#666", marginBottom: "2rem" }}>{frontmatter.date}</p>
-      )}
+    <article className="post-container fade-in">
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.date && <p className="post-date">{frontmatter.date}</p>}
+
       <div
         className="markdown-body"
         dangerouslySetInnerHTML={{ __html: content }}
-<p style={{ marginTop: "2rem" }}>
-  <Link href="/" className="back-home">← Zur Übersicht</Link>
-</p>
-      />
+      ></div>
+
+      <p style={{ marginTop: "2rem" }}>
+        <Link href="/" className="back-home">← Zur Übersicht</Link>
+      </p>
     </article>
   );
 }

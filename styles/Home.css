@@ -97,3 +97,24 @@ button:hover,
   transform: translateY(-2px);
   cursor: pointer;
 }
+/* === Consistent Card Heights === */
+.articles-grid article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.articles-grid p {
+  flex-grow: 1;
+}
+.articles-grid a,
+.articles-grid a:visited {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.articles-grid a:hover {
+  color: #00d8aa;
+}  

@@ -70,6 +70,9 @@ export default function Post({ frontmatter, content }) {
       <div
         className="markdown-body"
         dangerouslySetInnerHTML={{ __html: content }}
+<p style={{ marginTop: "2rem" }}>
+  <Link href="/" className="back-home">← Zur Übersicht</Link>
+</p>
       />
     </article>
   );

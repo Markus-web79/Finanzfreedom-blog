@@ -50,11 +50,9 @@ export default function Home({ posts }) {
 </header>
       {/* Hauptbereich */}
       <main className="main">
-        <div className="articles-grid">
-          {posts.map((post) => (
-            <article key={post.slug} className="article-card fade-in">
-              <h2>{post.title}</h2>
-              <p>{post.excerpt || post.title}</p>
+  <h2>{post.title}</h2>
+<p>{post.excerpt || post.description || "Hier erfährst du wichtige Tipps zur finanziellen Freiheit."}</p>
+<Link href={`/${post.slug}`}>Weiterlesen</Link>
               <Link href={`/${post.slug}`}>Weiterlesen</Link>
             </article>
           ))}

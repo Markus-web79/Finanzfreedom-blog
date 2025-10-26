@@ -1,290 +1,61 @@
-/* --- FinanzFreedom Blog – Smart Finance Design (Petrol Edition) --- */
-
+/* === Farbvariablen === */
 :root {
-  --color-primary: #009688;        /* Modernes Petrolgrün */
-  --color-primary-dark: #00695c;   /* Dunklerer Kontrastton */
-  --color-bg: #ffffff;             /* Hintergrund */
-  --color-text: #2c3e50;           /* Dunkelgrau für Text */
-  --color-light: #f4f6f7;          /* Sehr helles Grau für Boxen */
+  --color-primary: #00b894;
+  --color-primary-dark: #009b74;
+  --color-bg: #0d0d0d;
+  --color-text: #e0e0e0;
+  --color-light: #4f4f4f;
 }
 
-/* Allgemein */
+/* === Body === */
 body {
-  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   margin: 0;
   padding: 0;
-  line-height: 1.6;
 }
 
-/* Header */
+/* === Hero/Logo === */
 header {
-  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
-  color: white;
-  padding: 3rem 1.5rem;
   text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(90deg, #00b894, #009b74);
 }
 
-header h1 {
-  font-size: 2.6rem;
+.logo {
+  font-size: 3rem;
   font-weight: 700;
+  color: #ffffff;
   margin-bottom: 0.5rem;
-  letter-spacing: -0.5px;
 }
 
-header p {
+.slogan {
+  color: #ffffff;
   font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+.intro {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-top: 0.8rem;
   opacity: 0.9;
 }
 
-/* Hauptbereich */
-.main {
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
+/* === Artikel Grid === */
+main {
+  padding: 3rem 1rem;
 }
 
-/* Artikelübersicht */
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 2rem;
+  padding: 2rem;
 }
 
-.article-card {
-  background: var(--color-light);
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.article-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-}
-
-.article-card h2 {
-  border-left: 4px solid #c9a646; /* Gold-Akzentlinie */
-  padding-left: 0.6rem;
-  font-size: 1.4rem;
-  color: var(--color-primary-dark);
-  margin-top: 0;
-}
-
-.article-card p {
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-/* --- Buttons & Links: Smart Finance Look --- */
-
-a,
-button {
-  font-family: inherit;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-button,
-.article-card a {
-  background-color: var(--color-primary);
-  color: #fff;
-  padding: 0.7rem 1.2rem;
-  border-radius: 6px;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:hover,
-.article-card a:hover {
-  background-color: var(--color-primary-dark);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-}
-
-/* Newsletter */
-.newsletter {
-  text-align: center;
-  padding: 4rem 1.5rem;
-  background: linear-gradient(180deg, #f7f9f9, #e9f2f1);
-  border-top: 1px solid #d8e2e1;
-  margin-top: 4rem;
-}
-
-.newsletter h2 {
-  color: var(--color-primary-dark);
-  margin-bottom: 1rem;
-}
-
-.newsletter p {
-  color: #555;
-  margin-bottom: 2rem;
-}
-
-.newsletter input[type="email"] {
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 250px;
-  max-width: 80%;
-  margin-right: 0.5rem;
-}
-
-.newsletter button {
-  background-color: var(--color-primary-dark);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0.8rem 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.newsletter button:hover {
-  background-color: var(--color-primary);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 2.5rem 1rem;
-  background-color: var(--color-primary-dark);
-  color: white;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-}
-
-footer a {
-  color: var(--color-light);
-  text-decoration: underline;
-  opacity: 0.9;
-}
-
-footer a:hover {
-  opacity: 1;
-}
-/* --- 🌙 Dark Mode – Smart Finance Edition --- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #121212;
-    --color-text: #e0e0e0;
-    --color-light: #1e1e1e;
-    --color-primary: #00bfa5;        /* etwas kräftigeres Petrol im Dark Mode */
-    --color-primary-dark: #009688;
-  }
-
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-  }
-
-  header {
-    background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
-    color: #fff;
-  }
-
-  .article-card {
-    background: #1c1c1c;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-  }
-
-  .article-card h2 {
-    color: var(--color-primary);
-    border-left-color: #c9a646; /* Gold bleibt als Akzent */
-  }
-
-  .article-card p {
-    color: #ccc;
-  }
-
-  button,
-  .article-card a {
-    background-color: var(--color-primary-dark);
-    color: #fff;
-  }
-
-  button:hover,
-  .article-card a:hover {
-    background-color: var(--color-primary);
-  }
-
-  .newsletter {
-    background: linear-gradient(180deg, #1a1a1a, #0f0f0f);
-    border-top: 1px solid #2a2a2a;
-  }
-
-  .newsletter h2 {
-    color: var(--color-primary);
-  }
-
-  .newsletter p {
-    color: #bbb;
-  }
-
-  .newsletter input[type="email"] {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    color: #fff;
-  }
-
-  footer {
-    background-color: #0e0e0e;
-    color: #ccc;
-  }
-
-  footer a {
-    color: #9ae6e6;
-  }
-
-  footer a:hover {
-    color: var(--color-primary);
-  }
-}
-/* --- Scroll Fade-In Animation --- */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* --- Header Fade-In Animation --- */
-.header-fade {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: headerAppear 1.2s ease-out forwards;
-}
-
-@keyframes headerAppear {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* --- Logo / Header Branding --- */
-.logo {
-  font-size: 2.6rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: #ffffff;
-}
-}
-.slogan {
-  font-size: 1.1rem;
-  color: #ddd;
-  opacity: 0.9;
-  margin-top: -0.3rem;
-}
-/* === Premium Card Design – Dark Fintech Edition === */
-/* === Premium Card Design – Dark Fintech Edition === */
+/* === Artikel Karten === */
 .articles-grid article {
   background-color: #111;
   border: 1px solid #1e1e1e;
@@ -299,56 +70,30 @@ footer a:hover {
 }
 
 .articles-grid h2 {
-  color: #00b894;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
 }
 
 .articles-grid p {
   color: #cfcfcf;
+  line-height: 1.5;
 }
 
-
-/* === Premium Buttons === */
+/* === Buttons === */
 button,
 .btn-primary {
-  background-color: #00b894;
+  background-color: var(--color-primary);
   color: #000;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
   padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
   transition: 0.2s ease;
 }
 
 button:hover,
 .btn-primary:hover {
   background-color: #00d8aa;
-  cursor: pointer;
   transform: translateY(-2px);
-}
-
-
-/* === Typography – Inter + Poppins === */
-body,
-p {
-  font-family: "Inter", sans-serif;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-}
-
-
-/* === Layout Fixes === */
-main {
-  padding-top: 4rem;
-}
-
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  cursor: pointer;
 }

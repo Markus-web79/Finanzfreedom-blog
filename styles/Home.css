@@ -1,120 +1,116 @@
-/* === Farbvariablen === */
+/* === FinanzFreedom Blog – Smart Finance Design (Petrol Edition) === */
 :root {
-  --color-primary: #00b894;
-  --color-primary-dark: #009b74;
-  --color-bg: #0d0d0d;
-  --color-text: #e0e0e0;
-  --color-light: #4f4f4f;
+  --color-primary: #00a688; /* Petrolgrün */
+  --color-primary-dark: #00695c; /* Dunkler petrol */
+  --color-bg: #111; /* Hintergrund */
+  --color-text: #e6e6e6; /* Text hell */
+  --color-card: #1a1a1a; /* Boxen */
 }
 
-/* === Body === */
+/* === Allgemein === */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
-/* === Hero/Logo === */
+/* === Hero / Header === */
 header {
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+  padding: 3.5rem 1.5rem 4rem;
   text-align: center;
-  padding: 4rem 1rem;
-  background: linear-gradient(90deg, #00b894, #009b74);
 }
 
 .logo {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.6px;
   color: #ffffff;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .slogan {
-  color: #ffffff;
-  font-size: 1.2rem;
-  opacity: 0.95;
+  font-size: 1.25rem;
+  color: #e0fffa;
+  margin-top: 0.7rem;
 }
 
-.intro {
-  color: #ffffff;
-  font-size: 1.05rem;
-  margin-top: 0.8rem;
-  opacity: 0.9;
-}
-
-/* === Artikel Grid === */
+/* Abstand Inhalt */
 main {
   padding: 3rem 1rem;
 }
 
+/* === Artikelkarten-Grid === */
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 2.2rem;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 
-/* === Artikel Karten === */
-.articles-grid article {
-  background-color: #111;
-  border: 1px solid #1e1e1e;
-  border-radius: 14px;
-  padding: 2rem;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.articles-grid article:hover {
-  background-color: #151515;
-  transform: translateY(-4px);
-}
-
-.articles-grid h2 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-}
-
-.articles-grid p {
-  color: #cfcfcf;
-  line-height: 1.5;
-}
-
-/* === Buttons === */
-button,
-.btn-primary {
-  background-color: var(--color-primary);
-  color: #000;
-  padding: 0.7rem 1.4rem;
-  border-radius: 8px;
-  font-weight: 600;
-  border: none;
-  transition: 0.2s ease;
-}
-
-button:hover,
-.btn-primary:hover {
-  background-color: #00d8aa;
-  transform: translateY(-2px);
-  cursor: pointer;
-}
-/* === Consistent Card Heights === */
-.articles-grid article {
+.article-card {
+  background-color: var(--color-card);
+  padding: 1.8rem 1.4rem;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 320px;
+  border-left: 4px solid var(--color-primary-dark);
+  transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
-.articles-grid p {
+.article-card:hover {
+  background-color: #1f1f1f;
+  transform: translateY(-4px);
+}
+
+/* Artikelüberschriften */
+.article-card h2 {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin: 0 0 0.8rem;
+  font-weight: 700;
+}
+
+/* Teasertext */
+.article-card p {
+  color: #bdbdbd;
+  font-size: 0.95rem;
   flex-grow: 1;
 }
-.articles-grid a,
-.articles-grid a:visited {
-  color: var(--color-primary);
+
+/* === Buttons === */
+.article-card a {
+  background-color: var(--color-primary);
+  color: #000;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
   text-decoration: none;
-  font-weight: 600;
+  margin-top: 1.2rem;
 }
 
-.articles-grid a:hover {
-  color: #00d8aa;
-}  
+.article-card a:hover {
+  background-color: #008e74;
+  color: #fff;
+}
+
+/* === Zurück-Link === */
+.back-home {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.back-home:hover {
+  opacity: 0.8;
+}

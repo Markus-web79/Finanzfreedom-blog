@@ -6,7 +6,13 @@ export default function Document() {
     <Html lang="de">
       <Head>
         {/* AWIN site verification */}
-        <meta name="verification" content="c7f1a5acfd56b563151e05e2f481e50a8" />
+        <meta
+          name="verification"
+          content="c7f1a5acfd56b563516e05e2f401e50a8"
+        />
+
+        {/* TEMP: Seite nicht indexieren, solange wir prüfen */}
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <body>
         <Main />

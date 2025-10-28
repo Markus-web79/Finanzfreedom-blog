@@ -1,3 +1,4 @@
+
 ---
 title: "5 Wege zu passives Einkommen ohne Startkapital"
 slug: "5-wege-zu-passives-einkommen-ohne-startkapital"

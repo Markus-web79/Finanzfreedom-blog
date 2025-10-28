@@ -1,3 +1,4 @@
+
 ---
 title: "Entdecke 7 erprobte Strategien, wie du ein stabiles passives Einkommen aufbauen kannst"
 date: 2025-09-28

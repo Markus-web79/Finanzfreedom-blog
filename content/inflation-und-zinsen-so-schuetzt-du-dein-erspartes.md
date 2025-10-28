@@ -1,3 +1,4 @@
+
 ---
 title: "Entdecke Strategien, wie du dein Erspartes vor Inflation und steigendennnnn Zinsen schützen kannst."
 date: 2025-09-28

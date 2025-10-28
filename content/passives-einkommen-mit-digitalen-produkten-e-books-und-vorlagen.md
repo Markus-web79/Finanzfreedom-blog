@@ -1,3 +1,4 @@
+
 ---
 title: "Passives Einkommen mit digitalen Produkten: E-Books und Vorlagen"
 slug: "passives-einkommen-mit-digitalen-produkten-e-books-und-vorlagen"

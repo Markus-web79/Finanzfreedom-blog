@@ -10,7 +10,8 @@
     "lint": "next lint",
     "fix-content": "node scripts/fixContent.js",
     "fix-articles": "node scripts/fixArticles.js",
-    "fix-slugs": "node scripts/fixSlugs.js"
+    "fix-slugs": "node scripts/fixSlugs.js",
+    "fix-umlaute": "node scripts/fixUmlaute.js"
   },
   "dependencies": {
     "next": "14.2.3",

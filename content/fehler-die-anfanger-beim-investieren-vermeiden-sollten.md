@@ -1,3 +1,4 @@
+
 ---
 title: "Fehler, die Anfänger beim Investieren vermeiden sollten"
 slug: "fehler-die-anfanger-beim-investieren-vermeiden-sollten"

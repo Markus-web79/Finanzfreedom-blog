@@ -1,3 +1,4 @@
+
 ---
 title: "Automatisierte Sparpläne: Tipps & Tools für passives Einkommen"
 slug: "automatisierte-sparplane-tipps-and-tools-für-passives-einkommen"

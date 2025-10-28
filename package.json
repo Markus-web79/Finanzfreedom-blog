@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "fix-umlaute": "node scripts/fixUmlaute.js",
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "fix-content": "node scripts/fixContent.js"
+    "fix-content": "node scripts/fixContent.js",
+    "fix-articles": "node scripts/fixArticles.js",
+    "fix-slugs": "node scripts/fixSlugs.js"
   },
   "dependencies": {
     "next": "14.2.3",

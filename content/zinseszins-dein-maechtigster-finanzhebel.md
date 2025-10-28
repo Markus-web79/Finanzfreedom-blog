@@ -2,7 +2,7 @@
 title: "Zinseszins – dein mächtigster Finanzhebel"
 slug: "zinseszins-dein-maechtigster-finanzhebel"
 date: "2025-10-28"
-excerpt: "Albert Einstein nannte den Zinseszins das achte Weltwunder. Hier erfährst du, warum dieses Prinzip dein Vermögen vervielfachen kann."
+excerpt: "Albert Einstein nannte den Zinseszins dass achte Weltwunder. Hier erfährst du, warum dieses Prinzip dein Vermögen vervielfachen kann."
 ---
 
 ## Das Prinzip Zinseszins

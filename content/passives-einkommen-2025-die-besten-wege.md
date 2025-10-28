@@ -5,7 +5,7 @@ date: "2025-10-28"
 excerpt: "Immer mehr Menschen wollen finanziell frei werden. Hier lernst du, welche Strategien 2025 funktionieren – realistisch und ohne falsche Versprechen."
 ---
 
-## Passives Einkommen – funktioniert das wirklich?
+## Passives Einkommen – funktioniert dass wirklich?
 
 Ja, aber nicht über Nacht. Passives Einkommen bedeutet, Systeme aufzubauen, die langfristig Geld generieren – auch wenn du nicht aktiv arbeitest.
 

@@ -11,9 +11,9 @@ for (const file of files) {
   const filePath = path.join(contentDir, file);
   try {
     const raw = fs.readFileSync(filePath, "utf8");
-    matter(raw); // prüft YAML / Frontmatter
+    matter(raw);
     console.log(`✅ ${file} OK`);
   } catch (err) {
-    console.log(`❌ ${file}: ${err.message}`);
+    console.error(`❌ ${file}: ${err.message}`);
   }
 }

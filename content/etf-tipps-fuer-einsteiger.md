@@ -1,3 +1,4 @@
+
 ---
 title: "Die wichtigsten Tipps für Einsteiger, die mit ETFs Starten möchten. Lerne die Grundlagen und Starte erfolgreich mit deinem ersten ETF-Sparplan."
 date: 2025-09-28

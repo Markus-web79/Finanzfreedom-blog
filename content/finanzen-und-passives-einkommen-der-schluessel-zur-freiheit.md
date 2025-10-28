@@ -1,3 +1,4 @@
+
 ---
 title: "Verstehe, warum Finanzen und passives Einkommen die Basis für deine finanZielle Freiheit sind."
 date: 2025-09-28

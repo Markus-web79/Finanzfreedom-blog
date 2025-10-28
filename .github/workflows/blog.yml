@@ -4,46 +4,40 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: 🧩 Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm install
 
-      # 🧩 Automatische Reparatur aller Markdown-Dateien (Frontmatter, Slugs, Striche etc.)
-      - name: Fix Markdown Articles
-        run: node scripts/fixArticles.js
+      # >>> Hier läuft dein automatischer Fix <<<
+      - name: 🧹 Fix Markdown articles
+        run: npm run fix-articles
 
-      # 🧠 Optional: Content-Check (Rechtschreibung, Struktur)
-      - name: Check Content
-        run: node scripts/fixContent.js
+      - name: 🔍 Check Content
+        run: npm run fix-content
 
-      # 🌐 Sitemap vor dem Deploy generieren
-      - name: Generate Sitemap
-        run: node scripts/generate-sitemap.js
+      - name: 🧠 Fix Umlaute & Slugs
+        run: |
+          npm run fix-umlaute
+          node scripts/fixSlugs.js
 
-      # 🏗️ Build und Export der statischen Seite
-      - name: Build and Export
-        run: npm run build && npm run export
+      - name: 🏗️ Build Next.js project
+        run: npm run build
 
-      # 🚀 Deploy zu Vercel
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-          scope: ${{ secrets.VERCEL_ORG_ID }}
+      - name: 📤 Export static site
+        run: npm run export
+
+      - name: 🚀 Deploy to Vercel
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

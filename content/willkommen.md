@@ -1,3 +1,4 @@
+
 ---
 title: "Willkommen auf dem FinanzFreedom Blog"
 date: 2025-09-28

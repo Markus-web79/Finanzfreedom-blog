@@ -1,3 +1,4 @@
+
 ---
 title: "Lerne die 5 wichtigsten Tipps für eine erfolgreiche Vermögensplanung und wie du langfristig Wohlstand aufbauen kannst."
 date: 2025-09-28

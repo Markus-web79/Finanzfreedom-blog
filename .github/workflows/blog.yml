@@ -29,10 +29,11 @@ jobs:
           npm run fix-slugs
           npm run fix-umlaute
 
+      # >>> Markdown-Struktur prüfen (zeigt fehlerhafte Dateien an) <<<
       - name: 🧩 Validate Markdown
         run: node scripts/checkMarkdown.js || true
 
-      # >>> Qualitätssicherung vor dem Build <<<
+      # >>> Linting / Quality-Check <<<
       - name: 🧠 Check Content
         run: npm run lint || true
 

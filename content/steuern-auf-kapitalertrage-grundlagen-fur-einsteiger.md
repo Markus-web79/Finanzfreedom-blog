@@ -1,3 +1,4 @@
+
 ---
 title: "steuern auf Kapitalerträge: Grundlagen für Einsteiger"
 slug: "steuern-auf-Kapitalerträge-grundlagen-für-einsteiger"

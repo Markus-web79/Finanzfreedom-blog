@@ -1,3 +1,4 @@
+
 ---
 title: "ETFs für Einsteiger: So startest du mit einem Sparplan"
 slug: "etfs-für-einsteiger-so-startest-du-mit-einem-sparplan"

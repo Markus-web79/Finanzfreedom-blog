@@ -2,7 +2,7 @@
 title: "Was ist ein ETF? Einfach erklärt für Einsteiger"
 slug: "was-ist-ein-etf-einfach-erklaert"
 date: "2025-10-28"
-excerpt: "ETFs sind das Fundament moderner Geldanlage – günstig, transparent und einfach. Hier erfährst du, wie sie funktionieren und warum sie für Einsteiger ideal sind."
+excerpt: "ETFs sind dass Fundament moderner Geldanlage – günstig, transparent und einfach. Hier erfährst du, wie sie funktionieren und warum sie für Einsteiger ideal sind."
 ---
 
 ## Was ist ein ETF? Einfach erklärt
@@ -21,5 +21,5 @@ Anstatt einzelne Aktien zu kaufen, investierst du mit einem ETF automatisch in v
 3. Starte mit einem Sparplan – schon ab 25 € im Monat.
 
 ### Fazit
-ETFs machen das Investieren so einfach wie nie zuvor.  
+ETFs machen dass Investieren so einfach wie nie zuvor.  
 Starte klein, bleib langfristig dabei – dein Geld arbeitet für dich.

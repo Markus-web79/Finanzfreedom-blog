@@ -1,125 +1,111 @@
-/* === FinanzFreedom Blog – Smart Finance Design (Petrol Edition) === */
 :root {
-  --color-primary: #00a688; /* Petrolgrün */
-  --color-primary-dark: #00695c; /* Dunkler petrol */
-  --color-bg: #111; /* Hintergrund */
-  --color-text: #e6e6e6; /* Text hell */
-  --color-card: #1a1a1a; /* Boxen */
+  --petrol: #009e9c;
+  --anthrazit: #121212;
+  --weiß: #ffffff;
+  --hellgrau: #f5f7f8;
+  --gold: #d4af37;
 }
 
-/* === Allgemein === */
-body {
-  font-family: 'Inter', Arial, sans-serif;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-/* === Hero / Header === */
-header {
-  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
-  padding: 3.5rem 1.5rem 4rem;
+/* --- Hero-Bereich --- */
+.hero {
+  background: linear-gradient(180deg, var(--anthrazit) 0%, #1e1e1e 100%);
+  color: var(--weiß);
   text-align: center;
+  padding: 120px 20px 100px;
 }
 
-.logo {
+.heroContent h1 {
   font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -0.6px;
-  color: #ffffff;
-  margin: 0;
+  font-weight: 700;
+  color: var(--petrol);
+  margin-bottom: 0.5rem;
 }
 
-.slogan {
-  font-size: 1.25rem;
-  color: #e0fffa;
-  margin-top: 0.7rem;
+.heroContent p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
 }
 
-/* Abstand Inhalt */
-main {
-  padding: 3rem 1rem;
+.cta {
+  display: inline-block;
+  background-color: var(--petrol);
+  color: var(--weiß);
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-/* === Artikelkarten-Grid === */
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 2.2rem;
-  max-width: 1250px;
+.cta:hover {
+  background-color: var(--gold);
+  color: var(--anthrazit);
+}
+
+/* --- Hauptteil --- */
+.main {
+  padding: 60px 20px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.article-card {
-  background-color: var(--color-card);
-  padding: 1.8rem 1.4rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 320px;
-  border-left: 4px solid var(--color-primary-dark);
-  transition: transform 0.25s ease, background-color 0.25s ease;
+.section {
+  margin-bottom: 80px;
 }
 
-.article-card:hover {
-  background-color: #1f1f1f;
-  transform: translateY(-4px);
-}
-
-/* Artikelüberschriften */
-.article-card h2 {
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  margin: 0 0 0.8rem;
-  font-weight: 700;
-}
-
-/* Teasertext */
-.article-card p {
-  color: #bdbdbd;
-  font-size: 0.95rem;
-  flex-grow: 1;
-}
-
-/* === Buttons === */
-.article-card a {
-  background-color: var(--color-primary);
-  color: #000;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  display: inline-block;
-  font-weight: 700;
+.section h2 {
   text-align: center;
+  color: var(--anthrazit);
+  margin-bottom: 40px;
+}
+
+.section p {
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* --- Artikelkarten --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--weiß);
+  border-radius: 10px;
+  padding: 24px;
   text-decoration: none;
-  margin-top: 1.2rem;
+  color: var(--anthrazit);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.article-card a:hover {
-  background-color: #008e74;
-  color: #fff;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--petrol);
 }
 
-/* === Zurück-Link === */
-.back-home {
-  display: inline-block;
-  margin-top: 2rem;
+.card h3 {
+  color: var(--petrol);
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #444;
   font-size: 0.95rem;
-  color: var(--color-primary);
-  text-decoration: underline;
+  line-height: 1.5;
 }
 
-.back-home:hover {
-  opacity: 0.8;
-}
-footer {
-  margin-top: 3rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid #222;
-}
-
-.newsletter {
-  margin-top: 4rem;
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--anthrazit);
+  color: var(--weiß);
+  font-size: 0.9rem;
+  border-top: 2px solid var(--petrol);
 }

@@ -1,10 +1,4 @@
-:global(:root) {
-  --petrol: #00a19b;
-  --anthrazit: #0d0d0d;
-  --hellgrau: #e0e0e0;
-  --weiß: #ffffff;
-  --petrol-dark: #007873;
-}
+
 
 /* --- Grundlayout --- */
 .main {

@@ -1,37 +1,87 @@
-/* Globales Styling für den FinanzFreedom Blog */
+/* 🌐 Globales Styling für den FinanzFreedom Blog */
 
+/* Farbvariablen */
+:root {
+  --petrol: #009e9c;
+  --anthrazit: #121212;
+  --weiß: #ffffff;
+  --hellgrau: #f5f7f8;
+  --text: #333333;
+}
+
+/* Grundlayout */
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--anthrazit);
+  color: var(--weiß);
   line-height: 1.6;
 }
 
 /* Links */
 a {
-  color: #0070f3;
+  color: var(--petrol);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
+
 a:hover {
+  color: var(--weiß);
   text-decoration: underline;
 }
 
 /* Header */
 header {
-  padding: 20px;
+  background-color: var(--anthrazit);
+  padding: 24px;
   text-align: center;
-  background: #f4f4f4;
+  border-bottom: 2px solid var(--petrol);
 }
+
 header h1 {
+  color: var(--weiß);
+  font-size: 2rem;
   margin: 0;
+  letter-spacing: 1px;
 }
 
 /* Container */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Karten (Artikelvorschau) */
+.card {
+  background-color: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
   padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 158, 156, 0.2);
+}
+
+/* Titel */
+h2, h3 {
+  color: var(--petrol);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 0;
+  background-color: #0e0e0e;
+  color: #ccc;
+  border-top: 1px solid var(--petrol);
+}
+
+footer a {
+  color: var(--petrol);
 }

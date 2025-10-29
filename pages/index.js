@@ -1,57 +1,107 @@
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
-
-export default function Home({ allPosts }) {
-  return (
-    <div className={styles.main}>
-      {/* Hero-Bereich */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1>FinanzFreedom</h1>
-          <p>Dein Weg zur finanziellen Freiheit – einfach, sicher und seriös.</p>
-          <Link href="#themen" className={styles.cta}>
-            Jetzt entdecken 🚀
-          </Link>
-        </div>
-      </section>
-
-      {/* Artikelübersicht */}
-      <main id="themen" className={styles.section}>
-        <h2>Aktuelle Themen & Vergleiche</h2>
-        <div className={styles.grid}>
-          {allPosts.map((post) => (
-            <Link key={post.slug} href={`/${post.slug}`} className={styles.card}>
-              <h3>{post.title}</h3>
-              <p>{post.description}</p>
-            </Link>
-          ))}
-        </div>
-      </main>
-
-      {/* Über uns */}
-      <section className={styles.about}>
-        <h2>Warum FinanzFreedom?</h2>
-        <p>
-          Wir zeigen dir, wie du dein Geld verstehst, sinnvoll anlegst und Schritt für Schritt
-          finanzielle Freiheit erreichst – ohne Fachchinesisch oder unrealistische Versprechen.
-        </p>
-      </section>
-
-      <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} FinanzFreedom – Wissen. Freiheit. Zukunft.</p>
-      </footer>
-    </div>
-  );
+:root {
+  --petrol: #00a19b;
+  --anthrazit: #0d0d0d;
+  --hellgrau: #f2f2f2;
+  --weiß: #ffffff;
 }
 
-// Beispiel-Props
-export async function getStaticProps() {
-  return {
-    props: {
-      allPosts: [
-        // Platzhalter bis Daten dynamisch kommen
-        { slug: "etf-broker-vergleich-2025", title: "ETF-Broker Vergleich 2025", description: "Finde den besten Anbieter im Überblick" },
-      ],
-    },
-  };
+.main {
+  background-color: var(--anthrazit);
+  color: var(--weiß);
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(180deg, var(--petrol) 0%, #0a0a0a 100%);
+  text-align: center;
+  padding: 120px 20px;
+  border-bottom: 3px solid var(--petrol);
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--weiß);
+  margin-bottom: 0.5rem;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.cta {
+  display: inline-block;
+  background-color: var(--petrol);
+  color: var(--weiß);
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  background-color: #00c1b2;
+  transform: scale(1.05);
+}
+
+/* Artikel-Grid */
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--weiß);
+}
+
+.card:hover {
+  border-color: var(--petrol);
+  transform: translateY(-5px);
+}
+
+/* Über uns */
+.about {
+  background-color: #111;
+  padding: 80px 20px;
+  text-align: center;
+  border-top: 2px solid var(--petrol);
+}
+
+.about h2 {
+  color: var(--petrol);
+  font-size: 2rem;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cccccc;
+  line-height: 1.7;
+}
+
+/* Footer */
+.footer {
+  background-color: #0a0a0a;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #888;
+  border-top: 1px solid var(--petrol);
 }

@@ -1,9 +1,3 @@
-:root {
-  --petrol: #00a19b;
-  --anthrazit: #0d0d0d;
-  --hellgrau: #f2f2f2;
-  --weiß: #ffffff;
-}
 
 .main {
   background-color: var(--anthrazit);

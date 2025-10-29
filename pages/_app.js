@@ -1,15 +1,13 @@
 import "../styles/globals.css";
-import { useEffect } from "react";
-import { initFadeIn } from "../scripts/fadeIn";
-import "../styles/globals.css";
-import "../styles/Home.module.css";
+import Header from "../components/Header";
 
-export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      initFadeIn();
-    }
-  }, []);
-
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Header />
+      <Component {...pageProps} />
+    </>
+  );
 }
+
+export default MyApp;

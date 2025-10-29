@@ -1,34 +1,58 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import { getAllPosts } from '../lib/api'
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
-export default function Home({ posts }) {
+export default function Home({ allPosts }) {
   return (
     <>
       <Head>
         <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
-        <meta name="description" content="Lerne investieren, sparen und dein Geld verstehen. FinanzFreedom zeigt dir den Weg." />
+        <meta
+          name="description"
+          content="Lerne, wie du deine Finanzen aufbaust, sparst, investierst und finanzielle Freiheit erreichst – einfach und verständlich erklärt."
+        />
       </Head>
-      <main className="home-container">
-        <h1>FinanzFreedom Blog</h1>
-        <p className="intro">Finde ehrliche Finanzvergleiche, ETF-Guides und Tipps für dein Geld.</p>
-        <div className="articles-grid">
-          {posts.map((post) => (
-            <article key={post.slug} className="article-card">
-              <h2><Link href={`/${post.slug}`}>{post.title}</Link></h2>
-              <p>{post.description}</p>
-              <small>{post.date}</small>
-            </article>
-          ))}
+
+      <header className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1>FinanzFreedom</h1>
+          <p>Dein Weg zur finanziellen Freiheit – einfach, sicher und seriös.</p>
+          <Link href="/willkommen" className={styles.cta}>
+            Jetzt durchstarten 🚀
+          </Link>
         </div>
+      </header>
+
+      <main className={styles.main}>
+        <section className={styles.section}>
+          <h2>Aktuelle Themen</h2>
+          <div className={styles.grid}>
+            {allPosts?.map((post) => (
+              <Link key={post.slug} href={`/${post.slug}`} className={styles.card}>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Warum FinanzFreedom?</h2>
+          <p>
+            Wir zeigen dir, wie du dein Geld verstehst, sinnvoll anlegst und Schritt für Schritt
+            finanzielle Freiheit erreichst – ohne Fachchinesisch oder unrealistische Versprechen.
+          </p>
+        </section>
       </main>
+
+      <footer className={styles.footer}>
+        <p>© {new Date().getFullYear()} FinanzFreedom – Wissen. Freiheit. Zukunft.</p>
+      </footer>
     </>
-  )
+  );
 }
 
+// Optional: Beispiel-Props entfernen, wenn du getStaticProps nutzt
 export async function getStaticProps() {
-  const posts = getAllPosts(['title', 'slug', 'date', 'description'])
-  return {
-    props: { posts },
-  }
+  return { props: { allPosts: [] } };
 }

@@ -1,35 +1,15 @@
-.header {
-  background-color: var(--anthrazit);
-  border-bottom: 2px solid var(--petrol);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+import '../styles/globals.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
+    </>
+  );
 }
 
-.logo a {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--petrol);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.logo a:hover {
-  color: var(--weiß);
-}
-
-.nav a {
-  margin-left: 24px;
-  color: var(--weiß);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.nav a:hover {
-  color: var(--petrol);
-}
+export default MyApp;

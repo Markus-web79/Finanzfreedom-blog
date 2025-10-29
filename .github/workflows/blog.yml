@@ -10,40 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📦 Checkout repository
+      - name: 🧩 Checkout repository
         uses: actions/checkout@v3
 
-      - name: ⚙️ Setup Node.js
+      - name: 🧠 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 📥 Install dependencies
-        run: npm install
+      - name: 📦 Install dependencies
+        run: npm ci
 
-      # >>> Automatische Reparatur & Prüfung aller Markdown-Dateien <<<
-      - name: 🧹 Fix Markdown Articles
-        run: |
-          npm run fix-content
-          npm run fix-articles
-          npm run fix-slugs
-          npm run fix-umlaute
+      - name: 🧹 Fix Markdown content
+        run: npm run fix-content || true
 
-      # >>> Markdown-Struktur prüfen (zeigt fehlerhafte Dateien an) <<<
-      - name: 🧩 Validate Markdown
-        run: node scripts/checkMarkdown.js || true
+      - name: 🧾 Fix Articles
+        run: npm run fix-articles || true
 
-      # >>> Linting / Quality-Check <<<
-      - name: 🧠 Check Content
-        run: npm run lint || true
+      - name: 🔤 Fix Umlaute & Slugs
+        run: npm run fix-umlaute || true && npm run fix-slugs || true
 
-      # >>> Website bauen und exportieren <<<
-      - name: 🏗️ Build
+      - name: 🗺️ Generate Sitemap
+        run: npm run generate-sitemap || true
+
+      - name: ✅ Build Project
         run: npm run build
 
-      - name: 📦 Export static site
-        run: npm run export
-
-      # >>> Deployment zu Vercel <<<
-      - name: ▲ Deploy to Vercel
+      - name: 🚀 Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

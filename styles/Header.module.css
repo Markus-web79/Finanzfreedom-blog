@@ -1,15 +1,29 @@
-import '../styles/globals.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </>
-  );
+.header {
+  background-color: var(--anthrazit);
+  border-bottom: 2px solid var(--petrol);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-export default MyApp;
+.logo a {
+  color: var(--weiß);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav a {
+  color: var(--weiß);
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--petrol);
+}

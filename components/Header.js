@@ -1,19 +1,15 @@
-// components/Header.js
-import Link from 'next/link';
-import styles from '../styles/Header.module.css';
+import '../styles/globals.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-export default function Header() {
+function MyApp({ Component, pageProps }) {
   return (
-    <header className={styles.header}>
-      <div className={styles.logo}>
-        <Link href="/">FinanzFreedom</Link>
-      </div>
-      <nav className={styles.nav}>
-        <Link href="/">Start</Link>
-        <Link href="/kategorien">Themen</Link>
-        <Link href="/ueber-uns">Über uns</Link>
-        <Link href="/kontakt">Kontakt</Link>
-      </nav>
-    </header>
+    <>
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
+    </>
   );
 }
+
+export default MyApp;

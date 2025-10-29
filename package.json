@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "fix-content": "node scripts/fixContent.js",
+    "fix-umlaute": "node scripts/fixUmlaute.js",
     "fix-articles": "node scripts/fixArticles.js",
     "fix-slugs": "node scripts/fixSlugs.js",
     "generate-sitemap": "node scripts/generate-sitemap.js"
@@ -21,5 +22,9 @@
     "marked": "^9.1.6",
     "remark": "^14.0.3",
     "remark-html": "^15.0.1"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3"
   }
 }

@@ -1,101 +1,59 @@
-
-.main {
-  background-color: var(--anthrazit);
-  color: var(--weiß);
-  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+.container {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
 }
 
-/* Hero */
-.hero {
-  background: linear-gradient(180deg, var(--petrol) 0%, #0a0a0a 100%);
+.sectionTitle {
   text-align: center;
-  padding: 120px 20px;
-  border-bottom: 3px solid var(--petrol);
-}
-
-.heroContent h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--weiß);
-  margin-bottom: 0.5rem;
-}
-
-.heroContent p {
-  font-size: 1.2rem;
-  color: #e0e0e0;
-  margin-bottom: 2rem;
-}
-
-.cta {
-  display: inline-block;
-  background-color: var(--petrol);
-  color: var(--weiß);
-  padding: 12px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.cta:hover {
-  background-color: #00c1b2;
-  transform: scale(1.05);
-}
-
-/* Artikel-Grid */
-.section {
-  padding: 60px 20px;
-  text-align: center;
+  font-size: 2rem;
+  color: var(--petrol);
+  margin-bottom: 40px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+  gap: 30px;
 }
 
 .card {
-  background-color: #1a1a1a;
-  border: 1px solid #222;
+  background-color: #1b1b1b;
+  border: 1px solid #2a2a2a;
   border-radius: 10px;
-  padding: 20px;
+  padding: 25px;
   transition: all 0.3s ease;
   text-decoration: none;
   color: var(--weiß);
 }
 
 .card:hover {
-  border-color: var(--petrol);
   transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 158, 156, 0.25);
 }
 
-/* Über uns */
-.about {
-  background-color: #111;
-  padding: 80px 20px;
-  text-align: center;
-  border-top: 2px solid var(--petrol);
-}
-
-.about h2 {
+.card h3 {
   color: var(--petrol);
-  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-.about p {
-  max-width: 700px;
-  margin: 0 auto;
-  color: #cccccc;
-  line-height: 1.7;
+.card p {
+  color: #ccc;
+  font-size: 0.95rem;
 }
 
-/* Footer */
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--petrol);
+  font-weight: 600;
+}
+
 .footer {
-  background-color: #0a0a0a;
   text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #888;
+  padding: 40px 0;
   border-top: 1px solid var(--petrol);
+  background-color: #0e0e0e;
+  color: #aaa;
+  margin-top: 60px;
 }

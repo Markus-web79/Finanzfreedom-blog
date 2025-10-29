@@ -19,34 +19,34 @@ Wir haben die bekanntesten ETF-Broker verglichen, um dir die Entscheidung leicht
 ---
 
 ### 🧾 1️⃣ Trade Republic – der Minimalistische
-✅ Keine Depotgebühren  
-✅ Ab 1 € pro Order  
-✅ Sehr einfache App  
-✅ Kostenloser ETF-Sparplan  
+- Keine Depotgebühren  
+- Ab 1 € pro Order  
+- Sehr einfache App  
+- Kostenloser ETF-Sparplan  
 
 **Ideal für:** Einsteiger, die mit wenig Aufwand starten wollen.  
-👉 *Hier Depot eröffnen* → `[AWIN-Link Trade Republic]`
+👉 [Hier Depot eröffnen](https://www.traderepublic.com)
 
 ---
 
 ### 🧾 2️⃣ Scalable Capital – der Flexible
-✅ Über 2.000 ETFs sparplanfähig  
-✅ Flatrate-Modell (ab 2,99 €/Monat)  
-✅ Profi-Tools für erfahrene Anleger  
-✅ Automatisierte Sparpläne  
+- Über 2.000 ETFs sparplanfähig  
+- Flatrate-Modell (ab 2,99 €/Monat)  
+- Profi-Tools für erfahrene Anleger  
+- Automatisierte Sparpläne  
 
 **Ideal für:** Fortgeschrittene, die Flexibilität und Vielfalt wollen.  
-👉 *Jetzt vergleichen* → `[AWIN-Link Scalable Capital]`
+👉 [Jetzt vergleichen](https://de.scalable.capital)
 
 ---
 
 ### 🧾 3️⃣ Consorsbank – der Klassiker
-✅ Deutscher Anbieter mit Einlagensicherung  
-✅ Breites ETF-Angebot  
-✅ Viele kostenlose Sparpläne  
+- Deutscher Anbieter mit Einlagensicherung  
+- Breites ETF-Angebot  
+- Viele kostenlose Sparpläne  
 
 **Ideal für:** Anleger, die auf Sicherheit und Service setzen.  
-👉 *Hier kostenlos vergleichen* → `[AWIN-Link Consorsbank]`
+👉 [Hier kostenlos vergleichen](https://www.consorsbank.de)
 
 ---
 

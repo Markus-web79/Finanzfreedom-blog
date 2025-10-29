@@ -1,15 +1,17 @@
-import '../styles/globals.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Link from 'next/link';
+import styles from '../styles/Header.module.css';
 
-function MyApp({ Component, pageProps }) {
+export default function Header() {
   return (
-    <>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </>
+    <header className={styles.header}>
+      <div className={styles.logo}>
+        <Link href="/">FinanzFreedom</Link>
+      </div>
+      <nav className={styles.nav}>
+        <Link href="/">Start</Link>
+        <Link href="/ueber-uns">Über uns</Link>
+        <Link href="/kontakt">Kontakt</Link>
+      </nav>
+    </header>
   );
 }
-
-export default MyApp;

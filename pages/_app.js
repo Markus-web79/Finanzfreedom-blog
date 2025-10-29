@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { initFadeIn } from "../scripts/fadeIn";
-import "../styles/Home.css";
+import '../styles/Home.module.css';
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {

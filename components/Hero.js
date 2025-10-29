@@ -4,16 +4,22 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <div className={styles.content}>
-        <h1>
-          Dein Weg zur <span>finanziellen Freiheit</span>
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroTitle}>
+          FinanzFreedom – Dein Weg zur finanziellen Freiheit
         </h1>
-        <p>
-          Wir zeigen dir, wie du dein Geld verstehst, sinnvoll anlegst und Schritt für Schritt finanzielle Freiheit erreichst – ehrlich, einfach und seriös.
+        <p className={styles.heroSubtitle}>
+          Lerne, dein Geld klug zu investieren, Rücklagen aufzubauen und finanzielle Freiheit zu erreichen –
+          Schritt für Schritt, verständlich erklärt.
         </p>
-        <Link href="/#artikel" className={styles.button}>
-          Jetzt durchstarten 🚀
-        </Link>
+        <div className={styles.heroButtons}>
+          <Link href="#artikel" className={styles.btnPrimary}>
+            Jetzt starten
+          </Link>
+          <Link href="/ueber-uns" className={styles.btnSecondary}>
+            Mehr erfahren
+          </Link>
+        </div>
       </div>
     </section>
   );

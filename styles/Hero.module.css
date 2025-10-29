@@ -1,56 +1,78 @@
 .hero {
-  background: linear-gradient(180deg, var(--anthrazit) 0%, #0d0d0d 100%);
+  background: linear-gradient(180deg, var(--petrol) 0%, #008b87 100%);
   color: var(--weiß);
   text-align: center;
-  padding: 160px 20px;
-  border-bottom: 2px solid var(--petrol);
+  padding: 100px 20px;
 }
 
-.content {
+.heroContent {
   max-width: 900px;
   margin: 0 auto;
 }
 
-h1 {
+.heroTitle {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 20px;
-  color: var(--weiß);
+  line-height: 1.2;
 }
 
-h1 span {
-  color: var(--petrol);
-}
-
-p {
-  font-size: 1.3rem;
-  color: #d0d0d0;
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: #e0f7f6;
   margin-bottom: 40px;
-  line-height: 1.7;
 }
 
-.button {
-  background-color: var(--petrol);
-  color: var(--weiß);
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  border-radius: 6px;
+.heroButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btnPrimary {
+  background-color: var(--weiß);
+  color: var(--petrol);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-weight: 600;
 }
 
-.button:hover {
-  background-color: #00c1b8;
+.btnPrimary:hover {
+  background-color: #f1f1f1;
   transform: translateY(-2px);
 }
 
-/* Responsiv */
+.btnSecondary {
+  border: 2px solid var(--weiß);
+  color: var(--weiß);
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+  background-color: var(--weiß);
+  color: var(--petrol);
+  transform: translateY(-2px);
+}
+
+/* 📱 Responsive Design */
 @media (max-width: 768px) {
-  h1 {
+  .heroTitle {
     font-size: 2.2rem;
   }
-  p {
-    font-size: 1.1rem;
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 70px 15px;
   }
 }

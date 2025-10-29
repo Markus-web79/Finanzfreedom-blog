@@ -1,105 +1,160 @@
+:global(:root) {
+  --petrol: #00a19b;
+  --anthrazit: #0d0d0d;
+  --hellgrau: #e0e0e0;
+  --weiß: #ffffff;
+  --petrol-dark: #007873;
+}
 
+/* --- Grundlayout --- */
+.main {
+  background-color: var(--anthrazit);
+  color: var(--weiß);
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  padding-bottom: 60px;
+}
 
-/* --- Hero-Bereich --- */
+.section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: var(--petrol);
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.1rem;
+  color: var(--hellgrau);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- Hero Bereich --- */
 .hero {
-  background: linear-gradient(180deg, var(--anthrazit) 0%, #1e1e1e 100%);
+  background: linear-gradient(180deg, #0f0f0f 0%, #121212 100%);
   color: var(--weiß);
   text-align: center;
-  padding: 120px 20px 100px;
+  padding: 140px 20px 100px;
+  border-bottom: 2px solid var(--petrol);
 }
 
 .heroContent h1 {
   font-size: 3rem;
-  font-weight: 700;
   color: var(--petrol);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .heroContent p {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #e0e0e0;
+  color: var(--hellgrau);
+  margin-bottom: 2rem;
 }
 
 .cta {
   display: inline-block;
   background-color: var(--petrol);
   color: var(--weiß);
-  padding: 12px 28px;
+  padding: 14px 28px;
   border-radius: 6px;
   font-weight: 600;
-  text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .cta:hover {
-  background-color: var(--gold);
-  color: var(--anthrazit);
+  background-color: var(--petrol-dark);
+  transform: scale(1.05);
 }
 
-/* --- Hauptteil --- */
-.main {
-  padding: 60px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.section {
-  margin-bottom: 80px;
-}
-
-.section h2 {
-  text-align: center;
-  color: var(--anthrazit);
-  margin-bottom: 40px;
-}
-
-.section p {
-  color: #333;
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* --- Artikelkarten --- */
+/* --- Artikel Grid --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .card {
-  background: var(--weiß);
+  background-color: #1a1a1a;
+  border: 1px solid #222;
   border-radius: 10px;
-  padding: 24px;
-  text-decoration: none;
-  color: var(--anthrazit);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  text-align: left;
   transition: all 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  border-top: 4px solid var(--petrol);
+  border-color: var(--petrol);
+  box-shadow: 0 6px 16px rgba(0, 161, 155, 0.2);
 }
 
 .card h3 {
   color: var(--petrol);
-  margin-bottom: 10px;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
 }
 
 .card p {
-  color: #444;
-  font-size: 0.95rem;
+  color: var(--hellgrau);
   line-height: 1.5;
+  margin-bottom: 1.2rem;
+  min-height: 80px;
+}
+
+.readMore {
+  color: var(--petrol);
+  font-weight: 600;
+}
+
+/* --- CTA Section --- */
+.ctaSection {
+  background-color: #101010;
+  text-align: center;
+  padding: 100px 20px;
+  border-top: 2px solid var(--petrol);
+  border-bottom: 2px solid var(--petrol);
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  color: var(--weiß);
+  margin-bottom: 20px;
+}
+
+.ctaSection p {
+  color: var(--hellgrau);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.ctaLarge {
+  display: inline-block;
+  background-color: var(--petrol);
+  color: var(--weiß);
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.ctaLarge:hover {
+  background-color: var(--petrol-dark);
+  transform: scale(1.05);
 }
 
 /* --- Footer --- */
 .footer {
+  background-color: #0b0b0b;
   text-align: center;
-  padding: 40px 20px;
-  background-color: var(--anthrazit);
-  color: var(--weiß);
+  padding: 30px;
+  border-top: 1px solid #222;
+  color: #aaa;
   font-size: 0.9rem;
-  border-top: 2px solid var(--petrol);
 }

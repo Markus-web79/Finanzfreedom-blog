@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import { getAllPosts } from "../lib/api";
 
 export default function Home({ allPosts }) {
   return (
@@ -9,33 +10,38 @@ export default function Home({ allPosts }) {
         <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
         <meta
           name="description"
-          content="Lerne, wie du deine Finanzen aufbaust, sparst, investierst und finanzielle Freiheit erreichst – einfach und verständlich erklärt."
+          content="Vergleiche die besten Finanzprodukte, lerne über ETFs, Versicherungen & Geldanlage – einfach, verständlich und unabhängig."
         />
       </Head>
 
+      {/* HERO-BEREICH */}
       <header className={styles.hero}>
         <div className={styles.heroContent}>
           <h1>FinanzFreedom</h1>
           <p>Dein Weg zur finanziellen Freiheit – einfach, sicher und seriös.</p>
-          <Link href="/willkommen" className={styles.cta}>
+          <a href="#themen" className={styles.cta}>
             Jetzt durchstarten 🚀
-          </Link>
+          </a>
         </div>
       </header>
 
+      {/* HAUPTBEREICH */}
       <main className={styles.main}>
-        <section className={styles.section}>
-          <h2>Aktuelle Themen</h2>
+        {/* THEMEN / ARTIKEL */}
+        <section id="themen" className={styles.section}>
+          <h2>Aktuelle Themen & Vergleiche</h2>
           <div className={styles.grid}>
-            {allPosts?.map((post) => (
+            {allPosts.map((post) => (
               <Link key={post.slug} href={`/${post.slug}`} className={styles.card}>
                 <h3>{post.title}</h3>
-                <p>{post.excerpt}</p>
+                <p>{post.description || post.excerpt}</p>
+                <span className={styles.readMore}>Mehr erfahren →</span>
               </Link>
             ))}
           </div>
         </section>
 
+        {/* INFOTEXT */}
         <section className={styles.section}>
           <h2>Warum FinanzFreedom?</h2>
           <p>
@@ -43,16 +49,33 @@ export default function Home({ allPosts }) {
             finanzielle Freiheit erreichst – ohne Fachchinesisch oder unrealistische Versprechen.
           </p>
         </section>
+
+        {/* CALL TO ACTION */}
+        <section className={styles.ctaSection}>
+          <h2>Starte jetzt deine Reise zur finanziellen Freiheit</h2>
+          <p>
+            Erhalte klare Finanzvergleiche, einfache ETF-Guides und Tipps für den Vermögensaufbau.
+          </p>
+          <a href="#themen" className={styles.ctaLarge}>
+            Jetzt vergleichen 🔍
+          </a>
+        </section>
       </main>
 
+      {/* FOOTER */}
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} FinanzFreedom – Wissen. Freiheit. Zukunft.</p>
+        <p>
+          © {new Date().getFullYear()} FinanzFreedom – Wissen. Freiheit. Zukunft.
+        </p>
       </footer>
     </>
   );
 }
 
-// Optional: Beispiel-Props entfernen, wenn du getStaticProps nutzt
+// Artikel laden
 export async function getStaticProps() {
-  return { props: { allPosts: [] } };
+  const allPosts = getAllPosts(["title", "slug", "description", "excerpt", "date"]);
+  return {
+    props: { allPosts },
+  };
 }

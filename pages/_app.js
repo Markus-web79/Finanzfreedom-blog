@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 import { useEffect } from "react";
 import { initFadeIn } from "../scripts/fadeIn";
 import "../styles/globals.css";

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "../styles/Hero.module.css";
 import Link from "next/link";
 
@@ -7,14 +6,10 @@ export default function Hero() {
     <section className={styles.hero}>
       {/* Hintergrundbild */}
       <div className={styles.heroImageWrapper}>
-        <Image
+        <img
           src="/hero.png"
           alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
-          unoptimized
+          className={styles.heroImage}
         />
       </div>
 

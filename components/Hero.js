@@ -7,7 +7,8 @@ export default function Hero() {
     <section className={styles.hero}>
       {/* Hero-Bild */}
       <Image
-        src="/hero.png"
+     <Image
+  src="/IMG_0251.png"
         alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
         fill
         priority

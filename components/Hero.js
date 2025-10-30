@@ -23,8 +23,7 @@ export default function Hero() {
             Dein Weg zur <span className={styles.highlight}>finanziellen Freiheit</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            Lerne, wie du dein Geld clever investierst, sparst und unabhängig wirst –
-            einfach erklärt und praxisnah.
+            Lerne, wie du dein Geld clever investierst, sparst und unabhängig wirst – einfach erklärt und praxisnah.
           </p>
           <div className={styles.heroButtons}>
             <Link href="/blog" className={styles.btnPrimary}>

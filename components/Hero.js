@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      {/* Bild im Hintergrund */}
+      {/* Hintergrundbild */}
       <div className={styles.heroImageWrapper}>
         <Image
           src="/hero.png"
@@ -13,28 +13,29 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
+          quality={90}
           style={{ objectFit: "cover" }}
         />
       </div>
 
-      {/* Overlay und Textinhalt */}
+      {/* Halbtransparente Overlay-Ebene */}
       <div className={styles.overlay}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Finanzielle Freiheit beginnt <span className={styles.highlight}>heute</span>
+            Finanzielle <span className={styles.highlight}>Freiheit</span> beginnt heute
           </h1>
           <p className={styles.heroSubtitle}>
             Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien,
-            die wirklich funktionieren.
+            die wirklich funktionieren. Unabhängig. Verständlich. Schritt für Schritt.
           </p>
 
           <div className={styles.heroButtons}>
-            <a href="/willkommen" className={styles.btnPrimary}>
+            <Link href="/willkommen" className={styles.btnPrimary}>
               Jetzt starten
-            </a>
-            <a href="/ueber-uns" className={styles.btnSecondary}>
+            </Link>
+            <Link href="/ueber-uns" className={styles.btnSecondary}>
               Mehr erfahren
-            </a>
+            </Link>
           </div>
         </div>
       </div>

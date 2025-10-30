@@ -1,60 +1,76 @@
-import styles from '../styles/Home.module.css';
+import Head from 'next/head';
 import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
 export default function Home({ allPosts }) {
   return (
-    <main className={styles.main}>
-      {/* 🌟 Hero-Bereich */}
-      <section className={styles.hero}>
-        <h1>Finanzielle Freiheit beginnt mit Wissen</h1>
-        <p>
-          Lerne, wie du dein Geld verstehst, clever anlegst und Schritt für Schritt
-          finanzielle Unabhängigkeit erreichst – ehrlich, einfach und seriös.
-        </p>
-        <a href="#themen">Jetzt starten 🚀</a>
-      </section>
+    <>
+      <Head>
+        <title>FinanzFreedom – Werde finanziell frei</title>
+        <meta
+          name="description"
+          content="FinanzFreedom: Lerne alles über Geld, Finanzen, Investments und den Weg zur finanziellen Freiheit."
+        />
+      </Head>
 
-      {/* 📚 Blog-Artikel */}
-      <section id="themen" className={styles.container}>
-        <h2 className={styles.sectionTitle}>Aktuelle Themen</h2>
-        <div className={styles.grid}>
-          {allPosts.map((post) => (
-            <Link key={post.slug} href={`/${post.slug}`} className={styles.card}>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-              <span>Weiterlesen →</span>
-            </Link>
-          ))}
+      {/* Hero-Bereich */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1>FinanzFreedom</h1>
+          <p>Dein Weg zur finanziellen Freiheit – einfach erklärt, ehrlich und machbar.</p>
+          <Link href="#artikel" className={styles.ctaButton}>
+            Jetzt starten
+          </Link>
         </div>
       </section>
 
-      {/* ⚙️ Footer */}
+      {/* Drei Themenbereiche */}
+      <section className={styles.themen}>
+        <h2>Entdecke unsere Themen</h2>
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <h3>💰 Investieren</h3>
+            <p>Alles über ETFs, Aktien und passives Einkommen.</p>
+            <Link href="/etf-grundlagen">Mehr erfahren →</Link>
+          </div>
+
+          <div className={styles.card}>
+            <h3>🏦 Sparen & Budget</h3>
+            <p>Wie du dein Geld smarter verwaltest und mehr behältst.</p>
+            <Link href="/geldfehler-vermeiden">Zum Artikel →</Link>
+          </div>
+
+          <div className={styles.card}>
+            <h3>🛡️ Versicherungen</h3>
+            <p>Welche Versicherungen du wirklich brauchst – und welche nicht.</p>
+            <Link href="/versicherungen">Jetzt lesen →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Artikelvorschau */}
+      <section id="artikel" className={styles.artikel}>
+        <h2>Neueste Artikel</h2>
+        <div className={styles.grid}>
+          {allPosts?.length > 0 ? (
+            allPosts.map((post) => (
+              <div key={post.slug} className={styles.card}>
+                <Link href={`/${post.slug}`}>
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p>Keine Artikel gefunden.</p>
+          )}
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className={styles.footer}>
-        © {new Date().getFullYear()} FinanzFreedom – Alle Rechte vorbehalten.
+        <p>© {new Date().getFullYear()} FinanzFreedom – Dein Weg zur Freiheit</p>
       </footer>
-    </main>
+    </>
   );
-}
-
-export async function getStaticProps() {
-  // Beispielhafte Daten (du kannst das später mit echten Blogdaten ersetzen)
-  const allPosts = [
-    {
-      slug: 'etf-broker-vergleich-2025',
-      title: 'ETF Broker Vergleich 2025',
-      excerpt: 'Finde den besten Anbieter für deine ETF-Investitionen – günstig, sicher und transparent.',
-    },
-    {
-      slug: 'versicherung-check-2025',
-      title: 'Diese Versicherungen brauchst du wirklich',
-      excerpt: 'Welche Policen sind sinnvoll – und welche kannst du dir sparen? Wir klären auf.',
-    },
-    {
-      slug: 'finanzielle-freiheit',
-      title: 'Dein Weg zur finanziellen Freiheit',
-      excerpt: 'Schritt für Schritt zu mehr Unabhängigkeit – lerne, wie du dein Geld für dich arbeiten lässt.',
-    },
-  ];
-
-  return { props: { allPosts } };
 }

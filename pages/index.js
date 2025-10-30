@@ -1,68 +1,80 @@
 import Head from 'next/head';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
 import Link from 'next/link';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.css';
 
-export default function Home({ posts }) {
+export default function Home() {
   return (
     <>
       <Head>
         <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
         <meta
           name="description"
-          content="Lerne, dein Geld sinnvoll anzulegen und finanzielle Freiheit zu erreichen. Einfach erklärt, ehrlich und seriös."
+          content="FinanzFreedom zeigt dir Strategien, Vergleiche und Tipps für deinen Weg zu finanzieller Freiheit. Starte noch heute!"
         />
       </Head>
 
-      <Header />
-      <Hero />
+      <header className="header">
+        <div className="container">
+          <h1 className="logo">FinanzFreedom</h1>
+          <nav>
+            <Link href="/">Startseite</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/ueber-uns">Über uns</Link>
+            <Link href="/kontakt">Kontakt</Link>
+          </nav>
+        </div>
+      </header>
 
-      <main className={styles.container} id="artikel">
-        <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/${post.slug}`} className={styles.card}>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-              <span className={styles.link}>Mehr lesen →</span>
+      <section className="hero">
+        <div className="hero-content">
+          <h2>Finanzielle Freiheit beginnt mit Wissen</h2>
+          <p>
+            Strategien, Vergleiche und Tipps für deinen Weg zu mehr Wohlstand
+            und Unabhängigkeit.
+          </p>
+          <Link href="/willkommen" className="btn">
+            Jetzt starten
+          </Link>
+        </div>
+      </section>
+
+      <main className="main-content">
+        <h2 className="section-title">Aktuelle Themen</h2>
+        <div className="articles-grid">
+          <div className="card">
+            <h3>ETF Broker Vergleich 2025</h3>
+            <p>
+              Finde den besten Anbieter für deine ETF-Investitionen – günstig,
+              sicher und transparent.
+            </p>
+            <Link href="/etf-broker-vergleich-2025">Weiterlesen →</Link>
+          </div>
+
+          <div className="card">
+            <h3>Diese Versicherungen brauchst du wirklich</h3>
+            <p>
+              Welche Policen sind sinnvoll – und welche kannst du dir sparen?
+              Wir klären auf.
+            </p>
+            <Link href="/versicherungen-die-du-wirklich-brauchst">
+              Weiterlesen →
             </Link>
-          ))}
+          </div>
+
+          <div className="card">
+            <h3>Dein Weg zur finanziellen Freiheit</h3>
+            <p>
+              Schritt für Schritt zu mehr Unabhängigkeit – lerne, wie du dein
+              Geld für dich arbeiten lässt.
+            </p>
+            <Link href="/finanzielle-freiheit">Weiterlesen →</Link>
+          </div>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        © {new Date().getFullYear()} FinanzFreedom – Alle Rechte vorbehalten.
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} FinanzFreedom – Alle Rechte vorbehalten.</p>
       </footer>
     </>
   );
-}
-
-// 🔍 Artikel aus dem Content-Ordner laden
-export async function getStaticProps() {
-  const contentDir = path.join(process.cwd(), 'content');
-  const filenames = fs.readdirSync(contentDir);
-
-  const posts = filenames
-    .filter((file) => file.endsWith('.md'))
-    .map((filename) => {
-      const filePath = path.join(contentDir, filename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data } = matter(fileContents);
-
-      return {
-        slug: filename.replace('.md', ''),
-        title: data.title || 'Unbenannter Artikel',
-        excerpt: data.excerpt || 'Ein spannender Artikel rund um Finanzen.',
-      };
-    });
-
-  return {
-    props: {
-      posts,
-    },
-  };
 }

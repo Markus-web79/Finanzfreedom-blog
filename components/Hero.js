@@ -7,7 +7,7 @@ export default function Hero() {
     <section className={styles.hero}>
       {/* Hero-Bild */}
       <Image
-  src="/IMG_0251.png"
+        src="/IMG_0251.png"
         alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
         fill
         priority
@@ -21,11 +21,16 @@ export default function Hero() {
           Dein Weg zur <span className={styles.highlight}>finanziellen Freiheit</span>
         </h1>
         <p className={styles.heroSubtitle}>
-          Lerne, wie du dein Geld clever investierst, sparst und unabhängig wirst – einfach erklärt und praxisnah.
+          Lerne, wie du dein Geld clever investierst, sparst und unabhängig wirst –
+          einfach erklärt und praxisnah.
         </p>
         <div className={styles.heroButtons}>
-          <Link href="/blog" className={styles.btnPrimary}>Jetzt starten</Link>
-          <Link href="/ueber-uns" className={styles.btnSecondary}>Mehr erfahren</Link>
+          <Link href="/blog" className={styles.btnPrimary}>
+            Jetzt starten
+          </Link>
+          <Link href="/ueber-uns" className={styles.btnSecondary}>
+            Mehr erfahren
+          </Link>
         </div>
       </div>
     </section>

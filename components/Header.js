@@ -5,10 +5,11 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/">FinanzFreedom</Link>
+        <Link href="/">Finanz<span>Freedom</span></Link>
       </div>
       <nav className={styles.nav}>
-        <Link href="/">Start</Link>
+        <Link href="/">Startseite</Link>
+        <Link href="/blog">Blog</Link>
         <Link href="/ueber-uns">Über uns</Link>
         <Link href="/kontakt">Kontakt</Link>
       </nav>

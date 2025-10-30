@@ -1,36 +1,38 @@
-import Image from "next/image";
-import styles from "../styles/Hero.module.css";
+import Image from 'next/image';
+import styles from '../styles/Hero.module.css';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
       {/* Hero-Bild */}
-      <Image
-        src="/hero.png"
-        alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
-        fill
-        priority
-        className={styles.heroImage}
-      />
+      <div className={styles.heroImageWrapper}>
+        <Image
+          src="/hero.png"
+          alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
+          fill
+          priority
+          className={styles.heroImage}
+        />
+      </div>
 
-      {/* Overlay mit Text */}
+      {/* Overlay und Text */}
       <div className={styles.overlay}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Willkommen bei <span className={styles.highlight}>FinanzFreedom</span>
+            Dein Weg zur <span className={styles.highlight}>finanziellen Freiheit</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            Dein Weg zur finanziellen Freiheit beginnt hier. Lerne, investiere
-            und wachse mit unserem Wissen.
+            Lerne, wie du dein Geld clever investierst, sparst und unabhängig wirst –
+            einfach erklärt und praxisnah.
           </p>
-
           <div className={styles.heroButtons}>
-            <a href="#artikel" className={styles.btnPrimary}>
+            <Link href="/blog" className={styles.btnPrimary}>
               Jetzt starten
-            </a>
-            <a href="#newsletter" className={styles.btnSecondary}>
+            </Link>
+            <Link href="/ueber-uns" className={styles.btnSecondary}>
               Mehr erfahren
-            </a>
+            </Link>
           </div>
         </div>
       </div>

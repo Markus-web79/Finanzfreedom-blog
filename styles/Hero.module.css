@@ -1,3 +1,4 @@
+/* --- Hero-Bereich --- */
 .hero {
   position: relative;
   width: 100%;
@@ -5,12 +6,17 @@
   overflow: hidden;
 }
 
-.heroImage {
-  object-fit: cover;
-  object-position: center;
+/* Bild-Wrapper für layout="fill" */
+.heroImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
+/* Overlay über dem Bild */
 .overlay {
   position: absolute;
   top: 0;
@@ -25,6 +31,7 @@
   z-index: 2;
 }
 
+/* --- Inhalt des Hero-Textes --- */
 .heroContent {
   color: #fff;
   max-width: 800px;
@@ -38,7 +45,7 @@
 }
 
 .highlight {
-  color: #00b3b3; /* dein Türkis */
+  color: #00b3b3; /* Türkis-Farbe im Branding */
 }
 
 .heroSubtitle {
@@ -47,6 +54,7 @@
   margin-bottom: 2rem;
 }
 
+/* --- Buttons --- */
 .heroButtons {
   display: flex;
   justify-content: center;
@@ -59,7 +67,8 @@
   border-radius: 5px;
   font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .btnPrimary {
@@ -80,4 +89,25 @@
 .btnSecondary:hover {
   background-color: #00b3b3;
   color: #fff;
+}
+
+/* --- Mobile Optimierung --- */
+@media (max-width: 768px) {
+  .hero {
+    height: 75vh;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }

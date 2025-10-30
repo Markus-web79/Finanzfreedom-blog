@@ -1,86 +1,83 @@
 .hero {
   position: relative;
-  /* Externes Hero-Bild – sauberer, moderner Finance/City-Look */
-  background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1920&q=80');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #fff;
-  text-align: center;
+  width: 100%;
+  height: 85vh;
   overflow: hidden;
 }
 
-/* Dunkles Overlay für bessere Lesbarkeit */
+.heroImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.7);
+}
+
 .overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.65) 0%,
-    rgba(0, 0, 0, 0.35) 50%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-/* Inhalt */
-.content {
-  position: relative;
+.heroContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
   z-index: 2;
-  max-width: 900px;
-  padding: 0 20px;
 }
 
-.content h1 {
+.heroTitle {
   font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-.content h1 span {
+.highlight {
   color: var(--petrol);
 }
 
-.content p {
-  font-size: 1.25rem;
-  color: #eaeaea;
-  margin: 0 auto 28px;
-  max-width: 720px;
+.heroSubtitle {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
 }
 
-/* CTA-Button */
-.button {
-  display: inline-block;
+.heroButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btnPrimary {
   background-color: var(--petrol);
-  color: var(--weiß);
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-weight: 700;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 10px 30px rgba(0, 161, 155, 0.25);
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
-.button:hover {
-  background-color: #00c0bd;
-  transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(0, 161, 155, 0.35);
+.btnPrimary:hover {
+  background-color: #009999;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .content h1 {
-    font-size: 2.2rem;
-  }
+.btnSecondary {
+  background-color: transparent;
+  border: 2px solid var(--petrol);
+  color: var(--petrol);
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
-  .content p {
-    font-size: 1.05rem;
-  }
+.btnSecondary:hover {
+  background-color: var(--petrol);
+  color: white;
 }

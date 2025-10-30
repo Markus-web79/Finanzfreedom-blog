@@ -6,13 +6,12 @@
   overflow: hidden;
 }
 
-/* Bild-Wrapper für layout="fill" */
-.heroImageWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Bild im Hintergrund */
+.heroImage {
+  object-fit: cover;
   width: 100%;
   height: 100%;
+  filter: brightness(0.65);
   z-index: 1;
 }
 

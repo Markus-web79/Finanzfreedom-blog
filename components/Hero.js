@@ -15,18 +15,21 @@ export default function Hero() {
           sizes="100vw"
           quality={90}
           style={{ objectFit: "cover" }}
+          onError={(e) => {
+            // Falls Bild nicht gefunden wird, Bild ausblenden → kein Build-Abbruch
+            e.currentTarget.style.display = "none";
+          }}
         />
       </div>
 
-      {/* Halbtransparente Overlay-Ebene */}
+      {/* Overlay und Inhalt */}
       <div className={styles.overlay}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
             Finanzielle <span className={styles.highlight}>Freiheit</span> beginnt heute
           </h1>
           <p className={styles.heroSubtitle}>
-            Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien,
-            die wirklich funktionieren. Unabhängig. Verständlich. Schritt für Schritt.
+            Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien, die wirklich funktionieren.
           </p>
 
           <div className={styles.heroButtons}>

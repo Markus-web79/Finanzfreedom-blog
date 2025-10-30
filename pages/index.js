@@ -1,76 +1,66 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import Hero from '../components/Hero';
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
-export default function Home({ allPosts }) {
+export default function Home() {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Werde finanziell frei</title>
+        <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
         <meta
           name="description"
-          content="FinanzFreedom: Lerne alles über Geld, Finanzen, Investments und den Weg zur finanziellen Freiheit."
+          content="Lerne, wie du dein Geld für dich arbeiten lässt – einfach, ehrlich und unabhängig. Finanzielle Freiheit beginnt mit Wissen."
         />
       </Head>
 
       {/* Hero-Bereich */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1>FinanzFreedom</h1>
-          <p>Dein Weg zur finanziellen Freiheit – einfach erklärt, ehrlich und machbar.</p>
-          <Link href="#artikel" className={styles.ctaButton}>
-            Jetzt starten
-          </Link>
-        </div>
-      </section>
+      <Hero />
 
-      {/* Drei Themenbereiche */}
-      <section className={styles.themen}>
-        <h2>Entdecke unsere Themen</h2>
-        <div className={styles.grid}>
-          <div className={styles.card}>
-            <h3>💰 Investieren</h3>
-            <p>Alles über ETFs, Aktien und passives Einkommen.</p>
-            <Link href="/etf-grundlagen">Mehr erfahren →</Link>
+      {/* Hauptinhalt */}
+      <main className={styles.main}>
+        <section id="artikel" className={styles.container}>
+          <h2 className={styles.sectionTitle}>Aktuelle Themen</h2>
+
+          <div className={styles.grid}>
+            {/* Artikel 1 */}
+            <div className={styles.card}>
+              <h3>ETF Broker Vergleich 2025</h3>
+              <p>
+                Finde den besten Anbieter für deine ETF-Investitionen – günstig,
+                sicher und transparent.
+              </p>
+              <Link href="/etf-broker-vergleich" className={styles.link}>
+                Weiterlesen →
+              </Link>
+            </div>
+
+            {/* Artikel 2 */}
+            <div className={styles.card}>
+              <h3>Diese Versicherungen brauchst du wirklich</h3>
+              <p>
+                Welche Policen sind sinnvoll – und welche kannst du dir sparen?
+                Wir klären auf.
+              </p>
+              <Link href="/versicherungen" className={styles.link}>
+                Weiterlesen →
+              </Link>
+            </div>
+
+            {/* Artikel 3 */}
+            <div className={styles.card}>
+              <h3>Dein Weg zur finanziellen Freiheit</h3>
+              <p>
+                Schritt für Schritt zu mehr Unabhängigkeit – lerne, wie du dein
+                Geld für dich arbeiten lässt.
+              </p>
+              <Link href="/finanzielle-freiheit" className={styles.link}>
+                Weiterlesen →
+              </Link>
+            </div>
           </div>
-
-          <div className={styles.card}>
-            <h3>🏦 Sparen & Budget</h3>
-            <p>Wie du dein Geld smarter verwaltest und mehr behältst.</p>
-            <Link href="/geldfehler-vermeiden">Zum Artikel →</Link>
-          </div>
-
-          <div className={styles.card}>
-            <h3>🛡️ Versicherungen</h3>
-            <p>Welche Versicherungen du wirklich brauchst – und welche nicht.</p>
-            <Link href="/versicherungen">Jetzt lesen →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Artikelvorschau */}
-      <section id="artikel" className={styles.artikel}>
-        <h2>Neueste Artikel</h2>
-        <div className={styles.grid}>
-          {allPosts?.length > 0 ? (
-            allPosts.map((post) => (
-              <div key={post.slug} className={styles.card}>
-                <Link href={`/${post.slug}`}>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                </Link>
-              </div>
-            ))
-          ) : (
-            <p>Keine Artikel gefunden.</p>
-          )}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} FinanzFreedom – Dein Weg zur Freiheit</p>
-      </footer>
+        </section>
+      </main>
     </>
   );
 }

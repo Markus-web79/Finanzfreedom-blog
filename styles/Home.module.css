@@ -1,59 +1,111 @@
+/* 🌐 FinanzFreedom – modernes dunkles Layout im Petrol-Stil */
+
+/* Container */
 .container {
   max-width: 1100px;
   margin: 80px auto;
   padding: 0 20px;
 }
 
+/* Abschnittsüberschrift */
 .sectionTitle {
   text-align: center;
   font-size: 2rem;
   color: var(--petrol);
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  font-weight: 700;
 }
 
+/* Artikel-Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
 }
 
+/* Artikelkarten */
 .card {
-  background-color: #1b1b1b;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
+  background: #1a1a1a;
+  border: 1px solid #222;
+  border-radius: 12px;
   padding: 25px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: var(--weiß);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 158, 156, 0.05);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 158, 156, 0.25);
+  transform: translateY(-6px);
+  border-color: var(--petrol);
+  box-shadow: 0 8px 20px rgba(0, 158, 156, 0.2);
 }
 
 .card h3 {
   color: var(--petrol);
+  font-size: 1.4rem;
   margin-bottom: 10px;
 }
 
 .card p {
-  color: #ccc;
-  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.link {
-  display: inline-block;
-  margin-top: 10px;
+/* Weiterlesen-Link */
+.card a {
   color: var(--petrol);
   font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
+.card a:hover {
+  color: #fff;
+}
+
+/* Hero-Bereich (oben auf Startseite) */
+.hero {
+  background: linear-gradient(180deg, #0f0f0f 0%, #101010 100%);
+  color: var(--weiß);
+  text-align: center;
+  padding: 100px 20px 80px;
+  border-bottom: 2px solid var(--petrol);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--petrol);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.hero a {
+  background: var(--petrol);
+  color: var(--weiß);
+  padding: 14px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.hero a:hover {
+  background: #00c0bd;
+  transform: translateY(-3px);
+}
+
+/* Footer */
 .footer {
   text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid var(--petrol);
-  background-color: #0e0e0e;
   color: #aaa;
-  margin-top: 60px;
+  border-top: 1px solid var(--petrol);
+  padding: 30px 0;
+  margin-top: 100px;
+  font-size: 0.9rem;
 }

@@ -1,74 +1,89 @@
-.hero {
-  background: linear-gradient(to right, #00a19b, #0d0d0d);
-  color: white;
+.main {
+  background-color: var(--anthrazit);
+  color: var(--weiß);
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  padding-bottom: 80px;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px 0;
+}
+
+/* Abschnittstitel */
+.sectionTitle {
   text-align: center;
-  padding: 100px 20px;
+  font-size: 2.2rem;
+  color: var(--petrol);
+  margin-bottom: 50px;
+  border-bottom: 2px solid var(--petrol);
+  display: inline-block;
+  padding-bottom: 6px;
 }
 
-.heroContent h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.heroContent p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 20px;
-}
-
-.ctaButton {
-  background-color: white;
-  color: #00a19b;
-  padding: 12px 28px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.ctaButton:hover {
-  background-color: #00a19b;
-  color: white;
-}
-
-.themen {
-  text-align: center;
-  padding: 80px 20px;
-  background-color: #121212;
-  color: white;
-}
-
+/* Grid für Artikelkarten */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
+/* Karten (Artikelvorschau) */
 .card {
-  background-color: #1e1e1e;
+  background-color: #1b1b1b;
   border: 1px solid #2a2a2a;
   border-radius: 10px;
-  padding: 20px;
-  transition: all 0.3s ease;
+  padding: 25px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 161, 155, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0, 161, 155, 0.25);
 }
 
-.artikel {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: #0d0d0d;
-  color: white;
+/* Titel in Karten */
+.card h3 {
+  color: var(--petrol);
+  font-size: 1.4rem;
+  margin-bottom: 12px;
 }
 
-.footer {
-  text-align: center;
-  padding: 30px 0;
-  background-color: #0b0b0b;
-  color: #aaa;
-  border-top: 1px solid #00a19b;
+/* Beschreibung */
+.card p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Weiterlesen-Link */
+.link {
+  color: var(--petrol);
+  font-weight: 600;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--weiß);
+  text-decoration: underline;
+}
+
+/* Responsiv */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 20px;
+  }
 }

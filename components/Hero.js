@@ -6,13 +6,15 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       {/* Hero-Bild */}
-      <Image
-        src="/hero.png"
-        alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
-        fill
-        priority
-        className={styles.heroImage}
-      />
+      <div className={styles.heroImageWrapper}>
+        <Image
+          src="/hero.png"
+          alt="FinanzFreedom – Dein Weg zur finanziellen Freiheit"
+          layout="fill"
+          objectFit="cover"
+          priority
+        />
+      </div>
 
       {/* Overlay und Text */}
       <div className={styles.overlay}>

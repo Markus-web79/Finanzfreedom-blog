@@ -13,23 +13,22 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          quality={90}
           style={{ objectFit: "cover" }}
-          onError={(e) => {
-            // Falls Bild nicht gefunden wird, Bild ausblenden → kein Build-Abbruch
-            e.currentTarget.style.display = "none";
-          }}
+          unoptimized
         />
       </div>
 
-      {/* Overlay und Inhalt */}
+      {/* Overlay und Textinhalt */}
       <div className={styles.overlay}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Finanzielle <span className={styles.highlight}>Freiheit</span> beginnt heute
+            Finanzielle Freiheit beginnt{" "}
+            <span className={styles.highlight}>heute</span>
           </h1>
+
           <p className={styles.heroSubtitle}>
-            Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien, die wirklich funktionieren.
+            Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien,
+            die wirklich funktionieren.
           </p>
 
           <div className={styles.heroButtons}>

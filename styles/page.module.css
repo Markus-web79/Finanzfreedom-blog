@@ -1,0 +1,28 @@
+.page {
+  max-width: 800px;
+  margin: 120px auto;
+  padding: 0 20px;
+  line-height: 1.7;
+  color: #222;
+}
+
+.page h1 {
+  font-size: 2.4rem;
+  color: #00b3b3;
+  margin-bottom: 1.5rem;
+}
+
+.page p {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.page a {
+  color: #00b3b3;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.page a:hover {
+  text-decoration: underline;
+}

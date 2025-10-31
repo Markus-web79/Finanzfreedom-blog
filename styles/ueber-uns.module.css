@@ -1,4 +1,4 @@
- .aboutSection {
+.aboutSection {
   padding: 80px 20px;
   max-width: 900px;
   margin: 0 auto;
@@ -23,4 +23,26 @@
   line-height: 1.8;
   font-size: 1.15rem;
   color: #eaeaea;
+  margin-bottom: 25px;
+}
+
+/* ✅ Mobile Optimierung */
+@media (max-width: 768px) {
+  .aboutSection {
+    padding: 60px 15px;
+  }
+
+  .aboutTitle {
+    font-size: 1.8rem;
+  }
+
+  .aboutText {
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+
+  .divider {
+    width: 50px;
+    margin: 15px auto;
+  }
 }

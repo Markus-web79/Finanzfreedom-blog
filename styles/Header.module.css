@@ -1,41 +1,64 @@
-/* 💼 Header Styling für FinanzFreedom */
+/* ===== Modern Header + Navigation - FinanzFreedom ===== */
 
-.header {
-  background-color: #0d0d0d;
-  border-bottom: 2px solid var(--petrol);
+header {
+  background-color: #0f0f0f;
+  border-bottom: 1px solid rgba(0, 194, 179, 0.25);
+  padding: 18px 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(6px);
 }
 
-.logo a {
-  font-size: 1.6rem;
+/* Logo */
+.logo {
+  font-size: 1.8rem;
   font-weight: 700;
-  color: var(--weiß);
-  text-decoration: none;
+  color: #ffffff;
   letter-spacing: 0.5px;
 }
 
 .logo span {
-  color: var(--petrol);
+  color: #00c2b3; /* Petrol-Akzent */
 }
 
-.nav {
+/* Navigation */
+nav {
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
-.nav a {
-  color: var(--weiß);
-  text-decoration: none;
+nav a {
+  color: #d0d0d0;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-.nav a:hover {
-  color: var(--petrol);
+nav a:hover {
+  color: #00c2b3;
+  text-shadow: 0 0 6px rgba(0, 194, 179, 0.4);
+}
+
+/* Aktiver Menüpunkt */
+nav a.active {
+  color: #00e5cf;
+  text-shadow: 0 0 10px rgba(0, 229, 207, 0.6);
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 }

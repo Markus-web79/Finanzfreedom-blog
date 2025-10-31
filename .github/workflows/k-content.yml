@@ -1,9 +1,12 @@
 name: Check Content
-
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - main
+    paths-ignore:
+      - 'pages/**'
+      - 'styles/**'
+      - 'public/**'
 
 jobs:
   check:

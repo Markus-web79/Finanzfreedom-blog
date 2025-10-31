@@ -1,13 +1,10 @@
-name: "🚀 Deploy Blog to Vercel"
+name: 🚀 Deploy Blog to Vercel
 
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'pages/**'
-      - 'styles/**'
-      - 'public/**'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -27,12 +24,5 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      - name: Deploy to Vercel (prod)
-        run: |
-          npx vercel --prod --yes -A vercel.json \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --scope=${{ secrets.VERCEL_SCOPE }} > deployment.txt
-          echo "url=$(grep -o 'https://[^ ]*vercel.app' deployment.txt | tail -n1)" >> $GITHUB_ENV
-
-      - name: Show live URL
-        run: echo "✅ Live URL:" ${{ env.url }}
+      - name: Deploy to Vercel
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

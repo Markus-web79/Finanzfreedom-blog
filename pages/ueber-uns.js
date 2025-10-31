@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/About.module.css';
+/styles/ueber-uns.module.css
 
 export default function About() {
   return (

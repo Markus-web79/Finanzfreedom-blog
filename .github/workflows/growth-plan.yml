@@ -6,39 +6,33 @@ on:
     - cron: "0 9 * * MON"
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'pages/**'
+      - 'styles/**'
+      - 'public/**'
+
 jobs:
   weekly-growth:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 📦 Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: ✅ Schritt 1 – Neue Posts planen
         run: |
-          echo "👉 Ziel: Jede Woche mindestens 5 neue Blogposts veröffentlichen."
-          echo "   - Themenliste prüfen und im /content-Ordner vorbereiten."
-          echo "   - Artikel generieren oder manuell ergänzen."
+          echo "📝 Ziel: Jede Woche mindestens 5 neue Blogposts veröffentlichen."
+          echo "🗂️ Themenliste prüfen und im /content-Ordner vorbereiten."
+          echo "✍️ Artikel generieren oder manuell ergänzen."
 
-      - name: 💰 Schritt 2 – Affiliate-Links prüfen
+      - name: 🔗 Schritt 2 – Affiliate-Links prüfen
         run: |
-          echo "👉 Alle Affiliate-Links in Artikeln und Layouts überprüfen."
-          echo "   - IDs (Amazon, Digistore, Awin etc.) ergänzen oder aktualisieren."
+          echo "🔍 Alle Affiliate-Links in Artikeln und Layouts überprüfen."
+          echo "🆔 IDs (Amazon, Digistore, Awin etc.) ergänzen oder aktualisieren."
 
-      - name: 📣 Schritt 3 – Social-Snippets erstellen
+      - name: 💬 Schritt 3 – Social-Snippets erstellen
         run: |
-          echo "👉 Mindestens 10 Social-Media-Snippets aus den neuesten Artikeln generieren."
-          echo "   - Für Instagram, TikTok, LinkedIn, Pinterest."
-          echo "   - Kurztexte und Hashtags hinzufügen."
-
-      - name: 🌐 Schritt 4 – SEO-Status prüfen
-        run: |
-          echo "👉 Prüfen ob /sitemap.xml und /robots.txt erreichbar und aktuell sind."
-          echo "   - Falls nötig Sitemap neu generieren."
-
-      - name: 🔗 Schritt 5 – Interne Verlinkung optimieren
-        run: |
-          echo "👉 Alte ↔ Neue Artikel intern verlinken, um SEO-Traffic zu verbessern."
-          echo "   - Besonders thematisch ähnliche Beiträge verknüpfen."
-
-      - name: 📊 Ergebnis
-        run: echo "✅ Weekly Growth-Plan abgeschlossen – alles dokumentieren und Fortschritt tracken."
+          echo "📢 Automatische Erstellung von SEO- und Social-Snippets vorbereiten."

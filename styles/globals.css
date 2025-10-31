@@ -1,33 +1,97 @@
-/* 🌐 Globales Styling für den FinanzFreedom Blog */
+/* ===========================
+   GLOBAL STYLES – FinanzFreedom
+   =========================== */
 
-/* Farbvariablen */
-:root {
-  --petrol: #00a19b;
-  --anthrazit: #0d0d0d;
-  --weiß: #ffffff;
-  --hellgrau: #f5f7f8;
-  --gold: #d4af37;
-}
+/* Importiere eine moderne, klare Google-Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Grundlayout */
-body {
-  margin: 0;
+/* Grundlayout für die gesamte Seite */
+html, body {
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: var(--anthrazit);
-  color: var(--weiß);
+  margin: 0;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #000;
+  color: #f0f0f0;
   line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
 /* Links */
 a {
-  color: var(--petrol);
+  color: #00bfa6;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 a:hover {
+  color: #00ffd0;
+}
+
+/* Überschriften */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #00bfa6;
+  margin-bottom: 0.5rem;
+}
+
+/* Absätze */
+p {
+  margin-bottom: 1rem;
+  color: #d9d9d9;
+}
+
+/* Container für einheitliche Abstände */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Trennerlinie */
+.divider {
+  width: 80px;
+  height: 2px;
+  background-color: #00bfa6;
+  margin: 1rem auto;
+}
+
+/* Buttons */
+button, .btn {
+  background-color: #00bfa6;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #00ffd0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid #00bfa6;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Responsivität */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
   color: var(--weiß);
   text-decoration: underline;
 }

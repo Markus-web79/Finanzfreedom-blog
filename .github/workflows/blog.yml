@@ -4,7 +4,15 @@ on:
   push:
     branches:
       - main
-
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pages/**'
+      - 'styles/**'
+      - 'public/**'
+      
 jobs:
   build:
     runs-on: ubuntu-latest

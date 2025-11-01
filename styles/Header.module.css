@@ -1,6 +1,6 @@
 /* ===== Modern Header + Navigation - FinanzFreedom ===== */
 
-header {
+.header {
   background-color: #0f0f0f;
   border-bottom: 1px solid rgba(0, 194, 179, 0.25);
   padding: 18px 40px;
@@ -31,29 +31,27 @@ nav {
   gap: 30px;
 }
 
-nav a {
+.navLink {
   color: #d0d0d0;
   font-weight: 500;
   transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-nav a:hover {
+.navLink:hover {
   color: #00c2b3;
   text-shadow: 0 0 6px rgba(0, 194, 179, 0.4);
 }
 
 /* Aktiver Menüpunkt */
-nav a.active {
+.navLink.active {
   color: #00e5cf;
   text-shadow: 0 0 10px rgba(0, 229, 207, 0.6);
 }
 
 /* Mobile Anpassung */
 @media (max-width: 768px) {
-  header {
+  .header {
     flex-direction: column;
-    align-items: center; /* 🔥 zentriert Logo + Menü */
-    justify-content: center;
     gap: 10px;
     padding: 15px 20px;
   }
@@ -62,5 +60,9 @@ nav a.active {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
   }
 }

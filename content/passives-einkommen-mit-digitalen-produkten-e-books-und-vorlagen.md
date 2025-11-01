@@ -29,13 +29,13 @@ Die Erstellung digitaler Produkte ermöglicht Ihnen, flexibel zu arbeiten. Sie k
 ## Wie Sie ein E-Book erstellen
 
 ### Schritt 1: Wählen Sie ein Thema
-Das erste, was Sie tun sollten, ist ein Thema zu finden, das sowohl Sie interessiert als auch Nachfrage auf dem Markt hat. Nutzen Sie Tools wie Google Trends oder Keyword-Planer, um herauszufinden, welche Themen gefragt sind.
+Das erste, was Sie tun sollten, ist ein Thema zu finden, Das sowohl Sie interessiert als auch Nachfrage auf dem Markt hat. Nutzen Sie Tools wie Google Trends oder Keyword-Planer, um herauszufinden, welche Themen gefragt sind.
 
 ### Schritt 2: Schreiben Sie Ihr E-Book
 Beginnen Sie mit einem klaren Outline und strukturieren Sie Ihre Inhalte. Achten Sie darauf, dass Ihre Kommunikation klar und ansprechend ist. Nutzen Sie Software wie Microsoft Word oder Google Docs, um Ihre Ideen zu Papier zu bringen.
 
 ### Schritt 3: Design und Formatierung
-Das Design ist entscheidend, um Ihr E-Book ansprechend zu gestalten. Nutzen Sie Programm wie Canva für eine ansprechende Gestaltung. Achten Sie auf ein professionelles Layout, das sowohl auf Desktop- als auch auf Mobilgeräten gut aussieht.
+Das Design ist entscheidend, um Ihr E-Book ansprechend zu gestalten. Nutzen Sie Programm wie Canva für eine ansprechende Gestaltung. Achten Sie auf ein professionelles Layout, Das sowohl auf Desktop- als auch auf Mobilgeräten gut aussieht.
 
 ### Schritt 4: Vertrieb und Marketing
 Verkaufen Sie Ihr E-Book über Plattformen wie Amazon Kindle, Udemy oder Ihre eigene Website. Investieren Sie in Online-Marketing, um Ihr E-Book einem breiten Publikum zugänglich zu machen.

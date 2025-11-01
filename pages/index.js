@@ -31,7 +31,7 @@ export default function Home() {
                 Finde den besten Anbieter für deine ETF-Investitionen – günstig,
                 sicher und transparent.
               </p>
-              <Link href="/etf-broker-vergleich" className={styles.link}>
+              <Link href="/etfs/etf-broker-vergleich-2025" className={styles.link}>
                 Weiterlesen →
               </Link>
             </div>
@@ -43,7 +43,7 @@ export default function Home() {
                 Welche Policen sind sinnvoll – und welche kannst du dir sparen?
                 Wir klären auf.
               </p>
-              <Link href="/versicherungen" className={styles.link}>
+              <Link href="/versicherungen/diese-versicherungen-brauchst-du-wirklich" className={styles.link}>
                 Weiterlesen →
               </Link>
             </div>
@@ -55,7 +55,7 @@ export default function Home() {
                 Schritt für Schritt zu mehr Unabhängigkeit – lerne, wie du dein
                 Geld für dich arbeiten lässt.
               </p>
-              <Link href="/finanzielle-freiheit" className={styles.link}>
+              <Link href="/finanzielle-freiheit/dein-weg-zur-freiheit" className={styles.link}>
                 Weiterlesen →
               </Link>
             </div>

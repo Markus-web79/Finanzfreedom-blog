@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/page.module.css';
 
-// 🔹 React-Komponente: Pflicht für Next.js
+// 🔹 Hauptkomponente – Pflicht für Next.js
 export default function PostPage({ frontmatter, content }) {
   if (!frontmatter) {
     return (
@@ -34,7 +34,7 @@ export default function PostPage({ frontmatter, content }) {
   );
 }
 
-// 🔹 Hilfsfunktion: sucht rekursiv nach allen Markdown-Dateien
+// 🔹 Hilfsfunktion: liest alle Markdown-Dateien (auch in Unterordnern)
 function getAllMarkdownFiles(dirPath, arrayOfFiles = []) {
   const files = fs.readdirSync(dirPath);
 
@@ -50,26 +50,33 @@ function getAllMarkdownFiles(dirPath, arrayOfFiles = []) {
   return arrayOfFiles;
 }
 
-// 🔹 Generiert alle Slugs aus /content (inkl. Unterordner)
+// 🔹 Generiert alle Pfade wie /etfs/was-ist-ein-etf...
 export async function getStaticPaths() {
   const files = getAllMarkdownFiles(path.join('content'));
 
   const paths = files.map((filePath) => {
-    const slug = path.basename(filePath, '.md');
-    return { params: { slug } };
+    const relativePath = filePath
+      .replace(/^content\//, '')
+      .replace(/\.md$/, '');
+    const segments = relativePath.split('/');
+    return { params: { slug: segments } };
   });
 
   return {
     paths,
-    fallback: false,
+    fallback: false, // 404 wenn Artikel fehlt
   };
 }
 
-// 🔹 Liest den Markdown-Inhalt
-export async function getStaticProps({ params: { slug } }) {
+// 🔹 Liest den Inhalt basierend auf verschachteltem Slug
+export async function getStaticProps({ params }) {
   try {
+    const slugPath = Array.isArray(params.slug)
+      ? params.slug.join('/')
+      : params.slug;
+
     const allFiles = getAllMarkdownFiles(path.join('content'));
-    const match = allFiles.find((file) => file.endsWith(`${slug}.md`));
+    const match = allFiles.find((file) => file.endsWith(`${slugPath}.md`));
 
     if (!match) {
       return { notFound: true };
@@ -82,7 +89,7 @@ export async function getStaticProps({ params: { slug } }) {
       props: { frontmatter, content },
     };
   } catch (error) {
-    console.error('Fehler beim Laden des Artikels:', slug, error);
+    console.error('Fehler beim Laden des Artikels:', error);
     return { notFound: true };
   }
 }

@@ -15,7 +15,7 @@ Das Investieren in Aktien, Immobilien oder andere Anlageformen kann eine hervorr
 
 ### Warum Bildung entscheidend ist
 
-Einer der größten Fehler, den Anfänger beim Investieren machen, ist das Fehlen einer soliden finanziellen Bildung. Ohne ein grundlegendes Verständnis von Finanzmärkten, Anlageformen und Risiko können Investoren schnell auf die falschen Möglichkeiten setzen.
+Einer der größten Fehler, den Anfänger beim Investieren machen, ist dass Fehlen einer soliden finanziellen Bildung. Ohne ein grundlegendes Verständnis von Finanzmärkten, Anlageformen und Risiko können Investoren schnell auf die falschen Möglichkeiten setzen.
 
 ### Tipps zur Verbesserung Ihrer finanziellen Bildung
 
@@ -27,7 +27,7 @@ Einer der größten Fehler, den Anfänger beim Investieren machen, ist das Fehle
 
 ### Was ist Diversifikation und warum ist sie wichtig?
 
-Diversifikation bedeutet, Ihr Geld in verschiedene Anlageklassen zu investieren, um das Risiko zu streuen. Viele Anfänger investieren jedoch zu stark in eine einzelne Aktie oder Anlageform, was ihr Risiko erhöht.
+Diversifikation bedeutet, Ihr Geld in verschiedene Anlageklassen zu investieren, um dass Risiko zu streuen. Viele Anfänger investieren jedoch zu stark in eine einzelne Aktie oder Anlageform, was ihr Risiko erhöht.
 
 ### So diversifizieren Sie Ihr Portfolio
 

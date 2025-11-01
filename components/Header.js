@@ -8,19 +8,11 @@ export default function Header() {
         Finanz<span>Freedom</span>
       </div>
 
-      <nav>
-        <Link href="/" className={styles.navLink}>
-          Startseite
-        </Link>
-        <Link href="/blog" className={styles.navLink}>
-          Blog
-        </Link>
-        <Link href="/ueber-uns" className={styles.navLink}>
-          Über uns
-        </Link>
-        <Link href="/kontakt" className={styles.navLink}>
-          Kontakt
-        </Link>
+      <nav className={styles.nav}>
+        <Link href="/" className={styles.navLink}>Startseite</Link>
+        <Link href="/blog" className={styles.navLink}>Blog</Link>
+        <Link href="/ueber-uns" className={styles.navLink}>Über uns</Link>
+        <Link href="/kontakt" className={styles.navLink}>Kontakt</Link>
       </nav>
     </header>
   );

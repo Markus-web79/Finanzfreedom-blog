@@ -11,6 +11,7 @@
   top: 0;
   z-index: 100;
   backdrop-filter: blur(6px);
+  flex-wrap: wrap;
 }
 
 /* Logo */
@@ -19,22 +20,27 @@
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .logo span {
   color: #00c2b3; /* Petrol-Akzent */
 }
 
-/* Navigation (lokal gebunden an .header) */
-.header nav {
+/* Navigation */
+.nav {
   display: flex;
   gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .navLink {
   color: #d0d0d0;
   font-weight: 500;
   transition: color 0.2s ease, text-shadow 0.2s ease;
+  text-align: center;
 }
 
 .navLink:hover {
@@ -52,14 +58,15 @@
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
     padding: 15px 20px;
+    gap: 10px;
   }
 
-  .header nav {
-    flex-wrap: wrap;
+  .nav {
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
   }
 
   .logo {

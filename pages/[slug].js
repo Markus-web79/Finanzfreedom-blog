@@ -1,63 +1,74 @@
-import { getAllPosts, getPostBySlug } from "../lib/api";
-import markdownToHtml from "../lib/markdownToHtml";
-import Head from "next/head";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/page.module.css';
 
-export default function Post({ post }) {
-  if (!post) {
-    return <div>Artikel nicht gefunden.</div>;
+export default function PostPage({ frontmatter, content }) {
+  if (!frontmatter) {
+    return (
+      <div className={styles.notFound}>
+        <h1>404 – Artikel nicht gefunden</h1>
+        <Link href="/">Zurück zur Startseite</Link>
+      </div>
+    );
   }
 
   return (
     <>
       <Head>
-        <title>{post.title} | FinanzFreedom</title>
-        <meta name="description" content={post.description || post.excerpt} />
+        <title>{frontmatter.title} | FinanzFreedom</title>
+        <meta name="description" content={frontmatter.description} />
       </Head>
 
-      <main className="article-page">
-        <article>
-          <h1>{post.title}</h1>
-          <p className="article-date">{post.date}</p>
-          <div
-            className="article-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-        </article>
+      <main className={styles.articleContainer}>
+        <h1 className={styles.articleTitle}>{frontmatter.title}</h1>
+        <div
+          className={styles.articleContent}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </main>
     </>
   );
 }
 
-export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "content",
-    "description",
-  ]);
+// Generiert alle verfügbaren Slugs aus /content
+export async function getStaticPaths() {
+  const files = fs.readdirSync(path.join('content'));
 
-  const content = await markdownToHtml(post.content || "");
+  const paths = files.map((filename) => ({
+    params: {
+      slug: filename.replace('.md', ''),
+    },
+  }));
 
   return {
-    props: {
-      post: {
-        ...post,
-        content,
-      },
-    },
+    paths,
+    fallback: false, // Wenn Artikel fehlt → 404
   };
 }
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+// Liest den Inhalt des Artikels
+export async function getStaticProps({ params: { slug } }) {
+  try {
+    const markdownWithMeta = fs.readFileSync(
+      path.join('content', slug + '.md'),
+      'utf-8'
+    );
 
-  return {
-    paths: posts.map((post) => ({
-      params: {
-        slug: post.slug.replace(".md", ""),
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+
+    return {
+      props: {
+        frontmatter,
+        content,
       },
-    })),
-    fallback: false,
-  };
+    };
+  } catch (error) {
+    console.error('Fehler beim Laden des Artikels:', slug, error);
+    return {
+      notFound: true,
+    };
+  }
 }

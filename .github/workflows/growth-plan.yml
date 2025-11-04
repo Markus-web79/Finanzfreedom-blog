@@ -1,0 +1,38 @@
+name: Weekly Growth Plan 🚀
+
+on:
+  schedule:
+    # Läuft jeden Montag um 09:00 Uhr UTC
+    - cron: "0 9 * * MON"
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'pages/**'
+      - 'styles/**'
+      - 'public/**'
+
+jobs:
+  weekly-growth:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ✅ Schritt 1 – Neue Posts planen
+        run: |
+          echo "📝 Ziel: Jede Woche mindestens 5 neue Blogposts veröffentlichen."
+          echo "🗂️ Themenliste prüfen und im /content-Ordner vorbereiten."
+          echo "✍️ Artikel generieren oder manuell ergänzen."
+
+      - name: 🔗 Schritt 2 – Affiliate-Links prüfen
+        run: |
+          echo "🔍 Alle Affiliate-Links in Artikeln und Layouts überprüfen."
+          echo "🆔 IDs (Amazon, Digistore, Awin etc.) ergänzen oder aktualisieren."
+
+      - name: 💬 Schritt 3 – Social-Snippets erstellen
+        run: |
+          echo "📢 Automatische Erstellung von SEO- und Social-Snippets vorbereiten."

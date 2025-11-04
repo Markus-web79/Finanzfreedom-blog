@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://finanzfreedom-blog.vercel.app/sitemap.xml

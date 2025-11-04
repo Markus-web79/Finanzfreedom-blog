@@ -1,0 +1,34 @@
+name: Auto Generate Article
+
+on:
+  schedule:
+    - cron: "0 8 * * *"  # Jeden Tag um 08:00 Uhr UTC (09:00 Uhr Deutschland)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Generate Article
+        run: node scripts/generateArticle.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit new Article
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add content/
+          git commit -m "Auto: Neuer AI-Artikel generiert" || echo "Keine Änderungen"
+          git push

@@ -1,0 +1,88 @@
+.articleContainer {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem;
+}
+
+.articleTitle {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  color: #e9f9f6;
+}
+
+.articleContent {
+  color: #d9f3ef;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.articleContent h2,
+.articleContent h3 {
+  color: #00d6b9;
+  margin-top: 1.8rem;
+}
+
+.articleContent p {
+  margin: 0.8rem 0;
+}
+
+.articleContent a {
+  color: #00e7c8;
+  text-decoration: underline;
+}
+
+.articleContent .autolink {
+  margin-left: 0.4rem;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+/* Tabellen */
+.articleContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.98rem;
+}
+
+.articleContent th,
+.articleContent td {
+  border: 1px solid #1b2c2a;
+  padding: 0.6rem 0.7rem;
+  vertical-align: top;
+}
+
+.articleContent th {
+  background: #0b1e1d;
+  color: #e9f9f6;
+  text-align: left;
+}
+
+.articleContent tr:nth-child(even) td {
+  background: #0c1414;
+}
+
+/* Codeblöcke */
+.articleContent pre {
+  padding: 1rem;
+  border-radius: 6px;
+  overflow: auto;
+  background: #0b1e1d;
+}
+
+.articleContent code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+/* 404 */
+.notFound {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.8rem;
+  color: #e9f9f6;
+}

@@ -1,0 +1,33 @@
+name: 🧠 Auto Generate Article (Daily)
+
+on:
+  schedule:
+    - cron: "0 10 * * *"  # Täglich um 10:00 Uhr (UTC, also 11:00 in Deutschland)
+  workflow_dispatch:      # Manuell auslösbar im GitHub Actions Tab
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Generate New Article
+        run: node scripts/generateArticle.js
+
+      - name: Commit & Push Article
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add content/
+          git commit -m "🧠 Neuer AI-Artikel automatisch generiert" || echo "Keine Änderungen"
+          git push

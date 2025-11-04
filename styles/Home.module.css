@@ -1,0 +1,68 @@
+/* === Hauptbereich der Startseite === */
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* === Kategorieüberschriften === */
+
+.categoryTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00bfa5;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-left: 4px solid #00bfa5;
+  padding-left: 12px;
+}
+
+/* === Artikelkarten === */
+
+.articleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #1b1c1f;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.cardTitle {
+  color: #00e3c4;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.cardDescription {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cardLink {
+  color: #00e3c4;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+}

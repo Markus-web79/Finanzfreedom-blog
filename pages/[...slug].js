@@ -1,71 +1,87 @@
-// pages/[slug].js
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { marked } from "marked";
-import Head from "next/head";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import Head from 'next/head';
+import Link from 'next/link';
+import { marked } from 'marked';
 
-export default function Post({ frontmatter, content }) {
-  if (!frontmatter) return <h1>404 – Artikel nicht gefunden</h1>;
+export default function PostPage({ frontmatter, html }) {
+  if (!frontmatter) {
+    return (
+      <div style={{ color: 'white', textAlign: 'center', padding: '4rem' }}>
+        <h1>404 – Artikel nicht gefunden</h1>
+        <Link href="/">Zurück zur Startseite</Link>
+      </div>
+    );
+  }
 
   return (
     <>
       <Head>
         <title>{frontmatter.title} | FinanzFreedom</title>
-        <meta name="description" content={frontmatter.description || ""} />
+        <meta name="description" content={frontmatter.description || ''} />
       </Head>
-      <main className="article-container">
+      <main style={{ maxWidth: '800px', margin: '2rem auto', color: 'white' }}>
         <h1>{frontmatter.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
+        <article dangerouslySetInnerHTML={{ __html: html }} />
       </main>
     </>
   );
 }
 
-export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), "content");
-  const categories = fs.readdirSync(contentDir);
-
-  const paths = [];
-
-  for (const category of categories) {
-    const categoryPath = path.join(contentDir, category);
-    if (!fs.statSync(categoryPath).isDirectory()) continue;
-
-    const files = fs.readdirSync(categoryPath);
-    for (const file of files) {
-      if (!file.endsWith(".md")) continue;
-      const filePath = path.join(categoryPath, file);
-      const fileContent = fs.readFileSync(filePath, "utf8");
-      const { data: frontmatter } = matter(fileContent);
-      if (frontmatter.slug) {
-        paths.push({ params: { slug: frontmatter.slug } });
-      }
+function getAllMarkdownFiles(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  let files = [];
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files = files.concat(getAllMarkdownFiles(fullPath));
+    } else if (entry.isFile() && entry.name.endsWith('.md')) {
+      files.push(fullPath);
     }
   }
+  return files;
+}
 
-  return { paths, fallback: false };
+export async function getStaticPaths() {
+  const contentDir = path.join(process.cwd(), 'content');
+  const files = getAllMarkdownFiles(contentDir);
+
+  const paths = files.map((file) => {
+    const slug = file
+      .replace(contentDir + '/', '')
+      .replace(/\.md$/, '')
+      .split(path.sep);
+    return { params: { slug } };
+  });
+
+  return {
+    paths,
+    fallback: false, // <- wichtig: kein dynamischer Fallback bei static export
+  };
 }
 
 export async function getStaticProps({ params }) {
-  const contentDir = path.join(process.cwd(), "content");
-  const categories = fs.readdirSync(contentDir);
+  try {
+    const slugPath = Array.isArray(params.slug)
+      ? params.slug.join('/')
+      : params.slug;
 
-  for (const category of categories) {
-    const categoryPath = path.join(contentDir, category);
-    if (!fs.statSync(categoryPath).isDirectory()) continue;
+    const fullPath = path.join(process.cwd(), 'content', `${slugPath}.md`);
+    const raw = fs.readFileSync(fullPath, 'utf-8');
+    const { data: frontmatter, content } = matter(raw);
+    const html = marked.parse(content);
 
-    const files = fs.readdirSync(categoryPath);
-    for (const file of files) {
-      if (!file.endsWith(".md")) continue;
-      const filePath = path.join(categoryPath, file);
-      const fileContent = fs.readFileSync(filePath, "utf8");
-      const { data: frontmatter, content } = matter(fileContent);
-      if (frontmatter.slug === params.slug) {
-        return { props: { frontmatter, content } };
-      }
-    }
+    return {
+      props: {
+        frontmatter: frontmatter || null,
+        html,
+      },
+    };
+  } catch (err) {
+    console.error('Fehler beim Laden:', err);
+    return {
+      notFound: true,
+    };
   }
-
-  return { notFound: true };
 }

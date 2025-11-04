@@ -1,79 +1,71 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import Head from 'next/head';
-import Link from 'next/link';
-import styles from '../styles/page.module.css';
-import { mdToHtml } from '../lib/markdownToHtml';
+// pages/[slug].js
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { marked } from "marked";
+import Head from "next/head";
 
-// ---------- React-Komponente (Pflicht für Next.js)
-export default function PostPage({ frontmatter, html }) {
-  if (!frontmatter) {
-    return (
-      <div className={styles.notFound}>
-        <h1>404 – Artikel nicht gefunden</h1>
-        <Link href="/">Zurück zur Startseite</Link>
-      </div>
-    );
-  }
+export default function Post({ frontmatter, content }) {
+  if (!frontmatter) return <h1>404 – Artikel nicht gefunden</h1>;
 
   return (
     <>
       <Head>
         <title>{frontmatter.title} | FinanzFreedom</title>
-        <meta name="description" content={frontmatter.description || ''} />
+        <meta name="description" content={frontmatter.description || ""} />
       </Head>
-
-      <main className={styles.articleContainer}>
-        <h1 className={styles.articleTitle}>{frontmatter.title}</h1>
-
-        <article
-          className={styles.articleContent}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+      <main className="article-container">
+        <h1>{frontmatter.title}</h1>
+        <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
       </main>
     </>
   );
 }
 
-// ---------- Hilfsfunktion: rekursiv alle .md-Dateien finden
-function getAllMarkdownFiles(dir, bag = []) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const e of entries) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) getAllMarkdownFiles(p, bag);
-    else if (e.isFile() && e.name.endsWith('.md')) bag.push(p);
-  }
-  return bag;
-}
-
-// ---------- Slug-Generierung für alle Inhalte
 export async function getStaticPaths() {
-  const files = getAllMarkdownFiles(path.join('content'));
-  const paths = files.map((file) => {
-    const relative = file.replace(/^content[\\/]/, '').replace(/\.md$/, '');
-    const segments = relative.split(/[\\/]/).filter(Boolean);
-    return { params: { slug: segments } };
-  });
+  const contentDir = path.join(process.cwd(), "content");
+  const categories = fs.readdirSync(contentDir);
+
+  const paths = [];
+
+  for (const category of categories) {
+    const categoryPath = path.join(contentDir, category);
+    if (!fs.statSync(categoryPath).isDirectory()) continue;
+
+    const files = fs.readdirSync(categoryPath);
+    for (const file of files) {
+      if (!file.endsWith(".md")) continue;
+      const filePath = path.join(categoryPath, file);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data: frontmatter } = matter(fileContent);
+      if (frontmatter.slug) {
+        paths.push({ params: { slug: frontmatter.slug } });
+      }
+    }
+  }
 
   return { paths, fallback: false };
 }
 
-// ---------- Artikel-Daten lesen & Markdown in HTML umwandeln
 export async function getStaticProps({ params }) {
-  try {
-    const slugPath = Array.isArray(params.slug) ? params.slug.join('/') : params.slug;
-    const all = getAllMarkdownFiles(path.join('content'));
-    const match = all.find((f) => f.endsWith(`${slugPath}.md`));
-    if (!match) return { notFound: true };
+  const contentDir = path.join(process.cwd(), "content");
+  const categories = fs.readdirSync(contentDir);
 
-    const raw = fs.readFileSync(match, 'utf-8');
-    const { data: frontmatter, content } = matter(raw);
-    const html = await mdToHtml(content);
+  for (const category of categories) {
+    const categoryPath = path.join(contentDir, category);
+    if (!fs.statSync(categoryPath).isDirectory()) continue;
 
-    return { props: { frontmatter: frontmatter || null, html } };
-  } catch (err) {
-    console.error('Fehler beim Laden des Artikels:', err);
-    return { notFound: true };
+    const files = fs.readdirSync(categoryPath);
+    for (const file of files) {
+      if (!file.endsWith(".md")) continue;
+      const filePath = path.join(categoryPath, file);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data: frontmatter, content } = matter(fileContent);
+      if (frontmatter.slug === params.slug) {
+        return { props: { frontmatter, content } };
+      }
+    }
   }
+
+  return { notFound: true };
 }

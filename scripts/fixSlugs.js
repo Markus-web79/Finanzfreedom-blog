@@ -1,73 +1,61 @@
-/**
- * 🧩 fixSlugs.js
- * Repariert automatisch Slugs in allen Markdown-Dateien unter /content/
- * - entfernt führende Slashes
- * - ersetzt Umlaute und Sonderzeichen
- * - wandelt Leerzeichen in Bindestriche um
- * - speichert die korrigierte Datei
- */
-
+// scripts/fixSlugs.js
 import fs from "fs";
 import path from "path";
 
-const contentDir = path.join(process.cwd(), "content");
+const contentRoot = path.join(process.cwd(), "content");
 
-function normalizeSlug(text) {
-  return text
+// Hilfsfunktion: Slug aus Dateiname generieren
+function slugify(title) {
+  return title
     .toLowerCase()
-    .replace(/ä/g, "ae")
-    .replace(/ö/g, "oe")
-    .replace(/ü/g, "ue")
-    .replace(/ß/g, "ss")
-    .replace(/[^a-z0-9\-]+/g, "-") // Sonderzeichen raus
-    .replace(/-+/g, "-") // doppelte Bindestriche entfernen
-    .replace(/^-|-$/g, ""); // Trim Bindestriche am Anfang/Ende
+    .replace(/[ä]/g, "ae")
+    .replace(/[ö]/g, "oe")
+    .replace(/[ü]/g, "ue")
+    .replace(/[^a-z0-9-]/g, "-")
+    .replace(/--+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
-function fixSlugInFile(filePath) {
-  const content = fs.readFileSync(filePath, "utf8");
+function fixSlugs() {
+  const categories = fs.readdirSync(contentRoot);
 
-  const lines = content.split("\n");
-  let newLines = [];
-  let changed = false;
+  for (const category of categories) {
+    const categoryPath = path.join(contentRoot, category);
+    if (!fs.statSync(categoryPath).isDirectory()) continue;
 
-  for (let line of lines) {
-    if (line.startsWith("slug:")) {
-      let slug = line.split(":")[1].trim().replace(/^["']|["']$/g, "");
+    const files = fs.readdirSync(categoryPath).filter(f => f.endsWith(".md"));
+    for (const file of files) {
+      const filePath = path.join(categoryPath, file);
+      let content = fs.readFileSync(filePath, "utf8");
 
-      // führenden Slash entfernen
-      slug = slug.replace(/^\//, "");
+      // Titel aus Frontmatter auslesen
+      const match = content.match(/title:\s*["']?(.+?)["']?\n/);
+      if (!match) continue;
 
-      // normalisieren
-      const fixedSlug = normalizeSlug(slug);
+      const title = match[1];
+      const correctSlug = slugify(title);
+      const currentSlug = content.match(/slug:\s*["']?(.+?)["']?\n/);
 
-      if (slug !== fixedSlug) {
-        console.log(`🔧 Fix: ${slug} → ${fixedSlug}`);
-        line = `slug: "${fixedSlug}"`;
-        changed = true;
-      } else {
-        line = `slug: "${slug}"`;
+      // Slug im Markdown ersetzen, wenn er falsch oder fehlt
+      if (!currentSlug || currentSlug[1] !== correctSlug) {
+        if (currentSlug) {
+          content = content.replace(
+            /slug:\s*["']?.+?["']?\n/,
+            `slug: "${correctSlug}"\n`
+          );
+        } else {
+          content = content.replace(
+            /title:\s*["']?.+?["']?\n/,
+            `title: "${title}"\nslug: "${correctSlug}"\n`
+          );
+        }
+        fs.writeFileSync(filePath, content, "utf8");
+        console.log(`✅ Slug korrigiert: ${file} → ${correctSlug}`);
       }
     }
-    newLines.push(line);
   }
 
-  if (changed) {
-    fs.writeFileSync(filePath, newLines.join("\n"), "utf8");
-    console.log(`✅ Datei aktualisiert: ${path.basename(filePath)}`);
-  }
+  console.log("✨ Alle Slugs überprüft und korrigiert!");
 }
 
-function run() {
-  const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
-  console.log(`\n🔍 Überprüfe ${files.length} Dateien...\n`);
-
-  files.forEach(file => {
-    const filePath = path.join(contentDir, file);
-    fixSlugInFile(filePath);
-  });
-
-  console.log("\n🎉 Alle Slugs überprüft und korrigiert!");
-}
-
-run();
+fixSlugs();

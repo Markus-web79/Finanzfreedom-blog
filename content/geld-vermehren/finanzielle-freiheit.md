@@ -1,5 +1,6 @@
 ---
 title: "Dein Weg zur finanziellen Freiheit"
+slug: "dein-weg-zur-finanziellen-freiheit"
 description: "Lerne, wie du dein Geld für dich arbeiten lässt – Schritt für Schritt zur finanziellen Unabhängigkeit mit klarer Strategie und Disziplin."
 date: "2025-11-02"
 keywords: ["finanzielle Freiheit", "passives Einkommen", "Geld investieren", "Vermögen aufbauen", "FinanzFreedom"]

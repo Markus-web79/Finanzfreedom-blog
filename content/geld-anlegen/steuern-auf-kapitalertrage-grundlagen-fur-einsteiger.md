@@ -1,5 +1,6 @@
 ---
 title: "Steuern auf Kapitalerträge: Grundlagen für Einsteiger"
+slug: "steuern-auf-kapitalertraege-grundlagen-fuer-einsteiger"
 description: "Lerne, wie Kapitalerträge besteuert werden, welche Freibeträge gelten und wie du legal Steuern sparen kannst. Einsteigerfreundliche Tipps und Beispiele inklusive."
 date: "2025-11-03"
 keywords: ["Kapitalerträge", "Abgeltungssteuer", "Steuern auf Aktien", "Freibetrag", "FinanzFreedom"]

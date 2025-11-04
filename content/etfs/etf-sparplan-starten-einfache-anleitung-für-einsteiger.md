@@ -1,6 +1,6 @@
 ---
 title: "ETF Sparplan starten – einfache Anleitung für Einsteiger"
-slug: "etf-sparplan-starten-einfache-anleitung-für-einsteiger"
+slug: "etf-sparplan-starten-einfache-anleitung-fuer-einsteiger"
 date: "2025-11-03"
 excerpt: "Lerne Schritt für Schritt, wie du deinen ersten ETF-Sparplan einrichtest und langfristig Vermögen aufbaust."
 META: "Lerne Schritt für Schritt, wie du deinen ersten ETF-Sparplan einrichtest und langfristig Vermögen aufbaust."

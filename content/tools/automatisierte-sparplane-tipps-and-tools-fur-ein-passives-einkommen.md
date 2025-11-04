@@ -1,5 +1,6 @@
 ---
 title: "Automatisierte Sparpläne: Tipps & Tools für ein passives Einkommen"
+slug: "automatisierte-sparplaene-tipps-tools-fuer-ein-passives-einkommen"
 description: "Erfahre, wie automatisierte Sparpläne dir helfen, ein passives Einkommen aufzubauen. Wir zeigen dir die besten Tools, Tipps und Strategien für erfolgreiches Sparen und Investieren."
 date: "2025-11-03"
 keywords: ["automatisierte Sparpläne", "passives Einkommen", "Sparen und Investieren", "ETF Sparplan", "FinanzFreedom Tools"]

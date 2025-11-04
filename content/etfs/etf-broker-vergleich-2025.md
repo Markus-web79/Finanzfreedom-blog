@@ -1,5 +1,6 @@
 ---
 title: "ETF-Broker Vergleich 2025 – Die besten Anbieter im Überblick"
+slug: "etf-broker-vergleich-2025-die-besten-anbieter-im-ueberblick"
 description: "Finde den besten ETF-Broker 2025. Wir vergleichen Gebühren, Funktionen, Sicherheit und zeigen, welcher Anbieter sich für dich lohnt."
 date: "2025-11-02"
 keywords: ["ETF Broker", "ETF Vergleich", "Depot", "Anbieter 2025", "FinanzFreedom"]

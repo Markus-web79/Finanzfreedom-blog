@@ -1,5 +1,6 @@
 ---
 title: "ETF vs. Einzelaktien 2025 – was lohnt sich für Einsteiger wirklich?"
+slug: "etf-vs-einzelaktien-2025-was-lohnt-sich-fuer-einsteiger-wirklich"
 description: "Ein realistischer Vergleich zwischen ETFs und Einzelaktien. Erfahre, welche Strategie 2025 die bessere Wahl für dein Geld ist."
 date: "2025-11-02"
 keywords: ["ETF vs Einzelaktien", "Investieren 2025", "Aktien oder ETF", "Anlagestrategie", "FinanzFreedom"]

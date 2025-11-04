@@ -1,5 +1,6 @@
 ---
 title: "Was ist ein ETF? Einfach erklärt für Einsteiger"
+slug: "was-ist-ein-etf-einfach-erklaert-fuer-einsteiger"
 description: "Lerne in wenigen Minuten, was ein ETF ist, wie er funktioniert und warum er so beliebt für langfristiges Investieren ist."
 date: "2025-11-02"
 keywords: ["ETF", "Einsteiger", "Investieren", "Indexfonds", "Finanzielle Freiheit"]

@@ -1,5 +1,6 @@
 ---
 title: "Passives Einkommen mit digitalen Produkten: E-Books und Vorlagen"
+slug: "passives-einkommen-mit-digitalen-produkten-e-books-und-vorlagen"
 description: "Entdecke, wie du mit digitalen Produkten wie E-Books und Vorlagen ein passives Einkommen aufbauen kannst. Erfahre Strategien, Vorteile und mögliche Risiken dieser lukrativen Einkommensquelle."
 date: "2025-11-03"
 keywords: ["passives Einkommen", "digitale Produkte", "E-Books verkaufen", "Online Geld verdienen", "FinanzFreedom"]

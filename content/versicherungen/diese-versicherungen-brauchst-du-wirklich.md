@@ -1,5 +1,6 @@
 ---
 title: "Diese Versicherungen brauchst du wirklich"
+slug: "diese-versicherungen-brauchst-du-wirklich"
 description: "Welche Versicherungen sind wirklich sinnvoll – und auf welche kannst du verzichten? Wir zeigen dir, welche Policen du wirklich brauchst und wie du bares Geld sparen kannst."
 date: "2025-11-02"
 keywords: ["Versicherungen", "Geld sparen", "Finanzschutz", "Versicherung vergleichen", "FinanzFreedom"]

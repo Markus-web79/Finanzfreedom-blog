@@ -1,5 +1,6 @@
 ---
 title: "Einleitung: Die Vorteile einer Dividendenstrategie"
+slug: "einleitung-die-vorteile-einer-dividendenstrategie"
 description: "Entdecke, wie du mit einer cleveren Dividendenstrategie monatliche Ausschüttungen nutzen kannst, um ein stabiles passives Einkommen aufzubauen – verständlich erklärt für Einsteiger."
 date: "2025-11-03"
 keywords: ["Dividendenstrategie", "passives Einkommen", "monatliche Ausschüttungen", "Aktien Dividende", "FinanzFreedom"]

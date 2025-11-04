@@ -1,5 +1,6 @@
 ---
 title: "Geld richtig anlegen – Tipps für Anfänger"
+slug: "geld-richtig-anlegen-tipps-fuer-anfaenger"
 description: "Einsteiger-Guide: So legst du dein Geld sicher und clever an. Strategien, mit denen du dein Vermögen Schritt für Schritt aufbaust."
 date: "2025-11-02"
 keywords: ["Geld anlegen", "Tipps für Anfänger", "Investieren lernen", "Vermögen aufbauen", "FinanzFreedom"]

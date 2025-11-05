@@ -1,17 +1,21 @@
+// --- Import-Bereich ---
 import fs from "fs";
 import path from "path";
 import fixUmlaute from "./fixUmlaute.js";
-import { checkGrammar } from "./checkGrammar.js";
+import checkGrammar from "./checkGrammar.js";
 
+// --- Verzeichnisse ---
 const contentRoot = "./content";
 const topicsFile = "./generator/topics.json";
 
+// --- Artikel-Erstellung ---
 function createArticle(title, category, keywords = []) {
   const slug = title
     .toLowerCase()
-    .replace(/[äöüß]/g, (c) =>
-      c === "ä" ? "ae" : c === "ö" ? "oe" : c === "ü" ? "ue" : "ss"
-    )
+    .replace(/[äÄ]/g, "ae")
+    .replace(/[öÖ]/g, "oe")
+    .replace(/[üÜ]/g, "ue")
+    .replace(/ß/g, "ss")
     .replace(/[^a-z0-9\-]/g, "-")
     .replace(/--+/g, "-");
 
@@ -26,6 +30,9 @@ function createArticle(title, category, keywords = []) {
     console.log(`⚠️ Artikel existiert schon: ${filePath}`);
     return;
   }
+
+  console.log(`📘 Neuer Artikel wird erstellt: ${filePath}`);
+}
 
   const template = `---
 title: ${title}

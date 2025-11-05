@@ -1,15 +1,16 @@
-// --- Import-Bereich ---
+// --- generateArticle.js ---
+// Erstellt automatisch neue Artikel mit Meta-Daten und Beispielstruktur
+
 import fs from "fs";
 import path from "path";
 import fixUmlaute from "./fixUmlaute.js";
 import checkGrammar from "./checkGrammar.js";
 
-// --- Verzeichnisse ---
 const contentRoot = "./content";
 const topicsFile = "./generator/topics.json";
 
 // --- Artikel-Erstellung ---
-function createArticle(title, category, keywords = []) {
+function createArticle(title, category = "allgemein", keywords = []) {
   const slug = title
     .toLowerCase()
     .replace(/[äÄ]/g, "ae")
@@ -27,12 +28,9 @@ function createArticle(title, category, keywords = []) {
   }
 
   if (fs.existsSync(filePath)) {
-    console.log(`⚠️ Artikel existiert schon: ${filePath}`);
+    console.log(`⚠️ Artikel existiert bereits: ${filePath}`);
     return;
   }
-
-  console.log(`📘 Neuer Artikel wird erstellt: ${filePath}`);
-}
 
   const template = `---
 title: ${title}
@@ -46,48 +44,41 @@ keywords: ${keywords.join(", ")}
 # ${title}
 
 ## 1. Einleitung
-Viele Menschen interessieren sich für **${title}**, wissen aber nicht, wie sie konkret anfangen sollen. 
-In diesem Artikel bekommst du eine klare und einfache Anleitung, um das Thema wirklich zu verstehen 
-– ohne Fachchinesisch und mit Beispielen aus der Praxis.
+Viele Menschen interessieren sich für **${title}**, wissen aber nicht, wie sie konkret anfangen sollen.
+In diesem Artikel bekommst du eine klare Anleitung, um das Thema wirklich zu verstehen – mit Beispielen aus der Praxis.
 
 ## 2. Grundlagen
-Hier erklären wir Schritt für Schritt, was ${title.toLowerCase()} bedeutet, 
-welche Vorteile und Risiken es gibt und worauf du besonders achten solltest.
-Dabei gehen wir auch auf häufige Fehler ein, die Einsteiger machen.
+Hier erklären wir Schritt für Schritt, was ${title.toLowerCase()} bedeutet, welche Vorteile und Risiken es gibt und worauf du besonders achten solltest.
 
 ## 3. Umsetzung in der Praxis
 So kannst du ${title.toLowerCase()} direkt umsetzen:
-1. Vorbereitung: Verstehe dein Ziel und setze dir klare Grenzen.
-2. Planung: Lege eine einfache Strategie fest.
-3. Umsetzung: Schritt für Schritt starten – mit Geduld und Kontinuität.
-4. Kontrolle: Prüfe regelmäßig deine Fortschritte.
+1. Setze dir klare Ziele.
+2. Erstelle eine einfache Strategie.
+3. Starte mit Geduld und Disziplin.
+4. Prüfe regelmäßig deine Fortschritte.
 
-## 4. Strategien, Tipps und Beispiele
-| Strategie | Beschreibung | Geeignet für |
-|------------|---------------|---------------|
-| Konservativ | Fokus auf Sicherheit und Stabilität | Anfänger |
-| Ausgewogen | Mischung aus Sicherheit und Wachstum | Fortgeschrittene |
-| Wachstumsorientiert | Fokus auf hohe Rendite | Erfahrene Anleger |
+## 4. Tipps & Fehlervermeidung
+| Tipp | Beschreibung |
+|------|---------------|
+| Klein starten | Erst kleine Summen investieren |
+| Geduldig bleiben | Nicht bei Schwankungen aussteigen |
+| Automatisierung nutzen | Daueraufträge, ETF-Sparpläne usw. |
 
-## 5. Risiken und häufige Fehler
-- Überhasteter Einstieg ohne Grundlagenwissen  
-- Fehlende Diversifikation  
-- Emotionale Entscheidungen  
-- Kurzfristiges Denken statt langfristiger Planung  
-
-## 6. Fazit
-${title} kann ein wichtiger Baustein deiner finanziellen Freiheit sein, 
-wenn du die Grundlagen verstehst und langfristig dranbleibst.  
-Bleib ruhig, lerne stetig dazu und nutze Tools, die dich unterstützen – 
-so erreichst du deine finanziellen Ziele mit System.
+## 5. Fazit
+${title} kann ein wichtiger Baustein deiner finanziellen Freiheit sein – bleib dran, lerne dazu und nutze Tools, die dich langfristig unterstützen.
 `;
 
-  fs.writeFileSync(filePath, template);
+  fs.writeFileSync(filePath, template, "utf-8");
   console.log(`✅ Neuer Artikel erstellt: ${filePath}`);
-
-  const topics = JSON.parse(fs.readFileSync(topicsFile, "utf8"));
-  topics.shift();
-  fs.writeFileSync(topicsFile, JSON.stringify(topics, null, 2));
 }
 
-createArticle("ETF-Strategien für 2025", "etfs", ["etfs", "Finanzen"]);
+// --- Command-Line-Aufruf ---
+const args = process.argv.slice(2);
+if (args.length === 0) {
+  console.log("❌ Bitte gib einen Artikeltitel an, z.B.:");
+  console.log('   node scripts/generateArticle.js "ETF-Sparplan für Einsteiger" etfs');
+  process.exit(1);
+}
+
+const [title, category = "allgemein", ...keywords] = args;
+createArticle(title, category, keywords);

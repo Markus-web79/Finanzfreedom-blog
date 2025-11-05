@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { fixUmlauts } from "./fixUmluate.js";
+import fixUmlaute from "./fixUmlaute.js";
 import { checkGrammar } from "./checkGrammar.js";
 
 const contentRoot = "./content";

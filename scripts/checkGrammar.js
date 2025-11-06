@@ -31,3 +31,4 @@ files.forEach(file => {
 });
 
 console.log("\n✅ Grammar-Check abgeschlossen.");
+export default checkGrammar;

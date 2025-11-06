@@ -43,7 +43,9 @@ export default function Home({ posts }) {
                 <div key={post.slug} className={styles.card}>
                   <h3>{post.title}</h3>
                   <p>{post.description}</p>
-                 <Link href={`/${post.category}/${post.slug}/`}>Weiterlesen →</Link>
+                 <Link href={`/${post.category}/${post.slug}/`}>
+  Weiterlesen →
+</Link>
                     Weiterlesen →
                   </Link>
                 </div>

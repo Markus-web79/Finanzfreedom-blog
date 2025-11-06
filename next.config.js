@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  output: 'export',
+  trailingSlash: true, // ← ganz wichtig für statische Routen
   reactStrictMode: true,
-  images: {
-    unoptimized: true,
-  },
-  trailingSlash: true,
 };
 
 export default nextConfig;

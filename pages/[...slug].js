@@ -1,13 +1,9 @@
-// @ts-check
-export const config = {
-  unstable_runtimeJS: false,
-};
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
 import Head from "next/head";
 import Link from "next/link";
-import { marked } from "marked";
 
 export default function PostPage({ frontmatter, html }) {
   if (!frontmatter) {
@@ -23,25 +19,28 @@ export default function PostPage({ frontmatter, html }) {
     <>
       <Head>
         <title>{frontmatter.title} | FinanzFreedom</title>
-        <meta name="description" content={frontmatter.description || ""} />
+        <meta
+          name="description"
+          content={frontmatter.description || "FinanzFreedom Artikel"}
+        />
       </Head>
+
       <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
         <h1>{frontmatter.title}</h1>
         <article dangerouslySetInnerHTML={{ __html: html }} />
-        <div style={{ marginTop: "3rem", textAlign: "center" }}>
-          <Link href="/" scroll={false}>
-            ← Zurück zu den Artikeln
-          </Link>
-        </div>
+        <p style={{ marginTop: "2rem" }}>
+          <Link href="/">← Zurück zur Startseite</Link>
+        </p>
       </main>
     </>
   );
 }
 
-// 🔍 Alle Markdown-Dateien (rekursiv)
+// --- 🔍 Alle Markdown-Dateien im content/ finden (rekursiv)
 function getAllMarkdownFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files = [];
+
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
@@ -50,18 +49,19 @@ function getAllMarkdownFiles(dir) {
       files.push(fullPath);
     }
   }
+
   return files;
 }
 
+// --- 🛠 Pfade für alle Artikel generieren
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
   const files = getAllMarkdownFiles(contentDir);
 
-  // ⚙️ Korrektur: Pfade immer mit "/" statt "\\" (Windows fix)
   const paths = files.map((file) => {
     const relativePath = file
       .replace(contentDir + path.sep, "")
-      .replace(/\\/g, "/") // <-- Wichtig für Vercel/Linux
+      .replace(/\\/g, "/")
       .replace(/\.md$/, "");
 
     const slugArray = relativePath.split("/");
@@ -69,13 +69,16 @@ export async function getStaticPaths() {
   });
 
   return {
-  paths,
-  fallback: "blocking",
-};
+    paths,
+    fallback: "blocking", // wichtig für dynamische Slugs
+  };
+}
 
-export async function getStaticProps({ params }) {
+// --- 📦 Artikel-Daten laden
+export async function getStaticProps(context) {
+  const { params } = context;
+
   try {
-    // ⚙️ Slug korrekt zusammensetzen
     const slugPath = Array.isArray(params.slug)
       ? params.slug.join("/")
       : params.slug;

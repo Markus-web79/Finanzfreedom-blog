@@ -49,7 +49,6 @@ export default function PostPage({ frontmatter, html }) {
   );
 }
 
-// Alle Slug-Pfade generieren
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
   const paths = [];
@@ -63,6 +62,13 @@ export async function getStaticPaths() {
       if (entry.isDirectory()) {
         scanDir(fullPath);
       } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        const baseName = entry.name.replace(".md", "").toLowerCase();
+
+        // ❌ Diese drei Seiten ausschließen:
+        if (["impressum", "kontakt", "datenschutz"].includes(baseName)) {
+          continue;
+        }
+
         const relPath = path.relative(contentDir, fullPath);
         const slugArray = relPath.replace(/\.md$/, "").split(path.sep);
         paths.push({ params: { slug: slugArray } });
@@ -75,7 +81,6 @@ export async function getStaticPaths() {
   return { paths, fallback: "blocking" };
 }
 
-// Artikelinhalt laden
 export async function getStaticProps({ params }) {
   try {
     const slugPath = Array.isArray(params.slug)

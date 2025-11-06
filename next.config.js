@@ -3,12 +3,14 @@ const nextConfig = {
   output: 'export',
   reactStrictMode: true,
   trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
+  pageExtensions: ['js', 'jsx'],
   experimental: {
-    esmExternals: 'loose',
+    esmExternals: false,
+  },
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
+    return config;
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

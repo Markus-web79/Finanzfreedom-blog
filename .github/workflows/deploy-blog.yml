@@ -1,4 +1,4 @@
-name: 🚀 Deploy Blog to Vercel
+name: Deploy
 
 on:
   push:
@@ -6,33 +6,24 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Pull latest changes
-        run: git pull origin main --rebase || true
-
       - name: Install dependencies
         run: npm install
 
-    - name: Build static site
-      run: |
-        echo "🔧 Generiere Artikel..."
-        node scripts/generateArticle.js "ETF-Sparplan für Einsteiger"
-        echo "🚀 Baue Next.js Seite..."
-        npx next build
-        npx next export
-
-      - name: Deploy to Vercel
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Generate and build
+        run: |
+          echo "🪄 Generiere Artikel..."
+          node scripts/generateArticle.js "ETF-Sparplan für Einsteiger"
+          echo "🏗️ Baue Next.js Seite..."
+          npx next build
+          npx next export

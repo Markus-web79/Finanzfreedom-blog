@@ -1,3 +1,7 @@
+// @ts-check
+export const config = {
+  unstable_runtimeJS: false,
+};
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";

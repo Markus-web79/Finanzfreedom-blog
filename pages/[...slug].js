@@ -1,14 +1,14 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import Head from 'next/head';
-import Link from 'next/link';
-import { marked } from 'marked';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import Head from "next/head";
+import Link from "next/link";
+import { marked } from "marked";
 
 export default function PostPage({ frontmatter, html }) {
   if (!frontmatter) {
     return (
-      <div style={{ color: 'white', textAlign: 'center', padding: '4rem' }}>
+      <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
         <h1>404 – Artikel nicht gefunden</h1>
         <Link href="/">Zurück zur Startseite</Link>
       </div>
@@ -18,10 +18,14 @@ export default function PostPage({ frontmatter, html }) {
   return (
     <>
       <Head>
-        <title>{frontmatter.title} | FinanzFreedom</title>
-        <meta name="description" content={frontmatter.description || ''} />
+        <title>{frontmatter.metaTitle || `${frontmatter.title} | FinanzFreedom`}</title>
+        <meta
+          name="description"
+          content={frontmatter.metaDescription || frontmatter.description || ""}
+        />
       </Head>
-      <main style={{ maxWidth: '800px', margin: '2rem auto', color: 'white' }}>
+
+      <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
         <h1>{frontmatter.title}</h1>
         <article dangerouslySetInnerHTML={{ __html: html }} />
       </main>
@@ -36,7 +40,7 @@ function getAllMarkdownFiles(dir) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       files = files.concat(getAllMarkdownFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith('.md')) {
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
       files.push(fullPath);
     }
   }
@@ -44,44 +48,50 @@ function getAllMarkdownFiles(dir) {
 }
 
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), 'content');
+  const contentDir = path.join(process.cwd(), "content");
   const files = getAllMarkdownFiles(contentDir);
 
   const paths = files.map((file) => {
     const slug = file
-      .replace(contentDir + '/', '')
-      .replace(/\.md$/, '')
-      .split(path.sep);
+      .replace(contentDir, "")
+      .replace(/\\/g, "/") // Windows-Fix
+      .replace(/\.md$/, "")
+      .split("/")
+      .filter(Boolean);
     return { params: { slug } };
   });
 
   return {
     paths,
-    fallback: false, // <- wichtig: kein dynamischer Fallback bei static export
+    fallback: "blocking", // <- erlaubt Nachladen statt 404
   };
 }
 
 export async function getStaticProps({ params }) {
   try {
     const slugPath = Array.isArray(params.slug)
-      ? params.slug.join('/')
+      ? params.slug.join("/")
       : params.slug;
 
-    const fullPath = path.join(process.cwd(), 'content', `${slugPath}.md`);
-    const raw = fs.readFileSync(fullPath, 'utf-8');
-    const { data: frontmatter, content } = matter(raw);
+    const filePath = path.join(process.cwd(), "content", `${slugPath}.md`);
+
+    if (!fs.existsSync(filePath)) {
+      console.warn("❌ Datei nicht gefunden:", filePath);
+      return { notFound: true };
+    }
+
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const { data, content } = matter(raw);
     const html = marked.parse(content);
 
     return {
       props: {
-        frontmatter: frontmatter || null,
+        frontmatter: data || null,
         html,
       },
     };
   } catch (err) {
-    console.error('Fehler beim Laden:', err);
-    return {
-      notFound: true,
-    };
+    console.error("🚨 Fehler beim Laden:", err);
+    return { notFound: true };
   }
 }

@@ -4,7 +4,7 @@
 import fs from "fs";
 import path from "path";
 import fixUmlaute from "./fixUmlaute.js";
-import checkGrammar from "./checkGrammar.js";
+import { checkGrammar } from "./checkGrammar.js";
 
 const contentRoot = "./content";
 const topicsFile = "./generator/topics.json";

@@ -26,8 +26,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build static site
-        run: npm run build
+    - name: Build static site
+      run: |
+        echo "🔧 Generiere Artikel..."
+        node scripts/generateArticle.js "ETF-Sparplan für Einsteiger"
+        echo "🚀 Baue Next.js Seite..."
+        npx next build
+        npx next export
 
       - name: Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

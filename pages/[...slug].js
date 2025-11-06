@@ -38,13 +38,18 @@ export default function PostPage({ frontmatter, html }) {
       >
         <Link href="/" style={{ color: "#00bfa5" }}>
           ← Zurück
-        </Link>
-        <h1>{frontmatter.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: html }} />
-      </main>
-    </>
-  );
-}
+<Link
+  href="/"
+  style={{
+    display: "inline-block",
+    color: "#00bfa5",
+    marginBottom: "1.5rem",
+    textDecoration: "none",
+    fontWeight: "500",
+  }}
+>
+  ← Zurück zur Übersicht
+</Link>
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");

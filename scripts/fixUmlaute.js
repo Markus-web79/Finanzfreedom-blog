@@ -55,3 +55,4 @@ function fixUmlautFiles() {
 
 // Starte den Prozess
 fixUmlautFiles();
+export default fixUmlaute;

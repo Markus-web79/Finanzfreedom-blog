@@ -8,7 +8,7 @@ import { marked } from "marked";
 export default function PostPage({ frontmatter, html }) {
   if (!frontmatter) {
     return (
-      <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
+      <div style={{ color: "#fff", textAlign: "center", padding: "4rem" }}>
         <h1>404 – Artikel nicht gefunden</h1>
         <Link href="/">Zurück zur Startseite</Link>
       </div>
@@ -19,27 +19,25 @@ export default function PostPage({ frontmatter, html }) {
     <>
       <Head>
         <title>{frontmatter.title} | FinanzFreedom</title>
-        <meta name="description" content={frontmatter.metaDescription || ""} />
+        <meta
+          name="description"
+          content={frontmatter.description || "Artikel auf FinanzFreedom"}
+        />
       </Head>
-
-      <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
+      <main style={{ maxWidth: "850px", margin: "2rem auto", color: "#fff" }}>
+        <Link href="/" style={{ color: "#00bfa5" }}>
+          ← Zurück
+        </Link>
         <h1>{frontmatter.title}</h1>
         <article dangerouslySetInnerHTML={{ __html: html }} />
-        <div style={{ marginTop: "2rem" }}>
-          <Link href="/" style={{ color: "#00bfa5" }}>
-            ← Zurück zur Übersicht
-          </Link>
-        </div>
       </main>
     </>
   );
 }
 
-// 🔍 alle Markdown-Dateien aus content/
 function getAllMarkdownFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files = [];
-
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
@@ -48,25 +46,28 @@ function getAllMarkdownFiles(dir) {
       files.push(fullPath);
     }
   }
-
   return files;
 }
 
-// ✅ Alle Pfade korrekt erzeugen
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
   const files = getAllMarkdownFiles(contentDir);
 
   const paths = files.map((file) => {
-    const relativePath = path.relative(contentDir, file);
-    const slugArray = relativePath.replace(/\.md$/, "").split(path.sep);
-    return { params: { slug: slugArray } };
+    const slug = file
+      .replace(contentDir + "/", "")
+      .replace(/\.md$/, "")
+      .split(path.sep)
+      .filter(Boolean);
+    return { params: { slug } };
   });
 
-  return { paths, fallback: false };
+  return {
+    paths,
+    fallback: false, // wichtig: alle statisch generieren
+  };
 }
 
-// ✅ Dateiinhalt laden
 export async function getStaticProps({ params }) {
   try {
     const slugPath = Array.isArray(params.slug)
@@ -84,9 +85,14 @@ export async function getStaticProps({ params }) {
     const { data: frontmatter, content } = matter(raw);
     const html = marked.parse(content);
 
-    return { props: { frontmatter, html } };
+    return {
+      props: {
+        frontmatter: frontmatter || null,
+        html,
+      },
+    };
   } catch (err) {
-    console.error("Fehler beim Laden:", err);
+    console.error("❌ Fehler beim Laden:", err);
     return { notFound: true };
   }
 }

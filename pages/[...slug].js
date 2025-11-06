@@ -1,4 +1,3 @@
-// pages/[...slug].js
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -28,11 +27,13 @@ export default function PostPage({ frontmatter, html }) {
           }
         />
       </Head>
+
       <main
         style={{
           maxWidth: "800px",
           margin: "2rem auto",
           color: "white",
+          lineHeight: "1.6",
         }}
       >
         <Link href="/" style={{ color: "#00bfa5" }}>
@@ -45,75 +46,49 @@ export default function PostPage({ frontmatter, html }) {
   );
 }
 
-// Alle Markdown-Dateien (rekursiv) einsammeln
-function getAllMarkdownFiles(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  let files = [];
+export async function getStaticPaths() {
+  const contentDir = path.join(process.cwd(), "content");
+  const paths = [];
 
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      files = files.concat(getAllMarkdownFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      files.push(fullPath);
+  function scanDir(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scanDir(fullPath);
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        const slug = path
+          .relative(contentDir, fullPath)
+          .replace(/\.md$/, "")
+          .split(path.sep);
+        paths.push({ params: { slug } });
+      }
     }
   }
 
-  return files;
+  scanDir(contentDir);
+  return { paths, fallback: "blocking" };
 }
 
-// Statische Pfade für alle Artikel erzeugen
-export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), "content");
-  const files = getAllMarkdownFiles(contentDir);
-
-  const paths = files.map((file) => {
-    // relativen Pfad ab "content/"
-    const relative = file
-      .replace(contentDir + path.sep, "")
-      .replace(/\\/g, "/")
-      .replace(/\.md$/, "");
-
-    const slugArray = relative.split("/");
-    return { params: { slug: slugArray } };
-  });
-
-  return {
-    paths,
-    fallback: false, // alle bekannten Artikel vorab bauen
-  };
-}
-
-// Konkreten Artikel laden
 export async function getStaticProps({ params }) {
   try {
-    const slugSegments = Array.isArray(params.slug)
-      ? params.slug
-      : [params.slug];
+    const slugPath = Array.isArray(params.slug)
+      ? params.slug.join("/")
+      : params.slug;
+    const filePath = path.join(process.cwd(), "content", `${slugPath}.md`);
 
-    const relativePath = slugSegments.join("/");
-
-    const contentDir = path.join(process.cwd(), "content");
-    const fullPath = path.join(contentDir, `${relativePath}.md`);
-
-    if (!fs.existsSync(fullPath)) {
-      console.error("❌ Datei nicht gefunden:", fullPath);
+    if (!fs.existsSync(filePath)) {
+      console.error("❌ Datei nicht gefunden:", filePath);
       return { notFound: true };
     }
 
-    const raw = fs.readFileSync(fullPath, "utf-8");
+    const raw = fs.readFileSync(filePath, "utf-8");
     const { data: frontmatter, content } = matter(raw);
-    const html = marked.parse(content);
+    const html = marked(content);
 
-    return {
-      props: {
-        frontmatter: frontmatter || null,
-        html,
-      },
-    };
+    return { props: { frontmatter, html } };
   } catch (err) {
-    console.error("Fehler beim Laden des Artikels:", err);
+    console.error("Fehler beim Lesen:", err);
     return { notFound: true };
   }
 }

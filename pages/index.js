@@ -55,28 +55,18 @@ export default function Home({ posts = {} }) {
     </>
   );
 }
-// Entferne rechtliche Seiten aus der Übersicht
-if (posts["allgemein"]) {
-  posts["allgemein"] = posts["allgemein"].filter(
-    (p) => !["impressum", "kontakt", "datenschutz"].includes(p.slug.toLowerCase())
-  );
-}
+
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
-  console.log("📁 Content-Ordner:", contentDir);
-
-  if (!fs.existsSync(contentDir)) {
-    console.error("❌ Content-Ordner nicht gefunden!");
-    return { props: { posts: {} } };
-  }
-
   const posts = {};
 
+  // Funktion liest alle Markdown-Dateien rekursiv ein
   function readMarkdownFiles(dir, category) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
 
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
+
       if (entry.isDirectory()) {
         readMarkdownFiles(fullPath, entry.name);
       } else if (entry.name.endsWith(".md")) {
@@ -97,9 +87,12 @@ export async function getStaticProps() {
     }
   }
 
+  // Hauptverzeichnis "content" durchgehen
   const categories = fs.readdirSync(contentDir, { withFileTypes: true });
+
   for (const entry of categories) {
     const fullPath = path.join(contentDir, entry.name);
+
     if (entry.isDirectory()) {
       readMarkdownFiles(fullPath, entry.name);
     } else if (entry.isFile() && entry.name.endsWith(".md")) {
@@ -117,6 +110,16 @@ export async function getStaticProps() {
         slug: entry.name.replace(".md", ""),
       });
     }
+  }
+
+  // ⚙️ Ungewünschte rechtliche Seiten (Impressum, Kontakt, Datenschutz) ausfiltern
+  for (const category in posts) {
+    posts[category] = posts[category].filter(
+      (p) =>
+        !["impressum", "kontakt", "datenschutz"].includes(
+          p.slug.toLowerCase()
+        )
+    );
   }
 
   return { props: { posts } };

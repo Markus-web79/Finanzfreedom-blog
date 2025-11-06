@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,6 +25,8 @@ jobs:
         run: |
           echo "🪄 Generiere Artikel..."
           node scripts/generateArticle.js "ETF-Sparplan für Einsteiger"
-          echo "🏗️ Baue Next.js Seite..."
+          echo "🚀 Baue statische Next.js Seite..."
           npx next build
-          npx next export
+
+      - name: Deploy to Vercel
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

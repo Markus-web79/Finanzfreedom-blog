@@ -2,11 +2,10 @@
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  swcMinify: true,
-  pageExtensions: ['js', 'jsx'],
-  experimental: {
-    esmExternals: true
-  }
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

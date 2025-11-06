@@ -1,5 +1,8 @@
-import Head from "next/head";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
+import Head from "next/head";
 import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
 
@@ -7,7 +10,7 @@ export default function Home({ posts = {} }) {
   if (!posts || Object.keys(posts).length === 0) {
     return (
       <div style={{ color: "#fff", textAlign: "center", padding: "4rem" }}>
-        <h1>🚧 Keine Artikel gefunden</h1>
+        <h1>📉 Keine Artikel gefunden</h1>
         <p>Bitte überprüfe die Verbindung oder den Content-Ordner.</p>
       </div>
     );
@@ -37,7 +40,10 @@ export default function Home({ posts = {} }) {
                 <div key={post.slug} className={styles.card}>
                   <h3>{post.title}</h3>
                   <p>{post.excerpt}</p>
-                  <Link href={`/${post.category}/${post.slug}/`} className={styles.readMore}>
+                  <Link
+                    href={`/${post.category}/${post.slug}`}
+                    className={styles.readMore}
+                  >
                     Weiterlesen →
                   </Link>
                 </div>
@@ -48,4 +54,65 @@ export default function Home({ posts = {} }) {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const contentDir = path.join(process.cwd(), "content");
+  console.log("📁 Content-Ordner:", contentDir);
+
+  if (!fs.existsSync(contentDir)) {
+    console.error("❌ Content-Ordner nicht gefunden!");
+    return { props: { posts: {} } };
+  }
+
+  const posts = {};
+
+  function readMarkdownFiles(dir, category) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        readMarkdownFiles(fullPath, entry.name);
+      } else if (entry.name.endsWith(".md")) {
+        const fileContent = fs.readFileSync(fullPath, "utf-8");
+        const { data } = matter(fileContent);
+
+        if (!posts[category]) posts[category] = [];
+
+        posts[category].push({
+          title: data.title || entry.name.replace(".md", ""),
+          excerpt:
+            data.excerpt ||
+            "Keine Zusammenfassung vorhanden. (Bitte in Markdown-Datei ergänzen)",
+          category,
+          slug: entry.name.replace(".md", ""),
+        });
+      }
+    }
+  }
+
+  const categories = fs.readdirSync(contentDir, { withFileTypes: true });
+  for (const entry of categories) {
+    const fullPath = path.join(contentDir, entry.name);
+    if (entry.isDirectory()) {
+      readMarkdownFiles(fullPath, entry.name);
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
+      const fileContent = fs.readFileSync(fullPath, "utf-8");
+      const { data } = matter(fileContent);
+
+      if (!posts["allgemein"]) posts["allgemein"] = [];
+
+      posts["allgemein"].push({
+        title: data.title || entry.name.replace(".md", ""),
+        excerpt:
+          data.excerpt ||
+          "Keine Zusammenfassung vorhanden. (Bitte in Markdown-Datei ergänzen)",
+        category: "allgemein",
+        slug: entry.name.replace(".md", ""),
+      });
+    }
+  }
+
+  return { props: { posts } };
 }

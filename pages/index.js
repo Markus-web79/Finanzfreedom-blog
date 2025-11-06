@@ -3,7 +3,16 @@ import Link from "next/link";
 import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ posts }) {
+export default function Home({ posts = {} }) {
+  if (!posts || Object.keys(posts).length === 0) {
+    return (
+      <div style={{ color: "#fff", textAlign: "center", padding: "4rem" }}>
+        <h1>🚧 Keine Artikel gefunden</h1>
+        <p>Bitte überprüfe die Verbindung oder den Content-Ordner.</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -14,10 +23,8 @@ export default function Home({ posts }) {
         />
       </Head>
 
-      {/* Hero-Bereich */}
       <Hero />
 
-      {/* Hauptinhalt */}
       <main className={styles.main}>
         {Object.keys(posts).map((category) => (
           <section key={category} className={styles.container}>
@@ -30,8 +37,6 @@ export default function Home({ posts }) {
                 <div key={post.slug} className={styles.card}>
                   <h3>{post.title}</h3>
                   <p>{post.excerpt}</p>
-
-                  {/* ✅ Korrigierter Link */}
                   <Link href={`/${post.category}/${post.slug}/`} className={styles.readMore}>
                     Weiterlesen →
                   </Link>

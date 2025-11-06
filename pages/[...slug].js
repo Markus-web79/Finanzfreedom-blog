@@ -1,3 +1,4 @@
+// pages/[...slug].js
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -8,7 +9,7 @@ import { marked } from "marked";
 export default function PostPage({ frontmatter, html }) {
   if (!frontmatter) {
     return (
-      <div style={{ color: "#fff", textAlign: "center", padding: "4rem" }}>
+      <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
         <h1>404 – Artikel nicht gefunden</h1>
         <Link href="/">Zurück zur Startseite</Link>
       </div>
@@ -21,10 +22,19 @@ export default function PostPage({ frontmatter, html }) {
         <title>{frontmatter.title} | FinanzFreedom</title>
         <meta
           name="description"
-          content={frontmatter.description || "Artikel auf FinanzFreedom"}
+          content={
+            frontmatter.description ||
+            "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
+          }
         />
       </Head>
-      <main style={{ maxWidth: "850px", margin: "2rem auto", color: "#fff" }}>
+      <main
+        style={{
+          maxWidth: "800px",
+          margin: "2rem auto",
+          color: "white",
+        }}
+      >
         <Link href="/" style={{ color: "#00bfa5" }}>
           ← Zurück
         </Link>
@@ -35,46 +45,57 @@ export default function PostPage({ frontmatter, html }) {
   );
 }
 
+// Alle Markdown-Dateien (rekursiv) einsammeln
 function getAllMarkdownFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files = [];
+
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
+
     if (entry.isDirectory()) {
       files = files.concat(getAllMarkdownFiles(fullPath));
     } else if (entry.isFile() && entry.name.endsWith(".md")) {
       files.push(fullPath);
     }
   }
+
   return files;
 }
 
+// Statische Pfade für alle Artikel erzeugen
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
   const files = getAllMarkdownFiles(contentDir);
 
   const paths = files.map((file) => {
-    const slug = file
-      .replace(contentDir + "/", "")
-      .replace(/\.md$/, "")
-      .split(path.sep)
-      .filter(Boolean);
-    return { params: { slug } };
+    // relativen Pfad ab "content/"
+    const relative = file
+      .replace(contentDir + path.sep, "")
+      .replace(/\\/g, "/")
+      .replace(/\.md$/, "");
+
+    const slugArray = relative.split("/");
+    return { params: { slug: slugArray } };
   });
 
   return {
     paths,
-    fallback: false, // wichtig: alle statisch generieren
+    fallback: false, // alle bekannten Artikel vorab bauen
   };
 }
 
+// Konkreten Artikel laden
 export async function getStaticProps({ params }) {
   try {
-    const slugPath = Array.isArray(params.slug)
-      ? params.slug.join("/")
-      : params.slug;
+    const slugSegments = Array.isArray(params.slug)
+      ? params.slug
+      : [params.slug];
 
-    const fullPath = path.join(process.cwd(), "content", `${slugPath}.md`);
+    const relativePath = slugSegments.join("/");
+
+    const contentDir = path.join(process.cwd(), "content");
+    const fullPath = path.join(contentDir, `${relativePath}.md`);
 
     if (!fs.existsSync(fullPath)) {
       console.error("❌ Datei nicht gefunden:", fullPath);
@@ -92,7 +113,7 @@ export async function getStaticProps({ params }) {
       },
     };
   } catch (err) {
-    console.error("❌ Fehler beim Laden:", err);
+    console.error("Fehler beim Laden des Artikels:", err);
     return { notFound: true };
   }
 }

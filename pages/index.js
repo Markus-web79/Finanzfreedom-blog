@@ -55,7 +55,12 @@ export default function Home({ posts = {} }) {
     </>
   );
 }
-
+// Entferne rechtliche Seiten aus der Übersicht
+if (posts["allgemein"]) {
+  posts["allgemein"] = posts["allgemein"].filter(
+    (p) => !["impressum", "kontakt", "datenschutz"].includes(p.slug.toLowerCase())
+  );
+}
 export async function getStaticProps() {
   const contentDir = path.join(process.cwd(), "content");
   console.log("📁 Content-Ordner:", contentDir);

@@ -1,3 +1,3 @@
-import Home from "./index";
-
-export default Home;
+export default function BlogPage() {
+  return null;
+}

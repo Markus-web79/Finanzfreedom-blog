@@ -6,3 +6,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+// Export categories für Header
+export const revalidate = 3600; // 1x pro Stunde neue Kategorien

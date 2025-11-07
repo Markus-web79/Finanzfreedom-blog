@@ -28,45 +28,49 @@ export default function Home({ posts = {} }) {
 
       <Hero />
 
- <main style={{ padding: "2rem 0", color: "white" }}>
-  <section>
-    <h2 className="section-title">Neueste Artikel</h2>
+import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
-    <div className="cards-container">
-      {Object.entries(posts).flatMap(([category, articles]) =>
-        articles.slice(0, 3).map((article) => (
-          <div className="card" key={article.slug}>
-            <h2>{article.title}</h2>
-            <p>{article.excerpt || "Finanzwissen einfach erklärt."}</p>
-            <Link href={`/${article.category}/${article.slug}`}>
-              Weiterlesen →
-            </Link>
+export default function HomePage({ posts }) {
+  return (
+    <main className={styles.main}>
+      <section>
+        <h2 className={styles.sectionTitle}>Neueste Artikel</h2>
+
+        <div className={styles.cardsContainer}>
+          {Object.entries(posts)
+            .flatMap(([category, articles]) => articles.slice(0, 3))
+            .map((article) => (
+              <div className={styles.card} key={article.slug}>
+                <h2>{article.title}</h2>
+                <p>{article.excerpt || "Finanzwissen einfach erklärt."}</p>
+                <Link href={`/${article.category}/${article.slug}`} className={styles.readMore}>
+                  Weiterlesen →
+                </Link>
+              </div>
+            ))}
+        </div>
+      </section>
+
+      {Object.entries(posts).map(([category, articles]) => (
+        <section key={category}>
+          <h2 className={styles.sectionTitle}>{category.toUpperCase()}</h2>
+          <div className={styles.cardsContainer}>
+            {articles.map((post) => (
+              <div className={styles.card} key={post.slug}>
+                <h2>{post.title}</h2>
+                <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
+                <Link href={`/${category}/${post.slug}`} className={styles.readMore}>
+                  Weiterlesen →
+                </Link>
+              </div>
+            ))}
           </div>
-        ))
-      )}
-    </div>
-  </section>
-
-  {Object.entries(posts).map(([category, articles]) => (
-    <section key={category}>
-      <h2 className="section-title">
-        {category.toUpperCase()}
-      </h2>
-
-      <div className="cards-container">
-        {articles.map((post) => (
-          <div className="card" key={post.slug}>
-            <h2>{post.title}</h2>
-            <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
-            <Link href={`/${category}/${post.slug}`}>
-              Weiterlesen →
-            </Link>
-          </div>
-        ))}
-      </div>
-    </section>
-  ))}
-</main>
+        </section>
+      ))}
+    </main>
+  );
+}
     </>
   );
 }

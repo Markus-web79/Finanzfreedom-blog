@@ -1,6 +1,22 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default function Header({ categories = [] }) {
+export default function Header() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const res = await fetch("/api/categories");
+        const data = await res.json();
+        setCategories(data.categories || []);
+      } catch (err) {
+        console.error("Fehler beim Laden der Kategorien:", err);
+      }
+    }
+    fetchCategories();
+  }, []);
+
   return (
     <header
       style={{

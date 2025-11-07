@@ -1,15 +1,4 @@
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
-
-export async function getStaticProps() {
-  const contentDir = path.join(process.cwd(), "content");
-  const categories = fs
-    .readdirSync(contentDir)
-    .filter((dir) => fs.statSync(path.join(contentDir, dir)).isDirectory());
-
-  return { props: { categories } };
-}
 
 export default function Header({ categories = [] }) {
   return (

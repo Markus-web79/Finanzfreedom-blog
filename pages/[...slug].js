@@ -3,21 +3,56 @@ import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { marked } from "marked";
 
-export default function PostPage({ frontmatter, html, category }) {
+// --------------------
+// Artikel-Seite
+// --------------------
+export default function PostPage({ frontmatter, html }) {
+  const router = useRouter();
+
+  // Falls beim Build/Fetch etwas schiefging → 404
   if (!frontmatter) {
     return (
-      <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
+      <div
+        style={{
+          color: "white",
+          textAlign: "center",
+          padding: "4rem",
+        }}
+      >
         <h1>404 – Artikel nicht gefunden</h1>
         <Link href="/">Zurück zur Startseite</Link>
       </div>
     );
   }
 
-  // Dynamischer Zurück-Link: führt zur Kategorie
-  const backLink = category ? `/${category}` : "/";
+  // ----- Kategorie aus URL / Frontmatter bestimmen -----
+  const slugFromRouter = router.query.slug;
 
+  let slugArray = [];
+  if (Array.isArray(slugFromRouter)) {
+    slugArray = slugFromRouter;
+  } else if (typeof slugFromRouter === "string") {
+    slugArray = slugFromRouter.split("/");
+  }
+
+  // Kategorie: bevorzugt aus Frontmatter, sonst aus erstem URL-Segment
+  const categorySegment =
+    (frontmatter.category && String(frontmatter.category)) ||
+    (slugArray.length > 0 ? slugArray[0] : null);
+
+  const categoryHref = categorySegment ? `/${categorySegment}` : "/";
+  const categoryLabel = categorySegment
+    ? categorySegment
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Übersicht";
+
+  // --------------------
+  // Render
+  // --------------------
   return (
     <>
       <Head>
@@ -31,27 +66,97 @@ export default function PostPage({ frontmatter, html, category }) {
         />
       </Head>
 
-      <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
+      <main
+        style={{
+          maxWidth: "800px",
+          margin: "2rem auto",
+          color: "white",
+          padding: "0 1.5rem",
+        }}
+      >
+        {/* Breadcrumb */}
+        <nav
+          aria-label="Brotkrumen"
+          style={{
+            fontSize: "0.9rem",
+            marginBottom: "1.25rem",
+          }}
+        >
+          <Link
+            href="/"
+            style={{
+              color: "#00bfa5",
+              textDecoration: "none",
+            }}
+          >
+            Startseite
+          </Link>
+
+          {categorySegment && (
+            <>
+              <span
+                style={{
+                  margin: "0 0.4rem",
+                  color: "#888",
+                }}
+              >
+                ›
+              </span>
+              <Link
+                href={categoryHref}
+                style={{
+                  color: "#00bfa5",
+                  textDecoration: "none",
+                }}
+              >
+                {categoryLabel}
+              </Link>
+            </>
+          )}
+
+          <span
+            style={{
+              margin: "0 0.4rem",
+              color: "#888",
+            }}
+          >
+            ›
+          </span>
+
+          <span style={{ color: "#fff" }}>{frontmatter.title}</span>
+        </nav>
+
+        {/* Zurück zur Kategorie */}
         <Link
-          href={backLink}
+          href={categoryHref}
           style={{
             display: "inline-block",
             color: "#00bfa5",
             marginBottom: "1.5rem",
             textDecoration: "none",
-            fontWeight: "500",
+            fontWeight: 500,
           }}
         >
           ← Zurück zur Kategorie
         </Link>
 
-        <h1>{frontmatter.title}</h1>
+        <h1
+          style={{
+            marginBottom: "1.5rem",
+          }}
+        >
+          {frontmatter.title}
+        </h1>
+
         <article dangerouslySetInnerHTML={{ __html: html }} />
       </main>
     </>
   );
 }
 
+// --------------------
+// Pfade für alle Artikel erzeugen
+// --------------------
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
   const paths = [];
@@ -65,9 +170,9 @@ export async function getStaticPaths() {
       if (entry.isDirectory()) {
         scanDir(fullPath);
       } else if (entry.isFile() && entry.name.endsWith(".md")) {
-        const baseName = entry.name.replace(".md", "").toLowerCase();
+        const baseName = entry.name.replace(/\.md$/, "").toLowerCase();
 
-        // ❌ Ausschließen: keine statischen Seiten
+        // Diese Sonderseiten werden von eigenen Pages behandelt
         if (["impressum", "kontakt", "datenschutz"].includes(baseName)) {
           continue;
         }
@@ -81,9 +186,15 @@ export async function getStaticPaths() {
 
   scanDir(contentDir);
 
-  return { paths, fallback: "blocking" };
+  return {
+    paths,
+    fallback: "blocking",
+  };
 }
 
+// --------------------
+// Inhalte für einen Artikel laden
+// --------------------
 export async function getStaticProps({ params }) {
   try {
     const slugPath = Array.isArray(params.slug)
@@ -99,14 +210,21 @@ export async function getStaticProps({ params }) {
     }
 
     const raw = fs.readFileSync(fullPath, "utf-8");
-    const { data: frontmatter, content } = matter(raw);
-    const html = marked(content);
+    const { data, content } = matter(raw);
+    const html = marked.parse ? marked.parse(content) : marked(content);
 
-    // Kategorie aus dem Pfad ermitteln
-    const parts = slugPath.split("/");
-    const category = parts.length > 1 ? parts[0] : null;
+    const firstSegment = slugPath.split("/")[0];
 
-    return { props: { frontmatter, html, category } };
+    return {
+      props: {
+        frontmatter: {
+          ...data,
+          // falls keine Kategorie im Frontmatter: aus Pfad ableiten
+          category: data.category || firstSegment,
+        },
+        html,
+      },
+    };
   } catch (err) {
     console.error("❌ Fehler beim Lesen:", err);
     return { notFound: true };

@@ -2,7 +2,10 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Head from "next/head";
 
-export default function HomePage({ posts }) {
+export default function HomePage({ posts = {} }) {
+  // Sicherheitsprüfung, falls keine Daten vorhanden sind
+  const safePosts = posts && typeof posts === "object" ? posts : {};
+
   return (
     <>
       <Head>
@@ -18,8 +21,8 @@ export default function HomePage({ posts }) {
           <h2 className={styles.sectionTitle}>Neueste Artikel</h2>
 
           <div className={styles.cardsContainer}>
-            {Object.entries(posts)
-              .flatMap(([category, articles]) => articles.slice(0, 3))
+            {Object.entries(safePosts)
+              .flatMap(([category, articles]) => articles?.slice(0, 3) || [])
               .map((article) => (
                 <div className={styles.card} key={article.slug}>
                   <h2>{article.title}</h2>
@@ -35,11 +38,11 @@ export default function HomePage({ posts }) {
           </div>
         </section>
 
-        {Object.entries(posts).map(([category, articles]) => (
+        {Object.entries(safePosts).map(([category, articles]) => (
           <section key={category}>
             <h2 className={styles.sectionTitle}>{category.toUpperCase()}</h2>
             <div className={styles.cardsContainer}>
-              {articles.map((post) => (
+              {articles?.map((post) => (
                 <div className={styles.card} key={post.slug}>
                   <h2>{post.title}</h2>
                   <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>

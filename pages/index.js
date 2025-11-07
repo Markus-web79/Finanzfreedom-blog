@@ -28,30 +28,45 @@ export default function Home({ posts = {} }) {
 
       <Hero />
 
-      <main className={styles.main}>
-        {Object.keys(posts).map((category) => (
-          <section key={category} className={styles.container}>
-            <h2 className={styles.sectionTitle}>
-              {category.replace("-", " ").toUpperCase()}
-            </h2>
+ <main style={{ padding: "2rem 0", color: "white" }}>
+  <section>
+    <h2 className="section-title">Neueste Artikel</h2>
 
-            <div className={styles.grid}>
-              {posts[category].map((post) => (
-                <div key={post.slug} className={styles.card}>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                  <Link
-                    href={`/${post.category}/${post.slug}`}
-                    className={styles.readMore}
-                  >
-                    Weiterlesen →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </section>
+    <div className="cards-container">
+      {Object.entries(posts).flatMap(([category, articles]) =>
+        articles.slice(0, 3).map((article) => (
+          <div className="card" key={article.slug}>
+            <h2>{article.title}</h2>
+            <p>{article.excerpt || "Finanzwissen einfach erklärt."}</p>
+            <Link href={`/${article.category}/${article.slug}`}>
+              Weiterlesen →
+            </Link>
+          </div>
+        ))
+      )}
+    </div>
+  </section>
+
+  {Object.entries(posts).map(([category, articles]) => (
+    <section key={category}>
+      <h2 className="section-title">
+        {category.toUpperCase()}
+      </h2>
+
+      <div className="cards-container">
+        {articles.map((post) => (
+          <div className="card" key={post.slug}>
+            <h2>{post.title}</h2>
+            <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
+            <Link href={`/${category}/${post.slug}`}>
+              Weiterlesen →
+            </Link>
+          </div>
         ))}
-      </main>
+      </div>
+    </section>
+  ))}
+</main>
     </>
   );
 }

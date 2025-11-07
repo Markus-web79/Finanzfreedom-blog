@@ -4,38 +4,35 @@ import matter from "gray-matter";
 import Link from "next/link";
 import Head from "next/head";
 
-export default function CategoryPage({ category, posts }) {
+export default function CategoryPage({ category, articles }) {
   return (
     <>
       <Head>
-        <title>{category.toUpperCase()} | FinanzFreedom</title>
+        <title>
+          {category.charAt(0).toUpperCase() + category.slice(1)} – FinanzFreedom
+        </title>
         <meta
           name="description"
-          content={`Artikel und Tipps aus der Kategorie ${category} auf FinanzFreedom – Finanzen einfach erklärt.`}
+          content={`Artikel und Tipps zum Thema ${category} auf FinanzFreedom.`}
         />
       </Head>
 
-      <main
-        style={{
-          maxWidth: "1000px",
-          margin: "2rem auto",
-          padding: "0 1rem",
-          color: "#fff",
-        }}
-      >
+      <main style={{ maxWidth: "1000px", margin: "2rem auto", padding: "1rem" }}>
         <h1
           style={{
-            fontSize: "2rem",
-            marginBottom: "2rem",
+            textAlign: "center",
             color: "#00bfa5",
-            textTransform: "uppercase",
+            marginBottom: "2rem",
+            textTransform: "capitalize",
           }}
         >
-          {category}
+          {category.replace("-", " ")}
         </h1>
 
-        {posts.length === 0 ? (
-          <p>Keine Artikel in dieser Kategorie gefunden.</p>
+        {articles.length === 0 ? (
+          <p style={{ color: "white", textAlign: "center" }}>
+            Noch keine Artikel in dieser Kategorie.
+          </p>
         ) : (
           <div
             style={{
@@ -44,28 +41,35 @@ export default function CategoryPage({ category, posts }) {
               gap: "1.5rem",
             }}
           >
-            {posts.map((post) => (
+            {articles.map((article) => (
               <div
-                key={post.slug}
+                key={article.slug}
                 style={{
-                  background: "#111",
-                  borderRadius: "10px",
+                  background: "#0f2027",
+                  border: "1px solid #00bfa5",
+                  borderRadius: "8px",
                   padding: "1.5rem",
-                  boxShadow: "0 0 15px rgba(0,0,0,0.2)",
+                  color: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  minHeight: "260px",
                 }}
               >
-                <h2 style={{ color: "#00bfa5", marginBottom: "0.5rem" }}>
-                  {post.title}
-                </h2>
-                <p style={{ fontSize: "0.95rem", marginBottom: "1rem" }}>
-                  {post.excerpt}
-                </p>
+                <div>
+                  <h2 style={{ marginTop: 0 }}>{article.title}</h2>
+                  <p style={{ opacity: 0.8 }}>
+                    {article.description.slice(0, 120)}...
+                  </p>
+                </div>
+
                 <Link
-                  href={`/${category}/${post.slug}`}
+                  href={`/${article.slug}`}
                   style={{
                     color: "#00bfa5",
-                    fontWeight: "bold",
                     textDecoration: "none",
+                    fontWeight: "bold",
+                    marginTop: "1rem",
                   }}
                 >
                   Weiterlesen →
@@ -74,28 +78,6 @@ export default function CategoryPage({ category, posts }) {
             ))}
           </div>
         )}
-
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "3rem",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              background: "#00bfa5",
-              color: "#fff",
-              padding: "0.8rem 1.5rem",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "600",
-              transition: "background 0.3s ease",
-            }}
-          >
-            ← Zurück zur Startseite
-          </Link>
-        </div>
       </main>
     </>
   );
@@ -105,35 +87,38 @@ export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
   const categories = fs
     .readdirSync(contentDir)
-    .filter((dir) =>
-      fs.statSync(path.join(contentDir, dir)).isDirectory()
-    );
+    .filter((dir) => fs.statSync(path.join(contentDir, dir)).isDirectory());
 
   const paths = categories.map((category) => ({
     params: { category },
   }));
 
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const category = params.category;
+  const { category } = params;
   const categoryDir = path.join(process.cwd(), "content", category);
-
-  let posts = [];
+  const articles = [];
 
   if (fs.existsSync(categoryDir)) {
     const files = fs.readdirSync(categoryDir);
-    posts = files
-      .filter((file) => file.endsWith(".md"))
-      .map((file) => {
-        const filePath = path.join(categoryDir, file);
-        const raw = fs.readFileSync(filePath, "utf-8");
+    for (const file of files) {
+      if (file.endsWith(".md")) {
+        const raw = fs.readFileSync(path.join(categoryDir, file), "utf-8");
         const { data } = matter(raw);
-        const slug = file.replace(".md", "");
-        return { ...data, slug };
-      });
+
+        articles.push({
+          title: data.title || file.replace(".md", ""),
+          description:
+            data.metaDescription ||
+            data.description ||
+            "Finanzwissen einfach erklärt.",
+          slug: `${category}/${file.replace(".md", "")}`,
+        });
+      }
+    }
   }
 
-  return { props: { category, posts } };
+  return { props: { category, articles } };
 }

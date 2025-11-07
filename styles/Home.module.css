@@ -1,68 +1,79 @@
-/* === Hauptbereich der Startseite === */
+/* === Modernes Kartenlayout für FinanzFreedom === */
 
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+/* Einzelkarte */
+.card {
+  background: linear-gradient(180deg, #101010, #0c0c0c);
+  border: 1px solid rgba(0, 194, 179, 0.3);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 60px;
-}
-
-/* === Kategorieüberschriften === */
-
-.categoryTitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #00bfa5;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-left: 4px solid #00bfa5;
-  padding-left: 12px;
-}
-
-/* === Artikelkarten === */
-
-.articleGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background-color: #1b1c1f;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-  padding: 24px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  height: 100%;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  border-color: #00c2b3;
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 194, 179, 0.2);
 }
 
-.cardTitle {
-  color: #00e3c4;
+/* Titel */
+.card h2 {
   font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
 }
 
-.cardDescription {
-  color: #ccc;
+/* Vorschautext */
+.card p {
+  color: #c0c0c0;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Max. 3 Zeilen Text */
+  -webkit-box-orient: vertical;
 }
 
-.cardLink {
-  color: #00e3c4;
-  font-weight: 600;
+/* Button */
+.card a {
+  align-self: flex-start;
+  background: #00c2b3;
+  color: #0f0f0f;
   text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.cardLink:hover {
-  text-decoration: underline;
+.card a:hover {
+  background: #00e5cf;
+  transform: scale(1.05);
+}
+
+/* Kategorieüberschrift */
+.section-title {
+  font-size: 1.5rem;
+  color: #00c2b3;
+  text-align: left;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 194, 179, 0.3);
+  display: inline-block;
+  padding-bottom: 0.4rem;
 }

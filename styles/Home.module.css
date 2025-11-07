@@ -8,7 +8,6 @@
   padding: 0 1rem;
 }
 
-/* Einzelkarte */
 .card {
   background: linear-gradient(180deg, #101010, #0c0c0c);
   border: 1px solid rgba(0, 194, 179, 0.3);
@@ -28,7 +27,6 @@
   box-shadow: 0 6px 20px rgba(0, 194, 179, 0.2);
 }
 
-/* Titel */
 .card h2 {
   font-size: 1.2rem;
   color: #ffffff;
@@ -36,7 +34,6 @@
   line-height: 1.4;
 }
 
-/* Vorschautext */
 .card p {
   color: #c0c0c0;
   font-size: 0.95rem;
@@ -45,11 +42,10 @@
   margin-bottom: 1.5rem;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Max. 3 Zeilen Text */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
-/* Button */
 .card a {
   align-self: flex-start;
   background: #00c2b3;
@@ -66,7 +62,6 @@
   transform: scale(1.05);
 }
 
-/* Kategorieüberschrift */
 .section-title {
   font-size: 1.5rem;
   color: #00c2b3;

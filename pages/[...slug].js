@@ -147,3 +147,4 @@ export default function PostPage({ frontmatter, html, categorySlug }) {
     </main>
   </>
 );
+}

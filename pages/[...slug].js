@@ -1,11 +1,11 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
 import Head from "next/head";
 import Link from "next/link";
+import { marked } from "marked";
 
-export default function PostPage({ frontmatter, html }) {
+export default function PostPage({ frontmatter, html, category }) {
   if (!frontmatter) {
     return (
       <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
@@ -15,74 +15,41 @@ export default function PostPage({ frontmatter, html }) {
     );
   }
 
+  // Dynamischer Zurück-Link: führt zur Kategorie
+  const backLink = category ? `/${category}` : "/";
+
   return (
-  <>
-    <Head>
-      <title>{frontmatter.title} | FinanzFreedom</title>
-      <meta
-        name="description"
-        content={
-          frontmatter.description ||
-          "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
-        }
-      />
-    </Head>
+    <>
+      <Head>
+        <title>{frontmatter.title} | FinanzFreedom</title>
+        <meta
+          name="description"
+          content={
+            frontmatter.description ||
+            "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
+          }
+        />
+      </Head>
 
-    <main
-      style={{
-        maxWidth: "850px",
-        margin: "2rem auto",
-        padding: "0 1rem",
-        color: "#fff",
-        lineHeight: "1.8",
-      }}
-    >
-      {/* Dynamischer Zurück-Link */}
-      <Link
-        href={`/${frontmatter.category || ""}`}
-        style={{
-          display: "inline-block",
-          marginBottom: "2rem",
-          color: "#00bfa5",
-          textDecoration: "none",
-          fontWeight: "bold",
-        }}
-      >
-        ← Zurück zur Kategorie{" "}
-        {frontmatter.category ? frontmatter.category.toUpperCase() : ""}
-      </Link>
-
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem", color: "#00bfa5" }}>
-        {frontmatter.title}
-      </h1>
-
-      <article dangerouslySetInnerHTML={{ __html: html }} />
-
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "3rem",
-        }}
-      >
+      <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
         <Link
-          href={`/${frontmatter.category || ""}`}
+          href={backLink}
           style={{
-            background: "#00bfa5",
-            color: "#fff",
-            padding: "0.8rem 1.5rem",
-            borderRadius: "8px",
+            display: "inline-block",
+            color: "#00bfa5",
+            marginBottom: "1.5rem",
             textDecoration: "none",
-            fontWeight: "600",
-            transition: "background 0.3s ease",
+            fontWeight: "500",
           }}
         >
-          ← Zurück zu{" "}
-          {frontmatter.category ? frontmatter.category.toUpperCase() : "allen Artikeln"}
+          ← Zurück zur Kategorie
         </Link>
-      </div>
-    </main>
-  </>
-);
+
+        <h1>{frontmatter.title}</h1>
+        <article dangerouslySetInnerHTML={{ __html: html }} />
+      </main>
+    </>
+  );
 }
 
 export async function getStaticPaths() {
@@ -100,7 +67,10 @@ export async function getStaticPaths() {
       } else if (entry.isFile() && entry.name.endsWith(".md")) {
         const baseName = entry.name.replace(".md", "").toLowerCase();
 
-        if (["impressum", "kontakt", "datenschutz"].includes(baseName)) continue;
+        // ❌ Ausschließen: keine statischen Seiten
+        if (["impressum", "kontakt", "datenschutz"].includes(baseName)) {
+          continue;
+        }
 
         const relPath = path.relative(contentDir, fullPath);
         const slugArray = relPath.replace(/\.md$/, "").split(path.sep);
@@ -110,6 +80,7 @@ export async function getStaticPaths() {
   }
 
   scanDir(contentDir);
+
   return { paths, fallback: "blocking" };
 }
 
@@ -131,7 +102,11 @@ export async function getStaticProps({ params }) {
     const { data: frontmatter, content } = matter(raw);
     const html = marked(content);
 
-    return { props: { frontmatter, html } };
+    // Kategorie aus dem Pfad ermitteln
+    const parts = slugPath.split("/");
+    const category = parts.length > 1 ? parts[0] : null;
+
+    return { props: { frontmatter, html, category } };
   } catch (err) {
     console.error("❌ Fehler beim Lesen:", err);
     return { notFound: true };

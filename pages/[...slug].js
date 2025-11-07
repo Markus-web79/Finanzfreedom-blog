@@ -35,150 +35,115 @@ export default function PostPage({ frontmatter, html, categorySlug }) {
   const categoryHref = categorySlug ? `/${categorySlug}` : "/";
 
   return (
-    <>
-      <Head>
-        <title>{frontmatter.title} | FinanzFreedom</title>
-        <meta
-          name="description"
-          content={
-            frontmatter.description ||
-            "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
-          }
-        />
-      </Head>
+  <>
+    <Head>
+      <title>{frontmatter.title} | FinanzFreedom</title>
+      <meta
+        name="description"
+        content={
+          frontmatter.description ||
+          "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
+        }
+      />
+    </Head>
 
-      <main
+    <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
+      {/* Breadcrumb */}
+      <div style={{ marginBottom: "0.5rem", fontSize: "0.9rem" }}>
+        <Link href="/" style={{ color: "#00bfa5", textDecoration: "none" }}>
+          Startseite
+        </Link>{" "}
+        › {frontmatter.category || "Allgemein"} › {frontmatter.title}
+      </div>
+
+      {/* Kategorie-Leiste */}
+      <nav
         style={{
-          maxWidth: "800px",
-          margin: "2rem auto",
-          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "1rem",
+          marginBottom: "2rem",
+          borderBottom: "1px solid rgba(0,194,179,0.3)",
+          paddingBottom: "0.8rem",
         }}
       >
-        {/* Breadcrumb */}
-        <nav
+        {[
+          { name: "ETFs", path: "/etfs" },
+          { name: "Geld anlegen", path: "/geld-anlegen" },
+          { name: "Geld vermehren", path: "/geld-vermehren" },
+          { name: "Versicherungen", path: "/versicherungen" },
+          { name: "Tools", path: "/tools" },
+        ].map((cat) => (
+          <Link
+            key={cat.path}
+            href={cat.path}
+            style={{
+              color:
+                frontmatter.category?.toLowerCase() ===
+                cat.name.toLowerCase()
+                  ? "#00e5cf"
+                  : "#d0d0d0",
+              fontWeight: "500",
+              textDecoration: "none",
+              transition: "color 0.2s",
+            }}
+          >
+            {cat.name}
+          </Link>
+        ))}
+      </nav>
+
+      {/* Artikel */}
+      <h1 style={{ marginBottom: "1rem" }}>{frontmatter.title}</h1>
+      <article
+        dangerouslySetInnerHTML={{ __html: html }}
+        style={{ lineHeight: "1.7" }}
+      />
+
+      {/* Themen-Box unten */}
+      <div
+        style={{
+          marginTop: "3rem",
+          padding: "1.5rem",
+          borderTop: "1px solid rgba(0,194,179,0.3)",
+          textAlign: "center",
+        }}
+      >
+        <p style={{ color: "#00bfa5", marginBottom: "1rem" }}>
+          🧭 Mehr Themen entdecken:
+        </p>
+        <div
           style={{
-            fontSize: "0.9rem",
-            marginBottom: "1rem",
-            color: "#9ca3af",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "1rem",
           }}
         >
-          <Link
-            href="/"
-            style={{
-              color: "#9ca3af",
-              textDecoration: "none",
-            }}
-          >
-            Startseite
-          </Link>
-          {categorySlug && (
-            <>
-              <span style={{ margin: "0 0.4rem" }}>&gt;</span>
-              <Link
-                href={categoryHref}
-                style={{
-                  color: "#9ca3af",
-                  textDecoration: "none",
-                }}
-              >
-                {label}
-              </Link>
-            </>
-          )}
-          <span style={{ margin: "0 0.4rem" }}>&gt;</span>
-          <span style={{ color: "#e5e7eb" }}>{frontmatter.title}</span>
-        </nav>
-
-        {/* Zurück-Link */}
-        {categorySlug && (
-          <Link
-            href={categoryHref}
-            style={{
-              display: "inline-block",
-              color: "#00bfa5",
-              marginBottom: "1.5rem",
-              textDecoration: "none",
-              fontWeight: 500,
-            }}
-          >
-            ← Zurück zur Kategorie
-          </Link>
-        )}
-
-        <h1>{frontmatter.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: html }} />
-      </main>
-    </>
-  );
-}
-
-export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), "content");
-  const paths = [];
-
-  function scanDir(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-
-      if (entry.isDirectory()) {
-        scanDir(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(".md")) {
-        const baseName = entry.name.replace(".md", "").toLowerCase();
-
-        // Impressum / Kontakt / Datenschutz nicht als Artikel-Seite bauen
-        if (["impressum", "kontakt", "datenschutz"].includes(baseName)) {
-          continue;
-        }
-
-        const relPath = path.relative(contentDir, fullPath);
-        const slugArray = relPath.replace(/\.md$/, "").split(path.sep);
-
-        paths.push({ params: { slug: slugArray } });
-      }
-    }
-  }
-
-  scanDir(contentDir);
-
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
-
-export async function getStaticProps({ params }) {
-  try {
-    const slugArray = Array.isArray(params.slug)
-      ? params.slug
-      : [params.slug];
-
-    const slugPath = slugArray.join("/");
-
-    const contentDir = path.join(process.cwd(), "content");
-    const fullPath = path.join(contentDir, `${slugPath}.md`);
-
-    if (!fs.existsSync(fullPath)) {
-      console.error("❌ Datei nicht gefunden:", fullPath);
-      return { notFound: true };
-    }
-
-    const raw = fs.readFileSync(fullPath, "utf-8");
-    const { data: frontmatter, content } = matter(raw);
-    const html = marked(content);
-
-    const categorySlug = slugArray[0] || null;
-
-    return {
-      props: {
-        frontmatter: frontmatter || null,
-        html,
-        categorySlug,
-      },
-    };
-  } catch (err) {
-    console.error("❌ Fehler beim Lesen:", err);
-    return { notFound: true };
-  }
-}
+          {[
+            { name: "ETFs", path: "/etfs" },
+            { name: "Geld anlegen", path: "/geld-anlegen" },
+            { name: "Versicherungen", path: "/versicherungen" },
+            { name: "Tools", path: "/tools" },
+          ].map((cat) => (
+            <Link
+              key={cat.path}
+              href={cat.path}
+              style={{
+                color: "#d0d0d0",
+                textDecoration: "none",
+                border: "1px solid rgba(0,194,179,0.4)",
+                padding: "0.4rem 1rem",
+                borderRadius: "5px",
+                transition: "0.2s",
+              }}
+            >
+              {cat.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </main>
+  </>
+);

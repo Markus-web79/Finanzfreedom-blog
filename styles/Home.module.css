@@ -55,3 +55,24 @@
 .readMore:hover {
   color: #00e5cf;
 }
+
+/* === Kategorie-Titel-Design === */
+
+.sectionTitle {
+  font-size: 1.4rem;
+  color: #00c2b3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 3rem 0 1rem 0;
+  border-left: 4px solid #00c2b3;
+  padding-left: 0.75rem;
+}
+
+.sectionTitle::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: rgba(0, 194, 179, 0.5);
+  margin-top: 0.4rem;
+}

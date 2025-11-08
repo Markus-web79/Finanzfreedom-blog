@@ -109,7 +109,15 @@ export async function getStaticPaths() {
     return { params: { slug: slugArray } };
   });
 
-  return { paths, fallback: false };
+  // 🔹 Feste Seiten ignorieren, um Konflikte zu vermeiden
+const filteredPaths = paths.filter(
+  (p) =>
+    !["datenschutz", "impressum", "kontakt"].some((fixed) =>
+      p.params.slug.includes(fixed)
+    )
+);
+
+return { paths: filteredPaths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {

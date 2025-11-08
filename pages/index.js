@@ -1,55 +1,37 @@
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Head from "next/head";
+import CategoryNav from "../components/CategoryNav";
 
 export default function HomePage({ posts = {} }) {
-  // Sicherheitsprüfung, falls keine Daten vorhanden sind
+  // Sicherheitsprüfung
   const safePosts = posts && typeof posts === "object" ? posts : {};
 
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Finanzen einfach erklärt</title>
+        <title>FinanzFreedom – Finanzielle Freiheit beginnt heute</title>
         <meta
           name="description"
           content="Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien, die wirklich funktionieren."
         />
       </Head>
 
+      <Hero />
+      <CategoryNav /> {/* 👈 Kategorie-Leiste hier */}
+
       <main className={styles.main}>
-        <section>
-          <h2 className={styles.sectionTitle}>Neueste Artikel</h2>
-
-          <div className={styles.cardsContainer}>
-            {Object.entries(safePosts)
-              .flatMap(([category, articles]) => articles?.slice(0, 3) || [])
-              .map((article) => (
-                <div className={styles.card} key={article.slug}>
-                  <h2>{article.title}</h2>
-                  <p>{article.excerpt || "Finanzwissen einfach erklärt."}</p>
-                  <Link
-                    href={`/${article.category}/${article.slug}`}
-                    className={styles.readMore}
-                  >
-                    Weiterlesen →
-                  </Link>
-                </div>
-              ))}
-          </div>
-        </section>
-
-        {Object.entries(safePosts).map(([category, articles]) => (
+        {Object.keys(safePosts).map((category) => (
           <section key={category}>
-            <h2 className={styles.sectionTitle}>{category.toUpperCase()}</h2>
+            <h2 className={styles.sectionTitle}>
+              {category.replace("-", " ").toUpperCase()}
+            </h2>
             <div className={styles.cardsContainer}>
-              {articles?.map((post) => (
-                <div className={styles.card} key={post.slug}>
+              {safePosts[category].map((post) => (
+                <div key={post.slug} className={styles.card}>
                   <h2>{post.title}</h2>
-                  <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
-                  <Link
-                    href={`/${category}/${post.slug}`}
-                    className={styles.readMore}
-                  >
+                  <p>{post.excerpt}</p>
+                  <Link href={`/${post.category}/${post.slug}`} className={styles.readMore}>
                     Weiterlesen →
                   </Link>
                 </div>

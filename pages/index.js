@@ -35,26 +35,20 @@ export default function HomePage({ posts }) {
 
               <div className={styles.grid}>
                 {safePosts[category].map((post) => (
-                  <div key={post.slug} className={styles.card}>
-                    <h3>{post.title}</h3>
-                    <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
-                    <Link
-                      href={`/${post.category}/${post.slug}`}
-                      className={styles.readMore}
-                    >
-                      Weiterlesen →
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ))
-        )}
-      </main>
-    </>
-  );
-}
-
+<div key={post.slug} className={styles.card}>
+  <div className={styles.iconWrapper}>
+    <img
+      src={`/icons/${post.category || 'default'}.svg`}
+      alt={post.category}
+      className={styles.cardIcon}
+    />
+  </div>
+  <h3>{post.title}</h3>
+  <p>{post.excerpt || 'Finanzwissen einfach erklärt.'}</p>
+  <Link href={`/${post.category}/${post.slug}`} className={styles.readMore}>
+    Weiterlesen
+  </Link>
+</div>
 export async function getStaticProps() {
   const fs = await import("fs");
   const path = await import("path");

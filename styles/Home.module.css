@@ -1,93 +1,57 @@
-/* ====== FinanzFreedom Home Design – Modern Premium Look ====== */
+/* === Kartenlayout für FinanzFreedom === */
 
-/* Haupt-Container */
-.main {
-  padding: 60px 8%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* Abschnittstitel */
-.sectionTitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #00c2b3;
-  margin: 40px 0 25px 0;
-  text-align: left;
-  letter-spacing: 0.5px;
-  border-left: 4px solid #00c2b3;
-  padding-left: 12px;
-}
-
-/* Karten-Raster */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 28px;
-  justify-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-items: center;
 }
 
-/* Einzelkarte */
 .card {
-  background: rgba(255, 255, 255, 0.03);
+  background: #0d0d0d;
   border: 1px solid rgba(0, 194, 179, 0.25);
-  border-radius: 10px;
-  padding: 25px 22px;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  min-height: 220px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
   transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 230px;
 }
 
-/* Hover-Effekt */
 .card:hover {
+  transform: translateY(-5px);
   border-color: #00c2b3;
-  box-shadow: 0 4px 20px rgba(0, 194, 179, 0.1);
-  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 194, 179, 0.35);
 }
 
-/* Titel der Karte */
 .card h3 {
-  color: #fff;
-  font-size: 1.25rem;
-  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
   line-height: 1.4;
 }
 
-/* Beschreibung */
 .card p {
-  color: #cfcfcf;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  color: #bfbfbf;
   flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-/* Weiterlesen-Button */
 .readMore {
-  margin-top: 15px;
   color: #00c2b3;
-  font-weight: 500;
-  font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: color 0.2s ease;
+  align-self: flex-start;
 }
 
 .readMore:hover {
-  text-shadow: 0 0 8px rgba(0, 194, 179, 0.5);
   color: #00e5cf;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .main {
-    padding: 40px 5%;
-  }
-  .sectionTitle {
-    font-size: 1.6rem;
-    margin: 30px 0 20px 0;
-  }
-  .card {
-    min-height: 200px;
-  }
 }

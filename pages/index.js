@@ -1,10 +1,11 @@
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Head from "next/head";
+import Hero from "../components/Hero";
 import CategoryNav from "../components/CategoryNav";
 
-export default function HomePage({ posts = {} }) {
-  // Sicherheitsprüfung
+export default function HomePage({ posts }) {
+  // Sicherheitsprüfung: falls keine Daten vorhanden sind
   const safePosts = posts && typeof posts === "object" ? posts : {};
 
   return (
@@ -18,28 +19,73 @@ export default function HomePage({ posts = {} }) {
       </Head>
 
       <Hero />
-      <CategoryNav /> {/* 👈 Kategorie-Leiste hier */}
+      <CategoryNav />
 
       <main className={styles.main}>
-        {Object.keys(safePosts).map((category) => (
-          <section key={category}>
-            <h2 className={styles.sectionTitle}>
-              {category.replace("-", " ").toUpperCase()}
-            </h2>
-            <div className={styles.cardsContainer}>
-              {safePosts[category].map((post) => (
-                <div key={post.slug} className={styles.card}>
-                  <h2>{post.title}</h2>
-                  <p>{post.excerpt}</p>
-                  <Link href={`/${post.category}/${post.slug}`} className={styles.readMore}>
-                    Weiterlesen →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
+        {Object.keys(safePosts).length === 0 ? (
+          <p style={{ textAlign: "center", color: "#999" }}>
+            Keine Artikel gefunden. Bitte überprüfe den Content-Ordner.
+          </p>
+        ) : (
+          Object.keys(safePosts).map((category) => (
+            <section key={category} className={styles.container}>
+              <h2 className={styles.sectionTitle}>
+                {category.replace("-", " ").toUpperCase()}
+              </h2>
+
+              <div className={styles.grid}>
+                {safePosts[category].map((post) => (
+                  <div key={post.slug} className={styles.card}>
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
+                    <Link
+                      href={`/${post.category}/${post.slug}`}
+                      className={styles.readMore}
+                    >
+                      Weiterlesen →
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))
+        )}
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const fs = await import("fs");
+  const path = await import("path");
+  const matter = (await import("gray-matter")).default;
+
+  const contentDir = path.resolve("content");
+  let posts = {};
+
+  try {
+    const categories = fs.readdirSync(contentDir);
+
+    for (const category of categories) {
+      const categoryPath = path.join(contentDir, category);
+      const files = fs.readdirSync(categoryPath);
+
+      posts[category] = files.map((file) => {
+        const filePath = path.join(categoryPath, file);
+        const fileContent = fs.readFileSync(filePath, "utf8");
+        const { data } = matter(fileContent);
+
+        return {
+          title: data.title || file.replace(".md", ""),
+          slug: file.replace(".md", ""),
+          category,
+          excerpt: data.excerpt || "",
+        };
+      });
+    }
+  } catch (error) {
+    console.error("Fehler beim Lesen des Content-Ordners:", error);
+  }
+
+  return { props: { posts } };
 }

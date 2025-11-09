@@ -2,9 +2,10 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Head from "next/head";
 import CategoryNav from "../components/CategoryNav";
+import Hero from "../components/Hero"; // <-- Hero wieder eingebunden
 
 export default function HomePage({ posts = {} }) {
-  // Sicherheitsprüfung: falls posts undefined ist
+  // Sicherheitsprüfung
   const safePosts = posts && typeof posts === "object" ? posts : {};
 
   return (
@@ -17,32 +18,24 @@ export default function HomePage({ posts = {} }) {
         />
       </Head>
 
+      <Hero /> {/* <-- Das bringt dein Hero-Bild zurück */}
+
       <CategoryNav />
 
       <main className={styles.main}>
         {Object.keys(safePosts).map((category) => (
           <section key={category} className={styles.container}>
             <h2 className={styles.sectionTitle}>
-              {category.replace("-", " ").toUpperCase()}
+              {category.replace(/-/g, " ").toUpperCase()}
             </h2>
 
             <div className={styles.grid}>
               {safePosts[category].map((post) => (
                 <div key={post.slug} className={styles.card}>
-                  <div className={styles.iconWrapper}>
-                    <img
-                      src={`/icons/${post.category || "default"}.svg`}
-                      alt={post.category}
-                      className={styles.cardIcon}
-                    />
-                  </div>
                   <h3>{post.title}</h3>
-                  <p>{post.excerpt || "Finanzwissen einfach erklärt."}</p>
-                  <Link
-                    href={`/${post.category}/${post.slug}`}
-                    className={styles.readMore}
-                  >
-                    Weiterlesen
+                  <p>{post.excerpt}</p>
+                  <Link href={`/${post.slug}`} className={styles.readMore}>
+                    Weiterlesen →
                   </Link>
                 </div>
               ))}

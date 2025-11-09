@@ -1,88 +1,85 @@
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
 import Head from "next/head";
-import CategoryNav from "../components/CategoryNav";
-import Hero from "../components/Hero"; // <-- Hero wieder eingebunden
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
-export default function HomePage({ posts = {} }) {
-  // Sicherheitsprüfung
-  const safePosts = posts && typeof posts === "object" ? posts : {};
-
+export default function Home({ articles = [] }) {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Wissen, das dich frei macht</title>
+        <title>FinanzFreedom – Finanzen verstehen & Freiheit erreichen</title>
         <meta
           name="description"
-          content="Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien, die wirklich funktionieren."
+          content="FinanzFreedom – Lerne, investiere und erreiche finanzielle Unabhängigkeit. Aktuelle Guides zu ETFs, Versicherungen, Sparen & mehr."
         />
       </Head>
 
-      <Hero /> {/* <-- Das bringt dein Hero-Bild zurück */}
+      {/* HERO SECTION */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1>
+            Werde finanziell frei mit <span>FinanzFreedom</span>
+          </h1>
+          <p>
+            Lerne, wie du dein Geld richtig anlegst, clever sparst und Schritt
+            für Schritt finanzielle Unabhängigkeit erreichst.
+          </p>
+          <Link href="#themen" className={styles.ctaButton}>
+            Jetzt starten
+          </Link>
+        </div>
+      </section>
 
-      <CategoryNav />
+      {/* THEMENBEREICHE */}
+      <section id="themen" className={styles.topics}>
+        <h2>Themenwelten</h2>
+        <div className={styles.topicGrid}>
+          <Link href="/etfs" className={styles.topicCard}>
+            <h3>Investieren</h3>
+            <p>Alles über ETFs, Aktien und langfristigen Vermögensaufbau.</p>
+          </Link>
+          <Link href="/versicherungen" className={styles.topicCard}>
+            <h3>Versichern</h3>
+            <p>Welche Versicherungen wirklich wichtig sind – einfach erklärt.</p>
+          </Link>
+          <Link href="/geld-vermehren" className={styles.topicCard}>
+            <h3>Geld vermehren</h3>
+            <p>Strategien, Tipps & Tools für mehr Wachstum deines Geldes.</p>
+          </Link>
+        </div>
+      </section>
 
-      <main className={styles.main}>
-        {Object.keys(safePosts).map((category) => (
-          <section key={category} className={styles.container}>
-            <h2 className={styles.sectionTitle}>
-              {category.replace(/-/g, " ").toUpperCase()}
-            </h2>
+      {/* ARTIKELÜBERSICHT */}
+      <section className={styles.articles}>
+        <h2>Aktuelle Artikel</h2>
+        <div className={styles.articleGrid}>
+          {articles.length === 0 ? (
+            <p className={styles.noArticles}>
+              Noch keine Artikel verfügbar – neue Inhalte werden bald geladen.
+            </p>
+          ) : (
+            articles.map((article, index) => (
+              <Link
+                key={index}
+                href={`/${article.slug}`}
+                className={styles.articleCard}
+              >
+                <h3>{article.title}</h3>
+                <p>{article.excerpt}</p>
+                <span className={styles.readMore}>Weiterlesen →</span>
+              </Link>
+            ))
+          )}
+        </div>
+      </section>
 
-            <div className={styles.grid}>
-              {safePosts[category].map((post) => (
-                <div key={post.slug} className={styles.card}>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                  <Link href={`/${post.slug}`} className={styles.readMore}>
-                    Weiterlesen →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-      </main>
+      <footer className={styles.footer}>
+        <p>© {new Date().getFullYear()} FinanzFreedom – Dein Weg zur Freiheit</p>
+        <div className={styles.footerLinks}>
+          <Link href="/impressum">Impressum</Link>
+          <Link href="/datenschutz">Datenschutz</Link>
+          <Link href="/kontakt">Kontakt</Link>
+        </div>
+      </footer>
     </>
   );
-}
-
-export async function getStaticProps() {
-  // Importiere dynamisch, um fs nur im Build zu nutzen
-  const fs = await import("fs");
-  const path = await import("path");
-  const matter = (await import("gray-matter")).default;
-
-  const contentDir = path.resolve("content");
-  const posts = {};
-
-  function readPostsRecursively(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory()) {
-        readPostsRecursively(fullPath);
-      } else if (entry.name.endsWith(".md")) {
-        const fileContent = fs.readFileSync(fullPath, "utf-8");
-        const { data, content } = matter(fileContent);
-        const category = data.category || "allgemein";
-        if (!posts[category]) posts[category] = [];
-        posts[category].push({
-          ...data,
-          slug: entry.name.replace(".md", ""),
-          excerpt:
-            data.excerpt ||
-            content.substring(0, 150).replace(/\n/g, " ") + "...",
-        });
-      }
-    }
-  }
-
-  readPostsRecursively(contentDir);
-
-  return {
-    props: {
-      posts,
-    },
-  };
 }

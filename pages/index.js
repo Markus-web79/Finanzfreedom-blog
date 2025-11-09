@@ -1,79 +1,86 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import CategoryNav from "../components/CategoryNav";
+import Hero from "../components/Hero";
 
 export default function Home({ articles = [] }) {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Finanzen verstehen & Freiheit erreichen</title>
+        <title>FinanzFreedom – Wissen, das dich frei macht</title>
         <meta
           name="description"
-          content="FinanzFreedom – Lerne, investiere und erreiche finanzielle Unabhängigkeit. Aktuelle Guides zu ETFs, Versicherungen, Sparen & mehr."
+          content="Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien, die wirklich funktionieren."
         />
       </Head>
 
-      {/* HERO SECTION */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1>
-            Werde finanziell frei mit <span>FinanzFreedom</span>
-          </h1>
-          <p>
-            Lerne, wie du dein Geld richtig anlegst, clever sparst und Schritt
-            für Schritt finanzielle Unabhängigkeit erreichst.
-          </p>
-          <Link href="#themen" className={styles.ctaButton}>
-            Jetzt starten
-          </Link>
-        </div>
-      </section>
+      {/* Neuer Hero-Bereich */}
+      <Hero />
 
-      {/* THEMENBEREICHE */}
-      <section id="themen" className={styles.topics}>
-        <h2>Themenwelten</h2>
-        <div className={styles.topicGrid}>
-          <Link href="/etfs" className={styles.topicCard}>
-            <h3>Investieren</h3>
-            <p>Alles über ETFs, Aktien und langfristigen Vermögensaufbau.</p>
-          </Link>
-          <Link href="/versicherungen" className={styles.topicCard}>
-            <h3>Versichern</h3>
-            <p>Welche Versicherungen wirklich wichtig sind – einfach erklärt.</p>
-          </Link>
-          <Link href="/geld-vermehren" className={styles.topicCard}>
-            <h3>Geld vermehren</h3>
-            <p>Strategien, Tipps & Tools für mehr Wachstum deines Geldes.</p>
-          </Link>
-        </div>
-      </section>
+      {/* Kategorie-Navigation */}
+      <CategoryNav />
 
-      {/* ARTIKELÜBERSICHT */}
-      <section className={styles.articles}>
-        <h2>Aktuelle Artikel</h2>
-        <div className={styles.articleGrid}>
+      <main className={styles.main}>
+        {/* Themenwelten */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Themenwelten</h2>
+          <div className={styles.categoryGrid}>
+            <div className={styles.categoryCard}>
+              <h3>Investieren</h3>
+              <p>Alles über ETFs, Aktien und langfristigen Vermögensaufbau.</p>
+              <Link href="/etfs" className={styles.link}>
+                Weiterlesen →
+              </Link>
+            </div>
+
+            <div className={styles.categoryCard}>
+              <h3>Versichern</h3>
+              <p>
+                Welche Versicherungen wirklich wichtig sind – einfach erklärt.
+              </p>
+              <Link href="/versicherungen" className={styles.link}>
+                Weiterlesen →
+              </Link>
+            </div>
+
+            <div className={styles.categoryCard}>
+              <h3>Geld vermehren</h3>
+              <p>
+                Strategien, Tipps & Tools für mehr Wachstum deines Geldes.
+              </p>
+              <Link href="/geld-anlegen" className={styles.link}>
+                Weiterlesen →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Aktuelle Artikel */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
           {articles.length === 0 ? (
-            <p className={styles.noArticles}>
+            <p className={styles.emptyText}>
               Noch keine Artikel verfügbar – neue Inhalte werden bald geladen.
             </p>
           ) : (
-            articles.map((article, index) => (
-              <Link
-                key={index}
-                href={`/${article.slug}`}
-                className={styles.articleCard}
-              >
-                <h3>{article.title}</h3>
-                <p>{article.excerpt}</p>
-                <span className={styles.readMore}>Weiterlesen →</span>
-              </Link>
-            ))
+            <div className={styles.articlesGrid}>
+              {articles.map((article) => (
+                <div key={article.slug} className={styles.card}>
+                  <h3>{article.title}</h3>
+                  <p>{article.description}</p>
+                  <Link href={`/${article.category}/${article.slug}`}>
+                    Weiterlesen →
+                  </Link>
+                </div>
+              ))}
+            </div>
           )}
-        </div>
-      </section>
+        </section>
+      </main>
 
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} FinanzFreedom – Dein Weg zur Freiheit</p>
+        <p>© 2025 FinanzFreedom – Dein Weg zur Freiheit</p>
         <div className={styles.footerLinks}>
           <Link href="/impressum">Impressum</Link>
           <Link href="/datenschutz">Datenschutz</Link>

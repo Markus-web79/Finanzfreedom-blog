@@ -1,54 +1,76 @@
-/* === Globale Stile === */
+/* =====================================
+   FinanzFreedom Global Styles
+   ===================================== */
 
+/* ===== Grundlayout ===== */
+html,
 body {
-  background-color: #0e0f11;
-  color: #e0e0e0;
-  font-family: "Inter", system-ui, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-}
-
-h1, h2, h3 {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #0b0b0b;
   color: #ffffff;
-  font-weight: 600;
+  scroll-behavior: smooth;
 }
 
+/* ===== Standard-Links ===== */
 a {
-  color: #00bfa5;
+  color: #00e5cf;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: opacity 0.25s ease;
 }
 
 a:hover {
-  color: #00e3c4;
+  opacity: 0.8;
 }
 
-/* === Buttons === */
-
-button {
-  background-color: #00bfa5;
-  color: #001f1f;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
+/* ===== Standard-Abstände ===== */
+section {
+  scroll-margin-top: 80px;
 }
 
-button:hover {
-  background-color: #00e3c4;
+/* ===== Container-Größen ===== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* === Layout === */
-
-* {
-  box-sizing: border-box;
+/* ===== Textausgleich ===== */
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
+p {
+  line-height: 1.6;
+  color: #cccccc;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00c2b3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00e5cf;
+}
+
+/* ===== Farb-Utilities ===== */
+:root {
+  --tuerkis: #00e5cf;
+  --tuerkis-dark: #00c2b3;
+  --bg-dark: #0b0b0b;
+  --bg-card: #101010;
+  --text-light: #ffffff;
+  --text-grey: #cccccc;
 }

@@ -1,12 +1,14 @@
-/* --- Hero-Bereich --- */
 .hero {
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
+  border-bottom: 1px solid rgba(0, 226, 179, 0.2);
 }
 
-/* --- Hintergrundbild --- */
 .heroImageWrapper {
   position: absolute;
   top: 0;
@@ -16,96 +18,104 @@
   z-index: 1;
 }
 
-.hero img {
-  object-fit: cover;
+.heroImage {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  filter: brightness(65%) saturate(110%);
 }
 
-/* --- Overlay-Ebene --- */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 20, 25, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
   z-index: 2;
 }
 
-/* --- Textbereich --- */
 .heroContent {
+  position: relative;
+  z-index: 3;
+  text-align: center;
   color: #fff;
-  max-width: 800px;
-  padding: 0 20px;
+  padding: 0 1rem;
+  max-width: 850px;
 }
 
 .heroTitle {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .highlight {
-  color: #00b3b3; /* Türkis-Branding */
+  color: #00e3b3;
 }
 
 .heroSubtitle {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #d0d0d0;
   margin-bottom: 2rem;
-  color: #e0f7f7;
+  line-height: 1.6;
 }
 
-/* --- Buttons --- */
 .heroButtons {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btnPrimary,
 .btnSecondary {
-  padding: 0.8rem 1.6rem;
-  border-radius: 5px;
+  padding: 0.8rem 1.8rem;
+  border-radius: 6px;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
   text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .btnPrimary {
-  background-color: #00b3b3;
-  color: #fff;
+  background: linear-gradient(135deg, #00e3b3, #00b8a1);
+  color: #000;
+  border: none;
 }
 
 .btnPrimary:hover {
-  background-color: #009999;
+  background: linear-gradient(135deg, #00ffd1, #00d8b5);
+  box-shadow: 0 0 12px rgba(0, 226, 179, 0.45);
 }
 
 .btnSecondary {
-  background-color: transparent;
-  border: 2px solid #00b3b3;
-  color: #00b3b3;
+  background: transparent;
+  border: 1.5px solid #00e3b3;
+  color: #00e3b3;
 }
 
 .btnSecondary:hover {
-  background-color: #00b3b3;
-  color: #fff;
+  background: rgba(0, 226, 179, 0.1);
+  color: #00ffd1;
+  box-shadow: 0 0 10px rgba(0, 226, 179, 0.2);
 }
 
-/* --- Mobile --- */
+/* Responsive */
 @media (max-width: 768px) {
   .hero {
-    height: 75vh;
+    height: 55vh;
   }
 
   .heroTitle {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .heroSubtitle {
@@ -114,7 +124,7 @@
 
   .btnPrimary,
   .btnSecondary {
-    padding: 0.7rem 1.2rem;
+    padding: 0.7rem 1.4rem;
     font-size: 0.9rem;
   }
 }

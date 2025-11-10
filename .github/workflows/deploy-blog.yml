@@ -1,4 +1,5 @@
 name: Build and Deploy Blog
+
 on:
   push:
     branches:
@@ -8,64 +9,56 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: 🧭 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: 🧠 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm install
 
       - name: 🧠 Generiere Artikel
         run: |
-          echo "🧠 Generiere Beispielartikel..."
-          node scripts/generateArticle.js "ETF-Sparplan für Einsteiger" etfs
+          echo "🧠 Generiere Artikel..."
+          node scripts/generateArticle.js
 
-      - name: 🏗️ Baue statische Next.js Seite
+      - name: 🏗️ Build static site
         run: |
-          echo "🏗️ Starte Next.js Build..."
+          echo "🏗️ Baue statische Next.js Seite..."
           npx next build
 
-      - name: 🗺️ Sitemap generieren
-        run: |
-          echo "🗺️ Erstelle Sitemap..."
-          node scripts/generateSitemap.js
+      - name: 🌐 Sitemap generieren
+        run: node scripts/generateSitemap.js
 
       - name: 🚀 Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-# =====================================================
-# 🗓 Wöchentlicher Vergleichsgenerator
-# =====================================================
-# =====================================================
-# 🧠 Automatischer Vergleichs-Generator (3x pro Woche)
-# =====================================================
-generate_comparison:
-  runs-on: ubuntu-latest
-  schedule:
-    - cron: "0 10 * * 2"   # Dienstag 10:00 Uhr
-    - cron: "0 10 * * 4"   # Donnerstag 10:00 Uhr
-    - cron: "0 10 * * 0"   # Sonntag 10:00 Uhr
 
-  steps:
-    - name: 📦 Checkout Repository
-      uses: actions/checkout@v4
+  generate_comparison:
+    runs-on: ubuntu-latest
+    schedule:
+      - cron: "0 10 * * 2" # Dienstag 10:00
+      - cron: "0 10 * * 4" # Donnerstag 10:00
+      - cron: "0 10 * * 6" # Samstag 10:00
+    steps:
+      - name: 🧭 Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: 🧩 Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
+      - name: 🧠 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-    - name: ⚙️ Install dependencies
-      run: npm install
+      - name: 📦 Install dependencies
+        run: npm install
 
-    - name: 🧠 Generate new comparison content
-      run: node scripts/generateComparison.js
+      - name: ⚙️ Generate new comparison content
+        run: node scripts/generateComparison.js
 
-    - name: 🏗️ Build static site
-      run: npx next build
+      - name: 🏗️ Build static site
+        run: npx next build
 
-    - name: 🚀 Deploy to Vercel
-      run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: 🚀 Deploy to Vercel
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

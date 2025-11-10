@@ -1,56 +1,51 @@
-name: Build and Deploy Blog
+name: 🚀 Build and Deploy Blog
 
 on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 10 * * 2"  # Dienstag 10:00 Uhr
-    - cron: "0 10 * * 4"  # Donnerstag 10:00 Uhr
-    - cron: "0 10 * * 6"  # Samstag 10:00 Uhr
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 🧭 Checkout Repository
+      - name: 📦 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🧠 Setup Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
+      - name: 📥 Install Dependencies
         run: npm install
+
       - name: 🔍 SEO Qualitätsprüfung
         run: |
           echo "🔍 Prüfe Artikel auf SEO-Qualität..."
           node scripts/seoCheck.js
-          
+
       - name: 🧠 Generiere Artikel
         run: |
           echo "🧠 Generiere neuen Artikel..."
           node scripts/generateArticle.js
 
-      - name: ⚙️ Generiere Vergleichsartikel
+      - name: ⚖️ Generiere Vergleichsartikel
         run: |
-          echo "⚙️ Generiere neuen Vergleichsartikel..."
+          echo "⚖️ Generiere neuen Vergleichsartikel..."
           node scripts/generateComparison.js
 
-      - name: 🏗️ Build static site
-        run: |
-          echo "🏗️ Baue statische Next.js Seite..."
-          npx next build
-      - name: 🔗 Interne Verlinkung aktualisieren
+      - name: 🔗 Interne Verlinkung
         run: |
           echo "🔗 Füge interne Links hinzu..."
           node scripts/linkInternal.js
-          
-      - name: 🌐 Sitemap generieren
+
+      - name: 🗺️ Sitemap generieren
         run: |
-          echo "🌐 Erstelle Sitemap..."
+          echo "📍 Generiere Sitemap..."
           node scripts/generateSitemap.js
+
       - name: 📰 RSS Feed generieren
         run: |
           echo "📡 Erstelle RSS-Feed..."
@@ -60,20 +55,11 @@ jobs:
         run: |
           echo "🔔 Informiere Google & Bing..."
           node scripts/pingSearchEngines.js
-          
+
       - name: 🚀 Deploy to Vercel
-        run: |
-          echo "🚀 Deploy zur Live-Seite..."
-          npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: 🔎 Ping search engines
+      - name: 💾 Backup generierter Inhalte
         run: |
-          echo "🔎 Melde neue Sitemap an Google & Bing..."
-          node scripts/pingSearchEngines.js
-
-      - name: 🗄️ Backup generierter Inhalte
-        run: |
-          echo "🗄️ Erstelle Backup der generierten Inhalte..."
-          zip -r backup_content_$(date +%Y%m%d).zip content/
-          mkdir -p backups
-          mv backup_content_*.zip backups/
+          echo "💾 Erstelle Backup der Inhalte..."
+          zip -r backup_$(date +%Y%m%d).zip content/

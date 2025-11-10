@@ -42,7 +42,11 @@ jobs:
         run: |
           echo "🏗️ Baue statische Next.js Seite..."
           npx next build
-
+      - name: 🔗 Interne Verlinkung aktualisieren
+        run: |
+          echo "🔗 Füge interne Links hinzu..."
+          node scripts/linkInternal.js
+          
       - name: 🌐 Sitemap generieren
         run: |
           echo "🌐 Erstelle Sitemap..."

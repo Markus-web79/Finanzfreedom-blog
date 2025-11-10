@@ -47,7 +47,16 @@ jobs:
         run: |
           echo "🌐 Erstelle Sitemap..."
           node scripts/generateSitemap.js
+      - name: 📰 RSS Feed generieren
+        run: |
+          echo "📡 Erstelle RSS-Feed..."
+          node scripts/generateFeed.js
 
+      - name: 🔔 Suchmaschinen anpingen
+        run: |
+          echo "🔔 Informiere Google & Bing..."
+          node scripts/pingSearchEngines.js
+          
       - name: 🚀 Deploy to Vercel
         run: |
           echo "🚀 Deploy zur Live-Seite..."

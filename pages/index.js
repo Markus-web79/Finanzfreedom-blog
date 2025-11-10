@@ -62,28 +62,38 @@ export default function Home() {
       </section>
 
       {/* ===== Themenwelten ===== */}
-      <section className={styles.topics}>
-        <h2>Themenwelten</h2>
-        <div className={styles.topicGrid}>
-          <div className={styles.topicCard}>
-            <h3>Investieren</h3>
-            <p>Alles über ETFs, Aktien und langfristigen Vermögensaufbau.</p>
-            <Link href="/etfs">Weiterlesen →</Link>
-          </div>
-          <div className={styles.topicCard}>
-            <h3>Versichern</h3>
-            <p>Welche Versicherungen wirklich wichtig sind – einfach erklärt.</p>
-            <Link href="/versicherungen">Weiterlesen →</Link>
-          </div>
-          <div className={styles.topicCard}>
-            <h3>Geld vermehren</h3>
-            <p>
-              Strategien, Tipps & Tools für mehr Wachstum deines Geldes.
-            </p>
-            <Link href="/geld-anlegen">Weiterlesen →</Link>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+<section className={styles.topics}>
+  <h2>Themenwelten</h2>
+  <div className={styles.topicGrid}>
+    <div className={styles.topicCard}>
+      <h3>Investieren</h3>
+      <p>Alles über ETFs, Aktien und langfristigen Vermögensaufbau.</p>
+      <Link href="/etfs">Weiterlesen →</Link>
+    </div>
+    <div className={styles.topicCard}>
+      <h3>Versichern</h3>
+      <p>Welche Versicherungen wirklich wichtig sind – einfach erklärt.</p>
+      <Link href="/versicherungen">Weiterlesen →</Link>
+    </div>
+    <div className={styles.topicCard}>
+      <h3>Geld vermehren</h3>
+      <p>Strategien, Tipps & Tools für mehr Wachstum deines Geldes.</p>
+      <Link href="/geld-anlegen">Weiterlesen →</Link>
+    </div>
+    <div className={styles.topicCard}>
+      <h3>Rechner & Tools</h3>
+      <p>Nutze Zinsrechner, ETF-Planer und Budget-Tools für deine Finanzen.</p>
+      <Link href="/tools">Weiterlesen →</Link>
+    </div>
+    <div className={styles.topicCard}>
+      <h3>Vergleiche</h3>
+      <p>Finde die besten Anbieter für Depots, Kreditkarten und Versicherungen.</p>
+      <Link href="/vergleiche">Weiterlesen →</Link>
+    </div>
+    <div className={styles.topicCard}>
+      <h3>Steuern & Finanztipps</h3>
+      <p>Alles zu Steuertricks, Absetzungen und rechtssicheren Spartipps.</p>
+      <Link href="/steuern">Weiterlesen →</Link>
+    </div>
+  </div>
+</section>

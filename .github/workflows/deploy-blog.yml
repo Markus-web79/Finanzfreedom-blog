@@ -49,6 +49,11 @@ jobs:
           echo "🚀 Deploy zur Live-Seite..."
           npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: 🔎 Ping search engines
+        run: |
+          echo "🔎 Melde neue Sitemap an Google & Bing..."
+          node scripts/pingSearchEngines.js
+
       - name: 🗄️ Backup generierter Inhalte
         run: |
           echo "🗄️ Erstelle Backup der generierten Inhalte..."

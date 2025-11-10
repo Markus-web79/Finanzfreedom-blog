@@ -4,7 +4,23 @@
 import { writeFileSync, mkdirSync, existsSync } from "fs";
 import path from "path";
 import matter from "gray-matter";
+// 🧠 SEO-Titeloptimierung für FinanzFreedom
+function enhanceTitle(title) {
+  const year = new Date().getFullYear();
+  const powerWords = [
+    "beste", "günstigste", "aktuellste", "beliebteste", "smarte", "clevere", "effektivste"
+  ];
+  const randomWord = powerWords[Math.floor(Math.random() * powerWords.length)];
 
+  // Wenn der Titel bereits Zahlen oder "Vergleich" enthält, ergänze ihn natürlich
+  if (title.toLowerCase().includes("vergleich")) {
+    return `${title} – ${randomWord} Anbieter ${year}`;
+  }
+
+  // Sonst erweitere Standard-Titel mit modernen SEO-Begriffen
+  return `${title} – ${randomWord} Strategien & Tipps ${year}`;
+}
+ 
 // Themenpool – jeder Lauf ein anderer Artikel
 const THEMEN = [
   "ETF-Sparplan für Einsteiger",
@@ -57,7 +73,7 @@ ${title} ist kein Hexenwerk, sondern Wissen, das jeder erlernen kann. Nutze die 
 
 // 🔹 Hauptfunktion
 function generateArticle() {
-  const title = getRandomTopic();
+const title = enhanceTitle(getRandomTopic());
   const category = getCategory(title);
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 

@@ -1,117 +1,107 @@
 // scripts/generateComparison.js
-// 🔥 Automatische Vergleichsartikel-Erstellung mit SEO-Titel & Kategorien
+// ⚙️ Automatischer Vergleichsartikel-Generator (SEO + OpenGraph + Auto-Kategorie)
 
-import fs from "fs";
+import { writeFileSync, mkdirSync, existsSync } from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-// 🧠 SEO-Optimierung für Vergleichstitel
+// 🔍 SEO + Jahr-Erweiterung
 function enhanceComparisonTitle(title, category) {
   const year = new Date().getFullYear();
-  const modifiers = ["Top", "Beste", "Empfohlene", "Beliebteste", "Smarteste", "Günstigste"];
+  const modifiers = ["Top", "Beste", "Empfohlene", "Beliebteste", "Günstigste", "Smarteste"];
   const randomWord = modifiers[Math.floor(Math.random() * modifiers.length)];
-
-  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
-
-  return `${randomWord} ${formattedCategory} ${year} – ${title}`;
+  return `${randomWord} ${title} ${year}`;
 }
 
-// 🏷 Themenbereiche für Vergleiche
+// SEO-Metadaten
+function generateSEOMeta(title, category) {
+  const year = new Date().getFullYear();
+  const description = `${title} – Aktuelle Anbieter, Gebühren und Vorteile im ${category}-Vergleich ${year}.`;
+  const keywords = `${title}, ${category}, Vergleich, Finanztipps, ${year}, Anbieter, Testsieger, FinanzFreedom`;
+  return { description, keywords };
+}
+
+// OpenGraph
+function generateOpenGraph(title, description, category) {
+  const urlSlug = title.toLowerCase().replace(/[^a-z0-9äöüß]+/g, "-").replace(/(^-|-$)/g, "");
+  return {
+    "og:title": title,
+    "og:description": description,
+    "og:type": "article",
+    "og:url": `https://finanzfreedom.de/${category}/${urlSlug}`,
+    "og:image": "https://finanzfreedom.de/og-compare.jpg"
+  };
+}
+
+// Themenpool
 const COMPARISON_TOPICS = {
-  etfs: [
-    "ETF-Broker Vergleich",
-    "ETF-Sparplan Vergleich",
-    "Online Broker Gebühren",
-    "ETF-Plattformen im Überblick"
-  ],
-  versicherungen: [
-    "KFZ-Versicherung Vergleich",
-    "Haftpflichtversicherung im Test",
-    "Hausratversicherung Vergleich",
-    "Private Krankenversicherung Anbieter"
-  ],
-  geld: [
-    "Tagesgeldkonto Vergleich",
-    "Kreditkarten Anbieter 2025",
-    "Beste Girokonten im Überblick",
-    "Zinsvergleich für Sparer"
-  ]
+  etfs: ["ETF-Broker Vergleich", "ETF-Sparplan Anbieter", "Depotkosten im Vergleich"],
+  versicherungen: ["KFZ-Versicherung", "Haftpflichtversicherung", "Hausratversicherung"],
+  geld: ["Kreditkarten Anbieter", "Tagesgeldkonto Vergleich", "Girokonto 2025"]
 };
 
-// 🔍 Hilfsfunktion: zufälliges Thema & Kategorie bestimmen
 function getRandomCategory() {
   const keys = Object.keys(COMPARISON_TOPICS);
   return keys[Math.floor(Math.random() * keys.length)];
 }
-
 function getRandomTopic(category) {
   const topics = COMPARISON_TOPICS[category];
   return topics[Math.floor(Math.random() * topics.length)];
 }
 
-// 🧩 Artikelinhalt generieren
+// Inhalt
 function generateComparisonContent(title, category) {
   const year = new Date().getFullYear();
-
   return `# ${title}
 
-## Einführung
-In diesem Vergleich zeigen wir dir die ${category} mit den besten Konditionen, Vorteilen und Erfahrungen.  
-Unsere Auswertung hilft dir, ${category === "etfs" ? "den richtigen Broker für deinen ETF-Sparplan" : "den besten Anbieter für deine Bedürfnisse"} zu finden.
+## Überblick
+In diesem ${category}-Vergleich ${year} zeigen wir dir die besten Anbieter, deren Konditionen und unsere Empfehlungen.
 
-## Wichtigste Kriterien
-- Gebührenstruktur und Transparenz  
-- Benutzerfreundlichkeit und mobile Nutzung  
-- Sicherheit und Regulierung  
-- Kundenservice und Bewertungen  
+## Wichtige Kriterien
+- Kosten & Gebührenstruktur  
+- Benutzerfreundlichkeit & mobile Nutzung  
+- Sicherheit & Regulierung  
+- Kundenservice & Bewertungen  
 
 ## Unsere Empfehlung (${year})
-Nach Auswertung mehrerer Anbieter empfehlen wir:  
-**${title}** als starken Einstiegspunkt für dein finanzielles Wachstum.
-
-> Tipp: Vergleiche regelmäßig die Konditionen, da sich Gebühren und Zinsen ändern können.
+**${title}** bietet im ${category}-Bereich starke Leistungen mit fairen Konditionen.  
 
 ## Fazit
-${title} – Vergleiche regelmäßig und nutze die Tools auf **FinanzFreedom**,  
-um dein Geld effizient und sicher zu verwalten.  
-`;
+Vergleiche regelmäßig deine Anbieter und nutze **FinanzFreedom**, um auf dem Laufenden zu bleiben.`;
 }
 
-// 🧱 Hauptfunktion
+// Hauptfunktion
 function generateComparison() {
   const category = getRandomCategory();
   const topic = getRandomTopic(category);
-  const enhancedTitle = enhanceComparisonTitle(topic, category);
+  const title = enhanceComparisonTitle(topic, category);
+  const seo = generateSEOMeta(title, category);
+  const og = generateOpenGraph(title, seo.description, category);
 
-  const slug = enhancedTitle
-    .toLowerCase()
-    .replace(/[^a-z0-9äöüß]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-
+  const slug = title.toLowerCase().replace(/[^a-z0-9äöüß]+/g, "-").replace(/(^-|-$)/g, "");
   const folder = path.join(process.cwd(), "content", category);
   const filePath = path.join(folder, `${slug}.md`);
 
-  if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
+  if (!existsSync(folder)) mkdirSync(folder, { recursive: true });
 
-  const content = generateComparisonContent(enhancedTitle, category);
-
-  // 🧾 Frontmatter (Metadaten)
+  const content = generateComparisonContent(title, category);
   const frontmatter = matter.stringify(content, {
-    title: enhancedTitle,
+    title,
     date: new Date().toISOString(),
-    description: `${enhancedTitle} – Aktueller ${category}-Vergleich ${new Date().getFullYear()} auf FinanzFreedom.`,
+    description: seo.description,
+    keywords: seo.keywords,
     category,
+    ...og
   });
 
-  fs.writeFileSync(filePath, frontmatter);
-  console.log(`✅ Neuer Vergleichsartikel generiert: ${filePath}`);
+  writeFileSync(filePath, frontmatter);
+  console.log(`✅ Neuer Vergleichsartikel erstellt: ${filePath}`);
 }
 
-// 🚀 Skript starten
 try {
   generateComparison();
-  console.log("🎯 Vergleich erfolgreich erstellt!");
+  console.log("📊 Vergleich erfolgreich erstellt!");
 } catch (err) {
-  console.error("❌ Fehler beim Generieren:", err);
+  console.error("❌ Fehler beim Vergleichsgenerator:", err);
   process.exit(1);
 }

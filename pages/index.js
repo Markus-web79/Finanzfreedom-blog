@@ -1,92 +1,78 @@
-import Head from "next/head";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import CategoryNav from "../components/CategoryNav";
-import Hero from "../components/Hero";
 
-export default function Home({ articles = [] }) {
+export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Wissen, das dich frei macht</title>
+        <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
         <meta
           name="description"
-          content="Lerne, wie du dein Geld für dich arbeiten lässt – mit Strategien, die wirklich funktionieren."
+          content="FinanzFreedom: Lerne, investiere und erreiche finanzielle Freiheit mit Wissen, Tools und Strategien rund um Geld, ETFs und Versicherungen."
         />
       </Head>
 
-      {/* Neuer Hero-Bereich */}
-      <Hero />
-
-      {/* Kategorie-Navigation */}
-      <CategoryNav />
-
       <main className={styles.main}>
-        {/* Themenwelten */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Themenwelten</h2>
-          <div className={styles.categoryGrid}>
-            <div className={styles.categoryCard}>
-              <h3>Investieren</h3>
-              <p>Alles über ETFs, Aktien und langfristigen Vermögensaufbau.</p>
-              <Link href="/etfs" className={styles.link}>
-                Weiterlesen →
-              </Link>
-            </div>
+        <h1>FinanzFreedom – Dein Weg zur finanziellen Freiheit</h1>
+        <p style={{ color: "#ccc", maxWidth: "800px", textAlign: "center", marginTop: "0.5rem" }}>
+          Praxisnahe Finanzbildung, clevere Strategien und aktuelle Tipps für deinen Vermögensaufbau.
+        </p>
 
-            <div className={styles.categoryCard}>
-              <h3>Versichern</h3>
-              <p>
-                Welche Versicherungen wirklich wichtig sind – einfach erklärt.
-              </p>
-              <Link href="/versicherungen" className={styles.link}>
-                Weiterlesen →
-              </Link>
-            </div>
-
-            <div className={styles.categoryCard}>
-              <h3>Geld vermehren</h3>
-              <p>
-                Strategien, Tipps & Tools für mehr Wachstum deines Geldes.
-              </p>
-              <Link href="/geld-anlegen" className={styles.link}>
-                Weiterlesen →
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Aktuelle Artikel */}
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
-          {articles.length === 0 ? (
-            <p className={styles.emptyText}>
-              Noch keine Artikel verfügbar – neue Inhalte werden bald geladen.
-            </p>
-          ) : (
-            <div className={styles.articlesGrid}>
-              {articles.map((article) => (
-                <div key={article.slug} className={styles.card}>
-                  <h3>{article.title}</h3>
-                  <p>{article.description}</p>
-                  <Link href={`/${article.category}/${article.slug}`}>
-                    Weiterlesen →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-      </main>
-
-      <footer className={styles.footer}>
-        <p>© 2025 FinanzFreedom – Dein Weg zur Freiheit</p>
-        <div className={styles.footerLinks}>
-          <Link href="/impressum">Impressum</Link>
-          <Link href="/datenschutz">Datenschutz</Link>
-          <Link href="/kontakt">Kontakt</Link>
+        <div className={styles.grid}>
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/${post.slug}`} className={styles.card}>
+              <div className={styles.category}>
+                {post.frontmatter.category || "Allgemein"}
+              </div>
+              <h2>{post.frontmatter.title}</h2>
+              <p>{post.frontmatter.description}</p>
+              <span className={styles.readMore}>Weiterlesen →</span>
+            </Link>
+          ))}
         </div>
-      </footer>
+      </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const contentDir = path.join(process.cwd(), "content");
+
+  function getAllMarkdownFiles(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    let files = [];
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        files = files.concat(getAllMarkdownFiles(fullPath));
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        const fileContent = fs.readFileSync(fullPath, "utf-8");
+        const { data } = matter(fileContent);
+
+        files.push({
+          slug: path
+            .relative(contentDir, fullPath)
+            .replace(/\.md$/, "")
+            .split(path.sep)
+            .join("/"),
+          frontmatter: data,
+        });
+      }
+    }
+
+    return files;
+  }
+
+  const posts = getAllMarkdownFiles(contentDir);
+
+  return {
+    props: {
+      posts,
+    },
+  };
 }

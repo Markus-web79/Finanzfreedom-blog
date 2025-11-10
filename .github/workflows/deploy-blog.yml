@@ -21,10 +21,10 @@ jobs:
       - name: 📥 Install dependencies
         run: npm install
 
-      - name: 🧠 Generiere Artikel
-        run: |
-          echo "🧠 Generiere Artikel..."
-          node scripts/generateArticle.js
+- name: 🧠 Generiere Artikel
+  run: |
+    echo "🧠 Generiere Beispielartikel..."
+    node scripts/generateArticle.js "ETF-Sparplan für Einsteiger" etfs
 
       - name: 🏗️ Baue statische Next.js Seite
         run: |

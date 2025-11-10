@@ -1,68 +1,117 @@
 // scripts/generateComparison.js
+// 🔥 Automatische Vergleichsartikel-Erstellung mit SEO-Titel & Kategorien
+
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
-// 🧠 Vergleichskategorien
-const categories = ["etfs", "versicherungen", "tagesgeld", "kredite"];
-const logFile = path.join(process.cwd(), "scripts", "lastCategory.json");
+// 🧠 SEO-Optimierung für Vergleichstitel
+function enhanceComparisonTitle(title, category) {
+  const year = new Date().getFullYear();
+  const modifiers = ["Top", "Beste", "Empfohlene", "Beliebteste", "Smarteste", "Günstigste"];
+  const randomWord = modifiers[Math.floor(Math.random() * modifiers.length)];
 
-// 🔁 Nächste Kategorie ermitteln
-function getNextCategory() {
-  let last = "none";
-  if (fs.existsSync(logFile)) {
-    try {
-      last = JSON.parse(fs.readFileSync(logFile, "utf8")).last || "none";
-    } catch {}
-  }
-  const index = last === "none" ? -1 : categories.indexOf(last);
-  const next = categories[(index + 1) % categories.length];
-  fs.writeFileSync(logFile, JSON.stringify({ last: next }, null, 2));
-  return next;
+  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+
+  return `${randomWord} ${formattedCategory} ${year} – ${title}`;
 }
 
-const category = getNextCategory();
-console.log(`🧠 Generiere neuen Vergleich in Kategorie: ${category}`);
-
-const folder = path.join(process.cwd(), "content", category);
-if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
-
-// 📝 Artikel-Vorlage
-const now = new Date();
-const date = now.toISOString().split("T")[0];
-const titleMap = {
-  etfs: "ETF-Vergleich 2025 – Die besten Sparpläne im Überblick",
-  versicherungen: "Versicherungsvergleich 2025 – Welche lohnt sich wirklich?",
-  tagesgeld: "Tagesgeld-Vergleich 2025 – Wo gibt’s noch Zinsen?",
-  kredite: "Kreditvergleich 2025 – Finde die besten Konditionen",
+// 🏷 Themenbereiche für Vergleiche
+const COMPARISON_TOPICS = {
+  etfs: [
+    "ETF-Broker Vergleich",
+    "ETF-Sparplan Vergleich",
+    "Online Broker Gebühren",
+    "ETF-Plattformen im Überblick"
+  ],
+  versicherungen: [
+    "KFZ-Versicherung Vergleich",
+    "Haftpflichtversicherung im Test",
+    "Hausratversicherung Vergleich",
+    "Private Krankenversicherung Anbieter"
+  ],
+  geld: [
+    "Tagesgeldkonto Vergleich",
+    "Kreditkarten Anbieter 2025",
+    "Beste Girokonten im Überblick",
+    "Zinsvergleich für Sparer"
+  ]
 };
-const slug = titleMap[category].toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-const content = `---
-title: "${titleMap[category]}"
-description: "Aktueller ${category}-Vergleich auf FinanzFreedom – Alle Anbieter im Überblick mit Vorteilen, Nachteilen und Empfehlungen."
-date: "${date}"
-category: "${category}"
----
+// 🔍 Hilfsfunktion: zufälliges Thema & Kategorie bestimmen
+function getRandomCategory() {
+  const keys = Object.keys(COMPARISON_TOPICS);
+  return keys[Math.floor(Math.random() * keys.length)];
+}
 
-## Überblick
-Hier findest du den aktuellen **${category}-Vergleich 2025**.  
-Wir aktualisieren die Daten regelmäßig, damit du immer die besten Konditionen siehst.
+function getRandomTopic(category) {
+  const topics = COMPARISON_TOPICS[category];
+  return topics[Math.floor(Math.random() * topics.length)];
+}
 
-## Anbieter-Vergleich
+// 🧩 Artikelinhalt generieren
+function generateComparisonContent(title, category) {
+  const year = new Date().getFullYear();
 
-| Anbieter | Bewertung | Besonderheit |
-|-----------|------------|--------------|
-| Beispiel 1 | ⭐⭐⭐⭐☆ | Keine Depotgebühren |
-| Beispiel 2 | ⭐⭐⭐⭐⭐ | Bonus für Neukunden |
-| Beispiel 3 | ⭐⭐⭐☆☆ | Solide Basislösung |
+  return `# ${title}
 
-> 💡 Hinweis: Die Daten dienen nur als Beispiel. Echte Vergleiche folgen automatisch über unsere API-Anbindung.
+## Einführung
+In diesem Vergleich zeigen wir dir die ${category} mit den besten Konditionen, Vorteilen und Erfahrungen.  
+Unsere Auswertung hilft dir, ${category === "etfs" ? "den richtigen Broker für deinen ETF-Sparplan" : "den besten Anbieter für deine Bedürfnisse"} zu finden.
+
+## Wichtigste Kriterien
+- Gebührenstruktur und Transparenz  
+- Benutzerfreundlichkeit und mobile Nutzung  
+- Sicherheit und Regulierung  
+- Kundenservice und Bewertungen  
+
+## Unsere Empfehlung (${year})
+Nach Auswertung mehrerer Anbieter empfehlen wir:  
+**${title}** als starken Einstiegspunkt für dein finanzielles Wachstum.
+
+> Tipp: Vergleiche regelmäßig die Konditionen, da sich Gebühren und Zinsen ändern können.
 
 ## Fazit
-Der FinanzFreedom-${category}-Vergleich 2025 zeigt: Ein regelmäßiger Vergleich spart bares Geld – bleib dran und prüfe regelmäßig deine Optionen.
+${title} – Vergleiche regelmäßig und nutze die Tools auf **FinanzFreedom**,  
+um dein Geld effizient und sicher zu verwalten.  
 `;
+}
 
-const filePath = path.join(folder, `${slug}.md`);
-fs.writeFileSync(filePath, content, "utf8");
+// 🧱 Hauptfunktion
+function generateComparison() {
+  const category = getRandomCategory();
+  const topic = getRandomTopic(category);
+  const enhancedTitle = enhanceComparisonTitle(topic, category);
 
-console.log(`✅ Neuer Vergleich erstellt: ${filePath}`);
+  const slug = enhancedTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9äöüß]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+  const folder = path.join(process.cwd(), "content", category);
+  const filePath = path.join(folder, `${slug}.md`);
+
+  if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
+
+  const content = generateComparisonContent(enhancedTitle, category);
+
+  // 🧾 Frontmatter (Metadaten)
+  const frontmatter = matter.stringify(content, {
+    title: enhancedTitle,
+    date: new Date().toISOString(),
+    description: `${enhancedTitle} – Aktueller ${category}-Vergleich ${new Date().getFullYear()} auf FinanzFreedom.`,
+    category,
+  });
+
+  fs.writeFileSync(filePath, frontmatter);
+  console.log(`✅ Neuer Vergleichsartikel generiert: ${filePath}`);
+}
+
+// 🚀 Skript starten
+try {
+  generateComparison();
+  console.log("🎯 Vergleich erfolgreich erstellt!");
+} catch (err) {
+  console.error("❌ Fehler beim Generieren:", err);
+  process.exit(1);
+}

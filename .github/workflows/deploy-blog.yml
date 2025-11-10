@@ -1,4 +1,4 @@
-name: 🚀 Build & Deploy FinanzFreedom
+name: 🚀 Build and Deploy Blog
 
 on:
   push:
@@ -10,26 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: 📦 Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: 🧰 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: 📥 Install dependencies
         run: npm install
 
-      - name: Generate and build
+      - name: 🧠 Generiere Artikel
         run: |
-          echo "📄 Generiere Artikel..."
-          node scripts/generateArticles.js "ETF-Sparplan für Einsteiger"
-          echo "🚀 Baue statische Next.js Seite..."
+          echo "🧠 Generiere Artikel..."
+          node scripts/generateArticle.js
+
+      - name: 🏗️ Baue statische Next.js Seite
+        run: |
+          echo "🏗️ Starte Next.js Build..."
           npx next build
 
-      - name: 🔄 Sitemap generieren
-        run: node scripts/generateSitemap.js
+      - name: 🗺️ Sitemap generieren
+        run: |
+          echo "🗺️ Erstelle Sitemap..."
+          node scripts/generateSitemap.js
 
-      - name: Deploy to Vercel
+      - name: 🚀 Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

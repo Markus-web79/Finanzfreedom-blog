@@ -1,143 +1,92 @@
 // scripts/generateArticle.js
-// 🚀 FinanzFreedom – Automatische Artikelgenerierung v4.0 (SEO + OpenGraph ready)
+// 🧠 FinanzFreedom – Automatische Artikelerstellung (SEO-optimiert & stabil v3.2)
 
 import { writeFileSync, mkdirSync, existsSync } from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-// 🧠 SEO-Titeloptimierung
+// 🏷️ SEO-Titeloptimierung
 function enhanceTitle(title) {
   const year = new Date().getFullYear();
-  const powerwords = ["beste", "clevere", "aktuellste", "smarte", "effektivste", "beliebteste"];
-  const randomWord = powerwords[Math.floor(Math.random() * powerwords.length)];
-
+  const words = ["beste", "clevere", "aktuelle", "beliebteste", "smarte"];
+  const pick = words[Math.floor(Math.random() * words.length)];
   if (title.toLowerCase().includes("vergleich")) {
-    return `${title} – ${randomWord} Anbieter ${year}`;
+    return `${title} – ${pick} Anbieter ${year}`;
   }
-  return `${title} – ${randomWord} Strategien & Tipps ${year}`;
+  return `${title}: ${pick} Strategien & Tipps ${year}`;
 }
 
-// 🔍 SEO-Metadaten-Generator
-function generateSEOMeta(title, category) {
-  const year = new Date().getFullYear();
-  const baseKeywords = [
-    "Finanzwissen", "Finanzbildung", "Geldanlage", "Vermögensaufbau",
-    "ETF", "Sparplan", "Finanzielle Freiheit", "Investment", "Vergleich", "Finanztipps"
-  ];
-  const categoryKeywords = {
-    etfs: ["ETF Broker", "Sparplan", "Indexfonds", "Depot Vergleich"],
-    versicherungen: ["Versicherungsvergleich", "Haftpflicht", "Hausrat", "Krankenversicherung"],
-    geld: ["Zinsen", "Kreditkarte", "Tagesgeld", "Girokonto"]
-  };
-
-  const combinedKeywords = [
-    ...baseKeywords,
-    ...(categoryKeywords[category] || []),
-    ...title.split(" ").filter(word => word.length > 3)
-  ];
-
-  const description = `${title} – Aktuelle Tipps und Strategien für ${category} im Jahr ${year}. `
-    + `Lerne, wie du dein Geld clever anlegst und finanzielle Freiheit erreichst.`;
-
-  const keywords = combinedKeywords
-    .map(k => k.toLowerCase())
-    .filter((v, i, a) => a.indexOf(v) === i)
-    .slice(0, 20)
-    .join(", ");
-
-  return { description, keywords };
-}
-
-// 🌍 OpenGraph-Daten-Generator
-function generateOpenGraph(title, description, category) {
-  const urlSlug = title.toLowerCase().replace(/[^a-z0-9äöüß]+/g, "-").replace(/(^-|-$)/g, "");
-  return {
-    "og:title": title,
-    "og:description": description,
-    "og:type": "article",
-    "og:url": `https://finanzfreedom.de/${category}/${urlSlug}`,
-    "og:image": "https://finanzfreedom.de/og-default.jpg"
-  };
-}
-
-// 🗂 Themenpools
+// 🎯 Themenpool
 const THEMEN = [
   "ETF-Sparplan für Einsteiger",
   "Versicherungen verstehen und sparen",
   "Finanzielle Freiheit erreichen – so geht’s",
   "Inflation verstehen: Warum dein Geld an Wert verliert",
-  "Nebenjob Ideen für passives Einkommen",
+  "Nebenjob-Ideen für mehr passives Einkommen",
   "Sparen für die Zukunft: Kinder, Ausbildung, Rente",
   "Kryptowährungen und ETFs – Chancen & Risiken",
   "Schulden abbauen mit System",
   "Wie du dein Gehalt clever investierst",
-  "Die größten Anfängerfehler beim Investieren vermeiden"
+  "Die größten Anfängerfehler beim Investieren vermeiden",
 ];
 
-// 🎯 Thema & Kategorie bestimmen
-function getRandomTopic() {
-  return THEMEN[Math.floor(Math.random() * THEMEN.length)];
-}
+// 🎯 Kategorie bestimmen
 function getCategory(title) {
   const t = title.toLowerCase();
   if (t.includes("etf") || t.includes("aktie")) return "etfs";
   if (t.includes("versicherung")) return "versicherungen";
-  if (t.includes("geld") || t.includes("sparen") || t.includes("einkommen")) return "geld";
-  return "wissen";
+  if (t.includes("geld") || t.includes("sparen") || t.includes("einkommen")) return "geld-anlegen";
+  if (t.includes("steuer") || t.includes("tipps")) return "wissen";
+  return "allgemein";
 }
 
-// ✍️ Artikelinhalt generieren
+// 📄 Content-Generator
 function generateContent(title) {
   return `# ${title}
 
 ## Warum dieses Thema wichtig ist
-${title} betrifft fast jeden. Mit den richtigen Entscheidungen kannst du langfristig Vermögen aufbauen und Fehler vermeiden.
+${title} betrifft jeden von uns. Mit dem richtigen Wissen kannst du langfristig Vermögen aufbauen und typische Fehler vermeiden.
 
 ## Grundlagen einfach erklärt
-Ein solider Einstieg ist entscheidend. Verstehe zuerst die Basis, bevor du investierst oder Verträge abschließt.
+Ein solider Einstieg ist entscheidend. Verstehe zuerst die Basis, bevor du Geld investierst oder Verträge abschließt.
 
 ## Schritt-für-Schritt Anleitung
 1. Analysiere deine aktuelle Situation.
 2. Lege klare Ziele fest – kurz-, mittel- und langfristig.
-3. Nutze Tools & Vergleiche auf **FinanzFreedom**, um fundierte Entscheidungen zu treffen.
-4. Bleib konsequent – kleine, regelmäßige Schritte führen zum Erfolg.
+3. Nutze Tools und Vergleiche auf **FinanzFreedom**, um fundierte Entscheidungen zu treffen.
+4. Bleib konsequent – kleine, regelmäßige Schritte führen zu Erfolg.
 
 ## Fazit
-${title} ist kein Hexenwerk. Nutze die Ressourcen auf **FinanzFreedom**, um deine finanzielle Zukunft aufzubauen.`;
+${title} ist kein Hexenwerk, sondern Wissen, das jeder erlernen kann. Nutze die Inhalte auf **FinanzFreedom**, um deine Finanzen selbst in die Hand zu nehmen.`;
 }
 
-// 🚀 Hauptfunktion
+// 🏗️ Hauptfunktion
 function generateArticle() {
-  const baseTitle = getRandomTopic();
-  const enhancedTitle = enhanceTitle(baseTitle);
-  const category = getCategory(baseTitle);
-  const seo = generateSEOMeta(enhancedTitle, category);
-  const og = generateOpenGraph(enhancedTitle, seo.description, category);
+  const rawTitle = THEMEN[Math.floor(Math.random() * THEMEN.length)];
+  const title = enhanceTitle(rawTitle);
+  const category = getCategory(title);
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-  const slug = enhancedTitle.toLowerCase().replace(/[^a-z0-9äöüß]+/g, "-").replace(/(^-|-$)/g, "");
   const folder = path.join(process.cwd(), "content", category);
   const filePath = path.join(folder, `${slug}.md`);
-
   if (!existsSync(folder)) mkdirSync(folder, { recursive: true });
 
-  const content = generateContent(enhancedTitle);
+  const content = generateContent(title);
   const frontmatter = matter.stringify(content, {
-    title: enhancedTitle,
+    title,
+    description: `${title} – verständlich erklärt auf FinanzFreedom.`,
     date: new Date().toISOString(),
-    description: seo.description,
-    keywords: seo.keywords,
     category,
-    ...og
   });
 
   writeFileSync(filePath, frontmatter);
-  console.log(`✅ Neuer Artikel generiert: ${filePath}`);
+  console.log(`✅ Neuer Artikel erstellt: ${filePath}`);
 }
 
 try {
   generateArticle();
-  console.log("🧠 Artikel erfolgreich erstellt!");
+  console.log("🧠 Artikel erfolgreich generiert!");
 } catch (err) {
-  console.error("❌ Fehler beim Erstellen des Artikels:", err);
+  console.error("❌ Fehler beim Artikelgenerator:", err);
   process.exit(1);
 }

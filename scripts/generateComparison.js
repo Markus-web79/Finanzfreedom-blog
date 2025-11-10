@@ -1,93 +1,68 @@
 // scripts/generateComparison.js
-// 🚀 FinanzFreedom – Automatische Vergleichstabellenerstellung v1.0
-
-import { writeFileSync, mkdirSync, existsSync } from "fs";
+import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
 
-// Vergleichsthemen-Pool
-const VERGLEICHE = [
-  {
-    titel: "ETF-Broker Vergleich 2025 – Die besten Anbieter im Überblick",
-    kategorie: "etfs",
-    spalten: ["Anbieter", "Depotgebühr", "Orderkosten", "ETF-Angebot", "Besonderheiten"],
-    daten: [
-      ["Scalable Capital", "0 €", "ab 0,99 €", "1.900+", "Günstige Sparpläne"],
-      ["Trade Republic", "0 €", "1 €", "1.500+", "App-basiert, einfach"],
-      ["Comdirect", "0 €", "3,90 €", "1.200+", "Hohe Sicherheit, klassische Bank"],
-    ],
-  },
-  {
-    titel: "Kreditkarten Vergleich 2025 – Die besten kostenlosen Karten",
-    kategorie: "vergleiche",
-    spalten: ["Karte", "Jahresgebühr", "Auslandseinsatz", "Vorteile", "Bewertung"],
-    daten: [
-      ["N26 Mastercard", "0 €", "1,7 %", "Moderne App, Echtzeitkontrolle", "⭐⭐⭐⭐⭐"],
-      ["DKB Visa", "0 €", "0 % (ab Aktivkunde)", "Gute Konditionen, weltweit nutzbar", "⭐⭐⭐⭐"],
-      ["Barclays Visa", "0 €", "1,99 %", "Ratenzahlung möglich", "⭐⭐⭐"],
-    ],
-  },
-  {
-    titel: "Tagesgeld Vergleich 2025 – Zinsen im Überblick",
-    kategorie: "geld-anlegen",
-    spalten: ["Bank", "Zinssatz", "Einlagensicherung", "Zinsgarantie", "Besonderheiten"],
-    daten: [
-      ["ING", "3,6 %", "100.000 €", "6 Monate", "Bekannte Direktbank"],
-      ["Renault Bank", "3,9 %", "100.000 €", "3 Monate", "Hohe Zinsen, schnelle Eröffnung"],
-      ["C24 Bank", "4,0 %", "100.000 €", "4 Monate", "FinTech mit Bonusaktionen"],
-    ],
-  },
-];
+// 🧠 Vergleichskategorien
+const categories = ["etfs", "versicherungen", "tagesgeld", "kredite"];
+const logFile = path.join(process.cwd(), "scripts", "lastCategory.json");
 
-// 🔹 Funktion zum Erstellen einer Markdown-Tabelle
-function createMarkdownTable(spalten, daten) {
-  const header = `| ${spalten.join(" | ")} |`;
-  const separator = `| ${spalten.map(() => "---").join(" | ")} |`;
-  const rows = daten.map(row => `| ${row.join(" | ")} |`).join("\n");
-  return `${header}\n${separator}\n${rows}`;
+// 🔁 Nächste Kategorie ermitteln
+function getNextCategory() {
+  let last = "none";
+  if (fs.existsSync(logFile)) {
+    try {
+      last = JSON.parse(fs.readFileSync(logFile, "utf8")).last || "none";
+    } catch {}
+  }
+  const index = last === "none" ? -1 : categories.indexOf(last);
+  const next = categories[(index + 1) % categories.length];
+  fs.writeFileSync(logFile, JSON.stringify({ last: next }, null, 2));
+  return next;
 }
 
-// 🔹 Vergleich zufällig wählen
-function getRandomComparison() {
-  return VERGLEICHE[Math.floor(Math.random() * VERGLEICHE.length)];
-}
+const category = getNextCategory();
+console.log(`🧠 Generiere neuen Vergleich in Kategorie: ${category}`);
 
-// 🔹 Hauptfunktion
-function generateComparison() {
-  const comp = getRandomComparison();
-  const slug = comp.titel.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-  const folder = path.join(process.cwd(), "content", comp.kategorie);
-  const filePath = path.join(folder, `${slug}.md`);
+const folder = path.join(process.cwd(), "content", category);
+if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
 
-  if (!existsSync(folder)) mkdirSync(folder, { recursive: true });
+// 📝 Artikel-Vorlage
+const now = new Date();
+const date = now.toISOString().split("T")[0];
+const titleMap = {
+  etfs: "ETF-Vergleich 2025 – Die besten Sparpläne im Überblick",
+  versicherungen: "Versicherungsvergleich 2025 – Welche lohnt sich wirklich?",
+  tagesgeld: "Tagesgeld-Vergleich 2025 – Wo gibt’s noch Zinsen?",
+  kredite: "Kreditvergleich 2025 – Finde die besten Konditionen",
+};
+const slug = titleMap[category].toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-  const markdownTable = createMarkdownTable(comp.spalten, comp.daten);
-  const content = `
-# ${comp.titel}
+const content = `---
+title: "${titleMap[category]}"
+description: "Aktueller ${category}-Vergleich auf FinanzFreedom – Alle Anbieter im Überblick mit Vorteilen, Nachteilen und Empfehlungen."
+date: "${date}"
+category: "${category}"
+---
 
-${markdownTable}
+## Überblick
+Hier findest du den aktuellen **${category}-Vergleich 2025**.  
+Wir aktualisieren die Daten regelmäßig, damit du immer die besten Konditionen siehst.
+
+## Anbieter-Vergleich
+
+| Anbieter | Bewertung | Besonderheit |
+|-----------|------------|--------------|
+| Beispiel 1 | ⭐⭐⭐⭐☆ | Keine Depotgebühren |
+| Beispiel 2 | ⭐⭐⭐⭐⭐ | Bonus für Neukunden |
+| Beispiel 3 | ⭐⭐⭐☆☆ | Solide Basislösung |
+
+> 💡 Hinweis: Die Daten dienen nur als Beispiel. Echte Vergleiche folgen automatisch über unsere API-Anbindung.
 
 ## Fazit
-Dieser Vergleich wurde automatisch erstellt und wird regelmäßig aktualisiert.  
-Auf **FinanzFreedom** findest du immer die neuesten Anbieter, Zinsen und Konditionen.
+Der FinanzFreedom-${category}-Vergleich 2025 zeigt: Ein regelmäßiger Vergleich spart bares Geld – bleib dran und prüfe regelmäßig deine Optionen.
 `;
 
-  const frontmatter = matter.stringify(content, {
-    title: comp.titel,
-    date: new Date().toISOString(),
-    description: `${comp.titel} – automatisch aktualisierter Vergleich auf FinanzFreedom.`,
-    category: comp.kategorie,
-  });
+const filePath = path.join(folder, `${slug}.md`);
+fs.writeFileSync(filePath, content, "utf8");
 
-  writeFileSync(filePath, frontmatter);
-  console.log(`📊 Neuer Vergleich erstellt (${comp.kategorie}): ${filePath}`);
-}
-
-// 🔹 Skript starten
-try {
-  generateComparison();
-  console.log("✅ Vergleich erfolgreich erstellt!");
-} catch (err) {
-  console.error("❌ Fehler beim Erstellen des Vergleichs:", err.message);
-  process.exit(0);
-}
+console.log(`✅ Neuer Vergleich erstellt: ${filePath}`);

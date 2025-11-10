@@ -1,95 +1,92 @@
-/* --- FinanzFreedom Portal-Stil --- */
-
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-  color: white;
+.hero {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #040404, #0c0f0f);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  margin-top: 2rem;
-}
-
-/* Karten */
-.card {
-  background: linear-gradient(145deg, #101010, #1a1a1a);
-  border: 1px solid rgba(0, 194, 179, 0.25);
-  border-radius: 14px;
-  box-shadow: 0 0 15px rgba(0, 194, 179, 0.15);
-  padding: 1.6rem;
-  transition: all 0.3s ease;
+.heroContainer {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  cursor: pointer;
-  text-decoration: none;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: #00c2b3;
-  box-shadow: 0 0 25px rgba(0, 194, 179, 0.35);
+.heroText {
+  flex: 1;
+  min-width: 320px;
 }
 
-/* Kategorie-Label */
-.category {
-  background-color: rgba(0, 194, 179, 0.15);
-  color: #00c2b3;
+.highlight {
+  color: #00e0b8;
+}
+
+.dashboard {
+  flex: 1;
+  min-width: 340px;
+  background: rgba(10, 20, 20, 0.6);
+  border: 1px solid rgba(0, 255, 180, 0.25);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 30px rgba(0, 255, 180, 0.05);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease;
+}
+
+.dashboard:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard h3 {
+  margin-bottom: 12px;
+  color: #00e0b8;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.note {
   font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 6px 10px;
-  border-radius: 8px;
-  display: inline-block;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.6px;
+  opacity: 0.7;
+  margin-top: 8px;
 }
 
-/* Titel */
-.card h2 {
-  font-size: 1.3rem;
-  color: #fff;
-  margin: 0.5rem 0;
-  line-height: 1.4;
+.topics {
+  padding: 60px 5%;
+  background: #050505;
+  text-align: center;
 }
 
-/* Beschreibung */
-.card p {
-  font-size: 0.95rem;
-  color: #cccccc;
-  flex-grow: 1;
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
-/* Weiterlesen-Link */
-.readMore {
-  display: inline-block;
-  color: #00c2b3;
-  font-weight: 500;
-  margin-top: 1rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
+.topicCard {
+  background: rgba(15, 25, 25, 0.6);
+  border: 1px solid rgba(0, 255, 180, 0.15);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.readMore:hover {
-  color: #00e5cf;
-  text-shadow: 0 0 8px rgba(0, 229, 207, 0.4);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .card {
-    padding: 1.2rem;
-  }
-
-  .card h2 {
-    font-size: 1.1rem;
-  }
+.topicCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 255, 180, 0.1);
 }

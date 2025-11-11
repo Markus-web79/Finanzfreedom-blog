@@ -1,92 +1,89 @@
-// scripts/generateArticle.js
-// 🧠 FinanzFreedom – Automatische Artikelerstellung (SEO-optimiert & stabil v3.2)
+// ===========================================
+//  FinanzFreedom - Automatische Artikel-Erstellung v3.5
+//  SEO-optimiert, mit Kategorien & sauberer Grammatik
+// ===========================================
 
-import { writeFileSync, mkdirSync, existsSync } from "fs";
+import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-// 🏷️ SEO-Titeloptimierung
+// === Hilfsfunktionen ===
+
+// 1️⃣ SEO-Titelverbesserung
 function enhanceTitle(title) {
   const year = new Date().getFullYear();
-  const words = ["beste", "clevere", "aktuelle", "beliebteste", "smarte"];
-  const pick = words[Math.floor(Math.random() * words.length)];
+  const powerWords = ["beste", "smarte", "clevere", "aktuelle", "effektive"];
+  const randomWord = powerWords[Math.floor(Math.random() * powerWords.length)];
+
   if (title.toLowerCase().includes("vergleich")) {
-    return `${title} – ${pick} Anbieter ${year}`;
+    return `${title} – ${randomWord} Anbieter ${year}`;
+  } else {
+    return `${title}: ${randomWord} Strategien & Tipps ${year}`;
   }
-  return `${title}: ${pick} Strategien & Tipps ${year}`;
 }
 
-// 🎯 Themenpool
+// 2️⃣ Themenliste mit automatischer Kategorie-Erkennung
 const THEMEN = [
-  "ETF-Sparplan für Einsteiger",
-  "Versicherungen verstehen und sparen",
-  "Finanzielle Freiheit erreichen – so geht’s",
-  "Inflation verstehen: Warum dein Geld an Wert verliert",
-  "Nebenjob-Ideen für mehr passives Einkommen",
-  "Sparen für die Zukunft: Kinder, Ausbildung, Rente",
-  "Kryptowährungen und ETFs – Chancen & Risiken",
-  "Schulden abbauen mit System",
-  "Wie du dein Gehalt clever investierst",
-  "Die größten Anfängerfehler beim Investieren vermeiden",
+  { title: "ETF-Sparplan für Einsteiger", category: "etfs" },
+  { title: "Versicherungen verstehen und sparen", category: "versicherungen" },
+  { title: "Finanzielle Freiheit erreichen – so geht’s", category: "finanzielle-freiheit" },
+  { title: "Inflation verstehen: Wie sie dein Geld beeinflusst", category: "geld" },
+  { title: "Nebenjob-Ideen für mehr passives Einkommen", category: "geld-vermehren" },
+  { title: "Sparen für die Zukunft: Tipps für 2025", category: "sparen" },
+  { title: "Kryptowährungen und ETFs – Chancen & Risiken", category: "krypto" },
+  { title: "Schulden abbauen mit System", category: "schulden" },
+  { title: "Gehalt clever investieren", category: "investieren" },
+  { title: "Die größten Anfängerfehler beim Investieren vermeiden", category: "investieren" },
 ];
 
-// 🎯 Kategorie bestimmen
-function getCategory(title) {
-  const t = title.toLowerCase();
-  if (t.includes("etf") || t.includes("aktie")) return "etfs";
-  if (t.includes("versicherung")) return "versicherungen";
-  if (t.includes("geld") || t.includes("sparen") || t.includes("einkommen")) return "geld-anlegen";
-  if (t.includes("steuer") || t.includes("tipps")) return "wissen";
-  return "allgemein";
-}
-
-// 📄 Content-Generator
+// 3️⃣ Textgenerator (automatisch strukturierte Artikel)
 function generateContent(title) {
-  return `# ${title}
+  const cleanTitle = title.replace("–", "-");
+
+  return `---
+title: "${cleanTitle}"
+description: "${cleanTitle} – verständlich erklärt auf FinanzFreedom. Lerne Schritt für Schritt, wie du dein Geld clever anlegst und vermeidest, typische Anfängerfehler zu machen."
+date: "${new Date().toISOString()}"
+---
 
 ## Warum dieses Thema wichtig ist
-${title} betrifft jeden von uns. Mit dem richtigen Wissen kannst du langfristig Vermögen aufbauen und typische Fehler vermeiden.
+
+${title} betrifft fast jeden. Mit den richtigen Entscheidungen kannst du langfristig Vermögen aufbauen, Fehler vermeiden und dein Geld besser strukturieren. 
 
 ## Grundlagen einfach erklärt
-Ein solider Einstieg ist entscheidend. Verstehe zuerst die Basis, bevor du Geld investierst oder Verträge abschließt.
+
+Ein klarer Überblick über die wichtigsten Grundlagen hilft, bessere Entscheidungen zu treffen. Auf **FinanzFreedom** findest du einfach erklärte Inhalte, praxisnahe Beispiele und Tools, um deinen finanziellen Weg erfolgreich zu gestalten.
 
 ## Schritt-für-Schritt Anleitung
-1. Analysiere deine aktuelle Situation.
-2. Lege klare Ziele fest – kurz-, mittel- und langfristig.
-3. Nutze Tools und Vergleiche auf **FinanzFreedom**, um fundierte Entscheidungen zu treffen.
-4. Bleib konsequent – kleine, regelmäßige Schritte führen zu Erfolg.
+
+1. Analysiere deine aktuelle Situation.  
+2. Setze klare Ziele – kurzfristig und langfristig.  
+3. Nutze Tools und Vergleiche auf FinanzFreedom, um fundierte Entscheidungen zu treffen.  
+4. Bleib konsequent – kleine, regelmäßige Schritte führen zu großem Erfolg.
 
 ## Fazit
-${title} ist kein Hexenwerk, sondern Wissen, das jeder erlernen kann. Nutze die Inhalte auf **FinanzFreedom**, um deine Finanzen selbst in die Hand zu nehmen.`;
+
+${title} ist kein Hexenwerk, sondern Wissen, das jeder erlernen kann.  
+Nutze die Inhalte auf **FinanzFreedom**, um finanzielle Freiheit und Sicherheit aufzubauen – Schritt für Schritt und mit echtem Mehrwert.`;
 }
 
-// 🏗️ Hauptfunktion
-function generateArticle() {
-  const rawTitle = THEMEN[Math.floor(Math.random() * THEMEN.length)];
-  const title = enhanceTitle(rawTitle);
-  const category = getCategory(title);
-  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+// === Hauptfunktion: Artikel generieren ===
+export default function generateArticle() {
+  const randomTopic = THEMEN[Math.floor(Math.random() * THEMEN.length)];
+  const enhancedTitle = enhanceTitle(randomTopic.title);
+  const category = randomTopic.category;
+  const slug = enhancedTitle
+    .toLowerCase()
+    .replace(/[^\wäöüß\- ]+/g, "")
+    .replace(/\s+/g, "-");
 
   const folder = path.join(process.cwd(), "content", category);
   const filePath = path.join(folder, `${slug}.md`);
-  if (!existsSync(folder)) mkdirSync(folder, { recursive: true });
 
-  const content = generateContent(title);
-  const frontmatter = matter.stringify(content, {
-    title,
-    description: `${title} – verständlich erklärt auf FinanzFreedom.`,
-    date: new Date().toISOString(),
-    category,
-  });
+  if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
 
-  writeFileSync(filePath, frontmatter);
+  const content = generateContent(enhancedTitle);
+  fs.writeFileSync(filePath, content, "utf8");
+
   console.log(`✅ Neuer Artikel erstellt: ${filePath}`);
-}
-
-try {
-  generateArticle();
-  console.log("🧠 Artikel erfolgreich generiert!");
-} catch (err) {
-  console.error("❌ Fehler beim Artikelgenerator:", err);
-  process.exit(1);
 }

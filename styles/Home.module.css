@@ -1,129 +1,100 @@
-/* ============================================
-   FINANZFREEDOM – Home Styles (komplett)
-   Modern, mobil-optimiert & sofort sichtbar
-============================================ */
+/* ================================
+   FinanzFreedom Home Layout Styles
+   ================================ */
 
-/* --- GLOBAL FIX: Weißer Screen vermeiden --- */
-
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  width: 100%;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  scroll-behavior: smooth;
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-/* --- HERO SECTION --- */
+/* Hero-Bereich */
 .hero {
-  background-color: #0f0f0f;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 194, 179, 0.08),
-    rgba(0, 194, 179, 0.02)
-  );
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  padding: 60px 20px;
-  text-align: center;
-  transition: all 0.3s ease;
+  padding: 80px 5%;
+  background: linear-gradient(180deg, #0b0b0b 0%, #0f0f0f 100%);
+  color: #ffffff;
 }
 
+/* Hero-Text */
 .heroText {
-  max-width: 700px;
-  margin-bottom: 40px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
 }
 
 .subheadline {
-  color: #00c2b3;
-  letter-spacing: 2px;
-  font-size: 0.95rem;
-  text-transform: uppercase;
+  color: #00e5cf;
+  font-weight: 600;
+  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
-.hero h1 {
+.heroText h1 {
   font-size: 2.8rem;
-  margin: 0;
   font-weight: 700;
+  margin-bottom: 15px;
   line-height: 1.2;
 }
 
 .highlight {
-  color: #00c2b3;
+  color: #00e5cf;
 }
 
 .description {
-  font-size: 1.15rem;
-  color: #cccccc;
+  font-size: 1.1rem;
   line-height: 1.6;
-  margin: 20px 0 35px;
+  color: #cccccc;
+  margin-bottom: 25px;
 }
 
-/* --- BUTTONS --- */
+/* Buttons */
 .buttons {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.primaryBtn,
-.secondaryBtn {
-  text-decoration: none;
-  padding: 12px 26px;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  gap: 15px;
 }
 
 .primaryBtn {
-  background-color: #00c2b3;
+  background-color: #00e5cf;
   color: #0f0f0f;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .primaryBtn:hover {
-  background-color: #00e5cf;
-  transform: scale(1.05);
+  background-color: #00c3b3;
 }
 
 .secondaryBtn {
-  border: 2px solid #00c2b3;
-  color: #00c2b3;
+  border: 2px solid #00e5cf;
+  color: #00e5cf;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .secondaryBtn:hover {
-  background-color: #00c2b3;
+  background-color: #00e5cf;
   color: #0f0f0f;
-  transform: scale(1.05);
 }
 
-/* --- DASHBOARD --- */
+/* Dashboard-Bereich */
 .dashboard {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 194, 179, 0.2);
-  border-radius: 10px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 480px;
+  background: rgba(0, 229, 207, 0.05);
+  border: 1px solid rgba(0, 229, 207, 0.15);
+  border-radius: 12px;
   padding: 25px;
-  width: 100%;
-  max-width: 380px;
+  box-shadow: 0 0 20px rgba(0, 229, 207, 0.1);
   margin-top: 40px;
-  text-align: left;
-  box-shadow: 0 0 15px rgba(0, 194, 179, 0.15);
 }
 
 .dashboard h3 {
-  text-align: center;
-  color: #00c2b3;
+  color: #00e5cf;
   margin-bottom: 15px;
   font-size: 1.2rem;
 }
@@ -132,137 +103,95 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-.stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 10px 15px;
-  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 .stat p {
-  color: #bbbbbb;
-  font-size: 0.9rem;
+  color: #aaaaaa;
   margin: 0;
 }
 
 .stat h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #ffffff;
+  margin: 5px 0;
+  font-size: 1.5rem;
 }
 
 .note {
-  margin-top: 10px;
+  font-size: 0.9rem;
   color: #888;
-  font-size: 0.8rem;
-  text-align: center;
+  margin-top: 10px;
 }
 
-/* --- THEMENWELTEN --- */
+/* Themenwelten */
 .topics {
-  padding: 80px 20px;
+  background: #0c0c0c;
+  padding: 60px 5%;
   text-align: center;
-  background-color: #0f0f0f;
 }
 
 .topics h2 {
+  color: #ffffff;
   font-size: 2rem;
-  color: #00c2b3;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .topicGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-items: center;
 }
 
 .topicCard {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 194, 179, 0.2);
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 25px;
+  border-radius: 12px;
+  text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .topicCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(0, 194, 179, 0.25);
+  box-shadow: 0 0 20px rgba(0, 229, 207, 0.15);
 }
 
 .topicCard h3 {
-  color: #ffffff;
+  color: #00e5cf;
   margin-bottom: 10px;
 }
 
 .topicCard p {
   color: #cccccc;
-  margin-bottom: 15px;
   font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .topicCard a {
-  color: #00c2b3;
-  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  color: #00e5cf;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .topicCard a:hover {
-  color: #00e5cf;
+  text-decoration: underline;
 }
 
-/* --- RESPONSIVE --- */
-/* --- RESPONSIVE (Optimiert für Smartphones) --- */
-@media (max-width: 768px) {
+/* Responsives Design */
+@media (max-width: 900px) {
   .hero {
-    padding: 80px 20px;
-    min-height: auto;
-  }
-
-  .hero h1 {
-    font-size: 1.9rem;
-    line-height: 1.3;
-  }
-
-  .description {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-  }
-
-  .buttons {
     flex-direction: column;
-    gap: 15px;
+    text-align: center;
   }
 
   .dashboard {
-    max-width: 95%;
-    margin: 40px auto 0;
-    padding: 20px;
+    margin-top: 30px;
+    width: 100%;
   }
 
-  .stat h2 {
-    font-size: 1rem;
-  }
-
-  .topics {
-    padding: 70px 20px;
-  }
-
-  .topicCard {
-    padding: 20px;
-  }
-
-  .topicCard h3 {
-    font-size: 1.1rem;
-  }
-
-  .topicCard p {
-    font-size: 0.9rem;
+  .buttons {
+    justify-content: center;
   }
 }

@@ -1,8 +1,3 @@
-// ============================================
-//  FinanzFreedom - Vergleichsübersicht
-//  Zeigt automatisch alle Vergleichsartikel
-// ============================================
-
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -16,16 +11,16 @@ export default function Vergleiche({ articles }) {
         <title>FinanzFreedom Vergleiche 2025 – Die besten Anbieter im Überblick</title>
         <meta
           name="description"
-          content="Finde die besten Finanzprodukte 2025: ETF-Broker, Sparpläne, Tagesgeld & mehr. Aktuelle Vergleiche, übersichtlich erklärt."
+          content="Finde die besten Finanzprodukte 2025 – ETF-Broker, Sparpläne, Versicherungen u.v.m. Alle Tests und Vergleiche auf einen Blick."
         />
       </Head>
 
-      <main style={{ maxWidth: "900px", margin: "3rem auto", padding: "0 1.5rem", color: "white" }}>
-        <h1 style={{ color: "#00e5cf", textAlign: "center" }}>
-          💡 FinanzFreedom Vergleiche 2025
+      <main style={{ maxWidth: "1000px", margin: "3rem auto", padding: "0 1.5rem", color: "white" }}>
+        <h1 style={{ color: "#00e5cf", textAlign: "center", marginBottom: "1rem" }}>
+          🔍 FinanzFreedom Vergleiche 2025
         </h1>
-        <p style={{ textAlign: "center", marginBottom: "2rem", color: "#ccc" }}>
-          Aktuelle Anbieter- und Produktvergleiche rund um ETFs, Sparpläne, Versicherungen und mehr.
+        <p style={{ textAlign: "center", color: "#ccc", marginBottom: "2rem" }}>
+          Hier findest du aktuelle Vergleiche zu Brokern, ETFs, Tagesgeld und weiteren Finanzthemen – transparent und unabhängig.
         </p>
 
         {articles.length === 0 ? (
@@ -35,7 +30,7 @@ export default function Vergleiche({ articles }) {
             style={{
               display: "grid",
               gap: "1.5rem",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             }}
           >
             {articles.map((a) => (
@@ -46,7 +41,7 @@ export default function Vergleiche({ articles }) {
                   border: "1px solid rgba(0,229,207,0.2)",
                   borderRadius: "10px",
                   padding: "1.5rem",
-                  transition: "transform 0.2s ease",
+                  transition: "transform 0.2s ease, border-color 0.2s",
                 }}
               >
                 <Link href={`/vergleiche/${a.slug}`} style={{ textDecoration: "none" }}>

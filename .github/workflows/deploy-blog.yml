@@ -20,7 +20,9 @@ jobs:
 
       - name: 📥 Install Dependencies
         run: npm install
-
+- name: 🧩 Install missing markdown renderer
+  run: npm install react-markdown
+  
       - name: 🔍 SEO Qualitätsprüfung
         run: |
           echo "🔍 Prüfe Artikel auf SEO-Qualität..."

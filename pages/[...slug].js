@@ -1,150 +1,134 @@
+// ✅ FinanzFreedom universelle Slug-Seite (korrigiert & optimiert)
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
+import ReactMarkdown from "react-markdown";
 import Link from "next/link";
-import { marked } from "marked";
 
-export default function PostPage({ frontmatter, html, category }) {
+export default function DynamicPage({ frontmatter, content }) {
   if (!frontmatter) {
     return (
-      <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
-        <h1>404 – Artikel nicht gefunden</h1>
-        <Link href="/">Zurück zur Startseite</Link>
-      </div>
+      <main style={{ textAlign: "center", marginTop: "80px" }}>
+        <h1>Seite nicht gefunden</h1>
+        <Link href="/">← Zur Startseite</Link>
+      </main>
     );
   }
 
   return (
     <>
       <Head>
-        <title>{frontmatter.title} | FinanzFreedom</title>
+        <title>{frontmatter.title || "FinanzFreedom Artikel"}</title>
         <meta
           name="description"
-          content={
-            frontmatter.description ||
-            "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
-          }
+          content={frontmatter.description || "FinanzFreedom Blogartikel"}
         />
+        <link rel="canonical" href={`https://finanzfreedom.de/${frontmatter.slug}`} />
+        <meta name="robots" content="index, follow" />
       </Head>
 
-      <main style={{ maxWidth: "850px", margin: "2rem auto", color: "white" }}>
-        {/* Breadcrumb */}
-        <nav style={{ marginBottom: "1.5rem", fontSize: "0.9rem", color: "#aaa" }}>
-          <Link href="/" style={{ color: "#00c2b3", textDecoration: "none" }}>
-            Startseite
-          </Link>
-          {category && (
-            <>
-              {" "}›{" "}
-              <Link
-                href={`/${category}`}
-                style={{ color: "#00c2b3", textDecoration: "none" }}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </Link>
-            </>
-          )}
-        </nav>
+      <main className="article-container">
+        <article>
+          <h1>{frontmatter.title}</h1>
+          <p className="meta">
+            {frontmatter.date && (
+              <span>📅 {new Date(frontmatter.date).toLocaleDateString("de-DE")}</span>
+            )}
+            {frontmatter.category && (
+              <span> | 🏷️ {frontmatter.category}</span>
+            )}
+          </p>
+          <ReactMarkdown>{content}</ReactMarkdown>
+        </article>
 
-        <h1 style={{ marginBottom: "1rem" }}>{frontmatter.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: html }} />
-
-        {/* Zurück-Button */}
-        <div style={{ marginTop: "2.5rem" }}>
-          {category ? (
-            <Link
-              href={`/${category}`}
-              style={{
-                display: "inline-block",
-                color: "#00c2b3",
-                textDecoration: "none",
-                fontWeight: "500",
-              }}
-            >
-              ← Zurück zur Kategorie {category.charAt(0).toUpperCase() + category.slice(1)}
-            </Link>
-          ) : (
-            <Link
-              href="/"
-              style={{
-                display: "inline-block",
-                color: "#00c2b3",
-                textDecoration: "none",
-                fontWeight: "500",
-              }}
-            >
-              ← Zurück zur Startseite
-            </Link>
-          )}
-        </div>
+        <Link href="/" className="back-link">
+          ← Zurück zur Startseite
+        </Link>
       </main>
+
+      <style jsx>{`
+        .article-container {
+          max-width: 900px;
+          margin: 60px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        article h1 {
+          font-size: 2rem;
+          color: #00e5cf;
+        }
+        .meta {
+          font-size: 0.9rem;
+          color: #777;
+          margin-bottom: 20px;
+        }
+        .back-link {
+          display: inline-block;
+          margin-top: 30px;
+          color: #00e5cf;
+        }
+      `}</style>
     </>
   );
 }
 
-// 🔹 Hilfsfunktion: Alle Markdown-Dateien rekursiv finden
-function getAllMarkdownFiles(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  let files = [];
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      files = files.concat(getAllMarkdownFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      files.push(fullPath);
-    }
-  }
-  return files;
-}
-
+// =============================
+// 🔧 getStaticPaths (automatisch, aber mit Filterung)
+// =============================
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = getAllMarkdownFiles(contentDir);
 
-  const paths = files.map((file) => {
-    const relPath = path.relative(contentDir, file).replace(/\.md$/, "");
-    const slugArray = relPath.split(path.sep);
-    return { params: { slug: slugArray } };
+  // Alle Unterordner durchsuchen
+  const categories = fs.readdirSync(contentDir);
+  const paths = [];
+
+  categories.forEach((folder) => {
+    const fullPath = path.join(contentDir, folder);
+    if (fs.statSync(fullPath).isDirectory() && folder !== "vergleiche") {
+      // 🔥 Vergleiche ausschließen, um Konflikte zu vermeiden
+      const files = fs.readdirSync(fullPath);
+      files.forEach((filename) => {
+        if (filename.endsWith(".md")) {
+          paths.push({
+            params: { slug: [filename.replace(".md", "")] },
+          });
+        }
+      });
+    }
   });
 
-  // 🔹 Feste Seiten ignorieren, um Konflikte zu vermeiden
-const filteredPaths = paths.filter(
-  (p) =>
-    !["datenschutz", "impressum", "kontakt"].some((fixed) =>
-      p.params.slug.includes(fixed)
-    )
-);
-
-return { paths: filteredPaths, fallback: false };
+  return { paths, fallback: false };
 }
 
+// =============================
+// 🔧 getStaticProps (Inhalt laden)
+// =============================
 export async function getStaticProps({ params }) {
-  try {
-    const slugPath = Array.isArray(params.slug)
-      ? params.slug.join("/")
-      : params.slug;
+  const slug = params.slug[0]; // Array auflösen
+  const categories = ["etfs", "geld-anlegen", "geld-vermehren", "versicherungen", "tools"];
+  let filePath = null;
 
-    const contentDir = path.join(process.cwd(), "content");
-    const fullPath = path.join(contentDir, `${slugPath}.md`);
-
-    if (!fs.existsSync(fullPath)) {
-      console.error("❌ Datei nicht gefunden:", fullPath);
-      return { notFound: true };
+  // Datei suchen
+  for (const cat of categories) {
+    const possiblePath = path.join(process.cwd(), "content", cat, `${slug}.md`);
+    if (fs.existsSync(possiblePath)) {
+      filePath = possiblePath;
+      break;
     }
-
-    const raw = fs.readFileSync(fullPath, "utf-8");
-    const { data: frontmatter, content } = matter(raw);
-    const html = marked(content);
-
-    // Kategorie aus Pfad extrahieren
-    const parts = slugPath.split("/");
-    const category = parts.length > 1 ? parts[0] : null;
-
-    return { props: { frontmatter, html, category } };
-  } catch (err) {
-    console.error("❌ Fehler beim Lesen:", err);
-    return { notFound: true };
   }
+
+  if (!filePath) return { notFound: true };
+
+  const fileContent = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(fileContent);
+
+  return {
+    props: {
+      frontmatter: { ...data, slug },
+      content,
+    },
+  };
 }

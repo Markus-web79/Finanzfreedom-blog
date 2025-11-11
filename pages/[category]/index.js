@@ -1,4 +1,4 @@
-// ✅ FinanzFreedom Kategorie-Seite (mit Ausschluss von "vergleiche")
+// ✅ FinanzFreedom Kategorie-Seite (finale, fehlerfreie Version)
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -89,8 +89,12 @@ export default function CategoryPage({ category, posts }) {
 export async function getStaticPaths() {
   const categories = fs
     .readdirSync(path.join(process.cwd(), "content"))
-    // ❌ "vergleiche" ausschließen, um Build-Konflikte zu vermeiden
-    .filter((cat) => cat !== "vergleiche");
+    // ✅ Nur Ordner nehmen, keine .md-Dateien + "vergleiche" ausschließen
+    .filter((cat) => {
+      const fullPath = path.join(process.cwd(), "content", cat);
+      const isDirectory = fs.lstatSync(fullPath).isDirectory();
+      return isDirectory && cat !== "vergleiche";
+    });
 
   const paths = categories.map((cat) => ({
     params: { category: cat },

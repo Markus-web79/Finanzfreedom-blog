@@ -1,112 +1,148 @@
-// ✅ FinanzFreedom – Vergleichs-Übersicht 2025
+// ✅ FinanzFreedom – Vergleichsübersicht (automatisch, SEO-optimiert)
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Vergleiche({ comparisons }) {
+export default function VergleicheOverview({ comparisons }) {
   return (
     <>
       <Head>
-        <title>FinanzFreedom Vergleiche 2025 – ETFs, Versicherungen, Kreditkarten & mehr</title>
+        <title>FinanzFreedom Vergleiche 2025</title>
         <meta
           name="description"
-          content="Aktuelle FinanzFreedom Vergleiche 2025 – Finde die besten Anbieter für ETFs, Versicherungen, Sparpläne, Kreditkarten und mehr. Neutral, transparent und immer aktuell."
+          content="Aktuelle Anbieter- und Produktvergleiche rund um ETFs, Sparpläne, Versicherungen, Konten, Kredite und mehr – strukturiert, neutral und transparent von FinanzFreedom."
         />
-        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://finanzfreedom.de/vergleiche" />
+        <meta name="robots" content="index, follow" />
       </Head>
 
-      <main className="content-container">
+      <main className="compare-wrapper">
         <h1>💡 FinanzFreedom Vergleiche 2025</h1>
-        <p className="subtitle">
-          Aktuelle Anbieter- und Produktvergleiche rund um ETFs, Sparpläne,
-          Versicherungen und mehr.
+        <p className="intro">
+          Entdecke aktuelle Vergleiche zu <strong>ETFs</strong>,{" "}
+          <strong>Versicherungen</strong>, <strong>Krediten</strong>,{" "}
+          <strong>Sparplänen</strong> und mehr. Finde schnell die besten
+          Anbieter, Tools und Konditionen für deinen Finanzweg.
         </p>
 
         {comparisons.length === 0 ? (
-          <p style={{ opacity: 0.6 }}>Es sind noch keine Vergleichsartikel vorhanden.</p>
+          <p className="no-data">
+            Es sind noch keine Vergleichsartikel vorhanden.
+          </p>
         ) : (
-          <div className="comparison-grid">
-            {comparisons.map((cmp) => (
-              <div key={cmp.slug} className="comparison-card">
-                <h2>
-                  <Link href={`/vergleiche/${cmp.slug}`}>{cmp.title}</Link>
-                </h2>
-                <p>{cmp.description}</p>
-                <Link href={`/vergleiche/${cmp.slug}`} className="readmore">
-                  👉 Zum Vergleich
-                </Link>
-              </div>
+          <div className="grid">
+            {comparisons.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/vergleiche/${item.slug}`}
+                className="card"
+              >
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+                <span className="more">Weiterlesen →</span>
+              </Link>
             ))}
           </div>
         )}
       </main>
 
       <style jsx>{`
-        .content-container {
+        .compare-wrapper {
           max-width: 1100px;
           margin: 60px auto;
-          padding: 0 20px;
+          padding: 20px;
           text-align: center;
+          color: #fff;
         }
-        .subtitle {
+        h1 {
+          color: #00e5cf;
+          font-size: 2.2rem;
+          margin-bottom: 15px;
+        }
+        .intro {
+          color: #ccc;
+          max-width: 750px;
+          margin: 0 auto 40px auto;
+        }
+        .no-data {
           color: #777;
-          margin-bottom: 40px;
+          margin-top: 60px;
         }
-        .comparison-grid {
+        .grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 24px;
+          grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+          gap: 20px;
         }
-        .comparison-card {
-          background: #fff;
+        .card {
+          background: #0a0a0a;
+          border: 1px solid #00e5cf33;
           border-radius: 10px;
-          padding: 24px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          transition: transform 0.2s ease;
+          padding: 25px;
+          text-align: left;
+          transition: all 0.3s ease;
+          cursor: pointer;
         }
-        .comparison-card:hover {
-          transform: translateY(-4px);
+        .card:hover {
+          transform: translateY(-3px);
+          border-color: #00e5cf;
         }
-        .readmore {
+        .card h2 {
+          font-size: 1.2rem;
+          color: #00e5cf;
+          margin-bottom: 8px;
+        }
+        .card p {
+          color: #ccc;
+          font-size: 0.95rem;
+        }
+        .more {
           display: inline-block;
           margin-top: 10px;
           color: #00e5cf;
-          font-weight: 500;
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+          .compare-wrapper {
+            margin: 20px;
+            padding: 10px;
+          }
+          h1 {
+            font-size: 1.6rem;
+          }
         }
       `}</style>
     </>
   );
 }
 
-// ============================
-// 📂 Artikel aus content/vergleiche laden
-// ============================
+// ==============================
+// 🔧 getStaticProps – lädt alle Vergleichsartikel
+// ==============================
 export async function getStaticProps() {
   const dir = path.join(process.cwd(), "content", "vergleiche");
-  let comparisons = [];
 
-  if (fs.existsSync(dir)) {
-    const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
-    comparisons = files.map((filename) => {
-      const filePath = path.join(dir, filename);
-      const fileContent = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContent);
-
-      return {
-        slug: filename.replace(/\.md$/, ""),
-        title: data.title || "Unbekannter Vergleich",
-        description: data.description || "FinanzFreedom Vergleichsartikel",
-      };
-    });
+  if (!fs.existsSync(dir)) {
+    return { props: { comparisons: [] } };
   }
 
-  // Sortiere nach Datum (neueste oben)
-  comparisons.sort((a, b) => (a.date < b.date ? 1 : -1));
+  const files = fs.readdirSync(dir);
 
-  return {
-    props: { comparisons },
-  };
+  const comparisons = files
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => {
+      const content = fs.readFileSync(path.join(dir, file), "utf8");
+      const { data } = matter(content);
+      return {
+        slug: file.replace(".md", ""),
+        title: data.title || "Unbenannter Vergleich",
+        description:
+          data.description ||
+          "Detaillierter Anbieter- und Produktvergleich mit echten Mehrwerten.",
+      };
+    });
+
+  return { props: { comparisons } };
 }

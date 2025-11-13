@@ -1,71 +1,101 @@
-/* ===== Kategorie-Seite: Layout & Design ===== */
+/* =========================================
+   FINANZFREEDOM – KATEGORIESEITEN
+   (ETFs, Geld anlegen, Versicherungen …)
+========================================= */
 
 .categoryPage {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 32px auto 40px;
+  padding: 0 24px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .categoryTitle {
-  font-size: 2.4rem;
-  color: #00e5ef;
+  font-size: 2rem;
+  color: #ffffff;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
 .categoryDescription {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #aaa;
-  margin-bottom: 40px;
+  font-size: 1rem;
+  color: #b3c0cd;
+  margin-bottom: 24px;
 }
 
-/* ===== Karten-Grid ===== */
+/* Grid für Artikelkarten */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-/* ===== Karten-Design ===== */
+/* Karten */
 
 .card {
-  background: #0d0d0d;
-  border: 1px solid #222;
-  border-radius: 12px;
-  padding: 18px 22px;
-  transition: all 0.25s ease;
+  background: radial-gradient(circle at top left, #04252f 0, #020914 50%, #000000 100%);
+  border-radius: 14px;
+  padding: 16px 18px 18px;
+  border: 1px solid rgba(50, 64, 79, 0.9);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
   text-decoration: none;
-  display: block;
-  height: 100%;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transform: translateY(0);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease,
+    background 0.18s ease;
 }
+
+/* Titel + Teaser */
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 4px;
+  color: #ffffff;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #c0cad5;
+}
+
+/* Hover */
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: #00e5ef;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.85);
+  border-color: #00bfa5;
+  background: radial-gradient(circle at top, #043741 0, #020915 55%, #000000 100%);
 }
 
-/* ===== Karten-Titel ===== */
+/* Mobile */
 
-.card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-/* ===== Karten-Text ===== */
-
-.card p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #ccc;
-}
-
-/* ===== Mobile ===== */
 @media (max-width: 600px) {
+  .categoryPage {
+    padding-inline: 16px;
+    margin-top: 24px;
+  }
+
   .categoryTitle {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* Animation */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

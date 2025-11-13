@@ -1,0 +1,71 @@
+/* ===== Kategorie-Seite: Layout & Design ===== */
+
+.categoryPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.categoryTitle {
+  font-size: 2.4rem;
+  color: #00e5ef;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.categoryDescription {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+/* ===== Karten-Grid ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* ===== Karten-Design ===== */
+
+.card {
+  background: #0d0d0d;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 18px 22px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #00e5ef;
+}
+
+/* ===== Karten-Titel ===== */
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+/* ===== Karten-Text ===== */
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .categoryTitle {
+    font-size: 1.9rem;
+  }
+}

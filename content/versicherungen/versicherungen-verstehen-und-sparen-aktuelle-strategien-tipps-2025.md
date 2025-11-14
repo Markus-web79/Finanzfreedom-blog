@@ -1,10 +1,10 @@
 ---
-title: 'Versicherungen verstehen und sparen: aktuelle Strategien & Tipps 2025'
-description: >-
-  Versicherungen verstehen und sparen: aktuelle Strategien & Tipps 2025 –
-  verständlich erklärt auf FinanzFreedom.
-date: '2025-11-11T08:31:15.784Z'
-category: versicherungen
+title: "Versicherungen verstehen und sparen: aktuelle Strategien & Tipps 2025"
+slug: "versicherungen-verstehen-und-sparen-strategien-tipps-2025"
+category: "versicherungen"
+description: "Versicherungen verstehen und sparen: aktuelle Strategien & Tipps 2025 – verständlich erklärt auf FinanzFreedom."
+date: "2025-11-11"
+keywords: ["Versicherungen", "Tipps 2025", "Strategien", "Versicherungen sparen", "FinanzFreedom"]
 ---
 # Versicherungen verstehen und sparen: aktuelle Strategien & Tipps 2025
 

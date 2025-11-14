@@ -2,12 +2,12 @@
   "type": "module",
   "name": "finanzfreedom-blog",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "fix:slugs": "node generator/fixSlugs.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -24,7 +24,4 @@
     "remark-gfm": "^4.0.0",
     "remark-rehype": "^11.1.0"
   }
-}
-"scripts": {
-  "fix:slugs": "node generator/fixSlugs.js"
 }

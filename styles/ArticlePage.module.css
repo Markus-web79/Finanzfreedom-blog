@@ -1,0 +1,60 @@
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #e5e7eb;
+}
+
+/* Title */
+.title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Meta-Informationen */
+.meta {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  margin-bottom: 2rem;
+}
+
+/* Artikel-Content */
+.content {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  color: #d1d5db;
+}
+
+.content h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  color: #e5e7eb;
+}
+
+.content p {
+  margin-bottom: 1rem;
+}
+
+.content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+}
+
+.content strong {
+  color: #fff;
+}

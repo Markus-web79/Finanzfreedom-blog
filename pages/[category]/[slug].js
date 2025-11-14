@@ -15,6 +15,7 @@ export default function ArticlePage({ article }) {
 
       <main className={styles.container}>
         <h1 className={styles.title}>{article.title}</h1>
+
         <p className={styles.meta}>
           {article.date && (
             <span>{new Date(article.date).toLocaleDateString("de-DE")} • </span>
@@ -40,11 +41,12 @@ export async function getStaticPaths() {
     if (!fs.statSync(folder).isDirectory()) return;
 
     const files = fs.readdirSync(folder);
+
     files.forEach((file) => {
       if (!file.endsWith(".md")) return;
+
       const source = fs.readFileSync(path.join(folder, file), "utf8");
       const { data } = matter(source);
-
       const slug = data.slug || file.replace(".md", "");
 
       paths.push({
@@ -62,10 +64,16 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { category, slug } = params;
 
-  const filePath = path.join(process.cwd(), "content", category, `${slug}.md`);
-  const file = fs.readFileSync(filePath, "utf8");
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    category,
+    `${slug}.md`
+  );
 
-  const { data, content } = matter(file);
+  const fileContent = fs.readFileSync(filePath, "utf8");
+
+  const { data, content } = matter(fileContent);
 
   const html = marked.parse(content);
 

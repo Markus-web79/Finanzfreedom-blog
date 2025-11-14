@@ -1,6 +1,6 @@
 ---
 title: "Versicherungen verstehen und sparen: beliebteste Strategien & Tipps 2025"
-slug: "versicherungen-verstehen-und-sparen-beliebteste-strategien-tipps-2025"
+slug: "versicherungen-beliebteste-strategien-2025"
 category: "versicherungen"
 description: "Versicherungen verstehen und sparen: beliebteste Strategien & Tipps 2025 – verständlich erklärt auf FinanzFreedom."
 date: "2025-11-11"

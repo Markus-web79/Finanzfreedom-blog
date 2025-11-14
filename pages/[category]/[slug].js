@@ -37,16 +37,19 @@ export async function getStaticPaths() {
   let paths = [];
 
   categories.forEach((category) => {
+    // ❗ WICHTIG: "vergleiche" ignorieren, sonst entstehen doppelte URLs!
+    if (category === "vergleiche") return;
+
     const folder = path.join("content", category);
     if (!fs.statSync(folder).isDirectory()) return;
 
     const files = fs.readdirSync(folder);
-
     files.forEach((file) => {
       if (!file.endsWith(".md")) return;
 
       const source = fs.readFileSync(path.join(folder, file), "utf8");
       const { data } = matter(source);
+
       const slug = data.slug || file.replace(".md", "");
 
       paths.push({
@@ -64,17 +67,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { category, slug } = params;
 
-  const filePath = path.join(
-    process.cwd(),
-    "content",
-    category,
-    `${slug}.md`
-  );
+  const filePath = path.join(process.cwd(), "content", category, `${slug}.md`);
+  const file = fs.readFileSync(filePath, "utf8");
 
-  const fileContent = fs.readFileSync(filePath, "utf8");
-
-  const { data, content } = matter(fileContent);
-
+  const { data, content } = matter(file);
   const html = marked.parse(content);
 
   const readingTime = Math.ceil(content.split(" ").length / 200);

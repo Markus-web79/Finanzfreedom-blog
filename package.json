@@ -25,3 +25,6 @@
     "remark-rehype": "^11.1.0"
   }
 }
+"scripts": {
+  "fix:slugs": "node generator/fixSlugs.js"
+}

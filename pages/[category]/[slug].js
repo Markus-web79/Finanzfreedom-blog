@@ -5,11 +5,14 @@ import Head from "next/head";
 import { marked } from "marked";
 import styles from "../../styles/ArticlePage.module.css";
 
+// =======================================
+//   ARTIKEL-SEITE
+// =======================================
 export default function ArticlePage({ article }) {
   return (
     <>
       <Head>
-        <title>{article.title} – FinanzFreedom</title>
+        <title>{article.title} | FinanzFreedom</title>
         <meta name="description" content={article.description} />
       </Head>
 
@@ -18,7 +21,9 @@ export default function ArticlePage({ article }) {
 
         <p className={styles.meta}>
           {article.date && (
-            <span>{new Date(article.date).toLocaleDateString("de-DE")} • </span>
+            <span>
+              {new Date(article.date).toLocaleDateString("de-DE")} •{" "}
+            </span>
           )}
           {article.readingTime} Min. Lesezeit
         </p>
@@ -32,47 +37,67 @@ export default function ArticlePage({ article }) {
   );
 }
 
+// =======================================
+//   GET STATIC PATHS
+// =======================================
 export async function getStaticPaths() {
-  const categories = fs.readdirSync(path.join("content"));
+  const contentRoot = path.join(process.cwd(), "content");
+  const categories = fs.readdirSync(contentRoot);
+
   let paths = [];
 
   categories.forEach((category) => {
-    // ❗ WICHTIG: "vergleiche" ignorieren, sonst entstehen doppelte URLs!
+    const categoryPath = path.join(contentRoot, category);
+
+    // Nur echte Kategorie-Ordner
+    if (!fs.existsSync(categoryPath) || !fs.statSync(categoryPath).isDirectory()) return;
+
+    // Problematische Ordner ausschließen
     if (category === "vergleiche") return;
 
-    const folder = path.join("content", category);
-    if (!fs.statSync(folder).isDirectory()) return;
+    const files = fs.readdirSync(categoryPath);
 
-    const files = fs.readdirSync(folder);
     files.forEach((file) => {
       if (!file.endsWith(".md")) return;
 
-      const source = fs.readFileSync(path.join(folder, file), "utf8");
-      const { data } = matter(source);
+      const fullPath = path.join(categoryPath, file);
+      const source = fs.readFileSync(fullPath, "utf8");
 
+      const { data } = matter(source);
       const slug = data.slug || file.replace(".md", "");
 
       paths.push({
-        params: { category, slug }
+        params: {
+          category,
+          slug,
+        },
       });
     });
   });
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 }
 
+// =======================================
+//   GET STATIC PROPS
+// =======================================
 export async function getStaticProps({ params }) {
   const { category, slug } = params;
 
-  const filePath = path.join(process.cwd(), "content", category, `${slug}.md`);
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    category,
+    `${slug}.md`
+  );
+
   const file = fs.readFileSync(filePath, "utf8");
-
   const { data, content } = matter(file);
-  const html = marked.parse(content);
 
+  const html = marked.parse(content);
   const readingTime = Math.ceil(content.split(" ").length / 200);
 
   return {
@@ -80,8 +105,8 @@ export async function getStaticProps({ params }) {
       article: {
         ...data,
         html,
-        readingTime
-      }
-    }
+        readingTime,
+      },
+    },
   };
 }

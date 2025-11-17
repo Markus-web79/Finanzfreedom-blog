@@ -1,4 +1,4 @@
----
+0---
 title: "ETF-Grundlagen 2025: Einfach erklärt"
 slug: "etf-grundlagen-2025"
 category: "investieren"

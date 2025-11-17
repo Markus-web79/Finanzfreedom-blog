@@ -1,67 +1,131 @@
+/* ============================= */
+/* ======= ARTICLE PAGE ======== */
+/* ============================= */
+
 .container {
   max-width: 850px;
   margin: 0 auto;
   padding: 2rem;
 }
 
+/* ============================= */
+/* ========== BACK BTN ========= */
+/* ============================= */
+
 .backBtn {
   display: inline-block;
   margin-bottom: 1.5rem;
-  color: #0a4d75;
+  color: #00ffd0;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.2s;
+  transition: 0.2s ease;
+  opacity: 0.9;
 }
 
 .backBtn:hover {
-  opacity: 0.7;
+  opacity: 1;
 }
+
+/* ============================= */
+/* ========== TITLE ============ */
+/* ============================= */
 
 .title {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 1rem;
 }
 
+/* ============================= */
+/* ========== META ============= */
+/* ============================= */
+
 .meta {
-  opacity: 0.6;
-  margin-bottom: 2rem;
-  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 2.2rem;
+  font-size: 0.95rem;
 }
+
+/* ============================= */
+/* ========= CONTENT =========== */
+/* ============================= */
 
 .content {
   font-size: 1.15rem;
   line-height: 1.65;
-  color: #333;
+  color: #ddd;
 }
 
+/* ===== HEADINGS ===== */
+
 .content h2 {
-  margin-top: 2rem;
+  margin-top: 2.2rem;
   margin-bottom: 0.8rem;
   font-size: 1.6rem;
+  color: white;
 }
 
 .content h3 {
-  margin-top: 1.5rem;
+  margin-top: 1.6rem;
   margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+  color: #e8e8e8;
 }
 
+/* ===== PARAGRAPH ===== */
+
 .content p {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
+
+/* ===== LISTS ===== */
 
 .content ul,
 .content ol {
   margin-left: 1.5rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
+.content li {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+/* ===== BLOCKQUOTE ===== */
+
 .content blockquote {
-  border-left: 4px solid #0a4d75;
-  padding-left: 1rem;
-  opacity: 0.9;
+  border-left: 4px solid #00ffd0;
+  padding: 1rem;
+  margin: 2rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  opacity: 0.95;
+}
+
+/* ===== IMAGES ===== */
+
+.content img {
+  max-width: 100%;
+  border-radius: 8px;
   margin: 1.5rem 0;
 }
+
+/* ===== LINKS ===== */
+
+.content a {
+  color: #00ffd0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* ========= RESPONSIVE ======== */
+/* ============================= */
 
 @media (max-width: 700px) {
   .container {
@@ -69,7 +133,7 @@
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .content {

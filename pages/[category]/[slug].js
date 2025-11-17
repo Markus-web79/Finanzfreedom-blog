@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Head from "next/head";
 import { marked } from "marked";
 import Link from "next/link";
-import styles from "../../../styles/ArticlePage.module.css";
+import styles from "../../styles/ArticlePage.module.css";  // ← FIX HIER
 
 export default function ArticlePage({ article, category }) {
   return (
@@ -23,7 +23,7 @@ export default function ArticlePage({ article, category }) {
 
         <p className={styles.meta}>
           {article.date && (
-            <span>{new Date(article.date).toLocaleDateString("de-DE")} • </span>
+            <span>{new Date(article.date).toLocaleDateString("de-DE")}</span>
           )}
           {article.readingTime} Min. Lesezeit
         </p>
@@ -40,9 +40,7 @@ export default function ArticlePage({ article, category }) {
 export async function getStaticPaths() {
   const categories = fs
     .readdirSync("content")
-    .filter((item) =>
-      fs.statSync(path.join("content", item)).isDirectory()
-    );
+    .filter((item) => fs.statSync(path.join("content", item)).isDirectory());
 
   let paths = [];
 
@@ -52,9 +50,8 @@ export async function getStaticPaths() {
 
     files.forEach((file) => {
       const filePath = path.join(folder, file);
-      const { data } = matter(fs.readFileSync(filePath, "utf8"));
-
-      const slug = data.slug || file.replace(".md", "");
+      const data = matter(fs.readFileSync(filePath, "utf8"));
+      const slug = data.data.slug || file.replace(".md", "");
 
       paths.push({
         params: { category, slug },
@@ -70,7 +67,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { category, slug } = params;
-
   const filePath = path.join("content", category, `${slug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf8");
 

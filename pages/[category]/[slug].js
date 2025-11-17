@@ -3,27 +3,27 @@ import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
 import { marked } from "marked";
-import styles from "../../styles/ArticlePage.module.css";
+import Link from "next/link";
+import styles from "../../../styles/ArticlePage.module.css";
 
-// =======================================
-//   ARTIKEL-SEITE
-// =======================================
-export default function ArticlePage({ article }) {
+export default function ArticlePage({ article, category }) {
   return (
     <>
       <Head>
-        <title>{article.title} | FinanzFreedom</title>
+        <title>{article.title} – FinanzFreedom</title>
         <meta name="description" content={article.description} />
       </Head>
 
       <main className={styles.container}>
+        <Link href={`/${category}`} className={styles.backBtn}>
+          ← Zurück zur Übersicht
+        </Link>
+
         <h1 className={styles.title}>{article.title}</h1>
 
         <p className={styles.meta}>
           {article.date && (
-            <span>
-              {new Date(article.date).toLocaleDateString("de-DE")} •{" "}
-            </span>
+            <span>{new Date(article.date).toLocaleDateString("de-DE")} • </span>
           )}
           {article.readingTime} Min. Lesezeit
         </p>
@@ -37,40 +37,27 @@ export default function ArticlePage({ article }) {
   );
 }
 
-// =======================================
-//   GET STATIC PATHS
-// =======================================
 export async function getStaticPaths() {
-  const contentRoot = path.join(process.cwd(), "content");
-  const categories = fs.readdirSync(contentRoot);
+  const categories = fs
+    .readdirSync("content")
+    .filter((item) =>
+      fs.statSync(path.join("content", item)).isDirectory()
+    );
 
   let paths = [];
 
   categories.forEach((category) => {
-    const categoryPath = path.join(contentRoot, category);
-
-    // Nur echte Kategorie-Ordner
-    if (!fs.existsSync(categoryPath) || !fs.statSync(categoryPath).isDirectory()) return;
-
-    // Problematische Ordner ausschließen
-    if (category === "vergleiche") return;
-
-    const files = fs.readdirSync(categoryPath);
+    const folder = path.join("content", category);
+    const files = fs.readdirSync(folder).filter((f) => f.endsWith(".md"));
 
     files.forEach((file) => {
-      if (!file.endsWith(".md")) return;
+      const filePath = path.join(folder, file);
+      const { data } = matter(fs.readFileSync(filePath, "utf8"));
 
-      const fullPath = path.join(categoryPath, file);
-      const source = fs.readFileSync(fullPath, "utf8");
-
-      const { data } = matter(source);
       const slug = data.slug || file.replace(".md", "");
 
       paths.push({
-        params: {
-          category,
-          slug,
-        },
+        params: { category, slug },
       });
     });
   });
@@ -81,27 +68,19 @@ export async function getStaticPaths() {
   };
 }
 
-// =======================================
-//   GET STATIC PROPS
-// =======================================
 export async function getStaticProps({ params }) {
   const { category, slug } = params;
 
-  const filePath = path.join(
-    process.cwd(),
-    "content",
-    category,
-    `${slug}.md`
-  );
+  const filePath = path.join("content", category, `${slug}.md`);
+  const fileContent = fs.readFileSync(filePath, "utf8");
 
-  const file = fs.readFileSync(filePath, "utf8");
-  const { data, content } = matter(file);
-
+  const { data, content } = matter(fileContent);
   const html = marked.parse(content);
   const readingTime = Math.ceil(content.split(" ").length / 200);
 
   return {
     props: {
+      category,
       article: {
         ...data,
         html,

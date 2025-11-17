@@ -1,60 +1,78 @@
-/* Container */
 .container {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  color: #e5e7eb;
+  padding: 2rem;
 }
 
-/* Title */
+.backBtn {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #0a4d75;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.backBtn:hover {
+  opacity: 0.7;
+}
+
 .title {
-  font-size: 2.4rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1.2;
   margin-bottom: 1rem;
-  color: #fff;
 }
 
-/* Meta-Informationen */
 .meta {
-  font-size: 0.95rem;
-  color: #9ca3af;
+  opacity: 0.6;
   margin-bottom: 2rem;
+  font-size: 0.9rem;
 }
 
-/* Artikel-Content */
 .content {
-  line-height: 1.7;
-  font-size: 1.1rem;
-  color: #d1d5db;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #333;
 }
 
 .content h2 {
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   font-size: 1.6rem;
-  color: #fff;
 }
 
 .content h3 {
   margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.3rem;
-  color: #e5e7eb;
-}
-
-.content p {
-  margin-bottom: 1rem;
-}
-
-.content ul {
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.content li {
   margin-bottom: 0.5rem;
 }
 
-.content strong {
-  color: #fff;
+.content p {
+  margin-bottom: 1.2rem;
+}
+
+.content ul,
+.content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.content blockquote {
+  border-left: 4px solid #0a4d75;
+  padding-left: 1rem;
+  opacity: 0.9;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 1.2rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    font-size: 1.05rem;
+  }
 }

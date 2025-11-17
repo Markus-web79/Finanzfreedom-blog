@@ -1,0 +1,20 @@
+{
+  "geld-vermehren": {
+    "title": "Geld vermehren",
+    "description": "Strategien zum Vermögensaufbau.",
+    "faq": [],
+    "nextSteps": []
+  },
+  "investieren": {
+    "title": "Investieren",
+    "description": "ETFs, Aktien & Strategien verständlich erklärt.",
+    "faq": [],
+    "nextSteps": []
+  },
+  "versicherungen": {
+    "title": "Versicherungen",
+    "description": "Wichtige Versicherungen einfach erklärt.",
+    "faq": [],
+    "nextSteps": []
+  }
+}

@@ -2,186 +2,156 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
+import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
 
-// ================================
-// KATEGORIE-KONFIGURATION
-// ================================
-const categoryConfig = {
-  "investieren": {
-    slug: "investieren",
-    shortLabel: "Investieren",
-    label: "Investieren",
-    kicker: "Strategien & Grundlagen",
-    heroTitle: "Investieren – verständlich erklärt",
-    heroSubtitle: "ETFs, Aktien, Strategien – leicht erklärt.",
-    seoDescription: "Investieren: ETFs, Aktien, Strategien – verständlich erklärt auf FinanzFreedom.",
-    faq: [
-      {
-        question: "Womit sollte ich anfangen?",
-        answer: "Starte mit Rücklagen für 3–6 Monatsausgaben. Danach ETFs oder andere Anlagen."
-      }
-    ],
-    nextSteps: [
-      {
-        title: "ETF-Sparplan starten",
-        text: "Die einfachste Methode, langfristig Vermögen aufzubauen.",
-        href: "/investieren/etf-sparplan-starten",
-        badge: "Guide"
-      }
-    ]
-  },
+export default function CategoryPage({ category, articles, config }) {
+  return (
+    <>
+      <Head>
+        <title>{config.heroTitle} – FinanzFreedom</title>
+        <meta name="description" content={config.seoDescription} />
+      </Head>
 
-  // ================================
-  // VERSICHERUNGEN
-  // ================================
-  "versicherungen": {
-    slug: "versicherungen",
-    shortLabel: "Versicherungen",
-    label: "Versicherungen verstehen & sparen",
-    kicker: "Kategorie: Versicherungen",
-    heroTitle: "Nur die Policen, die du wirklich brauchst.",
-    heroSubtitle: "Wir zeigen dir, welche Versicherungen sinnvoll sind – und auf welche du verzichten kannst.",
-    seoDescription:
-      "Versicherungen einfach erklärt: Welche du brauchst, wie du sparst und Fehler vermeidest.",
-    faq: [
-      {
-        question: "Welche Versicherungen braucht man wirklich?",
-        answer: "Privathaftpflicht, Berufsunfähigkeit und Hausrat zählen zu den wichtigsten."
-      },
-      {
-        question: "Welche Versicherungen sind überflüssig?",
-        answer: "Geräteversicherungen, Handyversicherungen und viele Zusatzpakete."
-      }
-    ],
-    nextSteps: [
-      {
-        title: "Die wichtigsten Versicherungen",
-        text: "Shortlist: schnell Klarheit gewinnen.",
-        href: "/versicherungen/diese-versicherungen-brauchst-du-wirklich",
-        badge: "Guide"
-      }
-    ]
-  },
+      <header className={styles.hero}>
+        <div className={styles.heroInner}>
+          <span className={styles.kicker}>{config.kicker}</span>
+          <h1>{config.heroTitle}</h1>
+          <p>{config.heroSubtitle}</p>
+        </div>
+      </header>
 
-  // ================================
-  // GELD VERMEHREN
-  // ================================
-  "geld-vermehren": {
-    slug: "geld-vermehren",
-    shortLabel: "Geld vermehren",
-    label: "Geld vermehren",
-    kicker: "Tipps & Strategien",
-    heroTitle: "Geld vermehren: Tipps & Strategien für 2025",
-    heroSubtitle: "Lerne, wie dein Geld für dich arbeitet – verständlich erklärt.",
-    seoDescription:
-      "Strategien und Tipps, wie du dein Geld vermehrst und ein Vermögen aufbaust.",
-    faq: [
-      {
-        question: "Womit sollte ich anfangen?",
-        answer: "Starte mit Rücklagen, dann ETFs oder andere Anlagen – Schritt für Schritt."
-      }
-    ],
-    nextSteps: [
-      {
-        title: "Passives Einkommen aufbauen",
-        text: "Wie du Schritt für Schritt ein regelmäßiges Einkommen aufbaust.",
-        href: "/geld-vermehren/passives-einkommen-2025",
-        badge: "Guide"
-      }
-    ]
-  }
-};
+      <main className={styles.main}>
+        {articles.length > 0 && (
+          <section className={styles.articleSection}>
+            <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
 
-// ================================
-// STATIC PATHS – erzeugt URLs
-// ================================
+            <div className={styles.grid}>
+              {articles.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/${category}/${article.slug}`}
+                  className={styles.card}
+                >
+                  <div className={styles.cardKicker}>{config.shortLabel}</div>
+                  <h3>{article.title}</h3>
+                  <p className={styles.cardDescription}>
+                    {article.description}
+                  </p>
+
+                  <div className={styles.cardMeta}>
+                    {article.date && (
+                      <span>
+                        {new Date(article.date).toLocaleDateString("de-DE")}
+                      </span>
+                    )}
+                    <span>{article.readingTime} Min. Lesezeit</span>
+                  </div>
+
+                  <span className={styles.cardLink}>Weiterlesen →</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* FAQ */}
+        {config.faq && (
+          <section className={styles.faqSection}>
+            <h2 className={styles.sectionTitle}>Häufige Fragen</h2>
+
+            <div className={styles.faqGrid}>
+              {config.faq.map((item, i) => (
+                <div key={i} className={styles.faqItem}>
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Next Steps */}
+        {config.nextSteps && (
+          <section className={styles.nextStepsSection}>
+            <h2 className={styles.sectionTitle}>Nächste Schritte</h2>
+
+            <div className={styles.nextStepsGrid}>
+              {config.nextSteps.map((item, i) => (
+                <Link key={i} href={item.href} className={styles.nextCard}>
+                  <span className={styles.nextBadge}>{item.badge}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                  <span className={styles.cardLink}>Ansehen →</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+      </main>
+    </>
+  );
+}
+
+// ===== STATIC GENERATION =====
+
 export async function getStaticPaths() {
-  const categories = Object.keys(categoryConfig);
-
-  const paths = categories.map((category) => ({
-    params: { category }
-  }));
+  const categories = fs
+    .readdirSync(path.join("content"))
+    .filter((dir) =>
+      fs.statSync(path.join("content", dir)).isDirectory()
+    );
 
   return {
-    paths,
-    fallback: false
+    paths: categories.map((category) => ({ params: { category } })),
+    fallback: false,
   };
 }
 
-// ================================
-// STATIC PROPS – lädt Artikel einer Kategorie
-// ================================
 export async function getStaticProps({ params }) {
-  const { category } = params;
+  const category = params.category;
+
+  const categoryConfigPath = path.join(
+    process.cwd(),
+    "config",
+    "categories.json"
+  );
+
+  const configFile = fs.readFileSync(categoryConfigPath, "utf8");
+  const CONFIG = JSON.parse(configFile);
+
+  const config =
+    CONFIG[category] || CONFIG["default"] || {};
 
   const folder = path.join(process.cwd(), "content", category);
 
   let articles = [];
 
   if (fs.existsSync(folder)) {
-    const files = fs.readdirSync(folder);
+    const files = fs
+      .readdirSync(folder)
+      .filter((f) => f.endsWith(".md"));
 
-    articles = files
-      .filter((file) => file.endsWith(".md"))
-      .map((file) => {
-        const fullPath = path.join(folder, file);
-        const fileContent = fs.readFileSync(fullPath, "utf8");
-        const { data } = matter(fileContent);
+    articles = files.map((file) => {
+      const fullPath = path.join(folder, file);
+      const source = fs.readFileSync(fullPath, "utf8");
+      const { data, content } = matter(source);
 
-        return {
-          ...data,
-          slug: data.slug || file.replace(".md", "")
-        };
-      });
+      return {
+        slug: data.slug || file.replace(".md", ""),
+        title: data.title || "Artikel",
+        description: data.description || "",
+        date: data.date || null,
+        readingTime: Math.ceil(content.split(" ").length / 200),
+      };
+    });
   }
 
   return {
     props: {
       category,
       articles,
-      config: categoryConfig[category]
-    }
+      config,
+    },
   };
-}
-
-// ================================
-// KOMPONENTE – Darstellung der Seite
-// ================================
-export default function CategoryPage({ category, articles, config }) {
-  return (
-    <>
-      <Head>
-        <title>{config.label} | FinanzFreedom</title>
-        <meta name="description" content={config.seoDescription} />
-      </Head>
-
-      <main className={styles.pageWrapper}>
-        {/* HERO */}
-        <section className={styles.hero}>
-          <div className={styles.kicker}>{config.kicker}</div>
-          <h1 className={styles.heroTitle}>{config.heroTitle}</h1>
-          <p className={styles.heroSubtitle}>{config.heroSubtitle}</p>
-        </section>
-
-        {/* ARTIKEL LISTE */}
-        <section className={styles.articlesSection}>
-          <h2 className={styles.sectionHeader}>Artikel</h2>
-
-          <div className={styles.articlesGrid}>
-            {articles.map((a) => (
-              <a
-                key={a.slug}
-                href={`/${category}/${a.slug}`}
-                className={styles.card}
-              >
-                <h3>{a.title}</h3>
-                <p>{a.description}</p>
-              </a>
-            ))}
-          </div>
-        </section>
-      </main>
-    </>
-  );
 }

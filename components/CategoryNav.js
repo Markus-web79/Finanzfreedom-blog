@@ -1,17 +1,18 @@
 import Link from "next/link";
 import styles from "../styles/CategoryNav.module.css";
-import categories from "../config/categories.json";
+import CATEGORY_CONFIG from "../config/categoriesConfig";
 
 export default function CategoryNav({ active }) {
-  // Dynamische Liste generieren
-  const categoryList = Object.values(categories).map(cat => ({
-    slug: cat.slug,
-    label: cat.label
+
+  // Alle Kategorien aus dem Config-File holen
+  const categories = Object.keys(CATEGORY_CONFIG).map((key) => ({
+    slug: CATEGORY_CONFIG[key].slug,
+    label: CATEGORY_CONFIG[key].shortLabel || CATEGORY_CONFIG[key].label,
   }));
 
   return (
     <nav className={styles.nav}>
-      {categoryList.map(cat => (
+      {categories.map((cat) => (
         <Link
           key={cat.slug}
           href={`/${cat.slug}`}

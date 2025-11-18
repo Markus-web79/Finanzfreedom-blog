@@ -1,6 +1,6 @@
 // config/categoriesConfig.js
 
-export const CATEGORY_CONFIG = {
+const CATEGORY_CONFIG = {
   "etfs": {
     slug: "etfs",
     label: "ETFs & Indexfonds",
@@ -11,8 +11,8 @@ export const CATEGORY_CONFIG = {
       "Alles über ETFs, Sparpläne und Anlagestrategien – praxisnah erklärt.",
   },
 
-  "geld-anlegen": {
-    slug: "geld-anlegen",
+  "geld-vermehren": {
+    slug: "geld-vermehren",
     label: "Geld anlegen & Vermögen aufbauen",
     shortLabel: "Geld anlegen",
     heroTitle: "Struktur für dein Geld statt Chaos.",
@@ -28,19 +28,33 @@ export const CATEGORY_CONFIG = {
     shortLabel: "Versicherungen",
     heroTitle: "Smarte Versicherungen verstehen.",
     heroSubtitle:
-      "Welche Policen sind sinnvoll? Wo kannst du sparen? Welche Risiken solltest du abdecken?",
+      "Welche Versicherungen brauchst du wirklich – und welche sind unnötig?",
     seoDescription:
-      "Wichtige Versicherungen einfach erklärt.",
+      "Versicherungsratgeber einfach erklärt – ohne Fachchinesisch.",
+  },
+
+  "investieren": {
+    slug: "investieren",
+    label: "Investieren",
+    shortLabel: "Investieren",
+    heroTitle: "Lerne investieren – Schritt für Schritt.",
+    heroSubtitle:
+      "Von Aktien bis ETFs: Verstehe die Grundlagen und starte langfristig.",
+    seoDescription:
+      "Investieren leicht erklärt – für Einsteiger und Fortgeschrittene.",
   },
 
   "familie-kinder": {
     slug: "familie-kinder",
     label: "Familie & Kinder",
     shortLabel: "Familie",
-    heroTitle: "Finanzen für Familien – clevere Entscheidungen für die Zukunft.",
+    heroTitle: "Finanzen für Familien clever steuern",
     heroSubtitle:
       "Wie du für Kinder sinnvoll vorsorgst, Vermögen aufbaust und finanzielle Sicherheit schaffst.",
     seoDescription:
-      "Ratgeber für Eltern und Großeltern: Kinderdepot, ETF-Sparen, Schenkungen & Vermögensplanung.",
+      "Ratgeber für Eltern und Großeltern: Kinderdepot, ETF-Sparen, Schenkungen & Vermögensplanung."
   }
 };
+
+// ❗ WICHTIG: Default Export, sonst Next.js ERROR!
+export default CATEGORY_CONFIG;

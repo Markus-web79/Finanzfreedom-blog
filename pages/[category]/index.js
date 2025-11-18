@@ -3,67 +3,70 @@ import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../../styles/CategoryPage.module.css";
+import styles from "./CategoryPage.module.css";
 
-// ==== COMPONENT ====
+// 🔥 Dynamisch: Kategorien aus config laden
+import CATEGORIES from "../../config/categories";
 
-export default function CategoryPage({ category, articles, config }) {
+export default function CategoryPage({ category, config, articles }) {
   return (
     <>
       <Head>
-        <title>{config.heroTitle} – FinanzFreedom</title>
+        <title>{config.label} – FinanzFreedom</title>
         <meta name="description" content={config.seoDescription} />
       </Head>
 
-      {/* HERO */}
-      <header className={styles.hero}>
-        <div className={styles.heroInner}>
+      <main className={styles.container}>
+        {/* HERO-BEREICH */}
+        <section className={styles.hero}>
           <span className={styles.kicker}>{config.kicker}</span>
           <h1>{config.heroTitle}</h1>
           <p>{config.heroSubtitle}</p>
-        </div>
-      </header>
+        </section>
 
-      <main className={styles.main}>
+        {/* ARTIKEL-GRID */}
+        <section className={styles.articlesSection}>
+          <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
 
-        {/* ARTICLES */}
-        {articles.length > 0 && (
-          <section className={styles.articleSection}>
-            <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
-
+          {articles.length === 0 ? (
+            <p className={styles.noArticles}>Noch keine Artikel vorhanden.</p>
+          ) : (
             <div className={styles.grid}>
-              {articles.map((article) => (
+              {articles.map((a, i) => (
                 <Link
-                  key={article.slug}
-                  href={`/${category}/${article.slug}`}
+                  key={i}
+                  href={`/${category}/${a.slug}`}
                   className={styles.card}
                 >
-                  <h3>{article.title}</h3>
-                  <p className={styles.cardMeta}>
-                    {article.date && (
+                  <div className={styles.cardKicker}>{config.shortLabel}</div>
+                  <h3>{a.title}</h3>
+                  <p className={styles.cardDescription}>{a.description}</p>
+
+                  <div className={styles.cardMeta}>
+                    {a.date && (
                       <span>
-                        {new Date(article.date).toLocaleDateString("de-DE")} •{" "}
+                        {new Date(a.date).toLocaleDateString("de-DE")} •{" "}
                       </span>
                     )}
-                    <span>{article.readingTime} Min. Lesezeit</span>
-                  </p>
+                    <span>{a.readingTime} Min. Lesezeit</span>
+                  </div>
+
                   <span className={styles.cardLink}>Weiterlesen →</span>
                 </Link>
               ))}
             </div>
-          </section>
-        )}
+          )}
+        </section>
 
         {/* FAQ */}
-        {config.faq && config.faq.length > 0 && (
+        {config.faq?.length > 0 && (
           <section className={styles.faqSection}>
-            <h2 className={styles.sectionTitle}>Häufige Fragen</h2>
-
+            <h2>Häufige Fragen</h2>
             <div className={styles.faqGrid}>
-              {config.faq.map((item, i) => (
+              {config.faq.map((f, i) => (
                 <div key={i} className={styles.faqItem}>
-                  <h3>{item.question}</h3>
-                  <p>{item.answer}</p>
+                  <h3>{f.question}</h3>
+                  <p>{f.answer}</p>
                 </div>
               ))}
             </div>
@@ -71,15 +74,16 @@ export default function CategoryPage({ category, articles, config }) {
         )}
 
         {/* NEXT STEPS */}
-        {config.nextSteps && config.nextSteps.length > 0 && (
+        {config.nextSteps?.length > 0 && (
           <section className={styles.nextStepsSection}>
-            <h2 className={styles.sectionTitle}>Nächste Schritte</h2>
+            <h2>Nächste Schritte</h2>
 
             <div className={styles.nextStepsGrid}>
-              {config.nextSteps.map((item, i) => (
-                <Link key={i} href={item.href} className={styles.nextCard}>
-                  <span className={styles.nextBadge}>{item.badge}</span>
-                  <h3>{item.title}</h3>
+              {config.nextSteps.map((s, i) => (
+                <Link key={i} href={s.href} className={styles.nextCard}>
+                  <span className={styles.nextBadge}>{s.badge}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
                   <span className={styles.cardLink}>Ansehen →</span>
                 </Link>
               ))}
@@ -91,63 +95,55 @@ export default function CategoryPage({ category, articles, config }) {
   );
 }
 
-// ==== STATIC GENERATION ====
-
-// alle Kategorien dynamisch aus der Config lesen
 export async function getStaticPaths() {
-  const configPath = path.join(process.cwd(), "config", "categories.json");
-  const configFile = JSON.parse(fs.readFileSync(configPath, "utf8"));
-
-  const paths = Object.keys(configFile).map((cat) => ({
-    params: { category: cat },
+  // Alle Kategorien dynamisch aus config
+  const paths = Object.keys(CATEGORIES).map((cat) => ({
+    params: { category: cat }
   }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const category = params.category;
+  const { category } = params;
 
-  /** CONFIG */
-  const configPath = path.join(process.cwd(), "config", "categories.json");
-  const CONFIG = JSON.parse(fs.readFileSync(configPath, "utf8"));
-  const config = CONFIG[category] || {};
+  const config = CATEGORIES[category];
 
-  /** CONTENT */
   const folder = path.join(process.cwd(), "content", category);
 
   let articles = [];
 
   if (fs.existsSync(folder)) {
-    const files = fs
-      .readdirSync(folder)
-      .filter((f) => f.endsWith(".md"));
+    const files = fs.readdirSync(folder).filter((f) => f.endsWith(".md"));
 
     articles = files.map((file) => {
-      const fullPath = path.join(folder, file);
-      const source = fs.readFileSync(fullPath, "utf8");
-      const { data, content } = matter(source);
+      const filePath = path.join(folder, file);
+      const src = fs.readFileSync(filePath, "utf8");
+      const { data, content } = matter(src);
+
+      const slug = data.slug || file.replace(".md", "");
 
       const readingTime = Math.ceil(content.split(" ").length / 200);
 
       return {
-        slug: data.slug || file.replace(".md", ""),
-        title: data.title || "Artikel",
-        description: data.description || "",
+        slug,
+        title: data.title || "Unbenannter Artikel",
+        description: data.description || "FinanzFreedom Artikel",
         date: data.date || null,
-        readingTime,
+        readingTime
       };
     });
+
+    articles.sort((a, b) =>
+      !a.date || !b.date ? 0 : new Date(b.date) - new Date(a.date)
+    );
   }
 
   return {
     props: {
       category,
-      articles,
       config,
-    },
+      articles
+    }
   };
 }

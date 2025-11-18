@@ -5,6 +5,8 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
 
+// ==== COMPONENT ====
+
 export default function CategoryPage({ category, articles, config }) {
   return (
     <>
@@ -13,6 +15,7 @@ export default function CategoryPage({ category, articles, config }) {
         <meta name="description" content={config.seoDescription} />
       </Head>
 
+      {/* HERO */}
       <header className={styles.hero}>
         <div className={styles.heroInner}>
           <span className={styles.kicker}>{config.kicker}</span>
@@ -22,12 +25,13 @@ export default function CategoryPage({ category, articles, config }) {
       </header>
 
       <main className={styles.main}>
-        {/* ARTICLE LIST */}
+
+        {/* ARTICLES */}
         {articles.length > 0 && (
           <section className={styles.articleSection}>
             <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
 
-            <div className={styles.articleGrid}>
+            <div className={styles.grid}>
               {articles.map((article) => (
                 <Link
                   key={article.slug}
@@ -38,12 +42,11 @@ export default function CategoryPage({ category, articles, config }) {
                   <p className={styles.cardMeta}>
                     {article.date && (
                       <span>
-                        {new Date(article.date).toLocaleDateString("de-DE")}
+                        {new Date(article.date).toLocaleDateString("de-DE")} •{" "}
                       </span>
                     )}
                     <span>{article.readingTime} Min. Lesezeit</span>
                   </p>
-                  <p className={styles.cardDescription}>{article.description}</p>
                   <span className={styles.cardLink}>Weiterlesen →</span>
                 </Link>
               ))}
@@ -51,8 +54,8 @@ export default function CategoryPage({ category, articles, config }) {
           </section>
         )}
 
-        {/* FAQ SECTION */}
-        {config.faq.length > 0 && (
+        {/* FAQ */}
+        {config.faq && config.faq.length > 0 && (
           <section className={styles.faqSection}>
             <h2 className={styles.sectionTitle}>Häufige Fragen</h2>
 
@@ -68,7 +71,7 @@ export default function CategoryPage({ category, articles, config }) {
         )}
 
         {/* NEXT STEPS */}
-        {config.nextSteps.length > 0 && (
+        {config.nextSteps && config.nextSteps.length > 0 && (
           <section className={styles.nextStepsSection}>
             <h2 className={styles.sectionTitle}>Nächste Schritte</h2>
 
@@ -88,17 +91,19 @@ export default function CategoryPage({ category, articles, config }) {
   );
 }
 
-// === STATIC GENERATION ===
+// ==== STATIC GENERATION ====
 
+// alle Kategorien dynamisch aus der Config lesen
 export async function getStaticPaths() {
-  const categoriesFile = path.join(process.cwd(), "config", "categories.json");
-  const raw = fs.readFileSync(categoriesFile, "utf8");
-  const categories = Object.keys(JSON.parse(raw));
+  const configPath = path.join(process.cwd(), "config", "categories.json");
+  const configFile = JSON.parse(fs.readFileSync(configPath, "utf8"));
+
+  const paths = Object.keys(configFile).map((cat) => ({
+    params: { category: cat },
+  }));
 
   return {
-    paths: categories.map((category) => ({
-      params: { category },
-    })),
+    paths,
     fallback: false,
   };
 }
@@ -106,17 +111,20 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const category = params.category;
 
-  // Load config
+  /** CONFIG */
   const configPath = path.join(process.cwd(), "config", "categories.json");
-  const configData = JSON.parse(fs.readFileSync(configPath, "utf8"));
-  const config = configData[category];
+  const CONFIG = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  const config = CONFIG[category] || {};
 
-  // Load articles
+  /** CONTENT */
   const folder = path.join(process.cwd(), "content", category);
+
   let articles = [];
 
   if (fs.existsSync(folder)) {
-    const files = fs.readdirSync(folder).filter((f) => f.endsWith(".md"));
+    const files = fs
+      .readdirSync(folder)
+      .filter((f) => f.endsWith(".md"));
 
     articles = files.map((file) => {
       const fullPath = path.join(folder, file);

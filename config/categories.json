@@ -1,20 +1,134 @@
 {
-  "geld-vermehren": {
-    "title": "Geld vermehren",
-    "description": "Strategien zum Vermögensaufbau.",
-    "faq": [],
-    "nextSteps": []
-  },
   "investieren": {
-    "title": "Investieren",
-    "description": "ETFs, Aktien & Strategien verständlich erklärt.",
-    "faq": [],
-    "nextSteps": []
+    "slug": "investieren",
+    "label": "Investieren",
+    "shortLabel": "Investieren",
+    "kicker": "Geld anlegen – verständlich erklärt",
+    "heroTitle": "Intelligent investieren – Schritt für Schritt",
+    "heroSubtitle": "Lerne, wie du dein Geld sicher und langfristig für dich arbeiten lässt – ohne Vorwissen.",
+    "seoDescription": "Ratgeber rund ums Investieren: ETFs, Aktien, Strategien & langfristiger Vermögensaufbau – einfach erklärt.",
+    "faq": [
+      {
+        "question": "Wie starte ich mit dem Investieren?",
+        "answer": "Beginne mit einem ETF-Sparplan ab 25–50 € im Monat. Das ist der einfachste und sicherste Einstieg."
+      },
+      {
+        "question": "Sind ETFs wirklich sicher?",
+        "answer": "ETFs sind breit gestreut und gelten als eines der sichersten langfristigen Investments."
+      }
+    ],
+    "nextSteps": [
+      {
+        "badge": "Start",
+        "title": "ETF-Sparplan einrichten",
+        "href": "/investieren/etf-grundlagen"
+      },
+      {
+        "badge": "Depot",
+        "title": "Depot eröffnen",
+        "href": "/investieren/depot-eroeffnen"
+      }
+    ]
   },
+
+  "geld-vermehren": {
+    "slug": "geld-vermehren",
+    "label": "Geld vermehren",
+    "shortLabel": "Mehr Geld",
+    "kicker": "Tipps & Strategien",
+    "heroTitle": "So vermehrst du dein Geld langfristig",
+    "heroSubtitle": "Praktische Strategien, mit denen du dein Geld wachsen lässt – einfach erklärt.",
+    "seoDescription": "Geld vermehren leicht gemacht: Rendite erhöhen, smart sparen und clever investieren.",
+    "faq": [
+      {
+        "question": "Welche Strategie ist für Anfänger geeignet?",
+        "answer": "Ein weltweiter ETF ist die einfachste und effektivste Methode, langfristig Vermögen aufzubauen."
+      },
+      {
+        "question": "Wie viel sollte ich sparen?",
+        "answer": "10–20 % des Einkommens sind ideal – starte aber mit dem, was möglich ist."
+      }
+    ],
+    "nextSteps": [
+      {
+        "badge": "Start",
+        "title": "Ersten ETF auswählen",
+        "href": "/geld-vermehren/erste-schritte"
+      },
+      {
+        "badge": "Plan",
+        "title": "Automatischen Sparplan einrichten",
+        "href": "/geld-vermehren/sparplan"
+      }
+    ]
+  },
+
   "versicherungen": {
-    "title": "Versicherungen",
-    "description": "Wichtige Versicherungen einfach erklärt.",
-    "faq": [],
-    "nextSteps": []
+    "slug": "versicherungen",
+    "label": "Versicherungen",
+    "shortLabel": "Versicherungen",
+    "kicker": "Wichtige Versicherungen einfach erklärt",
+    "heroTitle": "Welche Versicherungen brauchst du wirklich?",
+    "heroSubtitle": "Alles, was du zu wichtigen Versicherungen, Schutz und Kosten wissen musst.",
+    "seoDescription": "Versicherungen einfach erklärt: Welche brauchst du wirklich? Welche kannst du sparen?",
+    "faq": [
+      {
+        "question": "Welche Versicherungen sind Pflicht?",
+        "answer": "Haftpflicht und Berufsunfähigkeit zählen zu den wichtigsten Policen überhaupt."
+      },
+      {
+        "question": "Wie spare ich bei Versicherungen?",
+        "answer": "Tarife vergleichen, überflüssige Verträge kündigen und Leistungen prüfen."
+      }
+    ],
+    "nextSteps": [
+      {
+        "badge": "Start",
+        "title": "Beste Versicherungen im Überblick",
+        "href": "/versicherungen/wichtigste-versicherungen"
+      },
+      {
+        "badge": "Vergleich",
+        "title": "Versicherungen vergleichen",
+        "href": "/versicherungen/vergleich"
+      }
+    ]
+  },
+
+  "familie-kinder": {
+    "slug": "familie-kinder",
+    "label": "Familie & Kinder",
+    "shortLabel": "Familie",
+    "kicker": "Kategorie • Familie & Kinder",
+    "heroTitle": "Finanzen für Familien – klug entscheiden für die Zukunft",
+    "heroSubtitle": "Wie du für Kinder sinnvoll vorsorgst, Vermögen aufbaust und finanzielle Sicherheit schaffst.",
+    "seoDescription": "Ratgeber für Eltern & Großeltern: Kinderdepot, ETF-Sparen, Ausbildungsversicherung & Vermögensaufbau.",
+    "faq": [
+      {
+        "question": "Wie viel sollte man monatlich für ein Kind sparen?",
+        "answer": "Schon 25–50 € monatlich reichen aus, um über die Jahre ein starkes Startkapital aufzubauen."
+      },
+      {
+        "question": "Welche Sparform ist am sinnvollsten?",
+        "answer": "Ein global diversifizierter ETF bietet langfristig die beste Kombination aus Sicherheit und Wachstum."
+      }
+    ],
+    "nextSteps": [
+      {
+        "badge": "Start",
+        "title": "ETF-Sparplan für Kinder",
+        "href": "/familie-kinder/etf-sparplan-fuer-kinder"
+      },
+      {
+        "badge": "Depot",
+        "title": "Kinderdepot eröffnen",
+        "href": "/familie-kinder/depot-fuer-kinder"
+      },
+      {
+        "badge": "Schenken",
+        "title": "Geld an Enkelkinder schenken",
+        "href": "/familie-kinder/geld-schenken-enkelkind"
+      }
+    ]
   }
 }

@@ -1,14 +1,14 @@
 import Link from "next/link";
 import styles from "../styles/CategoryNav.module.css";
-import categories from "../config/categories.json";
+import categoriesData from "../config/categories.json";
 
 export default function CategoryNav({ active }) {
-  // JSON → Array wandeln
-  const list = Object.values(categories);
+  // Kategorien-Array aus der config-Datei
+  const categories = Object.values(categoriesData);
 
   return (
     <nav className={styles.nav}>
-      {list.map((cat) => (
+      {categories.map((cat) => (
         <Link
           key={cat.slug}
           href={`/${cat.slug}`}

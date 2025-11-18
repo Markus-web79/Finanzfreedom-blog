@@ -1,17 +1,24 @@
 import Link from "next/link";
 import styles from "../styles/CategoryNav.module.css";
-import categories from "../config/categories.json";
+import fs from "fs";
+import path from "path";
 
-export default function CategoryNav({ active }) {
-  // Kategorien aus JSON-Config holen
-  const categoryList = Object.values(categories).map(cat => ({
-    slug: cat.slug,
-    label: cat.shortLabel || cat.label
-  }));
+export async function getStaticProps() {
+  const categoriesFile = path.join(process.cwd(), "config", "categories.json");
+  const data = fs.readFileSync(categoriesFile, "utf8");
+  const categories = JSON.parse(data);
 
+  return {
+    props: {
+      categories,
+    },
+  };
+}
+
+export default function CategoryNav({ active, categories }) {
   return (
     <nav className={styles.nav}>
-      {categoryList.map(cat => (
+      {Object.values(categories).map((cat) => (
         <Link
           key={cat.slug}
           href={`/${cat.slug}`}

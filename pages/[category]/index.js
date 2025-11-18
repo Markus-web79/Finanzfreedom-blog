@@ -4,9 +4,79 @@ import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
-import { getReadingTime } from "../../utils/readingTime";
 
-export default function CategoryPage({ category, articles, config }) {
+
+// ------------------------------------------------------------
+// ZENTRALE KONFIGURATION FÜR ALLE KATEGORIEN
+// → Neue Kategorien nur hier hinzufügen, läuft alles automatisch
+// ------------------------------------------------------------
+const CATEGORY_CONFIG = {
+  "etfs": {
+    label: "ETFs & Indexfonds",
+    kicker: "Kategorie • ETFs",
+    heroTitle: "ETFs verstehen. Clever investieren.",
+    heroSubtitle:
+      "Klare ETF-Strategien, Einsteigerwissen und moderne Vermögensbildung — verständlich erklärt.",
+    seoDescription:
+      "ETF-Wissen, Strategien, Tipps und Vergleiche. Lerne langfristig Vermögen aufzubauen.",
+  },
+
+  "geld-vermehren": {
+    label: "Geld vermehren",
+    kicker: "Kategorie • Geld vermehren",
+    heroTitle: "Clever Geld vermehren — ohne Risiko-Chaos.",
+    heroSubtitle:
+      "Strategien, die wirklich funktionieren. Für Berufstätige, Einsteiger & Fortgeschrittene.",
+    seoDescription:
+      "Strategien, Tools & Anleitungen, um dein Geld planbar zu vermehren.",
+  },
+
+  "investieren": {
+    label: "Investieren",
+    kicker: "Kategorie • Investieren",
+    heroTitle: "Investieren für Einsteiger & Profis.",
+    heroSubtitle:
+      "Lerne, wie du dein Geld sinnvoll und strukturiert anlegst.",
+    seoDescription:
+      "Investieren leicht erklärt – Aktien, ETFs, Immobilien & mehr.",
+  },
+
+  "versicherung": {
+    label: "Versicherungen",
+    kicker: "Kategorie • Versicherungen",
+    heroTitle: "Versicherungen verstehen. Richtig absichern.",
+    heroSubtitle:
+      "Einfach erklärt, ohne Fachchinesisch. Welche Versicherungen du wirklich brauchst.",
+    seoDescription:
+      "Versicherungen erklärt: welche wichtig sind, welche Geld kosten – aber nichts bringen.",
+  },
+
+  "spar-tipps": {
+    label: "Sparen & Haushaltsgeld",
+    kicker: "Kategorie • Sparen",
+    heroTitle: "Sparen ohne Verzicht.",
+    heroSubtitle:
+      "Praktische Spartipps, Geldorganisation & clevere Methoden fürs tägliche Leben.",
+    seoDescription:
+      "Sparen, Budget, Haushaltsgeld – verständlich erklärt mit modernen Methoden.",
+  },
+
+  "kinder": {
+    label: "Finanzen für Kinder",
+    kicker: "Kategorie • Kinder",
+    heroTitle: "Sparen & Investieren für Kinder.",
+    heroSubtitle:
+      "Wie du für Kinder oder Enkel optimal sprichwörtlich die Zukunft finanzierst.",
+    seoDescription:
+      "ETF-Sparen für Kinder, Konto, Vermögensaufbau – modern & verständlich.",
+  },
+};
+
+
+// ------------------------------------------------------------
+// PAGE KOMPONENTE
+// ------------------------------------------------------------
+export default function CategoryPage({ category, config, articles }) {
   return (
     <>
       <Head>
@@ -14,158 +84,109 @@ export default function CategoryPage({ category, articles, config }) {
         <meta name="description" content={config.seoDescription} />
       </Head>
 
-      <main className={styles.wrapper}>
+      <main className={styles.container}>
+        {/* HERO / HEADER */}
+        <header className={styles.hero}>
+          <span className={styles.kicker}>{config.kicker}</span>
+          <h1 className={styles.heroTitle}>{config.heroTitle}</h1>
+          <p className={styles.heroSubtitle}>{config.heroSubtitle}</p>
+        </header>
 
-        {/* HERO-BEREICH -------------------------------------- */}
-        <section className={styles.hero}>
-          <p className={styles.kicker}>{config.kicker}</p>
-          <h1>{config.heroTitle}</h1>
-          <p className={styles.subtitle}>{config.heroSubtitle}</p>
-        </section>
+        {/* ARTIKELLISTE */}
+        <section className={styles.articlesSection}>
+          <h2 className={styles.sectionTitle}>Alle Artikel in {config.label}</h2>
 
-        {/* ARTIKEL-LISTE -------------------------------------- */}
-        <section className={styles.articleSection}>
-          <h2 className={styles.sectionTitle}>Aktuelle Inhalte</h2>
+          {articles.length === 0 && (
+            <p className={styles.empty}>In dieser Kategorie gibt es noch keine Artikel.</p>
+          )}
 
-          {articles.length === 0 ? (
-            <p className={styles.noArticles}>
-              In dieser Kategorie gibt es noch keine Artikel.
-            </p>
-          ) : (
-            <div className={styles.grid}>
-              {articles.map((article, index) => (
-                <Link
-                  key={index}
-                  href={`/${category}/${article.slug}`}
-                  className={styles.card}
-                >
-                  <div className={styles.cardKicker}>{config.shortLabel}</div>
+          <div className={styles.grid}>
+            {articles.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/${category}/${article.slug}`}
+                className={styles.card}
+              >
+                <div className={styles.cardInner}>
+                  <span className={styles.cardKicker}>{config.label}</span>
                   <h3>{article.title}</h3>
-                  <p className={styles.cardDescription}>
-                    {article.description}
-                  </p>
+                  <p>{article.description}</p>
 
                   <div className={styles.cardMeta}>
-                    {article.date && (
-                      <span>
-                        {new Date(article.date).toLocaleDateString("de-DE")} •{" "}
-                      </span>
-                    )}
                     <span>{article.readingTime} Min. Lesezeit</span>
+                    {article.date && (
+                      <span>{new Date(article.date).toLocaleDateString("de-DE")}</span>
+                    )}
                   </div>
 
                   <span className={styles.cardLink}>Weiterlesen →</span>
-                </Link>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* FAQ ------------------------------------------------ */}
-        {config.faq && config.faq.length > 0 && (
-          <section className={styles.faqSection}>
-            <h2 className={styles.sectionTitle}>Häufige Fragen</h2>
-
-            <div className={styles.faqGrid}>
-              {config.faq.map((item, index) => (
-                <div key={index} className={styles.faqItem}>
-                  <h3>{item.question}</h3>
-                  <p>{item.answer}</p>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* NEXT STEPS ---------------------------------------- */}
-        {config.nextSteps && (
-          <section className={styles.nextStepsSection}>
-            <h2 className={styles.sectionTitle}>Nächste Schritte</h2>
-
-            <div className={styles.nextStepsGrid}>
-              {config.nextSteps.map((step, index) => (
-                <Link key={index} href={step.href} className={styles.nextCard}>
-                  <span className={styles.nextBadge}>{step.badge}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                  <span className={styles.cardLink}>Ansehen →</span>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );
 }
 
-/* DYNAMISCHE PFADE -------------------------------------------- */
-export async function getStaticPaths() {
-  const categoriesPath = path.join(process.cwd(), "content");
-  const categories = fs.readdirSync(categoriesPath);
 
+
+// ------------------------------------------------------------
+// STATIC PATHS
+// ------------------------------------------------------------
+export async function getStaticPaths() {
   return {
-    paths: categories.map((category) => ({
-      params: { category }
+    paths: Object.keys(CATEGORY_CONFIG).map((category) => ({
+      params: { category },
     })),
     fallback: false,
   };
 }
 
-/* LADEN VON ARTIKELN ------------------------------------------ */
+
+
+// ------------------------------------------------------------
+// STATIC PROPS
+// ------------------------------------------------------------
 export async function getStaticProps({ params }) {
   const category = params.category;
 
-  // Dynamische Config: liest automatisch aus /content/<category>/config.json
-  const configFile = path.join(process.cwd(), "content", category, "config.json");
-
-  let config = {
-    slug: category,
-    label: category.toUpperCase(),
-    shortLabel: category,
-    kicker: "Kategorie",
+  const config = CATEGORY_CONFIG[category] || {
+    label: "Unbekannt",
     heroTitle: "Kategorie",
     heroSubtitle: "",
-    seoDescription: `Artikel über ${category}.`
+    seoDescription: "",
+    kicker: "",
   };
 
-  if (fs.existsSync(configFile)) {
-    config = { ...config, ...JSON.parse(fs.readFileSync(configFile, "utf8")) };
-  }
-
   const folder = path.join(process.cwd(), "content", category);
-  const articles = [];
+  let articles = [];
 
   if (fs.existsSync(folder)) {
-    fs.readdirSync(folder).forEach((file) => {
-      if (!file.endsWith(".md")) return;
+    const files = fs.readdirSync(folder).filter((file) => file.endsWith(".md"));
 
+    articles = files.map((file) => {
       const filePath = path.join(folder, file);
       const source = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(source);
 
-      articles.push({
+      return {
         slug: data.slug || file.replace(".md", ""),
-        title: data.title,
+        title: data.title || "Ohne Titel",
         description: data.description || "",
         date: data.date || null,
-        readingTime: getReadingTime(content),
-      });
+        readingTime: Math.ceil(content.split(" ").length / 200),
+      };
     });
   }
 
-  // Sortieren nach Datum (neu → alt)
-  articles.sort((a, b) => {
-    if (!a.date) return 1;
-    if (!b.date) return -1;
-    return new Date(b.date) - new Date(a.date);
-  });
+  // Neueste zuerst
+  articles.sort((a, b) =>
+    new Date(b.date || "1990") - new Date(a.date || "1990")
+  );
 
   return {
-    props: {
-      category,
-      articles,
-      config,
-    },
+    props: { category, config, articles },
   };
 }

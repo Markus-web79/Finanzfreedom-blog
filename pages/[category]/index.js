@@ -4,13 +4,12 @@ import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
-import CATEGORY_CONFIG from "../../config/categories.json";
 
 export default function CategoryPage({ category, articles, config }) {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – {config.label}</title>
+        <title>{config.heroTitle} – FinanzFreedom</title>
         <meta name="description" content={config.seoDescription} />
       </Head>
 
@@ -23,45 +22,62 @@ export default function CategoryPage({ category, articles, config }) {
       </header>
 
       <main className={styles.main}>
-        <section className={styles.articleSection}>
-          <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
-          <div className={styles.grid}>
-            {articles.map((a) => (
-              <Link
-                key={a.slug}
-                href={`/${category}/${a.slug}`}
-                className={styles.card}
-              >
-                <h3>{a.title}</h3>
-                <p>{a.description}</p>
-                <span className={styles.cardLink}>Weiterlesen →</span>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* ARTICLE LIST */}
+        {articles.length > 0 && (
+          <section className={styles.articleSection}>
+            <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
 
-        {config.faq && (
+            <div className={styles.articleGrid}>
+              {articles.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/${category}/${article.slug}`}
+                  className={styles.card}
+                >
+                  <h3>{article.title}</h3>
+                  <p className={styles.cardMeta}>
+                    {article.date && (
+                      <span>
+                        {new Date(article.date).toLocaleDateString("de-DE")}
+                      </span>
+                    )}
+                    <span>{article.readingTime} Min. Lesezeit</span>
+                  </p>
+                  <p className={styles.cardDescription}>{article.description}</p>
+                  <span className={styles.cardLink}>Weiterlesen →</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* FAQ SECTION */}
+        {config.faq.length > 0 && (
           <section className={styles.faqSection}>
             <h2 className={styles.sectionTitle}>Häufige Fragen</h2>
+
             <div className={styles.faqGrid}>
-              {config.faq.map((q, i) => (
+              {config.faq.map((item, i) => (
                 <div key={i} className={styles.faqItem}>
-                  <h3>{q.question}</h3>
-                  <p>{q.answer}</p>
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
                 </div>
               ))}
             </div>
           </section>
         )}
 
-        {config.nextSteps && (
+        {/* NEXT STEPS */}
+        {config.nextSteps.length > 0 && (
           <section className={styles.nextStepsSection}>
             <h2 className={styles.sectionTitle}>Nächste Schritte</h2>
+
             <div className={styles.nextStepsGrid}>
-              {config.nextSteps.map((n, i) => (
-                <Link key={i} href={n.href} className={styles.nextCard}>
-                  <span className={styles.nextBadge}>{n.badge}</span>
-                  <h3>{n.title}</h3>
+              {config.nextSteps.map((item, i) => (
+                <Link key={i} href={item.href} className={styles.nextCard}>
+                  <span className={styles.nextBadge}>{item.badge}</span>
+                  <h3>{item.title}</h3>
+                  <span className={styles.cardLink}>Ansehen →</span>
                 </Link>
               ))}
             </div>
@@ -72,15 +88,17 @@ export default function CategoryPage({ category, articles, config }) {
   );
 }
 
-// ==== STATIC GENERATION ====
+// === STATIC GENERATION ===
 
 export async function getStaticPaths() {
-  const categories = fs
-    .readdirSync("content")
-    .filter((dir) => fs.statSync(path.join("content", dir)).isDirectory());
+  const categoriesFile = path.join(process.cwd(), "config", "categories.json");
+  const raw = fs.readFileSync(categoriesFile, "utf8");
+  const categories = Object.keys(JSON.parse(raw));
 
   return {
-    paths: categories.map((category) => ({ params: { category } })),
+    paths: categories.map((category) => ({
+      params: { category },
+    })),
     fallback: false,
   };
 }
@@ -88,31 +106,31 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const category = params.category;
 
-  const configFile = fs.readFileSync(
-    path.join(process.cwd(), "config", "categories.json"),
-    "utf8"
-  );
-  const CONFIG = JSON.parse(configFile);
+  // Load config
+  const configPath = path.join(process.cwd(), "config", "categories.json");
+  const configData = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  const config = configData[category];
 
-  const config = CONFIG[category] || CONFIG["default"] || {};
-
+  // Load articles
   const folder = path.join(process.cwd(), "content", category);
-
   let articles = [];
+
   if (fs.existsSync(folder)) {
-    const files = fs
-      .readdirSync(folder)
-      .filter((f) => f.endsWith(".md"));
+    const files = fs.readdirSync(folder).filter((f) => f.endsWith(".md"));
 
     articles = files.map((file) => {
       const fullPath = path.join(folder, file);
-      const content = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(content);
+      const source = fs.readFileSync(fullPath, "utf8");
+      const { data, content } = matter(source);
+
+      const readingTime = Math.ceil(content.split(" ").length / 200);
 
       return {
         slug: data.slug || file.replace(".md", ""),
         title: data.title || "Artikel",
         description: data.description || "",
+        date: data.date || null,
+        readingTime,
       };
     });
   }

@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
 import { marked } from "marked";
-import styles from "../../../styles/ArticlePage.module.css";
+import styles from "../../styles/ArticlePage.module.css";
 
 export default function ArticlePage({ article }) {
   return (

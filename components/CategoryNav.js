@@ -3,6 +3,7 @@ import styles from "../styles/CategoryNav.module.css";
 import categories from "../config/categories.json";
 
 export default function CategoryNav({ active }) {
+  // JSON → Array wandeln
   const list = Object.values(categories);
 
   return (

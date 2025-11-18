@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
-import CATEGORY_CONFIG from "../../config/categoryConfig";
+import CATEGORY_CONFIG from "../../config/categoriesConfig";
 
 // Hilfsfunktion für Lesedauer
 function getReadingTime(text) {

@@ -1,6 +1,6 @@
-// /config/categoriesConfig.js
+// config/categoriesConfig.js
 
-const CATEGORY_CONFIG = {
+export const CATEGORY_CONFIG = {
   "etfs": {
     slug: "etfs",
     label: "ETFs & Indexfonds",
@@ -24,7 +24,7 @@ const CATEGORY_CONFIG = {
     label: "Versicherungen verstehen",
     shortLabel: "Versicherungen",
     heroTitle: "Smarte Versicherungen verstehen.",
-    heroSubtitle: "Welche Versicherungen wirklich wichtig sind – und welche du dir sparen kannst.",
+    heroSubtitle: "Welche Versicherungen brauchst du wirklich? Klar, einfach, verständlich.",
     seoDescription: "Wichtige Versicherungen einfach erklärt."
   },
 
@@ -32,10 +32,11 @@ const CATEGORY_CONFIG = {
     slug: "familie-kinder",
     label: "Familie & Kinder",
     shortLabel: "Familie",
-    heroTitle: "Finanzen für Familien clever meistern.",
+    heroTitle: "Finanzen für Familien – clevere Entscheidungen für die Zukunft",
     heroSubtitle: "Wie du für Kinder sinnvoll vorsorgst, Vermögen aufbaust und finanzielle Sicherheit schaffst.",
     seoDescription: "Ratgeber für Eltern und Großeltern: Kinderdepot, ETF-Sparen, Schenkungen & Vermögensplanung."
   }
 };
 
+// WICHTIG: Default Export ergänzen
 export default CATEGORY_CONFIG;

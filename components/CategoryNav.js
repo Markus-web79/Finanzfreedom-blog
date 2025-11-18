@@ -6,14 +6,12 @@ export default function CategoryNav({ active }) {
     { slug: "investieren", label: "Investieren" },
     { slug: "versicherungen", label: "Versicherungen" },
     { slug: "geld-vermehren", label: "Geld vermehren" },
-    { slug: "sparen", label: "Sparen & Haushalt" },
-    { slug: "steuern", label: "Steuern & Recht" },
-    { slug: "vergleiche", label: "Vergleichstools" }
+    { slug: "familie-kinder", label: "Familie & Kinder" },
   ];
 
   return (
     <nav className={styles.nav}>
-      {categories.map(cat => (
+      {categories.map((cat) => (
         <Link
           key={cat.slug}
           href={`/${cat.slug}`}

@@ -1,6 +1,6 @@
 // config/categoriesConfig.js
 
-const CATEGORY_CONFIG = {
+export const CATEGORY_CONFIG = {
   "etfs": {
     slug: "etfs",
     label: "ETFs & Indexfonds",
@@ -57,4 +57,4 @@ const CATEGORY_CONFIG = {
 };
 
 // ❗ WICHTIG: Default Export, sonst Next.js ERROR!
-export default CATEGORY_CONFIG;
+

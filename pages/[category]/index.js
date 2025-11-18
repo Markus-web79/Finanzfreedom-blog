@@ -4,32 +4,38 @@ import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
+import { getReadingTime } from "../../utils/readingTime";
 
 export default function CategoryPage({ category, articles, config }) {
   return (
     <>
       <Head>
-        <title>{config.heroTitle} – FinanzFreedom</title>
+        <title>{config.label} – FinanzFreedom</title>
         <meta name="description" content={config.seoDescription} />
       </Head>
 
-      <header className={styles.hero}>
-        <div className={styles.heroInner}>
-          <span className={styles.kicker}>{config.kicker}</span>
+      <main className={styles.wrapper}>
+
+        {/* HERO-BEREICH -------------------------------------- */}
+        <section className={styles.hero}>
+          <p className={styles.kicker}>{config.kicker}</p>
           <h1>{config.heroTitle}</h1>
-          <p>{config.heroSubtitle}</p>
-        </div>
-      </header>
+          <p className={styles.subtitle}>{config.heroSubtitle}</p>
+        </section>
 
-      <main className={styles.main}>
-        {articles.length > 0 && (
-          <section className={styles.articleSection}>
-            <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
+        {/* ARTIKEL-LISTE -------------------------------------- */}
+        <section className={styles.articleSection}>
+          <h2 className={styles.sectionTitle}>Aktuelle Inhalte</h2>
 
+          {articles.length === 0 ? (
+            <p className={styles.noArticles}>
+              In dieser Kategorie gibt es noch keine Artikel.
+            </p>
+          ) : (
             <div className={styles.grid}>
-              {articles.map((article) => (
+              {articles.map((article, index) => (
                 <Link
-                  key={article.slug}
+                  key={index}
                   href={`/${category}/${article.slug}`}
                   className={styles.card}
                 >
@@ -42,7 +48,7 @@ export default function CategoryPage({ category, articles, config }) {
                   <div className={styles.cardMeta}>
                     {article.date && (
                       <span>
-                        {new Date(article.date).toLocaleDateString("de-DE")}
+                        {new Date(article.date).toLocaleDateString("de-DE")} •{" "}
                       </span>
                     )}
                     <span>{article.readingTime} Min. Lesezeit</span>
@@ -52,17 +58,17 @@ export default function CategoryPage({ category, articles, config }) {
                 </Link>
               ))}
             </div>
-          </section>
-        )}
+          )}
+        </section>
 
-        {/* FAQ */}
-        {config.faq && (
+        {/* FAQ ------------------------------------------------ */}
+        {config.faq && config.faq.length > 0 && (
           <section className={styles.faqSection}>
             <h2 className={styles.sectionTitle}>Häufige Fragen</h2>
 
             <div className={styles.faqGrid}>
-              {config.faq.map((item, i) => (
-                <div key={i} className={styles.faqItem}>
+              {config.faq.map((item, index) => (
+                <div key={index} className={styles.faqItem}>
                   <h3>{item.question}</h3>
                   <p>{item.answer}</p>
                 </div>
@@ -71,17 +77,17 @@ export default function CategoryPage({ category, articles, config }) {
           </section>
         )}
 
-        {/* Next Steps */}
+        {/* NEXT STEPS ---------------------------------------- */}
         {config.nextSteps && (
           <section className={styles.nextStepsSection}>
             <h2 className={styles.sectionTitle}>Nächste Schritte</h2>
 
             <div className={styles.nextStepsGrid}>
-              {config.nextSteps.map((item, i) => (
-                <Link key={i} href={item.href} className={styles.nextCard}>
-                  <span className={styles.nextBadge}>{item.badge}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+              {config.nextSteps.map((step, index) => (
+                <Link key={index} href={step.href} className={styles.nextCard}>
+                  <span className={styles.nextBadge}>{step.badge}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
                   <span className={styles.cardLink}>Ansehen →</span>
                 </Link>
               ))}
@@ -93,59 +99,67 @@ export default function CategoryPage({ category, articles, config }) {
   );
 }
 
-// ===== STATIC GENERATION =====
-
+/* DYNAMISCHE PFADE -------------------------------------------- */
 export async function getStaticPaths() {
-  const categories = fs
-    .readdirSync(path.join("content"))
-    .filter((dir) =>
-      fs.statSync(path.join("content", dir)).isDirectory()
-    );
+  const categoriesPath = path.join(process.cwd(), "content");
+  const categories = fs.readdirSync(categoriesPath);
 
   return {
-    paths: categories.map((category) => ({ params: { category } })),
+    paths: categories.map((category) => ({
+      params: { category }
+    })),
     fallback: false,
   };
 }
 
+/* LADEN VON ARTIKELN ------------------------------------------ */
 export async function getStaticProps({ params }) {
   const category = params.category;
 
-  const categoryConfigPath = path.join(
-    process.cwd(),
-    "config",
-    "categories.json"
-  );
+  // Dynamische Config: liest automatisch aus /content/<category>/config.json
+  const configFile = path.join(process.cwd(), "content", category, "config.json");
 
-  const configFile = fs.readFileSync(categoryConfigPath, "utf8");
-  const CONFIG = JSON.parse(configFile);
+  let config = {
+    slug: category,
+    label: category.toUpperCase(),
+    shortLabel: category,
+    kicker: "Kategorie",
+    heroTitle: "Kategorie",
+    heroSubtitle: "",
+    seoDescription: `Artikel über ${category}.`
+  };
 
-  const config =
-    CONFIG[category] || CONFIG["default"] || {};
+  if (fs.existsSync(configFile)) {
+    config = { ...config, ...JSON.parse(fs.readFileSync(configFile, "utf8")) };
+  }
 
   const folder = path.join(process.cwd(), "content", category);
-
-  let articles = [];
+  const articles = [];
 
   if (fs.existsSync(folder)) {
-    const files = fs
-      .readdirSync(folder)
-      .filter((f) => f.endsWith(".md"));
+    fs.readdirSync(folder).forEach((file) => {
+      if (!file.endsWith(".md")) return;
 
-    articles = files.map((file) => {
-      const fullPath = path.join(folder, file);
-      const source = fs.readFileSync(fullPath, "utf8");
+      const filePath = path.join(folder, file);
+      const source = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(source);
 
-      return {
+      articles.push({
         slug: data.slug || file.replace(".md", ""),
-        title: data.title || "Artikel",
+        title: data.title,
         description: data.description || "",
         date: data.date || null,
-        readingTime: Math.ceil(content.split(" ").length / 200),
-      };
+        readingTime: getReadingTime(content),
+      });
     });
   }
+
+  // Sortieren nach Datum (neu → alt)
+  articles.sort((a, b) => {
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return new Date(b.date) - new Date(a.date);
+  });
 
   return {
     props: {

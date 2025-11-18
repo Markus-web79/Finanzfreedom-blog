@@ -1,13 +1,12 @@
-// config/categoryConfig.js
+// config/categoriesConfig.js
 
-const CATEGORY_CONFIG = {
+export const CATEGORY_CONFIG = {
   "etfs": {
     slug: "etfs",
     label: "ETFs & Indexfonds",
     shortLabel: "ETFs",
     heroTitle: "ETFs verstehen und gezielt nutzen.",
-    heroSubtitle:
-      "Von Grundlagen bis Strategien – lerne, wie du langfristig Vermögen mit ETFs aufbaust.",
+    heroSubtitle: "Von Grundlagen bis Strategien – lerne, wie du langfristig Vermögen mit ETFs aufbaust.",
     seoDescription:
       "Alles über ETFs, Sparpläne und Anlagestrategien – praxisnah erklärt.",
   },
@@ -29,21 +28,19 @@ const CATEGORY_CONFIG = {
     shortLabel: "Versicherungen",
     heroTitle: "Smarte Versicherungen verstehen.",
     heroSubtitle:
-      "Welche brauchst du wirklich? Und wo sparst du Geld? Alles einfach erklärt.",
+      "Welche Policen sind sinnvoll? Wo kannst du sparen? Welche Risiken solltest du abdecken?",
     seoDescription:
-      "Ratgeber zu Versicherungen, Spartipps und wichtige Entscheidungen im Überblick.",
+      "Wichtige Versicherungen einfach erklärt.",
   },
 
-  "sparstrategien": {
-    slug: "sparstrategien",
-    label: "Sparstrategien & Alltagstipps",
-    shortLabel: "Sparen",
-    heroTitle: "Mehr Geld behalten – mit smarten Sparstrategien.",
+  "familie-kinder": {
+    slug: "familie-kinder",
+    label: "Familie & Kinder",
+    shortLabel: "Familie",
+    heroTitle: "Finanzen für Familien – clevere Entscheidungen für die Zukunft.",
     heroSubtitle:
-      "Alltagstipps, Hacks und finanzielle Basics für cleveres Sparen.",
+      "Wie du für Kinder sinnvoll vorsorgst, Vermögen aufbaust und finanzielle Sicherheit schaffst.",
     seoDescription:
-      "Sparstrategien für Einsteiger und Fortgeschrittene – verständlich erklärt.",
+      "Ratgeber für Eltern und Großeltern: Kinderdepot, ETF-Sparen, Schenkungen & Vermögensplanung.",
   }
 };
-
-export default CATEGORY_CONFIG;

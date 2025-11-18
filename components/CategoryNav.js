@@ -3,12 +3,15 @@ import styles from "../styles/CategoryNav.module.css";
 import categories from "../config/categories.json";
 
 export default function CategoryNav({ active }) {
-  // Kategorien als Array extrahieren
-  const categoryList = Object.values(categories);
+  // Kategorien aus JSON-Config holen
+  const categoryList = Object.values(categories).map(cat => ({
+    slug: cat.slug,
+    label: cat.shortLabel || cat.label
+  }));
 
   return (
     <nav className={styles.nav}>
-      {categoryList.map((cat) => (
+      {categoryList.map(cat => (
         <Link
           key={cat.slug}
           href={`/${cat.slug}`}

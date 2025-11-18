@@ -3,15 +3,15 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { CATEGORY_CONFIG } from "../../config/categoriesConfig";
-import styles from "../../styles/ArticlePage.module.css";
+import styles from "../../styles/page.module.css";   // <- FIXED
 
 export default function ArticlePage({ frontmatter, content, categoryData }) {
   return (
-    <div className={styles.articleWrapper}>
+    <div className={styles.wrapper}>
       <header className={styles.header}>
         <h1>{frontmatter.title}</h1>
         <p className={styles.meta}>
-          {frontmatter.date} · {frontmatter.readingTime} Min.
+          {frontmatter.date} · {frontmatter.readingTime} Min. Lesezeit
         </p>
       </header>
 
@@ -20,7 +20,7 @@ export default function ArticlePage({ frontmatter, content, categoryData }) {
         dangerouslySetInnerHTML={{ __html: marked(content) }}
       />
 
-      <a className={styles.backLink} href={`/${categoryData.slug}`}>
+      <a className={styles.backlink} href={`/${categoryData.slug}`}>
         ← Zurück zu {categoryData.label}
       </a>
     </div>

@@ -1,59 +1,52 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Head from "next/head";
 import { marked } from "marked";
+import { CATEGORY_CONFIG } from "../../config/categoriesConfig";
 import styles from "../../styles/ArticlePage.module.css";
 
-export default function ArticlePage({ article }) {
+export default function ArticlePage({ frontmatter, content, categoryData }) {
   return (
-    <>
-      <Head>
-        <title>{article.title} – FinanzFreedom</title>
-        <meta name="description" content={article.description} />
-      </Head>
-
-      <main className={styles.container}>
-        <h1 className={styles.title}>{article.title}</h1>
-
+    <div className={styles.articleWrapper}>
+      <header className={styles.header}>
+        <h1>{frontmatter.title}</h1>
         <p className={styles.meta}>
-          {article.date && (
-            <span>{new Date(article.date).toLocaleDateString("de-DE")} • </span>
-          )}
-          {article.readingTime} Min. Lesezeit
+          {frontmatter.date} · {frontmatter.readingTime} Min.
         </p>
+      </header>
 
-        <article
-          className={styles.content}
-          dangerouslySetInnerHTML={{ __html: article.html }}
-        />
-      </main>
-    </>
+      <article
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: marked(content) }}
+      />
+
+      <a className={styles.backLink} href={`/${categoryData.slug}`}>
+        ← Zurück zu {categoryData.label}
+      </a>
+    </div>
   );
 }
 
 export async function getStaticPaths() {
-  const categories = fs.readdirSync(path.join("content"));
+  const contentDir = path.join(process.cwd(), "content");
+  const categories = fs.readdirSync(contentDir);
+
   let paths = [];
 
-  categories.forEach((category) => {
-    const folder = path.join("content", category);
+  categories.forEach((categoryFolder) => {
+    const categoryPath = path.join(contentDir, categoryFolder);
+    const files = fs.readdirSync(categoryPath);
 
-    if (!fs.statSync(folder).isDirectory()) return;
-
-    const files = fs.readdirSync(folder);
-
-    files.forEach((file) => {
-      if (!file.endsWith(".md")) return;
-
-      const source = fs.readFileSync(path.join(folder, file), "utf8");
-      const { data } = matter(source);
-
-      const slug = data.slug || file.replace(".md", "");
-
-      paths.push({
-        params: { category, slug },
-      });
+    files.forEach((fileName) => {
+      if (fileName.endsWith(".md")) {
+        const slug = fileName.replace(".md", "");
+        paths.push({
+          params: {
+            category: categoryFolder,
+            slug: slug,
+          },
+        });
+      }
     });
   });
 
@@ -64,23 +57,26 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { category, slug } = params;
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    params.category,
+    `${params.slug}.md`
+  );
 
-  const filePath = path.join(process.cwd(), "content", category, `${slug}.md`);
-  const file = fs.readFileSync(filePath, "utf8");
+  const fileContent = fs.readFileSync(filePath, "utf8");
+  const { data: frontmatter, content } = matter(fileContent);
 
-  const { data, content } = matter(file);
-
-  const html = marked.parse(content);
-  const readingTime = Math.ceil(content.split(" ").length / 200);
+  const categoryData = CATEGORY_CONFIG[params.category] || {
+    label: params.category,
+    slug: params.category,
+  };
 
   return {
     props: {
-      article: {
-        ...data,
-        html,
-        readingTime,
-      },
+      frontmatter,
+      content,
+      categoryData,
     },
   };
 }

@@ -1,4 +1,4 @@
-// /config/categoriesConfig.js
+// config/categoriesConfig.js
 
 const CATEGORY_CONFIG = {
   investieren: {
@@ -14,10 +14,10 @@ const CATEGORY_CONFIG = {
 
   "geld-anlegen": {
     slug: "geld-anlegen",
-    label: "Geld anlegen & Vermögen aufbauen",
+    label: "Geld anlegen",
     shortLabel: "Geld anlegen",
     heroTitle: "Struktur für dein Geld statt Chaos.",
-    heroSubtitle: "Lerne sinnvoll zu investieren und dein Vermögen langfristig aufzubauen.",
+    heroSubtitle: "Lerne sinnvoll zu investieren.",
     seoDescription: "Strategien und Praxis-Guides zum Vermögensaufbau.",
     showOnHome: true,
     order: 2,
@@ -28,8 +28,8 @@ const CATEGORY_CONFIG = {
     label: "Geld vermehren",
     shortLabel: "Geld vermehren",
     heroTitle: "Lass dein Geld für dich arbeiten.",
-    heroSubtitle: "Tipps, Strategien und Wege zum passiven Einkommen.",
-    seoDescription: "Smarte Strategien, um dein Einkommen zu erhöhen.",
+    heroSubtitle: "Tipps & Wege, Einkommen zu erhöhen.",
+    seoDescription: "Strategien zum passiven Einkommen.",
     showOnHome: true,
     order: 3,
   },
@@ -38,9 +38,9 @@ const CATEGORY_CONFIG = {
     slug: "versicherungen",
     label: "Versicherungen verstehen",
     shortLabel: "Versicherungen",
-    heroTitle: "Wichtige Versicherungen klar erklärt.",
-    heroSubtitle: "Welche brauchst du wirklich? Welche nicht?",
-    seoDescription: "Versicherungswissen einfach erklärt.",
+    heroTitle: "Smarte Versicherungen verstehen.",
+    heroSubtitle: "Welche brauchst du wirklich?",
+    seoDescription: "Versicherungen einfach erklärt.",
     showOnHome: true,
     order: 4,
   },
@@ -49,12 +49,12 @@ const CATEGORY_CONFIG = {
     slug: "familie-kinder",
     label: "Familie & Kinder",
     shortLabel: "Familie",
-    heroTitle: "Finanzen für Familien einfach erklärt.",
-    heroSubtitle: "Wie du für Kinder vorsorgst und Vermögen aufbaust.",
-    seoDescription: "Finanzwissen für Eltern.",
+    heroTitle: "Finanzen für Familien",
+    heroSubtitle: "Vorsorge, Kinderdepot, Sicherheit.",
+    seoDescription: "Ratgeber für Eltern & Großeltern.",
     showOnHome: true,
     order: 5,
-  }
+  },
 };
 
 export default CATEGORY_CONFIG;

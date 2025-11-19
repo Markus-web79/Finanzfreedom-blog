@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/CategoryPage.module.css";
-import categories from "../../config/categories";
+import CATEGORY_CONFIG from "../../config/categoriesConfig";
 
 export default function CategoryPage({ categoryKey, config, articles }) {
   return (

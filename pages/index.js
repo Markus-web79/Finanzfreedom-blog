@@ -1,8 +1,11 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import CATEGORY_CONFIG from "../config/categoriesConfig";
 
 export default function Home() {
+  const categories = Object.values(CATEGORY_CONFIG);
+
   return (
     <>
       <Head>
@@ -72,23 +75,13 @@ export default function Home() {
         <h2>Themenwelten</h2>
 
         <div className={styles.topicGrid}>
-          <div className={styles.topicCard}>
-            <h3>Investieren</h3>
-            <p>ETFs, Aktien, Strategien – verständlich erklärt.</p>
-            <Link href="/investieren">Weiterlesen →</Link>
-          </div>
-
-          <div className={styles.topicCard}>
-            <h3>Versicherungen</h3>
-            <p>Welche sind wirklich wichtig? Welche kannst du sparen?</p>
-            <Link href="/versicherungen">Weiterlesen →</Link>
-          </div>
-
-          <div className={styles.topicCard}>
-            <h3>Geld vermehren</h3>
-            <p>Tipps und Strategien, damit dein Geld für dich arbeitet.</p>
-            <Link href="/geld-vermehren">Weiterlesen →</Link>
-          </div>
+          {categories.map((cat) => (
+            <div key={cat.slug} className={styles.topicCard}>
+              <h3>{cat.label}</h3>
+              <p>{cat.heroSubtitle}</p>
+              <Link href={`/${cat.slug}`}>Weiterlesen →</Link>
+            </div>
+          ))}
         </div>
       </section>
     </>

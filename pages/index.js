@@ -1,11 +1,9 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import CATEGORY_CONFIG from "../config/categoriesConfig";
+import styles from "../styles/Home.module.css";
+import categoryConfig from "../config/categoryConfig";
 
 export default function Home() {
-  const categories = Object.values(CATEGORY_CONFIG);
-
   return (
     <>
       <Head>
@@ -70,12 +68,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= THEMENWELTEN ================= */}
+      {/* ================= THEMENWELTEN DYNAMISCH ================= */}
       <section className={styles.topics}>
         <h2>Themenwelten</h2>
 
         <div className={styles.topicGrid}>
-          {categories.map((cat) => (
+          {Object.values(categoryConfig).map((cat) => (
             <div key={cat.slug} className={styles.topicCard}>
               <h3>{cat.label}</h3>
               <p>{cat.heroSubtitle}</p>

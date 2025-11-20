@@ -1,6 +1,6 @@
-// config/CATEGORIES.js
+// config/categoriesConfig.js
 
-const CATEGORIES = {
+const CATEGORY_CONFIG = {
   investieren: {
     slug: "investieren",
     label: "Investieren",
@@ -57,4 +57,4 @@ const CATEGORIES = {
   },
 };
 
-export default CATEGORIES;
+export default CATEGORY_CONFIG;

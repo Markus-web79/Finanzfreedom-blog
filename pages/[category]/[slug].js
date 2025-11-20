@@ -12,22 +12,18 @@ export default function ArticlePage({ frontmatter, content, categoryData }) {
         <p>{frontmatter.date}</p>
       </header>
 
-      <article
-        dangerouslySetInnerHTML={{ __html: marked(content) }}
-      />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
 
       <br />
-
-      <a href={`/category/${categoryData.slug}`}>
-        ← Zurück zu {categoryData.label}
-      </a>
+      <a href={`/category/${categoryData.slug}`}>← Zurück zu {categoryData.label}</a>
     </div>
   );
 }
 
 export async function getStaticPaths() {
-  const categories = Object.keys(CATEGORY_CONFIG);
   let paths = [];
+
+  const categories = Object.keys(CATEGORY_CONFIG);
 
   categories.forEach((cat) => {
     const contentDir = path.join(process.cwd(), "content", cat);
@@ -44,7 +40,10 @@ export async function getStaticPaths() {
     }
   });
 
-  return { paths, fallback: false };
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
@@ -55,9 +54,11 @@ export async function getStaticProps({ params }) {
 
   const { data: frontmatter, content } = matter(fileContent);
 
-  const categoryData = CATEGORY_CONFIG[category];
-
   return {
-    props: { frontmatter, content, categoryData },
+    props: {
+      frontmatter,
+      content,
+      categoryData: CATEGORY_CONFIG[category],
+    },
   };
 }

@@ -2,52 +2,41 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
-import CATEGORY_CONFIG from "../../../config/categoriesConfig";
-import styles from "../../styles/page.module.css";   // <- FIXED
+import CATEGORY_CONFIG from "../../config/categoriesConfig";
 
 export default function ArticlePage({ frontmatter, content, categoryData }) {
   return (
-    <div className={styles.wrapper}>
-      <header className={styles.header}>
+    <div style={{ padding: "2rem" }}>
+      <header>
         <h1>{frontmatter.title}</h1>
-        <p className={styles.meta}>
-          {frontmatter.date} · {frontmatter.readingTime} Min. Lesezeit
-        </p>
+        <p>{frontmatter.date}</p>
       </header>
 
-      <article
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: marked(content) }}
-      />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
 
-      <a className={styles.backlink} href={`/${categoryData.slug}`}>
-        ← Zurück zu {categoryData.label}
-      </a>
+      <br />
+      <a href={`/${categoryData.slug}`}>← Zurück zu {categoryData.label}</a>
     </div>
   );
 }
 
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), "content");
-  const categories = fs.readdirSync(contentDir);
-
   let paths = [];
 
-  categories.forEach((categoryFolder) => {
-    const categoryPath = path.join(contentDir, categoryFolder);
-    const files = fs.readdirSync(categoryPath);
+  const categories = Object.keys(CATEGORY_CONFIG);
 
-    files.forEach((fileName) => {
-      if (fileName.endsWith(".md")) {
-        const slug = fileName.replace(".md", "");
+  categories.forEach((cat) => {
+    const contentDir = path.join(process.cwd(), "content", cat);
+
+    if (fs.existsSync(contentDir)) {
+      const files = fs.readdirSync(contentDir);
+
+      files.forEach((file) => {
         paths.push({
-          params: {
-            category: categoryFolder,
-            slug: slug,
-          },
+          params: { category: cat, slug: file.replace(".md", "") }
         });
-      }
-    });
+      });
+    }
   });
 
   return {
@@ -57,20 +46,19 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(
+  const { category, slug } = params;
+
+  const categoryData = CATEGORY_CONFIG[category];
+
+  const articlePath = path.join(
     process.cwd(),
     "content",
-    params.category,
-    `${params.slug}.md`
+    category,
+    `${slug}.md`
   );
 
-  const fileContent = fs.readFileSync(filePath, "utf8");
+  const fileContent = fs.readFileSync(articlePath, "utf8");
   const { data: frontmatter, content } = matter(fileContent);
-
-  const categoryData = CATEGORY_CONFIG[params.category] || {
-    label: params.category,
-    slug: params.category,
-  };
 
   return {
     props: {

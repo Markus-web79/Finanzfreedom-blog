@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import CATEGORY_CONFIG from "../../config/categoriesConfig";
+import CATEGORY_CONFIG from "../config/categoriesConfig";
 
 export default function Home() {
   return (

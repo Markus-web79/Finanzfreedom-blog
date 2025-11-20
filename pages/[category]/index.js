@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import CATEGORY_CONFIG from "../../config/categoriesConfig.js";
+import CATEGORY_CONFIG from "../../config/categoriesConfig";
 
 export default function CategoryPage({ categoryInfo, articles }) {
   return (
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
   const categories = Object.keys(CATEGORY_CONFIG);
 
   const paths = categories.map((cat) => ({
-    params: { category: cat },
+    params: { category: cat }
   }));
 
   return {
@@ -43,32 +43,26 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const category = params.category;
+  const categoryKey = params.category;
+  const categoryInfo = CATEGORY_CONFIG[categoryKey];
 
-  const categoryInfo =
-    CATEGORY_CONFIG[category] || { label: "Unbekannte Kategorie", slug: category };
+  const contentDir = path.join(process.cwd(), "content", categoryKey);
 
-  const categoryPath = path.join(process.cwd(), "content", category);
   let articles = [];
 
-  if (fs.existsSync(categoryPath)) {
-    const files = fs.readdirSync(categoryPath);
+  if (fs.existsSync(contentDir)) {
+    const files = fs.readdirSync(contentDir);
 
-    articles = files
-      .filter((file) => file.endsWith(".md"))
-      .map((file) => {
-        const fileContent = fs.readFileSync(
-          path.join(categoryPath, file),
-          "utf8"
-        );
+    articles = files.map((filename) => {
+      const filePath = path.join(contentDir, filename);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data: frontmatter } = matter(fileContent);
 
-        const { data } = matter(fileContent);
-
-        return {
-          slug: file.replace(".md", ""),
-          title: data.title || file.replace(".md", ""),
-        };
-      });
+      return {
+        title: frontmatter.title || filename.replace(".md", ""),
+        slug: filename.replace(".md", "")
+      };
+    });
   }
 
   return {

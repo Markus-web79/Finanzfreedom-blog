@@ -54,7 +54,7 @@ const CATEGORY_CONFIG = {
     seoDescription: "Ratgeber für Eltern & Großeltern.",
     showOnHome: true,
     order: 5,
-  },
+  }
 };
 
 export default CATEGORY_CONFIG;

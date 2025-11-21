@@ -1,18 +1,23 @@
 const CATEGORY_CONFIG = {
   investieren: {
-    slug: "investieren",
     label: "Investieren",
-    heroSubtitle: "Lerne clever zu investieren",
+    slug: "investieren",
+    heroSubtitle: "Alles rund ums Investieren und Vermögensaufbau",
   },
   versicherungen: {
-    slug: "versicherungen",
     label: "Versicherungen",
-    heroSubtitle: "Schütze dein Geld",
+    slug: "versicherungen",
+    heroSubtitle: "Die besten Versicherungen klar erklärt",
   },
-  geld_verdienen: {
-    slug: "geld_verdienen",
-    label: "Geld verdienen",
-    heroSubtitle: "Verdiene mehr Einkommen",
+  etfs: {
+    label: "ETFs",
+    slug: "etfs",
+    heroSubtitle: "Lerne ETFs verstehen und nutzen",
+  },
+  geldvermehren: {
+    label: "Geld Vermehren",
+    slug: "geldvermehren",
+    heroSubtitle: "Strategien um dein Geld zu vermehren",
   },
 };
 

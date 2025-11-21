@@ -1,21 +1,20 @@
-// config/categoryConfig.js
 const CATEGORY_CONFIG = {
   investieren: {
     slug: "investieren",
     label: "Investieren",
-    heroSubtitle: "Investieren lernen – klar und ohne Blabla."
+    heroSubtitle: "Investieren lernen – klar und ohne BlaBla."
   },
 
   versicherungen: {
     slug: "versicherungen",
     label: "Versicherungen",
-    heroSubtitle: "Alles über Versicherungen – einfach erklärt."
+    heroSubtitle: "Versicherungen einfach erklärt."
   },
 
-  sparplan: {
-    slug: "sparplan",
-    label: "Sparpläne",
-    heroSubtitle: "Sparen und Vermögen aufbauen leicht gemacht."
+  sparen: {
+    slug: "sparen",
+    label: "Sparen",
+    heroSubtitle: "Sparen leicht gemacht."
   }
 };
 

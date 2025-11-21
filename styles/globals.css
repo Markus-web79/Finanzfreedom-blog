@@ -1,54 +1,102 @@
-/* === Globale Stile === */
+/* =========================================
+   GLOBAL STYLES – FINANZFREEDOM
+   (Grunddesign, Hintergrund, Reset, Text)
+========================================= */
 
-body {
-  background-color: #0e0f11;
-  color: #e0e0e0;
-  font-family: "Inter", system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-h1, h2, h3 {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-a {
-  color: #00bfa5;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #00e3c4;
-}
-
-/* === Buttons === */
-
-button {
-  background-color: #00bfa5;
-  color: #001f1f;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background-color: #00e3c4;
-}
-
-/* === Layout === */
+/* ---------- Reset ---------- */
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-img {
+/* ---------- Smooth Scrolling ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Body Styling ---------- */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: radial-gradient(circle at top, #020b14 0%, #01050b 45%, #000000 100%);
+  color: #e4edf7;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Links Global */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Bilder */
+
+img,
+picture {
   max-width: 100%;
-  height: auto;
-  border-radius: 6px;
+  display: block;
+}
+
+/* Container – optional für spätere Nutzung */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+/* ---------- Scrollbar (modern, dezent) ---------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0d4d4b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* ---------- Headings (global leichte Optimierung) ---------- */
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+/* Paragraphen */
+
+p {
+  color: #cdd7e0;
+}
+
+/* Buttons – globale Base (wird durch Module überschrieben) */
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* ---------- Animations-Keyframes ---------- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

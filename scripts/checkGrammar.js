@@ -1,33 +1,49 @@
 // scripts/checkGrammar.js
-import { execSync } from "child_process";
-import path from "path";
 import fs from "fs";
+import path from "path";
 
-const contentDir = path.join(process.cwd(), "content");
+/**
+ * Prüft einfache Grammatik- und Schreibfehler in Markdown-Dateien.
+ * (Platzhalter, kann später KI-gestützt erweitert werden)
+ */
+export function checkGrammar(content) {
+  const issues = [];
 
-console.log("🔎 Starte LanguageTool-Prüfung…");
+  // Beispiel-Checks:
+  if (content.includes("  ")) {
+    issues.push("Doppelte Leerzeichen gefunden");
+  }
+  if (content.includes("..")) {
+    issues.push("Mehrere Punkte hintereinander entdeckt");
+  }
 
-const files = fs.readdirSync(contentDir).filter(f => f.endsWith(".md"));
-
-if (files.length === 0) {
-  console.log("Keine .md-Dateien gefunden.");
-  process.exit(0);
+  return issues;
 }
 
-files.forEach(file => {
-  const filePath = path.join(contentDir, file);
-  console.log(`\n➡️  Prüfe: ${file}`);
+/**
+ * Läuft durch alle Markdown-Dateien im content/-Ordner
+ * und protokolliert einfache Grammatik-Checks.
+ */
+export function runGrammarCheck() {
+  const contentDir = path.join(process.cwd(), "content");
+  const entries = fs.readdirSync(contentDir, { withFileTypes: true });
 
-  try {
-    // German (de-DE) prüfen
-    const output = execSync(
-      `npx languagetool-cli --language de-DE "${filePath}"`,
-      { encoding: "utf8" }
-    );
-    console.log(output.trim() || "✅ Keine Probleme gefunden.");
-  } catch (err) {
-    console.error("⚠️ Fehler bei", file, ":", err.stdout || err.message);
+  for (const entry of entries) {
+    if (entry.isFile() && entry.name.endsWith(".md")) {
+      const filePath = path.join(contentDir, entry.name);
+      const text = fs.readFileSync(filePath, "utf-8");
+      const issues = checkGrammar(text);
+
+      if (issues.length > 0) {
+        console.log(`⚠️ Probleme in ${entry.name}:`, issues);
+      } else {
+        console.log(`✅ Keine Probleme in ${entry.name}.`);
+      }
+    }
   }
-});
 
-console.log("\n✅ Grammar-Check abgeschlossen.");
+  console.log("✅ Grammar-Check abgeschlossen.");
+}
+
+// ⬇️ Wichtig: Export, damit generateArticle.js es nutzen kann
+export default checkGrammar;

@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  gap: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 229, 207, 0.15);
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: #d0d0d0;
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 6px;
+  transition: 0.25s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  color: #00e5cf;
+  border-color: rgba(0, 229, 207, 0.4);
+}
+
+.active {
+  color: #00e5cf !important;
+  border-bottom: 2px solid #00e5cf !important;
+}

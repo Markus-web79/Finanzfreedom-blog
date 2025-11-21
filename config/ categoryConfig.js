@@ -1,26 +1,22 @@
-// /config/categoryConfig.js
-
+// config/categoryConfig.js
 const CATEGORY_CONFIG = {
-  etfs: {
-    slug: "etfs",
-    label: "ETFs",
-    heroSubtitle: "Deine ETF-Guides für langfristiges Vermögen."
+  investieren: {
+    slug: "investieren",
+    label: "Investieren",
+    heroSubtitle: "Investieren lernen – klar und ohne Blabla."
   },
+
   versicherungen: {
     slug: "versicherungen",
     label: "Versicherungen",
-    heroSubtitle: "Schütze dich vor finanziellen Risiken."
+    heroSubtitle: "Alles über Versicherungen – einfach erklärt."
   },
-  sparen: {
-    slug: "sparen",
-    label: "Sparen",
-    heroSubtitle: "Mehr Geld zum Leben – weniger Verschwendung."
-  },
-  geld_vermehren: {
-    slug: "geld_vermehren",
-    label: "Geld vermehren",
-    heroSubtitle: "Strategien für deinen Vermögensaufbau."
+
+  sparplan: {
+    slug: "sparplan",
+    label: "Sparpläne",
+    heroSubtitle: "Sparen und Vermögen aufbauen leicht gemacht."
   }
 };
 
-module.exports = CATEGORY_CONFIG;
+export default CATEGORY_CONFIG;

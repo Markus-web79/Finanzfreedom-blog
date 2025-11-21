@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
+
 import CATEGORY_CONFIG from "../../config/categoryConfig";
 
 export default function ArticlePage({ frontmatter, content, categoryData }) {
@@ -21,9 +22,8 @@ export default function ArticlePage({ frontmatter, content, categoryData }) {
 }
 
 export async function getStaticPaths() {
-  let paths = [];
-
   const categories = Object.keys(CATEGORY_CONFIG);
+  let paths = [];
 
   categories.forEach((cat) => {
     const contentDir = path.join(process.cwd(), "content", cat);
@@ -34,31 +34,29 @@ export async function getStaticPaths() {
       files.forEach((file) => {
         const slug = file.replace(".md", "");
         paths.push({
-          params: { category: cat, slug },
+          params: {
+            category: cat,
+            slug: slug,
+          },
         });
       });
     }
   });
 
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const { category, slug } = params;
+  const filePath = path.join(process.cwd(), "content", params.category, `${params.slug}.md`);
+  const fileContent = fs.readFileSync(filePath, "utf8");
 
-  const filePath = path.join(process.cwd(), "content", category, `${slug}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-
-  const { data: frontmatter, content } = matter(fileContent);
+  const { data, content } = matter(fileContent);
 
   return {
     props: {
-      frontmatter,
+      frontmatter: data,
       content,
-      categoryData: CATEGORY_CONFIG[category],
+      categoryData: CATEGORY_CONFIG[params.category],
     },
   };
 }

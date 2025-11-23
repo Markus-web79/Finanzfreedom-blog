@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: 🧩 Checkout Repository
         uses: actions/checkout@v4
@@ -20,48 +21,50 @@ jobs:
       - name: 🧩 Install Dependencies
         run: npm install
 
+      # WICHTIG – Markdown Renderer
       - name: 🧩 Install missing markdown renderer
         run: npm install react-markdown
 
+      # --------------------------
+      # 🔧 GENERATOR-SKRIPTE
+      # --------------------------
+
       - name: 🧠 SEO Qualitätsprüfung
-        run: |
-          echo "📊 Prüfe Artikel auf SEO-Qualität..."
-          node scripts/seoCheck.js
+        run: node scripts/seoCheck.js
 
       - name: ✍️ Generiere Artikel
-        run: |
-          echo "📰 Generiere neuen Artikel..."
-          node scripts/generateArticle.js
+        run: node scripts/generateArticle.js
 
       - name: ⚖️ Generiere Vergleichsartikel
-        run: |
-          echo "⚖️ Generiere neuen Vergleichsartikel..."
-          node scripts/generateComparison.js
+        run: node scripts/generateComparison.js
 
       - name: 🔗 Interne Verlinkung
-        run: |
-          echo "🔗 Füge interne Links hinzu..."
-          node scripts/linkInternal.js
+        run: node scripts/linkInternal.js
 
       - name: 🗺️ Sitemap generieren
-        run: |
-          echo "📍 Generiere Sitemap..."
-          node scripts/generateSitemap.js
+        run: node scripts/generateSitemap.js
 
       - name: 📰 RSS Feed generieren
-        run: |
-          echo "📡 Erstelle RSS-Feed..."
-          node scripts/generateFeed.js
+        run: node scripts/generateFeed.js
 
       - name: 🔔 Suchmaschinen anpingen
-        run: |
-          echo "🔔 Informiere Google & Bing..."
-          node scripts/pingSearchEngines.js
+        run: node scripts/pingSearchEngines.js
 
+      # --------------------------
+      # ❗️ ENTSCHEIDENDER FIX:
+      # Projekt wirklich bauen VOR dem Deploy!
+      # --------------------------
+      - name: 🛠️ Build Next.js project
+        run: npm run build
+
+      # --------------------------
+      # 🚀 DEPLOY
+      # --------------------------
       - name: 🚀 Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
 
+      # --------------------------
+      # 💾 BACKUP
+      # --------------------------
       - name: 💾 Backup generierter Inhalte
-        run: |
-          echo "💾 Erstelle Backup der Inhalte..."
-          zip -r backup_$(date +%Y%m%d).zip content/
+        run: zip -r backup_$(date +%Y%m%d).zip content/

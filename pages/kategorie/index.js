@@ -1,20 +1,52 @@
-import CATEGORY_CONFIG from "../../config/categoryConfig";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import CATEGORY_CONFIG from "../../../../config/categoryConfig.js";
 
-export default function KategorieOverview() {
-  const categories = Object.values(CATEGORY_CONFIG);
-
+export default function CategoryPage({ category, articles }) {
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>Kategorien</h1>
-      <p>Wähle eine Kategorie aus:</p>
+      <h1>{category.label}</h1>
+      <p>{category.heroSubtitle}</p>
 
       <ul>
-        {categories.map(cat => (
-          <li key={cat.slug}>
-            <a href={`/kategorie/${cat.slug}`}>{cat.label}</a>
+        {articles.map(a => (
+          <li key={a.slug}>
+            <a href={`/kategorie/${category.slug}/${a.slug}`}>
+              {a.title}
+            </a>
           </li>
         ))}
       </ul>
     </div>
   );
+}
+
+export async function getStaticPaths() {
+  const paths = Object.values(CATEGORY_CONFIG).map(cat => ({
+    params: { kategorie: cat.slug }
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const category = CATEGORY_CONFIG[params.kategorie];
+  const folder = path.join(process.cwd(), "content", category.slug);
+
+  const articles = fs.readdirSync(folder)
+    .filter(f => f.endsWith(".md"))
+    .map(file => {
+      const raw = fs.readFileSync(path.join(folder, file), "utf-8");
+      const { data } = matter(raw);
+
+      return {
+        slug: file.replace(".md", ""),
+        title: data.title || file.replace(".md", "")
+      };
+    });
+
+  return {
+    props: { category, articles }
+  };
 }

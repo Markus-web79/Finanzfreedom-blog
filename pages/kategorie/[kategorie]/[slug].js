@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import Link from "next/link";
 import CATEGORY_CONFIG from "../../../config/categoryConfig.js";
-import getArticlesByCategory from "../../../lib/getArticlesByCategory.js";
+import CATEGORY_CONFIG from "../../../../config/categoryConfig.js";
 
 const contentRoot = path.join(process.cwd(), "content");
 

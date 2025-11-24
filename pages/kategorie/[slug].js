@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 
       const slug = file.replace(".md", "");
       paths.push({
-        params: { slug, kategorie: cat.slug }
+        params: { slug }  // ⬅️ WICHTIG – NUR slug
       });
     });
   });
@@ -41,17 +41,26 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const category = CATEGORY_CONFIG[params.kategorie];
-  const filePath = path.join(process.cwd(), "content", params.kategorie, `${params.slug}.md`);
+  let categoryEntry = null;
 
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(raw);
+  // richtige Kategorie anhand der Dateien ermitteln
+  for (const cat of Object.values(CATEGORY_CONFIG)) {
+    const filePath = path.join(process.cwd(), "content", cat.slug, `${params.slug}.md`);
+    if (fs.existsSync(filePath)) {
+      categoryEntry = cat;
 
-  return {
-    props: {
-      frontmatter: data,
-      content,
-      category
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const { data, content } = matter(raw);
+
+      return {
+        props: {
+          frontmatter: data,
+          content,
+          category: categoryEntry
+        }
+      };
     }
-  };
+  }
+
+  return { notFound: true };
 }

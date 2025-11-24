@@ -1,3 +1,4 @@
+// config/categoryConfig.js
 const CATEGORY_CONFIG = {
   investieren: {
     slug: "investieren",

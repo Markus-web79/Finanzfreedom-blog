@@ -1,64 +1,57 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import CATEGORY_CONFIG from "../../config/categoryConfig";
+import { marked } from "marked";
+import CATEGORY_CONFIG from "../../../config/categoryConfig.js";
 
-export default function KategorieDetail({ category, articles }) {
+export default function ArticlePage({ frontmatter, content, category }) {
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>{category.label}</h1>
-      <p>{category.heroSubtitle}</p>
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.date}</p>
 
-      <h2>Artikel</h2>
-      {articles.length === 0 && <p>Keine Artikel vorhanden.</p>}
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
 
-      <ul>
-        {articles.map(a => (
-          <li key={a.slug}>
-            <a href={`/${category.slug}/${a.slug}`}>{a.title}</a>
-          </li>
-        ))}
-      </ul>
+      <br />
+      <a href={`/kategorie/${category.slug}`}>Zurück zu {category.label}</a>
     </div>
   );
 }
 
 export async function getStaticPaths() {
-  const categories = Object.values(CATEGORY_CONFIG);
+  const root = path.join(process.cwd(), "content");
+  const paths = [];
 
-  const paths = categories.map(c => ({
-    params: { slug: c.slug },
-  }));
+  Object.values(CATEGORY_CONFIG).forEach(cat => {
+    const folder = path.join(root, cat.slug);
+    if (!fs.existsSync(folder)) return;
+
+    const files = fs.readdirSync(folder);
+    files.forEach(file => {
+      if (!file.endsWith(".md")) return;
+
+      const slug = file.replace(".md", "");
+      paths.push({
+        params: { slug, kategorie: cat.slug }
+      });
+    });
+  });
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const category = CATEGORY_CONFIG[params.slug];
+  const category = CATEGORY_CONFIG[params.kategorie];
+  const filePath = path.join(process.cwd(), "content", params.kategorie, `${params.slug}.md`);
 
-  const dir = path.join(process.cwd(), "content", params.slug);
-  let articles = [];
-
-  if (fs.existsSync(dir)) {
-    const files = fs.readdirSync(dir);
-
-    articles = files
-      .filter(f => f.endsWith(".md"))
-      .map(f => {
-        const full = path.join(dir, f);
-        const raw = fs.readFileSync(full, "utf8");
-        const { data } = matter(raw);
-        return {
-          slug: data.slug,
-          title: data.title || f.replace(".md", ""),
-        };
-      });
-  }
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const { data, content } = matter(raw);
 
   return {
     props: {
-      category,
-      articles,
-    },
+      frontmatter: data,
+      content,
+      category
+    }
   };
 }

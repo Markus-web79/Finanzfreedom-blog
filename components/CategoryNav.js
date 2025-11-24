@@ -1,20 +1,19 @@
+// components/CategoryNav.js
+
 import Link from "next/link";
 import styles from "../styles/CategoryNav.module.css";
-import { CATEGORY_CONFIG } from "../config/categoriesConfig";
+import CATEGORY_CONFIG from "../config/categoryConfig.js";
 
 export default function CategoryNav({ active }) {
-  // Kategorien aus der Config extrahieren
-  const categories = Object.values(CATEGORY_CONFIG).map(cat => ({
-    slug: cat.slug,
-    label: cat.label
-  }));
+  // Kategorien aus der zentralen Config holen
+  const categories = Object.values(CATEGORY_CONFIG);
 
   return (
     <nav className={styles.nav}>
-      {categories.map(cat => (
-        <Link 
-          key={cat.slug} 
-          href={`/category/${cat.slug}`} 
+      {categories.map((cat) => (
+        <Link
+          key={cat.slug}
+          href={`/kategorie/${cat.slug}`}
           className={active === cat.slug ? styles.active : ""}
         >
           {cat.label}

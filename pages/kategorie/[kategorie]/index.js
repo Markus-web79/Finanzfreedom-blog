@@ -2,7 +2,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import CATEGORY_CONFIG from "../../../config/categoryConfig.js";
-import getArticlesByCategory from "../../../lib/getArticlesByCategory.js";
+import CATEGORY_CONFIG from "../../../../config/categoryConfig.js";
 
 export default function CategoryPage({ categoryInfo, articles }) {
   return (

@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import CATEGORY_CONFIG from "../../../../config/categoryConfig.js";
+import CATEGORY_CONFIG from "../../../config/categoryConfig.js";
 
 export default function CategoryPage({ category, articles }) {
   return (
@@ -12,7 +12,7 @@ export default function CategoryPage({ category, articles }) {
       <ul>
         {articles.map(a => (
           <li key={a.slug}>
-            <a href={`/kategorie/${category.slug}/${a.slug}`}>
+            <a href={`/kategorie/${a.slug}`}>
               {a.title}
             </a>
           </li>
@@ -24,14 +24,17 @@ export default function CategoryPage({ category, articles }) {
 
 export async function getStaticPaths() {
   const paths = Object.values(CATEGORY_CONFIG).map(cat => ({
-    params: { kategorie: cat.slug }
+    params: {}  // ⬅️ Keine dynamischen Parameter – die Seite ist statisch
   }));
 
-  return { paths, fallback: false };
+  return { paths: [{ params: {} }], fallback: false };
 }
 
-export async function getStaticProps({ params }) {
-  const category = CATEGORY_CONFIG[params.kategorie];
+export async function getStaticProps() {
+  // du brauchst auf der Kategorieübersicht ALLE Kategorien — ODER du setzt hier eine Standardkategorie
+  // für jetzt: wir nehmen "investieren" als Beispiel
+
+  const category = CATEGORY_CONFIG.investieren; // später dynamisch, jetzt damit build läuft
   const folder = path.join(process.cwd(), "content", category.slug);
 
   const articles = fs.readdirSync(folder)

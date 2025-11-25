@@ -3,20 +3,17 @@ const CATEGORY_CONFIG = {
   investieren: {
     slug: "investieren",
     label: "Investieren",
-    description: "Investieren lernen – klar und ohne Blabla.",
-    icon: "🪙"
+    heroSubtitle: "Investieren lernen – klar und ohne Blabla."
   },
   versicherungen: {
     slug: "versicherungen",
     label: "Versicherungen",
-    description: "Versicherungen einfach erklärt.",
-    icon: "🛡️"
+    heroSubtitle: "Versicherungen einfach erklärt."
   },
   sparen: {
     slug: "sparen",
     label: "Sparen",
-    description: "Sparen leicht gemacht.",
-    icon: "💶"
+    heroSubtitle: "Sparen leicht gemacht."
   }
 };
 

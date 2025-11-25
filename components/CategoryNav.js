@@ -1,11 +1,9 @@
 // components/CategoryNav.js
-
 import Link from "next/link";
 import styles from "../styles/CategoryNav.module.css";
 import CATEGORY_CONFIG from "../config/categoryConfig.js";
 
 export default function CategoryNav({ active }) {
-  // Kategorien aus der zentralen Config holen
   const categories = Object.values(CATEGORY_CONFIG);
 
   return (

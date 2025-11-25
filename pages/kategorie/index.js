@@ -1,14 +1,26 @@
-export default function KategorieHome() {
+import CATEGORY_CONFIG from "../../config/categoryConfig";
+import Link from "next/link";
+import styles from "../../styles/CategoryPage.module.css";
+
+export default function KategorieOverview() {
+  const categories = Object.values(CATEGORY_CONFIG);
+
   return (
-    <div style={{ padding: "2rem" }}>
+    <div className={styles.wrapper}>
       <h1>Kategorien</h1>
-      <p>Diese Seite dient aktuell nur dazu, dass der Build grün bleibt.</p>
+      <div className={styles.grid}>
+        {categories.map((cat) => (
+          <Link
+            key={cat.slug}
+            href={`/kategorie/${cat.slug}`}
+            className={styles.card}
+          >
+            <div className={styles.icon}>{cat.icon}</div>
+            <h2>{cat.label}</h2>
+            <p>{cat.description}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {}
-  };
 }

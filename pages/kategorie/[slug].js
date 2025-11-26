@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const category = CATEGORY_CONFIG[params.slug];
-  const folder = path.join(process.cwd(), "content", category.slug);
+  const folder = path.join(process.cwd(), "content", category.slug.toLowerCase());
 
   const articles = fs.readdirSync(folder)
     .filter((f) => f.endsWith(".md"))

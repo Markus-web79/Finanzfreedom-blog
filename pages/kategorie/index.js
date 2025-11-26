@@ -1,8 +1,11 @@
-import CATEGORY_CONFIG from "../../config/categoryConfig.js";
+import CATEGORY_CONFIG from "../../config/categoryConfig";
 import Link from "next/link";
 
 export default function CategoriesOverview() {
-  const categories = Object.values(CATEGORY_CONFIG);
+  // Kategorien sortiert nach Label
+  const categories = Object.values(CATEGORY_CONFIG).sort((a, b) =>
+    a.label.localeCompare(b.label)
+  );
 
   return (
     <div style={{ padding: "2rem" }}>

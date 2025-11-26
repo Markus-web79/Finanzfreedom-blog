@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function CategoryPage({ category, articles }) {
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>{category.label}</h1>
+      <h1>{category.heroTitle || category.label}</h1>
       <p>{category.heroSubtitle}</p>
 
       <ul style={{ marginTop: "2rem", lineHeight: "2rem" }}>
@@ -33,9 +33,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const category = CATEGORY_CONFIG[params.slug];
-  const folder = path.join(process.cwd(), "content", category.slug.toLowerCase());
 
-  const articles = fs.readdirSync(folder)
+  // Pfad zum Content-Ordner
+  const folder = path.join(process.cwd(), "content", category.slug);
+
+  // Nur echte Markdown-Dateien einlesen
+  const articles = fs
+    .readdirSync(folder)
     .filter((f) => f.endsWith(".md"))
     .map((file) => {
       const raw = fs.readFileSync(path.join(folder, file), "utf-8");

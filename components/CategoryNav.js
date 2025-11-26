@@ -1,4 +1,3 @@
-// components/CategoryNav.js
 import Link from "next/link";
 import styles from "../styles/CategoryNav.module.css";
 import CATEGORY_CONFIG from "../config/categoryConfig.js";

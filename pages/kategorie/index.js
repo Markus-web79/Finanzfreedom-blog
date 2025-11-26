@@ -1,4 +1,4 @@
-import CATEGORY_CONFIG from "../../config/categoryConfig.js";
+import CATEGORY_CONFIG from "../../config/categoryConfigx.js";
 import Link from "next/link";
 
 export default function CategoriesOverview() {

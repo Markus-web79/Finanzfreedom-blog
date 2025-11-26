@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import CATEGORY_CONFIG from "../../config/categoryConfig";
+import CATEGORY_CONFIG from "../../config/categoryConfig.js";
 import Link from "next/link";
 
 export default function CategoryPage({ category, articles }) {

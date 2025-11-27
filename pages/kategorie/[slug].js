@@ -33,11 +33,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const category = CATEGORY_CONFIG[params.slug];
-
-  // Pfad zum Content-Ordner
   const folder = path.join(process.cwd(), "content", category.slug);
 
-  // Nur echte Markdown-Dateien einlesen
   const articles = fs
     .readdirSync(folder)
     .filter((f) => f.endsWith(".md"))

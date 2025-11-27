@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import CATEGORY_CONFIG from "../../../config/categoryConfig.js";
+import CATEGORY_CONFIG from "../../../config/categoryConfig";
 
 export default function ArticlePage({ category, article }) {
   return (

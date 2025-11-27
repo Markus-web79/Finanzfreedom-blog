@@ -2,7 +2,6 @@ import CATEGORY_CONFIG from "../../config/categoryConfig.js";
 import Link from "next/link";
 
 export default function CategoriesOverview() {
-  // Kategorien sortiert nach Label
   const categories = Object.values(CATEGORY_CONFIG).sort((a, b) =>
     a.label.localeCompare(b.label)
   );

@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import CATEGORY_CONFIG from "../../../config/categoryConfig";
+import CATEGORY_CONFIG from "../../../config/categoryConfig.js";
 
 export default function ArticlePage({ category, article }) {
   return (
@@ -12,8 +12,8 @@ export default function ArticlePage({ category, article }) {
       <h1 style={{ marginTop: "1.5rem" }}>{article.title}</h1>
 
       <div
-        dangerouslySetInnerHTML={{ __html: article.content }}
         style={{ marginTop: "2rem", lineHeight: "1.7rem" }}
+        dangerouslySetInnerHTML={{ __html: article.content }}
       />
     </div>
   );
@@ -22,7 +22,6 @@ export default function ArticlePage({ category, article }) {
 export async function getStaticPaths() {
   let paths = [];
 
-  // Für jede Kategorie alle Artikel laden
   for (const cat of Object.values(CATEGORY_CONFIG)) {
     const folder = path.join(process.cwd(), "content", cat.slug);
     const files = fs

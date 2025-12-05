@@ -16,7 +16,7 @@ export default function CategoryPage({ category, articles }) {
         />
       </Head>
 
-      <main style={{ maxWidth: "1000px", margin: "2rem auto", padding: "1rem" }}>
+      <main style={{ maxWidth: "1100px", margin: "2rem auto", padding: "1rem" }}>
         <h1
           style={{
             textAlign: "center",
@@ -113,5 +113,10 @@ export async function getStaticProps({ params }) {
     }
   }
 
-  return { props: { category, articles } };
+  return {
+    props: {
+      category,
+      articles,
+    },
+  };
 }

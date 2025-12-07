@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true, // ← ganz wichtig für statische Routen
+  output: "export",        // Wichtig für statischen Export
+  distDir: "out",
+
+  images: {
+    unoptimized: true,
+  },
+
+  trailingSlash: true,     // Damit alle Routen korrekt exportiert werden
+
   reactStrictMode: true,
 };
 
-export default nextConfig;
-// Export categories für Header
-export const revalidate = 3600; // 1x pro Stunde neue Kategorien
+module.exports = nextConfig;

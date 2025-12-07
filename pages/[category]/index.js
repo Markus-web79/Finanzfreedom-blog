@@ -1,9 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
-import { getCategories } from "../../config/categoryConfig";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Head from "next/head";
+import Link from "next/link";
+import styles from "../../../styles/Home.module.css";
 
 export default function CategoryPage({ category, articles }) {
   return (
@@ -12,65 +12,29 @@ export default function CategoryPage({ category, articles }) {
         <title>{category} – FinanzFreedom</title>
         <meta
           name="description"
-          content={`Artikel und Tipps zum Thema ${category} auf FinanzFreedom.`}
+          content={`Alle Artikel, Tipps und Strategien zum Thema ${category} – klar, verständlich und ohne Fachchinesisch.`}
         />
       </Head>
 
-      <main style={{ maxWidth: "1100px", margin: "2rem auto", padding: "1rem" }}>
-        <h1
-          style={{
-            textAlign: "center",
-            color: "#00bfa5",
-            marginBottom: "2rem",
-            textTransform: "capitalize",
-          }}
-        >
-          {category}
+      <main style={{ maxWidth: "1100px", margin: "3rem auto", padding: "0 1rem" }}>
+        <h1 style={{ textAlign: "center", marginBottom: "2rem", color: "#00a3f5" }}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}
         </h1>
 
         {articles.length === 0 ? (
-          <p style={{ color: "white", textAlign: "center" }}>
-            Noch keine Artikel in dieser Kategorie.
+          <p style={{ textAlign: "center", color: "white" }}>
+            Noch keine Artikel in dieser Kategorie vorhanden.
           </p>
         ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "1.5rem",
-            }}
-          >
-            {articles.map((article) => (
-              <div
-                key={article.slug}
-                style={{
-                  background: "#002027",
-                  border: "1px solid #00bfa5",
-                  borderRadius: "8px",
-                  padding: "1.5rem",
-                  color: "white",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  minHeight: "260px",
-                }}
-              >
+          <div className={styles.articleGrid}>
+            {articles.map((a) => (
+              <div className={styles.articleCard} key={a.slug}>
                 <div>
-                  <h2 style={{ marginTop: 0 }}>{article.title}</h2>
-                  <p style={{ opacity: 0.8 }}>
-                    {article.description?.slice(0, 120)}...
-                  </p>
+                  <h3>{a.title}</h3>
+                  <p>{a.description?.slice(0, 130)}…</p>
                 </div>
 
-                <Link
-                  href={`/${article.slug}`}
-                  style={{
-                    color: "#00bfa5",
-                    textDecoration: "none",
-                    fontWeight: "bold",
-                    marginTop: "1rem",
-                  }}
-                >
+                <Link href={`/${a.slug}`} style={{ marginTop: "1rem" }}>
                   Weiterlesen →
                 </Link>
               </div>
@@ -82,13 +46,13 @@ export default function CategoryPage({ category, articles }) {
   );
 }
 
-// ---- CATEGORY ROUTING ----
-
 export async function getStaticPaths() {
-  const categories = getCategories();
-  const paths = categories.map((cat) => ({
-    params: { category: cat.slug },
-  }));
+  const contentDir = path.join(process.cwd(), "content");
+  const categories = fs
+    .readdirSync(contentDir)
+    .filter((f) => fs.statSync(path.join(contentDir, f)).isDirectory());
+
+  const paths = categories.map((c) => ({ params: { category: c } }));
 
   return { paths, fallback: false };
 }
@@ -96,21 +60,22 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { category } = params;
   const categoryDir = path.join(process.cwd(), "content", category);
+
+  const files = fs.readdirSync(categoryDir);
   const articles = [];
 
-  if (fs.existsSync(categoryDir)) {
-    const files = fs.readdirSync(categoryDir);
-    for (const file of files) {
-      if (file.endsWith(".md")) {
-        const raw = fs.readFileSync(path.join(categoryDir, file), "utf8");
-        const { data } = matter(raw);
-        articles.push({
-          title: data.title || file.replace(".md", ""),
-          description: data.description || "",
-          slug: `${category}/${file.replace(".md", "")}`,
-        });
-      }
-    }
+  for (const file of files) {
+    if (!file.endsWith(".md")) continue;
+
+    const fullPath = path.join(categoryDir, file);
+    const raw = fs.readFileSync(fullPath, "utf-8");
+    const { data } = matter(raw);
+
+    articles.push({
+      title: data.title || file.replace(".md", ""),
+      description: data.metaDescription || data.description || "",
+      slug: `${category}/${file.replace(".md", "")}`,
+    });
   }
 
   return {

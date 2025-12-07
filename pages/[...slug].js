@@ -1,53 +1,36 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
 import Head from "next/head";
 import Link from "next/link";
-import { marked } from "marked";
 
 export default function PostPage({ frontmatter, html, category }) {
-  if (!frontmatter) {
-    return (
-      <div style={{ color: "white", textAlign: "center", padding: "4rem" }}>
-        <h1>404 – Artikel nicht gefunden</h1>
-        <Link href="/">Zurück zur Startseite</Link>
-      </div>
-    );
-  }
-
   return (
     <>
       <Head>
-        <title>{frontmatter.title} | FinanzFreedom</title>
+        <title>{frontmatter.title} – FinanzFreedom</title>
         <meta
           name="description"
-          content={
-            frontmatter.description ||
-            "Artikel auf FinanzFreedom – Finanzen einfach erklärt."
-          }
+          content={frontmatter.description || "Finanzwissen einfach erklärt."}
         />
       </Head>
 
-      <main style={{ maxWidth: "850px", margin: "2rem auto", color: "white" }}>
+      <main style={{ maxWidth: "800px", margin: "2rem auto", padding: "1rem" }}>
         {/* Breadcrumb */}
-        <nav style={{ marginBottom: "1.5rem", fontSize: "0.9rem", color: "#aaa" }}>
-          <Link href="/" style={{ color: "#00c2b3", textDecoration: "none" }}>
-            Startseite
-          </Link>
-          {category && (
-            <>
-              {" "}›{" "}
-              <Link
-                href={`/${category}`}
-                style={{ color: "#00c2b3", textDecoration: "none" }}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </Link>
-            </>
-          )}
-        </nav>
+        {category && (
+          <nav style={{ marginBottom: "1rem" }}>
+            <Link
+              href={`/${category}`}
+              style={{ color: "#00bfa5", textDecoration: "none" }}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </Link>
+          </nav>
+        )}
 
         <h1 style={{ marginBottom: "1rem" }}>{frontmatter.title}</h1>
+
         <article dangerouslySetInnerHTML={{ __html: html }} />
 
         {/* Zurück-Button */}
@@ -57,7 +40,7 @@ export default function PostPage({ frontmatter, html, category }) {
               href={`/${category}`}
               style={{
                 display: "inline-block",
-                color: "#00c2b3",
+                color: "#00bfa5",
                 textDecoration: "none",
                 fontWeight: "500",
               }}
@@ -69,7 +52,7 @@ export default function PostPage({ frontmatter, html, category }) {
               href="/"
               style={{
                 display: "inline-block",
-                color: "#00c2b3",
+                color: "#00bfa5",
                 textDecoration: "none",
                 fontWeight: "500",
               }}
@@ -83,51 +66,44 @@ export default function PostPage({ frontmatter, html, category }) {
   );
 }
 
-// 🔹 Hilfsfunktion: Alle Markdown-Dateien rekursiv finden
-function getAllMarkdownFiles(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  let files = [];
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      files = files.concat(getAllMarkdownFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      files.push(fullPath);
-    }
-  }
-  return files;
-}
+// ---- DYNAMIC PATH GENERATION ----
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = getAllMarkdownFiles(contentDir);
 
-  const paths = files.map((file) => {
-    const relPath = path.relative(contentDir, file).replace(/\.md$/, "");
-    const slugArray = relPath.split(path.sep);
-    return { params: { slug: slugArray } };
-  });
+  // Alle Ordner + Markdown-Dateien finden
+  const categories = fs
+    .readdirSync(contentDir, { withFileTypes: true })
+    .filter((dir) => dir.isDirectory())
+    .map((dir) => dir.name);
 
-  // 🔹 Feste Seiten ignorieren, um Konflikte zu vermeiden
-const filteredPaths = paths.filter(
-  (p) =>
-    !["datenschutz", "impressum", "kontakt"].some((fixed) =>
-      p.params.slug.includes(fixed)
-    )
-);
+  let paths = [];
 
-return { paths: filteredPaths, fallback: false };
+  for (const category of categories) {
+    const categoryPath = path.join(contentDir, category);
+    const files = fs.readdirSync(categoryPath);
+
+    for (const file of files) {
+      if (file.endsWith(".md")) {
+        const slug = file.replace(".md", "");
+        paths.push({
+          params: { slug: `${category}/${slug}`.split("/") },
+        });
+      }
+    }
+  }
+
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   try {
+    // params.slug ist ein Array ["versicherungen", "haftpflicht"]
     const slugPath = Array.isArray(params.slug)
       ? params.slug.join("/")
       : params.slug;
 
-    const contentDir = path.join(process.cwd(), "content");
-    const fullPath = path.join(contentDir, `${slugPath}.md`);
+    const fullPath = path.join(process.cwd(), "content", `${slugPath}.md`);
 
     if (!fs.existsSync(fullPath)) {
       console.error("❌ Datei nicht gefunden:", fullPath);
@@ -138,7 +114,6 @@ export async function getStaticProps({ params }) {
     const { data: frontmatter, content } = matter(raw);
     const html = marked(content);
 
-    // Kategorie aus Pfad extrahieren
     const parts = slugPath.split("/");
     const category = parts.length > 1 ? parts[0] : null;
 

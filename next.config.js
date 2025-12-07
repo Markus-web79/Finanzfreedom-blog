@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",        // Wichtig für statischen Export
+  output: "export",
   distDir: "out",
 
   images: {
     unoptimized: true,
   },
 
-  trailingSlash: true,     // Damit alle Routen korrekt exportiert werden
-
+  trailingSlash: true,
   reactStrictMode: true,
 };
 
-module.exports = nextConfig;
+export default nextConfig;

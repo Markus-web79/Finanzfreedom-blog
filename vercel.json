@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "public": ".vercel/output/static"
+  "buildCommand": "npm run build",
+  "outputDirectory": "out",
+  "cleanUrls": true,
+  "trailingSlash": false
 }

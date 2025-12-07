@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+
+  // Wichtig für statischen Export (SSG)
   output: "export",
-  distDir: "out",
 
   images: {
     unoptimized: true,
   },
 
   trailingSlash: true,
-  reactStrictMode: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;

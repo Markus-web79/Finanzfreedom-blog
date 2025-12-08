@@ -21,12 +21,13 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <div key={post.slug} className={styles.card}>
               <h2>{post.title}</h2>
-
               <p className={styles.description}>
-                {post.description?.slice(0, 120) || "Spannender neuer Artikel."}…
+                {post.description?.slice(0, 120) || "Spannender neuer Artikel."}
               </p>
-
-              <Link href={`/${post.category}/${post.slug}`} className={styles.readmore}>
+              <Link
+                href={`/${post.category}/${post.slug}`}
+                className={styles.readmore}
+              >
                 Weiterlesen →
               </Link>
             </div>
@@ -37,9 +38,6 @@ export default function Home({ posts }) {
   );
 }
 
-// -----------------------------------------------------
-//  STATIC PROPS
-// -----------------------------------------------------
 export async function getStaticProps() {
   const posts = getAllPosts();
 

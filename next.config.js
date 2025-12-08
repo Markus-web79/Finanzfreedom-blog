@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true, // ← ganz wichtig für statische Routen
   reactStrictMode: true,
+  swcMinify: true,
+  output: "standalone",
 };
 
-export default nextConfig;
-// Export categories für Header
-export const revalidate = 3600; // 1x pro Stunde neue Kategorien
+module.exports = nextConfig;

@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #002b37;
+  border: 1px solid #00b4a5;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.readmore {
+  color: #00b4a5;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-decoration: none;
+=======
 /* ============================= */
 /* ========== HERO ============= */
 /* ============================= */
@@ -154,4 +183,5 @@
 .nextBadge {
   font-size: 0.8rem;
   opacity: 0.75;
+>>>>>>> 0cca8a653223f3fb39ce199ce6f11933b1cbde00
 }

@@ -21,9 +21,11 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <div key={post.slug} className={styles.card}>
               <h2>{post.title}</h2>
+
               <p className={styles.description}>
                 {post.description?.slice(0, 120) || "Spannender neuer Artikel."}
               </p>
+
               <Link
                 href={`/${post.category}/${post.slug}`}
                 className={styles.readmore}

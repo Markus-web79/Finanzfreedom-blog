@@ -1,84 +1,89 @@
-// --- generateArticle.js ---
-// Erstellt automatisch neue Artikel mit Meta-Daten und Beispielstruktur
+// ===========================================
+//  FinanzFreedom - Automatische Artikel-Erstellung v3.5
+//  SEO-optimiert, mit Kategorien & sauberer Grammatik
+// ===========================================
 
 import fs from "fs";
 import path from "path";
-import fixUmlaute from "./fixUmlaute.js";
-import checkGrammar from "./checkGrammar.js";
+import matter from "gray-matter";
 
-const contentRoot = "./content";
-const topicsFile = "./generator/topics.json";
+// === Hilfsfunktionen ===
 
-// --- Artikel-Erstellung ---
-function createArticle(title, category = "allgemein", keywords = []) {
-  const slug = title
-    .toLowerCase()
-    .replace(/[äÄ]/g, "ae")
-    .replace(/[öÖ]/g, "oe")
-    .replace(/[üÜ]/g, "ue")
-    .replace(/ß/g, "ss")
-    .replace(/[^a-z0-9\-]/g, "-")
-    .replace(/--+/g, "-");
+// 1️⃣ SEO-Titelverbesserung
+function enhanceTitle(title) {
+  const year = new Date().getFullYear();
+  const powerWords = ["beste", "smarte", "clevere", "aktuelle", "effektive"];
+  const randomWord = powerWords[Math.floor(Math.random() * powerWords.length)];
 
-  const categoryDir = path.join(contentRoot, category);
-  const filePath = path.join(categoryDir, `${slug}.md`);
-
-  if (!fs.existsSync(categoryDir)) {
-    fs.mkdirSync(categoryDir, { recursive: true });
+  if (title.toLowerCase().includes("vergleich")) {
+    return `${title} – ${randomWord} Anbieter ${year}`;
+  } else {
+    return `${title}: ${randomWord} Strategien & Tipps ${year}`;
   }
+}
 
-  if (fs.existsSync(filePath)) {
-    console.log(`⚠️ Artikel existiert bereits: ${filePath}`);
-    return;
-  }
+// 2️⃣ Themenliste mit automatischer Kategorie-Erkennung
+const THEMEN = [
+  { title: "ETF-Sparplan für Einsteiger", category: "etfs" },
+  { title: "Versicherungen verstehen und sparen", category: "versicherungen" },
+  { title: "Finanzielle Freiheit erreichen – so geht’s", category: "finanzielle-freiheit" },
+  { title: "Inflation verstehen: Wie sie dein Geld beeinflusst", category: "geld" },
+  { title: "Nebenjob-Ideen für mehr passives Einkommen", category: "geld-vermehren" },
+  { title: "Sparen für die Zukunft: Tipps für 2025", category: "sparen" },
+  { title: "Kryptowährungen und ETFs – Chancen & Risiken", category: "krypto" },
+  { title: "Schulden abbauen mit System", category: "schulden" },
+  { title: "Gehalt clever investieren", category: "investieren" },
+  { title: "Die größten Anfängerfehler beim Investieren vermeiden", category: "investieren" },
+];
 
-  const template = `---
-title: ${title}
-slug: ${slug}
-category: ${category}
-description: ${title} – verständlich erklärt mit Beispielen, Strategien und Praxis-Tipps.
-author: FinanzFreedom Redaktion
-keywords: ${keywords.join(", ")}
+// 3️⃣ Textgenerator (automatisch strukturierte Artikel)
+function generateContent(title) {
+  const cleanTitle = title.replace("–", "-");
+
+  return `---
+title: "${cleanTitle}"
+description: "${cleanTitle} – verständlich erklärt auf FinanzFreedom. Lerne Schritt für Schritt, wie du dein Geld clever anlegst und vermeidest, typische Anfängerfehler zu machen."
+date: "${new Date().toISOString()}"
 ---
 
-# ${title}
+## Warum dieses Thema wichtig ist
 
-## 1. Einleitung
-Viele Menschen interessieren sich für **${title}**, wissen aber nicht, wie sie konkret anfangen sollen.
-In diesem Artikel bekommst du eine klare Anleitung, um das Thema wirklich zu verstehen – mit Beispielen aus der Praxis.
+${title} betrifft fast jeden. Mit den richtigen Entscheidungen kannst du langfristig Vermögen aufbauen, Fehler vermeiden und dein Geld besser strukturieren. 
 
-## 2. Grundlagen
-Hier erklären wir Schritt für Schritt, was ${title.toLowerCase()} bedeutet, welche Vorteile und Risiken es gibt und worauf du besonders achten solltest.
+## Grundlagen einfach erklärt
 
-## 3. Umsetzung in der Praxis
-So kannst du ${title.toLowerCase()} direkt umsetzen:
-1. Setze dir klare Ziele.
-2. Erstelle eine einfache Strategie.
-3. Starte mit Geduld und Disziplin.
-4. Prüfe regelmäßig deine Fortschritte.
+Ein klarer Überblick über die wichtigsten Grundlagen hilft, bessere Entscheidungen zu treffen. Auf **FinanzFreedom** findest du einfach erklärte Inhalte, praxisnahe Beispiele und Tools, um deinen finanziellen Weg erfolgreich zu gestalten.
 
-## 4. Tipps & Fehlervermeidung
-| Tipp | Beschreibung |
-|------|---------------|
-| Klein starten | Erst kleine Summen investieren |
-| Geduldig bleiben | Nicht bei Schwankungen aussteigen |
-| Automatisierung nutzen | Daueraufträge, ETF-Sparpläne usw. |
+## Schritt-für-Schritt Anleitung
 
-## 5. Fazit
-${title} kann ein wichtiger Baustein deiner finanziellen Freiheit sein – bleib dran, lerne dazu und nutze Tools, die dich langfristig unterstützen.
-`;
+1. Analysiere deine aktuelle Situation.  
+2. Setze klare Ziele – kurzfristig und langfristig.  
+3. Nutze Tools und Vergleiche auf FinanzFreedom, um fundierte Entscheidungen zu treffen.  
+4. Bleib konsequent – kleine, regelmäßige Schritte führen zu großem Erfolg.
 
-  fs.writeFileSync(filePath, template, "utf-8");
+## Fazit
+
+${title} ist kein Hexenwerk, sondern Wissen, das jeder erlernen kann.  
+Nutze die Inhalte auf **FinanzFreedom**, um finanzielle Freiheit und Sicherheit aufzubauen – Schritt für Schritt und mit echtem Mehrwert.`;
+}
+
+// === Hauptfunktion: Artikel generieren ===
+export default function generateArticle() {
+  const randomTopic = THEMEN[Math.floor(Math.random() * THEMEN.length)];
+  const enhancedTitle = enhanceTitle(randomTopic.title);
+  const category = randomTopic.category;
+  const slug = enhancedTitle
+    .toLowerCase()
+    .replace(/[^\wäöüß\- ]+/g, "")
+    .replace(/\s+/g, "-");
+
+  const folder = path.join(process.cwd(), "content", category);
+  const filePath = path.join(folder, `${slug}.md`);
+
+  if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
+
+  const content = generateContent(enhancedTitle);
+  fs.writeFileSync(filePath, content, "utf8");
+
   console.log(`✅ Neuer Artikel erstellt: ${filePath}`);
 }
-
-// --- Command-Line-Aufruf ---
-const args = process.argv.slice(2);
-if (args.length === 0) {
-  console.log("❌ Bitte gib einen Artikeltitel an, z.B.:");
-  console.log('   node scripts/generateArticle.js "ETF-Sparplan für Einsteiger" etfs');
-  process.exit(1);
-}
-
-const [title, category = "allgemein", ...keywords] = args;
-createArticle(title, category, keywords);

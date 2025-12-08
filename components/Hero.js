@@ -4,63 +4,46 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <div className={styles.heroInner}>
-        {/* Textbereich links */}
-        <div className={styles.heroContent}>
-          <p className={styles.kicker}>FinanzFreedom</p>
-          <h1 className={styles.title}>
-            Behalte deine Finanzen{" "}
-            <span className={styles.highlight}>im Griff.</span>
+      <div className={styles.heroContent}>
+        <div className={styles.heroText}>
+          <span className={styles.label}>FINANZFREEDOM</span>
+          <h1>
+            Behalte deine Finanzen <span className={styles.highlight}>im Griff.</span>
           </h1>
-          <p className={styles.subtitle}>
-            Lerne Schritt für Schritt, wie du dein Geld strukturierst,
-            investierst und langfristig Vermögen aufbaust – ohne Fachchinesisch
-            und Verkaufsdruck.
+          <p>
+            Lerne Schritt für Schritt, wie du dein Geld strukturierst, investierst
+            und langfristig Vermögen aufbaust – ohne Fachchinesisch und Verkaufsdruck.
           </p>
 
-          <div className={styles.buttons}>
-            <Link href="/etfs" className={styles.btnPrimary}>
+          <div className={styles.heroButtons}>
+            <Link href="/willkommen" className={styles.btnPrimary}>
               Jetzt starten
             </Link>
-            <Link href="/ueber-uns" className={styles.btnGhost}>
+            <Link href="/ueber-uns" className={styles.btnSecondary}>
               Mehr erfahren
             </Link>
           </div>
         </div>
 
-        {/* Visueller Bereich rechts – „Finanz-Dashboard“ */}
-        <div className={styles.heroVisual}>
-          <div className={styles.heroCard}>
-            <div className={styles.heroCardHeader}>
-              <span className={styles.heroBadge}>Dein Finanz-Dashboard</span>
-              <span className={styles.heroChip}>Bald mit echten Tools</span>
+        <div className={styles.heroDashboard}>
+          <h3>Dein Finanz-Dashboard</h3>
+          <div className={styles.dashboardBox}>
+            <div className={styles.dashboardRow}>
+              <span>Vermögen (Beispiel)</span>
+              <strong>27.450 €</strong>
             </div>
-
-            <div className={styles.heroChart}>
-              <div className={styles.heroLine} />
-              <div className={styles.heroDot} />
+            <div className={styles.dashboardRow}>
+              <span>Sparrate</span>
+              <strong>450 €/Monat</strong>
             </div>
-
-            <div className={styles.heroStats}>
-              <div>
-                <p className={styles.statLabel}>Vermögen (Beispiel)</p>
-                <p className={styles.statValue}>27.450 €</p>
-              </div>
-              <div>
-                <p className={styles.statLabel}>Sparrate</p>
-                <p className={styles.statValue}>450 €/Monat</p>
-              </div>
-              <div>
-                <p className={styles.statLabel}>Ziel: Finanzielle Freiheit</p>
-                <p className={styles.statValue}>2040</p>
-              </div>
+            <div className={styles.dashboardRow}>
+              <span>Ziel: Finanzielle Freiheit</span>
+              <strong>2040</strong>
             </div>
-
-            <p className={styles.heroFootnote}>
-              Demo-Ansicht – später ergänzt mit Vergleichsrechnern und echten
-              Auswertungen.
-            </p>
           </div>
+          <p className={styles.dashboardNote}>
+            Demo-Ansicht – später ergänzt mit echten Tools und Auswertungen.
+          </p>
         </div>
       </div>
     </section>

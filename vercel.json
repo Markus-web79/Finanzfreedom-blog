@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 {}
+=======
+{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.js", "use": "@vercel/next" }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
+>>>>>>> 0cca8a653223f3fb39ce199ce6f11933b1cbde00

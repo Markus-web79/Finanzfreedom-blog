@@ -1,7 +1,9 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { getAllPosts } from "../lib/getAllPosts";
+=======
+import styles from "../styles/Home.module.css";
+>>>>>>> 0cca8a653223f3fb39ce199ce6f11933b1cbde00
 
 export default function Home({ posts }) {
   return (
@@ -10,6 +12,7 @@ export default function Home({ posts }) {
         <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
         <meta
           name="description"
+<<<<<<< HEAD
           content="Lerne, wie du dein Geld strukturiert investierst und langfristig Vermögen aufbaust – ohne Fachchinesisch und Verkaufsdruck."
         />
       </Head>
@@ -18,13 +21,24 @@ export default function Home({ posts }) {
 
         {/* HERO-BEREICH */}
         <section className={styles.hero}>
+=======
+          content="Lerne, wie du deine Finanzen optimierst, investierst und Vermögen aufbaust – klar, verständlich und ohne Bullshit."
+        />
+      </Head>
+
+      {/* HERO SECTION */}
+      <section className={styles.hero}>
+        <div className={styles.heroText}>
+>>>>>>> 0cca8a653223f3fb39ce199ce6f11933b1cbde00
           <p className={styles.subheadline}>FINANZFREEDOM</p>
 
           <h1>
-            Behalte deine Finanzen <span className={styles.highlight}>im Griff.</span>
+            Behalte deine Finanzen{" "}
+            <span className={styles.highlight}>im Griff.</span>
           </h1>
 
           <p className={styles.description}>
+<<<<<<< HEAD
             Lerne Schritt für Schritt, wie du dein Geld investierst und langfristig Vermögen aufbaust.
           </p>
 
@@ -63,6 +77,20 @@ export default function Home({ posts }) {
         </section>
 
       </main>
+=======
+            Lerne Schritt für Schritt, wie du dein Geld strukturierst,
+            investierst und langfristig Vermögen aufbaust – ohne Fachchinesisch
+            und ohne Verkaufsdruck.
+          </p>
+
+          <div className={styles.buttons}>
+            <Link href="/investieren" className={styles.primaryBtn}>
+              Jetzt loslegen
+            </Link>
+          </div>
+        </div>
+      </section>
+>>>>>>> 0cca8a653223f3fb39ce199ce6f11933b1cbde00
     </>
   );
 }

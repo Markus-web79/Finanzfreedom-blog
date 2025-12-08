@@ -56,3 +56,4 @@ Ab jetzt wächst er **jeden Tag automatisch**.
 # Trigger Deploy Test
 
 
+trigger build

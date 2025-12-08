@@ -1,187 +1,47 @@
-<<<<<<< HEAD
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.card {
-  background: #002b37;
-  border: 1px solid #00b4a5;
-  border-radius: 8px;
-  padding: 1.5rem;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 260px;
-}
-
-.card h2 {
-  margin-top: 0;
-}
-
-.readmore {
-  color: #00b4a5;
-  font-weight: bold;
-  margin-top: 1rem;
-  text-decoration: none;
-=======
-/* ============================= */
-/* ========== HERO ============= */
-/* ============================= */
-
-.hero {
-  background: linear-gradient(135deg, #0a3d62, #0f5f8a);
-  padding: 4rem 2rem;
-  color: white;
+.title {
   text-align: center;
-}
-
-.heroInner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.kicker {
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  opacity: 0.8;
-  letter-spacing: 1px;
-}
-
-.heroTitle {
-  font-size: 2.6rem;
-  margin: 0.5rem 0;
-}
-
-.heroSubtitle {
-  font-size: 1.2rem;
-  opacity: 0.85;
-  margin-top: 0.5rem;
-  line-height: 1.6;
-}
-
-/* ============================= */
-/* ========== MAIN ============= */
-/* ============================= */
-
-.main {
-  padding: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* ============================= */
-/* ======== ARTICLE GRID ======= */
-/* ============================= */
-
-.articleSection {
-  margin-bottom: 4rem;
-}
-
-.sectionTitle {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: #00bfa5;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.8rem;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.06);
-  padding: 1.7rem;
-  border-radius: 12px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #222;
+  transition: 0.25s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.10);
+  transform: translateY(-4px);
+  border-color: #00bfa5;
 }
 
-.card h3 {
-  margin: 0 0 0.6rem 0;
+.card h2 {
+  margin: 0 0 0.75rem 0;
   font-size: 1.3rem;
-}
-
-.cardMeta {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  margin-bottom: 1rem;
+  color: #fff;
 }
 
 .card p {
   opacity: 0.8;
-  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
 }
 
-.cardLink {
-  font-weight: bold;
-  color: #00ffd0;
-}
-
-/* ============================= */
-/* ============ FAQ ============ */
-/* ============================= */
-
-.faqSection {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
-
-.faqGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.faqItem {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 1.4rem;
-}
-
-.faqItem h3 {
-  margin: 0 0 0.5rem;
-}
-
-.faqItem p {
-  opacity: 0.8;
-  line-height: 1.5;
-}
-
-/* ============================= */
-/* ======== NEXT STEPS ========= */
-/* ============================= */
-
-.nextStepsSection {
-  margin-bottom: 5rem;
-}
-
-.nextStepsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.nextCard {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.nextCard:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.nextBadge {
-  font-size: 0.8rem;
-  opacity: 0.75;
->>>>>>> 0cca8a653223f3fb39ce199ce6f11933b1cbde00
+.readmore {
+  color: #00bfa5;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
 }

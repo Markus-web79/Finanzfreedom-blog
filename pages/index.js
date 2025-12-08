@@ -10,22 +10,23 @@ export default function Home({ posts }) {
         <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
         <meta
           name="description"
-          content="Lerne, wie du dein Geld strukturiert investierst und langfristig Vermögen aufbaust – ohne Fachchinesisch."
+          content="Lerne, wie du dein Geld strukturiert investierst und langfristig Vermögen aufbaust – ohne Fachchinesisch. FinanzFreedom macht Finanzwissen einfach."
         />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>FinanzFreedom</h1>
-        <p className={styles.subtitle}>
-          Finanzwissen einfach erklärt. Starte jetzt.
-        </p>
+      <main className={styles.container}>
+        <h1 className={styles.title}>Aktuelle Artikel</h1>
 
         <div className={styles.grid}>
           {posts.map((post) => (
             <div key={post.slug} className={styles.card}>
               <h2>{post.title}</h2>
-              <p>{post.description?.slice(0, 120) || ""}...</p>
-              <Link href={`/${post.slug}`} className={styles.readmore}>
+
+              <p className={styles.description}>
+                {post.description?.slice(0, 120) || "Spannender neuer Artikel."}…
+              </p>
+
+              <Link href={`/${post.category}/${post.slug}`} className={styles.readmore}>
                 Weiterlesen →
               </Link>
             </div>
@@ -36,6 +37,9 @@ export default function Home({ posts }) {
   );
 }
 
+// -----------------------------------------------------
+//  STATIC PROPS
+// -----------------------------------------------------
 export async function getStaticProps() {
   const posts = getAllPosts();
 

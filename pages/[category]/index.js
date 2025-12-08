@@ -9,15 +9,15 @@ export default function CategoryPage({ category, articles }) {
   return (
     <>
       <Head>
-        <title>{category.charAt(0).toUpperCase() + category.slice(1)} – FinanzFreedom</title>
+        <title>{category} – FinanzFreedom</title>
         <meta
           name="description"
-          content={`Artikel und Tipps zum Thema ${category} auf FinanzFreedom.`}
+          content={`Alle Artikel zum Thema ${category} auf FinanzFreedom.`}
         />
       </Head>
 
       <main style={{ maxWidth: "1000px", margin: "2rem auto", padding: "1rem" }}>
-        <h1 className={styles.title}>{category.replace("-", " ")}</h1>
+        <h1 className={styles.title}>{category}</h1>
 
         {articles.length === 0 ? (
           <p style={{ textAlign: "center", color: "white" }}>
@@ -28,8 +28,8 @@ export default function CategoryPage({ category, articles }) {
             {articles.map((article) => (
               <div key={article.slug} className={styles.card}>
                 <h2>{article.title}</h2>
-                <p>{article.description?.slice(0, 120) || ""}...</p>
-                <Link href={`/${article.slug}`} className={styles.readmore}>
+                <p>{article.description?.slice(0, 120) || ""}…</p>
+                <Link href={`/${category}/${article.slug}`} className={styles.readmore}>
                   Weiterlesen →
                 </Link>
               </div>
@@ -43,10 +43,11 @@ export default function CategoryPage({ category, articles }) {
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
+
   const categories = fs
     .readdirSync(contentDir, { withFileTypes: true })
-    .filter((dir) => dir.isDirectory())
-    .map((dir) => dir.name);
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
 
   const paths = categories.map((category) => ({
     params: { category },
@@ -58,6 +59,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { category } = params;
   const categoryDir = path.join(process.cwd(), "content", category);
+
   let articles = [];
 
   if (fs.existsSync(categoryDir)) {
@@ -66,13 +68,13 @@ export async function getStaticProps({ params }) {
     for (const file of files) {
       if (!file.endsWith(".md")) continue;
 
-      const raw = fs.readFileSync(path.join(categoryDir, file), "utf-8");
+      const raw = fs.readFileSync(path.join(categoryDir, file), "utf8");
       const { data } = matter(raw);
 
       articles.push({
         title: data.title || file.replace(".md", ""),
         description: data.description || "",
-        slug: `${category}/${file.replace(".md", "")}`,
+        slug: file.replace(".md", ""),
       });
     }
   }

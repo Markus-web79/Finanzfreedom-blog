@@ -31,7 +31,7 @@ export default function Home({ posts }) {
         </div>
       </section>
 
-      {/* ARTIKEL-BEREICH */}
+      {/* ARTICLE SECTION */}
       <main id="articles" className={styles.container}>
         <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
 
@@ -39,9 +39,12 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <div key={post.slug} className={styles.card}>
               <h3>{post.title}</h3>
-              <p>{post.description?.slice(0, 130) || "Spannender neuer Artikel."}</p>
+              <p>{post.description?.slice(0, 130) || "Neuer Artikel."}</p>
 
-              <Link href={`/${post.category}/${post.slug}`} className={styles.readMore}>
+              <Link
+                href={`/${post.category}/${post.slug}`}
+                className={styles.readMore}
+              >
                 Weiterlesen →
               </Link>
             </div>

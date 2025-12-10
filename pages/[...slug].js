@@ -57,32 +57,37 @@ export async function getStaticPaths() {
     }
   }
 
-  return { paths, fallback: false };
-}
+return (
+  <>
+    <Head>
+      <title>{frontmatter.title} – FinanzFreedom</title>
+      <meta name="description" content={frontmatter.description || "Finanzwissen einfach erklärt"} />
+    </Head>
 
-export async function getStaticProps({ params }) {
-  const { category, slug } = params;
+    <main className={styles.articleContainer}>
+      
+      <div className={styles.breadcrumb}>
+        <Link href={`/${category}`}>← Zurück zu {category}</Link>
+      </div>
 
-  const articlePath = path.join(
-    process.cwd(),
-    "content",
-    category,
-    `${slug}.md`
-  );
+      <h1 className={styles.title}>{frontmatter.title}</h1>
 
-  if (!fs.existsSync(articlePath)) {
-    return { notFound: true };
-  }
+      <div className={styles.meta}>
+        Kategorie: {category}  
+      </div>
 
-  const raw = fs.readFileSync(articlePath, "utf8");
-  const { data, content } = matter(raw);
-  const html = marked(content);
+      <article
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
 
-  return {
-    props: {
-      frontmatter: data,
-      html,
-      category,
-    },
-  };
-}
+      {/* CTA Box */}
+      <div className={styles.ctaBox}>
+        <h3>💡 Tipp: Nutze unseren ETF-Rechner</h3>
+        <p>Berechne, wie viel Vermögen du mit regelmäßigen Sparraten aufbauen kannst.</p>
+        <a href="/rechner/etf" className={styles.ctaButton}>Jetzt starten →</a>
+      </div>
+
+    </main>
+  </>
+);

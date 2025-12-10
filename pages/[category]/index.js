@@ -1,85 +1,58 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
-import Head from "next/head";
-import styles from "./CategoryPage.module.css";
+import { getAllPosts } from "../../lib/getAllPosts";
 
-export default function CategoryPage({ category, articles }) {
+export default function CategoryPage({ posts, category }) {
   return (
-    <>
-      <Head>
-        <title>{category} – FinanzFreedom</title>
-        <meta
-          name="description"
-          content={`Alle Artikel zum Thema ${category} auf FinanzFreedom.`}
-        />
-      </Head>
+    <main style={{ padding: "20px" }}>
+      <h1 style={{ marginBottom: "20px" }}>
+        Kategorie: {category.charAt(0).toUpperCase() + category.slice(1)}
+      </h1>
 
-      <main style={{ maxWidth: "1000px", margin: "2rem auto", padding: "1rem" }}>
-        <h1 className={styles.title}>{category}</h1>
+      {posts.length === 0 && <p>Keine Artikel in dieser Kategorie gefunden.</p>}
 
-        {articles.length === 0 ? (
-          <p style={{ textAlign: "center", color: "white" }}>
-            Noch keine Artikel in dieser Kategorie.
-          </p>
-        ) : (
-          <div className={styles.grid}>
-            {articles.map((article) => (
-              <div key={article.slug} className={styles.card}>
-                <h2>{article.title}</h2>
-                <p>{article.description?.slice(0, 120) || ""}…</p>
-                <Link href={`/${category}/${article.slug}`} className={styles.readmore}>
-                  Weiterlesen →
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
-      </main>
-    </>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {posts.map((post) => (
+          <li
+            key={post.slug}
+            style={{
+              padding: "15px",
+              marginBottom: "15px",
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+            }}
+          >
+            <h2>{post.title}</h2>
+            <p>{post.description?.slice(0, 150) || "Kein Beschreibungstext."}</p>
+
+            <Link href={`/${post.category}/${post.slug}`}>
+              Weiterlesen →
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 }
 
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), "content");
+  const allPosts = getAllPosts();
+  const categories = [...new Set(allPosts.map((post) => post.category))];
 
-  const categories = fs
-    .readdirSync(contentDir, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name);
-
-  const paths = categories.map((category) => ({
-    params: { category },
+  const paths = categories.map((cat) => ({
+    params: { category: cat },
   }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const { category } = params;
-  const categoryDir = path.join(process.cwd(), "content", category);
-
-  let articles = [];
-
-  if (fs.existsSync(categoryDir)) {
-    const files = fs.readdirSync(categoryDir);
-
-    for (const file of files) {
-      if (!file.endsWith(".md")) continue;
-
-      const raw = fs.readFileSync(path.join(categoryDir, file), "utf8");
-      const { data } = matter(raw);
-
-      articles.push({
-        title: data.title || file.replace(".md", ""),
-        description: data.description || "",
-        slug: file.replace(".md", ""),
-      });
-    }
-  }
+  const allPosts = getAllPosts();
+  const filtered = allPosts.filter((post) => post.category === params.category);
 
   return {
-    props: { category, articles },
+    props: {
+      posts: filtered,
+      category: params.category,
+    },
   };
 }

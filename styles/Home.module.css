@@ -1,85 +1,106 @@
-/* Layout der gesamten Startseite */
-.container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 1rem;
-  color: white;
-}
+/* ===== HERO SECTION ===== */
 
-/* Überschrift der Startseite */
-.title {
-  font-size: 2.2rem;
+.hero {
+  width: 100%;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #001f2d, #003b4d);
+  display: flex;
+  justify-content: center;
   text-align: center;
-  margin-bottom: 2.5rem;
-  font-weight: 700;
+  margin-bottom: 4rem;
 }
 
-/* Grid-System für Artikelkarten */
+.heroContent {
+  max-width: 900px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00f5a0;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  color: #cce7e4;
+  margin-bottom: 2rem;
+}
+
+.heroButton {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.1rem;
+  background-color: #00d2a0;
+  color: #003b4d;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.heroButton:hover {
+  background-color: #00f5a0;
+}
+
+
+/* ===== ARTICLE GRID ===== */
+
+.container {
+  padding: 0 2rem 4rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #e5f7f5;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
-/* Artikelkarte */
 .card {
-  background: #0c0f19;
-  border: 1px solid #1a1f2e;
-  padding: 1.5rem;
-  border-radius: 12px;
+  background: #06252f;
+  border: 1px solid #0a3c47;
+  padding: 1.4rem;
+  border-radius: 10px;
   min-height: 220px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  transition: transform 0.2s ease, border 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: #00bfa5;
+  transform: translateY(-5px);
+  border-color: #00f5a0;
 }
 
-/* Titel in der Karte */
-.card h2 {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.35rem;
-  color: #00e2c1;
+.card h3 {
+  color: #00f5a0;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Kurzbeschreibung in der Artikelkarte */
-.description {
+.card p {
+  color: #d3ecea;
+  font-size: 0.95rem;
+  opacity: 0.9;
   flex-grow: 1;
-  opacity: 0.85;
-  line-height: 1.4;
-  margin-bottom: 1.2rem;
 }
 
-/* Weiterlesen-Link */
-.readmore {
+.readMore {
   margin-top: 1rem;
+  color: #00e0a0;
   text-decoration: none;
-  color: #00bfa5;
-  font-weight: 600;
-  transition: color 0.2s ease;
+  font-weight: bold;
 }
 
-.readmore:hover {
-  color: #00e2c1;
-}
-
-/* Responsive Fine-Tuning */
-@media (max-width: 600px) {
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .card {
-    padding: 1.2rem;
-  }
-
-  .card h2 {
-    font-size: 1.2rem;
-  }
+.readMore:hover {
+  text-decoration: underline;
 }

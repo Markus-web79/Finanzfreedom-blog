@@ -1,57 +1,113 @@
-.container {
-  max-width: 850px;
+.articleContainer {
+  max-width: 820px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 2rem 1.5rem;
+  color: #e6f1f5;
+  line-height: 1.65;
 }
 
-.backLink {
-  display: inline-block;
-  margin-bottom: 1.8rem;
-  color: #00f5e1;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.backLink:hover {
-  opacity: 0.7;
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #48e1d9;
 }
 
 .title {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #00f5e1;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  color: #48e1d9;
 }
 
 .meta {
-  color: #c8fdf7;
-  opacity: 0.85;
+  font-size: 0.9rem;
+  opacity: 0.7;
   margin-bottom: 2rem;
-  font-size: 0.95rem;
 }
 
-.article {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #e7fbfa;
+.content {
+  font-size: 1.15rem;
+  color: #d9e7ea;
 }
 
-.article h2 {
-  color: #00e6d3;
+.content h2 {
   margin-top: 2.2rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: #48e1d9;
 }
 
-.article p {
+.content h3 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: #6aeae0;
+}
+
+.content p {
   margin-bottom: 1.2rem;
 }
 
-.article ul, 
-.article ol {
-  margin-left: 1.5rem;
-  margin-bottom: 1.2rem;
+.content a {
+  color: #46e0d4;
+  text-decoration: underline;
 }
 
-.article strong {
-  color: #ffffff;
+.content ul, 
+.content ol {
+  margin: 1rem 0 1rem 1.4rem;
+}
+
+.content li {
+  margin-bottom: 0.6rem;
+}
+
+.ctaBox {
+  border: 1px solid #48e1d9;
+  padding: 1.4rem;
+  border-radius: 10px;
+  margin: 2.8rem 0;
+  background: rgba(72, 225, 217, 0.05);
+}
+
+.ctaBox h3 {
+  margin: 0 0 0.6rem;
+  color: #48e1d9;
+}
+
+.ctaButton {
+  display: inline-block;
+  margin-top: 0.8rem;
+  background: #48e1d9;
+  color: #00312f;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer th,
+.tableContainer td {
+  border: 1px solid #2a4853;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.tableContainer th {
+  background: #12333b;
+  color: #48e1d9;
+}
+
+.tableContainer tr:nth-child(even) {
+  background: #0e262d;
 }

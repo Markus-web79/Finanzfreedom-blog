@@ -32,25 +32,27 @@ export default function Home({ posts }) {
       </section>
 
       {/* ARTICLE SECTION */}
-      <main id="articles" className={styles.container}>
-        <h2 className={styles.sectionTitle}>Aktuelle Artikel</h2>
+ <main className={styles.container}>
+  <div className={styles.header}>
+    <h1>Aktuelle Artikel</h1>
+  </div>
 
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <div key={post.slug} className={styles.card}>
-              <h3>{post.title}</h3>
-              <p>{post.description?.slice(0, 130) || "Neuer Artikel."}</p>
+  <div className={styles.grid}>
+    {posts.map((post) => (
+      <div className={styles.card} key={post.slug}>
+        <h2 className={styles.title}>{post.title}</h2>
 
-              <Link
-                href={`/${post.category}/${post.slug}`}
-                className={styles.readMore}
-              >
-                Weiterlesen →
-              </Link>
-            </div>
-          ))}
-        </div>
-      </main>
+        <p className={styles.description}>
+          {post.description?.slice(0, 140) || "Spannender neuer Artikel."}
+        </p>
+
+        <Link href={`/${post.category}/${post.slug}`} className={styles.readmore}>
+          Weiterlesen →
+        </Link>
+      </div>
+    ))}
+  </div>
+</main>
     </>
   );
 }

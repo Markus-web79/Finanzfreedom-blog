@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import Head from "next/head";
 import Link from "next/link";
+import styles from "../../styles/ArticlePage.module.css";
 
 export default function ArticlePage({ frontmatter, html, category }) {
   return (
@@ -16,16 +17,21 @@ export default function ArticlePage({ frontmatter, html, category }) {
         />
       </Head>
 
-      <main style={{ maxWidth: "800px", margin: "2rem auto", padding: "1rem" }}>
-        <nav style={{ marginBottom: "1rem" }}>
-          <Link href={`/${category}`} style={{ color: "#00bfa5" }}>
-            ← Zur Kategorie {category}
-          </Link>
-        </nav>
+      <main className={styles.container}>
+        <Link href={`/${category}`} className={styles.backLink}>
+          ← Zur Kategorie
+        </Link>
 
-        <h1 style={{ marginBottom: "1rem" }}>{frontmatter.title}</h1>
+        <h1 className={styles.title}>{frontmatter.title}</h1>
 
-        <article dangerouslySetInnerHTML={{ __html: html }} />
+        <p className={styles.meta}>
+          Kategorie: {category.charAt(0).toUpperCase() + category.slice(1)}
+        </p>
+
+        <article
+          className={styles.article}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </main>
     </>
   );
@@ -33,26 +39,21 @@ export default function ArticlePage({ frontmatter, html, category }) {
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
-  const categories = fs
-    .readdirSync(contentDir, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name);
+  const categories = fs.readdirSync(contentDir).filter((d) =>
+    fs.statSync(path.join(contentDir, d)).isDirectory()
+  );
 
   let paths = [];
 
   for (const category of categories) {
     const categoryPath = path.join(contentDir, category);
-
     const files = fs.readdirSync(categoryPath);
 
     for (const file of files) {
       if (!file.endsWith(".md")) continue;
 
       const slug = file.replace(".md", "");
-
-      paths.push({
-        params: { slug: [`${category}`, slug] },
-      });
+      paths.push({ params: { category, slug } });
     }
   }
 
@@ -60,7 +61,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const [category, slug] = params.slug;
+  const { category, slug } = params;
 
   const articlePath = path.join(
     process.cwd(),

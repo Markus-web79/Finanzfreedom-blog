@@ -1,7 +1,8 @@
 ---
-title: "Platzhalter"
-date: "2025-01-01"
+title: Platzhalter
+date: '2025-01-01'
 readingTime: 1
+description: Platzhalter
 ---
 
 Platzhalter

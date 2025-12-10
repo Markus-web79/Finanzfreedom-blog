@@ -17,7 +17,7 @@
 .heroTitle {
   font-size: 3rem;
   font-weight: 700;
-  color: #00f5a0;
+  color: var(--ff-brand);
   margin-bottom: 1rem;
 }
 
@@ -31,7 +31,7 @@
   display: inline-block;
   padding: 0.8rem 1.8rem;
   font-size: 1.1rem;
-  background-color: #00d2a0;
+  background-color: var(--ff-brand);
   color: #003b4d;
   border-radius: 8px;
   text-decoration: none;
@@ -39,7 +39,7 @@
 }
 
 .heroButton:hover {
-  background-color: #00f5a0;
+  background-color: var(--ff-brand-hover);
 }
 
 
@@ -55,7 +55,7 @@
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
-  color: #e5f7f5;
+  color: var(--ff-text-primary);
 }
 
 .grid {
@@ -65,8 +65,8 @@
 }
 
 .card {
-  background: #06252f;
-  border: 1px solid #0a3c47;
+  background: var(--ff-bg-card);
+  border: 1px solid var(--ff-border);
   padding: 1.4rem;
   border-radius: 10px;
   min-height: 220px;
@@ -78,17 +78,17 @@
 
 .card:hover {
   transform: translateY(-5px);
-  border-color: #00f5a0;
+  border-color: var(--ff-brand);
 }
 
 .card h3 {
-  color: #00f5a0;
+  color: var(--ff-brand);
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
 
 .card p {
-  color: #d3ecea;
+  color: var(--ff-text-secondary);
   font-size: 0.95rem;
   opacity: 0.9;
   flex-grow: 1;
@@ -96,7 +96,7 @@
 
 .readMore {
   margin-top: 1rem;
-  color: #00e0a0;
+  color: var(--ff-brand);
   text-decoration: none;
   font-weight: bold;
 }

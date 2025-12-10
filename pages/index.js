@@ -7,7 +7,7 @@ export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Dein Weg zur finanziellen Freiheit</title>
+        <title>FinanzFreedom – Dein Weg zur finanziellen dein weg zur  Freiheit</title>
         <meta
           name="description"
           content="Lerne, wie du dein Geld strukturiert investierst und langfristig Vermögen aufbaust – ohne Fachchinesisch. FinanzFreedom macht Finanzwissen einfach."

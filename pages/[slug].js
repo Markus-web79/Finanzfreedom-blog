@@ -1,23 +1,25 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
 import Head from "next/head";
+import styles from "../styles/ArticlePage.module.css";
 
-export default function ArticlePage({ frontmatter, html }) {
+export default function Article({ frontmatter, content }) {
   return (
     <>
       <Head>
         <title>{frontmatter.title} – FinanzFreedom</title>
         <meta
           name="description"
-          content={frontmatter.description || "Finanzwissen einfach erklärt"}
+          content={frontmatter.description || ""}
         />
       </Head>
 
-      <main style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
+      <main className={styles.container}>
         <h1>{frontmatter.title}</h1>
-        <article dangerouslySetInnerHTML={{ __html: html }} />
+        <article
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </main>
     </>
   );
@@ -30,7 +32,9 @@ export async function getStaticPaths() {
   const paths = files
     .filter((file) => file.endsWith(".md"))
     .map((file) => ({
-      params: { slug: file.replace(".md", "") },
+      params: {
+        slug: [file.replace(".md", "")],
+      },
     }));
 
   return {
@@ -40,19 +44,16 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(
-    process.cwd(),
-    "content",
-    `${params.slug}.md`
-  );
+  const slug = params.slug[0];
+  const filePath = path.join(process.cwd(), "content", `${slug}.md`);
+  const fileContent = fs.readFileSync(filePath, "utf8");
 
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(raw);
+  const { data, content } = matter(fileContent);
 
   return {
     props: {
       frontmatter: data,
-      html: marked(content),
+      content,
     },
   };
 }

@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import Head from "next/head";
 import Link from "next/link";
+
 import styles from "../../styles/ArticlePage.module.css";
 
 export default function ArticlePage({ frontmatter, html, category }) {
@@ -17,21 +18,32 @@ export default function ArticlePage({ frontmatter, html, category }) {
         />
       </Head>
 
-      <main className={styles.container}>
-        <Link href={`/${category}`} className={styles.backLink}>
-          ← Zur Kategorie
-        </Link>
+      <main className={styles.articleContainer}>
+        {/* Breadcrumb */}
+        <div className={styles.breadcrumb}>
+          <Link href={`/${category}`}>← Zurück zu {category}</Link>
+        </div>
 
+        {/* Titel */}
         <h1 className={styles.title}>{frontmatter.title}</h1>
 
-        <p className={styles.meta}>
-          Kategorie: {category.charAt(0).toUpperCase() + category.slice(1)}
-        </p>
+        {/* Meta */}
+        <div className={styles.meta}>Kategorie: {category}</div>
 
+        {/* Content */}
         <article
-          className={styles.article}
+          className={styles.content}
           dangerouslySetInnerHTML={{ __html: html }}
         />
+
+        {/* CTA Box */}
+        <div className={styles.ctaBox}>
+          <h3>💡 Tipp: Nutze unseren ETF-Rechner!</h3>
+          <p>Berechne, wie viel Vermögen du mit regelmäßigen Sparraten aufbaust.</p>
+          <Link href="/rechner/etf" className={styles.ctaButton}>
+            Jetzt starten →
+          </Link>
+        </div>
       </main>
     </>
   );
@@ -39,9 +51,11 @@ export default function ArticlePage({ frontmatter, html, category }) {
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content");
-  const categories = fs.readdirSync(contentDir).filter((d) =>
-    fs.statSync(path.join(contentDir, d)).isDirectory()
-  );
+
+  const categories = fs
+    .readdirSync(contentDir, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
 
   let paths = [];
 
@@ -53,41 +67,39 @@ export async function getStaticPaths() {
       if (!file.endsWith(".md")) continue;
 
       const slug = file.replace(".md", "");
-      paths.push({ params: { category, slug } });
+
+      paths.push({
+        params: { category, slug },
+      });
     }
   }
 
-return (
-  <>
-    <Head>
-      <title>{frontmatter.title} – FinanzFreedom</title>
-      <meta name="description" content={frontmatter.description || "Finanzwissen einfach erklärt"} />
-    </Head>
+  return { paths, fallback: false };
+}
 
-    <main className={styles.articleContainer}>
-      
-      <div className={styles.breadcrumb}>
-        <Link href={`/${category}`}>← Zurück zu {category}</Link>
-      </div>
+export async function getStaticProps({ params }) {
+  const { category, slug } = params;
 
-      <h1 className={styles.title}>{frontmatter.title}</h1>
+  const articlePath = path.join(
+    process.cwd(),
+    "content",
+    category,
+    `${slug}.md`
+  );
 
-      <div className={styles.meta}>
-        Kategorie: {category}  
-      </div>
+  if (!fs.existsSync(articlePath)) {
+    return { notFound: true };
+  }
 
-      <article
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+  const raw = fs.readFileSync(articlePath, "utf8");
+  const { data, content } = matter(raw);
+  const html = marked(content);
 
-      {/* CTA Box */}
-      <div className={styles.ctaBox}>
-        <h3>💡 Tipp: Nutze unseren ETF-Rechner</h3>
-        <p>Berechne, wie viel Vermögen du mit regelmäßigen Sparraten aufbauen kannst.</p>
-        <a href="/rechner/etf" className={styles.ctaButton}>Jetzt starten →</a>
-      </div>
-
-    </main>
-  </>
-);
+  return {
+    props: {
+      frontmatter: data,
+      html,
+      category,
+    },
+  };
+}

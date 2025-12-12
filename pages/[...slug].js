@@ -5,7 +5,7 @@ import { marked } from "marked";
 import Head from "next/head";
 import Link from "next/link";
 
-import styles from "../../styles/ArticlePage.module.css";
+import styles from '../styles/ArticlePage.module.css';
 
 export default function ArticlePage({ frontmatter, html, category }) {
   return (

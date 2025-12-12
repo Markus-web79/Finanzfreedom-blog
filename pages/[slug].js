@@ -1,21 +1,36 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
 import Head from "next/head";
-import Link from "next/link";
-import styles from "../styles/ArticlePage.module.css";
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
+export default function ArticlePage({ frontmatter, html }) {
+  return (
+    <>
+      <Head>
+        <title>{frontmatter.title} – FinanzFreedom</title>
+        <meta
+          name="description"
+          content={frontmatter.description || "Finanzwissen einfach erklärt"}
+        />
+      </Head>
+
+      <main style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
+        <h1>{frontmatter.title}</h1>
+        <article dangerouslySetInnerHTML={{ __html: html }} />
+      </main>
+    </>
+  );
+}
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(CONTENT_DIR);
+  const contentDir = path.join(process.cwd(), "content");
+  const files = fs.readdirSync(contentDir);
 
   const paths = files
     .filter((file) => file.endsWith(".md"))
     .map((file) => ({
-      params: {
-        slug: file.replace(".md", ""),
-      },
+      params: { slug: file.replace(".md", "") },
     }));
 
   return {
@@ -25,64 +40,19 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(CONTENT_DIR, `${params.slug}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf8");
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    `${params.slug}.md`
+  );
 
-  const { data: frontmatter, content } = matter(fileContent);
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const { data, content } = matter(raw);
 
   return {
     props: {
-      frontmatter,
-      content,
-      slug: params.slug,
+      frontmatter: data,
+      html: marked(content),
     },
   };
-}
-
-export default function ArticlePage({ frontmatter, content }) {
-  return (
-    <>
-      <Head>
-        <title>{frontmatter.title} – FinanzFreedom</title>
-        <meta
-          name="description"
-          content={
-            frontmatter.description ||
-            "Finanzwissen einfach & verständlich erklärt."
-          }
-        />
-      </Head>
-
-      <main className={styles.articleContainer}>
-        <div className={styles.breadcrumb}>
-          <Link href="/blog">← Zurück zum Blog</Link>
-        </div>
-
-        <h1 className={styles.title}>{frontmatter.title}</h1>
-
-        {frontmatter.category && (
-          <div className={styles.meta}>
-            Kategorie: {frontmatter.category}
-          </div>
-        )}
-
-        <article
-          className={styles.content}
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-
-        {/* CTA */}
-        <div className={styles.ctaBox}>
-          <h3>📊 ETF-Rechner nutzen</h3>
-          <p>
-            Berechne, wie viel Vermögen du mit regelmäßigen Sparraten aufbauen
-            kannst.
-          </p>
-          <Link href="/rechner/etf" className={styles.ctaButton}>
-            Jetzt starten →
-          </Link>
-        </div>
-      </main>
-    </>
-  );
 }

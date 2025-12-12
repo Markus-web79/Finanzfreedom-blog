@@ -1,18 +1,38 @@
-import Head from "next/head";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
+export async function getStaticProps() {
+  const contentDir = path.join(process.cwd(), "content");
+
+  const files = fs
+    .readdirSync(contentDir)
+    .filter((file) => file.endsWith(".md"));
+
+  const posts = files.map((file) => {
+    const filePath = path.join(contentDir, file);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const { data } = matter(fileContent);
+
+    return {
+      slug: file.replace(".md", ""),
+      title: data.title || "Ohne Titel",
+      excerpt: data.description || "",
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
 export default function Home({ posts }) {
   return (
-    <>
-      <Head>
-        <title>FinanzFreedom – Finanzwissen, das dich wirklich weiterbringt</title>
-        <meta
-          name="description"
-          content="Moderne Strategien für Vermögensaufbau, ETFs, Versicherungen & finanziellen Erfolg – verständlich erklärt."
-        />
-      </Head>
-
+    <main className={styles.container}>
       {/* HERO */}
       <section className={styles.hero}>
         <h1>Finanzwissen, das dich wirklich weiterbringt</h1>
@@ -20,7 +40,7 @@ export default function Home({ posts }) {
           Moderne Strategien für Vermögensaufbau, ETFs, Versicherungen &
           finanziellen Erfolg – verständlich erklärt.
         </p>
-        <Link href="#artikel" className={styles.cta}>
+        <Link href="#artikel" className={styles.heroButton}>
           Jetzt starten →
         </Link>
       </section>
@@ -33,7 +53,7 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <Link
               key={post.slug}
-              href={`/${post.slug}`}   {/* ✅ FIX */}
+              href={`/${post.slug}`}
               className={styles.card}
             >
               <h3>{post.title}</h3>
@@ -43,6 +63,6 @@ export default function Home({ posts }) {
           ))}
         </div>
       </section>
-    </>
+    </main>
   );
 }

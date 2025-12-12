@@ -4,56 +4,44 @@ import matter from "gray-matter";
 import Head from "next/head";
 import styles from "../styles/ArticlePage.module.css";
 
-export default function Article({ frontmatter, content }) {
-  return (
-    <>
-      <Head>
-        <title>{frontmatter.title} – FinanzFreedom</title>
-        <meta
-          name="description"
-          content={frontmatter.description || ""}
-        />
-      </Head>
-
-      <main className={styles.container}>
-        <h1>{frontmatter.title}</h1>
-        <article
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-      </main>
-    </>
-  );
-}
-
 export async function getStaticPaths() {
-  const contentDir = path.join(process.cwd(), "content");
-  const files = fs.readdirSync(contentDir);
+  const dir = path.join(process.cwd(), "content");
+  const files = fs.readdirSync(dir);
 
-  const paths = files
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => ({
-      params: {
-        slug: [file.replace(".md", "")],
-      },
-    }));
+  const paths = files.map((file) => ({
+    params: { slug: file.replace(".md", "") },
+  }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const slug = params.slug[0];
-  const filePath = path.join(process.cwd(), "content", `${slug}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf8");
-
-  const { data, content } = matter(fileContent);
+  const filePath = path.join(process.cwd(), "content", `${params.slug}.md`);
+  const raw = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(raw);
 
   return {
     props: {
-      frontmatter: data,
+      title: data.title || params.slug,
+      description: data.description || "",
       content,
     },
   };
+}
+
+export default function Article({ title, description, content }) {
+  return (
+    <>
+      <Head>
+        <title>{title} – FinanzFreedom</title>
+        <meta name="description" content={description} />
+      </Head>
+
+      <article className={styles.article}>
+        <h1>{title}</h1>
+        <p className={styles.description}>{description}</p>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </article>
+    </>
+  );
 }

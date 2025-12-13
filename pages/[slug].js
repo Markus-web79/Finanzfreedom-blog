@@ -15,17 +15,23 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }) {
-  const filePath = path.join(process.cwd(), "content", `${params.slug}.md`);
-  const raw = fs.readFileSync(filePath, "utf8");
-  const { data, content } = matter(raw);
+export async function getStaticPaths() {
+  const fs = require("fs");
+  const path = require("path");
+
+  const blocked = ["datenschutz", "impressum", "kontakt"];
+  const files = fs.readdirSync(path.join(process.cwd(), "content"));
+
+  const paths = files
+    .map(f => f.replace(".md", ""))
+    .filter(slug => !blocked.includes(slug))
+    .map(slug => ({
+      params: { slug }
+    }));
 
   return {
-    props: {
-      title: data.title || params.slug,
-      description: data.description || "",
-      content,
-    },
+    paths,
+    fallback: false
   };
 }
 

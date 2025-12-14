@@ -1,6 +1,6 @@
 ---
-title: ETF-Auswahl: So findest du den richtigen ETF (einfach erklärt)
-description: Wie wähle ich den richtigen ETF aus? Wir zeigen dir Schritt für Schritt, worauf Anfänger achten sollten – ohne Fachchinesisch.
+title: "ETF-Auswahl: So findest du den richtigen ETF (einfach erklärt)"
+description: "Wie wähle ich den richtigen ETF aus? Wir zeigen dir Schritt für Schritt, worauf Anfänger achten sollten – ohne Fachchinesisch."
 category: etfs
 ---
 

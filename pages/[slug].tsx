@@ -1,81 +1,69 @@
-import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllArticles, Article } from "../lib/content";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-type Props = {
-  article: Article;
-};
+export async function getStaticPaths() {
+  const contentDir = path.join(process.cwd(), "content");
+  const slugs: string[] = [];
 
-export default function ArticlePage({ article }: Props) {
-  const title = article.title?.trim() || "Artikel";
-  const description = article.description?.trim() || "";
-  const canonicalPath = `/${article.slug.split("/").pop()}`;
+  function walk(dir: string) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      if (fs.statSync(fullPath).isDirectory()) {
+        walk(fullPath);
+      } else if (file.endsWith(".md")) {
+        slugs.push(file.replace(/\.md$/, ""));
+      }
+    }
+  }
 
-  return (
-    <>
-      <Head>
-        <title>{title}</title>
-        {description ? <meta name="description" content={description} /> : null}
-        <link rel="canonical" href={canonicalPath} />
-      </Head>
+  walk(contentDir);
 
-      <main style={{ maxWidth: 860, margin: "0 auto", padding: "32px 16px" }}>
-        <header style={{ marginBottom: 18 }}>
-          <p style={{ opacity: 0.7, margin: 0 }}>
-            {article.category ? article.category.toUpperCase() : ""}
-            {article.date ? ` • ${article.date}` : ""}
-          </p>
-          <h1 style={{ margin: "10px 0 0" }}>{title}</h1>
-          {description ? (
-            <p style={{ marginTop: 10, fontSize: 18, opacity: 0.9 }}>
-              {description}
-            </p>
-          ) : null}
-        </header>
-
-        {/* ✅ Robust: erstmal als Text rendern, damit es NIE am Markdown scheitert */}
-        <article
-          style={{
-            lineHeight: 1.7,
-            fontSize: 16,
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {article.content}
-        </article>
-      </main>
-    </>
-  );
+  return {
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  };
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = getAllArticles();
+export async function getStaticProps({ params }: any) {
+  const contentDir = path.join(process.cwd(), "content");
+  let filePath: string | null = null;
 
-  const paths = articles.map((a) => {
-    // content.ts kann Pfade enthalten; wir nehmen als Route immer das letzte Segment
-    const last = a.slug.split("/").filter(Boolean).pop() || a.slug;
-    return { params: { slug: last } };
-  });
+  function findFile(dir: string) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      if (fs.statSync(fullPath).isDirectory()) {
+        findFile(fullPath);
+      } else if (file === `${params.slug}.md`) {
+        filePath = fullPath;
+      }
+    }
+  }
 
-  // Wichtig: fallback false => nur bekannte Seiten werden gebaut
-  return { paths, fallback: false };
-};
+  findFile(contentDir);
 
-export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
-  const slugParam = String(ctx.params?.slug || "");
-
-  const articles = getAllArticles();
-
-  // Wir matchen robust gegen das letzte Segment (Dateiname/Slug)
-  const article =
-    articles.find((a) => (a.slug.split("/").pop() || a.slug) === slugParam) ||
-    null;
-
-  if (!article) {
+  if (!filePath) {
     return { notFound: true };
   }
 
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const { content, data } = matter(raw);
+
   return {
-    props: { article },
+    props: {
+      title: data.title || params.slug,
+      content,
+    },
   };
-};
+}
+
+export default function Article({ title, content }: any) {
+  return (
+    <main style={{ maxWidth: 800, margin: "40px auto", padding: 20 }}>
+      <h1>{title}</h1>
+      <pre style={{ whiteSpace: "pre-wrap" }}>{content}</pre>
+    </main>
+  );
+}

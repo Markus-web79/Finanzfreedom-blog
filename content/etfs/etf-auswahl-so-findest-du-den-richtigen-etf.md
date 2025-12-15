@@ -1,7 +1,7 @@
 ---
-title: ""
-description: ""
-category: etfs
+title: "ETF-Auswahl: So findest du den richtigen ETF (einfach erklärt)"
+description: "Wie wähle ich den richtigen ETF aus? Schritt-für-Schritt-Erklärung für Anfänger – ohne Fachchinesisch."
+category: "etfs"
 ---
 
 # ETF-Auswahl: So findest du den richtigen ETF (einfach erklärt)

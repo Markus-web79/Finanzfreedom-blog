@@ -1,25 +1,12 @@
-export type Affiliate = {
-  key: string;
-  name: string;
-  url: string;
-  label: string;
-  disclosure?: string;
-};
-
-export const AFFILIATES: Record<string, Affiliate> = {
-  etf_depot: {
-    key: "etf_depot",
-    name: "ETF Depot Empfehlung",
-    url: "#", // später echter Link
-    label: "Depot eröffnen",
-    disclosure: "Werbung"
+export const affiliates = {
+  tradeRepublic: {
+    name: "Trade Republic",
+    url: "https://www.traderepublic.com/?ref=DEINCODE",
+    label: "ETF-Sparplan bei Trade Republic starten",
   },
-
-  kreditkarte: {
-    key: "kreditkarte",
-    name: "Kreditkarten Vergleich",
-    url: "#",
-    label: "Kreditkarten vergleichen",
-    disclosure: "Werbung"
-  }
+  scalableCapital: {
+    name: "Scalable Capital",
+    url: "https://de.scalable.capital/?ref=DEINCODE",
+    label: "ETF-Sparplan bei Scalable Capital starten",
+  },
 };

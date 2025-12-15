@@ -1,7 +1,5 @@
-import { GetStaticProps } from "next";
-import Link from "next/link";
-import { getAllPosts } from "../lib/posts";
-import { Post } from "../lib/types";
+// pages/index.tsx
+import { getAllPosts, Post } from "../lib/posts";
 
 type Props = {
   posts: Post[];
@@ -9,21 +7,25 @@ type Props = {
 
 export default function Home({ posts }: Props) {
   return (
-    <main style={{ maxWidth: 900, margin: "0 auto", padding: "2rem" }}>
+    <main>
       <h1>FinanzFreedom</h1>
-      {posts.map(post => (
+
+      {posts.map((post) => (
         <article key={post.slug}>
-          <h2>
-            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-          </h2>
+          <h2>{post.title}</h2>
+          <p>{post.excerpt}</p>
         </article>
       ))}
     </main>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {
-    posts: getAllPosts(),
-  },
-});
+export async function getStaticProps() {
+  const posts = getAllPosts();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}

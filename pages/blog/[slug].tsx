@@ -1,8 +1,13 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
-import { getAllPosts, getPostBySlug } from "../../lib/posts";
-import type { Post } from "../../lib/types";
-import { renderAffiliates } from "../../lib/renderAffiliate";
+
+type Post = {
+  slug: string;
+  title: string;
+  content: string;
+};
 
 type Props = {
   post: Post;
@@ -10,57 +15,44 @@ type Props = {
 
 export default function BlogPost({ post }: Props) {
   return (
-    <>
-      <Head>
-        <title>{post.title}</title>
-        <meta
-          name="description"
-          content={`${post.title} – einfach & verständlich erklärt`}
-        />
-      </Head>
-
-      <main
-        style={{
-          maxWidth: 860,
-          margin: "0 auto",
-          padding: "32px 16px",
-          lineHeight: 1.7,
-        }}
-      >
-        <h1>{post.title}</h1>
-
-        <article
-          dangerouslySetInnerHTML={{
-            __html: renderAffiliates(post.content),
-          }}
-        />
-      </main>
-    </>
+    <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem" }}>
+      <h1>{post.title}</h1>
+      <article dangerouslySetInnerHTML={{ __html: post.content }} />
+    </main>
   );
 }
 
+const CONTENT_DIR = path.join(process.cwd(), "content");
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const entries = fs.readdirSync(CONTENT_DIR, { withFileTypes: true });
+
+  const paths = entries
+    .filter((e) => e.isFile() && e.name.endsWith(".md"))
+    .map((e) => ({
+      params: { slug: e.name.replace(/\.md$/, "") },
+    }));
 
   return {
-    paths: posts.map((post) => ({
-      params: { slug: post.slug },
-    })),
+    paths,
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params?.slug as string;
-  const post = getPostBySlug(slug);
+  const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
 
-  if (!post) {
-    return { notFound: true };
-  }
+  const file = fs.readFileSync(fullPath, "utf-8");
+  const { data, content } = matter(file);
 
   return {
     props: {
-      post,
+      post: {
+        slug,
+        title: data.title ?? slug,
+        content,
+      },
     },
   };
 };

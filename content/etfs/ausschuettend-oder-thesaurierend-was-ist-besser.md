@@ -1,8 +1,11 @@
 ---
-title: ''
-description: ''
-category: etfs
+title: "Ausschuettend Oder Thesaurierend Was Ist Besser"
+description: "Ein verständlicher ETF-Artikel für Einsteiger auf FinanzFreedom."
+slug: "ausschuettend-oder-thesaurierend-was-ist-besser"
+category: "etfs"
+date: "2024-12-15"
 ---
+
 # Ausschüttend oder thesaurierend – was ist besser für Anleger?
 
 Wer in ETFs investiert, stößt schnell auf eine grundlegende Frage:  

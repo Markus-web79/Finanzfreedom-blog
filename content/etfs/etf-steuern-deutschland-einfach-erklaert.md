@@ -1,8 +1,11 @@
 ---
-title: ''
-description: ''
-category: etfs
+title: "Etf Steuern Deutschland Einfach Erklaert"
+description: "Ein verständlicher ETF-Artikel für Einsteiger auf FinanzFreedom."
+slug: "etf-steuern-deutschland-einfach-erklaert"
+category: "etfs"
+date: "2024-12-15"
 ---
+
 # ETF-Steuern in Deutschland einfach erklärt – das musst du wissen
 
 Viele Einsteiger schrecken vor ETFs zurück, weil sie glauben, dass **Steuern kompliziert** sind.  

@@ -1,8 +1,11 @@
 ---
-title: ''
-description: ''
-category: etfs
+title: "Etf Kosten Ter Einfach Erklaert"
+description: "Ein verständlicher ETF-Artikel für Einsteiger auf FinanzFreedom."
+slug: "etf-kosten-ter-einfach-erklaert"
+category: "etfs"
+date: "2024-12-15"
 ---
+
 # ETF-Kosten & TER einfach erklärt – was Anleger wirklich zahlen
 
 ETFs gelten als **günstig** – und das stimmt auch.  

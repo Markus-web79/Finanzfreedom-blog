@@ -1,8 +1,11 @@
 ---
-title: 'ETF-Auswahl: So findest du den richtigen ETF (einfach erklärt)'
-description: 'Wie wähle ich den richtigen ETF aus? Schritt-für-Schritt-Erklärung für Anfänger – ohne Fachchinesisch.'
-category: 'etfs'
+title: "Etf Auswahl So Findest Du Den Richtigen Etf"
+description: "Ein verständlicher ETF-Artikel für Einsteiger auf FinanzFreedom."
+slug: "etf-auswahl-so-findest-du-den-richtigen-etf"
+category: "etfs"
+date: "2024-12-15"
 ---
+
 # ETF-Auswahl: So findest du den richtigen ETF (einfach erklärt)
 
 Viele Anfänger scheitern nicht daran, **dass ETFs kompliziert sind**, sondern daran, dass es **zu viele Optionen** gibt.  

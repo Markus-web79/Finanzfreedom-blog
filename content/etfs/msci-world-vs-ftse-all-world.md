@@ -1,8 +1,11 @@
 ---
-title: ''
-description: ''
-category: etfs
+title: "Msci World Vs Ftse All World"
+description: "Ein verständlicher ETF-Artikel für Einsteiger auf FinanzFreedom."
+slug: "msci-world-vs-ftse-all-world"
+category: "etfs"
+date: "2024-12-15"
 ---
+
 # MSCI World vs. FTSE All-World – welcher ETF ist besser?
 
 Wer mit ETFs starten möchte, stößt schnell auf zwei bekannte Indizes: **MSCI World** und **FTSE All-World**.  

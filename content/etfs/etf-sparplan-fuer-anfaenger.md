@@ -1,7 +1,9 @@
 ---
-title: ETF-Sparplan für Anfänger – einfach erklärt
-description: Was ist ein ETF-Sparplan, wie funktioniert er und worauf sollten Anfänger achten? Einfach, verständlich und ohne Fachchinesisch erklärt.
-category: etfs
+title: "Etf Sparplan Fuer Anfaenger"
+description: "Ein verständlicher ETF-Artikel für Einsteiger auf FinanzFreedom."
+slug: "etf-sparplan-fuer-anfaenger"
+category: "etfs"
+date: "2024-12-15"
 ---
 
 Ein ETF-Sparplan ist für viele der **einfachste und sicherste Einstieg** in den langfristigen Vermögensaufbau.  

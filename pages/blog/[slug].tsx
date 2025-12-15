@@ -10,9 +10,6 @@ export default function BlogPost({ post }: Props) {
   return (
     <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem" }}>
       <h1>{post.title}</h1>
-      {post.description && (
-        <p style={{ color: "#666" }}>{post.description}</p>
-      )}
 
       <article
         dangerouslySetInnerHTML={{ __html: post.content }}

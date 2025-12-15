@@ -1,7 +1,10 @@
+// lib/posts.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { renderAffiliates } from "./renderAffiliate";
+
+const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export type Post = {
   slug: string;
@@ -9,26 +12,30 @@ export type Post = {
   content: string;
 };
 
-const contentDir = path.join(process.cwd(), "content");
-
 export function getAllPosts(): Post[] {
-  const files = fs.readdirSync(contentDir);
-
-  return files.map((file) => {
+  return fs.readdirSync(CONTENT_DIR).map((file) => {
     const slug = file.replace(/\.md$/, "");
-    return getPostBySlug(slug);
+    const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
+    const { data, content } = matter(raw);
+
+    return {
+      slug,
+      title: data.title ?? slug,
+      content: renderAffiliates(content),
+    };
   });
 }
 
 export function getPostBySlug(slug: string): Post {
-  const fullPath = path.join(contentDir, `${slug}.md`);
-  const file = fs.readFileSync(fullPath, "utf8");
-
-  const { data, content } = matter(file);
+  const raw = fs.readFileSync(
+    path.join(CONTENT_DIR, `${slug}.md`),
+    "utf8"
+  );
+  const { data, content } = matter(raw);
 
   return {
     slug,
-    title: data.title || slug,
+    title: data.title ?? slug,
     content: renderAffiliates(content),
   };
 }

@@ -1,12 +1,29 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPosts } from "../../lib/getAllPosts";
-import { markdownToHtml } from "../../lib/markdownToHtml";
 
-export default function BlogPost({ post }: any) {
+type Post = {
+  slug: string;
+  title: string;
+  description?: string;
+  content: string;
+};
+
+type Props = {
+  post: Post;
+};
+
+export default function BlogPost({ post }: Props) {
   return (
-    <main>
+    <main style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
       <h1>{post.title}</h1>
-      <article dangerouslySetInnerHTML={{ __html: post.content }} />
+
+      {post.description && <p>{post.description}</p>}
+
+      <article>
+        <pre style={{ whiteSpace: "pre-wrap", lineHeight: 1.6 }}>
+          {post.content}
+        </pre>
+      </article>
     </main>
   );
 }
@@ -14,30 +31,27 @@ export default function BlogPost({ post }: any) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts();
 
+  const paths = posts.map((post: Post) => ({
+    params: { slug: post.slug },
+  }));
+
   return {
-    paths: posts.map((post: any) => ({
-      params: { slug: post.slug },
-    })),
+    paths,
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const posts = getAllPosts();
-  const post = posts.find((p: any) => p.slug === params?.slug);
+  const post = posts.find((p: Post) => p.slug === params?.slug);
 
   if (!post) {
     return { notFound: true };
   }
 
-  const content = await markdownToHtml(post.content || "");
-
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      post,
     },
   };
 };

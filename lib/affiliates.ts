@@ -1,12 +1,10 @@
-export const affiliates = {
+export const AFFILIATES = {
   tradeRepublic: {
     name: "Trade Republic",
-    url: "https://www.traderepublic.com/?ref=DEINCODE",
-    label: "ETF-Sparplan bei Trade Republic starten",
+    url: "https://traderepublic.com/?ref=finanzfreedom",
   },
-  scalableCapital: {
+  scalable: {
     name: "Scalable Capital",
-    url: "https://de.scalable.capital/?ref=DEINCODE",
-    label: "ETF-Sparplan bei Scalable Capital starten",
+    url: "https://de.scalable.capital/?ref=finanzfreedom",
   },
 };

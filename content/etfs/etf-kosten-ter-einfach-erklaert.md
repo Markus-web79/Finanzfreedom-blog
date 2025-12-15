@@ -1,9 +1,8 @@
 ---
-title: ""
-description: ""
+title: ''
+description: ''
 category: etfs
 ---
-
 # ETF-Kosten & TER einfach erklärt – was Anleger wirklich zahlen
 
 ETFs gelten als **günstig** – und das stimmt auch.  

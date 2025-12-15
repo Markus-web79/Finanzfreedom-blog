@@ -1,9 +1,8 @@
 ---
-title: ""
-description: ""
+title: ''
+description: ''
 category: etfs
 ---
-
 # Ausschüttend oder thesaurierend – was ist besser für Anleger?
 
 Wer in ETFs investiert, stößt schnell auf eine grundlegende Frage:  

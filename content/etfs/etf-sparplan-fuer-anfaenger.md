@@ -1,9 +1,8 @@
 ---
-title: ""
-description: ""
+title: ''
+description: ''
 category: etfs
 ---
-
 # ETF-Sparplan für Anfänger – einfach erklärt
 
 Ein ETF-Sparplan ist für viele der **einfachste und sicherste Einstieg** in den langfristigen Vermögensaufbau. Trotzdem haben Einsteiger oft Fragen, Unsicherheiten oder falsche Erwartungen.  

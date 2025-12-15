@@ -1,9 +1,8 @@
 ---
-title: ""
-description: ""
+title: ''
+description: ''
 category: etfs
 ---
-
 # MSCI World vs. FTSE All-World – welcher ETF ist besser?
 
 Wer mit ETFs starten möchte, stößt schnell auf zwei bekannte Indizes: **MSCI World** und **FTSE All-World**.  

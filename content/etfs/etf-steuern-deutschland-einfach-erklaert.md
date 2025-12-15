@@ -1,6 +1,6 @@
 ---
-title: ETF-Steuern in Deutschland einfach erklärt – das musst du wissen
-description: Wie werden ETFs in Deutschland besteuert? Wir erklären Abgeltungssteuer, Vorabpauschale, Freibetrag und was Anleger wirklich beachten müssen.
+title: ""
+description: ""
 category: etfs
 ---
 

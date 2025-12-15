@@ -1,6 +1,6 @@
 ---
-title: ETF-Kosten & TER einfach erklärt – was Anleger wirklich zahlen
-description: Welche Kosten fallen bei ETFs an? Wir erklären TER, versteckte Kosten und worauf Anleger achten sollten, um unnötige Gebühren zu vermeiden.
+title: ""
+description: ""
 category: etfs
 ---
 

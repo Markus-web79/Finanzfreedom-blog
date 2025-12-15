@@ -1,6 +1,6 @@
 ---
-title: "Ausschüttend oder thesaurierend – was ist besser für Anleger?"
-description: "Ausschüttende oder thesaurierende ETFs? Wir erklären die Unterschiede, Vor- und Nachteile und welche Variante sich für Anfänger und langfristige Anleger besser eignet."
+title: ""
+description: ""
 category: etfs
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: ETF-Sparplan für Anfänger – einfach erklärt
-description: Ein ETF-Sparplan ist eine der einfachsten Möglichkeiten für Anfänger, langfristig Vermögen aufzubauen. Hier erfährst du, wie er funktioniert und worauf du achten solltest.
+title: ""
+description: ""
 category: etfs
 ---
 

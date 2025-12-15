@@ -1,6 +1,6 @@
 ---
-title: MSCI World vs. FTSE All-World – welcher ETF ist besser?
-description: MSCI World oder FTSE All-World? Wir erklären die Unterschiede, Vor- und Nachteile und welcher ETF für Einsteiger besser geeignet ist.
+title: ""
+description: ""
 category: etfs
 ---
 

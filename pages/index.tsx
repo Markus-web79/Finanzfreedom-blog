@@ -1,56 +1,29 @@
-import Head from "next/head";
-import Link from "next/link";
-import { getAllArticles, Article } from "../lib/content";
 import { GetStaticProps } from "next";
+import Link from "next/link";
+import { getAllPosts } from "../lib/posts";
+import { Post } from "../lib/types";
 
 type Props = {
-  latest: Article[];
+  posts: Post[];
 };
 
-export default function Home({ latest }: Props) {
+export default function Home({ posts }: Props) {
   return (
-    <>
-      <Head>
-        <title>FinanzFreedom – Geld verstehen. Vermögen aufbauen.</title>
-        <meta
-          name="description"
-          content="FinanzFreedom ist dein unabhängiges Finanzportal für ETFs, Geldanlage und finanzielle Freiheit."
-        />
-      </Head>
-
-      <main style={{ maxWidth: 960, margin: "0 auto", padding: "32px 16px" }}>
-        <h1>FinanzFreedom</h1>
-        <p style={{ fontSize: 18, opacity: 0.9 }}>
-          Verständliche Guides zu ETFs, Geldanlage und finanzieller Freiheit.
-        </p>
-
-        <h2 style={{ marginTop: 32 }}>Neueste Artikel</h2>
-
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {latest.map((a) => {
-            const slug = a.slug.split("/").pop();
-            return (
-              <li key={a.slug} style={{ marginBottom: 18 }}>
-                <Link href={`/${slug}`}>
-                  <strong>{a.title}</strong>
-                </Link>
-                <div style={{ opacity: 0.8 }}>{a.description}</div>
-              </li>
-            );
-          })}
-        </ul>
-
-        <Link href="/blog">→ Alle Artikel ansehen</Link>
-      </main>
-    </>
+    <main style={{ maxWidth: 900, margin: "0 auto", padding: "2rem" }}>
+      <h1>FinanzFreedom</h1>
+      {posts.map(post => (
+        <article key={post.slug}>
+          <h2>
+            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+          </h2>
+        </article>
+      ))}
+    </main>
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const articles = getAllArticles();
-  return {
-    props: {
-      latest: articles.slice(0, 6),
-    },
-  };
-};
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {
+    posts: getAllPosts(),
+  },
+});

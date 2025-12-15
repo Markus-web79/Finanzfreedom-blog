@@ -1,51 +1,38 @@
-import Head from "next/head";
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import { getAllArticles, Article } from "../../lib/content";
+import { getAllPosts } from "../../lib/posts";
+import type { Post } from "../../lib/types";
 
 type Props = {
-  articles: Article[];
+  posts: Post[];
 };
 
-export default function Blog({ articles }: Props) {
+export default function BlogIndex({ posts }: Props) {
   return (
-    <>
-      <Head>
-        <title>Alle Artikel – FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Alle Artikel zu ETFs, Geldanlage und finanzieller Freiheit auf FinanzFreedom."
-        />
-      </Head>
+    <main style={{ maxWidth: 900, margin: "0 auto", padding: "2rem" }}>
+      <h1>Blog</h1>
 
-      <main style={{ maxWidth: 960, margin: "0 auto", padding: "32px 16px" }}>
-        <h1>Alle Artikel</h1>
-
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {articles.map((a) => {
-            const slug = a.slug.split("/").pop();
-            return (
-              <li key={a.slug} style={{ marginBottom: 22 }}>
-                <Link href={`/${slug}`}>
-                  <strong>{a.title}</strong>
-                </Link>
-                <div style={{ opacity: 0.8 }}>{a.description}</div>
-                <small style={{ opacity: 0.6 }}>
-                  Kategorie: {a.category}
-                </small>
-              </li>
-            );
-          })}
-        </ul>
-      </main>
-    </>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {posts.map((post) => (
+          <li key={post.slug} style={{ marginBottom: "2rem" }}>
+            <h2>
+              <Link href={`/blog/${post.slug}`}>
+                {post.title}
+              </Link>
+            </h2>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+  const posts = getAllPosts();
+
   return {
     props: {
-      articles: getAllArticles(),
+      posts,
     },
   };
 };

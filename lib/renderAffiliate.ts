@@ -1,8 +1,9 @@
+// lib/renderAffiliate.ts
 import { AFFILIATES, AffiliateKey } from "./affiliates";
 
 export function renderAffiliates(content: string): string {
   return content.replace(
-    /\{\{affiliate\.([a-zA-Z0-9_-]+)\}\}/g,
+    /\{\{affiliate:([a-zA-Z0-9_]+)\}\}/g,
     (_, key: AffiliateKey) => {
       const aff = AFFILIATES[key];
       if (!aff) return "";

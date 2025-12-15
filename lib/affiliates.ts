@@ -1,10 +1,12 @@
 export const AFFILIATES = {
   tradeRepublic: {
-    name: "Trade Republic",
-    url: "https://traderepublic.com/?ref=finanzfreedom",
+    label: "Trade Republic",
+    url: "https://traderepublic.com",
   },
   scalable: {
-    name: "Scalable Capital",
-    url: "https://de.scalable.capital/?ref=finanzfreedom",
+    label: "Scalable Capital",
+    url: "https://de.scalable.capital",
   },
 };
+
+export type AffiliateKey = keyof typeof AFFILIATES;

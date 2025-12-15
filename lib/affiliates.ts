@@ -1,12 +1,13 @@
+// lib/affiliates.ts
 export const AFFILIATES = {
-  tradeRepublic: {
+  trade_republic: {
     label: "Trade Republic",
-    url: "https://traderepublic.com",
+    url: "https://traderepublic.com"
   },
-  scalable: {
+  scalable_capital: {
     label: "Scalable Capital",
-    url: "https://de.scalable.capital",
-  },
-};
+    url: "https://scalable.capital"
+  }
+} as const;
 
 export type AffiliateKey = keyof typeof AFFILIATES;

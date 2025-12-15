@@ -7,9 +7,13 @@ type Props = {
 
 export default function BlogPost({ post }: Props) {
   return (
-    <main>
+    <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem" }}>
       <h1>{post.title}</h1>
-      <article>{post.content}</article>
+      <p style={{ color: "#666" }}>{post.description}</p>
+
+      <article
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
     </main>
   );
 }
@@ -17,12 +21,10 @@ export default function BlogPost({ post }: Props) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts();
 
-  const paths = posts.map((post) => ({
-    params: { slug: post.slug },
-  }));
-
   return {
-    paths,
+    paths: posts.map((post) => ({
+      params: { slug: post.slug },
+    })),
     fallback: false,
   };
 };
@@ -36,8 +38,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   }
 
   return {
-    props: {
-      post,
-    },
+    props: { post },
   };
 };

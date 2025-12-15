@@ -1,8 +1,9 @@
 ---
-title: "11 ETF-Fehler, die dich tausende Euro kosten können"
+title: "ETF Fehler vermeiden – die 11 häufigsten Anfängerfehler"
+description: "Diese 11 ETF-Fehler kosten Anleger tausende Euro. So vermeidest du typische Anfängerfehler beim Investieren mit ETFs."
 slug: "etf-fehler-vermeiden"
 category: "etfs"
-description: "Viele Anleger machen beim Investieren in ETFs teure Fehler. Diese 11 ETF-Fehler solltest du unbedingt vermeiden – besonders als Einsteiger."
+date: "2024-12-15"
 ---
 
 Ein ETF-Sparplan gilt als **einfach, günstig und sicher**.  

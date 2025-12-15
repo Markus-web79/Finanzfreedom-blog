@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllPosts, Post } from "../../lib/getAllPosts";
+import { getAllPosts, getPostBySlug } from "../../lib/posts";
+import type { Post } from "../../lib/types";
 
 type Props = {
   post: Post;
@@ -9,7 +10,9 @@ export default function BlogPost({ post }: Props) {
   return (
     <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem" }}>
       <h1>{post.title}</h1>
-      <p style={{ color: "#666" }}>{post.description}</p>
+      {post.description && (
+        <p style={{ color: "#666" }}>{post.description}</p>
+      )}
 
       <article
         dangerouslySetInnerHTML={{ __html: post.content }}
@@ -30,14 +33,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const posts = getAllPosts();
-  const post = posts.find((p) => p.slug === params?.slug);
-
-  if (!post) {
-    return { notFound: true };
-  }
+  const slug = params?.slug as string;
+  const post = getPostBySlug(slug);
 
   return {
-    props: { post },
+    props: {
+      post,
+    },
   };
 };

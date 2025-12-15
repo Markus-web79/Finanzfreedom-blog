@@ -1,12 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllPosts } from "../../lib/getAllPosts";
-
-type Post = {
-  slug: string;
-  title: string;
-  description?: string;
-  content: string;
-};
+import { getAllPosts, Post } from "../../lib/getAllPosts";
 
 type Props = {
   post: Post;
@@ -14,16 +7,9 @@ type Props = {
 
 export default function BlogPost({ post }: Props) {
   return (
-    <main style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
+    <main>
       <h1>{post.title}</h1>
-
-      {post.description && <p>{post.description}</p>}
-
-      <article>
-        <pre style={{ whiteSpace: "pre-wrap", lineHeight: 1.6 }}>
-          {post.content}
-        </pre>
-      </article>
+      <article>{post.content}</article>
     </main>
   );
 }
@@ -31,7 +17,7 @@ export default function BlogPost({ post }: Props) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts();
 
-  const paths = posts.map((post: Post) => ({
+  const paths = posts.map((post) => ({
     params: { slug: post.slug },
   }));
 
@@ -41,9 +27,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const posts = getAllPosts();
-  const post = posts.find((p: Post) => p.slug === params?.slug);
+  const post = posts.find((p) => p.slug === params?.slug);
 
   if (!post) {
     return { notFound: true };

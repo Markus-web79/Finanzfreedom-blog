@@ -1,26 +1,34 @@
 import fs from "fs";
 import path from "path";
-import { Post } from "./types";
+import matter from "gray-matter";
+import { renderAffiliates } from "./renderAffiliate";
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
+export type Post = {
+  slug: string;
+  title: string;
+  content: string;
+};
+
+const contentDir = path.join(process.cwd(), "content");
 
 export function getAllPosts(): Post[] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
+  const files = fs.readdirSync(contentDir);
 
-  return fs.readdirSync(CONTENT_DIR)
-    .filter(f => f.endsWith(".html"))
-    .map(file => {
-      const slug = file.replace(".html", "");
-      const content = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
-
-      return {
-        slug,
-        title: slug.replace(/-/g, " "),
-        content,
-      };
-    });
+  return files.map((file) => {
+    const slug = file.replace(/\.md$/, "");
+    return getPostBySlug(slug);
+  });
 }
 
-export function getPostBySlug(slug: string): Post | null {
-  return getAllPosts().find(p => p.slug === slug) ?? null;
+export function getPostBySlug(slug: string): Post {
+  const fullPath = path.join(contentDir, `${slug}.md`);
+  const file = fs.readFileSync(fullPath, "utf8");
+
+  const { data, content } = matter(file);
+
+  return {
+    slug,
+    title: data.title || slug,
+    content: renderAffiliates(content),
+  };
 }

@@ -20,11 +20,15 @@ type Props = {
 
 export default function BlogPost({ post }: Props) {
   return (
-    <ArticleLayout title={post.title}>
-      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-    </ArticleLayout>
-  );
-}
+    <>
+      <Head>
+        <title>{post.title} | FinanzFreedom</title>
+        {post.description && (
+          <meta name="description" content={post.description} />
+        )}
+      </Head>
+
+      <main>
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 

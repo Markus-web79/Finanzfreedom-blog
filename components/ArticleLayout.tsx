@@ -1,18 +1,18 @@
+// components/ArticleLayout.tsx
 import Head from "next/head";
-import Header from "./Header";
-import Footer from "./Footer";
+import { ReactNode } from "react";
 
-type ArticleLayoutProps = {
+type Props = {
   title: string;
   description?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function ArticleLayout({
   title,
   description,
   children,
-}: ArticleLayoutProps) {
+}: Props) {
   return (
     <>
       <Head>
@@ -22,32 +22,29 @@ export default function ArticleLayout({
         )}
       </Head>
 
-      <Header />
-
       <main
         style={{
-          maxWidth: "900px",
+          maxWidth: "760px",
           margin: "0 auto",
-          padding: "2.5rem 1.5rem",
+          padding: "3rem 1.25rem",
+          fontSize: "1.05rem",
           lineHeight: 1.7,
         }}
       >
         <article>
           <h1
             style={{
-              fontSize: "2.4rem",
+              fontSize: "2.2rem",
+              lineHeight: 1.25,
               marginBottom: "1.5rem",
-              lineHeight: 1.2,
             }}
           >
             {title}
           </h1>
 
-          <div>{children}</div>
+          {children}
         </article>
       </main>
-
-      <Footer />
     </>
   );
 }

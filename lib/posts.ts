@@ -3,21 +3,26 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
+const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
 export type Post = {
   slug: string;
   title: string;
-  excerpt?: string;
-  category?: string;
+  excerpt: string;
+  category: string;
 };
 
-export function getAllPosts(): Post[] {
+function getMarkdownFiles(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
 
-  const files = fs
-    .readdirSync(CONTENT_DIR)
-    .filter((file) => file.endsWith(".md"));
+  return fs
+    .readdirSync(CONTENT_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+    .map((entry) => entry.name);
+}
+
+export function getAllPosts(): Post[] {
+  const files = getMarkdownFiles();
 
   return files.map((file) => {
     const slug = file.replace(/\.md$/, "");
@@ -29,7 +34,26 @@ export function getAllPosts(): Post[] {
       slug,
       title: data.title ?? slug,
       excerpt: data.excerpt ?? "",
-      category: data.category ?? "",
+      category: data.category ?? "allgemein",
     };
   });
+}
+
+export function getPostBySlug(slug: string): Post & { content: string } {
+  const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
+
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Post not found: ${slug}`);
+  }
+
+  const raw = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(raw);
+
+  return {
+    slug,
+    title: data.title ?? slug,
+    excerpt: data.excerpt ?? "",
+    category: data.category ?? "allgemein",
+    content,
+  };
 }

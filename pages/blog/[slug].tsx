@@ -1,48 +1,64 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getAllPosts, getPostBySlug } from "../../lib/posts";
+import { remark } from "remark";
+import html from "remark-html";
 import ArticleLayout from "../../components/ArticleLayout";
-import ReactMarkdown from "react-markdown";
 
-type PostProps = {
-  post: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    category: string;
-    content: string;
-  };
+type Post = {
+  slug: string;
+  title: string;
+  contentHtml: string;
 };
 
-export default function BlogPost({ post }: PostProps) {
+type Props = {
+  post: Post;
+};
+
+export default function BlogPost({ post }: Props) {
   return (
-    <ArticleLayout
-      title={post.title}
-      excerpt={post.excerpt}
-      category={post.category}
-    >
-      <ReactMarkdown>{post.content}</ReactMarkdown>
+    <ArticleLayout title={post.title}>
+      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
     </ArticleLayout>
   );
 }
 
+const CONTENT_DIR = path.join(process.cwd(), "content");
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const files = fs.readdirSync(CONTENT_DIR);
+
+  const paths = files
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => ({
+      params: { slug: file.replace(/\.md$/, "") },
+    }));
 
   return {
-    paths: posts.map((post) => ({
-      params: { slug: post.slug },
-    })),
+    paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params?.slug as string;
-  const post = getPostBySlug(slug);
+  const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
+
+  const file = fs.readFileSync(fullPath, "utf-8");
+  const { data, content } = matter(file);
+
+  const processedContent = await remark()
+    .use(html)
+    .process(content);
 
   return {
     props: {
-      post,
+      post: {
+        slug,
+        title: data.title ?? slug,
+        contentHtml: processedContent.toString(),
+      },
     },
   };
 };

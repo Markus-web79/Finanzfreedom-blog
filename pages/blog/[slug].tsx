@@ -1,58 +1,48 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { getAllPosts, getPostBySlug } from "../../lib/posts";
+import ArticleLayout from "../../components/ArticleLayout";
+import ReactMarkdown from "react-markdown";
 
-type Post = {
-  slug: string;
-  title: string;
-  content: string;
+type PostProps = {
+  post: {
+    slug: string;
+    title: string;
+    excerpt: string;
+    category: string;
+    content: string;
+  };
 };
 
-type Props = {
-  post: Post;
-};
-
-export default function BlogPost({ post }: Props) {
+export default function BlogPost({ post }: PostProps) {
   return (
-    <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem" }}>
-      <h1>{post.title}</h1>
-      <article dangerouslySetInnerHTML={{ __html: post.content }} />
-    </main>
+    <ArticleLayout
+      title={post.title}
+      excerpt={post.excerpt}
+      category={post.category}
+    >
+      <ReactMarkdown>{post.content}</ReactMarkdown>
+    </ArticleLayout>
   );
 }
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const entries = fs.readdirSync(CONTENT_DIR, { withFileTypes: true });
-
-  const paths = entries
-    .filter((e) => e.isFile() && e.name.endsWith(".md"))
-    .map((e) => ({
-      params: { slug: e.name.replace(/\.md$/, "") },
-    }));
+  const posts = getAllPosts();
 
   return {
-    paths,
+    paths: posts.map((post) => ({
+      params: { slug: post.slug },
+    })),
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string;
-  const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
-
-  const file = fs.readFileSync(fullPath, "utf-8");
-  const { data, content } = matter(file);
+  const post = getPostBySlug(slug);
 
   return {
     props: {
-      post: {
-        slug,
-        title: data.title ?? slug,
-        content,
-      },
+      post,
     },
   };
 };

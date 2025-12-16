@@ -1,72 +1,53 @@
-// components/ArticleLayout.tsx
 import Head from "next/head";
-import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 type ArticleLayoutProps = {
   title: string;
-  excerpt?: string;
-  category?: string;
+  description?: string;
   children: React.ReactNode;
 };
 
 export default function ArticleLayout({
   title,
-  excerpt,
-  category,
+  description,
   children,
 }: ArticleLayoutProps) {
   return (
     <>
       <Head>
         <title>{title} | FinanzFreedom</title>
-        {excerpt && <meta name="description" content={excerpt} />}
+        {description && (
+          <meta name="description" content={description} />
+        )}
       </Head>
 
-      <article
+      <Header />
+
+      <main
         style={{
-          maxWidth: "820px",
+          maxWidth: "900px",
           margin: "0 auto",
-          padding: "2rem 1.25rem",
+          padding: "2.5rem 1.5rem",
+          lineHeight: 1.7,
         }}
       >
-        {category && (
-          <div
+        <article>
+          <h1
             style={{
-              fontSize: "0.8rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              opacity: 0.6,
-              marginBottom: "0.5rem",
+              fontSize: "2.4rem",
+              marginBottom: "1.5rem",
+              lineHeight: 1.2,
             }}
           >
-            {category}
-          </div>
-        )}
+            {title}
+          </h1>
 
-        <h1
-          style={{
-            fontSize: "2.2rem",
-            lineHeight: 1.25,
-            marginBottom: "1rem",
-          }}
-        >
-          {title}
-        </h1>
+          <div>{children}</div>
+        </article>
+      </main>
 
-        {excerpt && (
-          <p
-            style={{
-              fontSize: "1.1rem",
-              opacity: 0.8,
-              marginBottom: "2rem",
-            }}
-          >
-            {excerpt}
-          </p>
-        )}
-
-        <section>{children}</section>
-      </article>
+      <Footer />
     </>
   );
 }

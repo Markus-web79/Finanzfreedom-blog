@@ -10,7 +10,8 @@ import ArticleLayout from "../../components/ArticleLayout";
 type Post = {
   slug: string;
   title: string;
-  contentHtml: string;
+  content: string;
+  description?: string;
 };
 
 type Props = {

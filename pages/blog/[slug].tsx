@@ -1,8 +1,8 @@
-import Head from "next/head";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { remark } from "remark";
 import html from "remark-html";
 import ArticleLayout from "../../components/ArticleLayout";
@@ -10,8 +10,8 @@ import ArticleLayout from "../../components/ArticleLayout";
 type Post = {
   slug: string;
   title: string;
-  content: string;
   description?: string;
+  contentHtml: string;
 };
 
 type Props = {
@@ -28,7 +28,14 @@ export default function BlogPost({ post }: Props) {
         )}
       </Head>
 
-      <main>
+      <ArticleLayout title={post.title}>
+        <div
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
+      </ArticleLayout>
+    </>
+  );
+}
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -63,6 +70,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       post: {
         slug,
         title: data.title ?? slug,
+        description:
+          data.description ??
+          data.excerpt ??
+          `${data.title ?? slug} – FinanzFreedom`,
         contentHtml: processedContent.toString(),
       },
     },

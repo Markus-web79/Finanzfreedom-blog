@@ -1,3 +1,5 @@
+// pages/blog/[slug].tsx
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -7,6 +9,7 @@ import ArticleLayout from "../../components/ArticleLayout";
 type Post = {
   slug: string;
   title: string;
+  excerpt?: string;
   content: string;
 };
 
@@ -16,9 +19,11 @@ type Props = {
 
 export default function BlogPost({ post }: Props) {
   return (
-    <ArticleLayout title={post.title}>
+    <ArticleLayout
+      title={post.title}
+      description={post.excerpt}
+    >
       <div
-        className="article-content"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </ArticleLayout>
@@ -28,12 +33,18 @@ export default function BlogPost({ post }: Props) {
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  if (!fs.existsSync(CONTENT_DIR)) {
+    return { paths: [], fallback: false };
+  }
+
   const files = fs
     .readdirSync(CONTENT_DIR)
     .filter((file) => file.endsWith(".md"));
 
   const paths = files.map((file) => ({
-    params: { slug: file.replace(/\.md$/, "") },
+    params: {
+      slug: file.replace(/\.md$/, ""),
+    },
   }));
 
   return {
@@ -46,14 +57,15 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params?.slug as string;
   const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
 
-  const raw = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(raw);
+  const file = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(file);
 
   return {
     props: {
       post: {
         slug,
         title: data.title ?? slug,
+        excerpt: data.excerpt ?? "",
         content,
       },
     },

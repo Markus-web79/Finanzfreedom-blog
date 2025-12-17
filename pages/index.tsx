@@ -1,4 +1,7 @@
 // pages/index.tsx
+
+import { getCategories } from "../config/categoryConfig";
+import CategoryNav from "../components/CategoryNav";
 import { getAllPosts, Post } from "../lib/posts";
 
 type Props = {

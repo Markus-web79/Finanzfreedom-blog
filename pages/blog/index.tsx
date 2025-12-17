@@ -1,77 +1,53 @@
-import { GetStaticProps } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts } from "../../lib/posts";
 
-type Post = {
-  slug: string;
-  title: string;
-  excerpt?: string;
-  category?: string;
-};
+export async function getStaticProps() {
+  const posts = getAllPosts();
 
-type Props = {
-  posts: Post[];
-};
+  const filteredPosts = posts.filter(
+    (post) => post.slug && post.slug !== "README"
+  );
 
-export default function BlogIndex({ posts }: Props) {
+  return {
+    props: {
+      posts: filteredPosts,
+    },
+  };
+}
+
+export default function BlogIndex({ posts }) {
   return (
-    <main style={{ maxWidth: 1000, margin: "0 auto", padding: "3rem 1.5rem" }}>
-      <h1 style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>Blog</h1>
-      <p style={{ color: "#9ca3af", marginBottom: "2.5rem" }}>
-        Praxisnahe Artikel zu Geldanlage, ETFs und finanzieller Freiheit.
-      </p>
+    <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem" }}>
+      <h1>Blog</h1>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: "1.5rem",
-        }}
-      >
+      <div style={{ display: "grid", gap: "1.5rem" }}>
         {posts.map((post) => (
-          <article
+          <Link
             key={post.slug}
+            href={`/blog/${post.slug}`}
             style={{
-              background: "#0f172a",
-              border: "1px solid #1e293b",
-              borderRadius: "12px",
               padding: "1.5rem",
+              borderRadius: "12px",
+              background: "#0f172a",
+              textDecoration: "none",
+              color: "inherit",
+              border: "1px solid #1e293b",
             }}
           >
-            <h2 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>
-              {post.title}
-            </h2>
+            <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
 
             {post.excerpt && (
-              <p style={{ color: "#9ca3af", fontSize: "0.9rem" }}>
-                {post.excerpt}
-              </p>
+              <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
             )}
 
-            <Link
-              href={`/blog/${post.slug}`}
-              style={{
-                display: "inline-block",
-                marginTop: "1rem",
-                color: "#22c55e",
-                fontWeight: 500,
-              }}
-            >
-              Lesen →
-            </Link>
-          </article>
+            {post.category && (
+              <small style={{ color: "#22d3ee" }}>
+                Kategorie: {post.category}
+              </small>
+            )}
+          </Link>
         ))}
       </div>
     </main>
   );
 }
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const posts = getAllPosts();
-
-  return {
-    props: {
-      posts,
-    },
-  };
-};

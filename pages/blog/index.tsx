@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { getAllPosts } from "../../lib/posts";
 
 export async function getStaticProps() {
@@ -13,14 +14,42 @@ export async function getStaticProps() {
 }
 
 export default function BlogIndex({ posts }) {
-  const [activeCategory, setActiveCategory] = useState("Alle");
+  const router = useRouter();
+  const { cat } = router.query;
 
   const categories = [
     "Alle",
-    ...Array.from(
-      new Set(posts.map((p) => p.category).filter(Boolean))
-    ),
+    ...Array.from(new Set(posts.map((p) => p.category).filter(Boolean))),
   ];
+
+  const [activeCategory, setActiveCategory] = useState("Alle");
+
+  // 🔄 Sync URL → State
+  useEffect(() => {
+    if (typeof cat === "string") {
+      const match = categories.find(
+        (c) => c.toLowerCase() === cat.toLowerCase()
+      );
+      if (match) setActiveCategory(match);
+    } else {
+      setActiveCategory("Alle");
+    }
+  }, [cat]);
+
+  // 🔗 State → URL
+  function selectCategory(category: string) {
+    setActiveCategory(category);
+
+    if (category === "Alle") {
+      router.push("/blog", undefined, { shallow: true });
+    } else {
+      router.push(
+        `/blog?cat=${encodeURIComponent(category)}`,
+        undefined,
+        { shallow: true }
+      );
+    }
+  }
 
   const filteredPosts =
     activeCategory === "Alle"
@@ -35,16 +64,16 @@ export default function BlogIndex({ posts }) {
 
       {/* CATEGORY TABS */}
       <div style={styles.tabs}>
-        {categories.map((cat) => (
+        {categories.map((catName) => (
           <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
+            key={catName}
+            onClick={() => selectCategory(catName)}
             style={{
               ...styles.tab,
-              ...(activeCategory === cat ? styles.tabActive : {}),
+              ...(activeCategory === catName ? styles.tabActive : {}),
             }}
           >
-            {cat}
+            {catName}
           </button>
         ))}
       </div>
@@ -101,7 +130,6 @@ const styles: any = {
     marginBottom: "1.5rem",
   },
 
-  /* TABS */
   tabs: {
     display: "flex",
     gap: "0.75rem",
@@ -125,7 +153,6 @@ const styles: any = {
     borderColor: "#22d3ee",
   },
 
-  /* FEATURED */
   featured: {
     display: "block",
     padding: "2.5rem",
@@ -155,7 +182,6 @@ const styles: any = {
     maxWidth: "700px",
   },
 
-  /* GRID */
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",

@@ -1,59 +1,64 @@
-// lib/posts.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
+const CONTENT_DIR = path.join(process.cwd(), "content");
 
-export type Post = {
+// Dateien, die NICHT als Blogartikel gelten
+const EXCLUDED_SLUGS = [
+  "readme",
+  "impressum",
+  "datenschutz",
+  "kontakt",
+];
+
+export type PostMeta = {
   slug: string;
   title: string;
-  excerpt: string;
-  category: string;
+  excerpt?: string;
+  category?: string;
 };
 
-function getMarkdownFiles(): string[] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
+export function getAllPosts(): PostMeta[] {
+  const files = fs.readdirSync(CONTENT_DIR);
 
-  return fs
-    .readdirSync(CONTENT_DIR, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
-    .map((entry) => entry.name);
+  return files
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => {
+      const slug = file.replace(".md", "");
+
+      if (EXCLUDED_SLUGS.includes(slug.toLowerCase())) {
+        return null;
+      }
+
+      const fullPath = path.join(CONTENT_DIR, file);
+      const fileContent = fs.readFileSync(fullPath, "utf-8");
+      const { data } = matter(fileContent);
+
+      return {
+        slug,
+        title: data.title ?? slug,
+        excerpt: data.excerpt ?? "",
+        category: data.category ?? "",
+      };
+    })
+    .filter(Boolean) as PostMeta[];
 }
 
-export function getAllPosts(): Post[] {
-  const files = getMarkdownFiles();
-
-  return files.map((file) => {
-    const slug = file.replace(/\.md$/, "");
-    const fullPath = path.join(CONTENT_DIR, file);
-    const raw = fs.readFileSync(fullPath, "utf8");
-    const { data } = matter(raw);
-
-    return {
-      slug,
-      title: data.title ?? slug,
-      excerpt: data.excerpt ?? "",
-      category: data.category ?? "allgemein",
-    };
-  });
-}
-
-export function getPostBySlug(slug: string): Post & { content: string } {
+export function getPostBySlug(slug: string) {
   const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
 
   if (!fs.existsSync(fullPath)) {
-    throw new Error(`Post not found: ${slug}`);
+    return null;
   }
 
-  const raw = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(raw);
+  const fileContent = fs.readFileSync(fullPath, "utf-8");
+  const { data, content } = matter(fileContent);
 
   return {
     slug,
     title: data.title ?? slug,
-    excerpt: data.excerpt ?? "",
-    category: data.category ?? "allgemein",
     content,
+    category: data.category ?? "",
   };
 }

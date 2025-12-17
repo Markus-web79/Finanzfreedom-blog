@@ -1,20 +1,25 @@
 // components/CategoryNav.js
 import Link from "next/link";
-import styles from "../styles/CategoryNav.module.css";
-import CATEGORY_CONFIG from "../config/categoryConfig.js";
 
-export default function CategoryNav({ active }) {
-  const categories = Object.values(CATEGORY_CONFIG);
+export default function CategoryNav({ categories }) {
+  if (!categories || categories.length === 0) return null;
 
   return (
-    <nav className={styles.nav}>
+    <nav style={{ margin: "2rem 0", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
       {categories.map((cat) => (
         <Link
           key={cat.slug}
-          href={`/kategorie/${cat.slug}`}
-          className={active === cat.slug ? styles.active : ""}
+          href={`/${cat.slug}`}
+          style={{
+            padding: "0.4rem 0.8rem",
+            borderRadius: "6px",
+            background: "#0f766e",
+            color: "#fff",
+            fontSize: "0.9rem",
+            textDecoration: "none",
+          }}
         >
-          {cat.label}
+          {cat.title}
         </Link>
       ))}
     </nav>

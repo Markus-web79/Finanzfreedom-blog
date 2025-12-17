@@ -2,62 +2,70 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const contentDirectory = path.join(process.cwd(), "content");
+const contentDir = path.join(process.cwd(), "content");
+
+/* =========================
+   TYPES
+========================= */
 
 export type Post = {
   slug: string;
   title: string;
   excerpt?: string;
   category?: string;
-  date?: string;
+  content: string;
 };
 
-export function getAllPosts(): Post[] {
-  if (!fs.existsSync(contentDirectory)) return [];
+/* =========================
+   HELPERS
+========================= */
 
-  const categories = fs.readdirSync(contentDirectory, {
-    withFileTypes: true,
-  });
+function getAllMarkdownFiles(dir: string, base = dir): string[] {
+  return fs.readdirSync(dir).flatMap((file) => {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
 
-  const posts: Post[] = [];
-
-  for (const categoryDir of categories) {
-    if (!categoryDir.isDirectory()) continue;
-
-    const category = categoryDir.name;
-    const categoryPath = path.join(contentDirectory, category);
-
-    const files = fs.readdirSync(categoryPath);
-
-    for (const file of files) {
-      // ❌ README & nicht-Markdown ignorieren
-      if (
-        file.toLowerCase() === "readme.md" ||
-        !file.endsWith(".md")
-      ) {
-        continue;
-      }
-
-      const fullPath = path.join(categoryPath, file);
-      const fileContent = fs.readFileSync(fullPath, "utf8");
-
-      const { data, content } = matter(fileContent);
-
-      const slug = file.replace(/\.md$/, "");
-
-      posts.push({
-        slug,
-        title: data.title || slug.replace(/-/g, " "),
-        excerpt: data.excerpt || content.slice(0, 140) + "...",
-        category: data.category || category,
-        date: data.date || null,
-      });
+    if (stat.isDirectory()) {
+      return getAllMarkdownFiles(fullPath, base);
     }
-  }
 
-  // 📅 Neueste zuerst (wenn Datum vorhanden)
-  return posts.sort((a, b) => {
-    if (!a.date || !b.date) return 0;
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (file.endsWith(".md")) {
+      return [path.relative(base, fullPath)];
+    }
+
+    return [];
   });
+}
+
+/* =========================
+   PUBLIC API
+========================= */
+
+export function getAllPosts(): Post[] {
+  const files = getAllMarkdownFiles(contentDir);
+
+  return files.map((relativePath) => {
+    const slug = relativePath.replace(/\.md$/, "");
+    const fullPath = path.join(contentDir, relativePath);
+    const fileContent = fs.readFileSync(fullPath, "utf8");
+
+    const { data, content } = matter(fileContent);
+
+    return {
+      slug,
+      title: data.title ?? slug,
+      excerpt: data.excerpt ?? "",
+      category: data.category ?? "",
+      content,
+    };
+  });
+}
+
+export function getAllSlugs(): string[] {
+  return getAllPosts().map((post) => post.slug);
+}
+
+export function getPostBySlug(slug: string): Post | null {
+  const posts = getAllPosts();
+  return posts.find((post) => post.slug === slug) ?? null;
 }

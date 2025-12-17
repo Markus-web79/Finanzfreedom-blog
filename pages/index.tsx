@@ -1,34 +1,52 @@
-// pages/index.tsx
-
-import { getCategories } from "../config/categoryConfig";
+import Head from "next/head";
 import CategoryNav from "../components/CategoryNav";
-import { getAllPosts, Post } from "../lib/posts";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import { getCategories } from "../config/categoryConfig";
 
-type Props = {
-  posts: Post[];
+type Category = {
+  slug: string;
+  title: string;
 };
 
-export default function Home({ posts }: Props) {
-  return (
-    <main>
-      <h1>FinanzFreedom</h1>
+type Props = {
+  categories: Category[];
+};
 
-      {posts.map((post) => (
-        <article key={post.slug}>
-          <h2>{post.title}</h2>
-          <p>{post.excerpt}</p>
-        </article>
-      ))}
-    </main>
+export default function Home({ categories }: Props) {
+  return (
+    <>
+      <Head>
+        <title>FinanzFreedom – Finanzielle Freiheit aufbauen</title>
+        <meta
+          name="description"
+          content="FinanzFreedom – Dein Portal für ETFs, Versicherungen, Geld sparen und finanzielle Freiheit."
+        />
+      </Head>
+
+      <Header />
+      <Hero />
+
+      {/* Kategorienavigation */}
+      <CategoryNav categories={categories} />
+
+      {/* Platz für spätere Startseiten-Sections */}
+      <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "2rem" }}>
+        {/* Hier kommen später Featured-Artikel, Guides etc. */}
+      </main>
+
+      <Footer />
+    </>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts();
+  const categories = getCategories();
 
   return {
     props: {
-      posts,
+      categories,
     },
   };
 }

@@ -1,88 +1,181 @@
 import Link from "next/link";
 import { getAllPosts } from "../lib/posts";
-import { getCategories } from "../config/categoryConfig";
 
 export async function getStaticProps() {
   const posts = getAllPosts();
-  const categories = getCategories();
+
+  const featured = posts.slice(0, 3);
+
+  const categories = Array.from(
+    new Set(posts.map((p) => p.category).filter(Boolean))
+  );
 
   return {
     props: {
-      posts,
+      featured,
       categories,
     },
   };
 }
 
-export default function Home({ posts, categories }) {
+export default function Home({ featured, categories }) {
   return (
-    <main style={{ maxWidth: 1200, margin: "0 auto", padding: "3rem 1.5rem" }}>
-      
+    <main style={styles.page}>
       {/* HERO */}
-      <section style={{ marginBottom: "4rem" }}>
-        <h1 style={{ fontSize: "2.8rem", marginBottom: "1rem" }}>
-          Finanzielle Freiheit aufbauen – Schritt für Schritt
+      <section style={styles.hero}>
+        <h1 style={styles.heroTitle}>
+          Finanzielle Freiheit verstehen & aufbauen
         </h1>
-        <p style={{ fontSize: "1.2rem", maxWidth: 700, color: "#555" }}>
-          Verstehe Geld, Investieren & Versicherungen – einfach erklärt, ohne Bullshit.
+        <p style={styles.heroText}>
+          Klare Erklärungen zu ETFs, Versicherungen & Geldanlage.
+          Ohne Bullshit. Ohne Verkaufstricks.
         </p>
+
+        <Link href="/blog" style={styles.heroButton}>
+          Zum Blog →
+        </Link>
       </section>
 
       {/* KATEGORIEN */}
-      <section style={{ marginBottom: "4rem" }}>
-        <h2 style={{ marginBottom: "1rem" }}>Themen</h2>
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      <section style={styles.section}>
+        <h2 style={styles.sectionTitle}>Themen</h2>
+
+        <div style={styles.categories}>
           {categories.map((cat) => (
             <Link
-              key={cat.slug}
-              href={`/${cat.slug}`}
-              style={{
-                padding: "0.75rem 1.2rem",
-                border: "1px solid #ddd",
-                borderRadius: 6,
-                textDecoration: "none",
-                color: "#000",
-                background: "#f9f9f9",
-              }}
+              key={cat}
+              href={`/blog?cat=${encodeURIComponent(cat)}`}
+              style={styles.categoryCard}
             >
-              {cat.title}
+              {cat}
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ARTIKEL */}
-      <section>
-        <h2 style={{ marginBottom: "1.5rem" }}>Neueste Artikel</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: "1.5rem",
-          }}
-        >
-          {posts.map((post) => (
+      {/* FEATURED ARTIKEL */}
+      <section style={styles.section}>
+        <h2 style={styles.sectionTitle}>Empfohlene Artikel</h2>
+
+        <div style={styles.grid}>
+          {featured.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              style={{
-                border: "1px solid #e5e5e5",
-                borderRadius: 8,
-                padding: "1.2rem",
-                textDecoration: "none",
-                color: "#000",
-                background: "#fff",
-              }}
+              style={styles.card}
             >
-              <h3 style={{ marginBottom: "0.5rem" }}>{post.title}</h3>
-              <p style={{ color: "#666", fontSize: "0.95rem" }}>
-                {post.excerpt || "Artikel lesen →"}
-              </p>
+              {post.category && (
+                <span style={styles.cardCategory}>{post.category}</span>
+              )}
+              <h3 style={styles.cardTitle}>{post.title}</h3>
+              {post.excerpt && (
+                <p style={styles.cardExcerpt}>{post.excerpt}</p>
+              )}
             </Link>
           ))}
         </div>
       </section>
-
     </main>
   );
 }
+
+/* STYLES */
+const styles: any = {
+  page: {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "2rem 1.5rem 4rem",
+  },
+
+  /* HERO */
+  hero: {
+    marginBottom: "4rem",
+    padding: "3rem",
+    borderRadius: "24px",
+    background:
+      "linear-gradient(135deg, #020617 0%, #0f172a 100%)",
+    border: "1px solid #1e293b",
+  },
+
+  heroTitle: {
+    fontSize: "2.6rem",
+    marginBottom: "1rem",
+    lineHeight: 1.2,
+  },
+
+  heroText: {
+    fontSize: "1.1rem",
+    opacity: 0.85,
+    maxWidth: "700px",
+    marginBottom: "1.5rem",
+  },
+
+  heroButton: {
+    display: "inline-block",
+    padding: "0.7rem 1.4rem",
+    borderRadius: "10px",
+    background: "#22d3ee",
+    color: "#020617",
+    fontWeight: 600,
+    textDecoration: "none",
+  },
+
+  /* SECTIONS */
+  section: {
+    marginBottom: "4rem",
+  },
+
+  sectionTitle: {
+    fontSize: "1.8rem",
+    marginBottom: "1.5rem",
+  },
+
+  /* CATEGORIES */
+  categories: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+    gap: "1rem",
+  },
+
+  categoryCard: {
+    padding: "1.2rem",
+    borderRadius: "14px",
+    border: "1px solid #1e293b",
+    background: "#020617",
+    textDecoration: "none",
+    textAlign: "center",
+    fontWeight: 600,
+  },
+
+  /* FEATURED GRID */
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+    gap: "1.5rem",
+  },
+
+  card: {
+    padding: "1.5rem",
+    borderRadius: "16px",
+    background: "#0f172a",
+    border: "1px solid #1e293b",
+    textDecoration: "none",
+    color: "inherit",
+  },
+
+  cardCategory: {
+    fontSize: "0.75rem",
+    color: "#22d3ee",
+    textTransform: "uppercase",
+  },
+
+  cardTitle: {
+    fontSize: "1.15rem",
+    margin: "0.75rem 0",
+  },
+
+  cardExcerpt: {
+    fontSize: "0.95rem",
+    opacity: 0.8,
+  },
+};

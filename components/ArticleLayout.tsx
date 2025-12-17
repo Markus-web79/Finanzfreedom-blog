@@ -24,25 +24,49 @@ export default function ArticleLayout({
 
       <main
         style={{
-          maxWidth: "760px",
+          maxWidth: "780px",
           margin: "0 auto",
-          padding: "3rem 1.25rem",
-          fontSize: "1.05rem",
-          lineHeight: 1.7,
+          padding: "3.5rem 1.25rem",
+          fontFamily:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif',
+          color: "#111",
+          lineHeight: 1.75,
         }}
       >
         <article>
+          {/* Kategorie / Breadcrumb – später */}
+          <div
+            style={{
+              fontSize: "0.75rem",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#6b7280",
+              marginBottom: "0.75rem",
+            }}
+          >
+            FinanzFreedom · Artikel
+          </div>
+
+          {/* Titel */}
           <h1
             style={{
-              fontSize: "2.2rem",
+              fontSize: "2.4rem",
               lineHeight: 1.25,
               marginBottom: "1.5rem",
+              fontWeight: 700,
             }}
           >
             {title}
           </h1>
 
-          {children}
+          {/* Content */}
+          <div
+            style={{
+              fontSize: "1.05rem",
+            }}
+          >
+            {children}
+          </div>
         </article>
       </main>
     </>

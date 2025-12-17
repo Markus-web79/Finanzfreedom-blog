@@ -4,50 +4,100 @@ import { getAllPosts } from "../../lib/posts";
 export async function getStaticProps() {
   const posts = getAllPosts();
 
-  const filteredPosts = posts.filter(
-    (post) => post.slug && post.slug !== "README"
-  );
-
   return {
     props: {
-      posts: filteredPosts,
+      posts,
     },
   };
 }
 
 export default function BlogIndex({ posts }) {
   return (
-    <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem" }}>
-      <h1>Blog</h1>
+    <main style={styles.page}>
+      <h1 style={styles.title}>Blog</h1>
 
-      <div style={{ display: "grid", gap: "1.5rem" }}>
+      <div style={styles.grid}>
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            style={{
-              padding: "1.5rem",
-              borderRadius: "12px",
-              background: "#0f172a",
-              textDecoration: "none",
-              color: "inherit",
-              border: "1px solid #1e293b",
-            }}
+            style={styles.card}
           >
-            <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
+            <div>
+              {post.category && (
+                <span style={styles.category}>{post.category}</span>
+              )}
 
-            {post.excerpt && (
-              <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
-            )}
+              <h2 style={styles.cardTitle}>{post.title}</h2>
 
-            {post.category && (
-              <small style={{ color: "#22d3ee" }}>
-                Kategorie: {post.category}
-              </small>
-            )}
+              {post.excerpt && (
+                <p style={styles.excerpt}>{post.excerpt}</p>
+              )}
+            </div>
+
+            <span style={styles.readMore}>Weiterlesen →</span>
           </Link>
         ))}
       </div>
     </main>
   );
 }
+
+const styles: any = {
+  page: {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "3rem 1.5rem",
+  },
+
+  title: {
+    fontSize: "2.4rem",
+    marginBottom: "2rem",
+  },
+
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+    gap: "1.5rem",
+  },
+
+  card: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: "1.5rem",
+    borderRadius: "16px",
+    background: "#0f172a",
+    border: "1px solid #1e293b",
+    textDecoration: "none",
+    color: "inherit",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+
+  category: {
+    display: "inline-block",
+    marginBottom: "0.75rem",
+    fontSize: "0.75rem",
+    color: "#22d3ee",
+    textTransform: "uppercase",
+    letterSpacing: "0.05em",
+  },
+
+  cardTitle: {
+    fontSize: "1.2rem",
+    marginBottom: "0.75rem",
+    lineHeight: 1.3,
+  },
+
+  excerpt: {
+    fontSize: "0.95rem",
+    opacity: 0.85,
+    lineHeight: 1.5,
+  },
+
+  readMore: {
+    marginTop: "1.25rem",
+    fontSize: "0.85rem",
+    color: "#22d3ee",
+  },
+};

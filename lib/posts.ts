@@ -2,86 +2,62 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
+const contentDirectory = path.join(process.cwd(), "content");
 
-export type PostMeta = {
+export type Post = {
   slug: string;
   title: string;
   excerpt?: string;
-  date?: string;
   category?: string;
+  date?: string;
 };
 
-export type Post = PostMeta & {
-  content: string;
-};
+export function getAllPosts(): Post[] {
+  if (!fs.existsSync(contentDirectory)) return [];
 
-/**
- * Liest alle Markdown-Dateien (ohne README.md)
- */
-export function getAllPosts(): PostMeta[] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
-
-  const files = fs
-    .readdirSync(CONTENT_DIR)
-    .filter(
-      (file) =>
-        file.endsWith(".md") &&
-        file.toLowerCase() !== "readme.md"
-    );
-
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, "");
-    const fullPath = path.join(CONTENT_DIR, fileName);
-    const fileContent = fs.readFileSync(fullPath, "utf-8");
-
-    const { data, content } = matter(fileContent);
-
-    return {
-      slug,
-      title: data.title ?? slug,
-      excerpt: data.excerpt ?? content.slice(0, 140) + "...",
-      date: data.date ?? null,
-      category: data.category ?? null,
-    };
+  const categories = fs.readdirSync(contentDirectory, {
+    withFileTypes: true,
   });
 
-  return posts;
-}
+  const posts: Post[] = [];
 
-/**
- * Liefert einen einzelnen Post nach Slug
- */
-export function getPostBySlug(slug: string): Post | null {
-  const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
+  for (const categoryDir of categories) {
+    if (!categoryDir.isDirectory()) continue;
 
-  if (!fs.existsSync(fullPath)) return null;
+    const category = categoryDir.name;
+    const categoryPath = path.join(contentDirectory, category);
 
-  const fileContent = fs.readFileSync(fullPath, "utf-8");
-  const { data, content } = matter(fileContent);
+    const files = fs.readdirSync(categoryPath);
 
-  return {
-    slug,
-    title: data.title ?? slug,
-    excerpt: data.excerpt ?? null,
-    date: data.date ?? null,
-    category: data.category ?? null,
-    content,
-  };
-}
+    for (const file of files) {
+      // ❌ README & nicht-Markdown ignorieren
+      if (
+        file.toLowerCase() === "readme.md" ||
+        !file.endsWith(".md")
+      ) {
+        continue;
+      }
 
-/**
- * Für getStaticPaths in pages/blog/[slug].tsx
- */
-export function getAllSlugs(): string[] {
-  if (!fs.existsSync(CONTENT_DIR)) return [];
+      const fullPath = path.join(categoryPath, file);
+      const fileContent = fs.readFileSync(fullPath, "utf8");
 
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter(
-      (file) =>
-        file.endsWith(".md") &&
-        file.toLowerCase() !== "readme.md"
-    )
-    .map((file) => file.replace(/\.md$/, ""));
+      const { data, content } = matter(fileContent);
+
+      const slug = file.replace(/\.md$/, "");
+
+      posts.push({
+        slug,
+        title: data.title || slug.replace(/-/g, " "),
+        excerpt: data.excerpt || content.slice(0, 140) + "...",
+        category: data.category || category,
+        date: data.date || null,
+      });
+    }
+  }
+
+  // 📅 Neueste zuerst (wenn Datum vorhanden)
+  return posts.sort((a, b) => {
+    if (!a.date || !b.date) return 0;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 }

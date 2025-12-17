@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import { getAllPosts } from "../../lib/posts";
 
 export async function getStaticProps() {
@@ -12,16 +13,48 @@ export async function getStaticProps() {
 }
 
 export default function BlogIndex({ posts }) {
-  const [featuredPost, ...restPosts] = posts;
+  const [activeCategory, setActiveCategory] = useState("Alle");
+
+  const categories = [
+    "Alle",
+    ...Array.from(
+      new Set(posts.map((p) => p.category).filter(Boolean))
+    ),
+  ];
+
+  const filteredPosts =
+    activeCategory === "Alle"
+      ? posts
+      : posts.filter((p) => p.category === activeCategory);
+
+  const [featuredPost, ...restPosts] = filteredPosts;
 
   return (
     <main style={styles.page}>
       <h1 style={styles.title}>Blog</h1>
 
+      {/* CATEGORY TABS */}
+      <div style={styles.tabs}>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            style={{
+              ...styles.tab,
+              ...(activeCategory === cat ? styles.tabActive : {}),
+            }}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       {/* FEATURED */}
       {featuredPost && (
         <Link href={`/blog/${featuredPost.slug}`} style={styles.featured}>
-          <span style={styles.featuredLabel}>Featured</span>
+          <span style={styles.featuredLabel}>
+            {featuredPost.category || "Featured"}
+          </span>
           <h2 style={styles.featuredTitle}>{featuredPost.title}</h2>
           {featuredPost.excerpt && (
             <p style={styles.featuredExcerpt}>{featuredPost.excerpt}</p>
@@ -55,6 +88,7 @@ export default function BlogIndex({ posts }) {
   );
 }
 
+/* STYLES */
 const styles: any = {
   page: {
     maxWidth: "1200px",
@@ -64,7 +98,31 @@ const styles: any = {
 
   title: {
     fontSize: "2.4rem",
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
+  },
+
+  /* TABS */
+  tabs: {
+    display: "flex",
+    gap: "0.75rem",
+    marginBottom: "2.5rem",
+    flexWrap: "wrap",
+  },
+
+  tab: {
+    padding: "0.45rem 0.9rem",
+    borderRadius: "999px",
+    border: "1px solid #1e293b",
+    background: "#020617",
+    color: "#94a3b8",
+    fontSize: "0.8rem",
+    cursor: "pointer",
+  },
+
+  tabActive: {
+    background: "#22d3ee",
+    color: "#020617",
+    borderColor: "#22d3ee",
   },
 
   /* FEATURED */
@@ -78,12 +136,10 @@ const styles: any = {
     border: "1px solid #22d3ee",
     textDecoration: "none",
     color: "inherit",
-    transition: "transform .25s ease, box-shadow .25s ease",
   },
 
   featuredLabel: {
     fontSize: "0.75rem",
-    letterSpacing: "0.1em",
     textTransform: "uppercase",
     color: "#22d3ee",
   },
@@ -116,7 +172,6 @@ const styles: any = {
     border: "1px solid #1e293b",
     textDecoration: "none",
     color: "inherit",
-    transition: "transform .2s ease, box-shadow .2s ease",
   },
 
   category: {

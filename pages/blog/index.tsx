@@ -1,144 +1,77 @@
+import { GetStaticProps } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { getAllPosts, PostMeta } from "../../lib/posts";
+import { getAllPosts } from "@/lib/posts";
 
-type Props = {
-  posts: PostMeta[];
-  categories: string[];
+type Post = {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  category?: string;
 };
 
-export default function BlogIndex({ posts, categories }: Props) {
-  const router = useRouter();
-  const activeCategory =
-    typeof router.query.category === "string" ? router.query.category : "all";
+type Props = {
+  posts: Post[];
+};
 
-  const filteredPosts =
-    activeCategory === "all"
-      ? posts
-      : posts.filter(
-          (p) => (p.category ?? "").toLowerCase() === activeCategory.toLowerCase()
-        );
-
-  function setCategory(category: string) {
-    const query = category === "all" ? {} : { category };
-    router.push({ pathname: "/blog", query }, undefined, { shallow: true });
-  }
-
+export default function BlogIndex({ posts }: Props) {
   return (
-    <main style={{ maxWidth: 1100, margin: "0 auto", padding: "2rem" }}>
-      <h1 style={{ marginBottom: "1rem" }}>Blog</h1>
+    <main style={{ maxWidth: 1000, margin: "0 auto", padding: "3rem 1.5rem" }}>
+      <h1 style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>Blog</h1>
+      <p style={{ color: "#9ca3af", marginBottom: "2.5rem" }}>
+        Praxisnahe Artikel zu Geldanlage, ETFs und finanzieller Freiheit.
+      </p>
 
-      {/* Kategorie-Filter */}
       <div
         style={{
-          display: "flex",
-          gap: "0.5rem",
-          flexWrap: "wrap",
-          marginBottom: "1.5rem",
-        }}
-      >
-        <button
-          onClick={() => setCategory("all")}
-          style={pillStyle(activeCategory === "all")}
-        >
-          Alle
-        </button>
-
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setCategory(cat)}
-            style={pillStyle(activeCategory.toLowerCase() === cat.toLowerCase())}
-          >
-            {prettyCategory(cat)}
-          </button>
-        ))}
-      </div>
-
-      {/* Karten-Grid */}
-      <section
-        style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "1rem",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: "1.5rem",
         }}
       >
-        {filteredPosts.map((post) => (
+        {posts.map((post) => (
           <article
             key={post.slug}
             style={{
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: 14,
-              padding: "1rem",
-              background: "rgba(255,255,255,0.03)",
+              background: "#0f172a",
+              border: "1px solid #1e293b",
+              borderRadius: "12px",
+              padding: "1.5rem",
             }}
           >
-            <div style={{ marginBottom: "0.6rem", opacity: 0.85, fontSize: 13 }}>
-              {post.category ? prettyCategory(post.category) : "Allgemein"}
-            </div>
-
-            <h2 style={{ margin: 0, fontSize: 20, lineHeight: 1.2 }}>
-              <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                {post.title}
-              </Link>
+            <h2 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>
+              {post.title}
             </h2>
 
-            {post.excerpt ? (
-              <p style={{ marginTop: "0.7rem", opacity: 0.85, lineHeight: 1.5 }}>
+            {post.excerpt && (
+              <p style={{ color: "#9ca3af", fontSize: "0.9rem" }}>
                 {post.excerpt}
               </p>
-            ) : null}
+            )}
 
-            <div style={{ marginTop: "1rem" }}>
-              <Link href={`/blog/${post.slug}`} style={{ fontWeight: 600 }}>
-                Weiterlesen →
-              </Link>
-            </div>
+            <Link
+              href={`/blog/${post.slug}`}
+              style={{
+                display: "inline-block",
+                marginTop: "1rem",
+                color: "#22c55e",
+                fontWeight: 500,
+              }}
+            >
+              Lesen →
+            </Link>
           </article>
         ))}
-      </section>
-
-      {filteredPosts.length === 0 ? (
-        <p style={{ marginTop: "2rem", opacity: 0.8 }}>
-          Keine Artikel in dieser Kategorie gefunden.
-        </p>
-      ) : null}
+      </div>
     </main>
   );
 }
 
-function pillStyle(active: boolean): React.CSSProperties {
-  return {
-    padding: "0.45rem 0.75rem",
-    borderRadius: 999,
-    border: "1px solid rgba(255,255,255,0.12)",
-    background: active ? "rgba(0, 200, 180, 0.18)" : "rgba(255,255,255,0.03)",
-    cursor: "pointer",
-    fontWeight: active ? 700 : 600,
-  };
-}
-
-function prettyCategory(cat: string) {
-  return cat
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (m) => m.toUpperCase());
-}
-
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const posts = getAllPosts();
-
-  const categories = Array.from(
-    new Set(
-      posts
-        .map((p) => (p.category ?? "").trim())
-        .filter((c) => c.length > 0)
-    )
-  );
 
   return {
     props: {
       posts,
-      categories,
     },
   };
-}
+};

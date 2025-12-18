@@ -1,37 +1,30 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { getAllPosts } from "../../lib/posts";
 
 export async function getStaticProps() {
-  const posts = getAllPosts();
-
-  const filteredPosts = posts.filter(
+  const posts = getAllPosts().filter(
     (post) => post.slug && post.slug !== "README"
   );
 
-  return {
-    props: {
-      posts: filteredPosts,
-    },
-  };
+  return { props: { posts } };
 }
 
 export default function BlogIndex({ posts }) {
+  const router = useRouter();
+
   return (
     <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem" }}>
       <h1>Blog</h1>
 
       <div style={{ display: "grid", gap: "1.5rem" }}>
         {posts.map((post) => (
-          <Link
+          <div
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            onClick={() => router.push(`/blog/${post.slug}`)}
             style={{
-              display: "block",
               padding: "1.5rem",
               borderRadius: "12px",
               background: "#0f172a",
-              textDecoration: "none",
-              color: "inherit",
               border: "1px solid #1e293b",
               cursor: "pointer",
             }}
@@ -47,12 +40,8 @@ export default function BlogIndex({ posts }) {
                 Kategorie: {post.category}
               </small>
             )}
-          </Link>
+          </div>
         ))}
-
-        {posts.length === 0 && (
-          <p style={{ opacity: 0.7 }}>Keine Artikel gefunden.</p>
-        )}
       </div>
     </main>
   );

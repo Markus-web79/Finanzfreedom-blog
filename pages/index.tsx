@@ -6,20 +6,22 @@ export async function getStaticProps() {
   const posts = getAllPosts().slice(0, 6);
 
   return {
-    props: { posts },
+    props: {
+      posts,
+    },
   };
 }
 
 export default function Home({ posts }) {
   return (
     <main className={styles.container}>
-      <section className={styles.header}>
+      <header className={styles.header}>
         <h1>Finanzielle Freiheit aufbauen – Schritt für Schritt</h1>
         <p>
           Verstehe Geld, Investieren & Versicherungen – einfach erklärt,
           unabhängig und ohne Bullshit.
         </p>
-      </section>
+      </header>
 
       <h2>Neueste Artikel</h2>
 
@@ -43,13 +45,15 @@ export default function Home({ posts }) {
                 </span>
               )}
 
-              <span className={styles.readmore}>Artikel lesen →</span>
+              <span className={styles.readmore}>
+                Artikel lesen →
+              </span>
             </a>
           </Link>
         ))}
       </div>
 
-      <Link href="/blog" passHref>
+      <Link href="/blog">
         <a className={styles.allArticles}>→ Alle Artikel ansehen</a>
       </Link>
     </main>

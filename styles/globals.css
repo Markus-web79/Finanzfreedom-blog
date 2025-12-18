@@ -80,3 +80,23 @@ h1, h2, h3 {
 .button:hover {
   background: var(--ff-brand-hover);
 }
+/* =========================
+   🔥 iOS TOUCH FIX (GLOBAL)
+   ========================= */
+
+/* ALLES darf standardmäßig klicken */
+* {
+  pointer-events: auto;
+}
+
+/* HEADER / OVERLAY darf KEINE Touch-Events fangen */
+header,
+header * {
+  pointer-events: none;
+}
+
+/* CONTENT darf wieder klicken */
+main,
+main * {
+  pointer-events: auto;
+}

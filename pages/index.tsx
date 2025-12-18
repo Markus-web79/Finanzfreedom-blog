@@ -1,57 +1,25 @@
-import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
-import { getAllPosts } from "../lib/posts";
 
-export default function Home({ posts }) {
+export default function Home() {
   return (
-    <>
-      <Head>
-        <title>FinanzFreedom – Finanzielle Freiheit Schritt für Schritt</title>
-        <meta
-          name="description"
-          content="Verstehe Geld, Investieren & Versicherungen – einfach erklärt, unabhängig und ohne Bullshit."
-        />
-      </Head>
+    <main style={{ padding: "40px" }}>
+      <h1>TEST</h1>
 
-      <main className={styles.container}>
-        <h1>Neueste Artikel</h1>
-
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className={styles.card}
-            >
-              <div className={styles.title}>{post.title}</div>
-
-              {post.excerpt && (
-                <div className={styles.excerpt}>{post.excerpt}</div>
-              )}
-
-              {post.category && (
-                <div className={styles.category}>
-                  Kategorie: {post.category}
-                </div>
-              )}
-            </Link>
-          ))}
-        </div>
-      </main>
-    </>
+      <Link href="/blog">
+        <a
+          style={{
+            display: "block",
+            padding: "20px",
+            background: "#0f172a",
+            color: "white",
+            borderRadius: "8px",
+            textDecoration: "none",
+            marginTop: "20px",
+          }}
+        >
+          👉 ZUM BLOG
+        </a>
+      </Link>
+    </main>
   );
-}
-
-/* ===== STATIC DATA ===== */
-export async function getStaticProps() {
-  const posts = getAllPosts().filter(
-    (post) => post.slug && post.slug !== "README"
-  );
-
-  return {
-    props: {
-      posts,
-    },
-  };
 }

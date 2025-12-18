@@ -53,3 +53,7 @@
 .highlight {
   color: #00e0b8;
 }
+.hero,
+.hero * {
+  pointer-events: none;
+}

@@ -139,3 +139,26 @@ button,
 .card {
   pointer-events: auto;
 }
+
+/* ===============================
+   HARD FIX: REMOVE CLICK BLOCKERS
+   =============================== */
+
+/* Kill ALL overlays */
+*::before,
+*::after {
+  pointer-events: none !important;
+}
+
+/* Re-enable real interactive elements */
+a,
+button,
+[role="button"],
+.card,
+nav,
+header,
+main {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 5;
+}

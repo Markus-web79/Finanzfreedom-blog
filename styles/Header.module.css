@@ -36,3 +36,14 @@
 .navLinks a:hover {
   color: var(--ff-brand);
 }
+.header {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* WENN es ein Overlay gibt */
+.header::before,
+.header::after {
+  pointer-events: none;
+}

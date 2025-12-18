@@ -6,48 +6,39 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
   display: block;
-  background: rgba(0, 30, 40, 0.8);
-  padding: 1.8rem;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 255, 220, 0.2);
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
 .title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #00f5e1;
-  margin-bottom: 0.6rem;
-}
-
-.description {
-  color: #d9fdfc;
-  opacity: 0.9;
-  line-height: 1.5;
-}
-
-.readmore {
-  display: block;
-  margin-top: 1rem;
-  color: #00f5e1;
+  font-size: 1.1rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-/* === FIX: ensure cards are above overlays === */
-.card {
-  position: relative;
-  z-index: 20;
+.excerpt {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.category {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #22d3ee;
 }

@@ -2,8 +2,21 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../lib/posts";
 
+type Post = {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  category?: string;
+};
+
+type Props = {
+  posts: Post[];
+};
+
 export async function getStaticProps() {
-  const posts = getAllPosts().slice(0, 6);
+  const posts = getAllPosts()
+    .filter((post) => post.slug && post.slug !== "README")
+    .slice(0, 6);
 
   return {
     props: {
@@ -12,9 +25,10 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ posts }) {
+export default function Home({ posts }: Props) {
   return (
     <main className={styles.container}>
+      {/* HERO */}
       <header className={styles.header}>
         <h1>Finanzielle Freiheit aufbauen – Schritt für Schritt</h1>
         <p>
@@ -23,16 +37,17 @@ export default function Home({ posts }) {
         </p>
       </header>
 
-      <h2>Neueste Artikel</h2>
+      {/* ARTIKEL */}
+      <section>
+        <h2>Neueste Artikel</h2>
 
-      <div className={styles.grid}>
-        {posts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            passHref
-          >
-            <a className={styles.card}>
+        <div className={styles.grid}>
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className={styles.card}
+            >
               <h3 className={styles.title}>{post.title}</h3>
 
               {post.excerpt && (
@@ -44,18 +59,14 @@ export default function Home({ posts }) {
                   Kategorie: {post.category}
                 </span>
               )}
+            </Link>
+          ))}
+        </div>
 
-              <span className={styles.readmore}>
-                Artikel lesen →
-              </span>
-            </a>
-          </Link>
-        ))}
-      </div>
-
-      <Link href="/blog">
-        <a className={styles.allArticles}>→ Alle Artikel ansehen</a>
-      </Link>
+        <Link href="/blog" className={styles.allArticles}>
+          → Alle Artikel ansehen
+        </Link>
+      </section>
     </main>
   );
 }

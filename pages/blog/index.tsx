@@ -2,23 +2,16 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import { getAllPosts } from "../../lib/posts";
 
-type Post = {
-  slug: string;
-  title: string;
-  excerpt?: string;
-  category?: string;
-};
-
-export default function BlogIndex({ posts }: { posts: Post[] }) {
+export default function BlogIndex({ posts }: any) {
   return (
     <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem" }}>
       <h1>Blog</h1>
 
       <div style={{ display: "grid", gap: "1.5rem" }}>
-        {posts.map((post) => (
+        {posts.map((post: any) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/${post.slug}`}
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <article
@@ -30,17 +23,8 @@ export default function BlogIndex({ posts }: { posts: Post[] }) {
                 cursor: "pointer",
               }}
             >
-              <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
-
-              {post.excerpt && (
-                <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
-              )}
-
-              {post.category && (
-                <small style={{ color: "#22d3ee" }}>
-                  Kategorie: {post.category}
-                </small>
-              )}
+              <h2>{post.title}</h2>
+              {post.excerpt && <p>{post.excerpt}</p>}
             </article>
           </Link>
         ))}
@@ -50,13 +34,9 @@ export default function BlogIndex({ posts }: { posts: Post[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts().filter(
-    (post) => post.slug && post.slug !== "README"
-  );
-
   return {
     props: {
-      posts,
+      posts: getAllPosts(),
     },
   };
 };

@@ -91,31 +91,32 @@ export default function BlogIndex({ posts }: Props) {
       {/* Artikel */}
       <div style={{ display: "grid", gap: "1.5rem" }}>
         {filteredPosts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            style={{
-              padding: "1.5rem",
-              borderRadius: "12px",
-              background: "#0f172a",
-              textDecoration: "none",
-              color: "inherit",
-              border: "1px solid #1e293b",
-            }}
-          >
-            <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
+<Link href={`/blog/${post.slug}`} key={post.slug}>
+  <a
+    style={{
+      display: "block",
+      padding: "1.5rem",
+      borderRadius: "12px",
+      background: "#0f172a",
+      textDecoration: "none",
+      color: "inherit",
+      border: "1px solid #1e293b",
+      cursor: "pointer",
+    }}
+  >
+    <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
 
-            {post.excerpt && (
-              <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
-            )}
+    {post.excerpt && (
+      <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
+    )}
 
-            {post.category && (
-              <small style={{ color: "#22d3ee" }}>
-                Kategorie: {post.category}
-              </small>
-            )}
-          </Link>
-        ))}
+    {post.category && (
+      <small style={{ color: "#22d3ee" }}>
+        Kategorie: {post.category}
+      </small>
+    )}
+  </a>
+</Link>
 
         {filteredPosts.length === 0 && (
           <p style={{ opacity: 0.7 }}>Keine Artikel gefunden.</p>

@@ -100,3 +100,13 @@ main,
 main * {
   pointer-events: auto;
 }
+
+/* === TEMP FIX: ensure links & cards are clickable on iOS === */
+a {
+  pointer-events: auto !important;
+}
+
+.card {
+  pointer-events: auto !important;
+  cursor: pointer;
+}

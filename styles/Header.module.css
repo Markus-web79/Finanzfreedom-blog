@@ -47,3 +47,9 @@
 .header::after {
   pointer-events: none;
 }
+
+/* === FIX: prevent header overlay from blocking clicks === */
+.header::before,
+.header::after {
+  pointer-events: none !important;
+}

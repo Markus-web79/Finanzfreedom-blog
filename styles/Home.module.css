@@ -45,3 +45,9 @@
   color: #00f5e1;
   font-weight: 600;
 }
+
+/* === FIX: ensure cards are above overlays === */
+.card {
+  position: relative;
+  z-index: 20;
+}

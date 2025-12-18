@@ -2,60 +2,65 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
+  position: relative;
+  z-index: 1;
 }
-
-/* ---------- HEADER ---------- */
 
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
-
-.header h1 {
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: #e5fdfc;
-  margin-bottom: 1rem;
-}
-
-.header p {
-  font-size: 1.1rem;
-  color: #b6e7e5;
-  opacity: 0.9;
-}
-
-/* ---------- GRID ---------- */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.8rem;
-  margin-top: 2rem;
+  position: relative;
+  z-index: 5;
 }
 
-/* ---------- CARD (KLICKBAR!) ---------- */
-
+/* =========================
+   CARD – iOS SAFE VERSION
+   ========================= */
 .card {
-  display: block;               /* WICHTIG */
-  background: rgba(0, 30, 40, 0.7);
+  position: relative;
+  display: block;
+  background: rgba(0, 30, 40, 0.75);
   padding: 1.8rem;
   border-radius: 14px;
   border: 1px solid rgba(0, 255, 220, 0.12);
-  text-decoration: none;        /* WICHTIG */
-  color: inherit;               /* WICHTIG */
-  cursor: pointer;              /* WICHTIG */
   transition: all 0.25s ease;
+  min-height: 230px;
+  cursor: pointer;
+  z-index: 10;
+
+  /* 🔥 WICHTIG für iOS */
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover (Desktop) */
+/* sorgt dafür, dass der ganze Card-Bereich klickbar ist */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* Hover */
 .card:hover {
-  border-color: #00f5e1;
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 255, 220, 0.2);
+  border-color: #00f5e1;
+  box-shadow: 0 8px 25px rgba(0, 255, 220, 0.25);
 }
 
-/* ---------- CONTENT ---------- */
+/* verhindert, dass innere Elemente Touch blockieren */
+.card * {
+  pointer-events: none;
+}
 
+/* Text */
 .title {
   font-size: 1.3rem;
   font-weight: 700;
@@ -71,36 +76,13 @@
 }
 
 .category {
+  color: #00f5e1;
   font-size: 0.85rem;
-  color: #7deee5;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-/* ---------- READ MORE ---------- */
-
-.readmore {
-  margin-top: auto;
   font-weight: 600;
-  color: #00f5e1;
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
 }
 
-.card:hover .readmore {
-  opacity: 1;
-}
-
-/* ---------- FOOTER LINK ---------- */
-
-.allArticles {
-  display: inline-block;
-  margin-top: 2.5rem;
-  color: #00f5e1;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.allArticles:hover {
-  opacity: 0.8;
+/* Sicherheits-Fix für Overlays */
+.header::before,
+.header::after {
+  pointer-events: none;
 }

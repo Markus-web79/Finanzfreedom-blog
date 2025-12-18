@@ -49,3 +49,9 @@
   color: #00f5e1;
   font-weight: 600;
 }
+.card {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 50;
+  cursor: pointer;
+}

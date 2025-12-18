@@ -1,42 +1,71 @@
-import Link from "next/link";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import { getAllPosts } from "../../lib/posts";
 
-export default function BlogIndex({ posts }: any) {
+type Post = {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  category?: string;
+};
+
+type Props = {
+  posts: Post[];
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const posts = getAllPosts().filter(
+    (post) => post.slug && post.slug !== "README"
+  );
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
+export default function BlogIndex({ posts }: Props) {
   return (
-    <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem" }}>
+    <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "2rem" }}>
       <h1>Blog</h1>
 
-      <div style={{ display: "grid", gap: "1.5rem" }}>
-        {posts.map((post: any) => (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: "1.5rem",
+        }}
+      >
+        {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/${post.slug}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+            href={`/blog/${post.slug}`}
+            style={{
+              display: "block",
+              padding: "1.5rem",
+              borderRadius: "14px",
+              background: "#0f172a",
+              border: "1px solid #1e293b",
+              textDecoration: "none",
+              color: "inherit",
+              cursor: "pointer",
+            }}
           >
-            <article
-              style={{
-                padding: "1.5rem",
-                borderRadius: "12px",
-                background: "#0f172a",
-                border: "1px solid #1e293b",
-                cursor: "pointer",
-              }}
-            >
-              <h2>{post.title}</h2>
-              {post.excerpt && <p>{post.excerpt}</p>}
-            </article>
+            <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
+
+            {post.excerpt && (
+              <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
+            )}
+
+            {post.category && (
+              <small style={{ color: "#22d3ee" }}>
+                Kategorie: {post.category}
+              </small>
+            )}
           </Link>
         ))}
       </div>
     </main>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {
-      posts: getAllPosts(),
-    },
-  };
-};

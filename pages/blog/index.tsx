@@ -91,31 +91,31 @@ export default function BlogIndex({ posts }: Props) {
       {/* Artikel */}
       <div style={{ display: "grid", gap: "1.5rem" }}>
         {filteredPosts.map((post) => (
-<Link href={`/blog/${post.slug}`} key={post.slug}>
-  <a
-    style={{
-      display: "block",
-      padding: "1.5rem",
-      borderRadius: "12px",
-      background: "#0f172a",
-      textDecoration: "none",
-      color: "inherit",
-      border: "1px solid #1e293b",
-      cursor: "pointer",
-    }}
-  >
-    <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
+<Link
+  href={`/blog/${post.slug}`}
+  key={post.slug}
+  style={{
+    display: "block",
+    padding: "1.5rem",
+    borderRadius: "12px",
+    background: "#0f172a",
+    textDecoration: "none",
+    color: "inherit",
+    border: "1px solid #1e293b",
+    cursor: "pointer",
+  }}
+>
+  <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
 
-    {post.excerpt && (
-      <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
-    )}
+  {post.excerpt && (
+    <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
+  )}
 
-    {post.category && (
-      <small style={{ color: "#22d3ee" }}>
-        Kategorie: {post.category}
-      </small>
-    )}
-  </a>
+  {post.category && (
+    <small style={{ color: "#22d3ee" }}>
+      Kategorie: {post.category}
+    </small>
+  )}
 </Link>
 
         {filteredPosts.length === 0 && (

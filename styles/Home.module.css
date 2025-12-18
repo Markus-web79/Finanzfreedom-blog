@@ -15,6 +15,7 @@
   gap: 1.8rem;
 }
 
+/* ⛔ KEIN position / z-index */
 .card {
   display: block;
   background: rgba(0, 30, 40, 0.75);
@@ -23,42 +24,41 @@
   border: 1px solid rgba(0, 255, 220, 0.12);
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* 🔑 iOS FIX */
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.card:active {
+  opacity: 0.85;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 255, 220, 0.2);
+  border-color: #00f5e1;
 }
 
 .title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #00f5e1;
   margin-bottom: 0.6rem;
+  color: #00f5e1;
 }
 
 .description {
-  color: #d9fdfc;
   opacity: 0.9;
-  line-height: 1.5;
   margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.category {
+  display: block;
+  font-size: 0.85rem;
+  color: #00f5e1;
+  margin-bottom: 0.8rem;
 }
 
 .readmore {
-  color: #00f5e1;
   font-weight: 600;
-}
-/* === FIX iOS / iPad CLICK PROBLEM === */
-
-.card {
-  pointer-events: auto !important;
-  position: relative;
-  z-index: 50;
-  cursor: pointer;
-}
-
-.grid {
-  position: relative;
-  z-index: 9999;
+  color: #00f5e1;
 }

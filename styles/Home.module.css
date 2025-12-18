@@ -2,63 +2,50 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
+  position: relative;
+  z-index: 10;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.8rem;
+  position: relative;
+  z-index: 20;
 }
 
-/* ⛔ KEIN position / z-index */
 .card {
+  position: relative;
   display: block;
   background: rgba(0, 30, 40, 0.75);
   padding: 1.8rem;
   border-radius: 14px;
-  border: 1px solid rgba(0, 255, 220, 0.12);
-  text-decoration: none;
-  color: inherit;
-
-  /* 🔑 iOS FIX */
+  border: 1px solid rgba(0, 255, 220, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
   pointer-events: auto;
-  touch-action: manipulation;
-}
-
-.card:active {
-  opacity: 0.85;
 }
 
 .card:hover {
-  border-color: #00f5e1;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 255, 220, 0.25);
 }
 
 .title {
   font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 0.6rem;
   color: #00f5e1;
+  margin-bottom: 0.6rem;
 }
 
 .description {
+  color: #d9fdfc;
   opacity: 0.9;
-  margin-bottom: 1.2rem;
   line-height: 1.5;
 }
 
-.category {
-  display: block;
-  font-size: 0.85rem;
-  color: #00f5e1;
-  margin-bottom: 0.8rem;
-}
-
 .readmore {
-  font-weight: 600;
+  margin-top: auto;
   color: #00f5e1;
+  font-weight: 600;
 }

@@ -112,14 +112,8 @@ a {
 }
 
 /* =========================
-   DEBUG: show click blockers
-   ========================= */
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.15);
-}
 
 /* =========================
-   CLICK FIX – global
    ========================= */
 
 /* Alles darf Klicks durchlassen */
@@ -141,14 +135,6 @@ button,
 }
 
 /* ===============================
-   HARD FIX: REMOVE CLICK BLOCKERS
-   =============================== */
-
-/* Kill ALL overlays */
-*::before,
-*::after {
-  pointer-events: none !important;
-}
 
 /* Re-enable real interactive elements */
 a,

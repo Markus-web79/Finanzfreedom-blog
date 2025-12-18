@@ -15,18 +15,29 @@ export default function BlogPost({ post }: any) {
         )}
       </Head>
 
-      <main style={{ maxWidth: "760px", margin: "0 auto", padding: "3rem 1.5rem" }}>
-        <nav style={{ fontSize: "0.8rem", opacity: 0.7, marginBottom: "1.5rem" }}>
-          <Link href="/">Start</Link> › <Link href="/blog">Blog</Link>
+      <main
+        style={{
+          maxWidth: "760px",
+          margin: "0 auto",
+          padding: "3rem 1.5rem",
+          lineHeight: 1.75,
+        }}
+      >
+        <nav style={{ fontSize: "0.85rem", opacity: 0.7, marginBottom: "1.5rem" }}>
+          <Link href="/">Start</Link> ›{" "}
+          <Link href="/blog">Blog</Link>
+          {post.category && <> › {post.category}</>}
         </nav>
 
         <h1>{post.title}</h1>
 
-        {post.excerpt && <p style={{ opacity: 0.8 }}>{post.excerpt}</p>}
+        {post.excerpt && (
+          <p style={{ opacity: 0.85 }}>{post.excerpt}</p>
+        )}
 
         <article
           dangerouslySetInnerHTML={{ __html: post.content }}
-          style={{ marginTop: "2rem", lineHeight: 1.7 }}
+          style={{ marginTop: "2rem" }}
         />
 
         <div style={{ marginTop: "3rem" }}>
@@ -49,7 +60,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getPostBySlug(params?.slug as string);
+  const slug = params?.slug as string;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     return { notFound: true };

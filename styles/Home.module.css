@@ -4,40 +4,57 @@
   padding: 3rem 1.5rem;
 }
 
+/* ---------- HEADER ---------- */
+
 .header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
 .header h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  color: #00e5d4; /* Türkis */
+  color: #e5fdfc;
+  margin-bottom: 1rem;
 }
+
+.header p {
+  font-size: 1.1rem;
+  color: #b6e7e5;
+  opacity: 0.9;
+}
+
+/* ---------- GRID ---------- */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.8rem;
+  margin-top: 2rem;
 }
 
+/* ---------- CARD (KLICKBAR!) ---------- */
+
 .card {
+  display: block;               /* WICHTIG */
   background: rgba(0, 30, 40, 0.7);
   padding: 1.8rem;
   border-radius: 14px;
   border: 1px solid rgba(0, 255, 220, 0.12);
+  text-decoration: none;        /* WICHTIG */
+  color: inherit;               /* WICHTIG */
+  cursor: pointer;              /* WICHTIG */
   transition: all 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 230px;
 }
 
+/* Hover (Desktop) */
 .card:hover {
   border-color: #00f5e1;
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 255, 220, 0.2);
 }
+
+/* ---------- CONTENT ---------- */
 
 .title {
   font-size: 1.3rem;
@@ -51,18 +68,39 @@
   opacity: 0.9;
   margin-bottom: 1.2rem;
   line-height: 1.5;
-  flex-grow: 1;
 }
 
+.category {
+  font-size: 0.85rem;
+  color: #7deee5;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ---------- READ MORE ---------- */
+
 .readmore {
-  display: inline-block;
   margin-top: auto;
-  color: #00f5e1;
   font-weight: 600;
-  text-decoration: none;
+  color: #00f5e1;
+  opacity: 0.9;
   transition: opacity 0.2s ease;
 }
 
-.readmore:hover {
-  opacity: 0.7;
+.card:hover .readmore {
+  opacity: 1;
+}
+
+/* ---------- FOOTER LINK ---------- */
+
+.allArticles {
+  display: inline-block;
+  margin-top: 2.5rem;
+  color: #00f5e1;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.allArticles:hover {
+  opacity: 0.8;
 }

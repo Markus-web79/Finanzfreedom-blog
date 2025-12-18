@@ -4,41 +4,62 @@
   padding: 3rem 1.5rem;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
+/* CARD = LINK */
 .card {
   display: block;
   background: #0f172a;
   border: 1px solid #1e293b;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  padding: 1.6rem;
   text-decoration: none;
   color: inherit;
+
+  /* 🔥 DAS IST ENTSCHEIDEND */
+  pointer-events: auto;
+  touch-action: manipulation;
+  cursor: pointer;
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* HOVER */
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.15);
 }
 
+/* TITLE */
 .title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #22d3ee;
+  margin-bottom: 0.6rem;
 }
 
+/* EXCERPT */
 .excerpt {
   font-size: 0.95rem;
-  opacity: 0.8;
+  opacity: 0.85;
+  margin-bottom: 0.8rem;
 }
 
+/* CATEGORY */
 .category {
-  margin-top: 0.75rem;
   font-size: 0.75rem;
   color: #22d3ee;
+  opacity: 0.9;
+}
+
+/* 🔴 ABSOLUT WICHTIG: KEINE OVERLAYS */
+.card::before,
+.card::after {
+  content: none !important;
+  pointer-events: none !important;
 }

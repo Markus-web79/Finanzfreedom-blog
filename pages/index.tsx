@@ -1,11 +1,11 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../lib/posts";
+import styles from "../styles/Home.module.css";
 
 export async function getStaticProps() {
-  const posts = getAllPosts()
-    .filter((p) => p.slug && p.slug !== "README")
-    .slice(0, 6);
+  const posts = getAllPosts().filter(
+    (post) => post.slug && post.slug !== "README"
+  );
 
   return {
     props: { posts },
@@ -15,40 +15,28 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
   return (
     <main className={styles.container}>
-      <header className={styles.header}>
-        <h1>Finanzielle Freiheit aufbauen – Schritt für Schritt</h1>
-        <p>
-          Verstehe Geld, Investieren & Versicherungen – einfach erklärt,
-          unabhängig und ohne Bullshit.
-        </p>
-      </header>
-
-      <section>
-        <h2>Neueste Artikel</h2>
-
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className={styles.card}
-            >
-              <h3 className={styles.title}>{post.title}</h3>
+      <section className={styles.grid}>
+        {posts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            legacyBehavior
+          >
+            <a className={styles.card}>
+              <h2 className={styles.title}>{post.title}</h2>
 
               {post.excerpt && (
                 <p className={styles.description}>{post.excerpt}</p>
               )}
 
               {post.category && (
-                <span className={styles.category}>
+                <small className={styles.readmore}>
                   Kategorie: {post.category}
-                </span>
+                </small>
               )}
-
-              <span className={styles.readmore}>Artikel lesen →</span>
-            </Link>
-          ))}
-        </div>
+            </a>
+          </Link>
+        ))}
       </section>
     </main>
   );

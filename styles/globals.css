@@ -117,3 +117,25 @@ a {
 * {
   outline: 1px solid rgba(255, 0, 0, 0.15);
 }
+
+/* =========================
+   CLICK FIX – global
+   ========================= */
+
+/* Alles darf Klicks durchlassen */
+.hero,
+.hero::before,
+.hero::after,
+header::before,
+header::after {
+  pointer-events: none;
+}
+
+/* Navigation & Karten explizit klickbar */
+header,
+nav,
+a,
+button,
+.card {
+  pointer-events: auto;
+}

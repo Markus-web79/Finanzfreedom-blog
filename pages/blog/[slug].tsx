@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { getAllSlugs, getPostBySlug } from "../../lib/posts";
 
-export default function BlogPost({ post }: any) {
+export default function BlogPost({ post }) {
   if (!post) return null;
 
   return (
@@ -15,18 +15,9 @@ export default function BlogPost({ post }: any) {
         )}
       </Head>
 
-      <main
-        style={{
-          maxWidth: "760px",
-          margin: "0 auto",
-          padding: "3rem 1.5rem",
-          lineHeight: 1.75,
-        }}
-      >
+      <main style={{ maxWidth: "760px", margin: "0 auto", padding: "3rem 1.5rem" }}>
         <nav style={{ fontSize: "0.85rem", opacity: 0.7, marginBottom: "1.5rem" }}>
-          <Link href="/">Start</Link> ›{" "}
-          <Link href="/blog">Blog</Link>
-          {post.category && <> › {post.category}</>}
+          <Link href="/">Start</Link> › <Link href="/blog">Blog</Link>
         </nav>
 
         <h1>{post.title}</h1>
@@ -37,7 +28,7 @@ export default function BlogPost({ post }: any) {
 
         <article
           dangerouslySetInnerHTML={{ __html: post.content }}
-          style={{ marginTop: "2rem" }}
+          style={{ marginTop: "2rem", lineHeight: 1.7 }}
         />
 
         <div style={{ marginTop: "3rem" }}>
@@ -52,24 +43,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = getAllSlugs();
 
   return {
-    paths: slugs.map((slug) => ({
-      params: { slug },
-    })),
+    paths: slugs.map((slug) => ({ params: { slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params?.slug as string;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(params.slug as string);
 
-  if (!post) {
-    return { notFound: true };
-  }
+  if (!post) return { notFound: true };
 
   return {
-    props: {
-      post,
-    },
+    props: { post },
   };
 };

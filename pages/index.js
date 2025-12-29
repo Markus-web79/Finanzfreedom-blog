@@ -1,115 +1,71 @@
 import Head from "next/head";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Dein Finanzportal für Investieren & Vermögensaufbau</title>
+        <title>FinanzFreedom – Dein unabhängiges Finanzportal</title>
         <meta
           name="description"
-          content="FinanzFreedom ist dein unabhängiges Finanzportal für Investieren, ETFs, Versicherungen, Sparen und Vermögensaufbau – verständlich, ehrlich und langfristig."
+          content="FinanzFreedom: Investieren, Versicherungen, Sparen & Finanzwissen – verständlich, unabhängig und portalartig."
         />
       </Head>
 
-      <main style={styles.container}>
+      <main className={styles.main}>
+
         {/* HERO */}
-        <section style={styles.hero}>
-          <h1 style={styles.h1}>FinanzFreedom</h1>
-          <p style={styles.subtitle}>
+        <section className={styles.hero}>
+          <h1>FinanzFreedom</h1>
+          <p>
             Dein unabhängiges Finanzportal für Investieren, Vermögensaufbau
             und finanzielle Freiheit.
           </p>
         </section>
 
-        {/* PORTAL NAVIGATION */}
-        <section style={styles.grid}>
-          <PortalCard
-            title="Investieren"
-            text="ETFs, Aktien, Sparpläne & Strategien für langfristigen Vermögensaufbau."
-            href="/investieren"
-          />
+        {/* PORTAL-KARTEN */}
+        <section className={styles.cards}>
 
-          <PortalCard
-            title="Versicherungen"
-            text="Welche Versicherungen wirklich sinnvoll sind – klar & unabhängig erklärt."
-            href="/versicherungen"
-          />
+          <Link href="/investieren" className={styles.card}>
+            <h3>Investieren</h3>
+            <p>
+              ETFs, Aktien, Sparpläne & Strategien für langfristigen Vermögensaufbau.
+            </p>
+          </Link>
 
-          <PortalCard
-            title="Sparen & Haushalt"
-            text="Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle gewinnen."
-            href="/sparen"
-          />
+          <Link href="/versicherungen" className={styles.card}>
+            <h3>Versicherungen</h3>
+            <p>
+              Welche Versicherungen wirklich sinnvoll sind – klar & unabhängig erklärt.
+            </p>
+          </Link>
 
-          <PortalCard
-            title="Wissen"
-            text="Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt."
-            href="/wissen"
-          />
+          <Link href="/sparen-haushalt" className={styles.card}>
+            <h3>Sparen & Haushalt</h3>
+            <p>
+              Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle gewinnen.
+            </p>
+          </Link>
+
+          <Link href="/wissen" className={styles.card}>
+            <h3>Wissen</h3>
+            <p>
+              Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt.
+            </p>
+          </Link>
+
         </section>
 
-        {/* BLOG HINWEIS (SEKUNDÄR) */}
-        <section style={styles.blogHint}>
-          <p>
-            Du willst tiefer einsteigen?
-            <br />
-            <Link href="/blog">→ Zum Blog</Link>
-          </p>
+        {/* CTA */}
+        <section className={styles.cta}>
+          <p>Du willst tiefer einsteigen?</p>
+          <Link href="/blog" className={styles.blogLink}>
+            → Zum Blog
+          </Link>
         </section>
+
       </main>
     </>
   );
 }
-
-/* ---------- KOMPONENTEN ---------- */
-
-function PortalCard({ title, text, href }) {
-  return (
-    <Link href={href} style={styles.card}>
-      <h2>{title}</h2>
-      <p>{text}</p>
-    </Link>
-  );
-}
-
-/* ---------- STYLES (INLINE, STABIL) ---------- */
-
-const styles = {
-  container: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    padding: "60px 20px",
-  },
-  hero: {
-    textAlign: "center",
-    marginBottom: "60px",
-  },
-  h1: {
-    fontSize: "42px",
-    marginBottom: "10px",
-  },
-  subtitle: {
-    fontSize: "18px",
-    opacity: 0.8,
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "20px",
-  },
-  card: {
-    display: "block",
-    padding: "24px",
-    borderRadius: "12px",
-    background: "#0f172a",
-    color: "#ffffff",
-    textDecoration: "none",
-    transition: "transform 0.2s ease, box-shadow 0.2s ease",
-  },
-  blogHint: {
-    marginTop: "60px",
-    textAlign: "center",
-    opacity: 0.7,
-  },
-};

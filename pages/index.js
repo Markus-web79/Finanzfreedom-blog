@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -9,63 +8,110 @@ export default function Home() {
         <title>FinanzFreedom – Dein unabhängiges Finanzportal</title>
         <meta
           name="description"
-          content="FinanzFreedom: Investieren, Versicherungen, Sparen & Finanzwissen – verständlich, unabhängig und portalartig."
+          content="FinanzFreedom: Investieren, Versicherungen, Sparen & Wissen – unabhängig, verständlich und portalartig aufgebaut."
         />
       </Head>
 
-      <main className={styles.main}>
-
-        {/* HERO */}
-        <section className={styles.hero}>
-          <h1>FinanzFreedom</h1>
-          <p>
-            Dein unabhängiges Finanzportal für Investieren, Vermögensaufbau
-            und finanzielle Freiheit.
+      <main style={styles.page}>
+        <section style={styles.hero}>
+          <h1 style={styles.title}>FinanzFreedom</h1>
+          <p style={styles.subtitle}>
+            Dein unabhängiges Finanzportal für Investieren, Vermögensaufbau und
+            finanzielle Freiheit.
           </p>
         </section>
 
-        {/* PORTAL-KARTEN */}
-        <section className={styles.cards}>
-
-          <Link href="/investieren" className={styles.card}>
-            <h3>Investieren</h3>
+        <section style={styles.grid}>
+          <Link href="/investieren" style={styles.card}>
+            <h2>Investieren</h2>
             <p>
-              ETFs, Aktien, Sparpläne & Strategien für langfristigen Vermögensaufbau.
+              ETFs, Aktien, Sparpläne & Strategien für langfristigen
+              Vermögensaufbau.
             </p>
           </Link>
 
-          <Link href="/versicherungen" className={styles.card}>
-            <h3>Versicherungen</h3>
+          <Link href="/versicherungen" style={styles.card}>
+            <h2>Versicherungen</h2>
             <p>
-              Welche Versicherungen wirklich sinnvoll sind – klar & unabhängig erklärt.
+              Welche Versicherungen wirklich sinnvoll sind – klar &
+              unabhängig erklärt.
             </p>
           </Link>
 
-          <Link href="/sparen-haushalt" className={styles.card}>
-            <h3>Sparen & Haushalt</h3>
+          <Link href="/sparen" style={styles.card}>
+            <h2>Sparen & Haushalt</h2>
             <p>
-              Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle gewinnen.
+              Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle
+              gewinnen.
             </p>
           </Link>
 
-          <Link href="/wissen" className={styles.card}>
-            <h3>Wissen</h3>
+          <Link href="/wissen" style={styles.card}>
+            <h2>Wissen</h2>
             <p>
               Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt.
             </p>
           </Link>
-
         </section>
 
-        {/* CTA */}
-        <section className={styles.cta}>
+        <section style={styles.blogHint}>
           <p>Du willst tiefer einsteigen?</p>
-          <Link href="/blog" className={styles.blogLink}>
+          <Link href="/blog" style={styles.blogLink}>
             → Zum Blog
           </Link>
         </section>
-
       </main>
     </>
   );
 }
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    padding: "60px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    color: "#e5e7eb",
+  },
+  hero: {
+    textAlign: "center",
+    maxWidth: "900px",
+    margin: "0 auto 60px",
+  },
+  title: {
+    fontSize: "3rem",
+    marginBottom: "16px",
+    color: "#ffffff",
+  },
+  subtitle: {
+    fontSize: "1.2rem",
+    color: "#9ca3af",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "24px",
+    maxWidth: "1100px",
+    margin: "0 auto",
+  },
+  card: {
+    background: "linear-gradient(145deg, #020617, #020617)",
+    border: "1px solid #1e293b",
+    borderRadius: "14px",
+    padding: "28px",
+    textDecoration: "none",
+    color: "#e5e7eb",
+    transition: "all 0.2s ease",
+  },
+  blogHint: {
+    marginTop: "60px",
+    textAlign: "center",
+    color: "#9ca3af",
+  },
+  blogLink: {
+    display: "inline-block",
+    marginTop: "8px",
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: "600",
+  },
+};

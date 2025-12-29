@@ -1,95 +1,58 @@
-import Head from "next/head";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function TradeRepublic() {
   return (
     <>
       <Head>
-        <title>Trade Republic Erfahrungen & Test – FinanzFreedom</title>
+        <title>Trade Republic Test & Erfahrungen | FinanzFreedom</title>
         <meta
           name="description"
-          content="Trade Republic im Test: Kosten, ETF-Sparpläne, Sicherheit & Erfahrungen. Ist Trade Republic der richtige Broker für dich?"
+          content="Trade Republic im Test: Erfahrungen, Vorteile, Nachteile und für wen sich der Broker wirklich lohnt."
         />
       </Head>
 
-      <main style={styles.page}>
+      <div style={styles.page}>
         {/* Breadcrumb */}
-        <nav style={styles.breadcrumb}>
-          <Link href="/">Start</Link> ›{" "}
-          <Link href="/investieren">Investieren</Link> ›{" "}
-          <Link href="/investieren/broker">Broker</Link> › Trade Republic
-        </nav>
-
-        {/* HERO */}
-        <header style={styles.hero}>
-          <h1 style={styles.title}>Trade Republic im Test</h1>
-          <p style={styles.subtitle}>
-            Kosten, ETF-Sparpläne, Sicherheit & Erfahrungen – verständlich und
-            unabhängig erklärt.
-          </p>
-        </header>
-
-        {/* FACTS */}
-        <section style={styles.card}>
-          <h2>Überblick</h2>
-          <ul style={styles.list}>
-            <li><strong>Broker:</strong> Trade Republic</li>
-            <li><strong>Kosten:</strong> 0 € pro Trade</li>
-            <li><strong>ETF-Sparpläne:</strong> kostenlos</li>
-            <li><strong>Mindestsparrate:</strong> ab 1 €</li>
-            <li><strong>Sitz:</strong> Deutschland</li>
-            <li><strong>Einlagensicherung:</strong> 100.000 €</li>
-          </ul>
-        </section>
-
-        {/* PRO / CONTRA */}
-        <section style={styles.grid}>
-          <div style={styles.card}>
-            <h3>Vorteile</h3>
-            <ul style={styles.list}>
-              <li>Sehr einfache App</li>
-              <li>Kostenlose ETF-Sparpläne</li>
-              <li>Keine Depotgebühren</li>
-              <li>Ideal für Einsteiger</li>
-            </ul>
-          </div>
-
-          <div style={styles.card}>
-            <h3>Nachteile</h3>
-            <ul style={styles.list}>
-              <li>Keine klassische Web-Plattform</li>
-              <li>Wenig Analyse-Tools</li>
-              <li>App-Fokus (nicht für jeden ideal)</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* FAZIT */}
-        <section style={styles.card}>
-          <h2>Fazit</h2>
-          <p>
-            Trade Republic ist besonders für Einsteiger und ETF-Sparer geeignet.
-            Wer günstig, einfach und langfristig investieren möchte, findet hier
-            einen sehr guten Einstieg.
-          </p>
-
-          {/* Affiliate Platzhalter */}
-          <div style={styles.cta}>
-            <p><strong>Empfehlung:</strong> Für ETF-Sparpläne & Anfänger.</p>
-            <button style={styles.button}>
-              Jetzt informieren →
-            </button>
-            <p style={styles.note}>
-              * Affiliate-Link folgt transparent & rechtssicher
-            </p>
-          </div>
-        </section>
-
-        {/* BACK */}
-        <div style={styles.back}>
-          <Link href="/investieren/broker">← Zurück zum Broker-Vergleich</Link>
+        <div style={styles.breadcrumb}>
+          <Link href="/">Startseite</Link> →{" "}
+          <Link href="/investieren">Investieren</Link> →{" "}
+          <Link href="/investieren/broker">Broker</Link> → Trade Republic
         </div>
-      </main>
+
+        {/* Hero */}
+        <section style={styles.hero}>
+          <h1 style={styles.title}>Trade Republic</h1>
+          <p style={styles.subtitle}>
+            Einer der beliebtesten Neobroker in Deutschland – besonders für
+            ETF-Sparpläne & Einsteiger.
+          </p>
+        </section>
+
+        {/* Content */}
+        <section style={styles.card}>
+          <p>
+            <strong>Empfehlung:</strong> Sehr gut geeignet für ETF-Sparpläne,
+            Buy-&-Hold-Investoren und alle, die günstig investieren möchten.
+          </p>
+
+          <Link
+            href="/investieren/broker/trade-republic/info"
+            style={styles.button}
+          >
+            Jetzt informieren →
+          </Link>
+
+          <p style={styles.note}>
+            * Externer Anbieter – Informationen unabhängig & transparent
+          </p>
+        </section>
+
+        {/* Back */}
+        <div style={styles.back}>
+          <Link href="/investieren/broker">← Zurück zur Broker-Übersicht</Link>
+        </div>
+      </div>
     </>
   );
 }
@@ -98,7 +61,8 @@ const styles = {
   page: {
     minHeight: "100vh",
     padding: "60px 20px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    background:
+      "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
     maxWidth: "900px",
     margin: "0 auto",
@@ -117,46 +81,32 @@ const styles = {
   },
   subtitle: {
     fontSize: "1.1rem",
-    color: "#9ca3af",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "24px",
-    marginBottom: "40px",
+    opacity: 0.85,
   },
   card: {
-    background: "#020617",
-    border: "1px solid #1e293b",
+    background: "rgba(30,41,59,0.55)",
     borderRadius: "14px",
-    padding: "24px",
-    marginBottom: "24px",
-  },
-  list: {
-    lineHeight: 1.9,
-    marginTop: "12px",
-  },
-  cta: {
-    marginTop: "20px",
-    textAlign: "center",
+    padding: "28px",
+    marginBottom: "40px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
   },
   button: {
-    marginTop: "12px",
-    padding: "12px 26px",
-    borderRadius: "999px",
-    background: "#2dd4bf",
+    display: "inline-block",
+    marginTop: "20px",
+    padding: "14px 22px",
+    borderRadius: "10px",
+    background: "#14b8a6",
     color: "#020617",
-    border: "none",
-    fontWeight: "700",
-    cursor: "pointer",
+    fontWeight: "600",
+    textDecoration: "none",
   },
   note: {
-    marginTop: "8px",
     fontSize: "0.8rem",
     opacity: 0.6,
+    marginTop: "12px",
   },
   back: {
-    marginTop: "40px",
-    textAlign: "center",
+    marginTop: "30px",
+    fontSize: "0.9rem",
   },
 };

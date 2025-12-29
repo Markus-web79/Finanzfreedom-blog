@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/Portal.module.css";
 
 export default function Investieren() {
   return (
@@ -9,69 +8,122 @@ export default function Investieren() {
         <title>Investieren – FinanzFreedom</title>
         <meta
           name="description"
-          content="Investieren leicht erklärt: ETFs, Aktien, Sparpläne & Strategien für langfristigen Vermögensaufbau."
+          content="Investieren leicht erklärt: ETFs, Aktien, Sparpläne & Broker-Vergleiche bei FinanzFreedom."
         />
       </Head>
 
-      <main className={styles.main}>
-        {/* HERO */}
-        <section className={styles.hero}>
-          <h1>Investieren</h1>
-          <p>
-            Baue langfristig Vermögen auf – mit klaren Strategien,
-            verständlichen Erklärungen und unabhängigen Empfehlungen.
+      <main style={styles.page}>
+        <section style={styles.hero}>
+          <h1 style={styles.title}>Investieren</h1>
+          <p style={styles.subtitle}>
+            Baue langfristig Vermögen auf – mit ETFs, Aktien, Sparplänen und der
+            richtigen Strategie.
           </p>
         </section>
 
-        {/* THEMEN */}
-        <section className={styles.grid}>
-
-          <div className={styles.card}>
-            <h3>ETF-Grundlagen</h3>
+        <section style={styles.grid}>
+          <div style={styles.card}>
+            <h2>ETF-Sparpläne</h2>
             <p>
-              Was ETFs sind, wie sie funktionieren und warum sie für
-              Einsteiger ideal sind.
+              Die einfachste Art zu investieren. Ideal für Einsteiger &
+              langfristigen Vermögensaufbau.
             </p>
-            <Link href="/blog">Mehr erfahren →</Link>
+            <Link href="/blog/etf-sparplan" style={styles.link}>
+              Mehr erfahren →
+            </Link>
           </div>
 
-          <div className={styles.card}>
-            <h3>ETF-Sparpläne</h3>
+          <div style={styles.card}>
+            <h2>Aktien & Strategien</h2>
             <p>
-              Monatlich investieren, automatisch Vermögen aufbauen
-              und langfristig profitieren.
+              Einzelaktien, Dividenden, Buy & Hold – verständlich erklärt ohne
+              Hype.
             </p>
-            <Link href="/blog">Zu den Sparplänen →</Link>
+            <Link href="/blog/aktien-grundlagen" style={styles.link}>
+              Mehr erfahren →
+            </Link>
           </div>
 
-          <div className={styles.card}>
-            <h3>Broker & Depots</h3>
+          <div style={styles.card}>
+            <h2>Broker vergleichen</h2>
             <p>
-              Welche Broker wirklich günstig, sicher und sinnvoll sind –
-              unabhängig verglichen.
+              Welcher Broker passt zu dir? Kosten, Funktionen & Vorteile im
+              Überblick.
             </p>
-            <Link href="/blog">Broker vergleichen →</Link>
+            <Link href="/investieren/broker" style={styles.link}>
+              Broker ansehen →
+            </Link>
           </div>
 
-          <div className={styles.card}>
-            <h3>Strategien</h3>
+          <div style={styles.card}>
+            <h2>Einsteiger-Guide</h2>
             <p>
-              Von Buy-and-Hold bis Weltportfolio –
-              bewährte Investment-Strategien einfach erklärt.
+              Schritt für Schritt starten – auch ohne Vorkenntnisse oder großes
+              Kapital.
             </p>
-            <Link href="/blog">Strategien ansehen →</Link>
+            <Link href="/blog/investieren-fuer-anfaenger" style={styles.link}>
+              Guide lesen →
+            </Link>
           </div>
-
         </section>
 
-        {/* CTA */}
-        <section className={styles.cta}>
-          <p>Bereit für den nächsten Schritt?</p>
-          <Link href="/blog" className={styles.primaryBtn}>
-            → Zum Investieren-Guide
+        <section style={styles.back}>
+          <Link href="/" style={styles.backLink}>
+            ← Zur Startseite
           </Link>
         </section>
       </main>
     </>
   );
 }
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    padding: "60px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    color: "#e5e7eb",
+  },
+  hero: {
+    textAlign: "center",
+    maxWidth: "900px",
+    margin: "0 auto 60px",
+  },
+  title: {
+    fontSize: "2.6rem",
+    marginBottom: "12px",
+    color: "#ffffff",
+  },
+  subtitle: {
+    fontSize: "1.15rem",
+    color: "#9ca3af",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "24px",
+    maxWidth: "1100px",
+    margin: "0 auto",
+  },
+  card: {
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "14px",
+    padding: "28px",
+  },
+  link: {
+    display: "inline-block",
+    marginTop: "12px",
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: "600",
+  },
+  back: {
+    marginTop: "60px",
+    textAlign: "center",
+  },
+  backLink: {
+    color: "#9ca3af",
+    textDecoration: "none",
+  },
+};

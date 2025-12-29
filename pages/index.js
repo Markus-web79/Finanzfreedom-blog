@@ -5,88 +5,111 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Investieren verstehen. Freiheit aufbauen.</title>
+        <title>FinanzFreedom – Dein Finanzportal für Investieren & Vermögensaufbau</title>
         <meta
           name="description"
-          content="FinanzFreedom ist dein Finanzportal für Investieren, ETFs und Vermögensaufbau – verständlich, unabhängig und langfristig."
+          content="FinanzFreedom ist dein unabhängiges Finanzportal für Investieren, ETFs, Versicherungen, Sparen und Vermögensaufbau – verständlich, ehrlich und langfristig."
         />
       </Head>
 
-      <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "4rem 1.5rem" }}>
+      <main style={styles.container}>
         {/* HERO */}
-        <section style={{ marginBottom: "4rem" }}>
-          <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
-            Investieren verstehen.<br />Freiheit aufbauen.
-          </h1>
-
-          <p style={{ fontSize: "1.2rem", opacity: 0.85, maxWidth: "700px" }}>
-            FinanzFreedom ist dein unabhängiges Finanzportal.
-            Kein Verkaufsdruck. Kein Bullshit.
-            Sondern klare Strategien für langfristigen Vermögensaufbau.
+        <section style={styles.hero}>
+          <h1 style={styles.h1}>FinanzFreedom</h1>
+          <p style={styles.subtitle}>
+            Dein unabhängiges Finanzportal für Investieren, Vermögensaufbau
+            und finanzielle Freiheit.
           </p>
-
-          <div style={{ marginTop: "2rem" }}>
-            <Link href="/blog">
-              <a style={{
-                padding: "0.9rem 1.6rem",
-                background: "#0fb9b1",
-                color: "#000",
-                borderRadius: "6px",
-                fontWeight: "600"
-              }}>
-                Jetzt starten
-              </a>
-            </Link>
-          </div>
         </section>
 
-        {/* WARUM */}
-        <section style={{ marginBottom: "4rem" }}>
-          <h2>Warum FinanzFreedom?</h2>
-          <ul style={{ marginTop: "1rem", lineHeight: 1.8 }}>
-            <li>✔ Verständliche Erklärungen ohne Fachchinesisch</li>
-            <li>✔ Fokus auf Investieren & Vermögensaufbau</li>
-            <li>✔ Unabhängig & langfristig gedacht</li>
-            <li>✔ Für Einsteiger und Fortgeschrittene</li>
-          </ul>
+        {/* PORTAL NAVIGATION */}
+        <section style={styles.grid}>
+          <PortalCard
+            title="Investieren"
+            text="ETFs, Aktien, Sparpläne & Strategien für langfristigen Vermögensaufbau."
+            href="/investieren"
+          />
+
+          <PortalCard
+            title="Versicherungen"
+            text="Welche Versicherungen wirklich sinnvoll sind – klar & unabhängig erklärt."
+            href="/versicherungen"
+          />
+
+          <PortalCard
+            title="Sparen & Haushalt"
+            text="Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle gewinnen."
+            href="/sparen"
+          />
+
+          <PortalCard
+            title="Wissen"
+            text="Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt."
+            href="/wissen"
+          />
         </section>
 
-        {/* THEMEN */}
-        <section style={{ marginBottom: "4rem" }}>
-          <h2>Unsere Schwerpunkte</h2>
-
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "1.5rem",
-            marginTop: "1.5rem"
-          }}>
-            <div className="card">📈 Investieren & ETFs</div>
-            <div className="card">🏠 Vermögensaufbau</div>
-            <div className="card">🛡️ Versicherungen</div>
-            <div className="card">🌍 Finanzielle Freiheit</div>
-          </div>
-        </section>
-
-        {/* VERTRAUEN */}
-        <section>
-          <h2>Unser Ansatz</h2>
-          <p style={{ maxWidth: "700px", lineHeight: 1.7, opacity: 0.85 }}>
-            Wir zeigen dir nicht den schnellen Reichtum,
-            sondern ein System, das funktioniert –
-            heute, morgen und in zehn Jahren.
+        {/* BLOG HINWEIS (SEKUNDÄR) */}
+        <section style={styles.blogHint}>
+          <p>
+            Du willst tiefer einsteigen?
+            <br />
+            <Link href="/blog">→ Zum Blog</Link>
           </p>
         </section>
       </main>
-
-      <style jsx>{`
-        .card {
-          padding: 1.5rem;
-          background: linear-gradient(180deg, #0f172a, #020617);
-          border-radius: 10px;
-          font-weight: 500;
-        }
-      `}</style>
     </>
   );
 }
+
+/* ---------- KOMPONENTEN ---------- */
+
+function PortalCard({ title, text, href }) {
+  return (
+    <Link href={href} style={styles.card}>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </Link>
+  );
+}
+
+/* ---------- STYLES (INLINE, STABIL) ---------- */
+
+const styles = {
+  container: {
+    maxWidth: "1100px",
+    margin: "0 auto",
+    padding: "60px 20px",
+  },
+  hero: {
+    textAlign: "center",
+    marginBottom: "60px",
+  },
+  h1: {
+    fontSize: "42px",
+    marginBottom: "10px",
+  },
+  subtitle: {
+    fontSize: "18px",
+    opacity: 0.8,
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "20px",
+  },
+  card: {
+    display: "block",
+    padding: "24px",
+    borderRadius: "12px",
+    background: "#0f172a",
+    color: "#ffffff",
+    textDecoration: "none",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+  blogHint: {
+    marginTop: "60px",
+    textAlign: "center",
+    opacity: 0.7,
+  },
+};

@@ -1,106 +1,75 @@
 import Link from "next/link";
 
-export default function EtfsIndex() {
+export default function EtfUebersicht() {
   return (
-    <main style={styles.page}>
-      <h1 style={styles.title}>ETFs – verständlich erklärt</h1>
-
-      <p style={styles.intro}>
-        ETFs (Exchange Traded Funds) sind eine einfache und kostengünstige
-        Möglichkeit, langfristig Vermögen aufzubauen. Hier findest du alle
-        wichtigen ETF-Themen übersichtlich erklärt.
+    <div style={styles.page}>
+      <h1 style={styles.title}>ETF-Übersicht</h1>
+      <p style={styles.subtitle}>
+        ETFs sind die Basis für langfristigen Vermögensaufbau.  
+        Hier findest du die wichtigsten ETF-Typen einfach erklärt.
       </p>
 
-      <section style={styles.grid}>
-        <Card
-          title="MSCI World ETF"
-          text="Der Klassiker für den langfristigen Vermögensaufbau mit weltweiter Streuung."
-          href="/investieren/etfs/msci-world"
-        />
+      <div style={styles.grid}>
+        {/* MSCI World */}
+        <div style={styles.card}>
+          <h2>MSCI World ETF</h2>
+          <p>
+            Der Klassiker für Einsteiger: breit gestreut über
+            Industrieländer weltweit.
+          </p>
+          <Link href="/investieren/etfs/msci-world">
+            ➜ Zum MSCI World
+          </Link>
+        </div>
 
-        <Card
-          title="MSCI Emerging Markets ETF"
-          text="Investieren in Schwellenländer wie China, Indien oder Brasilien."
-          href="/investieren/etfs/msci-emerging-markets"
-        />
+        {/* All World (Platzhalter) */}
+        <div style={styles.card}>
+          <h2>All-World ETF</h2>
+          <p>
+            Noch breiter gestreut – inkl. Schwellenländer.
+          </p>
+          <span style={styles.disabled}>
+            Inhalt folgt
+          </span>
+        </div>
+      </div>
 
-        <Card
-          title="All-World ETFs"
-          text="Ein ETF für die ganze Welt – Industrie- und Schwellenländer kombiniert."
-          href="/investieren/etfs/all-world"
-        />
-
-        <Card
-          title="ETF-Sparplan"
-          text="So investierst du regelmäßig und automatisiert in ETFs."
-          href="/investieren/etfs/etf-sparplan"
-        />
-
-        <Card
-          title="ETF-Vergleich"
-          text="MSCI World vs. All-World – welcher ETF passt besser zu dir?"
-          href="/investieren/etfs/vergleich-msci-world-vs-all-world"
-        />
-      </section>
-
-      <Link href="/investieren" style={styles.back}>
+      <Link href="/investieren">
         ← Zurück zu Investieren
       </Link>
-    </main>
-  );
-}
-
-function Card({ title, text, href }) {
-  return (
-    <Link href={href} style={styles.card}>
-      <h2>{title}</h2>
-      <p>{text}</p>
-      <span style={styles.link}>Mehr erfahren →</span>
-    </Link>
+    </div>
   );
 }
 
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "80px 20px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
-    color: "#e5e7eb",
-    maxWidth: "1100px",
+    padding: "60px 20px",
+    maxWidth: "900px",
     margin: "0 auto",
+    color: "#e5e7eb",
   },
   title: {
-    fontSize: "2.2rem",
-    marginBottom: "16px",
+    fontSize: "2.4rem",
+    marginBottom: "12px",
   },
-  intro: {
-    opacity: 0.85,
-    marginBottom: "48px",
-    maxWidth: "720px",
+  subtitle: {
+    opacity: 0.8,
+    marginBottom: "40px",
   },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "24px",
+    gap: "20px",
+    marginBottom: "40px",
   },
   card: {
-    background: "#020617",
-    border: "1px solid rgba(255,255,255,0.08)",
-    borderRadius: "14px",
     padding: "24px",
-    textDecoration: "none",
-    color: "#e5e7eb",
-    transition: "transform 0.15s ease, border 0.15s ease",
+    borderRadius: "12px",
+    background: "rgba(255,255,255,0.04)",
   },
-  link: {
-    color: "#2dd4bf",
-    marginTop: "12px",
-    display: "inline-block",
-  },
-  back: {
-    display: "inline-block",
-    marginTop: "60px",
-    color: "#2dd4bf",
-    textDecoration: "none",
+  disabled: {
+    opacity: 0.5,
+    fontStyle: "italic",
   },
 };

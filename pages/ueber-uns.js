@@ -1,39 +1,59 @@
-import Head from 'next/head';
-import styles from '../styles/ueber-uns.module.css';
-
-export default function About() {
+export default function UeberUns() {
   return (
-    <>
-      <Head>
-        <title>Über FinanzFreedom – Erfahre mehr über uns</title>
-        <meta
-          name="description"
-          content="Erfahre, warum FinanzFreedom gegründet wurde. Unser Ziel: Finanzwissen einfach, ehrlich und unabhängig zu vermitteln."
-        />
-      </Head>
+    <main style={styles.page}>
+      <h1>Über FinanzFreedom</h1>
 
-      <section className={styles.aboutSection}>
-        <div className={styles.aboutContainer}>
-          <h1 className={styles.aboutTitle}>Über FinanzFreedom</h1>
-          <div className={styles.divider}></div>
+      <p>
+        FinanzFreedom ist ein unabhängiges Finanzportal mit dem Ziel,
+        komplexe Finanzthemen verständlich, ehrlich und ohne Verkaufsdruck
+        aufzubereiten.
+      </p>
 
-          <p className={styles.aboutText}>
-            <strong>FinanzFreedom</strong> wurde gegründet, um dir zu zeigen, wie du dein Geld klug verwalten
-            und investieren kannst. Wir glauben, dass jeder Mensch das Potenzial hat, finanzielle Freiheit zu
-            erreichen – mit dem richtigen Wissen und den passenden Tools.
-          </p>
+      <h2>Warum FinanzFreedom?</h2>
+      <p>
+        Viele Menschen verlieren Geld, nicht weil sie zu wenig verdienen,
+        sondern weil Finanzentscheidungen unnötig kompliziert dargestellt
+        werden. FinanzFreedom soll dabei helfen, bessere Entscheidungen zu
+        treffen – Schritt für Schritt.
+      </p>
 
-          <p className={styles.aboutText}>
-            Unser Ziel ist es, komplexe Finanzthemen einfach, ehrlich und verständlich zu erklären – 
-            ohne Fachjargon oder Verkaufsdruck.
-          </p>
+      <h2>Wie wir arbeiten</h2>
+      <p>
+        Wir vergleichen Finanzprodukte sachlich und transparent. 
+        Es gibt keine bezahlten Rankings und keine versteckten Empfehlungen.
+        Wenn ein Produkt verlinkt wird, geschieht das nachvollziehbar und
+        begründet.
+      </p>
 
-          <p className={styles.aboutText}>
-            Wir arbeiten unabhängig und transparent, damit du echte Entscheidungen treffen kannst, 
-            die dich deinem Ziel näherbringen: einem freien, selbstbestimmten Leben.
-          </p>
-        </div>
-      </section>
-    </>
+      <h2>Transparenz & Finanzierung</h2>
+      <p>
+        FinanzFreedom kann sogenannte Affiliate-Links enthalten.
+        Das bedeutet: Wenn du dich über einen Link für ein Produkt entscheidest,
+        erhalten wir möglicherweise eine Provision – für dich entstehen
+        keine zusätzlichen Kosten.
+      </p>
+
+      <p style={{ opacity: 0.8 }}>
+        Dies stellt keine Anlageberatung dar. Alle Inhalte dienen ausschließlich
+        der Information.
+      </p>
+
+      <h2>Unsere Vision</h2>
+      <p>
+        FinanzFreedom soll langfristig zu einem umfassenden Finanzportal wachsen –
+        mit Vergleichen, Wissen, Tools und später auch digitalen Produkten.
+        Ziel ist ein System, das unabhängig, skalierbar und international
+        einsetzbar ist.
+      </p>
+    </main>
   );
 }
+
+const styles = {
+  page: {
+    maxWidth: "900px",
+    margin: "0 auto",
+    padding: "60px 20px",
+    color: "#e5e7eb",
+  },
+};

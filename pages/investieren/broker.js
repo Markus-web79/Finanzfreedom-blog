@@ -1,71 +1,76 @@
-import Head from "next/head";
 import Link from "next/link";
 
-export default function Broker() {
+export default function BrokerOverview() {
   return (
-    <>
-      <Head>
-        <title>Broker vergleichen – FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Broker-Vergleich bei FinanzFreedom: Kosten, Vorteile & welcher Broker wirklich zu dir passt."
-        />
-      </Head>
+    <div style={styles.page}>
+      {/* Breadcrumb */}
+      <div style={styles.breadcrumb}>
+        <Link href="/">Startseite</Link> →{" "}
+        <Link href="/investieren">Investieren</Link> → Broker
+      </div>
 
-      <main style={styles.page}>
-        <section style={styles.hero}>
-          <h1 style={styles.title}>Broker vergleichen</h1>
-          <p style={styles.subtitle}>
-            Der richtige Broker entscheidet über Kosten, Komfort und Rendite.
-            Hier findest du eine ehrliche Übersicht.
+      {/* Headline */}
+      <h1 style={styles.title}>Broker-Vergleich</h1>
+      <p style={styles.subtitle}>
+        Welcher Broker passt zu dir? Wir vergleichen die beliebtesten Online-Broker
+        für ETF-Sparpläne, Einsteiger und langfristigen Vermögensaufbau.
+      </p>
+
+      {/* Cards */}
+      <div style={styles.grid}>
+        {/* Trade Republic */}
+        <div style={styles.card}>
+          <h2>Trade Republic</h2>
+          <p>
+            Ideal für Einsteiger & ETF-Sparpläne. Sehr niedrige Kosten,
+            einfache App und große Auswahl.
           </p>
-        </section>
-
-        <section style={styles.grid}>
-          <div style={styles.card}>
-            <h2>Trade Republic</h2>
-            <p>
-              Sehr günstiger Neobroker. Ideal für ETF-Sparpläne &
-              Einsteiger. App-basiert, einfach & beliebt.
-            </p>
-            <span style={styles.badge}>Beliebt</span>
-          </div>
-
-          <div style={styles.card}>
-            <h2>Scalable Capital</h2>
-            <p>
-              Große ETF-Auswahl, Sparpläne & Prime-Modell. Gut für
-              regelmäßige Investoren.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h2>ING</h2>
-            <p>
-              Klassische Direktbank mit Depot. Sehr solide, etwas höhere
-              Kosten.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h2>Welcher Broker passt zu dir?</h2>
-            <p>
-              Die Wahl hängt von Sparrate, Strategie und Komfort ab. Wir
-              helfen dir bei der Entscheidung.
-            </p>
-            <Link href="/blog/broker-vergleich" style={styles.link}>
-              Entscheidungshilfe →
-            </Link>
-          </div>
-        </section>
-
-        <section style={styles.back}>
-          <Link href="/investieren" style={styles.backLink}>
-            ← Zurück zu Investieren
+          <ul>
+            <li>✔ 1 € pro Trade</li>
+            <li>✔ Kostenlose ETF-Sparpläne</li>
+            <li>✔ Sehr einfache Bedienung</li>
+          </ul>
+          <Link href="/investieren/broker/trade-republic" style={styles.button}>
+            Zum Broker →
           </Link>
-        </section>
-      </main>
-    </>
+        </div>
+
+        {/* Platzhalter Scalable */}
+        <div style={styles.card}>
+          <h2>Scalable Capital</h2>
+          <p>
+            Für Anleger mit höherem Handelsvolumen. Flat-Fee-Modell und große
+            ETF-Auswahl.
+          </p>
+          <ul>
+            <li>✔ Viele ETFs & Aktien</li>
+            <li>✔ Flat-Fee möglich</li>
+            <li>✔ Für Fortgeschrittene</li>
+          </ul>
+          <span style={styles.disabled}>Kommt als Nächstes</span>
+        </div>
+
+        {/* Platzhalter ING */}
+        <div style={styles.card}>
+          <h2>ING</h2>
+          <p>
+            Solider deutscher Broker mit Banklizenz. Gut für langfristige
+            Anleger, weniger für Vieltrader.
+          </p>
+          <ul>
+            <li>✔ Große deutsche Bank</li>
+            <li>✔ Hohe Sicherheit</li>
+            <li>✖ Höhere Kosten</li>
+          </ul>
+          <span style={styles.disabled}>Kommt als Nächstes</span>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div style={styles.cta}>
+        <Link href="/blog">→ Mehr Wissen im Blog</Link>
+      </div>
+    </div>
   );
 }
 
@@ -75,59 +80,53 @@ const styles = {
     padding: "60px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
-  },
-  hero: {
-    textAlign: "center",
-    maxWidth: "900px",
-    margin: "0 auto 60px",
-  },
-  title: {
-    fontSize: "2.4rem",
-    marginBottom: "12px",
-    color: "#ffffff",
-  },
-  subtitle: {
-    fontSize: "1.1rem",
-    color: "#9ca3af",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "24px",
     maxWidth: "1100px",
     margin: "0 auto",
   },
+  breadcrumb: {
+    fontSize: "0.85rem",
+    opacity: 0.7,
+    marginBottom: "24px",
+  },
+  title: {
+    fontSize: "2.5rem",
+    marginBottom: "12px",
+  },
+  subtitle: {
+    fontSize: "1.1rem",
+    maxWidth: "700px",
+    marginBottom: "40px",
+    opacity: 0.85,
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "24px",
+  },
   card: {
-    background: "#020617",
+    background: "linear-gradient(180deg, #020617, #020617)",
     border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "28px",
-    position: "relative",
+    borderRadius: "16px",
+    padding: "24px",
   },
-  badge: {
-    position: "absolute",
-    top: "16px",
-    right: "16px",
-    background: "#2dd4bf",
-    color: "#020617",
-    padding: "4px 10px",
-    borderRadius: "999px",
-    fontSize: "0.75rem",
-    fontWeight: "700",
-  },
-  link: {
+  button: {
     display: "inline-block",
-    marginTop: "12px",
-    color: "#2dd4bf",
+    marginTop: "16px",
+    padding: "10px 16px",
+    borderRadius: "8px",
+    background: "#0f766e",
+    color: "#ecfeff",
     textDecoration: "none",
     fontWeight: "600",
   },
-  back: {
-    marginTop: "60px",
-    textAlign: "center",
+  disabled: {
+    display: "inline-block",
+    marginTop: "16px",
+    opacity: 0.5,
+    fontSize: "0.9rem",
   },
-  backLink: {
-    color: "#9ca3af",
-    textDecoration: "none",
+  cta: {
+    marginTop: "60px",
+    fontSize: "1rem",
   },
 };

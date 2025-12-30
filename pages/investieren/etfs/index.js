@@ -6,43 +6,35 @@ export default function ETFs() {
       <h1 style={styles.title}>ETFs – einfach erklärt</h1>
 
       <p style={styles.lead}>
-        ETFs (Exchange Traded Funds) sind eine der beliebtesten und einfachsten
-        Möglichkeiten, langfristig Vermögen aufzubauen – auch ohne
-        Finanz-Vorkenntnisse.
+        ETFs (Exchange Traded Funds) gehören zu den beliebtesten
+        Anlageformen weltweit. Sie ermöglichen einen einfachen,
+        günstigen und breit gestreuten Vermögensaufbau.
       </p>
 
       <section style={styles.card}>
         <h2>Was ist ein ETF?</h2>
         <p>
           Ein ETF bildet einen Index wie den MSCI World oder den DAX nach.
-          Anstatt einzelne Aktien zu kaufen, investierst du automatisch in
-          hunderte oder tausende Unternehmen gleichzeitig.
+          Statt einzelne Aktien zu kaufen, investierst du automatisch
+          in viele Unternehmen gleichzeitig.
         </p>
       </section>
 
       <section style={styles.card}>
-        <h2>Warum ETFs sinnvoll sind</h2>
+        <h2>Warum ETFs so beliebt sind</h2>
         <ul>
-          <li>✔ Sehr breite Streuung</li>
-          <li>✔ Geringe Kosten</li>
-          <li>✔ Ideal für langfristigen Vermögensaufbau</li>
+          <li>✔ Breite Streuung & geringes Risiko</li>
+          <li>✔ Sehr niedrige Kosten</li>
+          <li>✔ Ideal für langfristige Anleger</li>
           <li>✔ Einfach per Sparplan investierbar</li>
         </ul>
       </section>
 
       <section style={styles.card}>
-        <h2>Für wen eignen sich ETFs?</h2>
-        <p>
-          ETFs eignen sich besonders für Einsteiger, langfristige Anleger und
-          alle, die ohne Stress und Zeitaufwand investieren möchten.
-        </p>
-      </section>
-
-      <section style={styles.card}>
         <h2>Wie investiert man in ETFs?</h2>
         <p>
-          Der einfachste Weg ist ein ETF-Sparplan über einen Online-Broker wie
-          Trade Republic oder Scalable Capital.
+          Der einfachste Weg ist ein ETF-Sparplan über einen Online-Broker.
+          Besonders beliebt sind Trade Republic und Scalable Capital.
         </p>
 
         <div style={styles.links}>
@@ -53,6 +45,15 @@ export default function ETFs() {
             → Scalable Capital ansehen
           </Link>
         </div>
+      </section>
+
+      <section style={styles.card}>
+        <h2>Nächste ETF-Themen</h2>
+        <ul>
+          <li>ETF-Sparplan für Anfänger</li>
+          <li>MSCI World erklärt</li>
+          <li>ETF vs Einzelaktien</li>
+        </ul>
       </section>
     </main>
   );

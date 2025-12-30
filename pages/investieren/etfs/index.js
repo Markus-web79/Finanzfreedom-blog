@@ -1,91 +1,106 @@
 import Link from "next/link";
 
-export default function ETFs() {
+export default function EtfsIndex() {
   return (
     <main style={styles.page}>
-      <h1 style={styles.title}>ETFs – einfach erklärt</h1>
+      <h1 style={styles.title}>ETFs – einfach & verständlich erklärt</h1>
 
-      <p style={styles.lead}>
-        ETFs (Exchange Traded Funds) gehören zu den beliebtesten
-        Anlageformen weltweit. Sie ermöglichen einen einfachen,
-        günstigen und breit gestreuten Vermögensaufbau.
+      <p style={styles.intro}>
+        ETFs (Exchange Traded Funds) sind die beliebteste Möglichkeit,
+        langfristig Vermögen aufzubauen. Sie sind günstig, transparent
+        und ideal für Einsteiger.
       </p>
 
-      <section style={styles.card}>
-        <h2>Was ist ein ETF?</h2>
-        <p>
-          Ein ETF bildet einen Index wie den MSCI World oder den DAX nach.
-          Statt einzelne Aktien zu kaufen, investierst du automatisch
-          in viele Unternehmen gleichzeitig.
-        </p>
+      <section style={styles.grid}>
+        <Card
+          title="ETF-Sparplan"
+          text="Der einfachste Einstieg in den Vermögensaufbau – Schritt für Schritt erklärt."
+          href="/investieren/etfs/etf-sparplan"
+        />
+
+        <Card
+          title="MSCI World ETF"
+          text="Der Klassiker unter den ETFs – breit gestreut über Industrieländer."
+          href="/investieren/etfs/msci-world"
+        />
+
+        <Card
+          title="MSCI Emerging Markets"
+          text="Ergänzung zum MSCI World – Schwellenländer mit höherem Risiko & Potenzial."
+          href="/investieren/etfs/msci-emerging-markets"
+        />
+
+        <Card
+          title="All-World ETFs"
+          text="Ein ETF für die ganze Welt – Industrie- & Schwellenländer kombiniert."
+          href="/investieren/etfs/all-world"
+        />
+
+        <Card
+          title="ETF-Vergleich"
+          text="MSCI World vs. All-World – welcher ETF passt besser zu dir?"
+          href="/investieren/etfs/vergleich-msci-world-vs-all-world"
+        />
       </section>
 
-      <section style={styles.card}>
-        <h2>Warum ETFs so beliebt sind</h2>
-        <ul>
-          <li>✔ Breite Streuung & geringes Risiko</li>
-          <li>✔ Sehr niedrige Kosten</li>
-          <li>✔ Ideal für langfristige Anleger</li>
-          <li>✔ Einfach per Sparplan investierbar</li>
-        </ul>
-      </section>
-
-      <section style={styles.card}>
-        <h2>Wie investiert man in ETFs?</h2>
-        <p>
-          Der einfachste Weg ist ein ETF-Sparplan über einen Online-Broker.
-          Besonders beliebt sind Trade Republic und Scalable Capital.
-        </p>
-
-        <div style={styles.links}>
-          <Link href="/investieren/broker/trade-republic/info">
-            → Trade Republic ansehen
-          </Link>
-          <Link href="/investieren/broker/scalable-capital/info">
-            → Scalable Capital ansehen
-          </Link>
-        </div>
-      </section>
-
-      <section style={styles.card}>
-        <h2>Nächste ETF-Themen</h2>
-        <ul>
-          <li>ETF-Sparplan für Anfänger</li>
-          <li>MSCI World erklärt</li>
-          <li>ETF vs Einzelaktien</li>
-        </ul>
-      </section>
+      <Link href="/investieren" style={styles.back}>
+        ← Zurück zu Investieren
+      </Link>
     </main>
+  );
+}
+
+function Card({ title, text, href }) {
+  return (
+    <Link href={href} style={styles.card}>
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <span style={styles.link}>Mehr erfahren →</span>
+    </Link>
   );
 }
 
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "60px 20px",
-    maxWidth: "900px",
-    margin: "0 auto",
+    padding: "80px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
+    maxWidth: "1100px",
+    margin: "0 auto",
   },
   title: {
-    fontSize: "2.5rem",
-    marginBottom: "20px",
+    fontSize: "2.2rem",
+    marginBottom: "16px",
   },
-  lead: {
-    fontSize: "1.1rem",
-    opacity: 0.9,
-    marginBottom: "40px",
+  intro: {
+    opacity: 0.85,
+    marginBottom: "48px",
+    maxWidth: "700px",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "24px",
   },
   card: {
-    background: "rgba(255,255,255,0.03)",
+    background: "#020617",
+    border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: "14px",
     padding: "24px",
-    marginBottom: "24px",
+    textDecoration: "none",
+    color: "#e5e7eb",
+    transition: "all 0.2s ease",
   },
-  links: {
-    marginTop: "16px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
+  link: {
+    color: "#2dd4bf",
+    marginTop: "12px",
+    display: "inline-block",
+  },
+  back: {
+    display: "inline-block",
+    marginTop: "60px",
+    color: "#2dd4bf",
+    textDecoration: "none",
   },
 };

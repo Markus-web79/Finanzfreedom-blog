@@ -1,87 +1,95 @@
-import Head from "next/head";
 import Link from "next/link";
 
 export default function TradeRepublicInfo() {
   return (
-    <>
-      <Head>
-        <title>Trade Republic – Infos & Empfehlung | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Trade Republic: Für wen der Broker geeignet ist, worauf du achten solltest und wie du sicher startest."
-        />
-      </Head>
+    <main style={styles.page}>
+      <p style={styles.breadcrumb}>
+        <Link href="/investieren">Investieren</Link> →{" "}
+        <Link href="/investieren/broker">Broker</Link> → Trade Republic
+      </p>
 
-      <main style={styles.page}>
-        {/* Breadcrumb */}
-        <nav style={styles.breadcrumb}>
-          <Link href="/">Start</Link> ›{" "}
-          <Link href="/investieren">Investieren</Link> ›{" "}
-          <Link href="/investieren/broker">Broker</Link> ›{" "}
-          <Link href="/investieren/broker/trade-republic">Trade Republic</Link> ›
-          Info
-        </nav>
+      <h1 style={styles.title}>Trade Republic – Erfahrungen & Infos</h1>
+      <p style={styles.subtitle}>
+        Trade Republic ist einer der bekanntesten Neobroker in Deutschland und
+        besonders bei Einsteigern sehr beliebt.
+      </p>
 
-        {/* HERO */}
-        <header style={styles.hero}>
-          <h1 style={styles.title}>Trade Republic – passt der Broker zu dir?</h1>
-          <p style={styles.subtitle}>
-            Kurz & ehrlich: Für wen Trade Republic sinnvoll ist – und wann eher
-            nicht.
-          </p>
-        </header>
+      {/* Kosten */}
+      <section style={styles.card}>
+        <h2>Kosten & Gebühren</h2>
+        <ul>
+          <li>Depotführung: kostenlos</li>
+          <li>ETF-Sparpläne: kostenlos</li>
+          <li>Aktien & ETFs: 1 € Fremdkostenpauschale pro Trade</li>
+        </ul>
+        <p style={styles.note}>
+          Tipp: Besonders für langfristige Anleger mit Sparplänen sehr attraktiv.
+        </p>
+      </section>
 
-        {/* CONTENT */}
-        <section style={styles.card}>
-          <h2>Für wen Trade Republic geeignet ist</h2>
-          <ul style={styles.list}>
-            <li>Einsteiger ohne große Vorerfahrung</li>
-            <li>ETF-Sparer mit monatlichem Sparplan</li>
-            <li>Kostenbewusste Anleger</li>
-            <li>Mobile-first Nutzer (App statt Desktop)</li>
+      {/* Vorteile / Nachteile */}
+      <section style={styles.grid}>
+        <div style={styles.card}>
+          <h3>Vorteile</h3>
+          <ul>
+            <li>Sehr einfache Bedienung</li>
+            <li>Viele kostenlose ETF-Sparpläne</li>
+            <li>Sehr niedrige Gebühren</li>
+            <li>App extrem einsteigerfreundlich</li>
           </ul>
-        </section>
-
-        <section style={styles.card}>
-          <h2>Wann ein anderer Broker besser sein kann</h2>
-          <ul style={styles.list}>
-            <li>Wenn du viele Analyse-Tools brauchst</li>
-            <li>Wenn du aktiv traden willst</li>
-            <li>Wenn du eine klassische Web-Plattform bevorzugst</li>
-          </ul>
-        </section>
-
-        {/* CTA */}
-        <section style={styles.cta}>
-          <p>
-            Wenn du langfristig und günstig investieren willst, ist Trade
-            Republic für viele der einfachste Einstieg.
-          </p>
-
-          {/* Externer Link – später Affiliate */}
-          <a
-            href="https://www.traderepublic.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={styles.button}
-          >
-            Zur offiziellen Trade-Republic-Seite →
-          </a>
-
-          <p style={styles.note}>
-            * Hinweis: Externer Link. Später wird dieser transparent als
-            Affiliate-Link gekennzeichnet.
-          </p>
-        </section>
-
-        {/* BACK */}
-        <div style={styles.back}>
-          <Link href="/investieren/broker/trade-republic">
-            ← Zurück zum Trade-Republic-Test
-          </Link>
         </div>
-      </main>
-    </>
+
+        <div style={styles.card}>
+          <h3>Nachteile</h3>
+          <ul>
+            <li>Nur ein Handelsplatz (LS Exchange)</li>
+            <li>Wenig Analyse-Tools</li>
+            <li>Für aktive Trader eingeschränkt</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Zielgruppe */}
+      <section style={styles.card}>
+        <h2>Für wen ist Trade Republic geeignet?</h2>
+        <p>
+          Trade Republic eignet sich besonders für Einsteiger, Sparplan-Nutzer
+          und Anleger, die einfach und günstig investieren möchten – ohne
+          komplexe Funktionen.
+        </p>
+      </section>
+
+      {/* Vergleich */}
+      <section style={styles.card}>
+        <h2>Trade Republic vs. Scalable Capital</h2>
+        <p>
+          Trade Republic ist besonders simpel und günstig, während Scalable
+          Capital mehr Auswahl und Flexibilität bietet – vor allem bei größeren
+          Portfolios.
+        </p>
+
+        <Link href="/investieren/broker/vergleich" style={styles.link}>
+          → Zum Broker-Vergleich
+        </Link>
+      </section>
+
+      {/* FAQ */}
+      <section style={styles.card}>
+        <h2>FAQ</h2>
+
+        <h4>Ist Trade Republic sicher?</h4>
+        <p>
+          Ja. Trade Republic ist ein regulierter deutscher Broker mit
+          Einlagensicherung bis 100.000 €.
+        </p>
+
+        <h4>Gibt es Trade Republic als App?</h4>
+        <p>
+          Ja. Trade Republic ist primär als Smartphone-App konzipiert, kann aber
+          auch im Browser genutzt werden.
+        </p>
+      </section>
+    </main>
   );
 }
 
@@ -99,16 +107,14 @@ const styles = {
     opacity: 0.7,
     marginBottom: "24px",
   },
-  hero: {
-    marginBottom: "36px",
-  },
   title: {
-    fontSize: "2.2rem",
-    marginBottom: "10px",
+    fontSize: "2.4rem",
+    marginBottom: "12px",
   },
   subtitle: {
-    fontSize: "1.05rem",
-    color: "#9ca3af",
+    fontSize: "1.1rem",
+    opacity: 0.9,
+    marginBottom: "32px",
   },
   card: {
     background: "#020617",
@@ -117,35 +123,19 @@ const styles = {
     padding: "24px",
     marginBottom: "24px",
   },
-  list: {
-    lineHeight: 1.9,
-    marginTop: "10px",
-  },
-  cta: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "28px",
-    textAlign: "center",
-    marginTop: "32px",
-  },
-  button: {
-    display: "inline-block",
-    marginTop: "14px",
-    padding: "12px 26px",
-    borderRadius: "999px",
-    background: "#2dd4bf",
-    color: "#020617",
-    fontWeight: "700",
-    textDecoration: "none",
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "20px",
+    marginBottom: "24px",
   },
   note: {
-    marginTop: "10px",
-    fontSize: "0.8rem",
-    opacity: 0.6,
+    opacity: 0.8,
+    marginTop: "12px",
+    fontSize: "0.95rem",
   },
-  back: {
-    marginTop: "40px",
-    textAlign: "center",
+  link: {
+    color: "#38bdf8",
+    fontWeight: 500,
   },
 };

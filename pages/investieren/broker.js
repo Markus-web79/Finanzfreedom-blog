@@ -3,72 +3,55 @@ import Link from "next/link";
 export default function BrokerOverview() {
   return (
     <div style={styles.page}>
-      {/* Breadcrumb */}
-      <div style={styles.breadcrumb}>
+      <p style={styles.breadcrumb}>
         <Link href="/">Startseite</Link> →{" "}
         <Link href="/investieren">Investieren</Link> → Broker
-      </div>
-
-      {/* Headline */}
-      <h1 style={styles.title}>Broker-Vergleich</h1>
-      <p style={styles.subtitle}>
-        Welcher Broker passt zu dir? Wir vergleichen die beliebtesten Online-Broker
-        für ETF-Sparpläne, Einsteiger und langfristigen Vermögensaufbau.
       </p>
 
-      {/* Cards */}
+      <h1 style={styles.title}>Broker-Vergleich</h1>
+      <p style={styles.subtitle}>
+        Finde den passenden Broker für ETFs, Aktien und langfristigen
+        Vermögensaufbau.
+      </p>
+
       <div style={styles.grid}>
         {/* Trade Republic */}
         <div style={styles.card}>
           <h2>Trade Republic</h2>
           <p>
-            Ideal für Einsteiger & ETF-Sparpläne. Sehr niedrige Kosten,
-            einfache App und große Auswahl.
+            Sehr günstiger Broker mit einfachem Sparplan-Modell. Ideal für
+            Einsteiger und ETF-Sparer.
           </p>
-          <ul>
-            <li>✔ 1 € pro Trade</li>
-            <li>✔ Kostenlose ETF-Sparpläne</li>
-            <li>✔ Sehr einfache Bedienung</li>
-          </ul>
-          <Link href="/investieren/broker/trade-republic" style={styles.button}>
-            Zum Broker →
+          <Link href="/investieren/broker/trade-republic">
+            <button style={styles.button}>Zum Test</button>
           </Link>
         </div>
 
-        {/* Platzhalter Scalable */}
+        {/* Scalable Capital */}
         <div style={styles.card}>
           <h2>Scalable Capital</h2>
           <p>
-            Für Anleger mit höherem Handelsvolumen. Flat-Fee-Modell und große
-            ETF-Auswahl.
+            Starker ETF-Broker mit Flatrate-Modell, großer Auswahl und
+            langfristiger Strategie-Ausrichtung.
           </p>
-          <ul>
-            <li>✔ Viele ETFs & Aktien</li>
-            <li>✔ Flat-Fee möglich</li>
-            <li>✔ Für Fortgeschrittene</li>
-          </ul>
-          <span style={styles.disabled}>Kommt als Nächstes</span>
+          <Link href="/investieren/broker/scalable-capital">
+            <button style={styles.button}>Zum Test</button>
+          </Link>
         </div>
 
         {/* Platzhalter ING */}
-        <div style={styles.card}>
+        <div style={{ ...styles.card, opacity: 0.6 }}>
           <h2>ING</h2>
           <p>
-            Solider deutscher Broker mit Banklizenz. Gut für langfristige
-            Anleger, weniger für Vieltrader.
+            Großer deutscher Broker mit Fokus auf Sicherheit und klassische
+            Geldanlage.
           </p>
-          <ul>
-            <li>✔ Große deutsche Bank</li>
-            <li>✔ Hohe Sicherheit</li>
-            <li>✖ Höhere Kosten</li>
-          </ul>
-          <span style={styles.disabled}>Kommt als Nächstes</span>
+          <button style={styles.buttonDisabled}>Kommt bald</button>
         </div>
       </div>
 
-      {/* CTA */}
-      <div style={styles.cta}>
-        <Link href="/blog">→ Mehr Wissen im Blog</Link>
+      <div style={styles.back}>
+        <Link href="/investieren">← Zurück zu Investieren</Link>
       </div>
     </div>
   );
@@ -80,53 +63,56 @@ const styles = {
     padding: "60px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
-    maxWidth: "1100px",
+    maxWidth: "1000px",
     margin: "0 auto",
   },
   breadcrumb: {
     fontSize: "0.85rem",
     opacity: 0.7,
-    marginBottom: "24px",
+    marginBottom: "20px",
   },
   title: {
-    fontSize: "2.5rem",
-    marginBottom: "12px",
+    fontSize: "2.4rem",
+    marginBottom: "10px",
   },
   subtitle: {
     fontSize: "1.1rem",
-    maxWidth: "700px",
-    marginBottom: "40px",
     opacity: 0.85,
+    marginBottom: "40px",
   },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
     gap: "24px",
   },
   card: {
-    background: "linear-gradient(180deg, #020617, #020617)",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
+    background: "#020617",
+    borderRadius: "12px",
     padding: "24px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
   },
   button: {
-    display: "inline-block",
     marginTop: "16px",
-    padding: "10px 16px",
+    background: "#0ea5e9",
+    border: "none",
     borderRadius: "8px",
-    background: "#0f766e",
-    color: "#ecfeff",
-    textDecoration: "none",
-    fontWeight: "600",
+    padding: "10px 16px",
+    fontSize: "0.95rem",
+    cursor: "pointer",
+    color: "#020617",
   },
-  disabled: {
-    display: "inline-block",
+  buttonDisabled: {
     marginTop: "16px",
-    opacity: 0.5,
-    fontSize: "0.9rem",
+    background: "#334155",
+    border: "none",
+    borderRadius: "8px",
+    padding: "10px 16px",
+    fontSize: "0.95rem",
+    color: "#94a3b8",
+    cursor: "not-allowed",
   },
-  cta: {
-    marginTop: "60px",
-    fontSize: "1rem",
+  back: {
+    marginTop: "50px",
+    fontSize: "0.95rem",
   },
 };

@@ -3,37 +3,37 @@ import Link from "next/link";
 export default function EtfsIndex() {
   return (
     <main style={styles.page}>
-      <h1 style={styles.title}>ETFs – einfach & verständlich erklärt</h1>
+      <h1 style={styles.title}>ETFs – verständlich erklärt</h1>
 
       <p style={styles.intro}>
-        ETFs (Exchange Traded Funds) sind die beliebteste Möglichkeit,
-        langfristig Vermögen aufzubauen. Sie sind günstig, transparent
-        und ideal für Einsteiger.
+        ETFs (Exchange Traded Funds) sind eine einfache und kostengünstige
+        Möglichkeit, langfristig Vermögen aufzubauen. Hier findest du alle
+        wichtigen ETF-Themen übersichtlich erklärt.
       </p>
 
       <section style={styles.grid}>
         <Card
-          title="ETF-Sparplan"
-          text="Der einfachste Einstieg in den Vermögensaufbau – Schritt für Schritt erklärt."
-          href="/investieren/etfs/etf-sparplan"
-        />
-
-        <Card
           title="MSCI World ETF"
-          text="Der Klassiker unter den ETFs – breit gestreut über Industrieländer."
+          text="Der Klassiker für den langfristigen Vermögensaufbau mit weltweiter Streuung."
           href="/investieren/etfs/msci-world"
         />
 
         <Card
-          title="MSCI Emerging Markets"
-          text="Ergänzung zum MSCI World – Schwellenländer mit höherem Risiko & Potenzial."
+          title="MSCI Emerging Markets ETF"
+          text="Investieren in Schwellenländer wie China, Indien oder Brasilien."
           href="/investieren/etfs/msci-emerging-markets"
         />
 
         <Card
           title="All-World ETFs"
-          text="Ein ETF für die ganze Welt – Industrie- & Schwellenländer kombiniert."
+          text="Ein ETF für die ganze Welt – Industrie- und Schwellenländer kombiniert."
           href="/investieren/etfs/all-world"
+        />
+
+        <Card
+          title="ETF-Sparplan"
+          text="So investierst du regelmäßig und automatisiert in ETFs."
+          href="/investieren/etfs/etf-sparplan"
         />
 
         <Card
@@ -76,7 +76,7 @@ const styles = {
   intro: {
     opacity: 0.85,
     marginBottom: "48px",
-    maxWidth: "700px",
+    maxWidth: "720px",
   },
   grid: {
     display: "grid",
@@ -90,7 +90,7 @@ const styles = {
     padding: "24px",
     textDecoration: "none",
     color: "#e5e7eb",
-    transition: "all 0.2s ease",
+    transition: "transform 0.15s ease, border 0.15s ease",
   },
   link: {
     color: "#2dd4bf",

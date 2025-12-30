@@ -1,60 +1,83 @@
-import Head from "next/head";
 import Link from "next/link";
 
 export default function ScalableCapital() {
   return (
-    <>
-      <Head>
-        <title>Scalable Capital Test & Erfahrungen | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Scalable Capital im Test: Kosten, Vorteile, Nachteile und für wen sich der Broker wirklich lohnt."
-        />
-      </Head>
-
-      <div style={styles.page}>
-        {/* Breadcrumb */}
-        <div style={styles.breadcrumb}>
-          <Link href="/">Startseite</Link> →{" "}
-          <Link href="/investieren">Investieren</Link> →{" "}
-          <Link href="/investieren/broker">Broker</Link> → Scalable Capital
-        </div>
-
-        {/* Hero */}
-        <section style={styles.hero}>
-          <h1 style={styles.title}>Scalable Capital</h1>
-          <p style={styles.subtitle}>
-            Flexible Gebührenmodelle, große ETF-Auswahl und ideal für aktive
-            Anleger & Sparpläne.
-          </p>
-        </section>
-
-        {/* Empfehlung */}
-        <section style={styles.card}>
-          <p>
-            <strong>Empfehlung:</strong> Besonders geeignet für Anleger mit
-            höherem Handelsvolumen, ETF-Fans und Nutzer, die auch am Desktop
-            investieren möchten.
-          </p>
-
-          <Link
-            href="/investieren/broker/scalable-capital/info"
-            style={styles.button}
-          >
-            Jetzt informieren →
-          </Link>
-
-          <p style={styles.note}>
-            * Externer Anbieter – Informationen unabhängig & transparent
-          </p>
-        </section>
-
-        {/* Back */}
-        <div style={styles.back}>
-          <Link href="/investieren/broker">← Zurück zur Broker-Übersicht</Link>
-        </div>
+    <main style={styles.page}>
+      {/* Breadcrumb */}
+      <div style={styles.breadcrumb}>
+        <Link href="/">Startseite</Link> →{" "}
+        <Link href="/investieren">Investieren</Link> →{" "}
+        <Link href="/investieren/broker">Broker</Link> → Scalable Capital
       </div>
-    </>
+
+      {/* Hero */}
+      <section style={styles.hero}>
+        <h1 style={styles.title}>Scalable Capital</h1>
+        <p style={styles.subtitle}>
+          Einer der beliebtesten Online-Broker für ETF-Sparpläne & langfristigen
+          Vermögensaufbau in Deutschland.
+        </p>
+      </section>
+
+      {/* Empfehlung */}
+      <section style={styles.card}>
+        <h2>Unsere Empfehlung</h2>
+        <p>
+          <strong>Scalable Capital</strong> eignet sich besonders für
+          Einsteiger, die einfach, günstig und langfristig in ETFs investieren
+          möchten.
+        </p>
+      </section>
+
+      {/* Vorteile */}
+      <section style={styles.card}>
+        <h2>Vorteile</h2>
+        <ul>
+          <li>✔️ Sehr günstige Gebühren</li>
+          <li>✔️ Große Auswahl an ETF-Sparplänen</li>
+          <li>✔️ Einfache & moderne App</li>
+          <li>✔️ Ideal für langfristigen Vermögensaufbau</li>
+        </ul>
+      </section>
+
+      {/* Nachteile */}
+      <section style={styles.card}>
+        <h2>Nachteile</h2>
+        <ul>
+          <li>❌ Kein klassischer Filial-Broker</li>
+          <li>❌ Weniger geeignet für Daytrader</li>
+        </ul>
+      </section>
+
+      {/* Für wen geeignet */}
+      <section style={styles.card}>
+        <h2>Für wen ist Scalable Capital geeignet?</h2>
+        <p>
+          Für alle, die regelmäßig sparen möchten, wenig Zeit investieren wollen
+          und langfristig Vermögen aufbauen möchten – besonders mit ETFs.
+        </p>
+      </section>
+
+      {/* CTA */}
+      <section style={styles.cta}>
+        <a
+          href="#"
+          style={styles.button}
+          rel="nofollow noopener"
+        >
+          Jetzt informieren →
+        </a>
+        <p style={styles.note}>
+          * Transparenter Hinweis: Dieser Link kann zukünftig ein Affiliate-Link
+          sein.
+        </p>
+      </section>
+
+      {/* Back */}
+      <div style={styles.back}>
+        <Link href="/investieren/broker">← Zurück zur Broker-Übersicht</Link>
+      </div>
+    </main>
   );
 }
 
@@ -84,19 +107,22 @@ const styles = {
     opacity: 0.85,
   },
   card: {
-    background: "rgba(30,41,59,0.55)",
-    borderRadius: "14px",
-    padding: "28px",
-    marginBottom: "40px",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "12px",
+    padding: "24px",
+    marginBottom: "24px",
+  },
+  cta: {
+    textAlign: "center",
+    marginTop: "40px",
   },
   button: {
     display: "inline-block",
-    marginTop: "20px",
-    padding: "14px 22px",
-    borderRadius: "10px",
+    padding: "14px 28px",
     background: "#14b8a6",
     color: "#020617",
+    borderRadius: "8px",
     fontWeight: "600",
     textDecoration: "none",
   },
@@ -106,7 +132,7 @@ const styles = {
     marginTop: "12px",
   },
   back: {
-    marginTop: "30px",
-    fontSize: "0.9rem",
+    marginTop: "48px",
+    opacity: 0.8,
   },
 };

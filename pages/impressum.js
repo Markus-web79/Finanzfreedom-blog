@@ -1,34 +1,38 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { marked } from "marked";
-import Head from "next/head";
-
-export default function Impressum({ html }) {
+export default function Impressum() {
   return (
-    <>
-      <Head>
-        <title>Impressum | FinanzFreedom</title>
-      </Head>
-      <main style={{ maxWidth: "800px", margin: "2rem auto", color: "white" }}>
-        <h1>Impressum</h1>
-        <article dangerouslySetInnerHTML={{ __html: html }} />
-      </main>
-    </>
+    <main style={styles.page}>
+      <h1>Impressum</h1>
+
+      <p>
+        Angaben gemäß § 5 TMG
+      </p>
+
+      <p>
+        FinanzFreedom<br />
+        Betreiber: [DEIN NAME]<br />
+        Straße / Nr.<br />
+        PLZ Ort<br />
+        Deutschland
+      </p>
+
+      <p>
+        Kontakt:<br />
+        E-Mail: kontakt@finanzfreedom.de
+      </p>
+
+      <p>
+        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br />
+        [DEIN NAME]
+      </p>
+    </main>
   );
 }
 
-export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), "content", "impressum.md");
-
-  if (!fs.existsSync(filePath)) {
-    return { notFound: true };
-  }
-
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(raw);
-  const html = marked(content);
-
-  return { props: { html } };
-}
-
+const styles = {
+  page: {
+    maxWidth: "900px",
+    margin: "0 auto",
+    padding: "60px 20px",
+    color: "#e5e7eb",
+  },
+};

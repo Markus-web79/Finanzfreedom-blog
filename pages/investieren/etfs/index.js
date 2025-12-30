@@ -17,9 +17,9 @@ export default function EtfUebersicht() {
             Der Klassiker für Einsteiger: breit gestreut über
             Industrieländer weltweit.
           </p>
-          <Link href="/investieren/etfs/msci-world">
-            ➜ Zum MSCI World
-          </Link>
+<Link href="/investieren/etfs">
+  Mehr erfahren →
+</Link>
         </div>
 
         {/* All World (Platzhalter) */}

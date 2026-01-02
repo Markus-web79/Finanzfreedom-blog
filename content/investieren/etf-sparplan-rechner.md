@@ -1,112 +1,69 @@
-# ETF-Sparplan Rechner – So viel Vermögen kannst du aufbauen
+---
+title: ETF-Sparplan Rechner – So viel Vermögen kannst du aufbauen
+description: Berechne, wie viel Vermögen du mit einem ETF-Sparplan langfristig aufbauen kannst – mit einfachen Beispielen und realistischen Renditen.
+category: investieren
+---
 
-Ein ETF-Sparplan ist eine der einfachsten und effektivsten Methoden, um langfristig Vermögen aufzubauen.  
-Doch wie viel Geld kommt dabei eigentlich zusammen?
+## ETF-Sparplan Rechner – einfach erklärt
 
-Mit diesem ETF-Sparplan-Rechner kannst du realistisch einschätzen, **wie sich regelmäßiges Investieren über Jahre auswirkt**.
+Mit einem ETF-Sparplan kannst du über Jahre und Jahrzehnte Vermögen aufbauen.
+Hier siehst du **konkrete Beispiele**, wie sich dein Geld entwickeln kann.
 
 ---
 
-## Wie funktioniert ein ETF-Sparplan?
+## Welche Faktoren beeinflussen deinen ETF-Sparplan?
 
-Bei einem ETF-Sparplan investierst du regelmäßig (z. B. monatlich) einen festen Betrag in einen ETF – meist automatisch.
-
-Der größte Vorteil:  
-👉 **Zinseszinseffekt + langfristiges Wachstum**
-
----
-
-## ETF-Sparplan Rechner – Beispielrechnung
-
-### Beispiel:
-- Sparrate: **200 € / Monat**
-- Laufzeit: **30 Jahre**
-- Durchschnittliche Rendite: **7 % p.a.**
-
-### Ergebnis:
-- Eingezahlt: **72.000 €**
-- Endvermögen: **ca. 245.000 €**
-
-💡 **Mehr als 170.000 € stammen allein aus Rendite.**
+- Monatliche Sparrate
+- Laufzeit
+- Durchschnittliche Rendite
+- Disziplin (Zeit im Markt!)
 
 ---
 
-## Weitere Beispielrechnungen
+## Beispiel-Rechnungen (realistisch)
 
-### 100 € monatlich
-- 30 Jahre
-- ca. **122.000 € Endvermögen**
+### 🔹 100 € pro Monat – 30 Jahre – 6 % Rendite
 
-### 300 € monatlich
-- 30 Jahre
-- ca. **368.000 € Endvermögen**
+| Sparrate | Laufzeit | Eingezahlt | Endvermögen |
+|--------|----------|------------|-------------|
+| 100 €  | 30 Jahre | 36.000 €   | ca. 100.000 € |
 
-### 500 € monatlich
-- 30 Jahre
-- ca. **615.000 € Endvermögen**
-
-👉 Je früher du startest, desto größer wirkt der Zinseszinseffekt.
+👉 **Mehr als verdreifacht – ohne Stress**
 
 ---
 
-## Welche Rendite ist realistisch?
+### 🔹 250 € pro Monat – 30 Jahre – 6 %
 
-Langfristig erzielten weltweite Aktienmärkte im Schnitt:
-
-- **6–8 % pro Jahr**
-- MSCI World: historisch ca. 7 %
-
-Natürlich schwanken die Kurse – kurzfristig, aber **langfristig steigt der Markt**.
+| Sparrate | Laufzeit | Eingezahlt | Endvermögen |
+|--------|----------|------------|-------------|
+| 250 €  | 30 Jahre | 90.000 €   | ca. 250.000 € |
 
 ---
 
-## Welcher ETF eignet sich für den Sparplan?
+### 🔹 500 € pro Monat – 30 Jahre – 6 %
 
-Beliebte ETFs für ETF-Sparpläne sind:
-
-- MSCI World ETFs
-- FTSE All-World ETFs
-- Kombination aus World + Emerging Markets
-
-👉 Wichtig: **breite Streuung & niedrige Kosten**
+| Sparrate | Laufzeit | Eingezahlt | Endvermögen |
+|--------|----------|------------|-------------|
+| 500 €  | 30 Jahre | 180.000 €  | ca. 500.000 € |
 
 ---
 
-## Welcher Broker ist ideal für ETF-Sparpläne?
+## Ab wann lohnt sich ein ETF-Sparplan?
 
-Nicht jeder Broker ist gleich gut geeignet.
-
-### Unsere Empfehlungen:
-- **Trade Republic** → ideal für Einsteiger
-- **Scalable Capital** → mehr Auswahl & Flexibilität
-
-Beide bieten:
-- kostenlose oder sehr günstige ETF-Sparpläne
-- einfache Bedienung
-- automatisches Investieren
+➡️ **Je früher du startest, desto stärker wirkt der Zinseszinseffekt.**  
+Schon kleine Beträge machen einen riesigen Unterschied.
 
 ---
 
-## Fazit: Lohnt sich ein ETF-Sparplan?
+## Welcher Broker eignet sich für einen ETF-Sparplan?
 
-✅ Ja – für fast jeden langfristigen Anleger.
+👉 **Kostenlos besparen, große ETF-Auswahl & einfache Bedienung sind entscheidend.**
 
-Ein ETF-Sparplan:
-- ist einfach
-- ist günstig
-- funktioniert auch mit kleinen Beträgen
-- nutzt den Zinseszinseffekt optimal
-
-👉 Entscheidend ist **nicht der perfekte Zeitpunkt**, sondern **früh anzufangen**.
+➡️ [Zum Vergleich der besten ETF-Sparplan-Broker](./bester-broker-fuer-etf-sparplaene.md)
 
 ---
 
-## Nächster Schritt
+## Fazit
 
-Wenn du tiefer einsteigen willst, lies auch:
-
-- Bester Broker für ETF-Sparpläne
-- MSCI World kaufen – lohnt sich das?
-- MSCI World vs. FTSE All-World
-
-So baust du dir Schritt für Schritt ein solides ETF-Portfolio auf.
+Ein ETF-Sparplan ist kein schnelles Reichwerden –  
+aber **eine der zuverlässigsten Methoden**, langfristig Vermögen aufzubauen.

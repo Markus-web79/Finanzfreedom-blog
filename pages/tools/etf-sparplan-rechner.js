@@ -321,3 +321,10 @@ const styles = {
     grid: { gridTemplateColumns: "1fr" },
   },
 };
+<div style={{ marginTop: "40px", padding: "24px", border: "1px solid #2dd4bf", borderRadius: "12px" }}>
+  <h3>Passenden ETF-Broker finden</h3>
+  <p>Vergleiche Kosten, Sparpläne & Vorteile der besten Anbieter.</p>
+  <a href="/investieren/bester-broker-fuer-etf-sparplaene">
+    ➜ Jetzt Broker vergleichen
+  </a>
+</div>

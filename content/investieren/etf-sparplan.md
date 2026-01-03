@@ -20,13 +20,3 @@ Ein ETF-Sparplan ermöglicht dir, regelmäßig in börsengehandelte Indexfonds z
 
 ## Fazit
 Ein ETF-Sparplan ist ideal für langfristigen Vermögensaufbau.
-
----
-
-## Welcher Broker eignet sich für einen ETF-Sparplan?
-
-Für einen erfolgreichen ETF-Sparplan sind niedrige Kosten,
-eine große ETF-Auswahl und kostenlose Sparpläne entscheidend.
-
-👉 **[Hier findest du die besten Broker für ETF-Sparpläne im Vergleich](./bester-broker-fuer-etf-sparplaene.md)**
-

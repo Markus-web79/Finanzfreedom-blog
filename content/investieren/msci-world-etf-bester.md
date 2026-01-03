@@ -131,3 +131,14 @@ Wenn du tiefer einsteigen willst, lies auch:
 - MSCI World vs. FTSE All-World
 - ETF Sparplan Rechner
 - Bester Broker für ETF-Sparpläne
+
+---
+
+## Nächster Schritt
+
+👉 **ETF-Sparplan berechnen:**  
+[ETF-Sparplan Rechner →](/tools/etf-sparplan-rechner)
+
+👉 **Passenden Broker finden:**  
+[Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
+

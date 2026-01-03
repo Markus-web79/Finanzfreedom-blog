@@ -107,3 +107,14 @@ Es gibt **kein richtig oder falsch** – nur unterschiedliche Strategien:
 
 Das Wichtigste ist nicht der ETF –  
 **sondern dass du anfängst.**
+
+---
+
+## Nächster Schritt
+
+👉 **ETF-Sparplan berechnen:**  
+[ETF-Sparplan Rechner →](/tools/etf-sparplan-rechner)
+
+👉 **Passenden Broker finden:**  
+[Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
+

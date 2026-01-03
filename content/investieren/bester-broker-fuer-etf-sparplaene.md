@@ -56,3 +56,14 @@ Für reine ETF Sparpläne ist er jedoch meist teurer.
 Wenn du langfristig und regelmäßig investieren möchtest, ist ein **günstiger Broker mit kostenlosen ETF Sparplänen** die beste Wahl.
 
 👉 **Jetzt Broker vergleichen & ETF Sparplan starten**
+
+---
+
+## Nächster Schritt
+
+👉 **ETF-Sparplan berechnen:**  
+[ETF-Sparplan Rechner →](/tools/etf-sparplan-rechner)
+
+👉 **Passenden Broker finden:**  
+[Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
+

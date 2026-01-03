@@ -91,3 +91,14 @@ Der MSCI World ETF ist **eine der einfachsten und effektivsten Möglichkeiten**,
 Mit wenig Aufwand erhältst du maximale Streuung und solide Renditechancen.
 
 👉 **Ideal als Basis-ETF für fast jedes Portfolio.**
+
+---
+
+## Nächster Schritt
+
+👉 **ETF-Sparplan berechnen:**  
+[ETF-Sparplan Rechner →](/tools/etf-sparplan-rechner)
+
+👉 **Passenden Broker finden:**  
+[Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
+

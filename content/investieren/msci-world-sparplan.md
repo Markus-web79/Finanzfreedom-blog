@@ -61,3 +61,14 @@ Achte besonders auf:
 Ein MSCI World Sparplan ist eine der einfachsten und sinnvollsten Möglichkeiten, langfristig Vermögen aufzubauen. Besonders für Einsteiger bietet er maximale Diversifikation bei minimalem Aufwand.
 
 👉 **Jetzt starten & passenden Broker wählen**
+
+---
+
+## Nächster Schritt
+
+👉 **ETF-Sparplan berechnen:**  
+[ETF-Sparplan Rechner →](/tools/etf-sparplan-rechner)
+
+👉 **Passenden Broker finden:**  
+[Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
+

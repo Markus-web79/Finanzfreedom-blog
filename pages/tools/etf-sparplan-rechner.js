@@ -1,137 +1,100 @@
-import { useState } from "react";
 import Head from "next/head";
+import { useState } from "react";
 
 export default function EtfSparplanRechner() {
   const [rate, setRate] = useState(200);
-  const [years, setYears] = useState(30);
-  const [returnRate, setReturnRate] = useState(7);
-  const [result, setResult] = useState(null);
+  const [jahre, setJahre] = useState(20);
+  const [rendite, setRendite] = useState(6);
 
-  function calculate() {
-    const monthlyRate = returnRate / 100 / 12;
-    const months = years * 12;
+  const monate = jahre * 12;
+  const monatlicheRendite = rendite / 100 / 12;
 
-    let total = 0;
-    for (let i = 0; i < months; i++) {
-      total = total * (1 + monthlyRate) + rate;
-    }
-
-    setResult(Math.round(total));
-  }
+  const endvermoegen =
+    monatlicheRendite === 0
+      ? rate * monate
+      : rate *
+        ((Math.pow(1 + monatlicheRendite, monate) - 1) /
+          monatlicheRendite);
 
   return (
     <>
       <Head>
-        <title>ETF Sparplan Rechner – FinanzFreedom</title>
+        <title>ETF Sparplan Rechner – Rendite & Vermögen berechnen</title>
         <meta
           name="description"
-          content="Berechne einfach, wie viel dein ETF Sparplan langfristig wert sein kann."
+          content="Kostenloser ETF Sparplan Rechner: Berechne Rendite, Laufzeit, Sparrate und dein mögliches Endvermögen einfach online."
         />
       </Head>
 
-      <main style={{ maxWidth: "720px", margin: "0 auto", padding: "3rem 1.5rem" }}>
+      <main style={{ maxWidth: "720px", margin: "0 auto", padding: "40px 20px" }}>
         <h1>ETF Sparplan Rechner</h1>
-        <p style={{ opacity: 0.85 }}>
-          Berechne, wie viel Vermögen du mit einem ETF-Sparplan langfristig
+        <p>
+          Berechne in wenigen Sekunden, wie viel Vermögen du mit einem ETF-Sparplan
           aufbauen kannst.
         </p>
 
-        {/* Eingaben */}
-        <div style={{ marginTop: "2rem" }}>
+        <div style={{ marginTop: "32px" }}>
           <label>Monatliche Sparrate (€)</label>
           <input
             type="number"
             value={rate}
             onChange={(e) => setRate(Number(e.target.value))}
-            style={{ width: "100%", marginBottom: "1rem" }}
+            style={{ width: "100%", padding: "10px", marginBottom: "16px" }}
           />
 
           <label>Laufzeit (Jahre)</label>
           <input
             type="number"
-            value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
-            style={{ width: "100%", marginBottom: "1rem" }}
+            value={jahre}
+            onChange={(e) => setJahre(Number(e.target.value))}
+            style={{ width: "100%", padding: "10px", marginBottom: "16px" }}
           />
 
-          <label>Erwartete Rendite (% p.a.)</label>
+          <label>Ø Rendite pro Jahr (%)</label>
           <input
             type="number"
-            value={returnRate}
-            onChange={(e) => setReturnRate(Number(e.target.value))}
-            style={{ width: "100%", marginBottom: "1.5rem" }}
+            value={rendite}
+            onChange={(e) => setRendite(Number(e.target.value))}
+            style={{ width: "100%", padding: "10px" }}
           />
-
-          <button onClick={calculate}>Berechnen</button>
         </div>
 
-        {/* Ergebnis */}
-        {result && (
-          <>
-            <div
-              style={{
-                marginTop: "2.5rem",
-                padding: "1.5rem",
-                borderRadius: "12px",
-                border: "1px solid #22d3ee",
-                background: "#020617",
-              }}
-            >
-              <h2>Ergebnis</h2>
-              <p>
-                Nach <strong>{years} Jahren</strong> hättest du ca.
-              </p>
-              <p style={{ fontSize: "1.6rem", fontWeight: 700 }}>
-                {result.toLocaleString("de-DE")} €
-              </p>
-
-              {/* 🔥 Conversion CTA */}
-              <div style={{ marginTop: "1.5rem" }}>
-                <h3>Passender ETF-Broker für deinen Sparplan</h3>
-                <p style={{ opacity: 0.85 }}>
-                  Für langfristige ETF-Sparpläne sind niedrige Gebühren und
-                  kostenlose Sparplanausführungen entscheidend.
-                </p>
-                <a
-                  href="/investieren/bester-broker-fuer-etf-sparplaene"
-                  style={{
-                    display: "inline-block",
-                    marginTop: "0.75rem",
-                    padding: "10px 16px",
-                    borderRadius: "8px",
-                    background: "#22d3ee",
-                    color: "#020617",
-                    fontWeight: 600,
-                    textDecoration: "none",
-                  }}
-                >
-                  ➜ Geeigneten Broker vergleichen
-                </a>
-              </div>
-            </div>
-          </>
-        )}
-
-        {/* Abschluss CTA */}
         <div
           style={{
-            marginTop: "3rem",
-            padding: "2rem",
-            borderRadius: "16px",
-            background: "#0f172a",
-            border: "1px solid #1e293b",
+            marginTop: "32px",
+            padding: "20px",
+            border: "1px solid #2dd4bf",
+            borderRadius: "12px",
           }}
         >
-          <h3>ETF Sparplan umsetzen</h3>
-          <p style={{ opacity: 0.8 }}>
-            Du weißt jetzt, was dein Sparplan bringen kann. Der nächste Schritt
-            ist ein günstiger und zuverlässiger Broker.
+          <h2>Ergebnis</h2>
+          <p>
+            <strong>Endvermögen:</strong>{" "}
+            {endvermoegen.toLocaleString("de-DE", {
+              style: "currency",
+              currency: "EUR",
+            })}
+          </p>
+        </div>
+
+        <div
+          style={{
+            marginTop: "48px",
+            padding: "24px",
+            border: "1px solid #0ea5e9",
+            borderRadius: "12px",
+          }}
+        >
+          <h3>Jetzt passenden ETF-Broker finden</h3>
+          <p>
+            Vergleiche die besten Broker für ETF-Sparpläne mit niedrigen Gebühren
+            & kostenlosen Sparplänen.
           </p>
           <a
             href="/investieren/bester-broker-fuer-etf-sparplaene"
-            style={{ fontWeight: 600 }}
+            style={{ color: "#0ea5e9", fontWeight: "bold" }}
           >
-            ➜ Broker für ETF-Sparpläne ansehen
+            → Broker vergleichen
           </a>
         </div>
       </main>

@@ -8,11 +8,12 @@ export default function Home() {
         <title>FinanzFreedom – Dein unabhängiges Finanzportal</title>
         <meta
           name="description"
-          content="FinanzFreedom: Investieren, Versicherungen, Sparen & Wissen – unabhängig, verständlich und portalartig aufgebaut."
+          content="FinanzFreedom: Investieren, ETFs, Sparpläne, Vergleiche & Tools – unabhängig, verständlich und portalartig aufgebaut."
         />
       </Head>
 
       <main style={styles.page}>
+        {/* HERO */}
         <section style={styles.hero}>
           <h1 style={styles.title}>FinanzFreedom</h1>
           <p style={styles.subtitle}>
@@ -21,6 +22,7 @@ export default function Home() {
           </p>
         </section>
 
+        {/* HAUPT-KATEGORIEN */}
         <section style={styles.grid}>
           <Link href="/investieren" style={styles.card}>
             <h2>Investieren</h2>
@@ -54,16 +56,49 @@ export default function Home() {
           </Link>
         </section>
 
-        <section style={styles.blogHint}>
-          <p>Du willst tiefer einsteigen?</p>
-          <Link href="/blog" style={styles.blogLink}>
-            → Zum Blog
-          </Link>
+        {/* PORTAL CALL TO ACTION */}
+        <section style={styles.portalCta}>
+          <h2 style={styles.portalTitle}>Starte jetzt mit FinanzFreedom</h2>
+
+          <div style={styles.portalGrid}>
+            <Link href="/investieren" style={styles.portalCard}>
+              <h3>📈 Investieren lernen</h3>
+              <p>
+                ETF-Strategien, MSCI World, Sparpläne & Grundlagen verständlich
+                erklärt.
+              </p>
+            </Link>
+
+            <Link
+              href="/tools/etf-sparplan-rechner"
+              style={styles.portalCard}
+            >
+              <h3>🧮 ETF-Sparplan berechnen</h3>
+              <p>
+                Berechne in Sekunden, wie viel Vermögen du langfristig aufbauen
+                kannst.
+              </p>
+            </Link>
+
+            <Link
+              href="/investieren/bester-broker-fuer-etf-sparplaene"
+              style={styles.portalCard}
+            >
+              <h3>🏦 Broker vergleichen</h3>
+              <p>
+                Finde den besten ETF-Broker für Sparpläne, Kosten & Konditionen.
+              </p>
+            </Link>
+          </div>
         </section>
       </main>
     </>
   );
 }
+
+/* =======================
+   STYLES
+======================= */
 
 const styles = {
   page: {
@@ -72,20 +107,24 @@ const styles = {
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
+
   hero: {
     textAlign: "center",
     maxWidth: "900px",
     margin: "0 auto 60px",
   },
+
   title: {
     fontSize: "3rem",
     marginBottom: "16px",
     color: "#ffffff",
   },
+
   subtitle: {
     fontSize: "1.2rem",
     color: "#9ca3af",
   },
+
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -93,6 +132,7 @@ const styles = {
     maxWidth: "1100px",
     margin: "0 auto",
   },
+
   card: {
     background: "linear-gradient(145deg, #020617, #020617)",
     border: "1px solid #1e293b",
@@ -102,37 +142,34 @@ const styles = {
     color: "#e5e7eb",
     transition: "all 0.2s ease",
   },
-  blogHint: {
-    marginTop: "60px",
+
+  /* PORTAL CTA */
+  portalCta: {
+    marginTop: "80px",
     textAlign: "center",
-    color: "#9ca3af",
   },
-  blogLink: {
-    display: "inline-block",
-    marginTop: "8px",
-    color: "#2dd4bf",
+
+  portalTitle: {
+    fontSize: "2rem",
+    marginBottom: "32px",
+    color: "#ffffff",
+  },
+
+  portalGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "24px",
+    maxWidth: "1000px",
+    margin: "0 auto",
+  },
+
+  portalCard: {
+    background: "linear-gradient(145deg, #020617, #020617)",
+    border: "1px solid #1e293b",
+    borderRadius: "16px",
+    padding: "28px",
     textDecoration: "none",
-    fontWeight: "600",
+    color: "#e5e7eb",
+    transition: "all 0.2s ease",
   },
 };
-<section style={{ marginTop: "80px", textAlign: "center" }}>
-  <h2>ETF-Sparplan Rechner</h2>
-  <p style={{ color: "#9ca3af" }}>
-    Berechne kostenlos, wie viel Vermögen du mit einem ETF-Sparplan aufbauen kannst.
-  </p>
-  <a
-    href="/tools/etf-sparplan-rechner"
-    style={{
-      display: "inline-block",
-      marginTop: "16px",
-      padding: "14px 24px",
-      background: "#2dd4bf",
-      color: "#020617",
-      borderRadius: "10px",
-      fontWeight: "600",
-      textDecoration: "none",
-    }}
-  >
-    Zum ETF-Sparplan-Rechner →
-  </a>
-</section>

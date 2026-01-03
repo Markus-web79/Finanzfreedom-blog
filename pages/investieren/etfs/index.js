@@ -1,113 +1,92 @@
+import Head from "next/head";
 import Link from "next/link";
 
-export default function Investieren() {
+export default function EtfHub() {
   return (
-    <main style={styles.page}>
-      <h1 style={styles.title}>Investieren</h1>
-      <p style={styles.subtitle}>
-        Baue langfristig Vermögen auf – mit ETFs, Aktien, Sparplänen und der
-        richtigen Strategie.
-      </p>
+    <>
+      <Head>
+        <title>ETFs – Strategien & Grundlagen | FinanzFreedom</title>
+        <meta
+          name="description"
+          content="ETFs verständlich erklärt: Strategien, MSCI World, Sparpläne & langfristiger Vermögensaufbau."
+        />
+      </Head>
 
-      <div style={styles.grid}>
-        {/* ETF Sparpläne */}
-        <div style={styles.card}>
-          <h2>ETF-Sparpläne</h2>
+      <main style={styles.page}>
+        <section style={styles.hero}>
+          <h1>ETFs verstehen & richtig investieren</h1>
           <p>
-            Die einfachste Art zu investieren. Ideal für Einsteiger und
-            langfristigen Vermögensaufbau.
+            ETFs sind das Fundament für langfristigen Vermögensaufbau.
+            Hier findest du Strategien, Vergleiche & klare Empfehlungen.
           </p>
-          <Link href="/investieren/etfs" style={styles.link}>
-            Mehr erfahren →
-          </Link>
-        </div>
+        </section>
 
-        {/* Aktien & Strategien */}
-        <div style={styles.card}>
-          <h2>Aktien & Strategien</h2>
-          <p>
-            Einzelaktien, Dividenden, Buy & Hold – verständlich erklärt ohne
-            Hype.
-          </p>
-          <Link href="/investieren/aktien" style={styles.link}>
-            Mehr erfahren →
+        <section style={styles.grid}>
+          <Link href="/blog/msci-world-kaufen" style={styles.card}>
+            <h3>MSCI World</h3>
+            <p>Aufbau, Chancen, Risiken & wie du investierst.</p>
           </Link>
-        </div>
 
-        {/* Broker vergleichen */}
-        <div style={styles.card}>
-          <h2>Broker vergleichen</h2>
-          <p>
-            Welcher Broker passt zu dir? Kosten, Funktionen und Vorteile im
-            Überblick.
-          </p>
-          <Link href="/investieren/broker" style={styles.link}>
-            Broker ansehen →
+          <Link href="/blog/etf-sparplan" style={styles.card}>
+            <h3>ETF-Sparpläne</h3>
+            <p>Monatlich investieren – einfach & automatisiert.</p>
           </Link>
-        </div>
 
-        {/* Einsteiger Guide */}
-        <div style={styles.card}>
-          <h2>Einsteiger-Guide</h2>
-          <p>
-            Schritt für Schritt starten – auch ohne Vorkenntnisse oder großes
-            Kapital.
-          </p>
-          <Link href="/blog" style={styles.link}>
-            Guide lesen →
+          <Link href="/blog/etf-vs-einzelaktien" style={styles.card}>
+            <h3>ETF vs. Aktien</h3>
+            <p>Was lohnt sich für Einsteiger wirklich?</p>
           </Link>
-        </div>
-      </div>
+        </section>
 
-      <Link href="/" style={styles.back}>
-        ← Zur Startseite
-      </Link>
-    </main>
+        <section style={styles.cta}>
+          <h3>ETF-Sparplan direkt berechnen</h3>
+          <Link href="/tools/etf-sparplan-rechner" style={styles.button}>
+            Zum Rechner →
+          </Link>
+        </section>
+      </main>
+    </>
   );
 }
 
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "60px 20px",
-    background:
-      "radial-gradient(circle at top, #0f172a, #020617)",
+    padding: "80px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
-    maxWidth: "1100px",
-    margin: "0 auto",
   },
-  title: {
-    fontSize: "2.5rem",
-    marginBottom: "10px",
-  },
-  subtitle: {
-    opacity: 0.8,
-    marginBottom: "40px",
+  hero: {
+    maxWidth: "800px",
+    margin: "0 auto 60px",
+    textAlign: "center",
   },
   grid: {
+    maxWidth: "1000px",
+    margin: "0 auto 60px",
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
     gap: "24px",
   },
   card: {
-    background: "rgba(15,23,42,0.9)",
-    borderRadius: "12px",
-    padding: "24px",
-    boxShadow: "0 0 0 1px rgba(255,255,255,0.05)",
-  },
-  link: {
-    display: "inline-block",
-    marginTop: "12px",
-    color: "#2dd4bf",
-    textDecoration: "none",
-    fontWeight: 500,
-  },
-  back: {
-    display: "block",
-    marginTop: "60px",
-    textAlign: "center",
-    opacity: 0.6,
+    padding: "26px",
+    borderRadius: "16px",
+    border: "1px solid #1e293b",
+    background: "#020617",
     color: "#e5e7eb",
+    textDecoration: "none",
+  },
+  cta: {
+    textAlign: "center",
+  },
+  button: {
+    display: "inline-block",
+    marginTop: "16px",
+    padding: "14px 26px",
+    borderRadius: "12px",
+    background: "#2dd4bf",
+    color: "#020617",
+    fontWeight: "700",
     textDecoration: "none",
   },
 };

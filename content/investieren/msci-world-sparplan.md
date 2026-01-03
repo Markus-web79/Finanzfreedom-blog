@@ -71,4 +71,17 @@ Ein MSCI World Sparplan ist eine der einfachsten und sinnvollsten Möglichkeiten
 
 👉 **Passenden Broker finden:**  
 [Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
+---
 
+## ETF Sparplan berechnen (kostenlos)
+
+Du möchtest wissen, wie viel Vermögen du mit einem ETF-Sparplan aufbauen kannst?
+
+👉 **Nutze unseren kostenlosen Rechner**  
+→ [ETF Sparplan Rechner öffnen](/tools/etf-sparplan-rechner)
+
+Berechne:
+- monatliche Sparrate
+- Laufzeit
+- erwartete Rendite
+- mögliches Endvermögen

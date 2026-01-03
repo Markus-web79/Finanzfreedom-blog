@@ -1,100 +1,99 @@
+import Head from "next/head";
 import Link from "next/link";
 
 export default function BrokerHub() {
   return (
-    <main style={styles.page}>
-      <h1>Broker im Überblick</h1>
+    <>
+      <Head>
+        <title>ETF-Broker Vergleich 2025 | FinanzFreedom</title>
+        <meta
+          name="description"
+          content="Vergleiche die besten ETF-Broker 2025: Kosten, Sparpläne, Vorteile & Empfehlungen für Einsteiger."
+        />
+      </Head>
 
-      <p style={styles.intro}>
-        Broker ermöglichen dir den Handel mit Aktien, ETFs und anderen
-        Wertpapieren. Hier findest du eine Übersicht der wichtigsten Anbieter
-        sowie unabhängige Vergleiche.
-      </p>
-
-      <section style={styles.grid}>
-        {/* Trade Republic */}
-        <div style={styles.card}>
-          <h2>Trade Republic</h2>
+      <main style={styles.page}>
+        <section style={styles.hero}>
+          <h1>ETF-Broker vergleichen</h1>
           <p>
-            Sehr einfacher und günstiger Neobroker – ideal für Einsteiger und
-            ETF-Sparpläne.
+            Der richtige Broker entscheidet über Kosten, Komfort und Rendite.
+            Hier findest du klare Empfehlungen statt Werbung.
           </p>
-          <div style={styles.links}>
-            <Link href="/investieren/broker/trade-republic/info">
-              → Details ansehen
+        </section>
+
+        <section style={styles.grid}>
+          <div style={styles.card}>
+            <h3>Trade Republic</h3>
+            <p>Sehr günstige ETF-Sparpläne, einfache App.</p>
+            <Link href="/blog/bester-broker-fuer-etf-sparplaene">
+              ➜ Details ansehen
             </Link>
           </div>
-        </div>
 
-        {/* Scalable Capital */}
-        <div style={styles.card}>
-          <h2>Scalable Capital</h2>
-          <p>
-            Flexibler Broker mit großer Produktauswahl – besonders für
-            langfristige Anleger interessant.
-          </p>
-          <div style={styles.links}>
-            <Link href="/investieren/broker/scalable-capital/info">
-              → Details ansehen
+          <div style={styles.card}>
+            <h3>Scalable Capital</h3>
+            <p>Große ETF-Auswahl, kostenlose Sparpläne.</p>
+            <Link href="/blog/bester-broker-fuer-etf-sparplaene">
+              ➜ Details ansehen
             </Link>
           </div>
-        </div>
-      </section>
 
-      {/* Vergleich */}
-      <section style={styles.compare}>
-        <h2>Broker vergleichen</h2>
-        <p>
-          Du bist unsicher, welcher Broker besser zu dir passt? In unserem
-          Vergleich zeigen wir dir die wichtigsten Unterschiede.
-        </p>
-        <Link href="/investieren/broker/vergleich" style={styles.compareLink}>
-          → Zum Broker-Vergleich
-        </Link>
-      </section>
-    </main>
+          <div style={styles.card}>
+            <h3>ING</h3>
+            <p>Stabile Bank, gut für langfristige Anleger.</p>
+            <Link href="/blog/bester-broker-fuer-etf-sparplaene">
+              ➜ Details ansehen
+            </Link>
+          </div>
+        </section>
+
+        <section style={styles.cta}>
+          <h3>Broker passend zu deinem Sparplan finden</h3>
+          <Link href="/tools/etf-sparplan-rechner" style={styles.button}>
+            Sparplan berechnen →
+          </Link>
+        </section>
+      </main>
+    </>
   );
 }
 
 const styles = {
   page: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    padding: "60px 20px",
+    minHeight: "100vh",
+    padding: "80px 20px",
+    background: "radial-gradient(circle at top, #020617, #020617)",
     color: "#e5e7eb",
   },
-  intro: {
-    maxWidth: "700px",
-    opacity: 0.9,
-    marginBottom: "40px",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: "24px",
-    marginBottom: "48px",
-  },
-  card: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "24px",
-  },
-  links: {
-    marginTop: "16px",
-    fontWeight: 600,
-  },
-  compare: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "32px",
+  hero: {
+    maxWidth: "820px",
+    margin: "0 auto 60px",
     textAlign: "center",
   },
-  compareLink: {
+  grid: {
+    maxWidth: "1100px",
+    margin: "0 auto 60px",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "24px",
+  },
+  card: {
+    padding: "26px",
+    borderRadius: "16px",
+    border: "1px solid #1e293b",
+    background: "#020617",
+  },
+  cta: {
+    textAlign: "center",
+  },
+  button: {
     display: "inline-block",
-    marginTop: "12px",
-    fontWeight: 600,
-    color: "#38bdf8",
+    marginTop: "18px",
+    padding: "14px 28px",
+    borderRadius: "14px",
+    background: "#2dd4bf",
+    color: "#020617",
+    fontWeight: "700",
+    textDecoration: "none",
   },
 };

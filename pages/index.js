@@ -115,3 +115,24 @@ const styles = {
     fontWeight: "600",
   },
 };
+<section style={{ marginTop: "80px", textAlign: "center" }}>
+  <h2>ETF-Sparplan Rechner</h2>
+  <p style={{ color: "#9ca3af" }}>
+    Berechne kostenlos, wie viel Vermögen du mit einem ETF-Sparplan aufbauen kannst.
+  </p>
+  <a
+    href="/tools/etf-sparplan-rechner"
+    style={{
+      display: "inline-block",
+      marginTop: "16px",
+      padding: "14px 24px",
+      background: "#2dd4bf",
+      color: "#020617",
+      borderRadius: "10px",
+      fontWeight: "600",
+      textDecoration: "none",
+    }}
+  >
+    Zum ETF-Sparplan-Rechner →
+  </a>
+</section>

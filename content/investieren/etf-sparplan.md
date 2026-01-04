@@ -20,26 +20,3 @@ Ein ETF-Sparplan ermöglicht dir, regelmäßig in börsengehandelte Indexfonds z
 
 ## Fazit
 Ein ETF-Sparplan ist ideal für langfristigen Vermögensaufbau.
----
-
-## Nächster Schritt
-
-👉 **ETF-Sparplan berechnen:**  
-[ETF-Sparplan Rechner →](/tools/etf-sparplan-rechner)
-
-👉 **Passenden Broker finden:**  
-[Bester Broker für ETF-Sparpläne →](/investieren/bester-broker-fuer-etf-sparplaene)
----
-
-## ETF Sparplan berechnen (kostenlos)
-
-Du möchtest wissen, wie viel Vermögen du mit einem ETF-Sparplan aufbauen kannst?
-
-👉 **Nutze unseren kostenlosen Rechner**  
-→ [ETF Sparplan Rechner öffnen](/tools/etf-sparplan-rechner)
-
-Berechne:
-- monatliche Sparrate
-- Laufzeit
-- erwartete Rendite
-- mögliches Endvermögen

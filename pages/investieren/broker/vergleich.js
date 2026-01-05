@@ -1,88 +1,89 @@
+import Head from "next/head";
 import Link from "next/link";
 
 export default function BrokerVergleich() {
   return (
-    <main style={styles.page}>
-      <p style={styles.breadcrumb}>
-        <Link href="/investieren">Investieren</Link> →{" "}
-        <Link href="/investieren/broker">Broker</Link> → Vergleich
-      </p>
+    <>
+      <Head>
+        <title>ETF Broker Vergleich 2026 | FinanzFreedom</title>
+        <meta
+          name="description"
+          content="Großer ETF Broker Vergleich 2026: Trade Republic, Scalable Capital & mehr. Kosten, Sparpläne, Sicherheit – unabhängig erklärt."
+        />
+      </Head>
 
-      <h1 style={styles.title}>Broker Vergleich: Trade Republic vs. Scalable Capital</h1>
-      <p style={styles.subtitle}>
-        Welcher Broker passt besser zu dir? Hier findest du einen klaren,
-        ehrlichen Vergleich – ohne Marketing-Blabla.
-      </p>
+      <main style={styles.page}>
+        {/* HERO */}
+        <section style={styles.hero}>
+          <h1 style={styles.title}>ETF Broker Vergleich 2026</h1>
+          <p style={styles.subtitle}>
+            Vergleiche die besten ETF-Broker in Deutschland – transparent,
+            unabhängig und ohne Werbung.
+          </p>
+        </section>
 
-      {/* Vergleichstabelle */}
-      <section style={styles.card}>
-        <table style={styles.table}>
-          <thead>
-            <tr>
-              <th>Kriterium</th>
-              <th>Trade Republic</th>
-              <th>Scalable Capital</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Depotführung</td>
-              <td>Kostenlos</td>
-              <td>Kostenlos</td>
-            </tr>
-            <tr>
-              <td>ETF-Sparpläne</td>
-              <td>Kostenlos</td>
-              <td>Kostenlos</td>
-            </tr>
-            <tr>
-              <td>Orderkosten</td>
-              <td>1 € pro Trade</td>
-              <td>0 € (Free Broker) / Flatrate möglich</td>
-            </tr>
-            <tr>
-              <td>Produktvielfalt</td>
-              <td>Gut</td>
-              <td>Sehr groß</td>
-            </tr>
-            <tr>
-              <td>Bedienung</td>
-              <td>Sehr einfach</td>
-              <td>Etwas komplexer</td>
-            </tr>
-            <tr>
-              <td>Geeignet für</td>
-              <td>Einsteiger & Sparpläne</td>
-              <td>Langfristige & größere Portfolios</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        {/* INFO */}
+        <section style={styles.info}>
+          <p>
+            Der richtige Broker entscheidet über Kosten, Komfort und langfristigen
+            Erfolg beim Investieren. Hier findest du einen klaren Vergleich der
+            beliebtesten ETF-Broker für Sparpläne und Einmalinvestments.
+          </p>
+        </section>
 
-      {/* Empfehlung */}
-      <section style={styles.card}>
-        <h2>Unsere Einschätzung</h2>
-        <p>
-          <strong>Trade Republic</strong> ist ideal, wenn du einfach, günstig und
-          ohne viel Aufwand investieren willst – besonders als Einsteiger.
-        </p>
-        <p>
-          <strong>Scalable Capital</strong> bietet dir mehr Flexibilität,
-          Auswahl und Wachstumsmöglichkeiten – ideal für langfristige Strategien.
-        </p>
-      </section>
+        {/* BROKER GRID */}
+        <section style={styles.grid}>
+          <div style={styles.cardHighlight}>
+            <h2>Trade Republic</h2>
+            <p>
+              Sehr günstiger Broker mit einfacher App, kostenlosen ETF-Sparplänen
+              und niedrigen Ordergebühren.
+            </p>
+            <ul style={styles.list}>
+              <li>✔ 0 € Sparpläne</li>
+              <li>✔ Sehr einfache Bedienung</li>
+              <li>✔ Ideal für Einsteiger</li>
+            </ul>
+            <Link href="/investieren/broker/trade-republic" style={styles.link}>
+              Details ansehen →
+            </Link>
+          </div>
 
-      {/* Links */}
-      <section style={styles.grid}>
-        <Link href="/investieren/broker/trade-republic/info" style={styles.linkCard}>
-          → Trade Republic im Detail
-        </Link>
+          <div style={styles.card}>
+            <h2>Scalable Capital</h2>
+            <p>
+              Starker Allround-Broker mit vielen ETFs, Prime-Modell und
+              umfangreichen Analyse-Funktionen.
+            </p>
+            <ul style={styles.list}>
+              <li>✔ Große ETF-Auswahl</li>
+              <li>✔ Flat-Fee möglich</li>
+              <li>✔ Für Fortgeschrittene</li>
+            </ul>
+            <Link href="/investieren/broker/scalable-capital" style={styles.link}>
+              Details ansehen →
+            </Link>
+          </div>
+        </section>
 
-        <Link href="/investieren/broker/scalable-capital/info" style={styles.linkCard}>
-          → Scalable Capital im Detail
-        </Link>
-      </section>
-    </main>
+        {/* FAZIT */}
+        <section style={styles.fazit}>
+          <h2>Unser Fazit</h2>
+          <p>
+            Für die meisten Anleger reicht ein günstiger und einfacher Broker.
+            Wer mehr Funktionen möchte, greift zu einem umfassenderen Anbieter.
+            Wichtig ist: niedrige Kosten, Sicherheit und ein langfristiger Ansatz.
+          </p>
+        </section>
+
+        {/* BACK */}
+        <section style={styles.back}>
+          <Link href="/investieren/broker" style={styles.backLink}>
+            ← Zurück zur Broker-Übersicht
+          </Link>
+        </section>
+      </main>
+    </>
   );
 }
 
@@ -92,47 +93,67 @@ const styles = {
     padding: "60px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
-    maxWidth: "1000px",
-    margin: "0 auto",
   },
-  breadcrumb: {
-    fontSize: "0.85rem",
-    opacity: 0.7,
-    marginBottom: "24px",
+  hero: {
+    maxWidth: "900px",
+    margin: "0 auto 40px",
+    textAlign: "center",
   },
   title: {
-    fontSize: "2.4rem",
+    fontSize: "2.6rem",
     marginBottom: "12px",
+    color: "#ffffff",
   },
   subtitle: {
-    fontSize: "1.1rem",
-    opacity: 0.9,
-    marginBottom: "32px",
+    fontSize: "1.2rem",
+    color: "#9ca3af",
+  },
+  info: {
+    maxWidth: "800px",
+    margin: "0 auto 50px",
+    textAlign: "center",
+    color: "#9ca3af",
+  },
+  grid: {
+    maxWidth: "1100px",
+    margin: "0 auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "24px",
   },
   card: {
     background: "#020617",
     border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "24px",
-    marginBottom: "32px",
+    borderRadius: "16px",
+    padding: "28px",
   },
-  table: {
-    width: "100%",
-    borderCollapse: "collapse",
+  cardHighlight: {
+    background: "linear-gradient(145deg, #020617, #022c22)",
+    border: "1px solid #2dd4bf",
+    borderRadius: "16px",
+    padding: "28px",
   },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "20px",
+  list: {
+    marginTop: "12px",
+    marginBottom: "16px",
+    paddingLeft: "18px",
+    color: "#9ca3af",
   },
-  linkCard: {
-    display: "block",
+  link: {
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: "600",
+  },
+  fazit: {
+    maxWidth: "800px",
+    margin: "60px auto",
     textAlign: "center",
-    padding: "20px",
-    borderRadius: "14px",
-    border: "1px solid #1e293b",
-    background: "#020617",
-    color: "#38bdf8",
-    fontWeight: 600,
+  },
+  back: {
+    textAlign: "center",
+  },
+  backLink: {
+    color: "#9ca3af",
+    textDecoration: "none",
   },
 };

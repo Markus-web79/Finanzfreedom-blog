@@ -1,0 +1,44 @@
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.brokerCard {
+  background: linear-gradient(180deg, #0b1324 0%, #0a1020 100%);
+  border-radius: 14px;
+  padding: 20px 18px 22px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.brokerCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #20e3c2, #1cc7b0);
+  border-radius: 14px 14px 0 0;
+}
+
+.brokerCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(32,227,194,0.15);
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.cardText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cfd6e4;
+}

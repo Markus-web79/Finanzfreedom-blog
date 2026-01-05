@@ -193,3 +193,104 @@ main {
   color: #cbd5e1;
   line-height: 1.5;
 }
+/* ================================
+   BROKER KACHELN – FINANZFREEDOM
+================================ */
+
+/* Grid */
+.brokerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
+}
+
+/* Card Basis */
+.brokerCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 1.6rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s ease;
+}
+
+/* Türkise Markenlinie */
+.brokerCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #19e0c5,
+    #12b8a6
+  );
+  border-radius: 14px 14px 0 0;
+  opacity: 0.8;
+}
+
+/* Hover Effekt */
+.brokerCard:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(25, 224, 197, 0.15);
+}
+
+/* Titel */
+.brokerCard h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Text */
+.brokerCard p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #cfd8dc;
+}
+
+/* Akzent-Variante (Scalable etc.) */
+.brokerCard.accent::before {
+  opacity: 1;
+}
+
+/* Badge (BROKER) */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: #19e0c5;
+  margin-bottom: 0.6rem;
+}
+
+/* CTA */
+.btnPrimary {
+  display: inline-block;
+  background: linear-gradient(90deg, #19e0c5, #12b8a6);
+  color: #0b1f1c;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(25, 224, 197, 0.35);
+}
+
+/* Zurück-Link */
+.backLink {
+  display: inline-block;
+  margin-top: 2.5rem;
+  color: #19e0c5;
+  text-decoration: none;
+  font-size: 0.9rem;
+}

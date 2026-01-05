@@ -5,54 +5,59 @@ export default function EtfsHub() {
   return (
     <>
       <Head>
-        <title>ETFs verstehen & vergleichen | FinanzFreedom</title>
+        <title>ETFs – einfach investieren | FinanzFreedom</title>
         <meta
           name="description"
-          content="ETFs einfach erklärt: MSCI World, ETF-Sparpläne, Vergleiche & Strategien – unabhängig und verständlich."
+          content="ETFs sind das Fundament für langfristigen Vermögensaufbau. Rechner, Vergleiche & klare Erklärungen – unabhängig und verständlich."
         />
       </Head>
 
       <main style={styles.page}>
         {/* HERO */}
         <section style={styles.hero}>
-          <h1 style={styles.title}>ETFs – einfach & verständlich</h1>
+          <h1 style={styles.title}>ETFs – einfach investieren</h1>
           <p style={styles.subtitle}>
-            ETFs sind das Fundament für langfristigen Vermögensaufbau. Hier findest du
-            Übersichten, Strategien, Rechner und Vergleiche – klar strukturiert wie ein Portal.
+            ETFs sind das Fundament für langfristigen Vermögensaufbau.
+            Hier findest du Rechner, Vergleiche und klare Erklärungen –
+            unabhängig & verständlich.
           </p>
         </section>
 
-        {/* GRID */}
+        {/* PRIMARY ACTION */}
+        <section style={styles.primary}>
+          <Link href="/tools/etf-sparplan-rechner" style={styles.primaryCard}>
+            <h2>ETF-Sparplan berechnen</h2>
+            <p>
+              In wenigen Sekunden sehen, wie viel Vermögen du langfristig
+              mit einem ETF-Sparplan aufbauen kannst.
+            </p>
+            <span style={styles.primaryButton}>Zum Rechner →</span>
+          </Link>
+        </section>
+
+        {/* HUB CARDS */}
         <section style={styles.grid}>
           <Link href="/investieren/etfs/msci-world" style={styles.card}>
-            <h2>MSCI World ETF</h2>
+            <h3>MSCI World ETF</h3>
             <p>
-              Der bekannteste ETF der Welt. Erklärung, Chancen, Risiken und
-              für wen er wirklich geeignet ist.
+              Der weltweit beliebteste ETF. Chancen, Risiken und
+              Einsatzmöglichkeiten kompakt erklärt.
             </p>
           </Link>
 
           <Link href="/investieren/etfs/sparplan" style={styles.card}>
-            <h2>ETF-Sparplan</h2>
+            <h3>ETF-Sparplan starten</h3>
             <p>
-              Schritt für Schritt erklärt: So baust du automatisiert Vermögen
-              mit einem ETF-Sparplan auf.
+              Schritt für Schritt erklärt: So startest du einfach und
+              automatisiert mit ETFs.
             </p>
           </Link>
 
           <Link href="/investieren/broker" style={styles.card}>
-            <h2>Broker vergleichen</h2>
+            <h3>Broker vergleichen</h3>
             <p>
-              Welche Broker sind günstig, sicher und für ETF-Sparpläne geeignet?
-              Klarer Vergleich ohne Werbung.
-            </p>
-          </Link>
-
-          <Link href="/tools/etf-sparplan-rechner" style={styles.cardHighlight}>
-            <h2>ETF-Sparplan-Rechner</h2>
-            <p>
-              Berechne in Sekunden, wie viel Vermögen du mit einem ETF-Sparplan
-              langfristig aufbauen kannst.
+              Kosten, Sparpläne und Sicherheit – finde den passenden
+              Broker für deine Strategie.
             </p>
           </Link>
         </section>
@@ -61,6 +66,8 @@ export default function EtfsHub() {
   );
 }
 
+/* STYLES */
+
 const styles = {
   page: {
     minHeight: "100vh",
@@ -68,43 +75,60 @@ const styles = {
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
+
   hero: {
     maxWidth: "900px",
     margin: "0 auto 60px",
     textAlign: "center",
   },
+
   title: {
-    fontSize: "2.8rem",
+    fontSize: "2.6rem",
     marginBottom: "16px",
     color: "#ffffff",
   },
+
   subtitle: {
-    fontSize: "1.2rem",
+    fontSize: "1.1rem",
     color: "#9ca3af",
   },
+
+  primary: {
+    maxWidth: "900px",
+    margin: "0 auto 60px",
+  },
+
+  primaryCard: {
+    display: "block",
+    padding: "32px",
+    borderRadius: "18px",
+    background: "linear-gradient(145deg, #0f172a, #020617)",
+    border: "1px solid #22d3ee",
+    textDecoration: "none",
+    color: "#e5e7eb",
+  },
+
+  primaryButton: {
+    display: "inline-block",
+    marginTop: "16px",
+    color: "#22d3ee",
+    fontWeight: "600",
+  },
+
   grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "24px",
     maxWidth: "1100px",
     margin: "0 auto",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "24px",
   },
+
   card: {
-    background: "linear-gradient(145deg, #020617, #020617)",
+    padding: "28px",
+    borderRadius: "16px",
+    background: "#020617",
     border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "28px",
     textDecoration: "none",
     color: "#e5e7eb",
-    transition: "all 0.25s ease",
-  },
-  cardHighlight: {
-    background: "linear-gradient(145deg, #022c22, #020617)",
-    border: "1px solid #2dd4bf",
-    borderRadius: "16px",
-    padding: "28px",
-    textDecoration: "none",
-    color: "#e5e7eb",
-    transition: "all 0.25s ease",
   },
 };

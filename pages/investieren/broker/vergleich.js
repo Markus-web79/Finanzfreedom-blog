@@ -8,60 +8,72 @@ export default function BrokerVergleich() {
         <title>ETF Broker Vergleich 2026 | FinanzFreedom</title>
         <meta
           name="description"
-          content="Großer ETF Broker Vergleich 2026: Trade Republic, Scalable Capital & mehr. Kosten, Sparpläne, Sicherheit – unabhängig erklärt."
+          content="Großer ETF Broker Vergleich 2026: verständlich erklärt für Einsteiger & Fortgeschrittene. Kosten, Sparpläne, Sicherheit."
         />
       </Head>
 
       <main style={styles.page}>
         {/* HERO */}
         <section style={styles.hero}>
-          <h1 style={styles.title}>ETF Broker Vergleich 2026</h1>
+          <h1 style={styles.title}>ETF Broker Vergleich</h1>
           <p style={styles.subtitle}>
-            Vergleiche die besten ETF-Broker in Deutschland – transparent,
-            unabhängig und ohne Werbung.
+            Welcher Broker passt zu dir? Wir erklären die Unterschiede einfach
+            und zeigen dir klare Empfehlungen.
           </p>
         </section>
 
-        {/* INFO */}
+        {/* EINORDNUNG */}
         <section style={styles.info}>
           <p>
-            Der richtige Broker entscheidet über Kosten, Komfort und langfristigen
-            Erfolg beim Investieren. Hier findest du einen klaren Vergleich der
-            beliebtesten ETF-Broker für Sparpläne und Einmalinvestments.
+            Ein Broker ist dein Zugang zur Börse. Die wichtigsten Unterschiede
+            liegen in <strong>Kosten</strong>, <strong>ETF-Sparplänen</strong>,
+            <strong>Bedienung</strong> und <strong>Sicherheit</strong>.
+            <br />
+            Unten findest du unsere Empfehlungen – unabhängig und transparent.
           </p>
         </section>
 
-        {/* BROKER GRID */}
-        <section style={styles.grid}>
-          <div style={styles.cardHighlight}>
-            <h2>Trade Republic</h2>
-            <p>
-              Sehr günstiger Broker mit einfacher App, kostenlosen ETF-Sparplänen
-              und niedrigen Ordergebühren.
-            </p>
-            <ul style={styles.list}>
-              <li>✔ 0 € Sparpläne</li>
-              <li>✔ Sehr einfache Bedienung</li>
-              <li>✔ Ideal für Einsteiger</li>
-            </ul>
-            <Link href="/investieren/broker/trade-republic" style={styles.link}>
-              Details ansehen →
-            </Link>
-          </div>
+        {/* EMPFEHLUNG EINSTEIGER */}
+        <section style={styles.highlight}>
+          <h2>⭐ Empfehlung für Einsteiger</h2>
+          <h3>Trade Republic</h3>
+          <p>
+            Ideal, wenn du einfach starten willst: sehr niedrige Kosten,
+            kostenlose ETF-Sparpläne und eine extrem einfache App.
+          </p>
 
-          <div style={styles.card}>
-            <h2>Scalable Capital</h2>
-            <p>
-              Starker Allround-Broker mit vielen ETFs, Prime-Modell und
-              umfangreichen Analyse-Funktionen.
-            </p>
-            <ul style={styles.list}>
-              <li>✔ Große ETF-Auswahl</li>
-              <li>✔ Flat-Fee möglich</li>
-              <li>✔ Für Fortgeschrittene</li>
-            </ul>
-            <Link href="/investieren/broker/scalable-capital" style={styles.link}>
-              Details ansehen →
+          <ul style={styles.list}>
+            <li>✔ 0 € ETF-Sparpläne</li>
+            <li>✔ Sehr einfache Bedienung</li>
+            <li>✔ Reguliert & in Deutschland ansässig</li>
+          </ul>
+
+          <div style={styles.actions}>
+            <Link href="/investieren/broker/trade-republic" style={styles.primary}>
+              Details ansehen
+            </Link>
+            <span style={styles.note}>Affiliate-Link folgt</span>
+          </div>
+        </section>
+
+        {/* ALTERNATIVE */}
+        <section style={styles.card}>
+          <h2>Alternative für Fortgeschrittene</h2>
+          <h3>Scalable Capital</h3>
+          <p>
+            Mehr Funktionen, Web-Plattform und flexible Tarife – gut, wenn du
+            neben Sparplänen auch aktiv investieren willst.
+          </p>
+
+          <ul style={styles.list}>
+            <li>✔ Große ETF-Auswahl</li>
+            <li>✔ Flat-Fee möglich</li>
+            <li>✔ App & Web</li>
+          </ul>
+
+          <div style={styles.actions}>
+            <Link href="/investieren/broker/scalable-capital" style={styles.secondary}>
+              Details ansehen
             </Link>
           </div>
         </section>
@@ -70,9 +82,10 @@ export default function BrokerVergleich() {
         <section style={styles.fazit}>
           <h2>Unser Fazit</h2>
           <p>
-            Für die meisten Anleger reicht ein günstiger und einfacher Broker.
-            Wer mehr Funktionen möchte, greift zu einem umfassenderen Anbieter.
-            Wichtig ist: niedrige Kosten, Sicherheit und ein langfristiger Ansatz.
+            Für die meisten Anleger zählt: niedrige Kosten, einfache Bedienung
+            und Sicherheit. Wer mehr Funktionen möchte, greift zu einem
+            umfassenderen Broker. Wichtig ist, langfristig zu denken und
+            regelmäßig zu investieren.
           </p>
         </section>
 
@@ -114,24 +127,21 @@ const styles = {
     textAlign: "center",
     color: "#9ca3af",
   },
-  grid: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-    gap: "24px",
-  },
-  card: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
+  highlight: {
+    maxWidth: "900px",
+    margin: "0 auto 40px",
     padding: "28px",
-  },
-  cardHighlight: {
+    borderRadius: "16px",
     background: "linear-gradient(145deg, #020617, #022c22)",
     border: "1px solid #2dd4bf",
-    borderRadius: "16px",
+  },
+  card: {
+    maxWidth: "900px",
+    margin: "0 auto 40px",
     padding: "28px",
+    borderRadius: "16px",
+    background: "#020617",
+    border: "1px solid #1e293b",
   },
   list: {
     marginTop: "12px",
@@ -139,10 +149,30 @@ const styles = {
     paddingLeft: "18px",
     color: "#9ca3af",
   },
-  link: {
-    color: "#2dd4bf",
+  actions: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+  },
+  primary: {
+    padding: "0.6rem 1.2rem",
+    borderRadius: "8px",
+    background: "#22d3ee",
+    color: "#020617",
+    fontWeight: 600,
     textDecoration: "none",
-    fontWeight: "600",
+  },
+  secondary: {
+    padding: "0.6rem 1.2rem",
+    borderRadius: "8px",
+    background: "#1e293b",
+    color: "#e5e7eb",
+    fontWeight: 600,
+    textDecoration: "none",
+  },
+  note: {
+    fontSize: "0.8rem",
+    opacity: 0.7,
   },
   fazit: {
     maxWidth: "800px",

@@ -1,99 +1,91 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function BrokerPage() {
+export default function ScalableCapital() {
   return (
     <>
       <Head>
-        <title>Scalable Capital Test & Erfahrungen | FinanzFreedom</title>
+        <title>Scalable Capital – Broker Vergleich | FinanzFreedom</title>
         <meta
           name="description"
-          content="Scalable Capital im Test: Kosten, ETF-Sparpläne, Vorteile, Nachteile & für wen sich der Broker eignet."
+          content="Scalable Capital im Überblick: Kosten, Funktionen, Vorteile und für wen sich der Broker eignet."
         />
       </Head>
 
       <main style={styles.page}>
-        {/* HEADER */}
-        <section style={styles.header}>
-          <h1>Scalable Capital</h1>
-          <p>
-            Scalable Capital ist ein moderner Online-Broker mit großer ETF-Auswahl,
-            flexiblen Tarifmodellen und Fokus auf langfristigen Vermögensaufbau.
+        {/* Header */}
+        <header style={styles.header}>
+          <span style={styles.badge}>Broker</span>
+          <h1 style={styles.title}>Scalable Capital</h1>
+          <p style={styles.subtitle}>
+            ETF- & Aktienbroker für langfristigen Vermögensaufbau
           </p>
-        </section>
+        </header>
 
-        {/* QUICK FACTS */}
-        <section>
-          <h2 style={styles.sectionTitle}>Das Wichtigste auf einen Blick</h2>
-          <div style={styles.grid}>
-            <div style={styles.card}>
-              <h3>Kosten</h3>
-              <p>ETF-Sparpläne kostenlos, Prime-Modell mit Flat-Fee</p>
-            </div>
-            <div style={styles.card}>
-              <h3>ETF-Auswahl</h3>
-              <p>Sehr große Auswahl an ETFs & Sparplänen</p>
-            </div>
-            <div style={styles.card}>
-              <h3>Plattform</h3>
-              <p>Web & App verfügbar</p>
-            </div>
-            <div style={styles.card}>
-              <h3>Sicherheit</h3>
-              <p>BaFin-reguliert, Einlagensicherung bis 100.000 €</p>
-            </div>
-          </div>
-        </section>
-
-        {/* TARGET GROUP */}
-        <section style={styles.box}>
-          <h2>Für wen eignet sich Scalable Capital?</h2>
-          <p>
-            Scalable Capital eignet sich besonders für Anleger, die regelmäßig in ETFs investieren
-            oder zusätzlich aktiv handeln möchten. Das Prime-Modell ist interessant für Nutzer
-            mit höherem Handelsvolumen.
-          </p>
-        </section>
-
-        {/* PRO / CONTRA */}
+        {/* Kacheln */}
         <section style={styles.grid}>
           <div style={styles.card}>
-            <h3>Vorteile</h3>
-            <ul>
-              <li>✔ Sehr große ETF-Auswahl</li>
-              <li>✔ Web & App nutzbar</li>
-              <li>✔ Flat-Fee-Modell verfügbar</li>
-            </ul>
+            <div style={styles.line} />
+            <h3>Kosten</h3>
+            <p>
+              ETF-Sparpläne kostenlos, günstige Handelsgebühren je nach Modell.
+            </p>
           </div>
+
           <div style={styles.card}>
-            <h3>Nachteile</h3>
-            <ul>
-              <li>✖ Prime-Modell kostenpflichtig</li>
-              <li>✖ Für absolute Einsteiger etwas komplexer</li>
-            </ul>
+            <div style={styles.line} />
+            <h3>Geeignet für</h3>
+            <p>
+              Anleger, die langfristig mit ETFs und Aktien Vermögen aufbauen
+              möchten.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <div style={styles.line} />
+            <h3>Besonderheiten</h3>
+            <p>
+              Große ETF-Auswahl, Prime Broker Modell, flexible Sparpläne.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <div style={styles.line} />
+            <h3>Hinweis</h3>
+            <p>
+              Handelskosten abhängig vom gewählten Preismodell.
+            </p>
           </div>
         </section>
 
-        {/* FAZIT */}
-        <section style={styles.fazit}>
-          <h2>Unser Fazit</h2>
+        {/* Erklärung */}
+        <section style={styles.content}>
+          <h2>Was ist Scalable Capital?</h2>
           <p>
-            Scalable Capital ist eine sehr gute Wahl für langfristige Anleger und
-            Nutzer, die neben ETF-Sparplänen auch aktiv handeln möchten.
+            Scalable Capital ist ein moderner Online-Broker mit Fokus auf ETFs
+            und langfristige Geldanlage. Nutzer können zwischen verschiedenen
+            Preismodellen wählen und aus einer großen Auswahl an ETFs und Aktien
+            investieren.
           </p>
 
-          <a
-            href="#"
-            style={styles.cta}
-          >
-            Zum Anbieter (Affiliate folgt)
-          </a>
+          <h2>Für wen eignet sich Scalable Capital?</h2>
+          <p>
+            Besonders geeignet für Anleger, die regelmäßig investieren und
+            Wert auf niedrige Kosten sowie eine einfache Bedienung legen.
+          </p>
         </section>
 
-        {/* NAVIGATION */}
-        <nav style={styles.nav}>
-          <Link href="/investieren/broker/vergleich">← Zum Broker-Vergleich</Link>
-        </nav>
+        {/* CTA */}
+        <section style={styles.cta}>
+          <Link href="/investieren/broker/vergleich" style={styles.ctaButton}>
+            Zum Broker-Vergleich →
+          </Link>
+        </section>
+
+        {/* Back */}
+        <div style={styles.back}>
+          <Link href="/investieren/broker">← Zur Broker-Übersicht</Link>
+        </div>
       </main>
     </>
   );
@@ -101,59 +93,68 @@ export default function BrokerPage() {
 
 const styles = {
   page: {
-    minHeight: "100vh",
-    padding: "80px 20px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
-    color: "#e5e7eb",
-    maxWidth: "1100px",
+    maxWidth: "900px",
     margin: "0 auto",
+    padding: "3rem 1.5rem",
+    color: "#e5e7eb",
   },
   header: {
-    textAlign: "center",
-    marginBottom: "60px",
+    marginBottom: "3rem",
   },
-  sectionTitle: {
-    marginBottom: "24px",
+  badge: {
+    display: "inline-block",
+    fontSize: "0.75rem",
+    color: "#22d3ee",
+    marginBottom: "0.5rem",
+    textTransform: "uppercase",
+  },
+  title: {
+    fontSize: "2.4rem",
+    marginBottom: "0.5rem",
+  },
+  subtitle: {
+    color: "#9ca3af",
   },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "24px",
-    marginBottom: "60px",
+    gap: "1.5rem",
+    marginBottom: "3rem",
   },
   card: {
+    position: "relative",
     background: "#020617",
     border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "24px",
+    borderRadius: "14px",
+    padding: "1.5rem",
   },
-  box: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "32px",
-    marginBottom: "60px",
+  line: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "3px",
+    background: "#22d3ee",
+    borderTopLeftRadius: "14px",
+    borderTopRightRadius: "14px",
   },
-  fazit: {
-    background: "linear-gradient(145deg, #022c22, #020617)",
-    border: "1px solid #0d9488",
-    borderRadius: "20px",
-    padding: "40px",
-    textAlign: "center",
-    marginBottom: "40px",
+  content: {
+    lineHeight: 1.7,
+    marginBottom: "3rem",
   },
   cta: {
+    marginBottom: "2rem",
+  },
+  ctaButton: {
     display: "inline-block",
-    marginTop: "20px",
-    padding: "14px 28px",
-    background: "#14b8a6",
+    padding: "0.8rem 1.4rem",
+    borderRadius: "10px",
+    background: "#22d3ee",
     color: "#020617",
-    borderRadius: "999px",
     fontWeight: "600",
     textDecoration: "none",
   },
-  nav: {
-    textAlign: "center",
-    marginTop: "20px",
+  back: {
+    marginTop: "2rem",
   },
 };

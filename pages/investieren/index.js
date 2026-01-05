@@ -5,58 +5,77 @@ export default function InvestierenHub() {
   return (
     <>
       <Head>
-        <title>Investieren leicht erklärt | FinanzFreedom</title>
+        <title>Investieren – Vermögen aufbauen | FinanzFreedom</title>
         <meta
           name="description"
-          content="ETF-Sparpläne, Broker-Vergleiche, Strategien & Tools – alles rund ums Investieren einfach erklärt bei FinanzFreedom."
+          content="Investieren leicht gemacht: ETFs, Sparpläne, Broker & Tools für langfristigen Vermögensaufbau – unabhängig & verständlich."
         />
       </Head>
 
       <main style={styles.page}>
         {/* HERO */}
         <section style={styles.hero}>
-          <h1 style={styles.title}>Investieren leicht erklärt</h1>
+          <h1 style={styles.title}>Investieren & Vermögen aufbauen</h1>
           <p style={styles.subtitle}>
-            ETFs, Sparpläne, Broker & Strategien – verständlich, unabhängig und
-            portalartig aufgebaut.
+            Langfristig investieren statt spekulieren.
+            Hier findest du klare Strategien, Tools und Vergleiche
+            für nachhaltigen Vermögensaufbau.
           </p>
         </section>
 
-        {/* TOOLS CTA */}
-        <section style={styles.toolBox}>
-          <h2 style={styles.toolTitle}>ETF-Sparplan berechnen</h2>
-          <p style={styles.toolText}>
-            Berechne in Sekunden, wie viel Vermögen du mit einem ETF-Sparplan
-            langfristig aufbauen kannst.
-          </p>
-          <Link href="/tools/etf-sparplan-rechner" style={styles.toolButton}>
-            Zum ETF-Sparplan-Rechner →
+        {/* PRIMARY ACTIONS */}
+        <section style={styles.primaryGrid}>
+          <Link href="/investieren/etfs" style={styles.primaryCard}>
+            <h2>ETFs verstehen & nutzen</h2>
+            <p>
+              Der einfachste Weg für langfristigen Vermögensaufbau –
+              mit Rechnern, Erklärungen und Strategien.
+            </p>
+            <span style={styles.cta}>Zu den ETFs →</span>
+          </Link>
+
+          <Link href="/investieren/broker" style={styles.primaryCard}>
+            <h2>Broker vergleichen</h2>
+            <p>
+              Kosten, Sparpläne, Sicherheit & Funktionen –
+              finde den passenden Broker für deine Strategie.
+            </p>
+            <span style={styles.cta}>Zum Broker-Vergleich →</span>
           </Link>
         </section>
 
-        {/* HUB GRID */}
+        {/* SECONDARY GRID */}
         <section style={styles.grid}>
-          <Link href="/investieren/etfs" style={styles.card}>
-            <h3>ETFs & Sparpläne</h3>
+          <Link
+            href="/tools/etf-sparplan-rechner"
+            style={styles.card}
+          >
+            <h3>ETF-Sparplan-Rechner</h3>
             <p>
-              Grundlagen, Strategien, MSCI World, Einsteiger-Guides &
-              langfristiger Vermögensaufbau.
+              Berechne in Sekunden, wie viel Vermögen du langfristig
+              mit einem ETF-Sparplan aufbauen kannst.
             </p>
           </Link>
 
-          <Link href="/investieren/broker" style={styles.card}>
-            <h3>Broker & Vergleiche</h3>
+          <Link
+            href="/investieren/etfs/msci-world"
+            style={styles.card}
+          >
+            <h3>MSCI World</h3>
             <p>
-              ETF-Broker vergleichen, Kosten verstehen und den passenden Broker
-              finden.
+              Der Klassiker unter den ETFs – Chancen, Risiken
+              und Einsatzmöglichkeiten kompakt erklärt.
             </p>
           </Link>
 
-          <Link href="/blog" style={styles.card}>
-            <h3>Guides & Analysen</h3>
+          <Link
+            href="/investieren/etfs/sparplan"
+            style={styles.card}
+          >
+            <h3>ETF-Sparplan starten</h3>
             <p>
-              Praxisnahe Artikel, Marktanalysen und klare Entscheidungen für
-              Einsteiger & Fortgeschrittene.
+              Schritt für Schritt erklärt, wie du automatisiert
+              und stressfrei investierst.
             </p>
           </Link>
         </section>
@@ -65,76 +84,71 @@ export default function InvestierenHub() {
   );
 }
 
+/* STYLES */
+
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "70px 20px",
+    padding: "60px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
 
   hero: {
-    textAlign: "center",
     maxWidth: "900px",
     margin: "0 auto 60px",
+    textAlign: "center",
   },
 
   title: {
-    fontSize: "3rem",
-    marginBottom: "14px",
+    fontSize: "2.6rem",
+    marginBottom: "16px",
     color: "#ffffff",
   },
 
   subtitle: {
-    fontSize: "1.2rem",
+    fontSize: "1.1rem",
     color: "#9ca3af",
   },
 
-  toolBox: {
-    maxWidth: "900px",
-    margin: "0 auto 70px",
+  primaryGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "24px",
+    maxWidth: "1000px",
+    margin: "0 auto 60px",
+  },
+
+  primaryCard: {
     padding: "32px",
-    borderRadius: "16px",
-    border: "1px solid #1e293b",
-    background: "linear-gradient(145deg, #020617, #020617)",
-  },
-
-  toolTitle: {
-    fontSize: "1.6rem",
-    marginBottom: "10px",
-    color: "#ffffff",
-  },
-
-  toolText: {
-    color: "#9ca3af",
-    marginBottom: "18px",
-  },
-
-  toolButton: {
-    display: "inline-block",
-    padding: "12px 22px",
-    borderRadius: "10px",
-    background: "#2dd4bf",
-    color: "#020617",
-    fontWeight: "600",
+    borderRadius: "18px",
+    background: "linear-gradient(145deg, #0f172a, #020617)",
+    border: "1px solid #22d3ee",
     textDecoration: "none",
+    color: "#e5e7eb",
+  },
+
+  cta: {
+    display: "inline-block",
+    marginTop: "14px",
+    color: "#22d3ee",
+    fontWeight: "600",
   },
 
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
     gap: "24px",
     maxWidth: "1100px",
     margin: "0 auto",
   },
 
   card: {
-    background: "linear-gradient(145deg, #020617, #020617)",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
     padding: "28px",
+    borderRadius: "16px",
+    background: "#020617",
+    border: "1px solid #1e293b",
     textDecoration: "none",
     color: "#e5e7eb",
-    transition: "all 0.25s ease",
   },
 };

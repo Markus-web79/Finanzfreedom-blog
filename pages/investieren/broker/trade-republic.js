@@ -1,92 +1,99 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function TradeRepublic() {
+export default function BrokerPage() {
   return (
     <>
       <Head>
-        <title>Trade Republic im Überblick | FinanzFreedom</title>
+        <title>Trade Republic Test & Erfahrungen | FinanzFreedom</title>
         <meta
           name="description"
-          content="Trade Republic im Überblick: Kosten, ETF-Sparpläne, Sicherheit, Vorteile & Nachteile. Für wen eignet sich der Broker wirklich?"
+          content="Trade Republic im Test: Kosten, ETF-Sparpläne, Aktienhandel, Vorteile, Nachteile & für wen sich der Broker eignet."
         />
       </Head>
 
       <main style={styles.page}>
-        {/* HERO */}
-        <section style={styles.hero}>
-          <h1 style={styles.title}>Trade Republic</h1>
-          <p style={styles.subtitle}>
-            Einer der beliebtesten Neobroker in Deutschland – günstige ETF-Sparpläne,
-            einfache App und schlanke Kostenstruktur.
+        {/* HEADER */}
+        <section style={styles.header}>
+          <h1>Trade Republic</h1>
+          <p>
+            Trade Republic ist einer der bekanntesten Neobroker in Deutschland
+            und richtet sich besonders an Einsteiger und langfristige Anleger.
           </p>
         </section>
 
-        {/* FAKTEN */}
-        <section style={styles.grid}>
-          <div style={styles.card}>
-            <h2>Kosten</h2>
-            <p>
-              ETF-Sparpläne kostenlos, Einzelkäufe ab 1 € Fremdkostenpauschale.
-              Keine Depotführungsgebühr.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h2>ETF-Sparpläne</h2>
-            <p>
-              Große Auswahl an ETFs, Sparpläne ab 1 € möglich,
-              ideal für langfristigen Vermögensaufbau.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h2>App & Bedienung</h2>
-            <p>
-              Mobile-First-Ansatz mit sehr einfacher App.
-              Perfekt für Einsteiger, weniger für aktive Trader.
-            </p>
-          </div>
-
-          <div style={styles.card}>
-            <h2>Sicherheit</h2>
-            <p>
-              Deutscher Broker, BaFin-reguliert, Einlagensicherung bis 100.000 €.
-            </p>
+        {/* QUICK FACTS */}
+        <section>
+          <h2 style={styles.sectionTitle}>Das Wichtigste auf einen Blick</h2>
+          <div style={styles.grid}>
+            <div style={styles.card}>
+              <h3>Kosten</h3>
+              <p>1 € pro Trade, ETF-Sparpläne kostenlos</p>
+            </div>
+            <div style={styles.card}>
+              <h3>ETF-Auswahl</h3>
+              <p>Große Auswahl an ETFs & Sparplänen</p>
+            </div>
+            <div style={styles.card}>
+              <h3>Plattform</h3>
+              <p>Mobile App (kein Web-Interface)</p>
+            </div>
+            <div style={styles.card}>
+              <h3>Sicherheit</h3>
+              <p>BaFin-reguliert, Einlagensicherung bis 100.000 €</p>
+            </div>
           </div>
         </section>
 
-        {/* GEEIGNET */}
-        <section style={styles.section}>
+        {/* TARGET GROUP */}
+        <section style={styles.box}>
           <h2>Für wen eignet sich Trade Republic?</h2>
-          <ul style={styles.list}>
-            <li>✔ ETF-Sparer & langfristige Anleger</li>
-            <li>✔ Einsteiger mit Fokus auf einfache Bedienung</li>
-            <li>✔ Nutzer, die mobil investieren wollen</li>
-            <li>✖ Weniger geeignet für Daytrader & Profis</li>
-          </ul>
+          <p>
+            Trade Republic eignet sich besonders für Einsteiger, ETF-Sparer und
+            Anleger, die einfach und kostengünstig investieren möchten.
+            Durch die einfache App ist der Einstieg sehr niedrigschwellig.
+          </p>
+        </section>
+
+        {/* PRO / CONTRA */}
+        <section style={styles.grid}>
+          <div style={styles.card}>
+            <h3>Vorteile</h3>
+            <ul>
+              <li>✔ Sehr einfache Bedienung</li>
+              <li>✔ Kostenlose ETF-Sparpläne</li>
+              <li>✔ Geringe Handelskosten</li>
+            </ul>
+          </div>
+          <div style={styles.card}>
+            <h3>Nachteile</h3>
+            <ul>
+              <li>✖ Kein Web-Zugang</li>
+              <li>✖ Weniger Analyse-Tools</li>
+            </ul>
+          </div>
         </section>
 
         {/* FAZIT */}
-        <section style={styles.highlight}>
-          <h2>Fazit</h2>
+        <section style={styles.fazit}>
+          <h2>Unser Fazit</h2>
           <p>
-            Trade Republic ist ein extrem günstiger und einfacher Broker
-            für ETF-Sparpläne und langfristige Anleger.
-            Wer viele Handelsplätze oder Profi-Tools braucht,
-            ist bei klassischen Brokern besser aufgehoben.
+            Trade Republic ist ideal für Einsteiger und langfristige Anleger,
+            die unkompliziert investieren wollen und auf komplexe Tools verzichten können.
           </p>
+
+          <a
+            href="#"
+            style={styles.cta}
+          >
+            Zu Trade Republic (Affiliate folgt)
+          </a>
         </section>
 
         {/* NAVIGATION */}
-        <section style={styles.nav}>
-          <Link href="/investieren/broker" style={styles.link}>
-            ← Zurück zur Broker-Übersicht
-          </Link>
-          <Link href="/investieren/broker/vergleich" style={styles.linkPrimary}>
-            Broker vergleichen →
-          </Link>
-        </section>
+        <nav style={styles.nav}>
+          <Link href="/investieren/broker/vergleich">← Zum Broker-Vergleich</Link>
+        </nav>
       </main>
     </>
   );
@@ -95,69 +102,58 @@ export default function TradeRepublic() {
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "60px 20px",
+    padding: "80px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
+    maxWidth: "1100px",
+    margin: "0 auto",
   },
-  hero: {
-    maxWidth: "900px",
-    margin: "0 auto 60px",
+  header: {
     textAlign: "center",
+    marginBottom: "60px",
   },
-  title: {
-    fontSize: "3rem",
-    marginBottom: "16px",
-    color: "#ffffff",
-  },
-  subtitle: {
-    fontSize: "1.2rem",
-    color: "#9ca3af",
+  sectionTitle: {
+    marginBottom: "24px",
   },
   grid: {
-    maxWidth: "1100px",
-    margin: "0 auto 60px",
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
     gap: "24px",
+    marginBottom: "60px",
   },
   card: {
-    background: "linear-gradient(145deg, #020617, #020617)",
+    background: "#020617",
     border: "1px solid #1e293b",
     borderRadius: "16px",
-    padding: "28px",
+    padding: "24px",
   },
-  section: {
-    maxWidth: "900px",
-    margin: "0 auto 60px",
-  },
-  list: {
-    marginTop: "16px",
-    lineHeight: "1.8",
-    color: "#9ca3af",
-  },
-  highlight: {
-    maxWidth: "900px",
-    margin: "0 auto 60px",
-    padding: "32px",
+  box: {
+    background: "#020617",
+    border: "1px solid #1e293b",
     borderRadius: "16px",
-    border: "1px solid #2dd4bf",
-    background: "linear-gradient(145deg, #022c2a, #020617)",
+    padding: "32px",
+    marginBottom: "60px",
+  },
+  fazit: {
+    background: "linear-gradient(145deg, #022c22, #020617)",
+    border: "1px solid #0d9488",
+    borderRadius: "20px",
+    padding: "40px",
+    textAlign: "center",
+    marginBottom: "40px",
+  },
+  cta: {
+    display: "inline-block",
+    marginTop: "20px",
+    padding: "14px 28px",
+    background: "#14b8a6",
+    color: "#020617",
+    borderRadius: "999px",
+    fontWeight: "600",
+    textDecoration: "none",
   },
   nav: {
-    maxWidth: "900px",
-    margin: "0 auto",
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "16px",
-    flexWrap: "wrap",
-  },
-  link: {
-    color: "#9ca3af",
-    textDecoration: "none",
-  },
-  linkPrimary: {
-    color: "#2dd4bf",
-    textDecoration: "none",
-    fontWeight: "600",
+    textAlign: "center",
+    marginTop: "20px",
   },
 };

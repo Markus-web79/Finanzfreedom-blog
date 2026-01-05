@@ -5,81 +5,86 @@ export default function TradeRepublic() {
   return (
     <>
       <Head>
-        <title>Trade Republic Broker im Test | FinanzFreedom</title>
+        <title>Trade Republic im Überblick | FinanzFreedom</title>
         <meta
           name="description"
-          content="Trade Republic im Test: Kosten, ETF-Sparpläne, Sicherheit & Erfahrungen. Für wen eignet sich der Broker wirklich?"
+          content="Trade Republic im Überblick: Kosten, ETF-Sparpläne, Sicherheit, Vorteile & Nachteile. Für wen eignet sich der Broker wirklich?"
         />
       </Head>
 
       <main style={styles.page}>
-        {/* Header */}
-        <section style={styles.header}>
-          <h1>Trade Republic im Überblick</h1>
-          <p>
-            Trade Republic ist einer der beliebtesten Online-Broker in
-            Deutschland – besonders für ETF-Sparpläne und Einsteiger.
+        {/* HERO */}
+        <section style={styles.hero}>
+          <h1 style={styles.title}>Trade Republic</h1>
+          <p style={styles.subtitle}>
+            Einer der beliebtesten Neobroker in Deutschland – günstige ETF-Sparpläne,
+            einfache App und schlanke Kostenstruktur.
           </p>
         </section>
 
-        {/* Kurzfakten */}
-        <section style={styles.box}>
-          <h2>Wichtige Fakten</h2>
+        {/* FAKTEN */}
+        <section style={styles.grid}>
+          <div style={styles.card}>
+            <h2>Kosten</h2>
+            <p>
+              ETF-Sparpläne kostenlos, Einzelkäufe ab 1 € Fremdkostenpauschale.
+              Keine Depotführungsgebühr.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <h2>ETF-Sparpläne</h2>
+            <p>
+              Große Auswahl an ETFs, Sparpläne ab 1 € möglich,
+              ideal für langfristigen Vermögensaufbau.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <h2>App & Bedienung</h2>
+            <p>
+              Mobile-First-Ansatz mit sehr einfacher App.
+              Perfekt für Einsteiger, weniger für aktive Trader.
+            </p>
+          </div>
+
+          <div style={styles.card}>
+            <h2>Sicherheit</h2>
+            <p>
+              Deutscher Broker, BaFin-reguliert, Einlagensicherung bis 100.000 €.
+            </p>
+          </div>
+        </section>
+
+        {/* GEEIGNET */}
+        <section style={styles.section}>
+          <h2>Für wen eignet sich Trade Republic?</h2>
           <ul style={styles.list}>
-            <li>✔ Sitz in Deutschland</li>
-            <li>✔ BaFin-reguliert</li>
-            <li>✔ Kostenloser ETF-Sparplan</li>
-            <li>✔ Sehr einfache App</li>
+            <li>✔ ETF-Sparer & langfristige Anleger</li>
+            <li>✔ Einsteiger mit Fokus auf einfache Bedienung</li>
+            <li>✔ Nutzer, die mobil investieren wollen</li>
+            <li>✖ Weniger geeignet für Daytrader & Profis</li>
           </ul>
         </section>
 
-        {/* Für wen geeignet */}
-        <section style={styles.box}>
-          <h2>Für wen eignet sich Trade Republic?</h2>
+        {/* FAZIT */}
+        <section style={styles.highlight}>
+          <h2>Fazit</h2>
           <p>
-            Trade Republic eignet sich besonders für Anleger, die einfach und
-            kostengünstig in ETFs investieren möchten. Die App ist klar
-            strukturiert und ideal für langfristigen Vermögensaufbau.
+            Trade Republic ist ein extrem günstiger und einfacher Broker
+            für ETF-Sparpläne und langfristige Anleger.
+            Wer viele Handelsplätze oder Profi-Tools braucht,
+            ist bei klassischen Brokern besser aufgehoben.
           </p>
         </section>
 
-        {/* Vorteile / Nachteile */}
-        <section style={styles.grid}>
-          <div style={styles.card}>
-            <h3>Vorteile</h3>
-            <ul style={styles.list}>
-              <li>✔ Sehr niedrige Kosten</li>
-              <li>✔ Große Auswahl an ETF-Sparplänen</li>
-              <li>✔ Einfache Bedienung</li>
-            </ul>
-          </div>
-
-          <div style={styles.card}>
-            <h3>Nachteile</h3>
-            <ul style={styles.list}>
-              <li>✖ Keine Web-Oberfläche</li>
-              <li>✖ Weniger Analyse-Tools</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section style={styles.cta}>
-          <h2>Unser Fazit</h2>
-          <p>
-            Trade Republic ist ein sehr guter Broker für Einsteiger und alle, die
-            kostengünstig per ETF-Sparplan investieren wollen.
-          </p>
-
-          <button style={styles.ctaButton}>
-            Zum Anbieter (Affiliate folgt)
-          </button>
-        </section>
-
-        {/* Navigation */}
-        <section style={styles.back}>
-          <Link href="/investieren/broker/vergleich">
-            ← Zum Broker-Vergleich
+        {/* NAVIGATION */}
+        <section style={styles.nav}>
+          <Link href="/investieren/broker" style={styles.link}>
+            ← Zurück zur Broker-Übersicht
+          </Link>
+          <Link href="/investieren/broker/vergleich" style={styles.linkPrimary}>
+            Broker vergleichen →
           </Link>
         </section>
       </main>
@@ -94,58 +99,65 @@ const styles = {
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
-  header: {
-    maxWidth: "800px",
-    margin: "0 auto 40px",
+  hero: {
+    maxWidth: "900px",
+    margin: "0 auto 60px",
     textAlign: "center",
   },
-  box: {
-    maxWidth: "800px",
-    margin: "0 auto 32px",
-    padding: "24px",
-    borderRadius: "14px",
-    background: "#020617",
-    border: "1px solid #1e293b",
+  title: {
+    fontSize: "3rem",
+    marginBottom: "16px",
+    color: "#ffffff",
+  },
+  subtitle: {
+    fontSize: "1.2rem",
+    color: "#9ca3af",
   },
   grid: {
-    maxWidth: "900px",
-    margin: "0 auto 40px",
+    maxWidth: "1100px",
+    margin: "0 auto 60px",
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
     gap: "24px",
   },
   card: {
-    padding: "24px",
-    borderRadius: "14px",
-    background: "#020617",
+    background: "linear-gradient(145deg, #020617, #020617)",
     border: "1px solid #1e293b",
+    borderRadius: "16px",
+    padding: "28px",
+  },
+  section: {
+    maxWidth: "900px",
+    margin: "0 auto 60px",
   },
   list: {
-    paddingLeft: "18px",
-    marginTop: "10px",
+    marginTop: "16px",
+    lineHeight: "1.8",
     color: "#9ca3af",
   },
-  cta: {
-    maxWidth: "800px",
-    margin: "0 auto 40px",
+  highlight: {
+    maxWidth: "900px",
+    margin: "0 auto 60px",
     padding: "32px",
     borderRadius: "16px",
-    background: "linear-gradient(145deg, #020617, #022c22)",
     border: "1px solid #2dd4bf",
-    textAlign: "center",
+    background: "linear-gradient(145deg, #022c2a, #020617)",
   },
-  ctaButton: {
-    marginTop: "16px",
-    padding: "0.7rem 1.4rem",
-    borderRadius: "8px",
-    background: "#22d3ee",
-    color: "#020617",
-    fontWeight: 600,
-    border: "none",
-    cursor: "pointer",
+  nav: {
+    maxWidth: "900px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "space-between",
+    gap: "16px",
+    flexWrap: "wrap",
   },
-  back: {
-    textAlign: "center",
-    marginTop: "40px",
+  link: {
+    color: "#9ca3af",
+    textDecoration: "none",
+  },
+  linkPrimary: {
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: "600",
   },
 };

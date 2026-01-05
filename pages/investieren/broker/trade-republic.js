@@ -9,53 +9,44 @@ export default function TradeRepublic() {
         <title>Trade Republic Test & Erfahrungen | FinanzFreedom</title>
         <meta
           name="description"
-          content="Trade Republic im Überblick: Kosten, ETF-Sparpläne, Vorteile, Nachteile und für wen sich der Neobroker eignet."
+          content="Trade Republic im Test: Kosten, Sparpläne, Vorteile & Nachteile. Für wen lohnt sich der Neobroker wirklich?"
         />
       </Head>
 
-      <main className="page">
-        <section className="pageHeader">
-          <span className="eyebrow">BROKER</span>
+      <main className={styles.page}>
+        <section className={styles.hero}>
+          <span className={styles.badge}>BROKER</span>
           <h1>Trade Republic</h1>
-          <p>
+          <p className={styles.subtitle}>
             Mobiler Neobroker für ETFs, Aktien und Sparpläne – einfach & günstig.
           </p>
         </section>
 
         {/* KACHELN */}
-        <div className={styles.cardGrid}>
-          <div className={styles.brokerCard}>
-            <div className={styles.cardTitle}>Kosten</div>
-            <div className={styles.cardText}>
-              0 € Depotführung<br />
-              1 € pro Trade
-            </div>
+        <section className={styles.cardGrid}>
+          <div className={styles.card}>
+            <h3>Kosten</h3>
+            <p>0 € Depotführung<br />1 € pro Trade</p>
           </div>
 
-          <div className={styles.brokerCard}>
-            <div className={styles.cardTitle}>Geeignet für</div>
-            <div className={styles.cardText}>
-              Einsteiger & langfristige Anleger
-            </div>
+          <div className={styles.card}>
+            <h3>Geeignet für</h3>
+            <p>Einsteiger & langfristige Anleger</p>
           </div>
 
-          <div className={styles.brokerCard}>
-            <div className={styles.cardTitle}>Besonderheiten</div>
-            <div className={styles.cardText}>
-              ETF-Sparpläne, App-Fokus, einfache Bedienung
-            </div>
+          <div className={styles.card}>
+            <h3>Besonderheiten</h3>
+            <p>ETF-Sparpläne, App-Fokus, einfache Bedienung</p>
           </div>
 
-          <div className={styles.brokerCard}>
-            <div className={styles.cardTitle}>Hinweis</div>
-            <div className={styles.cardText}>
-              Kein klassischer Desktop-Broker
-            </div>
+          <div className={styles.card}>
+            <h3>Hinweis</h3>
+            <p>Kein klassischer Desktop-Broker</p>
           </div>
-        </div>
+        </section>
 
-        {/* TEXTBEREICH */}
-        <section className="content">
+        {/* CONTENT */}
+        <section className={styles.content}>
           <h2>Was ist Trade Republic?</h2>
           <p>
             Trade Republic ist ein deutscher Neobroker, der den Handel mit ETFs,
@@ -65,9 +56,8 @@ export default function TradeRepublic() {
 
           <h2>Für wen ist Trade Republic sinnvoll?</h2>
           <p>
-            Besonders geeignet ist Trade Republic für Anleger, die langfristig
-            investieren möchten und Wert auf einfache Bedienung sowie günstige
-            ETF-Sparpläne legen.
+            Besonders geeignet für Anleger, die langfristig investieren möchten
+            und Wert auf einfache Bedienung sowie günstige ETF-Sparpläne legen.
           </p>
 
           <h2>Stärken & Grenzen</h2>
@@ -76,38 +66,30 @@ export default function TradeRepublic() {
             Einschränkungen gibt es bei Analyse-Tools und klassischen
             Order-Funktionen.
           </p>
+        </section>
+
+        {/* CTA */}
+        <section className={styles.ctaBox}>
+          <h3>Jetzt Depot bei Trade Republic eröffnen</h3>
+          <p>
+            Ideal für Einsteiger und langfristige ETF-Sparpläne.<br />
+            Geringe Kosten, einfache App, schneller Start.
+          </p>
 
           <a
             href="#"
-            className="primaryButton"
-            style={{ marginTop: "24px", display: "inline-block" }}
+            className={styles.ctaButton}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
           >
-            Zu Trade Republic
+            Jetzt zu Trade Republic
           </a>
 
-          <div style={{ marginTop: "28px" }}>
-            <Link href="/investieren/broker/vergleich">
-              ← Zum Broker-Vergleich
-            </Link>
-          </div>
+          <Link href="/investieren/broker/vergleich" className={styles.backLink}>
+            ← Zum Broker-Vergleich
+          </Link>
         </section>
       </main>
     </>
   );
 }
-<div className={styles.ctaBox}>
-  <h3>Jetzt Depot bei Trade Republic eröffnen</h3>
-  <p>
-    Ideal für Einsteiger und langfristige ETF-Sparpläne.
-    Geringe Kosten, einfache App, schneller Start.
-  </p>
-
-  <a
-    href="#"
-    className={styles.ctaButton}
-    target="_blank"
-    rel="noopener noreferrer sponsored"
-  >
-    Jetzt zu Trade Republic
-  </a>
-</div>

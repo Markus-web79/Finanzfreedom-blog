@@ -95,3 +95,19 @@ export default function TradeRepublic() {
     </>
   );
 }
+<div className={styles.ctaBox}>
+  <h3>Jetzt Depot bei Trade Republic eröffnen</h3>
+  <p>
+    Ideal für Einsteiger und langfristige ETF-Sparpläne.
+    Geringe Kosten, einfache App, schneller Start.
+  </p>
+
+  <a
+    href="#"
+    className={styles.ctaButton}
+    target="_blank"
+    rel="noopener noreferrer sponsored"
+  >
+    Jetzt zu Trade Republic
+  </a>
+</div>

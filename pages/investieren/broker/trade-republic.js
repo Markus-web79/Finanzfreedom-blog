@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import styles from "@/styles/Broker.module.css";
+import styles from "../../../styles/Broker.module.css";
 
 export default function TradeRepublic() {
   return (

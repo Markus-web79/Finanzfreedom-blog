@@ -1,77 +1,59 @@
-import Head from "next/head";
 import Link from "next/link";
+import styles from "../../styles/Portal.module.css";
 
 export default function Versicherungen() {
   return (
-    <>
-      <Head>
-        <title>Versicherungen – Was wirklich sinnvoll ist | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Welche Versicherungen brauchst du wirklich? Überblick zu Haftpflicht, Hausrat, Berufsunfähigkeit & mehr – verständlich erklärt."
-        />
-      </Head>
-
-      <main style={styles.page}>
-        <h1 style={styles.title}>Versicherungen</h1>
-        <p style={styles.intro}>
-          Nicht jede Versicherung ist sinnvoll. Hier findest du eine klare,
-          ehrliche Übersicht – ohne Verkaufsdruck.
+    <main className={styles.page}>
+      <section className={styles.hero}>
+        <h1>Versicherungen – sinnvoll & verständlich</h1>
+        <p>
+          Welche Versicherungen brauchst du wirklich – und welche nicht?
+          Hier findest du unabhängige Erklärungen, Vergleiche und klare Empfehlungen.
         </p>
+      </section>
 
-        <section style={styles.grid}>
-          <Link href="/versicherungen/haftpflicht" style={styles.card}>
-            <h2>Haftpflicht</h2>
-            <p>Die wichtigste Versicherung für fast jeden.</p>
-          </Link>
+      <section className={styles.grid}>
+        <Link href="/versicherungen/haftpflicht" className={styles.card}>
+          <h3>Privathaftpflicht</h3>
+          <p>
+            Die wichtigste Versicherung überhaupt.
+            Warum sie unverzichtbar ist und worauf du achten musst.
+          </p>
+        </Link>
 
-          <Link href="/versicherungen/hausrat" style={styles.card}>
-            <h2>Hausrat</h2>
-            <p>Schützt dein Eigentum vor Schäden & Verlust.</p>
-          </Link>
+        <Link href="/versicherungen/hausrat" className={styles.card}>
+          <h3>Hausratversicherung</h3>
+          <p>
+            Schutz für dein Hab und Gut – sinnvoll oder überbewertet?
+            Klar erklärt mit Beispielen.
+          </p>
+        </Link>
 
-          <Link href="/versicherungen/berufsunfaehigkeit" style={styles.card}>
-            <h2>Berufsunfähigkeit</h2>
-            <p>Einkommen absichern, wenn Arbeiten nicht mehr geht.</p>
-          </Link>
+        <Link href="/versicherungen/berufsunfaehigkeit" className={styles.card}>
+          <h3>Berufsunfähigkeit</h3>
+          <p>
+            Existenzsicherung bei Krankheit.
+            Für wen sie wichtig ist – und für wen nicht.
+          </p>
+        </Link>
 
-          <Link href="/versicherungen/kfz" style={styles.card}>
-            <h2>Kfz-Versicherung</h2>
-            <p>Pflichtversicherung mit großen Preisunterschieden.</p>
-          </Link>
-        </section>
-      </main>
-    </>
+        <Link href="/versicherungen/krankenversicherung" className={styles.card}>
+          <h3>Krankenversicherung</h3>
+          <p>
+            Gesetzlich oder privat?
+            Unterschiede, Vor- und Nachteile einfach erklärt.
+          </p>
+        </Link>
+      </section>
+
+      <section className={styles.infoBox}>
+        <h2>Unser Ansatz</h2>
+        <p>
+          FinanzFreedom steht für Klarheit statt Verkaufsdruck.
+          Wir erklären Versicherungen so, dass du selbst entscheiden kannst –
+          unabhängig, verständlich und ohne Panikmache.
+        </p>
+      </section>
+    </main>
   );
 }
-
-const styles = {
-  page: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    padding: "3rem 1.5rem",
-  },
-  title: {
-    fontSize: "2.5rem",
-    marginBottom: "1rem",
-  },
-  intro: {
-    maxWidth: "700px",
-    marginBottom: "2.5rem",
-    opacity: 0.85,
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "24px",
-  },
-  card: {
-    padding: "24px",
-    borderRadius: "14px",
-    border: "1px solid #1e293b",
-    background: "#0f172a",
-    textDecoration: "none",
-    color: "inherit",
-    transition: "transform 0.15s ease",
-  },
-};

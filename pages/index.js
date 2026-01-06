@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -14,36 +15,36 @@ export default function Home() {
 
       {/* KACHELN */}
       <section className={styles.cards}>
-        <div className={styles.card}>
+        <Link href="/investieren" className={styles.card}>
           <h3>Investieren</h3>
           <p>
             ETFs, Aktien, Sparpläne & Strategien für langfristigen
             Vermögensaufbau.
           </p>
-        </div>
+        </Link>
 
-        <div className={styles.card}>
+        <Link href="/versicherungen" className={styles.card}>
           <h3>Versicherungen</h3>
           <p>
             Welche Versicherungen wirklich sinnvoll sind – klar & unabhängig
             erklärt.
           </p>
-        </div>
+        </Link>
 
-        <div className={styles.card}>
+        <Link href="/sparen" className={styles.card}>
           <h3>Sparen & Haushalt</h3>
           <p>
             Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle
             gewinnen.
           </p>
-        </div>
+        </Link>
 
-        <div className={styles.card}>
+        <Link href="/wissen" className={styles.card}>
           <h3>Wissen</h3>
           <p>
             Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt.
           </p>
-        </div>
+        </Link>
       </section>
 
       {/* WARUM */}

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 
 export default function UeberUns() {
   return (
@@ -8,49 +7,57 @@ export default function UeberUns() {
         <title>Über uns | FinanzFreedom</title>
         <meta
           name="description"
-          content="FinanzFreedom ist ein unabhängiges Finanzportal. Unser Ziel: verständliche Inhalte, Tools und Vergleiche für bessere finanzielle Entscheidungen."
+          content="FinanzFreedom ist ein unabhängiges Finanzportal für Investieren, Vermögensaufbau und finanzielle Bildung – ohne Verkaufsdruck."
         />
       </Head>
 
       <main style={styles.page}>
-        <nav style={styles.breadcrumb}>
-          <Link href="/">Start</Link> → Über uns
-        </nav>
-
-        <header style={styles.header}>
-          <h1 style={styles.title}>Über FinanzFreedom</h1>
+        <section style={styles.header}>
+          <h1>Über FinanzFreedom</h1>
           <p style={styles.subtitle}>
-            FinanzFreedom ist ein unabhängiges Finanzportal mit dem Ziel,
-            Finanzwissen verständlich zu machen – ohne Fachchinesisch und ohne
-            unnötige Komplexität.
+            Ein unabhängiges Finanzportal – sachlich, verständlich und langfristig gedacht.
           </p>
-        </header>
+        </section>
 
-        <section style={styles.card}>
-          <h2>Unser Anspruch</h2>
-          <ul>
-            <li>✅ Klarer Portal-Aufbau statt Blog-Chaos</li>
-            <li>✅ Tools & Rechner, die Entscheidungen erleichtern</li>
-            <li>✅ Vergleiche, die Nutzer wirklich weiterbringen</li>
-            <li>✅ Langfristig: internationale Versionen (DE/EN)</li>
+        <section style={styles.block}>
+          <h2>Warum FinanzFreedom?</h2>
+          <p>
+            FinanzFreedom wurde gegründet, um Finanzwissen verständlich,
+            strukturiert und ohne Verkaufsdruck zugänglich zu machen.
+            Viele Finanzseiten verfolgen vor allem eigene Interessen –
+            wir setzen auf Transparenz und Klarheit.
+          </p>
+        </section>
+
+        <section style={styles.block}>
+          <h2>Unsere Philosophie</h2>
+          <ul style={styles.list}>
+            <li>Unabhängige Informationen statt reiner Produktempfehlungen</li>
+            <li>Langfristiges Denken statt kurzfristiger Trends</li>
+            <li>Verständliche Erklärungen ohne Fachchinesisch</li>
+            <li>Strukturierte Inhalte statt unübersichtlicher Blog-Flut</li>
           </ul>
+        </section>
 
-          <h2>Für wen ist FinanzFreedom?</h2>
+        <section style={styles.block}>
+          <h2>Was wir nicht sind</h2>
           <p>
-            Für alle, die ihre Finanzen selbst in die Hand nehmen wollen:
-            Einsteiger, Fortgeschrittene und Menschen, die langfristig Vermögen
-            aufbauen möchten.
+            FinanzFreedom ist kein Finanzberater, kein Verkaufsportal
+            und kein Ort für schnelle Versprechen.
+            Wir liefern Wissen, Vergleiche und Orientierung –
+            Entscheidungen triffst du selbst.
           </p>
+        </section>
 
-          <h2>Kontakt</h2>
+        <section style={styles.block}>
+          <h2>Langfristige Vision</h2>
           <p>
-            Du hast Feedback, Fragen oder möchtest ein Thema vorschlagen?
-            Dann nutze bitte die Kontaktseite.
+            FinanzFreedom soll sich zu einem umfassenden Finanzportal entwickeln:
+            mit fundierten Artikeln, Vergleichsrechnern, Tools
+            und Inhalten für verschiedene Länder.
+            Unser Fokus liegt auf nachhaltigem Vermögensaufbau
+            und finanzieller Selbstbestimmung.
           </p>
-
-          <Link href="/kontakt" style={styles.linkButton}>
-            → Zur Kontaktseite
-          </Link>
         </section>
       </main>
     </>
@@ -59,46 +66,22 @@ export default function UeberUns() {
 
 const styles = {
   page: {
-    minHeight: "100vh",
-    padding: "60px 20px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
-    color: "#e5e7eb",
-    maxWidth: "900px",
+    maxWidth: "820px",
     margin: "0 auto",
-  },
-  breadcrumb: {
-    fontSize: "0.9rem",
-    color: "#94a3b8",
-    marginBottom: "18px",
+    padding: "3rem 1.5rem",
+    lineHeight: 1.7,
   },
   header: {
-    marginBottom: "24px",
-  },
-  title: {
-    fontSize: "2.4rem",
-    marginBottom: "10px",
-    color: "#ffffff",
+    marginBottom: "3rem",
   },
   subtitle: {
-    color: "#9ca3af",
-    fontSize: "1.1rem",
-    lineHeight: 1.6,
+    opacity: 0.85,
+    marginTop: "0.75rem",
   },
-  card: {
-    padding: "28px",
-    borderRadius: "16px",
-    border: "1px solid #1e293b",
-    background: "#020617",
-    lineHeight: 1.8,
+  block: {
+    marginBottom: "2.5rem",
   },
-  linkButton: {
-    display: "inline-block",
-    marginTop: "14px",
-    padding: "12px 16px",
-    borderRadius: "10px",
-    background: "#22d3ee",
-    color: "#020617",
-    textDecoration: "none",
-    fontWeight: 700,
+  list: {
+    paddingLeft: "1.2rem",
   },
 };

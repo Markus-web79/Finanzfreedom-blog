@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.page}>
       {/* HERO */}
       <section className={styles.hero}>
         <h1>FinanzFreedom</h1>

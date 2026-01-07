@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.page}>
+    <main className={styles.container}>
       {/* HERO */}
       <section className={styles.hero}>
         <h1>FinanzFreedom</h1>
@@ -13,8 +13,8 @@ export default function Home() {
         </p>
       </section>
 
-      {/* KACHELN */}
-      <section className={styles.cards}>
+      {/* HAUPT-KATEGORIEN */}
+      <section className={styles.cardGrid}>
         <Link href="/investieren" className={styles.card}>
           <h3>Investieren</h3>
           <p>
@@ -34,8 +34,7 @@ export default function Home() {
         <Link href="/sparen" className={styles.card}>
           <h3>Sparen & Haushalt</h3>
           <p>
-            Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle
-            gewinnen.
+            Mehr Geld behalten, Ausgaben optimieren und Kontrolle gewinnen.
           </p>
         </Link>
 
@@ -47,13 +46,34 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* WARUM */}
-      <section className={styles.why}>
+      {/* PORTAL-AKTIONEN */}
+      <section className={styles.actions}>
+        <h2>Beliebte Themen</h2>
+
+        <div className={styles.actionGrid}>
+          <Link href="/investieren/etfs" className={styles.action}>
+            ETFs verstehen
+          </Link>
+
+          <Link href="/investieren/broker" className={styles.action}>
+            Broker vergleichen
+          </Link>
+
+          <Link href="/versicherungen" className={styles.action}>
+            Versicherungen prüfen
+          </Link>
+        </div>
+      </section>
+
+      {/* TRUST */}
+      <section className={styles.trust}>
         <h2>Warum FinanzFreedom?</h2>
-        <p>
-          Wir verkaufen keine Produkte. Wir erklären Finanzen so, dass du selbst
-          entscheiden kannst – unabhängig, strukturiert und ohne Panikmache.
-        </p>
+        <ul>
+          <li>✔ Keine Produkte, kein Verkaufsdruck</li>
+          <li>✔ Klar, strukturiert & unabhängig</li>
+          <li>✔ Für echte Entscheidungen – nicht für Provisionen</li>
+          <li>✔ Kostenlos & transparent</li>
+        </ul>
       </section>
     </main>
   );

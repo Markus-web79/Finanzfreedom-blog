@@ -1,80 +1,119 @@
+import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.container}>
-      {/* HERO */}
-      <section className={styles.hero}>
-        <h1>FinanzFreedom</h1>
-        <p>
-          Dein unabhängiges Finanzportal für Investieren, Vermögensaufbau und
-          finanzielle Freiheit – verständlich & ohne Verkaufsdruck.
-        </p>
-      </section>
+    <>
+      <Head>
+        <title>FinanzFreedom – Dein unabhängiges Finanzportal</title>
+        <meta
+          name="description"
+          content="FinanzFreedom ist ein unabhängiges Finanzportal für Investieren, Vergleiche, Tools und Finanzwissen."
+        />
+      </Head>
 
-      {/* HAUPT-KATEGORIEN */}
-      <section className={styles.cardGrid}>
-        <Link href="/investieren" className={styles.card}>
-          <h3>Investieren</h3>
-          <p>
-            ETFs, Aktien, Sparpläne & Strategien für langfristigen
-            Vermögensaufbau.
+      <main style={styles.page}>
+        {/* HERO */}
+        <section style={styles.hero}>
+          <h1 style={styles.title}>FinanzFreedom</h1>
+          <p style={styles.subtitle}>
+            Das unabhängige Finanzportal für Investieren, Vergleiche & fundierte
+            Entscheidungen.
           </p>
-        </Link>
+        </section>
 
-        <Link href="/versicherungen" className={styles.card}>
-          <h3>Versicherungen</h3>
-          <p>
-            Welche Versicherungen wirklich sinnvoll sind – klar & unabhängig
-            erklärt.
-          </p>
-        </Link>
-
-        <Link href="/sparen" className={styles.card}>
-          <h3>Sparen & Haushalt</h3>
-          <p>
-            Mehr Geld behalten, Ausgaben optimieren und Kontrolle gewinnen.
-          </p>
-        </Link>
-
-        <Link href="/wissen" className={styles.card}>
-          <h3>Wissen</h3>
-          <p>
-            Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt.
-          </p>
-        </Link>
-      </section>
-
-      {/* PORTAL-AKTIONEN */}
-      <section className={styles.actions}>
-        <h2>Beliebte Themen</h2>
-
-        <div className={styles.actionGrid}>
-          <Link href="/investieren/etfs" className={styles.action}>
-            ETFs verstehen
+        {/* PORTAL GRID */}
+        <section style={styles.grid}>
+          <Link href="/investieren" style={styles.card}>
+            <h2>Investieren</h2>
+            <p>ETFs, Aktien, Strategien & langfristiger Vermögensaufbau.</p>
           </Link>
 
-          <Link href="/investieren/broker" className={styles.action}>
-            Broker vergleichen
+          <Link href="/broker" style={styles.card}>
+            <h2>Broker & Vergleiche</h2>
+            <p>Neutrale Vergleiche von Brokern & Finanzprodukten.</p>
           </Link>
 
-          <Link href="/versicherungen" className={styles.action}>
-            Versicherungen prüfen
+          <Link href="/rechner" style={styles.card}>
+            <h2>Rechner & Tools</h2>
+            <p>ETF-Rechner, Sparplan-Tools & Finanzhilfen.</p>
           </Link>
-        </div>
-      </section>
 
-      {/* TRUST */}
-      <section className={styles.trust}>
-        <h2>Warum FinanzFreedom?</h2>
-        <ul>
-          <li>✔ Keine Produkte, kein Verkaufsdruck</li>
-          <li>✔ Klar, strukturiert & unabhängig</li>
-          <li>✔ Für echte Entscheidungen – nicht für Provisionen</li>
-          <li>✔ Kostenlos & transparent</li>
-        </ul>
-      </section>
-    </main>
+          <Link href="/wissen" style={styles.card}>
+            <h2>Finanzwissen</h2>
+            <p>Grundlagen, Zusammenhänge & Orientierung.</p>
+          </Link>
+        </section>
+
+        {/* VERTRAUEN */}
+        <section style={styles.trust}>
+          <h3>Warum FinanzFreedom?</h3>
+          <p>
+            Keine Bank, kein Produktverkauf.  
+            Nur unabhängige Inhalte, klare Vergleiche und echte Orientierung.
+          </p>
+        </section>
+
+        {/* CTA */}
+        <section style={styles.cta}>
+          <p>Neu hier?</p>
+          <Link href="/wissen">→ Jetzt Finanzwissen entdecken</Link>
+        </section>
+      </main>
+    </>
   );
 }
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    padding: "70px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    color: "#e5e7eb",
+  },
+
+  hero: {
+    textAlign: "center",
+    maxWidth: "900px",
+    margin: "0 auto 70px",
+  },
+
+  title: {
+    fontSize: "3rem",
+    marginBottom: "12px",
+  },
+
+  subtitle: {
+    fontSize: "1.2rem",
+    color: "#9ca3af",
+  },
+
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "24px",
+    maxWidth: "1100px",
+    margin: "0 auto",
+  },
+
+  card: {
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "16px",
+    padding: "28px",
+    textDecoration: "none",
+    color: "#e5e7eb",
+    transition: "border 0.2s ease",
+  },
+
+  trust: {
+    marginTop: "80px",
+    textAlign: "center",
+    color: "#9ca3af",
+  },
+
+  cta: {
+    marginTop: "50px",
+    textAlign: "center",
+  },
+};

@@ -1,14 +1,8 @@
-import BackLink from "../../components/BackLink";
-import styles from "../../styles/ArticlePage.module.css";
+import ArticleLayout from "../../components/ArticleLayout";
 
 export default function Privathaftpflicht() {
   return (
-    <div className={styles.page}>
-      <BackLink
-        href="/versicherungen"
-        label="Zur Versicherungsübersicht"
-      />
-
+    <ArticleLayout backHref="/versicherungen" backLabel="← Zurück zu Versicherungen">
       <h1>Privathaftpflichtversicherung</h1>
 
       <p>
@@ -28,6 +22,6 @@ export default function Privathaftpflicht() {
         <li>Forderungsausfalldeckung</li>
         <li>Mitversicherung von Schlüsselverlust</li>
       </ul>
-    </div>
+    </ArticleLayout>
   );
 }

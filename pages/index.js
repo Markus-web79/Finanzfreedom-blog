@@ -4,24 +4,20 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
-      {/* HERO */}
-      <section className={styles.hero}>
+      <div className={styles.container}>
         <h1 className={styles.title}>FinanzFreedom</h1>
         <p className={styles.subtitle}>
-          Das unabhängige Finanzportal für Investieren, Vergleiche & fundierte Entscheidungen.
+          Das unabhängige Finanzportal für Investieren, Vergleiche &
+          fundierte Entscheidungen.
         </p>
-      </section>
 
-      {/* KATEGORIEN – FESTE STRUKTUR */}
-      <section className={styles.categories}>
-        {/* REIHE 1 – IMMER 3 */}
-        <div className={styles.row}>
+        <div className={styles.cardsGrid}>
           <Link href="/investieren" className={styles.card}>
             <h3>Investieren</h3>
             <p>ETFs, Aktien, Strategien & langfristiger Vermögensaufbau.</p>
           </Link>
 
-          <Link href="/broker" className={styles.card}>
+          <Link href="/vergleiche" className={styles.card}>
             <h3>Broker & Vergleiche</h3>
             <p>Neutrale Vergleiche von Brokern & Finanzprodukten.</p>
           </Link>
@@ -30,10 +26,7 @@ export default function Home() {
             <h3>Rechner & Tools</h3>
             <p>ETF-Rechner, Sparplan-Tools & Finanzhilfen.</p>
           </Link>
-        </div>
 
-        {/* REIHE 2 – IMMER 2 */}
-        <div className={styles.row}>
           <Link href="/wissen" className={styles.card}>
             <h3>Finanzwissen</h3>
             <p>Grundlagen, Zusammenhänge & Orientierung.</p>
@@ -41,19 +34,13 @@ export default function Home() {
 
           <Link href="/versicherungen" className={styles.card}>
             <h3>Versicherungen</h3>
-            <p>Sinnvolle Versicherungen, klare Erklärungen & unabhängige Entscheidungen.</p>
+            <p>
+              Sinnvolle Versicherungen, klare Erklärungen &
+              unabhängige Entscheidungen.
+            </p>
           </Link>
         </div>
-      </section>
-
-      {/* WARUM */}
-      <section className={styles.why}>
-        <h2>Warum FinanzFreedom?</h2>
-        <p>
-          Keine Bank, kein Produktverkauf.  
-          Nur unabhängige Inhalte, klare Vergleiche und echte Orientierung.
-        </p>
-      </section>
+      </div>
     </div>
   );
 }

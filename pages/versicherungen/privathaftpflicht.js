@@ -1,19 +1,21 @@
-import PageLayout from "../../components/PageLayout";
+import BackLink from "../../components/BackLink";
+import styles from "../../styles/Article.module.css";
 
 export default function Privathaftpflicht() {
   return (
-    <PageLayout>
+    <div className={styles.article}>
+      <BackLink href="/versicherungen" label="Zurück zu Versicherungen" />
+
       <h1>Privathaftpflichtversicherung</h1>
 
       <p>
-        Die Privathaftpflichtversicherung schützt dich vor den finanziellen
-        Folgen von Schäden, die du anderen zufügst.
+        Die Privathaftpflicht schützt dich vor finanziellen Folgen von Schäden,
+        die du anderen zufügst.
       </p>
 
       <h2>Warum ist sie so wichtig?</h2>
       <p>
-        Schon kleine Unachtsamkeiten können Schäden in sechsstelliger Höhe
-        verursachen.
+        Schon kleine Unachtsamkeiten können Schäden in existenzieller Höhe verursachen.
       </p>
 
       <h2>Worauf solltest du achten?</h2>
@@ -22,6 +24,6 @@ export default function Privathaftpflicht() {
         <li>Forderungsausfalldeckung</li>
         <li>Schlüsselverlust mitversichert</li>
       </ul>
-    </PageLayout>
+    </div>
   );
 }

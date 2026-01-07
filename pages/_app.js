@@ -1,11 +1,10 @@
 import "../styles/globals.css";
-import Header from "../components/Header";
+import PageLayout from "../components/PageLayout";
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Header />
+    <PageLayout>
       <Component {...pageProps} />
-    </>
+    </PageLayout>
   );
 }

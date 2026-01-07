@@ -1,49 +1,42 @@
-.page {
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 24px;
 }
 
-/* HERO */
-.hero {
+.title {
+  font-size: 3rem;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 12px;
 }
 
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 16px;
+.subtitle {
+  text-align: center;
+  opacity: 0.85;
+  margin-bottom: 56px;
 }
 
-.hero p {
-  font-size: 18px;
-  color: #b7c4d1;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* KACHELN */
-.cards {
+/* 🔑 DAS IST ENTSCHEIDEND */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
-  margin-bottom: 80px;
 }
 
+/* Karten */
 .card {
-  display: block;
-  background: linear-gradient(180deg, #0f172a, #020617);
+  background: linear-gradient(180deg, #0b1220, #0e1627);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  padding: 24px;
+  padding: 28px;
   text-decoration: none;
-  color: #ffffff;
-  border: 1px solid rgba(45, 212, 191, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(45, 212, 191, 0.15);
+  border-color: #22d3ee;
 }
 
 .card h3 {
@@ -51,17 +44,6 @@
 }
 
 .card p {
-  color: #b7c4d1;
-  line-height: 1.6;
-}
-
-/* WARUM */
-.why h2 {
-  margin-bottom: 16px;
-}
-
-.why p {
-  max-width: 720px;
-  color: #b7c4d1;
-  line-height: 1.7;
+  opacity: 0.85;
+  line-height: 1.4;
 }

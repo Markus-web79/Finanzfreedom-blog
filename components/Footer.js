@@ -1,71 +1,40 @@
+import Link from "next/link";
+import styles from "../styles/Footer.module.css";
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer style={styles.footer}>
-      <div style={styles.container}>
-        <div style={styles.brand}>
-          <h3 style={styles.logo}>
-            Finanz<span style={styles.highlight}>Freedom</span>
-          </h3>
-          <p>Dein Weg zur finanziellen Freiheit – einfach erklärt, ehrlich und unabhängig.</p>
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <div className={styles.brand}>
+          <strong>FinanzFreedom</strong>
+          <p>
+            Unabhängiges Finanzportal für Investieren, Vergleiche & fundierte
+            Entscheidungen.
+          </p>
         </div>
 
-        <div style={styles.links}>
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
-          <a href="/kontakt">Kontakt</a>
-          <a href="/newsletter">Newsletter</a>
+        <div className={styles.links}>
+          <div>
+            <span>Portal</span>
+            <Link href="/investieren">Investieren</Link>
+            <Link href="/etfs">ETFs</Link>
+            <Link href="/broker">Broker</Link>
+            <Link href="/versicherungen">Versicherungen</Link>
+          </div>
+
+          <div>
+            <span>Recht & Info</span>
+            <Link href="/ueber-uns">Über uns</Link>
+            <Link href="/kontakt">Kontakt</Link>
+            <Link href="/impressum">Impressum</Link>
+            <Link href="/datenschutz">Datenschutz</Link>
+          </div>
         </div>
+      </div>
 
-        <p style={styles.note}>
-          *Diese Seite enthält Affiliate-Links. Wenn du über einen Link etwas kaufst,
-          erhalten wir ggf. eine kleine Provision – ohne Mehrkosten für dich.*
-        </p>
-
-        <p style={styles.copy}>
-          © {currentYear} FinanzFreedom – Alle Rechte vorbehalten.
-        </p>
+      <div className={styles.bottom}>
+        © {new Date().getFullYear()} FinanzFreedom · Keine Anlageberatung
       </div>
     </footer>
   );
 }
-
-const styles = {
-  footer: {
-    backgroundColor: "#001f1f",
-    color: "#ccc",
-    padding: "50px 20px",
-    borderTop: "2px solid #00bfa6",
-    textAlign: "center",
-  },
-  container: {
-    maxWidth: "900px",
-    margin: "0 auto",
-  },
-  brand: {
-    marginBottom: "1rem",
-  },
-  logo: {
-    margin: 0,
-    fontWeight: "bold",
-  },
-  highlight: {
-    color: "#00bfa6",
-  },
-  links: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "1rem",
-    marginBottom: "1rem",
-  },
-  note: {
-    fontSize: "0.85em",
-    color: "#888",
-    maxWidth: "700px",
-    margin: "0 auto 1rem",
-  },
-  copy: {
-    fontSize: "0.9em",
-  },
-};

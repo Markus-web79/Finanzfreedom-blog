@@ -10,15 +10,11 @@ export default function Versicherungen() {
 
         <p className={styles.intro}>
           Welche Versicherungen brauchst du wirklich – und welche nicht?
-          Hier findest du unabhängige Erklärungen, Vergleiche und klare
-          Empfehlungen.
+          Unabhängige Erklärungen, klare Empfehlungen.
         </p>
 
         <div className={styles.grid}>
-          <Link
-            href="/versicherungen/privathaftpflicht"
-            className={styles.card}
-          >
+          <Link href="/versicherungen/privathaftpflicht" className={styles.card}>
             <h3>Privathaftpflicht</h3>
             <p>
               Die wichtigste Versicherung überhaupt. Warum sie unverzichtbar
@@ -26,38 +22,20 @@ export default function Versicherungen() {
             </p>
           </Link>
 
-          <Link
-            href="/versicherungen/hausratversicherung"
-            className={styles.card}
-          >
+          <div className={styles.card}>
             <h3>Hausratversicherung</h3>
-            <p>
-              Schutz für dein Hab und Gut – sinnvoll oder überbewertet?
-              Klar erklärt mit Beispielen.
-            </p>
-          </Link>
+            <p>Schutz für dein Hab und Gut – sinnvoll oder überbewertet?</p>
+          </div>
 
-          <Link
-            href="/versicherungen/berufsunfaehigkeit"
-            className={styles.card}
-          >
+          <div className={styles.card}>
             <h3>Berufsunfähigkeit</h3>
-            <p>
-              Existenzsicherung bei Krankheit. Für wen sie wichtig ist – und
-              für wen nicht.
-            </p>
-          </Link>
+            <p>Existenzsicherung bei Krankheit – für wen wirklich wichtig?</p>
+          </div>
 
-          <Link
-            href="/versicherungen/krankenversicherung"
-            className={styles.card}
-          >
+          <div className={styles.card}>
             <h3>Krankenversicherung</h3>
-            <p>
-              Gesetzlich oder privat? Unterschiede, Vor- und Nachteile einfach
-              erklärt.
-            </p>
-          </Link>
+            <p>Gesetzlich oder privat? Unterschiede einfach erklärt.</p>
+          </div>
         </div>
       </div>
     </PageLayout>

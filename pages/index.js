@@ -4,10 +4,9 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
-      <h1>FinanzFreedom</h1>
+      <h1 className={styles.title}>FinanzFreedom</h1>
       <p className={styles.subtitle}>
-        Das unabhängige Finanzportal für Investieren, Vergleiche & fundierte
-        Entscheidungen.
+        Das unabhängige Finanzportal für Investieren, Vergleiche & fundierte Entscheidungen.
       </p>
 
       <div className={styles.grid}>
@@ -33,10 +32,7 @@ export default function Home() {
 
         <Link href="/versicherungen" className={styles.card}>
           <h3>Versicherungen</h3>
-          <p>
-            Sinnvolle Versicherungen, klare Erklärungen & unabhängige
-            Entscheidungen.
-          </p>
+          <p>Sinnvolle Versicherungen & klare Erklärungen.</p>
         </Link>
       </div>
     </div>

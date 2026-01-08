@@ -1,25 +1,27 @@
 import { useRouter } from "next/router";
-import BackLink from "./BackLink";
+import Link from "next/link";
 
 export default function PageLayout({ children }) {
   const router = useRouter();
-
-  let backHref = "/";
-  let backLabel = "← Zur Startseite";
-
-  if (router.pathname.startsWith("/versicherungen")) {
-    backHref = "/versicherungen";
-    backLabel = "← Zur Versicherungen";
-  }
-
-  if (router.pathname.startsWith("/investieren")) {
-    backHref = "/investieren";
-    backLabel = "← Zur Investieren";
-  }
+  const isHome = router.pathname === "/";
 
   return (
-    <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 20px" }}>
-      <BackLink href={backHref} label={backLabel} />
+    <div style={{ minHeight: "100vh" }}>
+      {!isHome && (
+        <div style={{ marginBottom: "24px" }}>
+          <Link
+            href="/"
+            style={{
+              color: "#2dd4bf",
+              textDecoration: "none",
+              fontSize: "14px",
+            }}
+          >
+            ← Zur Startseite
+          </Link>
+        </div>
+      )}
+
       {children}
     </div>
   );

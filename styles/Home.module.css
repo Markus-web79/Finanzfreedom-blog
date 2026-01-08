@@ -1,72 +1,85 @@
+/* HERO */
 .hero {
-  background: linear-gradient(135deg, #12cfc8 0%, #0a6f73 100%);
-  padding: 90px 24px 100px;
+  background: linear-gradient(
+    135deg,
+    #0f766e,
+    #0d9488
+  );
+  padding: 100px 24px 140px;
   text-align: center;
 }
 
-.heroInner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 16px;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9);
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-.mainContent {
-  max-width: 1100px;
-  margin: -50px auto 0;
-  padding: 0 24px 80px;
+/* MAIN */
+.main {
+  max-width: 1200px;
+  margin: -80px auto 0; /* Karten überlappen Hero */
+  padding: 0 24px 120px;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
 }
 
+/* CARD */
 .card {
-  background: linear-gradient(180deg, #0b1220, #0e1628);
+  background: linear-gradient(
+    180deg,
+    #0b1220,
+    #0a0f1c
+  );
   border-radius: 14px;
-  padding: 24px;
-  text-decoration: none;
+  padding: 28px;
   color: #ffffff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.5;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-.card h3 {
-  margin-bottom: 8px;
-}
-
-.card p {
-  color: #b8c2cc;
-  line-height: 1.5;
-}
-
+/* FOOTER */
 .footer {
-  margin-top: 80px;
   text-align: center;
+  margin-top: 80px;
+  color: #5eead4;
   font-size: 0.9rem;
-  color: #7f8c8d;
 }
 
 .footer a {
-  color: #12cfc8;
+  color: #5eead4;
   text-decoration: none;
-  margin: 0 6px;
+  margin: 0 10px;
 }
 
 .footer a:hover {

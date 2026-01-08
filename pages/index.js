@@ -1,121 +1,85 @@
-import Head from "next/head";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>FinanzFreedom – Das unabhängige Finanzportal</title>
-        <meta
-          name="description"
-          content="FinanzFreedom ist dein unabhängiges Finanzportal für ETFs, Broker, Versicherungen, Sparen und Finanzwissen."
-        />
-      </Head>
-
-      <main style={styles.page}>
-        {/* HERO */}
-        <section style={styles.hero}>
-          <h1 style={styles.title}>FinanzFreedom</h1>
-          <p style={styles.subtitle}>
-            Das unabhängige Finanzportal für Vermögensaufbau, Investieren und finanzielle Freiheit.
+      {/* HERO BEREICH */}
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <h1>FinanzFreedom</h1>
+          <p>
+            Das unabhängige Finanzportal für Vermögensaufbau,
+            Investieren und finanzielle Freiheit.
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* PORTAL GRID */}
-        <section style={styles.grid}>
-          <Link href="/investieren" style={styles.card}>
-            <h2>Investieren</h2>
-            <p>ETFs, Aktien & Strategien für langfristigen Vermögensaufbau.</p>
+      {/* HAUPTINHALT */}
+      <main className={styles.mainContent}>
+        <div className={styles.grid}>
+          <Link href="/investieren" className={styles.card}>
+            <h3>Investieren</h3>
+            <p>
+              ETFs, Aktien & Strategien für langfristigen
+              Vermögensaufbau.
+            </p>
           </Link>
 
-          <Link href="/etfs" style={styles.card}>
-            <h2>ETFs</h2>
-            <p>ETF-Grundlagen, Vergleiche & Sparplan-Wissen.</p>
+          <Link href="/etfs" className={styles.card}>
+            <h3>ETFs</h3>
+            <p>
+              ETF-Grundlagen, Sparpläne und verständliche
+              Erklärungen.
+            </p>
           </Link>
 
-          <Link href="/broker" style={styles.card}>
-            <h2>Broker</h2>
-            <p>Broker-Vergleiche & Depotanbieter im Überblick.</p>
+          <Link href="/broker" className={styles.card}>
+            <h3>Broker</h3>
+            <p>
+              Broker-Vergleiche, Depotanbieter und
+              Empfehlungen.
+            </p>
           </Link>
 
-          <Link href="/versicherungen" style={styles.card}>
-            <h2>Versicherungen</h2>
-            <p>Welche Versicherungen sinnvoll sind – unabhängig erklärt.</p>
+          <Link href="/versicherungen" className={styles.card}>
+            <h3>Versicherungen</h3>
+            <p>
+              Welche Versicherungen sinnvoll sind –
+              unabhängig erklärt.
+            </p>
           </Link>
 
-          <Link href="/sparen" style={styles.card}>
-            <h2>Sparen</h2>
-            <p>Haushalt, Sparen & finanzielle Kontrolle.</p>
+          <Link href="/sparen" className={styles.card}>
+            <h3>Sparen</h3>
+            <p>
+              Ausgaben optimieren, Geld zurückholen und
+              Kontrolle gewinnen.
+            </p>
           </Link>
 
-          <Link href="/wissen" style={styles.card}>
-            <h2>Wissen</h2>
-            <p>Finanzgrundlagen einfach & verständlich erklärt.</p>
+          <Link href="/wissen" className={styles.card}>
+            <h3>Wissen</h3>
+            <p>
+              Finanzgrundlagen einfach und verständlich
+              erklärt.
+            </p>
           </Link>
-        </section>
+        </div>
 
         {/* FOOTER */}
-        <footer style={styles.footer}>
+        <footer className={styles.footer}>
           <Link href="/ueber-uns">Über uns</Link>
-          <span>•</span>
+          <span>·</span>
           <Link href="/kontakt">Kontakt</Link>
-          <span>•</span>
+          <span>·</span>
           <Link href="/transparenz">Transparenz</Link>
-          <span>•</span>
+          <span>·</span>
           <Link href="/datenschutz">Datenschutz</Link>
-          <span>•</span>
+          <span>·</span>
           <Link href="/impressum">Impressum</Link>
         </footer>
       </main>
     </>
   );
 }
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
-    color: "#e5e7eb",
-    padding: "60px 20px",
-  },
-  hero: {
-    textAlign: "center",
-    maxWidth: "900px",
-    margin: "0 auto 60px",
-  },
-  title: {
-    fontSize: "3rem",
-    marginBottom: "16px",
-  },
-  subtitle: {
-    fontSize: "1.2rem",
-    color: "#9ca3af",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "24px",
-    maxWidth: "1100px",
-    margin: "0 auto",
-  },
-  card: {
-    display: "block",
-    padding: "28px",
-    borderRadius: "14px",
-    background: "#020617",
-    border: "1px solid #1e293b",
-    textDecoration: "none",
-    color: "#e5e7eb",
-    transition: "all 0.2s ease",
-  },
-  footer: {
-    marginTop: "80px",
-    textAlign: "center",
-    fontSize: "0.9rem",
-    color: "#9ca3af",
-    display: "flex",
-    gap: "10px",
-    justifyContent: "center",
-    flexWrap: "wrap",
-  },
-};

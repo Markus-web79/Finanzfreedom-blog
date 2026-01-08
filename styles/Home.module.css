@@ -1,42 +1,50 @@
-.container {
-  max-width: 1200px;
+.hero {
+  background: linear-gradient(135deg, #12cfc8 0%, #0a6f73 100%);
+  padding: 90px 24px 100px;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 80px 24px;
 }
 
-.title {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 12px;
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
 }
 
-.subtitle {
-  text-align: center;
-  opacity: 0.85;
-  margin-bottom: 56px;
+.hero p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-/* 🔑 DAS IST ENTSCHEIDEND */
+.mainContent {
+  max-width: 1100px;
+  margin: -50px auto 0;
+  padding: 0 24px 80px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
 
-/* Karten */
 .card {
-  background: linear-gradient(180deg, #0b1220, #0e1627);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 28px;
+  background: linear-gradient(180deg, #0b1220, #0e1628);
+  border-radius: 14px;
+  padding: 24px;
   text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: #22d3ee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .card h3 {
@@ -44,40 +52,23 @@
 }
 
 .card p {
-  opacity: 0.85;
-  line-height: 1.4;
-}
-/* ===== STARTSEITE FIX – NICHT ANFASSEN ===== */
-
-.page {
-  width: 100%;
-  overflow-x: hidden;
+  color: #b8c2cc;
+  line-height: 1.5;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+.footer {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #7f8c8d;
 }
 
-.cardsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  width: 100%;
-  margin-top: 48px;
+.footer a {
+  color: #12cfc8;
+  text-decoration: none;
+  margin: 0 6px;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .cardsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile */
-@media (max-width: 640px) {
-  .cardsGrid {
-    grid-template-columns: 1fr;
-  }
+.footer a:hover {
+  text-decoration: underline;
 }

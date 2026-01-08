@@ -5,50 +5,78 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>FinanzFreedom – Dein unabhängiges Finanzportal</title>
+        <title>FinanzFreedom – Das unabhängige Finanzportal</title>
         <meta
           name="description"
-          content="FinanzFreedom ist dein unabhängiges Finanzportal für Investieren, ETFs, Versicherungen und Vermögensaufbau."
+          content="FinanzFreedom ist dein unabhängiges Finanzportal für ETFs, Broker, Versicherungen, Sparen und Finanzwissen."
         />
       </Head>
 
       <main style={styles.page}>
+        {/* HERO */}
         <section style={styles.hero}>
           <h1 style={styles.title}>FinanzFreedom</h1>
           <p style={styles.subtitle}>
-            Klar. Unabhängig. Strukturiert.  
-            Dein Portal für finanzielle Freiheit.
+            Das unabhängige Finanzportal für Vermögensaufbau, Investieren und finanzielle Freiheit.
           </p>
         </section>
 
+        {/* PORTAL GRID */}
         <section style={styles.grid}>
-          <PortalCard title="Investieren" text="Strategien, Grundlagen und langfristiger Vermögensaufbau." href="/investieren" />
-          <PortalCard title="ETFs" text="ETF-Wissen, Sparpläne und verständliche Erklärungen." href="/etfs" />
-          <PortalCard title="Broker" text="Broker-Vergleiche und Empfehlungen." href="/broker" />
-          <PortalCard title="Versicherungen" text="Sinnvolle Versicherungen klar erklärt." href="/versicherungen" />
-          <PortalCard title="Sparen" text="Ausgaben optimieren und Geld zurückholen." href="/sparen" />
-          <PortalCard title="Wissen" text="Finanzgrundlagen einfach verstehen." href="/wissen" />
+          <Link href="/investieren" style={styles.card}>
+            <h2>Investieren</h2>
+            <p>ETFs, Aktien & Strategien für langfristigen Vermögensaufbau.</p>
+          </Link>
+
+          <Link href="/etfs" style={styles.card}>
+            <h2>ETFs</h2>
+            <p>ETF-Grundlagen, Vergleiche & Sparplan-Wissen.</p>
+          </Link>
+
+          <Link href="/broker" style={styles.card}>
+            <h2>Broker</h2>
+            <p>Broker-Vergleiche & Depotanbieter im Überblick.</p>
+          </Link>
+
+          <Link href="/versicherungen" style={styles.card}>
+            <h2>Versicherungen</h2>
+            <p>Welche Versicherungen sinnvoll sind – unabhängig erklärt.</p>
+          </Link>
+
+          <Link href="/sparen" style={styles.card}>
+            <h2>Sparen</h2>
+            <p>Haushalt, Sparen & finanzielle Kontrolle.</p>
+          </Link>
+
+          <Link href="/wissen" style={styles.card}>
+            <h2>Wissen</h2>
+            <p>Finanzgrundlagen einfach & verständlich erklärt.</p>
+          </Link>
         </section>
+
+        {/* FOOTER */}
+        <footer style={styles.footer}>
+          <Link href="/ueber-uns">Über uns</Link>
+          <span>•</span>
+          <Link href="/kontakt">Kontakt</Link>
+          <span>•</span>
+          <Link href="/transparenz">Transparenz</Link>
+          <span>•</span>
+          <Link href="/datenschutz">Datenschutz</Link>
+          <span>•</span>
+          <Link href="/impressum">Impressum</Link>
+        </footer>
       </main>
     </>
-  );
-}
-
-function PortalCard({ title, text, href }) {
-  return (
-    <Link href={href} style={styles.card}>
-      <h2>{title}</h2>
-      <p>{text}</p>
-    </Link>
   );
 }
 
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "60px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
+    padding: "60px 20px",
   },
   hero: {
     textAlign: "center",
@@ -57,10 +85,10 @@ const styles = {
   },
   title: {
     fontSize: "3rem",
-    marginBottom: "12px",
+    marginBottom: "16px",
   },
   subtitle: {
-    fontSize: "1.1rem",
+    fontSize: "1.2rem",
     color: "#9ca3af",
   },
   grid: {
@@ -79,5 +107,15 @@ const styles = {
     textDecoration: "none",
     color: "#e5e7eb",
     transition: "all 0.2s ease",
+  },
+  footer: {
+    marginTop: "80px",
+    textAlign: "center",
+    fontSize: "0.9rem",
+    color: "#9ca3af",
+    display: "flex",
+    gap: "10px",
+    justifyContent: "center",
+    flexWrap: "wrap",
   },
 };

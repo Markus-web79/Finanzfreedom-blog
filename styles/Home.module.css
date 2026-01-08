@@ -1,85 +1,79 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
 /* HERO */
 .hero {
-  background: linear-gradient(
-    135deg,
-    #0f766e,
-    #0d9488
-  );
-  padding: 100px 24px 140px;
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  border-radius: 20px;
+  padding: 56px 32px;
+  margin-bottom: 56px;
   text-align: center;
 }
 
-.hero h1 {
-  font-size: 3rem;
+.heroTitle {
+  font-size: 42px;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.hero p {
-  font-size: 1.1rem;
+.heroSubtitle {
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.9);
   max-width: 720px;
   margin: 0 auto;
-}
-
-/* MAIN */
-.main {
-  max-width: 1200px;
-  margin: -80px auto 0; /* Karten überlappen Hero */
-  padding: 0 24px 120px;
+  line-height: 1.6;
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
 /* CARD */
 .card {
-  background: linear-gradient(
-    180deg,
-    #0b1220,
-    #0a0f1c
-  );
-  border-radius: 14px;
-  padding: 28px;
-  color: #ffffff;
+  background: linear-gradient(180deg, #0b1220, #0a0f1c);
+  border-radius: 16px;
+  padding: 24px;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 18px;
 }
 
 .card p {
-  font-size: 0.95rem;
-  color: #cbd5e1;
+  color: #b5c0d0;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border-color: rgba(13, 148, 136, 0.5);
 }
 
 /* FOOTER */
 .footer {
+  margin-top: 72px;
   text-align: center;
-  margin-top: 80px;
-  color: #5eead4;
-  font-size: 0.9rem;
+  font-size: 14px;
+  color: #7dd3c7;
 }
 
 .footer a {
-  color: #5eead4;
+  color: #7dd3c7;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 6px;
 }
 
 .footer a:hover {

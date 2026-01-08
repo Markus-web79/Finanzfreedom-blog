@@ -13,7 +13,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* KATEGORIEN */}
+      {/* GRID */}
       <section className={styles.grid}>
         <Link href="/investieren" className={styles.card}>
           <h3>Investieren</h3>
@@ -25,25 +25,25 @@ export default function Home() {
           <p>ETF-Grundlagen, Sparpläne und verständliche Erklärungen.</p>
         </Link>
 
-        <Link href="/broker" className={styles.cardDisabled}>
+        <div className={styles.cardDisabled}>
           <h3>Broker</h3>
           <p>Broker-Vergleiche & Empfehlungen (kommt bald).</p>
-        </Link>
+        </div>
 
         <Link href="/versicherungen" className={styles.card}>
           <h3>Versicherungen</h3>
           <p>Welche Versicherungen sinnvoll sind – unabhängig erklärt.</p>
         </Link>
 
-        <Link href="/sparen" className={styles.cardDisabled}>
+        <div className={styles.cardDisabled}>
           <h3>Sparen</h3>
-          <p>Ausgaben optimieren & Kontrolle gewinnen (kommt bald).</p>
-        </Link>
+          <p>Ausgaben optimieren & finanzielle Kontrolle gewinnen.</p>
+        </div>
 
-        <Link href="/wissen" className={styles.cardDisabled}>
+        <div className={styles.cardDisabled}>
           <h3>Wissen</h3>
-          <p>Finanzgrundlagen einfach & verständlich.</p>
-        </Link>
+          <p>Finanzgrundlagen einfach & verständlich erklärt.</p>
+        </div>
       </section>
 
       {/* FOOTER */}

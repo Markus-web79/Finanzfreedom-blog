@@ -1,151 +1,136 @@
-import Head from "next/head";
 import Link from "next/link";
 
 export default function BrokerVergleich() {
   return (
-    <>
-      <Head>
-        <title>Broker Vergleich | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Broker Vergleich: Trade Republic, Scalable Capital & weitere Anbieter. Kosten, ETFs, Sparpläne & Entscheidungshilfe."
-        />
-      </Head>
+    <main style={styles.container}>
+      <h1 style={styles.h1}>Broker-Vergleich</h1>
+      <p style={styles.intro}>
+        Welcher Broker passt zu dir? Hier vergleichen wir die bekanntesten
+        Anbieter für ETF-Sparpläne und langfristigen Vermögensaufbau –
+        verständlich, unabhängig und übersichtlich.
+      </p>
 
-      <main style={styles.page}>
-        {/* HERO */}
-        <section style={styles.hero}>
-          <h1 style={styles.title}>Broker Vergleich</h1>
-          <p style={styles.subtitle}>
-            Vergleiche die wichtigsten Online-Broker und finde den Anbieter,
-            der zu deiner Anlagestrategie passt.
+      <section style={styles.grid}>
+        {/* Trade Republic */}
+        <div style={styles.card}>
+          <h2>Trade Republic</h2>
+          <ul style={styles.list}>
+            <li>✔ Sehr einfache Bedienung</li>
+            <li>✔ Viele kostenlose ETF-Sparpläne</li>
+            <li>✔ Ideal für Einsteiger</li>
+            <li>✖ Weniger Analyse-Tools</li>
+          </ul>
+          <p style={styles.bestFor}>
+            <strong>Am besten für:</strong> Einsteiger & kleine bis mittlere
+            Sparpläne
           </p>
-        </section>
-
-        {/* VERGLEICH */}
-        <section style={styles.grid}>
-          {/* Trade Republic */}
-          <div style={styles.card}>
-            <h2>Trade Republic</h2>
-            <ul style={styles.list}>
-              <li>✔ Sehr niedrige Kosten</li>
-              <li>✔ ETF-Sparpläne</li>
-              <li>✔ Mobile App</li>
-            </ul>
-
-            <div style={styles.actions}>
-              <Link href="/investieren/broker/trade-republic" style={styles.secondary}>
-                Details ansehen
-              </Link>
-              <a href="#" style={styles.primary}>
-                Zum Anbieter
-              </a>
-            </div>
-          </div>
-
-          {/* Scalable Capital */}
-          <div style={styles.card}>
-            <h2>Scalable Capital</h2>
-            <ul style={styles.list}>
-              <li>✔ Große ETF-Auswahl</li>
-              <li>✔ Flatrate-Modelle</li>
-              <li>✔ Web & App</li>
-            </ul>
-
-            <div style={styles.actions}>
-              <Link href="/investieren/broker/scalable-capital" style={styles.secondary}>
-                Details ansehen
-              </Link>
-              <a href="#" style={styles.primary}>
-                Zum Anbieter
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* TRANSPARENZ */}
-        <section style={styles.transparency}>
-          <p>
-            Transparenz-Hinweis: Einige Verlinkungen können Affiliate-Links sein.
-            Für dich entstehen dadurch keine zusätzlichen Kosten.
-          </p>
-        </section>
-
-        {/* BACK */}
-        <div style={styles.back}>
-          <Link href="/investieren">← Zurück zu Investieren</Link>
+          <Link
+            href="/investieren/broker/trade-republic"
+            style={styles.link}
+          >
+            Trade Republic im Detail →
+          </Link>
         </div>
-      </main>
-    </>
+
+        {/* Scalable Capital */}
+        <div style={styles.card}>
+          <h2>Scalable Capital</h2>
+          <ul style={styles.list}>
+            <li>✔ Sehr große ETF-Auswahl</li>
+            <li>✔ Flatrate-Modell für Vielanleger</li>
+            <li>✔ Web & App nutzbar</li>
+            <li>✖ Etwas komplexer als TR</li>
+          </ul>
+          <p style={styles.bestFor}>
+            <strong>Am besten für:</strong> Langfristige Anleger & größere Depots
+          </p>
+          <Link
+            href="/investieren/broker/scalable-capital"
+            style={styles.link}
+          >
+            Scalable Capital im Detail →
+          </Link>
+        </div>
+      </section>
+
+      {/* Entscheidungshilfe */}
+      <section style={styles.decision}>
+        <h3>Unsere Einschätzung</h3>
+        <p>
+          Wenn du gerade startest und es möglichst einfach willst, ist
+          <strong> Trade Republic</strong> oft die bessere Wahl.
+        </p>
+        <p>
+          Wenn du langfristig investieren möchtest, viele ETFs vergleichen willst
+          oder ein größeres Depot planst, bietet
+          <strong> Scalable Capital</strong> mehr Flexibilität.
+        </p>
+      </section>
+
+      {/* Transparenz */}
+      <section style={styles.transparency}>
+        <h3>Transparenz-Hinweis</h3>
+        <p>
+          FinanzFreedom ist unabhängig. Einige Anbieter können Partner sein.
+          Empfehlungen entstehen aus Analyse – nicht aus Provisionen.
+        </p>
+      </section>
+    </main>
   );
 }
 
 const styles = {
-  page: {
-    minHeight: "100vh",
+  container: {
+    maxWidth: "1100px",
+    margin: "0 auto",
     padding: "60px 20px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
-  hero: {
-    maxWidth: "900px",
-    margin: "0 auto 50px",
-    textAlign: "center",
-  },
-  title: {
-    fontSize: "2.6rem",
+  h1: {
+    fontSize: "2.4rem",
     marginBottom: "12px",
   },
-  subtitle: {
+  intro: {
     fontSize: "1.1rem",
     color: "#9ca3af",
+    maxWidth: "750px",
+    marginBottom: "40px",
   },
   grid: {
-    maxWidth: "1000px",
-    margin: "0 auto",
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
     gap: "24px",
   },
   card: {
-    background: "#020617",
-    border: "1px solid #1e293b",
+    background: "linear-gradient(180deg, #0b1220, #05070c)",
     borderRadius: "16px",
     padding: "28px",
+    boxShadow: "0 12px 35px rgba(0,0,0,0.4)",
   },
   list: {
-    marginTop: "16px",
-    marginBottom: "24px",
-    lineHeight: 1.6,
+    paddingLeft: "18px",
+    marginBottom: "16px",
+    lineHeight: "1.6",
   },
-  actions: {
-    display: "flex",
-    gap: "12px",
+  bestFor: {
+    color: "#22d3ee",
+    marginBottom: "14px",
   },
-  primary: {
-    padding: "10px 16px",
-    borderRadius: "8px",
-    background: "#22d3ee",
-    color: "#020617",
-    fontWeight: 600,
-    textDecoration: "none",
-  },
-  secondary: {
-    padding: "10px 16px",
-    borderRadius: "8px",
-    border: "1px solid #22d3ee",
+  link: {
     color: "#22d3ee",
     textDecoration: "none",
+    fontWeight: "600",
+  },
+  decision: {
+    marginTop: "60px",
+    maxWidth: "750px",
+    color: "#d1d5db",
   },
   transparency: {
-    maxWidth: "900px",
-    margin: "40px auto 0",
-    fontSize: "0.85rem",
-    opacity: 0.6,
-    textAlign: "center",
-  },
-  back: {
-    textAlign: "center",
-    marginTop: "40px",
+    marginTop: "50px",
+    paddingTop: "30px",
+    borderTop: "1px solid #1f2933",
+    color: "#9ca3af",
+    maxWidth: "750px",
   },
 };

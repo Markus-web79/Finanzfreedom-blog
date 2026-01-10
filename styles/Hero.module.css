@@ -1,13 +1,25 @@
 .hero {
-  position: relative;
-  z-index: 1;
-  pointer-events: none;
+  width: 100%;
+  padding: 4rem 1.5rem 3rem;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 184, 166, 0.25),
+    rgba(15, 23, 42, 0.95)
+  );
+  text-align: center;
+  border-bottom: 1px solid rgba(20, 184, 166, 0.25);
 }
 
-.hero * {
-  pointer-events: none;
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
 }
-.hero,
-.hero * {
-  pointer-events: none;
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  max-width: 720px;
+  margin: 0 auto;
 }

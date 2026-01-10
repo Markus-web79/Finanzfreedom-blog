@@ -1,54 +1,41 @@
 import Link from "next/link";
-import Head from "next/head";
-import styles from "../../styles/Versicherungen.module.css";
+import styles from "../../styles/CategoryPage.module.css";
 
-export default function VersicherungenIndex() {
+export default function Versicherungen() {
   return (
-    <>
-      <Head>
-        <title>Versicherungen | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="Die wichtigsten Versicherungen verständlich erklärt – unabhängig & übersichtlich."
-        />
-      </Head>
+    <div className={styles.page}>
+      
+      {/* Back Button */}
+      <div className={styles.backLink}>
+        <Link href="/">← Zur Startseite</Link>
+      </div>
 
-      <main className={styles.page}>
-        <section className={styles.hero}>
-          <h1 className={styles.title}>Versicherungen</h1>
-          <p className={styles.subtitle}>
-            Welche Versicherungen brauchst du wirklich – und welche nicht?
-          </p>
-        </section>
+      <h1 className={styles.title}>Versicherungen</h1>
+      <p className={styles.subtitle}>
+        Welche Versicherungen wirklich sinnvoll sind – unabhängig erklärt.
+      </p>
 
-        <section className={styles.grid}>
-          <Link href="/versicherungen/privathaftpflicht" className={styles.card}>
-            <h3>Privathaftpflicht</h3>
-            <p>Die wichtigste Versicherung für fast jeden.</p>
-          </Link>
+      <div className={styles.grid}>
+        <Link href="/versicherungen/privathaftpflicht" className={styles.card}>
+          <h3>Privathaftpflicht</h3>
+          <p>Die wichtigste Versicherung überhaupt.</p>
+        </Link>
 
-          <Link href="/versicherungen/hausrat" className={styles.card}>
-            <h3>Hausrat</h3>
-            <p>Schützt dein Eigentum bei Schaden & Diebstahl.</p>
-          </Link>
+        <Link href="/versicherungen/hausrat" className={styles.card}>
+          <h3>Hausrat</h3>
+          <p>Schützt dein Hab und Gut.</p>
+        </Link>
 
-          <Link
-            href="/versicherungen/berufsunfaehigkeit"
-            className={styles.card}
-          >
-            <h3>Berufsunfähigkeit</h3>
-            <p>Sichert dein Einkommen langfristig ab.</p>
-          </Link>
+        <Link href="/versicherungen/berufsunfaehigkeit" className={styles.card}>
+          <h3>Berufsunfähigkeit</h3>
+          <p>Absicherung deiner Arbeitskraft.</p>
+        </Link>
 
-          <Link
-            href="/versicherungen/krankenversicherung"
-            className={styles.card}
-          >
-            <h3>Krankenversicherung</h3>
-            <p>Gesetzlich oder privat – richtig entscheiden.</p>
-          </Link>
-        </section>
-      </main>
-    </>
+        <Link href="/versicherungen/krankenversicherung" className={styles.card}>
+          <h3>Krankenversicherung</h3>
+          <p>Gesetzlich oder privat – die Unterschiede.</p>
+        </Link>
+      </div>
+    </div>
   );
 }

@@ -27,7 +27,11 @@ export default function EtfSparplanRechner() {
       </Head>
 
       <main style={{ maxWidth: "720px", margin: "0 auto", padding: "40px 20px" }}>
-        <h1>ETF Sparplan Rechner</h1>
+        <div style={{ marginBottom: "24px" }}>
+<Link href="/investieren/etfs" style={{ color: "#6fe3d6" }}>
+  ← Zur ETF-Übersicht
+</Link>
+  <h1>ETF Sparplan Rechner</h1>
         <p>
           Berechne in wenigen Sekunden, wie viel Vermögen du mit einem ETF-Sparplan
           aufbauen kannst.

@@ -9,12 +9,21 @@ export default function Home() {
         <title>FinanzFreedom – Finanzielle Freiheit aufbauen</title>
         <meta
           name="description"
-          content="Unabhängiges Finanzportal für Investieren, ETFs, Versicherungen und finanzielle Freiheit."
+          content="Unabhängiges Finanzportal für Vermögensaufbau, Investieren und finanzielle Freiheit."
         />
       </Head>
 
       <main className={styles.main}>
-        {/* PORTAL GRID – HEADER KOMMT GLOBAL */}
+        {/* HERO / BANNER */}
+        <section className={styles.hero}>
+          <h1>FinanzFreedom</h1>
+          <p>
+            Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
+            finanzielle Freiheit.
+          </p>
+        </section>
+
+        {/* PORTAL GRID */}
         <section className={styles.portal}>
           <div className={styles.grid}>
             <Link

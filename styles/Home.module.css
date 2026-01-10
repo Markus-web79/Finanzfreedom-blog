@@ -4,8 +4,12 @@
 
 .hero {
   width: 100%;
-  background: linear-gradient(135deg, #4fd1c5 0%, #2aa6b0 100%);
-  padding: 80px 24px 72px;
+  padding: 120px 20px 200px;
+  background: linear-gradient(
+    135deg,
+    #5ff0d8 0%,
+    #3bbec6 100%
+  );
   text-align: center;
 }
 
@@ -115,10 +119,11 @@
    MOBILE
 ========================= */
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .hero {
-    padding: 48px 16px 40px;
+    padding: 100px 16px 180px;
   }
+}
 
   .heroTitle {
     font-size: 1.9rem;

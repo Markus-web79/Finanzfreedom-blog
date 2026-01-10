@@ -15,12 +15,11 @@ export default function EtfsHub() {
       <main style={styles.page}>
         {/* HERO */}
         <section style={styles.hero}>
-          <h1 style={styles.title}>ETFs – einfach investieren</h1>
-          <p style={styles.subtitle}>
-            ETFs sind das Fundament für langfristigen Vermögensaufbau.
-            Hier findest du Rechner, Vergleiche und klare Erklärungen –
-            unabhängig & verständlich.
-          </p>
+<p className={styles.intro}>
+  ETFs sind das Fundament für langfristigen Vermögensaufbau.
+  Sie ermöglichen kostengünstiges, breit gestreutes Investieren –
+  ideal für Einsteiger und Fortgeschrittene.
+</p>
         </section>
 
         {/* PRIMARY ACTION */}

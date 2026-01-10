@@ -2,33 +2,45 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import Head from "next/head";
+import { marked } from "marked";
+import styles from "../../styles/Article.module.css";
 
-export default function VersicherungDetail({ frontmatter, content }) {
+export default function VersicherungArticle({ frontmatter, content, slug }) {
   return (
-    <main style={{ maxWidth: "900px", margin: "0 auto", padding: "60px 20px" }}>
-      <Link href="/versicherungen" style={{ color: "#2dd4bf" }}>
-        ← Zurück zu Versicherungen
-      </Link>
+    <>
+      <Head>
+        <title>{frontmatter.title} | FinanzFreedom</title>
+        <meta
+          name="description"
+          content={frontmatter.description || frontmatter.title}
+        />
+      </Head>
 
-      <h1 style={{ marginTop: "30px" }}>{frontmatter.title}</h1>
+      <div className={styles.wrapper}>
+        <Link href="/versicherungen" className={styles.back}>
+          ← Zurück zu Versicherungen
+        </Link>
 
-      {frontmatter.description && (
-        <p style={{ opacity: 0.8, marginBottom: "30px" }}>
-          {frontmatter.description}
-        </p>
-      )}
+        <h1>{frontmatter.title}</h1>
 
-      <article
-        dangerouslySetInnerHTML={{ __html: content }}
-        style={{ lineHeight: "1.7" }}
-      />
-    </main>
+        {frontmatter.intro && (
+          <p className={styles.intro}>{frontmatter.intro}</p>
+        )}
+
+        {/* MARKDOWN → HTML RENDERING (WICHTIG!) */}
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    </>
   );
 }
 
 export async function getStaticPaths() {
-  const dirPath = path.join(process.cwd(), "content/versicherungen");
-  const files = fs.readdirSync(dirPath);
+  const dir = path.join(process.cwd(), "content/versicherungen");
+  const files = fs.readdirSync(dir);
 
   const paths = files.map((file) => ({
     params: {
@@ -55,7 +67,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       frontmatter: data,
-      content,
+      slug: params.slug,
+      content: marked.parse(content), // 🔥 DAS WAR DER FEHLER
     },
   };
 }

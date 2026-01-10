@@ -14,16 +14,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {/* HERO */}
-        <section className={styles.hero}>
-          <h1 className={styles.title}>FinanzFreedom</h1>
-          <p className={styles.subtitle}>
-            Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
-            finanzielle Freiheit.
-          </p>
-        </section>
-
-        {/* PORTAL GRID */}
+        {/* PORTAL GRID – HEADER KOMMT GLOBAL */}
         <section className={styles.portal}>
           <div className={styles.grid}>
             <Link

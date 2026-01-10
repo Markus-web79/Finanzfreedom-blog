@@ -1,38 +1,134 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.75rem;
-  margin: 3.5rem auto 4rem;
-  max-width: 1200px;
-  padding: 0 1.5rem;
-}
-
-.card {
-  background: linear-gradient(
-    180deg,
-    rgba(2, 6, 23, 0.95),
-    rgba(15, 23, 42, 0.95)
+.home {
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #0f172a 0%,
+    #020617 70%
   );
-  border-radius: 16px;
-  padding: 1.75rem 1.6rem;
-  border: 1px solid rgba(45, 212, 191, 0.35);
-  transition: all 0.25s ease;
-  min-height: 165px;
+  color: #e5e7eb;
 }
 
-.card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+/* =========================
+   HERO / BANNER
+========================= */
+.hero {
+  background: linear-gradient(
+    135deg,
+    #1f7f78 0%,
+    #0f3d46 100%
+  );
+  padding: 72px 24px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 12px;
   color: #ffffff;
 }
 
-.card p {
-  color: #cbd5e1;
-  line-height: 1.45;
+.hero p {
+  font-size: 1.15rem;
+  color: #e0f2f1;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  max-width: 1200px;
+  margin: -48px auto 0;
+  padding: 0 24px 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  background: linear-gradient(
+    180deg,
+    #020617 0%,
+    #020617 100%
+  );
+  border-radius: 16px;
+  padding: 24px;
+  min-height: 160px;
+  border: 1px solid rgba(56, 189, 168, 0.25);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: all 0.25s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(45, 212, 191, 0.85);
-  box-shadow: 0 12px 28px rgba(45, 212, 191, 0.18);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border-color: rgba(56, 189, 168, 0.6);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #9ca3af;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  .hero {
+    padding: 56px 16px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .grid {
+    margin-top: -32px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 64px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .card h3 {
+    font-size: 1.15rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
 }

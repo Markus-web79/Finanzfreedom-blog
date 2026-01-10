@@ -35,3 +35,16 @@
 .card h3 {
   margin-bottom: 12px;
 }
+.backLink {
+  margin-bottom: 32px;
+}
+
+.backLink a {
+  color: #7dfdd2;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.backLink a:hover {
+  text-decoration: underline;
+}

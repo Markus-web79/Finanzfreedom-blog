@@ -9,31 +9,31 @@ export default function Home() {
         padding: "3rem 1.5rem",
       }}
     >
-      {/* HERO / BANNER */}
+      {/* HERO BANNER */}
       <section
         style={{
           background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
-          borderRadius: "16px",
-          padding: "3.5rem 2rem",
+          borderRadius: "18px",
+          padding: "3.5rem 3rem",
           marginBottom: "4rem",
-          color: "#042f2e",
+          color: "#0f172a",
         }}
       >
         <h1 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>
           FinanzFreedom
         </h1>
-        <p style={{ fontSize: "1.1rem", maxWidth: "700px" }}>
-          Das unabhängige Finanzportal für Vermögensaufbau, Investieren
-          und finanzielle Freiheit.
+        <p style={{ fontSize: "1.1rem", maxWidth: "720px" }}>
+          Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
+          finanzielle Freiheit.
         </p>
       </section>
 
-      {/* KATEGORIE-KARTEN */}
+      {/* KARTEN GRID */}
       <section
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "1.5rem",
+          gap: "2rem",
         }}
       >
         <Card
@@ -63,33 +63,29 @@ export default function Home() {
         <Card
           title="Broker"
           text="Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne."
-          href="/broker"
+          href="/investieren/broker"
         />
       </section>
     </main>
   );
 }
 
-/* CARD KOMPONENTE */
 function Card({ title, text, href }) {
   return (
     <Link href={href} style={{ textDecoration: "none" }}>
       <div
         style={{
           background: "#020617",
-          border: "1px solid #0f172a",
+          border: "1px solid #1e293b",
           borderRadius: "14px",
-          padding: "1.6rem",
+          padding: "1.8rem",
           height: "100%",
-          transition: "all 0.2s ease",
+          color: "#e5e7eb",
+          transition: "border 0.2s ease",
         }}
       >
-        <h3 style={{ marginBottom: "0.6rem", color: "#e5e7eb" }}>
-          {title}
-        </h3>
-        <p style={{ color: "#94a3b8", fontSize: "0.95rem" }}>
-          {text}
-        </p>
+        <h3 style={{ marginBottom: "0.6rem" }}>{title}</h3>
+        <p style={{ fontSize: "0.95rem", opacity: 0.85 }}>{text}</p>
       </div>
     </Link>
   );

@@ -1,13 +1,24 @@
 import Link from "next/link";
 
-export default function BackLink({ href, label }) {
-  if (!href) return null;
-
+export default function BackLink({ href = "/", label = "Zurück" }) {
   return (
-    <div style={{ marginBottom: "24px" }}>
-      <Link href={href} style={{ color: "#4fd1c5", fontSize: "0.95rem" }}>
+    <div style={styles.wrapper}>
+      <Link href={href} style={styles.link}>
         ← {label}
       </Link>
     </div>
   );
 }
+
+const styles = {
+  wrapper: {
+    maxWidth: "1100px",
+    margin: "0 auto 32px",
+  },
+  link: {
+    color: "#6fe3d6",
+    textDecoration: "none",
+    fontWeight: 500,
+    fontSize: "0.95rem",
+  },
+};

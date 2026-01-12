@@ -1,84 +1,56 @@
 import Link from "next/link";
 
-export default function Sparen() {
+export default function SparenIndex() {
   return (
-    <main style={{ padding: "3rem 1.5rem", maxWidth: "1100px", margin: "0 auto" }}>
+    <main className="page">
+      <Link href="/" className="backLink">
+        ← Zur Startseite
+      </Link>
 
-      {/* Zurück */}
-      <div style={{ marginBottom: "2rem" }}>
-        <Link href="/">
-          ← Zur Startseite
-        </Link>
-      </div>
+      <h1>Sparen & Rücklagen aufbauen</h1>
 
-      {/* Headline */}
-      <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
-        Sparen & Rücklagen aufbauen
-      </h1>
-
-      <p style={{ fontSize: "1.1rem", opacity: 0.85, marginBottom: "3rem" }}>
-        Sparen ist die Grundlage jeder finanziellen Freiheit. Bevor du investierst,
-        solltest du deine Ausgaben im Griff haben und Rücklagen für Notfälle bilden.
-        Hier findest du praxisnahe Anleitungen, die wirklich funktionieren.
+      <p className="intro">
+        Sparen ist die Grundlage jeder finanziellen Freiheit. Bevor du
+        investierst, solltest du deine Ausgaben im Griff haben und
+        Rücklagen für Notfälle bilden. Hier findest du praxisnahe
+        Anleitungen, die wirklich funktionieren.
       </p>
 
-      {/* Grundlagen */}
-      <h2 style={{ marginBottom: "1.5rem" }}>Grundlagen</h2>
+      <section>
+        <h2>Grundlagen</h2>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "1.5rem"
-        }}
-      >
+        <div className="cardGrid">
+          {/* Notgroschen */}
+          <Link href="/sparen/grundlagen/notgroschen" className="card">
+            <h3>Notgroschen aufbauen</h3>
+            <p>
+              Warum jeder einen finanziellen Puffer braucht, wie hoch er
+              sein sollte und wie du ihn stressfrei aufbaust.
+            </p>
+            <span className="cardLink">Zum Artikel →</span>
+          </Link>
 
-        {/* Notgroschen */}
-        <div style={cardStyle}>
-          <h3>Notgroschen aufbauen</h3>
-          <p>
-            Warum jeder einen finanziellen Puffer braucht, wie hoch er sein sollte
-            und wie du ihn stressfrei aufbaust.
-          </p>
-          <Link href="/sparen/grundlagen/notgroschen">
-            Zum Artikel →
+          {/* Fixkosten senken */}
+          <Link href="/sparen/grundlagen/fixkosten-senken" className="card">
+            <h3>Fixkosten senken</h3>
+            <p>
+              Mit einfachen Hebeln dauerhaft Geld sparen – ohne auf
+              Lebensqualität zu verzichten.
+            </p>
+            <span className="cardLink">Zum Artikel →</span>
+          </Link>
+
+          {/* Haushaltsbudget */}
+          <Link href="/sparen/haushaltsbudget" className="card">
+            <h3>Haushaltsbudget erstellen</h3>
+            <p>
+              Mit der 50-30-20 Regel dein Geld sinnvoll aufteilen und
+              dauerhaft Kontrolle gewinnen.
+            </p>
+            <span className="cardLink">Zum Artikel →</span>
           </Link>
         </div>
-
-        {/* Variable Kosten senken */}
-        <div style={cardStyle}>
-          <h3>Variable Kosten senken</h3>
-          <p>
-            Mit einfachen Hebeln dauerhaft Geld sparen – ohne auf Lebensqualität
-            zu verzichten.
-          </p>
-          <Link href="/sparen/grundlagen/variable-kosten-senken">
-            Zum Artikel →
-          </Link>
-        </div>
-
-        {/* Fixkosten senken */}
-        <div style={cardStyle}>
-          <h3>Fixkosten senken</h3>
-          <p>
-            Verträge, Abos und laufende Kosten optimieren, um dauerhaft mehr
-            finanziellen Spielraum zu schaffen.
-          </p>
-          <Link href="/sparen/grundlagen/fixkosten-senken">
-            Zum Artikel →
-          </Link>
-        </div>
-
-      </div>
-
+      </section>
     </main>
   );
 }
-
-const cardStyle = {
-  background: "linear-gradient(180deg, #0c1622, #0a1320)",
-  borderRadius: "14px",
-  padding: "1.5rem",
-  boxShadow: "0 0 0 1px rgba(31,209,185,0.25)",
-  transition: "all 0.25s ease"
-};

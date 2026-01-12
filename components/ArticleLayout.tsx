@@ -34,13 +34,17 @@ export default function ArticleLayout({
         {intro && <p className="intro">{intro}</p>}
       </header>
 
-      {image && (
-        <div className="articleImage">
-          <img src={image.src} alt={image.alt} />
+      <div className="articleGrid">
+        <div className="articleText">
+          {children}
         </div>
-      )}
 
-      <div className="articleContent">{children}</div>
+        {image && (
+          <aside className="articleAside">
+            <img src={image.src} alt={image.alt} />
+          </aside>
+        )}
+      </div>
     </article>
   );
 }

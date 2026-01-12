@@ -1,16 +1,23 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
+
+const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export function getCategories() {
-  const contentDir = path.join(process.cwd(), 'content');
-  const items = fs.readdirSync(contentDir, { withFileTypes: true });
+  if (!fs.existsSync(CONTENT_DIR)) return [];
 
-  return items
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => ({
-      slug: dirent.name,
-      title: dirent.name
-        .replace(/-/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase())
-    }));
+  return fs
+    .readdirSync(CONTENT_DIR, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => {
+      const slug = dirent.name;
+
+      return {
+        slug,
+        title: slug
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase()),
+        path: `/${slug}`,
+      };
+    });
 }

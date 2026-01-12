@@ -1,9 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 type ArticleLayoutProps = {
   title: string;
   intro?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
   backLink?: {
     href: string;
     label: string;
@@ -14,6 +19,7 @@ type ArticleLayoutProps = {
 export default function ArticleLayout({
   title,
   intro,
+  image,
   backLink,
   children,
 }: ArticleLayoutProps) {
@@ -60,14 +66,35 @@ export default function ArticleLayout({
             fontSize: "1.15rem",
             lineHeight: 1.7,
             color: "#cbd5e1",
-            marginBottom: "3rem",
+            marginBottom: "2.5rem",
           }}
         >
           {intro}
         </p>
       )}
 
-      {/* Artikelinhalt */}
+      {/* Artikelbild */}
+      {image && (
+        <div
+          style={{
+            marginBottom: "3rem",
+            borderRadius: "14px",
+            overflow: "hidden",
+            boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
+          }}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={860}
+            height={420}
+            style={{ width: "100%", height: "auto" }}
+            priority
+          />
+        </div>
+      )}
+
+      {/* Inhalt */}
       <article
         style={{
           display: "flex",

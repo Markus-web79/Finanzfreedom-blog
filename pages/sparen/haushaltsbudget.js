@@ -1,51 +1,36 @@
-import Link from "next/link";
+import ArticleLayout from "@/components/ArticleLayout";
 
 export default function Haushaltsbudget() {
   return (
-    <main className="page">
-      <Link href="/sparen" className="backLink">
-        ← Zur Sparen-Übersicht
-      </Link>
-
-      <h1>Haushaltsbudget erstellen (50-30-20 Regel)</h1>
-
-      <p className="intro">
-        Ein Haushaltsbudget ist das Fundament für finanziellen Überblick.
-        Es hilft dir, bewusst mit deinem Geld umzugehen, Sparpotenziale
-        zu erkennen und langfristig Vermögen aufzubauen – ohne Verzicht
-        auf Lebensqualität.
-      </p>
-
+    <ArticleLayout
+      title="Haushaltsbudget erstellen (50-30-20 Regel)"
+      intro="Ein Haushaltsbudget ist das Fundament für finanziellen Überblick. Es hilft dir, bewusst mit deinem Geld umzugehen, Sparpotenziale zu erkennen und langfristig Vermögen aufzubauen – ohne Verzicht auf Lebensqualität."
+      image={{
+        src: "/images/sparen/haushaltsbudget.jpg",
+        alt: "Haushaltsbudget planen und Ausgaben strukturieren",
+      }}
+      backLink={{
+        href: "/sparen",
+        label: "Zur Sparen-Übersicht",
+      }}
+    >
       <section>
         <h2>Warum ein Haushaltsbudget so wichtig ist</h2>
         <ul>
-          <li>✔ Du weißt jederzeit, wohin dein Geld fließt</li>
-          <li>✔ Sparen passiert automatisch, nicht zufällig</li>
-          <li>✔ Finanzielle Ziele werden planbar</li>
-          <li>✔ Weniger Stress, mehr Kontrolle</li>
+          <li>Du weißt jederzeit, wohin dein Geld fließt</li>
+          <li>Sparen passiert automatisch, nicht zufällig</li>
+          <li>Finanzielle Ziele werden planbar</li>
+          <li>Weniger Stress, mehr Kontrolle</li>
         </ul>
       </section>
 
       <section>
         <h2>Die 50-30-20 Regel einfach erklärt</h2>
-        <p>
-          Die 50-30-20 Regel ist eine einfache Methode, dein Nettoeinkommen
-          sinnvoll aufzuteilen:
-        </p>
-
+        <p>Die 50-30-20 Regel teilt dein Nettoeinkommen sinnvoll auf:</p>
         <ul>
-          <li>
-            <strong>50 % Fixkosten</strong> – Miete, Strom, Versicherungen,
-            Lebensmittel
-          </li>
-          <li>
-            <strong>30 % Lebensstil</strong> – Freizeit, Reisen, Hobbys,
-            Shopping
-          </li>
-          <li>
-            <strong>20 % Sparen</strong> – Notgroschen, Investitionen,
-            Rücklagen
-          </li>
+          <li><strong>50 % Fixkosten</strong> – Miete, Strom, Versicherungen, Lebensmittel</li>
+          <li><strong>30 % Lebensstil</strong> – Freizeit, Reisen, Hobbys, Shopping</li>
+          <li><strong>20 % Sparen</strong> – Notgroschen, Investitionen, Rücklagen</li>
         </ul>
       </section>
 
@@ -54,9 +39,9 @@ export default function Haushaltsbudget() {
         <ol>
           <li>Nettoeinkommen aufschreiben</li>
           <li>Alle Fixkosten erfassen</li>
-          <li>Variable Ausgaben schätzen</li>
+          <li>Variable Ausgaben realistisch schätzen</li>
           <li>Sparbetrag zuerst festlegen</li>
-          <li>Monatlich überprüfen & anpassen</li>
+          <li>Monatlich überprüfen und anpassen</li>
         </ol>
       </section>
 
@@ -73,11 +58,10 @@ export default function Haushaltsbudget() {
       <section>
         <h2>Fazit</h2>
         <p>
-          Ein Haushaltsbudget ist kein Korsett, sondern ein Werkzeug.
-          Es verschafft dir Freiheit, weil du weißt, dass dein Geld
-          für dich arbeitet – nicht gegen dich.
+          Ein Haushaltsbudget ist kein Korsett, sondern ein Werkzeug. Es verschafft dir Freiheit,
+          weil du weißt, dass dein Geld für dich arbeitet – nicht gegen dich.
         </p>
       </section>
-    </main>
+    </ArticleLayout>
   );
 }

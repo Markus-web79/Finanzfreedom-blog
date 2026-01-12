@@ -3,6 +3,15 @@ import path from "path";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
+// Ordner, die NICHT als Kategorie erscheinen dürfen
+const EXCLUDED_FOLDERS = [
+  "content_backup",
+  "content_flat_backup",
+  "investieren_backup_phase6",
+  "dummy",
+  "test",
+];
+
 export function getCategories() {
   if (!fs.existsSync(CONTENT_DIR)) return [];
 
@@ -11,9 +20,7 @@ export function getCategories() {
     .filter(
       (dirent) =>
         dirent.isDirectory() &&
-        !dirent.name.includes("backup") &&
-        !dirent.name.includes("_phase") &&
-        !dirent.name.startsWith(".")
+        !EXCLUDED_FOLDERS.includes(dirent.name)
     )
     .map((dirent) => {
       const slug = dirent.name;

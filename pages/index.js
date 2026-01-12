@@ -1,118 +1,82 @@
-import Head from "next/head";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>FinanzFreedom – Dein unabhängiges Finanzportal</title>
-        <meta
-          name="description"
-          content="FinanzFreedom: Investieren, Versicherungen, Sparen & Wissen – unabhängig, verständlich und portalartig aufgebaut."
-        />
-      </Head>
+    <main
+      style={{
+        maxWidth: "1200px",
+        margin: "0 auto",
+        padding: "4rem 1.5rem",
+      }}
+    >
+      {/* HERO */}
+      <section style={{ marginBottom: "4rem" }}>
+        <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
+          FinanzFreedom
+        </h1>
+        <p style={{ maxWidth: "700px", opacity: 0.9 }}>
+          Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
+          finanzielle Freiheit.
+        </p>
+      </section>
 
-      <main style={styles.page}>
-        {/* HERO / BANNER */}
-        <section style={styles.hero}>
-          <h1 style={styles.title}>FinanzFreedom</h1>
-          <p style={styles.subtitle}>
-            Dein unabhängiges Finanzportal für ETFs, Vermögensaufbau und
-            finanzielle Freiheit.
+      {/* KARTEN */}
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "1.5rem",
+        }}
+      >
+        {/* ETFs (ersetzt Investieren) */}
+        <Link href="/investieren/etfs" style={cardStyle}>
+          <h3>ETFs</h3>
+          <p>
+            ETF-Grundlagen, Sparpläne und langfristiger Vermögensaufbau –
+            verständlich erklärt.
           </p>
-        </section>
+        </Link>
 
-        {/* KARTEN */}
-        <section style={styles.grid}>
-          {/* NUR HIER GEÄNDERT: Investieren → ETFs */}
-          <Link href="/investieren" style={styles.card}>
-            <h2>ETFs</h2>
-            <p>
-              ETF-Grundlagen, MSCI World, Sparpläne & langfristiger
-              Vermögensaufbau.
-            </p>
-          </Link>
+        {/* Versicherungen */}
+        <Link href="/versicherungen" style={cardStyle}>
+          <h3>Versicherungen</h3>
+          <p>
+            Welche Versicherungen sinnvoll sind – unabhängig & ohne
+            Verkaufsdruck.
+          </p>
+        </Link>
 
-          <Link href="/versicherungen" style={styles.card}>
-            <h2>Versicherungen</h2>
-            <p>
-              Welche Versicherungen wirklich sinnvoll sind – klar &
-              unabhängig erklärt.
-            </p>
-          </Link>
+        {/* Sparen */}
+        <Link href="/sparen" style={cardStyle}>
+          <h3>Sparen</h3>
+          <p>
+            Ausgaben optimieren, Rücklagen bilden und Kontrolle über dein Geld
+            gewinnen.
+          </p>
+        </Link>
 
-          <Link href="/sparen" style={styles.card}>
-            <h2>Sparen</h2>
-            <p>
-              Mehr Geld behalten, Ausgaben optimieren und finanzielle Kontrolle
-              gewinnen.
-            </p>
-          </Link>
+        {/* Wissen */}
+        <Link href="/wissen" style={cardStyle}>
+          <h3>Wissen</h3>
+          <p>Finanzgrundlagen einfach & verständlich erklärt.</p>
+        </Link>
 
-          <Link href="/wissen" style={styles.card}>
-            <h2>Wissen</h2>
-            <p>
-              Finanzgrundlagen, Begriffe und Zusammenhänge einfach erklärt.
-            </p>
-          </Link>
-
-          <Link href="/broker" style={styles.card}>
-            <h2>Broker</h2>
-            <p>
-              Broker-Vergleiche, Erfahrungen & Entscheidungs­hilfen.
-            </p>
-          </Link>
-        </section>
-      </main>
-    </>
+        {/* Broker */}
+        <Link href="/investieren/broker" style={cardStyle}>
+          <h3>Broker</h3>
+          <p>Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne.</p>
+        </Link>
+      </section>
+    </main>
   );
 }
 
-/* ================= STYLES ================= */
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    padding: "0 20px 80px",
-    background: "#020617",
-    color: "#e5e7eb",
-  },
-
-  hero: {
-    background: "linear-gradient(135deg, #14b8a6, #0f766e)",
-    padding: "60px 20px",
-    textAlign: "center",
-    marginBottom: "60px",
-  },
-
-  title: {
-    fontSize: "3rem",
-    marginBottom: "12px",
-    color: "#ffffff",
-  },
-
-  subtitle: {
-    fontSize: "1.2rem",
-    color: "#ecfeff",
-    maxWidth: "720px",
-    margin: "0 auto",
-  },
-
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "24px",
-    maxWidth: "1100px",
-    margin: "0 auto",
-  },
-
-  card: {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "28px",
-    textDecoration: "none",
-    color: "#e5e7eb",
-    transition: "transform 0.15s ease, border-color 0.15s ease",
-  },
+const cardStyle = {
+  display: "block",
+  padding: "1.5rem",
+  borderRadius: "12px",
+  background: "rgba(255,255,255,0.03)",
+  border: "1px solid rgba(255,255,255,0.08)",
+  textDecoration: "none",
+  color: "inherit",
 };

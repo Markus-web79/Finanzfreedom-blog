@@ -6,77 +6,91 @@ export default function Home() {
       style={{
         maxWidth: "1200px",
         margin: "0 auto",
-        padding: "4rem 1.5rem",
+        padding: "3rem 1.5rem",
       }}
     >
-      {/* HERO */}
-      <section style={{ marginBottom: "4rem" }}>
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>
+      {/* HERO / BANNER */}
+      <section
+        style={{
+          background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
+          borderRadius: "16px",
+          padding: "3.5rem 2rem",
+          marginBottom: "4rem",
+          color: "#042f2e",
+        }}
+      >
+        <h1 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>
           FinanzFreedom
         </h1>
-        <p style={{ maxWidth: "700px", opacity: 0.9 }}>
-          Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
-          finanzielle Freiheit.
+        <p style={{ fontSize: "1.1rem", maxWidth: "700px" }}>
+          Das unabhängige Finanzportal für Vermögensaufbau, Investieren
+          und finanzielle Freiheit.
         </p>
       </section>
 
-      {/* KARTEN */}
+      {/* KATEGORIE-KARTEN */}
       <section
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
           gap: "1.5rem",
         }}
       >
-        {/* ETFs (ersetzt Investieren) */}
-        <Link href="/investieren/etfs" style={cardStyle}>
-          <h3>ETFs</h3>
-          <p>
-            ETF-Grundlagen, Sparpläne und langfristiger Vermögensaufbau –
-            verständlich erklärt.
-          </p>
-        </Link>
+        <Card
+          title="ETFs"
+          text="ETF-Grundlagen, Sparpläne und langfristiger Vermögensaufbau – verständlich erklärt."
+          href="/investieren/etfs"
+        />
 
-        {/* Versicherungen */}
-        <Link href="/versicherungen" style={cardStyle}>
-          <h3>Versicherungen</h3>
-          <p>
-            Welche Versicherungen sinnvoll sind – unabhängig & ohne
-            Verkaufsdruck.
-          </p>
-        </Link>
+        <Card
+          title="Versicherungen"
+          text="Welche Versicherungen sinnvoll sind – unabhängig & ohne Verkaufsdruck."
+          href="/versicherungen"
+        />
 
-        {/* Sparen */}
-        <Link href="/sparen" style={cardStyle}>
-          <h3>Sparen</h3>
-          <p>
-            Ausgaben optimieren, Rücklagen bilden und Kontrolle über dein Geld
-            gewinnen.
-          </p>
-        </Link>
+        <Card
+          title="Sparen"
+          text="Ausgaben optimieren, Rücklagen bilden und Kontrolle über dein Geld gewinnen."
+          href="/sparen"
+        />
 
-        {/* Wissen */}
-        <Link href="/wissen" style={cardStyle}>
-          <h3>Wissen</h3>
-          <p>Finanzgrundlagen einfach & verständlich erklärt.</p>
-        </Link>
+        <Card
+          title="Wissen"
+          text="Finanzgrundlagen einfach & verständlich erklärt."
+          href="/wissen"
+        />
 
-        {/* Broker */}
-        <Link href="/investieren/broker" style={cardStyle}>
-          <h3>Broker</h3>
-          <p>Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne.</p>
-        </Link>
+        <Card
+          title="Broker"
+          text="Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne."
+          href="/broker"
+        />
       </section>
     </main>
   );
 }
 
-const cardStyle = {
-  display: "block",
-  padding: "1.5rem",
-  borderRadius: "12px",
-  background: "rgba(255,255,255,0.03)",
-  border: "1px solid rgba(255,255,255,0.08)",
-  textDecoration: "none",
-  color: "inherit",
-};
+/* CARD KOMPONENTE */
+function Card({ title, text, href }) {
+  return (
+    <Link href={href} style={{ textDecoration: "none" }}>
+      <div
+        style={{
+          background: "#020617",
+          border: "1px solid #0f172a",
+          borderRadius: "14px",
+          padding: "1.6rem",
+          height: "100%",
+          transition: "all 0.2s ease",
+        }}
+      >
+        <h3 style={{ marginBottom: "0.6rem", color: "#e5e7eb" }}>
+          {title}
+        </h3>
+        <p style={{ color: "#94a3b8", fontSize: "0.95rem" }}>
+          {text}
+        </p>
+      </div>
+    </Link>
+  );
+}

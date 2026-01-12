@@ -35,9 +35,7 @@ export default function ArticleLayout({
       </header>
 
       <div className="articleGrid">
-        <div className="articleText">
-          {children}
-        </div>
+        <div className="articleMain">{children}</div>
 
         {image && (
           <aside className="articleAside">

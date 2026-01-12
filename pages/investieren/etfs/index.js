@@ -13,18 +13,29 @@ export default function EtfsHub() {
       </Head>
 
       <main style={styles.page}>
+        {/* BACK BUTTON */}
+        <div style={styles.back}>
+          <Link href="/" style={styles.backLink}>
+            ← Zur Startseite
+          </Link>
+        </div>
+
         {/* HERO */}
         <section style={styles.hero}>
-<p className={styles.intro}>
-  ETFs sind das Fundament für langfristigen Vermögensaufbau.
-  Sie ermöglichen kostengünstiges, breit gestreutes Investieren –
-  ideal für Einsteiger und Fortgeschrittene.
-</p>
+          <p style={styles.intro}>
+            ETFs sind das Fundament für langfristigen Vermögensaufbau.
+            <br />
+            Sie ermöglichen kostengünstiges, breit gestreutes Investieren –
+            ideal für Einsteiger und Fortgeschrittene.
+          </p>
         </section>
 
         {/* PRIMARY ACTION */}
         <section style={styles.primary}>
-          <Link href="/tools/etf-sparplan-rechner" style={styles.primaryCard}>
+          <Link
+            href="/tools/etf-sparplan-rechner"
+            style={styles.primaryCard}
+          >
             <h2>ETF-Sparplan berechnen</h2>
             <p>
               In wenigen Sekunden sehen, wie viel Vermögen du langfristig
@@ -55,8 +66,8 @@ export default function EtfsHub() {
           <Link href="/investieren/broker" style={styles.card}>
             <h3>Broker vergleichen</h3>
             <p>
-              Kosten, Sparpläne und Sicherheit – finde den passenden
-              Broker für deine Strategie.
+              Kosten, Sparpläne und Sicherheit – finde den passenden Broker
+              für deine Strategie.
             </p>
           </Link>
         </section>
@@ -66,7 +77,6 @@ export default function EtfsHub() {
 }
 
 /* STYLES */
-
 const styles = {
   page: {
     minHeight: "100vh",
@@ -75,21 +85,27 @@ const styles = {
     color: "#e5e7eb",
   },
 
+  back: {
+    maxWidth: "1100px",
+    margin: "0 auto 32px",
+  },
+
+  backLink: {
+    color: "#6fe3d6",
+    textDecoration: "none",
+    fontWeight: 500,
+  },
+
   hero: {
     maxWidth: "900px",
     margin: "0 auto 60px",
     textAlign: "center",
   },
 
-  title: {
-    fontSize: "2.6rem",
-    marginBottom: "16px",
-    color: "#ffffff",
-  },
-
-  subtitle: {
+  intro: {
     fontSize: "1.1rem",
     color: "#9ca3af",
+    lineHeight: 1.6,
   },
 
   primary: {
@@ -102,7 +118,7 @@ const styles = {
     padding: "32px",
     borderRadius: "18px",
     background: "linear-gradient(145deg, #0f172a, #020617)",
-    border: "1px solid #22d3ee",
+    border: "1px solid #223d3e",
     textDecoration: "none",
     color: "#e5e7eb",
   },
@@ -111,7 +127,7 @@ const styles = {
     display: "inline-block",
     marginTop: "16px",
     color: "#22d3ee",
-    fontWeight: "600",
+    fontWeight: 600,
   },
 
   grid: {

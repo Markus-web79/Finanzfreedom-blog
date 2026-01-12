@@ -9,83 +9,118 @@ export default function Home() {
         padding: "3rem 1.5rem",
       }}
     >
-      {/* HERO BANNER */}
-      <section
+      {/* HERO / BANNER */}
+      <div
         style={{
           background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
           borderRadius: "18px",
-          padding: "3.5rem 3rem",
-          marginBottom: "4rem",
-          color: "#0f172a",
+          padding: "56px 48px",
+          marginBottom: "56px",
         }}
       >
-        <h1 style={{ fontSize: "2.4rem", marginBottom: "1rem" }}>
+        <h1
+          style={{
+            color: "#ffffff",
+            fontSize: "36px",
+            fontWeight: "700",
+            marginBottom: "16px",
+          }}
+        >
           FinanzFreedom
         </h1>
-        <p style={{ fontSize: "1.1rem", maxWidth: "720px" }}>
+
+        <p
+          style={{
+            color: "#ffffff",
+            fontSize: "17px",
+            maxWidth: "720px",
+            lineHeight: "1.6",
+            opacity: 0.95,
+          }}
+        >
           Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
           finanzielle Freiheit.
         </p>
-      </section>
+      </div>
 
-      {/* KARTEN GRID */}
-      <section
+      {/* KATEGORIE-KARTEN */}
+      <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "2rem",
+          gap: "24px",
         }}
       >
-        <Card
+        <CategoryCard
           title="ETFs"
           text="ETF-Grundlagen, Sparpläne und langfristiger Vermögensaufbau – verständlich erklärt."
           href="/investieren/etfs"
         />
 
-        <Card
+        <CategoryCard
           title="Versicherungen"
           text="Welche Versicherungen sinnvoll sind – unabhängig & ohne Verkaufsdruck."
           href="/versicherungen"
         />
 
-        <Card
+        <CategoryCard
           title="Sparen"
           text="Ausgaben optimieren, Rücklagen bilden und Kontrolle über dein Geld gewinnen."
           href="/sparen"
         />
 
-        <Card
+        <CategoryCard
           title="Wissen"
           text="Finanzgrundlagen einfach & verständlich erklärt."
           href="/wissen"
         />
 
-        <Card
+        <CategoryCard
           title="Broker"
           text="Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne."
           href="/investieren/broker"
         />
-      </section>
+      </div>
     </main>
   );
 }
 
-function Card({ title, text, href }) {
+/* -----------------------------
+   KARTEN-KOMPONENTE
+----------------------------- */
+
+function CategoryCard({ title, text, href }) {
   return (
     <Link href={href} style={{ textDecoration: "none" }}>
       <div
         style={{
-          background: "#020617",
-          border: "1px solid #1e293b",
+          background: "rgba(255,255,255,0.03)",
+          border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: "14px",
-          padding: "1.8rem",
+          padding: "24px",
           height: "100%",
-          color: "#e5e7eb",
-          transition: "border 0.2s ease",
+          transition: "all 0.2s ease",
         }}
       >
-        <h3 style={{ marginBottom: "0.6rem" }}>{title}</h3>
-        <p style={{ fontSize: "0.95rem", opacity: 0.85 }}>{text}</p>
+        <h3
+          style={{
+            color: "#ffffff",
+            fontSize: "18px",
+            marginBottom: "10px",
+          }}
+        >
+          {title}
+        </h3>
+
+        <p
+          style={{
+            color: "rgba(255,255,255,0.7)",
+            fontSize: "14px",
+            lineHeight: "1.5",
+          }}
+        >
+          {text}
+        </p>
       </div>
     </Link>
   );

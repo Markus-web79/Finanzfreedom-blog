@@ -2,28 +2,23 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "3rem 1.5rem",
-      }}
-    >
-      {/* HERO / BANNER */}
-      <div
+    <main style={{ padding: "3rem 1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
+
+      {/* HERO BANNER */}
+      <section
         style={{
           background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
-          borderRadius: "18px",
-          padding: "56px 48px",
-          marginBottom: "56px",
+          borderRadius: "16px",
+          padding: "4rem 2rem",
+          textAlign: "center",
+          marginBottom: "3.5rem",
         }}
       >
         <h1
           style={{
             color: "#ffffff",
-            fontSize: "36px",
-            fontWeight: "700",
-            marginBottom: "16px",
+            fontSize: "3rem",
+            marginBottom: "1rem",
           }}
         >
           FinanzFreedom
@@ -32,95 +27,74 @@ export default function Home() {
         <p
           style={{
             color: "#ffffff",
-            fontSize: "17px",
-            maxWidth: "720px",
-            lineHeight: "1.6",
+            fontSize: "1.1rem",
+            maxWidth: "700px",
+            margin: "0 auto",
             opacity: 0.95,
           }}
         >
           Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
           finanzielle Freiheit.
         </p>
-      </div>
+      </section>
 
-      {/* KATEGORIE-KARTEN */}
-      <div
+      {/* KATEGORIEN */}
+      <section
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "24px",
+          gap: "1.5rem",
         }}
       >
-        <CategoryCard
+        <Category
           title="ETFs"
           text="ETF-Grundlagen, Sparpläne und langfristiger Vermögensaufbau – verständlich erklärt."
           href="/investieren/etfs"
         />
 
-        <CategoryCard
+        <Category
           title="Versicherungen"
           text="Welche Versicherungen sinnvoll sind – unabhängig & ohne Verkaufsdruck."
           href="/versicherungen"
         />
 
-        <CategoryCard
+        <Category
           title="Sparen"
           text="Ausgaben optimieren, Rücklagen bilden und Kontrolle über dein Geld gewinnen."
           href="/sparen"
         />
 
-        <CategoryCard
+        <Category
           title="Wissen"
           text="Finanzgrundlagen einfach & verständlich erklärt."
           href="/wissen"
         />
 
-        <CategoryCard
+        <Category
           title="Broker"
           text="Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne."
           href="/investieren/broker"
         />
-      </div>
+      </section>
     </main>
   );
 }
 
-/* -----------------------------
-   KARTEN-KOMPONENTE
------------------------------ */
-
-function CategoryCard({ title, text, href }) {
+/* CARD KOMPONENTE */
+function Category({ title, text, href }) {
   return (
     <Link href={href} style={{ textDecoration: "none" }}>
       <div
         style={{
-          background: "rgba(255,255,255,0.03)",
-          border: "1px solid rgba(255,255,255,0.08)",
+          background: "#0b1220",
           borderRadius: "14px",
-          padding: "24px",
+          padding: "1.8rem",
           height: "100%",
-          transition: "all 0.2s ease",
+          transition: "transform 0.2s ease, box-shadow 0.2s ease",
         }}
       >
-        <h3
-          style={{
-            color: "#ffffff",
-            fontSize: "18px",
-            marginBottom: "10px",
-          }}
-        >
-          {title}
-        </h3>
-
-        <p
-          style={{
-            color: "rgba(255,255,255,0.7)",
-            fontSize: "14px",
-            lineHeight: "1.5",
-          }}
-        >
-          {text}
-        </p>
+        <h3 style={{ color: "#ffffff", marginBottom: "0.6rem" }}>{title}</h3>
+        <p style={{ color: "#9ca3af", fontSize: "0.95rem" }}>{text}</p>
       </div>
     </Link>
   );

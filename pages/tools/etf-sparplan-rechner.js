@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
+import EtfSparplanRechner from "../../components/EtfSparplanRechner";
 
-export default function EtfSparplanRechner() {
+export default function EtfSparplanRechnerPage() {
   return (
     <>
       <Head>
@@ -13,7 +14,6 @@ export default function EtfSparplanRechner() {
       </Head>
 
       <main style={{ maxWidth: "720px", margin: "0 auto", padding: "40px 20px" }}>
-        
         {/* BACK BUTTON */}
         <div style={{ marginBottom: "24px" }}>
           <Link href="/investieren/etfs" style={{ color: "#6fe3d6" }}>
@@ -27,9 +27,8 @@ export default function EtfSparplanRechner() {
           ETF-Sparplan aufbauen kannst.
         </p>
 
-        {/* HIER BEGINNT DEIN RECHNER */}
-        {/* (dein bestehender Rechner-Code bleibt hier unverändert) */}
-
+        {/* HIER IST DER RECHNER */}
+        <EtfSparplanRechner />
       </main>
     </>
   );

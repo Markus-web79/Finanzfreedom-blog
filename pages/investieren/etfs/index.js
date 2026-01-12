@@ -1,149 +1,59 @@
-import Head from "next/head";
 import Link from "next/link";
 
-export default function EtfsHub() {
+export default function EtfsPage() {
   return (
-    <>
-      <Head>
-        <title>ETFs – einfach investieren | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="ETFs sind das Fundament für langfristigen Vermögensaufbau. Rechner, Vergleiche & klare Erklärungen – unabhängig und verständlich."
-        />
-      </Head>
+    <main className="page">
+      {/* EINLEITUNG */}
+      <section className="hero">
+        <h1>ETFs – einfach & langfristig investieren</h1>
 
-      <main style={styles.page}>
-        {/* BACK BUTTON */}
-        <div style={styles.back}>
-          <Link href="/" style={styles.backLink}>
-            ← Zur Startseite
-          </Link>
-        </div>
+        <p className="subtitle">
+          ETFs (Exchange Traded Funds) sind das Fundament für langfristigen
+          Vermögensaufbau. Sie ermöglichen kostengünstiges, breit gestreutes
+          Investieren – ideal für Einsteiger und Sparpläne.
+        </p>
 
-        {/* HERO */}
-        <section style={styles.hero}>
-          <p style={styles.intro}>
-            ETFs sind das Fundament für langfristigen Vermögensaufbau.
-            <br />
-            Sie ermöglichen kostengünstiges, breit gestreutes Investieren –
-            ideal für Einsteiger und Fortgeschrittene.
+        <ul className="checklist">
+          <li>✔ Breite Streuung mit nur einem Produkt</li>
+          <li>✔ Sehr geringe laufende Kosten</li>
+          <li>✔ Ideal für ETF-Sparpläne</li>
+        </ul>
+      </section>
+
+      {/* INHALTE */}
+      <section className="grid">
+        <Link href="/etfs/msci-world" className="card">
+          <h3>MSCI World ETF</h3>
+          <p>
+            Der bekannteste ETF der Welt – Chancen, Risiken und warum er für
+            viele Anleger der Einstieg ist.
           </p>
-        </section>
+          <span>Zum Artikel →</span>
+        </Link>
 
-        {/* PRIMARY ACTION */}
-        <section style={styles.primary}>
-          <Link
-            href="/tools/etf-sparplan-rechner"
-            style={styles.primaryCard}
-          >
-            <h2>ETF-Sparplan berechnen</h2>
-            <p>
-              In wenigen Sekunden sehen, wie viel Vermögen du langfristig
-              mit einem ETF-Sparplan aufbauen kannst.
-            </p>
-            <span style={styles.primaryButton}>Zum Rechner →</span>
-          </Link>
-        </section>
+        <Link href="/etfs/etf-sparplan" className="card">
+          <h3>ETF-Sparplan starten</h3>
+          <p>
+            Schritt für Schritt erklärt: So investierst du monatlich,
+            automatisch und stressfrei.
+          </p>
+          <span>Zur Anleitung →</span>
+        </Link>
 
-        {/* HUB CARDS */}
-        <section style={styles.grid}>
-          <Link href="/investieren/etfs/msci-world" style={styles.card}>
-            <h3>MSCI World ETF</h3>
-            <p>
-              Der weltweit beliebteste ETF. Chancen, Risiken und
-              Einsatzmöglichkeiten kompakt erklärt.
-            </p>
-          </Link>
+        <Link href="/broker" className="card">
+          <h3>Broker vergleichen</h3>
+          <p>
+            Finde den passenden Broker für ETFs, Sparpläne und langfristige
+            Strategien.
+          </p>
+          <span>Zum Vergleich →</span>
+        </Link>
+      </section>
 
-          <Link href="/investieren/etfs/sparplan" style={styles.card}>
-            <h3>ETF-Sparplan starten</h3>
-            <p>
-              Schritt für Schritt erklärt: So startest du einfach und
-              automatisiert mit ETFs.
-            </p>
-          </Link>
-
-          <Link href="/investieren/broker" style={styles.card}>
-            <h3>Broker vergleichen</h3>
-            <p>
-              Kosten, Sparpläne und Sicherheit – finde den passenden Broker
-              für deine Strategie.
-            </p>
-          </Link>
-        </section>
-      </main>
-    </>
+      {/* BACK BUTTON */}
+      <div className="back">
+        <Link href="/investieren">← Zur Investieren-Übersicht</Link>
+      </div>
+    </main>
   );
 }
-
-/* STYLES */
-const styles = {
-  page: {
-    minHeight: "100vh",
-    padding: "60px 20px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
-    color: "#e5e7eb",
-  },
-
-  back: {
-    maxWidth: "1100px",
-    margin: "0 auto 32px",
-  },
-
-  backLink: {
-    color: "#6fe3d6",
-    textDecoration: "none",
-    fontWeight: 500,
-  },
-
-  hero: {
-    maxWidth: "900px",
-    margin: "0 auto 60px",
-    textAlign: "center",
-  },
-
-  intro: {
-    fontSize: "1.1rem",
-    color: "#9ca3af",
-    lineHeight: 1.6,
-  },
-
-  primary: {
-    maxWidth: "900px",
-    margin: "0 auto 60px",
-  },
-
-  primaryCard: {
-    display: "block",
-    padding: "32px",
-    borderRadius: "18px",
-    background: "linear-gradient(145deg, #0f172a, #020617)",
-    border: "1px solid #223d3e",
-    textDecoration: "none",
-    color: "#e5e7eb",
-  },
-
-  primaryButton: {
-    display: "inline-block",
-    marginTop: "16px",
-    color: "#22d3ee",
-    fontWeight: 600,
-  },
-
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "24px",
-    maxWidth: "1100px",
-    margin: "0 auto",
-  },
-
-  card: {
-    padding: "28px",
-    borderRadius: "16px",
-    background: "#020617",
-    border: "1px solid #1e293b",
-    textDecoration: "none",
-    color: "#e5e7eb",
-  },
-};

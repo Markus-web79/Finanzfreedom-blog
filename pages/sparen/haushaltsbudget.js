@@ -1,4 +1,4 @@
-import ArticleLayout from "@/components/ArticleLayout";
+import ArticleLayout from "../../components/ArticleLayout";
 
 export default function Haushaltsbudget() {
   return (
@@ -26,7 +26,6 @@ export default function Haushaltsbudget() {
 
       <section>
         <h2>Die 50-30-20 Regel einfach erklärt</h2>
-        <p>Die 50-30-20 Regel teilt dein Nettoeinkommen sinnvoll auf:</p>
         <ul>
           <li><strong>50 % Fixkosten</strong> – Miete, Strom, Versicherungen, Lebensmittel</li>
           <li><strong>30 % Lebensstil</strong> – Freizeit, Reisen, Hobbys, Shopping</li>
@@ -58,8 +57,8 @@ export default function Haushaltsbudget() {
       <section>
         <h2>Fazit</h2>
         <p>
-          Ein Haushaltsbudget ist kein Korsett, sondern ein Werkzeug. Es verschafft dir Freiheit,
-          weil du weißt, dass dein Geld für dich arbeitet – nicht gegen dich.
+          Ein Haushaltsbudget ist kein Korsett, sondern ein Werkzeug.
+          Es gibt dir Freiheit, weil du Kontrolle über dein Geld hast.
         </p>
       </section>
     </ArticleLayout>

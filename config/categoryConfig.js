@@ -8,7 +8,13 @@ export function getCategories() {
 
   return fs
     .readdirSync(CONTENT_DIR, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
+    .filter(
+      (dirent) =>
+        dirent.isDirectory() &&
+        !dirent.name.includes("backup") &&
+        !dirent.name.includes("_phase") &&
+        !dirent.name.startsWith(".")
+    )
     .map((dirent) => {
       const slug = dirent.name;
 

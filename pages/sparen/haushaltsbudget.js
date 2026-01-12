@@ -1,77 +1,55 @@
-import Link from "next/link";
 import ArticleLayout from "../../components/ArticleLayout";
 
 export default function Haushaltsbudget() {
   return (
     <ArticleLayout
       title="Haushaltsbudget erstellen (50-30-20 Regel)"
-      intro="Ein Haushaltsbudget ist das Fundament für finanziellen Überblick. Es hilft dir, bewusst mit deinem Geld umzugehen, Sparpotenziale zu erkennen und langfristig Vermögen aufzubauen – ohne Verzicht auf Lebensqualität."
-      backLink="/sparen"
-      backText="Zur Sparen-Übersicht"
+      intro="Ein Haushaltsbudget ist das Fundament für finanziellen Überblick. Mit der 50-30-20 Regel bringst du Ordnung in dein Geld – ohne dich kaputt zu sparen."
+      backLink={{ href: "/sparen", label: "Zur Sparen-Übersicht" }}
+      image={{
+        // OPTIONAL: Wenn du KEIN Bild hast, lösch einfach die komplette image-Zeile.
+        src: "/images/haushaltsbudget.jpg",
+        alt: "Haushaltsbudget und 50-30-20 Regel",
+      }}
     >
       <h2>Warum ein Haushaltsbudget so wichtig ist</h2>
       <ul>
-        <li>✔ Du weißt jederzeit, wohin dein Geld fließt</li>
-        <li>✔ Sparen passiert automatisch, nicht zufällig</li>
-        <li>✔ Finanzielle Ziele werden planbar</li>
-        <li>✔ Weniger Stress, mehr Kontrolle</li>
+        <li>Du weißt jederzeit, wohin dein Geld fließt</li>
+        <li>Sparen passiert automatisch – nicht zufällig</li>
+        <li>Finanzielle Ziele werden planbar</li>
+        <li>Weniger Stress, mehr Kontrolle</li>
       </ul>
 
       <h2>Die 50-30-20 Regel einfach erklärt</h2>
-      <p>
-        Die 50-30-20 Regel ist eine einfache Methode, dein monatliches
-        Nettoeinkommen sinnvoll aufzuteilen:
-      </p>
-
+      <p>Teile dein Nettoeinkommen grob so auf:</p>
       <ul>
-        <li>
-          <strong>50 % Fixkosten</strong> – Miete, Strom, Versicherungen,
-          Lebensmittel
-        </li>
-        <li>
-          <strong>30 % Lebensstil</strong> – Freizeit, Reisen, Hobbys,
-          Shopping
-        </li>
-        <li>
-          <strong>20 % Sparen</strong> – Notgroschen, Rücklagen, Investitionen
-        </li>
+        <li><strong>50 % Fixkosten</strong> – Miete, Strom, Versicherungen, Lebensmittel</li>
+        <li><strong>30 % Lebensstil</strong> – Freizeit, Reisen, Hobbys, Shopping</li>
+        <li><strong>20 % Sparen</strong> – Notgroschen, Investitionen, Rücklagen</li>
       </ul>
-
-      <p>
-        Diese Aufteilung ist kein starres Gesetz, sondern eine Orientierung.
-        Entscheidend ist, dass du eine klare Struktur hast.
-      </p>
 
       <h2>So setzt du dein Budget Schritt für Schritt um</h2>
       <ol>
-        <li>Nettoeinkommen aufschreiben</li>
-        <li>Alle Fixkosten vollständig erfassen</li>
-        <li>Variable Ausgaben realistisch einschätzen</li>
+        <li>Nettoeinkommen notieren</li>
+        <li>Fixkosten erfassen</li>
+        <li>Variable Ausgaben realistisch schätzen</li>
         <li>Sparbetrag zuerst festlegen</li>
-        <li>Monatlich überprüfen und anpassen</li>
+        <li>Monatlich prüfen & anpassen</li>
       </ol>
 
       <h2>Typische Fehler vermeiden</h2>
       <ul>
-        <li>❌ Sparen nur vom „Rest“</li>
-        <li>❌ Fixkosten unterschätzen</li>
-        <li>❌ Kein regelmäßiger Check</li>
-        <li>❌ Zu komplizierte Systeme</li>
+        <li>„Sparen nur vom Rest“ → Sparen zuerst, dann ausgeben</li>
+        <li>Fixkosten unterschätzen → Verträge prüfen</li>
+        <li>Kein regelmäßiger Check → 10 Minuten pro Monat reichen</li>
+        <li>Zu komplizierte Systeme → einfach starten</li>
       </ul>
 
       <h2>Fazit</h2>
       <p>
-        Ein Haushaltsbudget ist kein Korsett, sondern ein Werkzeug. Es gibt dir
-        Freiheit, weil du Kontrolle über dein Geld hast – und nicht umgekehrt.
+        Ein Haushaltsbudget ist kein Korsett, sondern ein Werkzeug. Es gibt dir Freiheit,
+        weil du die Kontrolle über dein Geld zurückholst.
       </p>
-
-      <div style={{ marginTop: "3rem" }}>
-        <Link href="/sparen/notgroschen">
-          <span style={{ color: "#2dd4bf", fontWeight: 500 }}>
-            → Weiter: Notgroschen aufbauen
-          </span>
-        </Link>
-      </div>
     </ArticleLayout>
   );
 }

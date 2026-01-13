@@ -17,10 +17,9 @@ export default function SparenIndex() {
       <h1 style={{ marginTop: "1.5rem" }}>Sparen & Rücklagen aufbauen</h1>
 
       <p style={{ maxWidth: "700px", marginTop: "1rem", opacity: 0.9 }}>
-        Sparen ist die Grundlage jeder finanziellen Freiheit. Bevor du
-        investierst, solltest du deine Ausgaben im Griff haben und Rücklagen
-        für Notfälle bilden. Hier findest du praxisnahe Anleitungen, die
-        wirklich funktionieren.
+        Sparen ist die Grundlage jeder finanziellen Freiheit. Bevor du investierst,
+        solltest du deine Ausgaben im Griff haben und Rücklagen für Notfälle bilden.
+        Hier findest du praxisnahe Anleitungen, die wirklich funktionieren.
       </p>
 
       <h2 style={{ marginTop: "3rem" }}>Grundlagen</h2>
@@ -38,40 +37,34 @@ export default function SparenIndex() {
         <div className="card">
           <h3>Notgroschen aufbauen</h3>
           <p>
-            Warum jeder einen finanziellen Puffer braucht, wie hoch er sein
-            sollte und wie du ihn stressfrei aufbaust.
+            Der finanzielle Puffer für unerwartete Ausgaben. Erfahre, wie hoch dein
+            Notgroschen sein sollte und wie du ihn stressfrei aufbaust.
           </p>
-          <Link href="/sparen/grundlagen/notgroschen">
-            Zum Artikel →
-          </Link>
+          <Link href="/sparen/grundlagen/notgroschen">Zum Artikel →</Link>
         </div>
 
         {/* Fixkosten */}
         <div className="card">
           <h3>Fixkosten senken</h3>
           <p>
-            Mit einfachen Hebeln dauerhaft Geld sparen – ohne auf
-            Lebensqualität zu verzichten.
+            Der größte Hebel für dauerhaft mehr Geld. Reduziere deine laufenden Kosten,
+            ohne Lebensqualität zu verlieren – Monat für Monat.
           </p>
-          <Link href="/sparen/grundlagen/fixkosten-senken">
-            Zum Artikel →
-          </Link>
+          <Link href="/sparen/grundlagen/fixkosten-senken">Zum Artikel →</Link>
         </div>
 
         {/* Haushaltsbudget */}
         <div className="card">
           <h3>Haushaltsbudget erstellen</h3>
           <p>
-            Mit der 50-30-20-Regel dein Geld sinnvoll aufteilen und dauerhaft
-            Kontrolle gewinnen.
+            Mit einem klaren Budget behältst du die Kontrolle über dein Geld.
+            Die 50-30-20-Regel hilft dir, sinnvoll zu sparen und trotzdem zu leben.
           </p>
-          <Link href="/sparen/haushaltsbudget">
-            Zum Artikel →
-          </Link>
+          <Link href="/sparen/haushaltsbudget">Zum Artikel →</Link>
         </div>
       </div>
 
-      {/* Footer spacing */}
+      {/* Styles */}
       <style jsx>{`
         .card {
           background: linear-gradient(180deg, #0f172a, #020617);

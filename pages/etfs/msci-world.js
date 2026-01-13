@@ -104,13 +104,13 @@ const styles = {
     margin: "0 auto",
     lineHeight: 1.7,
   },
-rel= {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "12px",
-    padding: "24px",
-    marginTop: "40px",
-  },
+rel: {
+  background: "#020617",
+  border: "1px solid #1e293b",
+  borderRadius: "12px",
+  padding: "24px",
+  marginTop: "40px",
+},
   ctaButton: {
     display: "inline-block",
     marginTop: "12px",

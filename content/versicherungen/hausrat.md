@@ -1,81 +1,98 @@
 ---
-title: Hausratversicherung – sinnvoll oder überflüssig?
-excerpt: Die Hausratversicherung schützt dein Eigentum bei Schäden durch Feuer, Wasser, Sturm oder Einbruch. Hier erfährst du, für wen sie sinnvoll ist.
-category: Versicherungen
+title: Hausratversicherung
+description: Wann eine Hausratversicherung sinnvoll ist, was sie wirklich absichert und worauf du beim Abschluss achten solltest.
+intro: Die Hausratversicherung schützt dein gesamtes bewegliches Eigentum in der Wohnung. Sie ist kein Muss für jeden – aber extrem wichtig, wenn du etwas zu verlieren hast.
 ---
 
 ## Was ist eine Hausratversicherung?
 
-Die Hausratversicherung schützt alles, was du in deiner Wohnung besitzt – also Möbel, Kleidung, Technik, Schmuck und Haushaltsgeräte.  
-Versichert ist dein Eigentum zum Beispiel bei **Brand, Leitungswasserschäden, Sturm, Hagel und Einbruchdiebstahl**.
+Die Hausratversicherung sichert **alles ab, was du bei einem Umzug mitnehmen würdest** – also dein gesamtes bewegliches Eigentum.
 
-Einfach gesagt:  
-Alles, was herausfallen würde, wenn man deine Wohnung auf den Kopf stellt, zählt zum Hausrat.
+Dazu zählen unter anderem:
+- Möbel
+- Elektronik (TV, Laptop, Smartphone)
+- Kleidung & Schuhe
+- Schmuck & Wertsachen
+- Fahrräder (je nach Tarif)
+- Haushaltsgeräte
+
+👉 Vereinfacht gesagt: **Dein komplettes Zuhause – ohne die Wände.**
 
 ---
 
-## Für wen ist eine Hausratversicherung sinnvoll?
+## Gegen welche Schäden bist du versichert?
+
+Eine gute Hausratversicherung deckt Schäden durch:
+
+- **Feuer** (Brand, Explosion, Blitzschlag)
+- **Leitungswasser** (z. B. Rohrbruch)
+- **Sturm & Hagel**
+- **Einbruchdiebstahl & Vandalismus**
+- **Raub**
+
+Wichtig:  
+Ein einfacher Diebstahl (z. B. Handy im Café) ist **nicht** versichert – dafür braucht es Zusatzbausteine.
+
+---
+
+## Wann ist eine Hausratversicherung sinnvoll?
 
 Eine Hausratversicherung ist besonders sinnvoll, wenn:
 
-- du eine **eigene Wohnung oder ein Haus** hast  
-- du **wertvolle Möbel, Elektronik oder Gegenstände** besitzt  
-- du dich vor hohen finanziellen Schäden schützen willst  
+- du **wertvolle Möbel oder Elektronik** besitzt
+- du **nicht genug Rücklagen** hast, um alles neu zu kaufen
+- du in einer **Mietwohnung** lebst
+- du dein Zuhause langfristig aufgebaut hast
 
-Nach Einbruch, Brand oder Wasserschaden können Schäden schnell mehrere tausend Euro betragen.
-
----
-
-## Wann ist sie eher weniger wichtig?
-
-Weniger sinnvoll ist eine Hausratversicherung, wenn:
-
-- du noch **bei den Eltern wohnst**
-- dein Hausrat insgesamt nur einen **geringen Wert** hat
-- du kaum eigene Möbel oder Technik besitzt  
-
-In diesen Fällen kann man bewusst verzichten oder später abschließen.
+👉 Je mehr Besitz du hast, desto wichtiger wird die Hausratversicherung.
 
 ---
 
-## Worauf sollte man bei einer Hausratversicherung achten?
+## Worauf solltest du beim Abschluss achten?
 
-Beim Abschluss solltest du besonders auf folgende Punkte achten:
+### ✔ Versicherungssumme
+- Faustregel: **650–750 € pro Quadratmeter**
+- Unterversicherung unbedingt vermeiden
 
-- **Ausreichende Versicherungssumme**  
-  Faustregel: etwa **650–750 € pro Quadratmeter Wohnfläche**
-- **Unterversicherungsverzicht**, damit im Schadenfall nicht gekürzt wird
-- **Fahrraddiebstahl**, falls relevant
-- **Außenversicherung**, z. B. für Reisen oder Kellerabteile
+### ✔ Neuwert statt Zeitwert
+- Schäden sollten zum **Neupreis** ersetzt werden
 
-Nicht der günstigste Tarif ist entscheidend, sondern die Leistungen.
+### ✔ Grobe Fahrlässigkeit
+- Sehr wichtig (z. B. Kerze vergessen, Fenster gekippt)
 
----
+### ✔ Fahrraddiebstahl
+- Nur versichert, wenn ausdrücklich eingeschlossen
+- Besonders wichtig in Städten
 
-## Typische Fehler bei der Hausratversicherung
-
-Diese Fehler passieren häufig:
-
-- zu niedrig angesetzte Versicherungssumme  
-- wichtige Leistungen fehlen  
-- veraltete Verträge ohne Anpassung  
-- unnötige Zusatzbausteine  
-
-Ein regelmäßiger Vertragscheck lohnt sich.
+### ✔ Wertsachen & Schmuck
+- Auf Entschädigungsgrenzen achten
 
 ---
 
-## Fazit: Braucht man eine Hausratversicherung?
+## Was kostet eine Hausratversicherung?
 
-Für die meisten Menschen mit eigenem Haushalt lautet die Antwort: **Ja**.  
-Sie gehört zu den Versicherungen, die viel absichern und vergleichsweise wenig kosten.
+Die Kosten sind meist überschaubar:
 
-Ein Vergleich kann helfen, Preis und Leistung optimal abzustimmen.  
-(Dieser Bereich wird aktuell weiter ausgebaut.)
+- Kleine Wohnung: **3–6 € pro Monat**
+- Größere Wohnung / Haus: **5–15 € pro Monat**
+
+Der Preis hängt ab von:
+- Wohnfläche
+- Wohnort
+- Versicherungssumme
+- Zusatzbausteinen
 
 ---
 
-## Transparenz-Hinweis
+## Typische Fehler vermeiden
 
-FinanzFreedom empfiehlt Versicherungen unabhängig.  
-Einige Links können künftig sogenannte Affiliate-Links sein – für dich entstehen dadurch **keine Mehrkosten**.
+- ❌ Versicherungssumme zu niedrig ansetzen
+- ❌ Grobe Fahrlässigkeit nicht absichern
+- ❌ Fahrräder vergessen
+- ❌ Wertgegenstände falsch einschätzen
+
+👉 Ein günstiger Tarif bringt nichts, wenn er im Schadensfall nicht zahlt.
+
+---
+
+## Unser Fazit

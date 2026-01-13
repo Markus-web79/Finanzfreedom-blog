@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import Link from "next/link";
 import Head from "next/head";
 import { marked } from "marked";
-import styles from "../../styles/Article.module.css";
 
 export default function VersicherungArticle({ frontmatter, content }) {
   return (
@@ -17,36 +16,32 @@ export default function VersicherungArticle({ frontmatter, content }) {
         />
       </Head>
 
-      <main className={styles.wrapper}>
-        {/* Back */}
-        <Link href="/versicherungen" className={styles.back}>
+      <main
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "3rem 1.5rem",
+        }}
+      >
+        <Link href="/versicherungen" style={{ color: "#2dd4bf" }}>
           ← Zurück zu Versicherungen
         </Link>
 
-        {/* Header */}
-        <h1>{frontmatter.title}</h1>
+        <h1 style={{ marginTop: "1.5rem" }}>{frontmatter.title}</h1>
 
         {frontmatter.intro && (
-          <p className={styles.intro}>{frontmatter.intro}</p>
+          <p style={{ opacity: 0.85, maxWidth: "800px" }}>
+            {frontmatter.intro}
+          </p>
         )}
 
-        {/* Content */}
-        <article
-          className={styles.content}
+        <div
+          style={{
+            marginTop: "2.5rem",
+            lineHeight: "1.7",
+          }}
           dangerouslySetInnerHTML={{ __html: content }}
         />
-
-        {/* CTA Box */}
-        <div className={styles.cta}>
-          <h3>👉 Nächster Schritt</h3>
-          <p>
-            In den nächsten Schritten zeigen wir dir konkrete Tarifvergleiche,
-            Empfehlungen und worauf du beim Abschluss achten solltest.
-          </p>
-          <p style={{ opacity: 0.8 }}>
-            (Affiliate-Links & Vergleiche folgen)
-          </p>
-        </div>
       </main>
     </>
   );
@@ -57,9 +52,7 @@ export async function getStaticPaths() {
   const files = fs.readdirSync(dir);
 
   const paths = files.map((file) => ({
-    params: {
-      slug: file.replace(".md", ""),
-    },
+    params: { slug: file.replace(".md", "") },
   }));
 
   return {

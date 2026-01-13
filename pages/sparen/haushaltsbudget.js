@@ -1,4 +1,4 @@
-import ArticleLayout from "@/components/ArticleLayout";
+import ArticleLayout from "../../components/ArticleLayout";
 
 export default function Haushaltsbudget() {
   return (

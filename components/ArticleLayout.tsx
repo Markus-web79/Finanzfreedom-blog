@@ -24,25 +24,25 @@ export default function ArticleLayout({
 }: ArticleLayoutProps) {
   return (
     <article className="article">
-      {backLink && (
-        <Link href={backLink.href} className="backLink">
-          ← {backLink.label}
-        </Link>
-      )}
+      <div className="articleContainer">
+        {backLink && (
+          <Link href={backLink.href} className="backLink">
+            ← {backLink.label}
+          </Link>
+        )}
 
-      <header className="articleHeader">
-        <h1>{title}</h1>
-        {intro && <p className="intro">{intro}</p>}
-      </header>
-
-      <div className="articleGrid">
-        <div className="articleContent">{children}</div>
+        <header className="articleHeader">
+          <h1>{title}</h1>
+          {intro && <p className="intro">{intro}</p>}
+        </header>
 
         {image && (
-          <aside className="articleAside">
+          <div className="articleImage">
             <img src={image.src} alt={image.alt} />
-          </aside>
+          </div>
         )}
+
+        <div className="articleContent">{children}</div>
       </div>
     </article>
   );

@@ -1,57 +1,54 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function EtfIndex() {
+export default function ETFIndex() {
   return (
     <>
       <Head>
-        <title>ETFs verstehen & vergleichen | FinanzFreedom</title>
+        <title>ETFs – Einfach investieren | FinanzFreedom</title>
         <meta
           name="description"
-          content="ETFs einfach erklärt: MSCI World, All-World, Sparpläne & langfristiger Vermögensaufbau – verständlich & unabhängig."
+          content="ETFs einfach erklärt: Überblick, Grundlagen und die wichtigsten ETF-Strategien für langfristigen Vermögensaufbau."
         />
       </Head>
 
       <main style={styles.page}>
-        {/* HEADER */}
-        <header style={styles.header}>
-          <Link href="/" style={styles.back}>
-            ← Zur Startseite
-          </Link>
-          <h1 style={styles.title}>ETFs</h1>
-          <p style={styles.subtitle}>
-            Exchange Traded Funds einfach erklärt – die Grundlage für
-            langfristigen Vermögensaufbau.
-          </p>
-        </header>
+        {/* Back */}
+        <div style={styles.backNav}>
+          <Link href="/">← Zur Startseite</Link>
+        </div>
 
-        {/* CONTENT */}
+        {/* Header */}
+        <section style={styles.header}>
+          <h1>ETFs verstehen & investieren</h1>
+          <p>
+            ETFs (Exchange Traded Funds) sind eine der einfachsten und
+            kostengünstigsten Möglichkeiten, langfristig Vermögen aufzubauen.
+            Hier findest du einen strukturierten Überblick.
+          </p>
+        </section>
+
+        {/* Grid */}
         <section style={styles.grid}>
           <Link href="/etf/msci-world" style={styles.card}>
-            <span style={styles.cardBar} />
-            <h2>MSCI World ETF</h2>
+            <div style={styles.cardBar}></div>
+            <h2>MSCI World</h2>
             <p>
-              Der bekannteste ETF der Welt – Chancen, Risiken und für wen er
-              geeignet ist.
+              Der Klassiker unter den ETFs – weltweit investieren mit nur einem
+              Produkt.
             </p>
           </Link>
 
           <div style={styles.cardDisabled}>
-            <span style={styles.cardBar} />
-            <h2>All-World ETFs</h2>
-            <p>
-              Breiter investieren mit Industrie- und Schwellenländern.
-              (kommt bald)
-            </p>
+            <div style={styles.cardBar}></div>
+            <h2>MSCI Emerging Markets</h2>
+            <p>Folgt demnächst – Schwellenländer einfach erklärt.</p>
           </div>
 
           <div style={styles.cardDisabled}>
-            <span style={styles.cardBar} />
-            <h2>ETF-Sparplan</h2>
-            <p>
-              Monatlich investieren & vom Zinseszinseffekt profitieren.
-              (kommt bald)
-            </p>
+            <div style={styles.cardBar}></div>
+            <h2>MSCI ACWI</h2>
+            <p>Folgt demnächst – Industrie- & Schwellenländer kombiniert.</p>
           </div>
         </section>
       </main>
@@ -62,30 +59,18 @@ export default function EtfIndex() {
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "40px 20px 80px",
-    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    padding: "40px 20px",
+    background: "#020617",
     color: "#e5e7eb",
   },
+  backNav: {
+    maxWidth: "1100px",
+    margin: "0 auto 20px",
+    fontSize: "0.9rem",
+  },
   header: {
-    maxWidth: "900px",
-    margin: "0 auto 50px",
-  },
-  back: {
-    display: "inline-block",
-    marginBottom: "16px",
-    color: "#2dd4bf",
-    textDecoration: "none",
-    fontWeight: 500,
-  },
-  title: {
-    fontSize: "2.6rem",
-    marginBottom: "12px",
-    color: "#ffffff",
-  },
-  subtitle: {
-    fontSize: "1.1rem",
-    color: "#9ca3af",
-    maxWidth: "700px",
+    maxWidth: "1100px",
+    margin: "0 auto 40px",
   },
   grid: {
     maxWidth: "1100px",
@@ -96,30 +81,29 @@ const styles = {
   },
   card: {
     position: "relative",
-    padding: "26px",
     background: "#020617",
-    borderRadius: "14px",
     border: "1px solid #1e293b",
-    color: "#e5e7eb",
+    borderRadius: "14px",
+    padding: "24px",
     textDecoration: "none",
-    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    color: "#e5e7eb",
+    transition: "all 0.2s ease",
   },
   cardDisabled: {
     position: "relative",
-    padding: "26px",
     background: "#020617",
-    borderRadius: "14px",
     border: "1px solid #1e293b",
-    color: "#9ca3af",
-    opacity: 0.6,
+    borderRadius: "14px",
+    padding: "24px",
+    opacity: 0.5,
   },
   cardBar: {
     position: "absolute",
     top: 0,
     left: 0,
+    right: 0,
     height: "4px",
-    width: "100%",
-    background: "linear-gradient(90deg, #2dd4bf, #14b8a6)",
+    background: "#14b8a6",
     borderTopLeftRadius: "14px",
     borderTopRightRadius: "14px",
   },

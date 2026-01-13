@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 
 type ArticleLayoutProps = {
   title: string;
@@ -35,7 +36,7 @@ export default function ArticleLayout({
       </header>
 
       <div className="articleGrid">
-        <div className="articleMain">{children}</div>
+        <div className="articleContent">{children}</div>
 
         {image && (
           <aside className="articleAside">

@@ -6,7 +6,7 @@ import Head from "next/head";
 import { marked } from "marked";
 import styles from "../../styles/Article.module.css";
 
-export default function VersicherungArticle({ frontmatter, content, slug }) {
+export default function VersicherungArticle({ frontmatter, content }) {
   return (
     <>
       <Head>
@@ -17,23 +17,37 @@ export default function VersicherungArticle({ frontmatter, content, slug }) {
         />
       </Head>
 
-      <div className={styles.wrapper}>
+      <main className={styles.wrapper}>
+        {/* Back */}
         <Link href="/versicherungen" className={styles.back}>
           ← Zurück zu Versicherungen
         </Link>
 
+        {/* Header */}
         <h1>{frontmatter.title}</h1>
 
         {frontmatter.intro && (
           <p className={styles.intro}>{frontmatter.intro}</p>
         )}
 
-        {/* MARKDOWN → HTML RENDERING (WICHTIG!) */}
-        <div
+        {/* Content */}
+        <article
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      </div>
+
+        {/* CTA Box */}
+        <div className={styles.cta}>
+          <h3>👉 Nächster Schritt</h3>
+          <p>
+            In den nächsten Schritten zeigen wir dir konkrete Tarifvergleiche,
+            Empfehlungen und worauf du beim Abschluss achten solltest.
+          </p>
+          <p style={{ opacity: 0.8 }}>
+            (Affiliate-Links & Vergleiche folgen)
+          </p>
+        </div>
+      </main>
     </>
   );
 }
@@ -67,8 +81,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       frontmatter: data,
-      slug: params.slug,
-      content: marked.parse(content), // 🔥 DAS WAR DER FEHLER
+      content: marked.parse(content),
     },
   };
 }

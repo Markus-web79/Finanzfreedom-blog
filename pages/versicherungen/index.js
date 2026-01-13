@@ -14,9 +14,9 @@ export default function VersicherungenIndex() {
         ← Zur Startseite
       </Link>
 
+      {/* Headline */}
       <h1 style={{ marginTop: "1.5rem" }}>Versicherungen</h1>
-
-      <p style={{ maxWidth: "720px", marginTop: "1rem", opacity: 0.85 }}>
+      <p style={{ maxWidth: "700px", marginTop: "1rem", opacity: 0.9 }}>
         Welche Versicherungen wirklich sinnvoll sind – verständlich erklärt,
         unabhängig bewertet und ohne Verkaufsdruck. Hier findest du die
         Absicherungen, die du wirklich brauchst.
@@ -35,6 +35,7 @@ export default function VersicherungenIndex() {
       >
         {/* Privathaftpflicht */}
         <div className="card">
+          <div className="icon">🛡️</div>
           <h3>Privathaftpflicht</h3>
           <p>
             Die wichtigste Versicherung überhaupt. Schützt dich vor finanziellen
@@ -47,6 +48,7 @@ export default function VersicherungenIndex() {
 
         {/* Hausrat */}
         <div className="card">
+          <div className="icon">🏠</div>
           <h3>Hausrat</h3>
           <p>
             Absicherung für dein Hab und Gut bei Einbruch, Feuer oder
@@ -59,6 +61,7 @@ export default function VersicherungenIndex() {
 
         {/* Berufsunfähigkeit */}
         <div className="card">
+          <div className="icon">💼</div>
           <h3>Berufsunfähigkeit</h3>
           <p>
             Schützt dein Einkommen, wenn du deinen Beruf aus gesundheitlichen
@@ -71,6 +74,7 @@ export default function VersicherungenIndex() {
 
         {/* Krankenversicherung */}
         <div className="card">
+          <div className="icon">🏥</div>
           <h3>Krankenversicherung</h3>
           <p>
             Gesetzlich oder privat? Unterschiede, Vor- und Nachteile – und wann
@@ -83,36 +87,18 @@ export default function VersicherungenIndex() {
       </div>
 
       {/* CTA BOX */}
-      <div
-        style={{
-          marginTop: "3.5rem",
-          padding: "2rem",
-          borderRadius: "16px",
-          background:
-            "linear-gradient(180deg, rgba(20,184,166,0.15), rgba(15,23,42,0.6))",
-          border: "1px solid rgba(45,212,191,0.35)",
-          textAlign: "center",
-        }}
-      >
-        <h3>Du willst strukturiert starten?</h3>
-        <p style={{ marginTop: "0.75rem", opacity: 0.9 }}>
-          Beginne mit der Privathaftpflicht. Sie ist die Basis jeder sinnvollen
-          Absicherung und schützt dich vor existenziellen Risiken.
+      <div className="ctaBox">
+        <h3>Du willst sinnvoll starten?</h3>
+        <p>
+          Beginne mit der Privathaftpflicht. Sie schützt dich vor existenziellen
+          Risiken und kostet meist weniger als ein Streaming-Abo.
         </p>
-        <Link
-          href="/versicherungen/privathaftpflicht"
-          style={{
-            display: "inline-block",
-            marginTop: "1rem",
-            color: "#2dd4bf",
-            fontWeight: 500,
-          }}
-        >
+        <Link href="/versicherungen/privathaftpflicht" className="ctaLink">
           👉 Zum Privathaftpflicht-Guide
         </Link>
       </div>
 
-      {/* STYLES */}
+      {/* Styles */}
       <style jsx>{`
         .card {
           background: linear-gradient(180deg, #0f172a, #020617);
@@ -124,7 +110,12 @@ export default function VersicherungenIndex() {
 
         .card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .icon {
+          font-size: 1.6rem;
+          margin-bottom: 0.5rem;
         }
 
         .card h3 {
@@ -139,6 +130,30 @@ export default function VersicherungenIndex() {
         .card a {
           color: #2dd4bf;
           font-weight: 500;
+        }
+
+        .ctaBox {
+          margin-top: 4rem;
+          padding: 2rem;
+          border-radius: 16px;
+          background: linear-gradient(180deg, #020617, #0f172a);
+          border: 1px solid rgba(45, 212, 191, 0.3);
+          text-align: center;
+        }
+
+        .ctaBox h3 {
+          margin-bottom: 0.5rem;
+        }
+
+        .ctaBox p {
+          opacity: 0.9;
+          margin-bottom: 1rem;
+        }
+
+        .ctaLink {
+          color: #2dd4bf;
+          font-weight: 600;
+          font-size: 1.05rem;
         }
       `}</style>
     </main>

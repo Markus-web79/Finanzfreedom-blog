@@ -1,161 +1,116 @@
 import Link from "next/link";
 
+function Card({ href, icon, title, text, disabled }) {
+  const style = {
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "14px",
+    padding: "24px",
+    color: "#e5e7eb",
+    textDecoration: "none",
+    transition: "transform 0.15s ease, border-color 0.15s ease",
+    cursor: disabled ? "not-allowed" : "pointer",
+    opacity: disabled ? 0.5 : 1,
+  };
+
+  const content = (
+    <>
+      <div style={{ fontSize: "2rem", marginBottom: "12px" }}>{icon}</div>
+      <h3 style={{ fontSize: "1.25rem", marginBottom: "8px" }}>{title}</h3>
+      <p style={{ fontSize: "0.95rem", lineHeight: 1.6, opacity: 0.9 }}>
+        {text}
+      </p>
+      {!disabled && (
+        <p
+          style={{
+            marginTop: "16px",
+            color: "#14b8a6",
+            fontSize: "0.9rem",
+          }}
+        >
+          → Zum Artikel
+        </p>
+      )}
+    </>
+  );
+
+  if (disabled) {
+    return <div style={style}>{content}</div>;
+  }
+
+  return (
+    <Link href={href} style={style}>
+      {content}
+    </Link>
+  );
+}
+
 export default function VersicherungenIndex() {
   return (
-    <main
-      style={{
-        maxWidth: "1100px",
-        margin: "0 auto",
-        padding: "3rem 1.5rem",
-      }}
-    >
-      {/* Back */}
-      <Link href="/" style={{ color: "#2dd4bf" }}>
-        ← Zur Startseite
-      </Link>
-
-      {/* Headline */}
-      <h1 style={{ marginTop: "1.5rem" }}>Versicherungen</h1>
-      <p style={{ maxWidth: "700px", marginTop: "1rem", opacity: 0.9 }}>
-        Welche Versicherungen wirklich sinnvoll sind – verständlich erklärt,
-        unabhängig bewertet und ohne Verkaufsdruck. Hier findest du die
-        Absicherungen, die du wirklich brauchst.
-      </p>
-
-      <h2 style={{ marginTop: "3rem" }}>Grundlagen</h2>
-
-      {/* GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "1.5rem",
-          marginTop: "1.5rem",
-        }}
-      >
-        {/* Privathaftpflicht */}
-        <div className="card">
-          <div className="icon">🛡️</div>
-          <h3>Privathaftpflicht</h3>
-          <p>
-            Die wichtigste Versicherung überhaupt. Schützt dich vor finanziellen
-            Folgen bei Schäden an anderen – oft schon für wenige Euro im Monat.
-          </p>
-          <Link href="/versicherungen/privathaftpflicht">
-            Zum Artikel →
-          </Link>
-        </div>
-
-        {/* Hausrat */}
-        <div className="card">
-          <div className="icon">🏠</div>
-          <h3>Hausrat</h3>
-          <p>
-            Absicherung für dein Hab und Gut bei Einbruch, Feuer oder
-            Wasserschäden. Sinnvoll, wenn dein Besitz einen echten Wert hat.
-          </p>
-          <Link href="/versicherungen/hausrat">
-            Zum Artikel →
-          </Link>
-        </div>
-
-        {/* Berufsunfähigkeit */}
-        <div className="card">
-          <div className="icon">💼</div>
-          <h3>Berufsunfähigkeit</h3>
-          <p>
-            Schützt dein Einkommen, wenn du deinen Beruf aus gesundheitlichen
-            Gründen nicht mehr ausüben kannst – oft existenziell wichtig.
-          </p>
-          <Link href="/versicherungen/berufsunfaehigkeit">
-            Zum Artikel →
-          </Link>
-        </div>
-
-        {/* Krankenversicherung */}
-        <div className="card">
-          <div className="icon">🏥</div>
-          <h3>Krankenversicherung</h3>
-          <p>
-            Gesetzlich oder privat? Unterschiede, Vor- und Nachteile – und wann
-            sich ein Wechsel wirklich lohnt.
-          </p>
-          <Link href="/versicherungen/krankenversicherung">
-            Zum Artikel →
-          </Link>
-        </div>
-      </div>
-
-      {/* CTA BOX */}
-      <div className="ctaBox">
-        <h3>Du willst sinnvoll starten?</h3>
-        <p>
-          Beginne mit der Privathaftpflicht. Sie schützt dich vor existenziellen
-          Risiken und kostet meist weniger als ein Streaming-Abo.
-        </p>
-        <Link href="/versicherungen/privathaftpflicht" className="ctaLink">
-          👉 Zum Privathaftpflicht-Guide
+    <main style={{ padding: "40px 20px" }}>
+      {/* Zurück */}
+      <div style={{ maxWidth: "900px", margin: "0 auto 20px" }}>
+        <Link href="/" style={{ color: "#14b8a6", textDecoration: "none" }}>
+          ← Zur Startseite
         </Link>
       </div>
 
-      {/* Styles */}
-      <style jsx>{`
-        .card {
-          background: linear-gradient(180deg, #0f172a, #020617);
-          border-radius: 14px;
-          padding: 1.5rem;
-          border-top: 3px solid #2dd4bf;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+      {/* Header */}
+      <header style={{ maxWidth: "900px", margin: "0 auto 40px" }}>
+        <h1 style={{ fontSize: "2.4rem", marginBottom: "12px" }}>
+          Versicherungen verstehen
+        </h1>
+        <p style={{ fontSize: "1.05rem", lineHeight: 1.7, opacity: 0.9 }}>
+          Welche Versicherungen brauchst du wirklich – und welche nicht?
+          Hier findest du klare, einfache Erklärungen ohne Verkaufsblabla.
+        </p>
+      </header>
 
-        .card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        }
+      {/* Karten */}
+      <section
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "24px",
+        }}
+      >
+        <Card
+          href="/versicherungen/haftpflicht"
+          icon="🛡️"
+          title="Haftpflichtversicherung"
+          text="Die wichtigste Versicherung überhaupt – schützt dich vor existenzbedrohenden Schäden."
+        />
 
-        .icon {
-          font-size: 1.6rem;
-          margin-bottom: 0.5rem;
-        }
+        <Card
+          href="/versicherungen/hausrat"
+          icon="🏠"
+          title="Hausratversicherung"
+          text="Sichert dein Hab und Gut bei Diebstahl, Feuer oder Wasserschäden ab."
+        />
 
-        .card h3 {
-          margin-bottom: 0.5rem;
-        }
+        <Card
+          href="/versicherungen/berufsunfaehigkeit"
+          icon="💼"
+          title="Berufsunfähigkeitsversicherung"
+          text="Schützt dein Einkommen, wenn du aus gesundheitlichen Gründen nicht mehr arbeiten kannst."
+        />
 
-        .card p {
-          opacity: 0.85;
-          margin-bottom: 1rem;
-        }
+        <Card
+          icon="🚗"
+          title="Kfz-Versicherung"
+          text="Haftpflicht, Teilkasko oder Vollkasko – Erklärung folgt."
+          disabled
+        />
 
-        .card a {
-          color: #2dd4bf;
-          font-weight: 500;
-        }
-
-        .ctaBox {
-          margin-top: 4rem;
-          padding: 2rem;
-          border-radius: 16px;
-          background: linear-gradient(180deg, #020617, #0f172a);
-          border: 1px solid rgba(45, 212, 191, 0.3);
-          text-align: center;
-        }
-
-        .ctaBox h3 {
-          margin-bottom: 0.5rem;
-        }
-
-        .ctaBox p {
-          opacity: 0.9;
-          margin-bottom: 1rem;
-        }
-
-        .ctaLink {
-          color: #2dd4bf;
-          font-weight: 600;
-          font-size: 1.05rem;
-        }
-      `}</style>
+        <Card
+          icon="🏥"
+          title="Krankenversicherung"
+          text="Gesetzlich oder privat? Einfach erklärt – folgt."
+          disabled
+        />
+      </section>
     </main>
   );
 }

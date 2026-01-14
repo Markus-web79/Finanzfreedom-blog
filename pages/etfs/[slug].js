@@ -1,10 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Link from "next/link";
 import Head from "next/head";
+import Link from "next/link";
 import { marked } from "marked";
-import styles from "../../styles/Article.module.css";
 
 export default function EtfArticle({ frontmatter, content }) {
   return (
@@ -17,19 +16,17 @@ export default function EtfArticle({ frontmatter, content }) {
         />
       </Head>
 
-      <div className={styles.wrapper}>
-        <Link href="/etfs" className={styles.back}>
+      <div className="article-wrapper">
+        <Link href="/etfs" className="back-link">
           ← Zurück zu ETFs
         </Link>
 
         <h1>{frontmatter.title}</h1>
 
-        {frontmatter.intro && (
-          <p className={styles.intro}>{frontmatter.intro}</p>
-        )}
+        {frontmatter.intro && <p className="article-intro">{frontmatter.intro}</p>}
 
         <div
-          className={styles.content}
+          className="article-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
@@ -37,23 +34,27 @@ export default function EtfArticle({ frontmatter, content }) {
   );
 }
 
+/* ---------- STATIC PATHS ---------- */
 export async function getStaticPaths() {
   const dir = path.join(process.cwd(), "content/etfs");
   const files = fs.readdirSync(dir);
 
-  const paths = files.map((file) => ({
-    params: { slug: file.replace(".md", "") },
-  }));
-
-  return { paths, fallback: false };
+  return {
+    paths: files.map((file) => ({
+      params: { slug: file.replace(".md", "") },
+    })),
+    fallback: false,
+  };
 }
 
+/* ---------- STATIC PROPS ---------- */
 export async function getStaticProps({ params }) {
   const filePath = path.join(
     process.cwd(),
     "content/etfs",
     `${params.slug}.md`
   );
+
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
 

@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Head from "next/head";
 import Link from "next/link";
+import Head from "next/head";
 import { marked } from "marked";
 
 export default function EtfArticle({ frontmatter, content }) {
@@ -16,38 +16,67 @@ export default function EtfArticle({ frontmatter, content }) {
         />
       </Head>
 
-      <div className="article-wrapper">
-        <Link href="/etfs" className="back-link">
+      <main
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "3rem 1.5rem",
+        }}
+      >
+        {/* Zurück-Link */}
+        <Link href="/etfs" style={{ color: "#2dd4bf" }}>
           ← Zurück zu ETFs
         </Link>
 
-        <h1>{frontmatter.title}</h1>
+        {/* Titel */}
+        <h1 style={{ marginTop: "1.5rem" }}>
+          {frontmatter.title}
+        </h1>
 
-        {frontmatter.intro && <p className="article-intro">{frontmatter.intro}</p>}
+        {/* Intro */}
+        {frontmatter.intro && (
+          <p
+            style={{
+              opacity: 0.85,
+              maxWidth: "800px",
+              lineHeight: "1.7",
+            }}
+          >
+            {frontmatter.intro}
+          </p>
+        )}
 
+        {/* Inhalt */}
         <div
-          className="article-content"
+          style={{
+            marginTop: "2.5rem",
+            lineHeight: "1.7",
+          }}
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      </div>
+      </main>
     </>
   );
 }
 
-/* ---------- STATIC PATHS ---------- */
+/* ---------- Static Generation ---------- */
+
 export async function getStaticPaths() {
   const dir = path.join(process.cwd(), "content/etfs");
   const files = fs.readdirSync(dir);
 
+  const paths = files.map((file) => ({
+    params: {
+      slug: file.replace(".md", ""),
+    },
+  }));
+
   return {
-    paths: files.map((file) => ({
-      params: { slug: file.replace(".md", "") },
-    })),
+    paths,
     fallback: false,
   };
 }
 
-/* ---------- STATIC PROPS ---------- */
 export async function getStaticProps({ params }) {
   const filePath = path.join(
     process.cwd(),

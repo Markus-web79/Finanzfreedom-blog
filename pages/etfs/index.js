@@ -13,7 +13,7 @@ function Card({ href, icon, title, text, disabled }) {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    minHeight: "200px",
+    minHeight: "220px",
   };
 
   const disabledStyle = {
@@ -22,25 +22,25 @@ function Card({ href, icon, title, text, disabled }) {
   };
 
   const content = (
-    <div style={{ height: "100%" }}>
+    <>
       <div style={{ fontSize: "2rem", marginBottom: "12px" }}>{icon}</div>
       <h3 style={{ fontSize: "1.25rem", marginBottom: "8px" }}>{title}</h3>
       <p style={{ fontSize: "0.95rem", lineHeight: 1.6, opacity: 0.9 }}>
         {text}
       </p>
-
       {!disabled && (
-        <p
+        <span
           style={{
-            marginTop: "16px",
-            fontSize: "0.9rem",
+            marginTop: "auto",
             color: "#14b8a6",
+            fontWeight: 500,
+            marginTop: "16px",
           }}
         >
-          Weiter zum Artikel →
-        </p>
+          → Zum Artikel
+        </span>
       )}
-    </div>
+    </>
   );
 
   if (disabled) {
@@ -56,36 +56,21 @@ function Card({ href, icon, title, text, disabled }) {
 
 export default function EtfsIndex() {
   return (
-    <main
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        padding: "3rem 1.5rem",
-      }}
-    >
-      {/* Zurück */}
-      <div style={{ marginBottom: "24px" }}>
-        <Link href="/" style={{ color: "#14b8a6", textDecoration: "none" }}>
-          ← Zur Startseite
-        </Link>
-      </div>
-
-      {/* Header */}
-      <header style={{ marginBottom: "40px" }}>
+    <main style={{ padding: "40px 20px" }}>
+      <header style={{ maxWidth: "900px", margin: "0 auto 40px" }}>
         <h1 style={{ fontSize: "2.4rem", marginBottom: "12px" }}>
           ETFs verstehen & investieren
         </h1>
         <p style={{ fontSize: "1.05rem", lineHeight: 1.7, opacity: 0.9 }}>
-          ETFs (Exchange Traded Funds) gehören zu den einfachsten und
-          kostengünstigsten Möglichkeiten, langfristig Vermögen aufzubauen.
-          Hier findest du einen strukturierten Einstieg – verständlich,
-          unabhängig und praxisnah.
+          ETFs gehören zu den einfachsten und effektivsten Möglichkeiten,
+          langfristig Vermögen aufzubauen.
         </p>
       </header>
 
-      {/* Karten */}
       <section
         style={{
+          maxWidth: "900px",
+          margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
           gap: "24px",

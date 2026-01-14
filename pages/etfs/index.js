@@ -1,110 +1,70 @@
-import Head from "next/head";
 import Link from "next/link";
+import styles from "../../styles/Overview.module.css";
 
-export default function ETFIndex() {
+export default function EtfsIndex() {
+  const etfs = [
+    {
+      title: "MSCI World",
+      description:
+        "Der Klassiker unter den ETFs – weltweit investieren mit nur einem Produkt.",
+      slug: "msci-world",
+      icon: "🌍",
+    },
+    {
+      title: "MSCI Emerging Markets",
+      description:
+        "Schwellenländer-ETF – höhere Chancen, höhere Schwankungen.",
+      slug: "msci-emerging-markets",
+      icon: "🚀",
+      disabled: true,
+    },
+    {
+      title: "MSCI ACWI",
+      description:
+        "Industrie- und Schwellenländer kombiniert in einem ETF.",
+      slug: "msci-acwi",
+      icon: "🌐",
+      disabled: true,
+    },
+  ];
+
   return (
-    <>
-      <Head>
-        <title>ETFs – Einfach investieren | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="ETFs einfach erklärt: Überblick, Grundlagen und die wichtigsten ETF-Strategien für langfristigen Vermögensaufbau."
-        />
-      </Head>
+    <div className={styles.wrapper}>
+      <Link href="/" className={styles.back}>
+        ← Zur Startseite
+      </Link>
 
-      <main style={styles.page}>
-        {/* Back */}
-        <div style={styles.backNav}>
-          <Link href="/">← Zur Startseite</Link>
-        </div>
+      <header className={styles.header}>
+        <h1>ETFs verstehen & investieren</h1>
+        <p>
+          ETFs (Exchange Traded Funds) sind eine der einfachsten und
+          kostengünstigsten Möglichkeiten, langfristig Vermögen aufzubauen.
+          Hier findest du einen strukturierten Überblick.
+        </p>
+      </header>
 
-        {/* Header */}
-        <section style={styles.header}>
-          <h1>ETFs verstehen & investieren</h1>
-          <p>
-            ETFs (Exchange Traded Funds) sind eine der einfachsten und
-            kostengünstigsten Möglichkeiten, langfristig Vermögen aufzubauen.
-            Hier findest du einen strukturierten Überblick.
-          </p>
-        </section>
+      <section className={styles.grid}>
+        {etfs.map((etf) => (
+          <div
+            key={etf.slug}
+            className={`${styles.card} ${
+              etf.disabled ? styles.disabled : ""
+            }`}
+          >
+            <div className={styles.icon}>{etf.icon}</div>
+            <h3>{etf.title}</h3>
+            <p>{etf.description}</p>
 
-        {/* Grid */}
-        <section style={styles.grid}>
-          <Link href="/etf/msci-world" style={styles.card}>
-            <div style={styles.cardBar}></div>
-            <h2>MSCI World</h2>
-            <p>
-              Der Klassiker unter den ETFs – weltweit investieren mit nur einem
-              Produkt.
-            </p>
-          </Link>
-
-          <div style={styles.cardDisabled}>
-            <div style={styles.cardBar}></div>
-            <h2>MSCI Emerging Markets</h2>
-            <p>Folgt demnächst – Schwellenländer einfach erklärt.</p>
+            {!etf.disabled ? (
+              <Link href={`/etfs/${etf.slug}`} className={styles.link}>
+                Zum Artikel →
+              </Link>
+            ) : (
+              <span className={styles.soon}>Folgt demnächst</span>
+            )}
           </div>
-
-          <div style={styles.cardDisabled}>
-            <div style={styles.cardBar}></div>
-            <h2>MSCI ACWI</h2>
-            <p>Folgt demnächst – Industrie- & Schwellenländer kombiniert.</p>
-          </div>
-        </section>
-      </main>
-    </>
+        ))}
+      </section>
+    </div>
   );
 }
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    padding: "40px 20px",
-    background: "#020617",
-    color: "#e5e7eb",
-  },
-  backNav: {
-    maxWidth: "1100px",
-    margin: "0 auto 20px",
-    fontSize: "0.9rem",
-  },
-  header: {
-    maxWidth: "1100px",
-    margin: "0 auto 40px",
-  },
-  grid: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "24px",
-  },
-  card: {
-    position: "relative",
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "24px",
-    textDecoration: "none",
-    color: "#e5e7eb",
-    transition: "all 0.2s ease",
-  },
-  cardDisabled: {
-    position: "relative",
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "24px",
-    opacity: 0.5,
-  },
-  cardBar: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    height: "4px",
-    background: "#14b8a6",
-    borderTopLeftRadius: "14px",
-    borderTopRightRadius: "14px",
-  },
-};

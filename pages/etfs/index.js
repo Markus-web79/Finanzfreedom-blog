@@ -17,33 +17,36 @@ export default function EtfIndex() {
 
       {/* Karten */}
       <section style={styles.grid}>
-       <Link href="/etfs/msci-world" style={styles.card}>
+        {/* MSCI WORLD */}
+        <Link href="/etfs/msci-world" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3>MSCI World ETF</h3>
-          <p>
+          <h3 style={styles.cardTitle}>MSCI World ETF</h3>
+          <p style={styles.cardText}>
             Der Klassiker unter den ETFs – globale Streuung, Chancen & Risiken
             verständlich erklärt.
           </p>
           <span style={styles.cta}>→ Zum Artikel</span>
         </Link>
 
-        <div style={styles.cardDisabled}>
+        {/* MSCI EMERGING MARKETS */}
+        <Link href="/etfs/msci-emerging-markets" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3>MSCI Emerging Markets</h3>
-          <p>
-            Schwellenländer-ETFs: höhere Chancen, höhere Risiken – Artikel folgt.
+          <h3 style={styles.cardTitle}>MSCI Emerging Markets</h3>
+          <p style={styles.cardText}>
+            Schwellenländer-ETFs: höhere Chancen, höhere Risiken – verständlich erklärt.
           </p>
-          <span style={styles.disabled}>Artikel folgt</span>
-        </div>
+          <span style={styles.cta}>→ Zum Artikel</span>
+        </Link>
 
-        <div style={styles.cardDisabled}>
+        {/* ALL WORLD */}
+        <Link href="/etfs/all-world-etfs" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3>All-World ETFs</h3>
-          <p>
-            Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co.
+          <h3 style={styles.cardTitle}>All-World ETFs</h3>
+          <p style={styles.cardText}>
+            Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co. klar erklärt.
           </p>
-          <span style={styles.disabled}>Artikel folgt</span>
-        </div>
+          <span style={styles.cta}>→ Zum Artikel</span>
+        </Link>
       </section>
     </main>
   );
@@ -68,7 +71,7 @@ const styles = {
     marginBottom: "16px",
     color: "#2dd4bf",
     textDecoration: "none",
-    fontWeight: "600",
+    fontWeight: 600,
   },
 
   title: {
@@ -101,16 +104,6 @@ const styles = {
     transition: "all 0.25s ease",
   },
 
-  cardDisabled: {
-    position: "relative",
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "26px",
-    color: "#9ca3af",
-    opacity: 0.6,
-  },
-
   cardBar: {
     position: "absolute",
     top: 0,
@@ -122,16 +115,22 @@ const styles = {
     borderTopRightRadius: "16px",
   },
 
+  cardTitle: {
+    fontSize: "1.25rem",
+    marginBottom: "8px",
+    color: "#ffffff",
+  },
+
+  cardText: {
+    fontSize: "0.95rem",
+    lineHeight: 1.6,
+    opacity: 0.9,
+  },
+
   cta: {
     display: "inline-block",
     marginTop: "14px",
     color: "#2dd4bf",
-    fontWeight: "600",
-  },
-
-  disabled: {
-    display: "inline-block",
-    marginTop: "14px",
-    fontStyle: "italic",
+    fontWeight: 600,
   },
 };

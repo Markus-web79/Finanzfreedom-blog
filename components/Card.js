@@ -12,22 +12,16 @@ export default function Card({
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "28px",
-
-    width: "100%",
-    boxSizing: "border-box",
     minHeight: "240px",
-
     display: "flex",
     flexDirection: "column",
-
+    justifyContent: "space-between",
     color: "#e5e7eb",
     textDecoration: "none",
-
     transition: "transform 0.15s ease, border-color 0.15s ease",
     opacity: disabled ? 0.45 : 1,
     cursor: disabled ? "default" : "pointer",
-
-    overflow: "hidden", // wichtig
+    overflow: "hidden", // 🔴 WICHTIG
   };
 
   const hoverStyle = !disabled
@@ -37,46 +31,45 @@ export default function Card({
       }
     : {};
 
-  const textStyle = {
-    fontSize: "0.95rem",
-    lineHeight: 1.6,
-    opacity: 0.85,
-
-    /* 🔑 DAS IST DER FIX */
-    overflowWrap: "anywhere",
-    wordBreak: "break-word",
-    hyphens: "auto",
-  };
-
-  const titleStyle = {
-    fontSize: "1.25rem",
-    marginBottom: "8px",
-
-    overflowWrap: "anywhere",
-    wordBreak: "break-word",
-    hyphens: "auto",
-  };
-
   const content = (
     <>
-      {/* Inhalt oben */}
       <div>
         <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
           {icon}
         </div>
 
-        <h3 style={titleStyle}>{title}</h3>
+        <h3
+          style={{
+            fontSize: "1.25rem",
+            marginBottom: "8px",
+            wordBreak: "break-word",
+          }}
+        >
+          {title}
+        </h3>
 
-        <p style={textStyle}>{text}</p>
+        <p
+          style={{
+            fontSize: "0.95rem",
+            lineHeight: 1.6,
+            opacity: 0.85,
+            wordBreak: "break-word",
+            overflow: "hidden",
+            display: "-webkit-box",
+            WebkitLineClamp: 4,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {text}
+        </p>
       </div>
 
-      {/* CTA unten fixiert */}
       <div
         style={{
-          marginTop: "auto",
-          paddingTop: "20px",
+          marginTop: "20px",
           color: "#14b8a6",
           fontWeight: 500,
+          flexShrink: 0,
         }}
       >
         {disabled ? "Demnächst" : "→ Zum Artikel"}

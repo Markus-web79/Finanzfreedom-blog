@@ -96,3 +96,14 @@ Er wird häufig als Grundbaustein für langfristige Geldanlage genutzt – sollt
 > ⚠️ **Hinweis**  
 > Dieser Artikel dient ausschließlich der allgemeinen Information und stellt keine Anlageberatung dar.  
 > Investitionen in Wertpapiere sind mit Risiken verbunden. Frühere Wertentwicklungen sind kein verlässlicher Indikator für zukünftige Ergebnisse.
+---
+
+## Weiterführende Artikel zum MSCI World
+
+Wenn du tiefer einsteigen willst, findest du hier zwei wichtige Ergänzungen:
+
+- **[MSCI World – Risiken & Nachteile](/etfs/msci-world-risiken)**  
+  Welche Schwächen hat der Index? Klumpenrisiken, USA-Lastigkeit & typische Fehler.
+
+- **[MSCI World vs. MSCI ACWI – der direkte Vergleich](/etfs/msci-world-vs-acwi)**  
+  Lohnt sich der ACWI wirklich oder reicht der MSCI World aus?

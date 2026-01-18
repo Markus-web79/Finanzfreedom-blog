@@ -17,7 +17,7 @@ export default function EtfIndex() {
 
       {/* Karten */}
       <section style={styles.grid}>
-        <Link href="/etf/msci-world" style={styles.card}>
+       <Link href="/etfs/msci-world" style={styles.card}>
           <div style={styles.cardBar} />
           <h3>MSCI World ETF</h3>
           <p>

@@ -77,7 +77,7 @@ export default function VersicherungenIndex() {
         }}
       >
         <Card
-          href="/versicherungen/haftpflicht"
+    href="/versicherungen/privathaftpflicht"
           icon="🛡️"
           title="Haftpflichtversicherung"
           text="Die wichtigste Versicherung überhaupt – schützt dich vor existenzbedrohenden Schäden."

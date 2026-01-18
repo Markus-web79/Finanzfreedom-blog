@@ -12,15 +12,19 @@ export default function Card({
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "28px",
-    minHeight: "230px",
+    minHeight: "240px",
+
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+
     color: "#e5e7eb",
     textDecoration: "none",
+
     transition: "transform 0.15s ease, border-color 0.15s ease",
     opacity: disabled ? 0.45 : 1,
     cursor: disabled ? "default" : "pointer",
+
+    overflow: "hidden", // 🔑 verhindert Text-Ausbruch
   };
 
   const hoverStyle = !disabled
@@ -32,28 +36,44 @@ export default function Card({
 
   const content = (
     <>
+      {/* Oberer Content */}
       <div>
         <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
           {icon}
         </div>
 
-        <h3 style={{ fontSize: "1.25rem", marginBottom: "8px" }}>
+        <h3
+          style={{
+            fontSize: "1.25rem",
+            marginBottom: "8px",
+            wordBreak: "break-word",
+          }}
+        >
           {title}
         </h3>
 
-        <p style={{ fontSize: "0.95rem", opacity: 0.85, lineHeight: 1.6 }}>
+        <p
+          style={{
+            fontSize: "0.95rem",
+            lineHeight: 1.6,
+            opacity: 0.85,
+            wordBreak: "break-word",
+          }}
+        >
           {text}
         </p>
       </div>
 
+      {/* Unterer CTA – IMMER unten */}
       <div
         style={{
-          marginTop: "20px",
+          marginTop: "auto",
+          paddingTop: "20px",
           color: "#14b8a6",
           fontWeight: 500,
         }}
       >
-        {disabled ? "Demnächst" : "Zum Artikel →"}
+        {disabled ? "Demnächst" : "→ Zum Artikel"}
       </div>
     </>
   );

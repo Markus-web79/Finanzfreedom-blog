@@ -12,6 +12,9 @@ export default function Card({
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "28px",
+
+    width: "100%",
+    boxSizing: "border-box",
     minHeight: "240px",
 
     display: "flex",
@@ -24,7 +27,7 @@ export default function Card({
     opacity: disabled ? 0.45 : 1,
     cursor: disabled ? "default" : "pointer",
 
-    overflow: "hidden", // 🔑 verhindert Text-Ausbruch
+    overflow: "hidden", // wichtig
   };
 
   const hoverStyle = !disabled
@@ -34,37 +37,40 @@ export default function Card({
       }
     : {};
 
+  const textStyle = {
+    fontSize: "0.95rem",
+    lineHeight: 1.6,
+    opacity: 0.85,
+
+    /* 🔑 DAS IST DER FIX */
+    overflowWrap: "anywhere",
+    wordBreak: "break-word",
+    hyphens: "auto",
+  };
+
+  const titleStyle = {
+    fontSize: "1.25rem",
+    marginBottom: "8px",
+
+    overflowWrap: "anywhere",
+    wordBreak: "break-word",
+    hyphens: "auto",
+  };
+
   const content = (
     <>
-      {/* Oberer Content */}
+      {/* Inhalt oben */}
       <div>
         <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
           {icon}
         </div>
 
-        <h3
-          style={{
-            fontSize: "1.25rem",
-            marginBottom: "8px",
-            wordBreak: "break-word",
-          }}
-        >
-          {title}
-        </h3>
+        <h3 style={titleStyle}>{title}</h3>
 
-        <p
-          style={{
-            fontSize: "0.95rem",
-            lineHeight: 1.6,
-            opacity: 0.85,
-            wordBreak: "break-word",
-          }}
-        >
-          {text}
-        </p>
+        <p style={textStyle}>{text}</p>
       </div>
 
-      {/* Unterer CTA – IMMER unten */}
+      {/* CTA unten fixiert */}
       <div
         style={{
           marginTop: "auto",

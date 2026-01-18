@@ -13,17 +13,18 @@ export default function Card({
     borderRadius: "16px",
     padding: "28px",
     minHeight: "240px",
+
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+
     color: "#e5e7eb",
     textDecoration: "none",
+
     transition: "transform 0.15s ease, border-color 0.15s ease",
-    opacity: disabled ? 0.45 : 1,
     cursor: disabled ? "default" : "pointer",
-    width: "100%",
-    maxWidth: "100%",
-    overflow: "hidden",
+    opacity: disabled ? 0.45 : 1,
+
+    overflow: "hidden", // 🔑 GANZ WICHTIG
   };
 
   const hoverStyle = !disabled
@@ -33,72 +34,70 @@ export default function Card({
       }
     : {};
 
-  const content = (
-    <>
-      <div>
-        <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
-          {icon}
-        </div>
-
-        {/* TITEL – HIER war der Fehler */}
-        <h3
-          style={{
-            fontSize: "1.15rem",
-            marginBottom: "8px",
-            lineHeight: 1.3,
-            maxWidth: "100%",
-            overflowWrap: "anywhere",
-            wordBreak: "break-word",
-            hyphens: "auto",
-          }}
-        >
-          {title}
-        </h3>
-
-        <p
-          style={{
-            fontSize: "0.95rem",
-            opacity: 0.85,
-            lineHeight: 1.6,
-            maxWidth: "100%",
-            overflowWrap: "anywhere",
-            wordBreak: "break-word",
-            hyphens: "auto",
-          }}
-        >
-          {text}
-        </p>
+  return (
+    <Link
+      href={disabled ? "#" : href}
+      style={baseStyle}
+      onMouseEnter={(e) =>
+        !disabled && Object.assign(e.currentTarget.style, hoverStyle)
+      }
+      onMouseLeave={(e) =>
+        !disabled && Object.assign(e.currentTarget.style, baseStyle)
+      }
+    >
+      {/* Icon */}
+      <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
+        {icon}
       </div>
 
+      {/* TITEL – HIER WAR DER FEHLER */}
+      <h3
+        style={{
+          fontSize: "1.15rem",
+          marginBottom: "8px",
+          lineHeight: 1.3,
+
+          display: "-webkit-box",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+
+          wordBreak: "break-word",
+          hyphens: "auto",
+        }}
+      >
+        {title}
+      </h3>
+
+      {/* Text */}
+      <p
+        style={{
+          fontSize: "0.95rem",
+          lineHeight: 1.6,
+          opacity: 0.85,
+
+          display: "-webkit-box",
+          WebkitLineClamp: 4,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+
+          wordBreak: "break-word",
+          hyphens: "auto",
+        }}
+      >
+        {text}
+      </p>
+
+      {/* Footer */}
       <div
         style={{
-          marginTop: "20px",
+          marginTop: "auto",
           color: "#14b8a6",
           fontWeight: 500,
-          fontSize: "0.95rem",
         }}
       >
         {disabled ? "Demnächst" : "→ Zum Artikel"}
       </div>
-    </>
-  );
-
-  if (disabled) {
-    return <div style={baseStyle}>{content}</div>;
-  }
-
-  return (
-    <Link
-      href={href}
-      style={baseStyle}
-      onMouseEnter={(e) =>
-        Object.assign(e.currentTarget.style, hoverStyle)
-      }
-      onMouseLeave={(e) =>
-        Object.assign(e.currentTarget.style, baseStyle)
-      }
-    >
-      {content}
     </Link>
   );
 }

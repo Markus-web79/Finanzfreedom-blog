@@ -16,6 +16,7 @@ export default function Card({
 
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
 
     color: "#e5e7eb",
     textDecoration: "none",
@@ -24,7 +25,8 @@ export default function Card({
     cursor: disabled ? "default" : "pointer",
     opacity: disabled ? 0.45 : 1,
 
-    overflow: "hidden", // 🔑 GANZ WICHTIG
+    boxSizing: "border-box",
+    overflow: "hidden",
   };
 
   const hoverStyle = !disabled
@@ -34,70 +36,82 @@ export default function Card({
       }
     : {};
 
-  return (
-    <Link
-      href={disabled ? "#" : href}
-      style={baseStyle}
-      onMouseEnter={(e) =>
-        !disabled && Object.assign(e.currentTarget.style, hoverStyle)
-      }
-      onMouseLeave={(e) =>
-        !disabled && Object.assign(e.currentTarget.style, baseStyle)
-      }
-    >
+  const content = (
+    <>
       {/* Icon */}
-      <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
+      <div style={{ fontSize: "2rem", marginBottom: "14px" }}>
         {icon}
       </div>
 
-      {/* TITEL – HIER WAR DER FEHLER */}
+      {/* TITLE – HIER IST DER FIX */}
       <h3
         style={{
-          fontSize: "1.15rem",
+          fontSize: "1.05rem",
           marginBottom: "8px",
           lineHeight: 1.3,
+
+          maxWidth: "100%",
+          boxSizing: "border-box",
+
+          overflow: "hidden",
+          textOverflow: "ellipsis",
 
           display: "-webkit-box",
           WebkitLineClamp: 2,
           WebkitBoxOrient: "vertical",
-          overflow: "hidden",
 
-          wordBreak: "break-word",
-          hyphens: "auto",
+          wordBreak: "break-all",        // 🔥 WICHTIG
+          overflowWrap: "anywhere",      // 🔥 WICHTIG
         }}
       >
         {title}
       </h3>
 
-      {/* Text */}
+      {/* TEXT */}
       <p
         style={{
           fontSize: "0.95rem",
           lineHeight: 1.6,
           opacity: 0.85,
 
-          display: "-webkit-box",
-          WebkitLineClamp: 4,
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-
+          maxWidth: "100%",
+          overflowWrap: "anywhere",
           wordBreak: "break-word",
-          hyphens: "auto",
         }}
       >
         {text}
       </p>
 
-      {/* Footer */}
+      {/* CTA */}
       <div
         style={{
           marginTop: "auto",
           color: "#14b8a6",
           fontWeight: 500,
+          marginTop: "20px",
         }}
       >
         {disabled ? "Demnächst" : "→ Zum Artikel"}
       </div>
+    </>
+  );
+
+  if (disabled) {
+    return <div style={baseStyle}>{content}</div>;
+  }
+
+  return (
+    <Link
+      href={href}
+      style={baseStyle}
+      onMouseEnter={(e) =>
+        Object.assign(e.currentTarget.style, hoverStyle)
+      }
+      onMouseLeave={(e) =>
+        Object.assign(e.currentTarget.style, baseStyle)
+      }
+    >
+      {content}
     </Link>
   );
 }

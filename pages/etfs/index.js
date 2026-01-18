@@ -1,129 +1,137 @@
 import Link from "next/link";
 
-/* Card-Komponente */
-function Card({ href, icon, title, text, disabled }) {
-  const baseStyle = {
-    background: "#020617",
-    border: "1px solid #1e293b",
-    borderRadius: "14px",
-    padding: "24px",
-    color: "#e5e7eb",
-    textDecoration: "none",
-    transition: "all 0.2s ease",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    minHeight: "200px",
-  };
-
-  const disabledStyle = {
-    opacity: 0.5,
-    cursor: "not-allowed",
-  };
-
-  const content = (
-    <>
-      <div style={{ fontSize: "2rem", marginBottom: "12px" }}>{icon}</div>
-
-      <h3 style={{ fontSize: "1.25rem", marginBottom: "8px" }}>
-        {title}
-      </h3>
-
-      <p style={{ fontSize: "0.95rem", lineHeight: 1.6, opacity: 0.9 }}>
-        {text}
-      </p>
-
-      {!disabled && (
-        <span
-          style={{
-            marginTop: "auto",
-            color: "#14b8a6",
-            fontWeight: 500,
-            marginTop: "16px",
-          }}
-        >
-          → Zum Artikel
-        </span>
-      )}
-    </>
-  );
-
-  if (disabled) {
-    return (
-      <div style={{ ...baseStyle, ...disabledStyle }}>
-        {content}
-      </div>
-    );
-  }
-
+export default function EtfIndex() {
   return (
-    <Link href={href} style={baseStyle}>
-      {content}
-    </Link>
-  );
-}
-
-export default function EtfsIndex() {
-  return (
-    <main style={{ padding: "40px 20px" }}>
-      {/* Zur Startseite */}
-      <div style={{ maxWidth: "900px", margin: "0 auto 24px" }}>
-        <Link
-          href="/"
-          style={{
-            color: "#14b8a6",
-            textDecoration: "none",
-            fontSize: "0.95rem",
-            fontWeight: 500,
-          }}
-        >
+    <main style={styles.page}>
+      {/* Header */}
+      <section style={styles.header}>
+        <Link href="/" style={styles.back}>
           ← Zur Startseite
         </Link>
-      </div>
 
-      {/* Header */}
-      <header style={{ maxWidth: "900px", margin: "0 auto 40px" }}>
-        <h1 style={{ fontSize: "2.4rem", marginBottom: "12px" }}>
-          ETFs verstehen & investieren
-        </h1>
-
-        <p style={{ fontSize: "1.05rem", lineHeight: 1.7, opacity: 0.9 }}>
-          ETFs gehören zu den einfachsten und effektivsten Möglichkeiten,
-          langfristig Vermögen aufzubauen.
+        <h1 style={styles.title}>ETFs verstehen & vergleichen</h1>
+        <p style={styles.subtitle}>
+          Exchange Traded Funds einfach erklärt – von Grundlagen bis konkrete ETF-Auswahl.
         </p>
-      </header>
+      </section>
 
       {/* Karten */}
-      <section
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "24px",
-        }}
-      >
-        <Card
-          href="/etfs/msci-world"
-          icon="🌍"
-          title="MSCI World"
-          text="Der Klassiker unter den ETFs – weltweit investieren mit nur einem Produkt."
-        />
+      <section style={styles.grid}>
+        <Link href="/etf/msci-world" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3>MSCI World ETF</h3>
+          <p>
+            Der Klassiker unter den ETFs – globale Streuung, Chancen & Risiken
+            verständlich erklärt.
+          </p>
+          <span style={styles.cta}>→ Zum Artikel</span>
+        </Link>
 
-        <Card
-          icon="📈"
-          title="MSCI Emerging Markets"
-          text="Schwellenländer-ETF – folgt demnächst, einfach erklärt."
-          disabled
-        />
+        <div style={styles.cardDisabled}>
+          <div style={styles.cardBar} />
+          <h3>MSCI Emerging Markets</h3>
+          <p>
+            Schwellenländer-ETFs: höhere Chancen, höhere Risiken – Artikel folgt.
+          </p>
+          <span style={styles.disabled}>Artikel folgt</span>
+        </div>
 
-        <Card
-          icon="🌐"
-          title="MSCI ACWI"
-          text="Industrie- & Schwellenländer kombiniert – folgt demnächst."
-          disabled
-        />
+        <div style={styles.cardDisabled}>
+          <div style={styles.cardBar} />
+          <h3>All-World ETFs</h3>
+          <p>
+            Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co.
+          </p>
+          <span style={styles.disabled}>Artikel folgt</span>
+        </div>
       </section>
     </main>
   );
 }
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    padding: "60px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    color: "#e5e7eb",
+  },
+
+  header: {
+    maxWidth: "900px",
+    margin: "0 auto 50px",
+    textAlign: "center",
+  },
+
+  back: {
+    display: "inline-block",
+    marginBottom: "16px",
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: "600",
+  },
+
+  title: {
+    fontSize: "2.4rem",
+    marginBottom: "12px",
+    color: "#ffffff",
+  },
+
+  subtitle: {
+    fontSize: "1.1rem",
+    color: "#9ca3af",
+  },
+
+  grid: {
+    maxWidth: "1100px",
+    margin: "0 auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "28px",
+  },
+
+  card: {
+    position: "relative",
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "16px",
+    padding: "26px",
+    textDecoration: "none",
+    color: "#e5e7eb",
+    transition: "all 0.25s ease",
+  },
+
+  cardDisabled: {
+    position: "relative",
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "16px",
+    padding: "26px",
+    color: "#9ca3af",
+    opacity: 0.6,
+  },
+
+  cardBar: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "4px",
+    background: "#2dd4bf",
+    borderTopLeftRadius: "16px",
+    borderTopRightRadius: "16px",
+  },
+
+  cta: {
+    display: "inline-block",
+    marginTop: "14px",
+    color: "#2dd4bf",
+    fontWeight: "600",
+  },
+
+  disabled: {
+    display: "inline-block",
+    marginTop: "14px",
+    fontStyle: "italic",
+  },
+};

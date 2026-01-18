@@ -12,7 +12,7 @@ export default function Card({
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "28px",
-    minHeight: "230px",
+    minHeight: "240px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -21,6 +21,7 @@ export default function Card({
     transition: "transform 0.15s ease, border-color 0.15s ease",
     opacity: disabled ? 0.45 : 1,
     cursor: disabled ? "default" : "pointer",
+    width: "100%",
     maxWidth: "100%",
     overflow: "hidden",
   };
@@ -35,21 +36,20 @@ export default function Card({
   const content = (
     <>
       <div>
-        <div
-          style={{
-            fontSize: "2.2rem",
-            marginBottom: "14px",
-          }}
-        >
+        <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
           {icon}
         </div>
 
+        {/* TITEL – HIER war der Fehler */}
         <h3
           style={{
-            fontSize: "1.25rem",
+            fontSize: "1.15rem",
             marginBottom: "8px",
             lineHeight: 1.3,
+            maxWidth: "100%",
+            overflowWrap: "anywhere",
             wordBreak: "break-word",
+            hyphens: "auto",
           }}
         >
           {title}

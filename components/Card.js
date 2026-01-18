@@ -12,7 +12,7 @@ export default function Card({
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "28px",
-    minHeight: "240px",
+    minHeight: "230px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -21,7 +21,8 @@ export default function Card({
     transition: "transform 0.15s ease, border-color 0.15s ease",
     opacity: disabled ? 0.45 : 1,
     cursor: disabled ? "default" : "pointer",
-    overflow: "hidden", // 🔴 WICHTIG
+    maxWidth: "100%",
+    overflow: "hidden",
   };
 
   const hoverStyle = !disabled
@@ -34,7 +35,12 @@ export default function Card({
   const content = (
     <>
       <div>
-        <div style={{ fontSize: "2.2rem", marginBottom: "14px" }}>
+        <div
+          style={{
+            fontSize: "2.2rem",
+            marginBottom: "14px",
+          }}
+        >
           {icon}
         </div>
 
@@ -42,6 +48,7 @@ export default function Card({
           style={{
             fontSize: "1.25rem",
             marginBottom: "8px",
+            lineHeight: 1.3,
             wordBreak: "break-word",
           }}
         >
@@ -51,13 +58,12 @@ export default function Card({
         <p
           style={{
             fontSize: "0.95rem",
-            lineHeight: 1.6,
             opacity: 0.85,
+            lineHeight: 1.6,
+            maxWidth: "100%",
+            overflowWrap: "anywhere",
             wordBreak: "break-word",
-            overflow: "hidden",
-            display: "-webkit-box",
-            WebkitLineClamp: 4,
-            WebkitBoxOrient: "vertical",
+            hyphens: "auto",
           }}
         >
           {text}
@@ -69,7 +75,7 @@ export default function Card({
           marginTop: "20px",
           color: "#14b8a6",
           fontWeight: 500,
-          flexShrink: 0,
+          fontSize: "0.95rem",
         }}
       >
         {disabled ? "Demnächst" : "→ Zum Artikel"}

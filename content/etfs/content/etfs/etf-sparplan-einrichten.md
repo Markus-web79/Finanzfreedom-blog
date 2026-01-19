@@ -1,8 +1,8 @@
 ---
-title: ETF-Sparplan einrichten – Schritt-für-Schritt Anleitung (2026)
-slug: etf-sparplan-einrichten
-category: investieren
-description: ETF-Sparplan einrichten leicht erklärt: So legst du 2026 Schritt für Schritt einen Sparplan an – einfach, sicher und ohne Finanzkauderwelsch.
+title: "ETF-Sparplan einrichten – Schritt-für-Schritt Anleitung 2026"
+slug: "etf-sparplan-einrichten"
+category: "etfs"
+description: "ETF-Sparplan einrichten leicht erklärt: Depot, ETF-Auswahl, Sparrate & typische Fehler – Anleitung für 2026."
 ---
 
 ## ETF-Sparplan einrichten: So startest du richtig (2026)

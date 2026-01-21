@@ -5,8 +5,8 @@ export default function EtfIndex() {
     <main style={styles.page}>
       {/* Header */}
       <section style={styles.header}>
-        <Link href="/" passHref>
-          <a style={styles.back}>← Zur Startseite</a>
+        <Link href="/" style={styles.back}>
+          ← Zur Startseite
         </Link>
 
         <h1 style={styles.title}>ETFs verstehen & vergleichen</h1>
@@ -17,48 +17,44 @@ export default function EtfIndex() {
 
       {/* Karten */}
       <section style={styles.grid}>
-        <Link href="/etfs/etf-grundlagen" passHref>
-          <a style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
-            <p style={styles.cardText}>
-              Was sind ETFs, wie funktionieren sie und warum sind sie ideal für Einsteiger?
-            </p>
-            <span style={styles.cta}>Zum Artikel</span>
-          </a>
+        {/* ETF Grundlagen */}
+        <Link href="/etfs/grundlagen" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
+          <p style={styles.cardText}>
+            Was sind ETFs, wie funktionieren sie und warum sind sie ideal für Einsteiger?
+          </p>
+          <span style={styles.cta}>Zum Artikel</span>
         </Link>
 
-        <Link href="/etfs/msci-world" passHref>
-          <a style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>MSCI World ETF</h3>
-            <p style={styles.cardText}>
-              Der Klassiker unter den ETFs – globale Streuung, Chancen & Risiken verständlich erklärt.
-            </p>
-            <span style={styles.cta}>Zum Artikel</span>
-          </a>
+        {/* MSCI World */}
+        <Link href="/etfs/msci-world" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>MSCI World ETF</h3>
+          <p style={styles.cardText}>
+            Der Klassiker unter den ETFs – globale Streuung, Chancen & Risiken verständlich erklärt.
+          </p>
+          <span style={styles.cta}>Zum Artikel</span>
         </Link>
 
-        <Link href="/etfs/msci-emerging-markets" passHref>
-          <a style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>MSCI Emerging Markets</h3>
-            <p style={styles.cardText}>
-              Schwellenländer-ETFs: höhere Chancen, höhere Risiken – verständlich erklärt.
-            </p>
-            <span style={styles.cta}>Zum Artikel</span>
-          </a>
+        {/* MSCI Emerging Markets */}
+        <Link href="/etfs/msci-emerging-markets" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>MSCI Emerging Markets</h3>
+          <p style={styles.cardText}>
+            Schwellenländer-ETFs: höhere Chancen, höhere Risiken – verständlich erklärt.
+          </p>
+          <span style={styles.cta}>Zum Artikel</span>
         </Link>
 
-        <Link href="/etfs/all-world-etfs" passHref>
-          <a style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>All-World ETFs</h3>
-            <p style={styles.cardText}>
-              Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co. klar erklärt.
-            </p>
-            <span style={styles.cta}>Zum Artikel</span>
-          </a>
+        {/* All World */}
+        <Link href="/etfs/all-world-etfs" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>All-World ETFs</h3>
+          <p style={styles.cardText}>
+            Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co. klar erklärt.
+          </p>
+          <span style={styles.cta}>Zum Artikel</span>
         </Link>
       </section>
     </main>
@@ -101,7 +97,6 @@ const styles = {
     gap: "28px",
   },
   card: {
-    display: "block", // 🔑 WICHTIG: Safari-Fix
     position: "relative",
     background: "#020617",
     border: "1px solid #1e293b",

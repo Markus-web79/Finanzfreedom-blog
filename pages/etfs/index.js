@@ -17,7 +17,6 @@ export default function EtfIndex() {
 
       {/* Karten */}
       <section style={styles.grid}>
-        {/* ETF Grundlagen */}
         <Link href="/etfs/etf-grundlagen" passHref>
           <a style={styles.card}>
             <div style={styles.cardBar} />
@@ -29,7 +28,6 @@ export default function EtfIndex() {
           </a>
         </Link>
 
-        {/* MSCI World */}
         <Link href="/etfs/msci-world" passHref>
           <a style={styles.card}>
             <div style={styles.cardBar} />
@@ -41,7 +39,6 @@ export default function EtfIndex() {
           </a>
         </Link>
 
-        {/* MSCI Emerging Markets */}
         <Link href="/etfs/msci-emerging-markets" passHref>
           <a style={styles.card}>
             <div style={styles.cardBar} />
@@ -53,7 +50,6 @@ export default function EtfIndex() {
           </a>
         </Link>
 
-        {/* All-World ETFs */}
         <Link href="/etfs/all-world-etfs" passHref>
           <a style={styles.card}>
             <div style={styles.cardBar} />
@@ -105,6 +101,7 @@ const styles = {
     gap: "28px",
   },
   card: {
+    display: "block", // 🔑 WICHTIG: Safari-Fix
     position: "relative",
     background: "#020617",
     border: "1px solid #1e293b",

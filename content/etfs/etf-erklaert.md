@@ -1,6 +1,6 @@
 ---
-title: ETFs einfach erklärt – Grundlagen für Einsteiger
-description: ETFs verständlich erklärt: Was ETFs sind, wie sie funktionieren, warum sie so beliebt sind und wie du als Anfänger richtig startest.
+title: "ETFs einfach erklärt – Grundlagen für Einsteiger"
+description: "ETFs verständlich erklärt: Was ETFs sind, wie sie funktionieren, warum sie so beliebt sind und wie du als Anfänger richtig startest."
 category: etfs
 ---
 

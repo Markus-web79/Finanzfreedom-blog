@@ -1,33 +1,103 @@
 ---
-title: "ETF-Grundlagen 2025: Einfach erklärt"
-slug: "etf-grundlagen-2025"
-category: "investieren"
-description: "Die wichtigsten Grundlagen zu ETFs – verständlich erklärt für Einsteiger."
-date: "2025-11-16"
-keywords: ["ETF", "ETFs", "Investieren", "Einsteiger", "FinanzFreedom"]
+title: "ETFs einfach erklärt – Grundlagen für Anfänger (2026)"
+description: "Was sind ETFs? Wie funktionieren sie? Vorteile, Risiken und wie du als Anfänger mit ETFs starten kannst."
+category: "ETF"
 ---
 
-# ETF-Grundlagen 2025: Einfach erklärt
+## Was sind ETFs?
 
-ETFs sind eine der einfachsten Möglichkeiten, langfristig Vermögen aufzubauen.  
-Statt einzelne Aktien auszuwählen, kaufst du mit einem ETF direkt einen ganzen Korb von Unternehmen.
+ETFs (Exchange Traded Funds) sind börsengehandelte Fonds, mit denen du **breit gestreut in viele Unternehmen gleichzeitig** investieren kannst – einfach, günstig und transparent.
 
-## Was ist ein ETF?
+Statt einzelne Aktien zu kaufen, investierst du mit einem ETF direkt in **einen ganzen Markt** oder ein bestimmtes Thema.
 
-Ein ETF ist ein börsengehandelter Fonds, der meist einen Index nachbildet – z. B. den MSCI World.  
-Du kannst ihn wie eine Aktie über die Börse kaufen und wieder verkaufen.
+Beispiele:
+- Weltweite Aktienmärkte
+- Europäische Unternehmen
+- Schwellenländer
+- Nachhaltige Investments
 
-## Warum sind ETFs für Einsteiger ideal?
+---
 
-- ✅ Breite Streuung – du setzt nicht alles auf eine Firma  
-- ✅ Geringe Kosten – oft deutlich günstiger als aktive Fonds  
-- ✅ Einfaches Handling – Sparplan einrichten und laufen lassen  
+## Wie funktioniert ein ETF?
 
-## Wie geht es weiter?
+Ein ETF bildet einen **Index** nach.  
+Ein Index ist eine Art „Liste“ von Unternehmen.
 
-Im nächsten Schritt schauen wir uns an, wie du:
-- ein Depot eröffnest,
-- den ersten ETF auswählst und
-- einen automatischen Sparplan einrichtest.
+Bekannte Indizes:
+- MSCI World (Industrienationen)
+- MSCI All World (Industrie + Schwellenländer)
+- DAX (deutsche Unternehmen)
 
-Bleib dran – Schritt für Schritt zu deiner finanziellen Freiheit mit **FinanzFreedom**.
+Kaufst du einen ETF auf einen Index, investierst du automatisch in **alle enthaltenen Unternehmen** – proportional zu ihrer Größe.
+
+---
+
+## Warum sind ETFs so beliebt?
+
+ETFs haben sich aus gutem Grund als Standard für langfristigen Vermögensaufbau etabliert:
+
+### ✅ Vorteile von ETFs
+- **Breite Streuung** → geringeres Risiko
+- **Sehr geringe Kosten**
+- **Hohe Transparenz**
+- **Ideal für Sparpläne**
+- **Kein Expertenwissen nötig**
+
+---
+
+## Welche Risiken gibt es bei ETFs?
+
+Auch ETFs sind **keine risikolosen Anlagen**.
+
+Mögliche Risiken:
+- Kursschwankungen an der Börse
+- Markteinbrüche (z. B. Krisen)
+- Währungsrisiken bei internationalen ETFs
+
+👉 Wichtig: ETFs eignen sich **vor allem für langfristige Anleger**.
+
+---
+
+## ETFs vs. aktive Fonds
+
+| ETF | Aktiver Fonds |
+|----|----|
+| Geringe Kosten | Hohe Gebühren |
+| Marktdurchschnitt | Abhängig vom Fondsmanager |
+| Transparent | Oft intransparent |
+| Langfristig stabil | Schwankende Ergebnisse |
+
+---
+
+## Welche ETFs sind für Anfänger sinnvoll?
+
+Für den Einstieg nutzen viele Anleger:
+- **MSCI World ETF**
+- **MSCI All World ETF**
+- Kombinationen mit Emerging Markets
+
+👉 Details findest du hier:
+- [MSCI World ETF erklärt](/etf/msci-world)
+- [ETF All World erklärt](/etf/etf-all-world)
+
+---
+
+## Wie starte ich mit ETFs?
+
+Der typische Einstieg:
+1. Depot eröffnen
+2. ETF auswählen
+3. Sparplan einrichten
+4. Langfristig investiert bleiben
+
+👉 Nächster Schritt:
+- [ETF-Sparplan eröffnen – Schritt für Schritt](/etf/etf-sparplan-eroeffnen)
+
+---
+
+## Fazit: ETFs als solides Fundament
+
+ETFs sind kein schneller Reichtum – aber ein **sehr solides Werkzeug**, um langfristig Vermögen aufzubauen.  
+Gerade für Einsteiger sind sie oft der **beste erste Schritt** an der Börse.
+
+Wenn du langfristig denkst, regelmäßig investierst und Ruhe bewahrst, sind ETFs ein starkes Fundament für deine finanzielle Zukunft.

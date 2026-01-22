@@ -11,7 +11,7 @@ export default function EtfIndex() {
 
         <h1 style={styles.title}>ETFs verstehen & vergleichen</h1>
         <p style={styles.subtitle}>
-          Exchange Traded Funds einfach erklärt – von Grundlagen bis konkrete ETF-Auswahl.
+          Exchange Traded Funds einfach erklärt – von Grundlagen bis zur konkreten Umsetzung.
         </p>
       </section>
 
@@ -23,6 +23,26 @@ export default function EtfIndex() {
           <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
           <p style={styles.cardText}>
             Was sind ETFs, wie funktionieren sie und warum sind sie ideal für Einsteiger?
+          </p>
+          <span style={styles.cta}>Zum Artikel</span>
+        </Link>
+
+        {/* ETF Sparplan */}
+        <Link href="/etfs/etf-sparplan-einrichten" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>ETF-Sparplan einrichten</h3>
+          <p style={styles.cardText}>
+            Schritt für Schritt erklärt: Depot eröffnen, Sparplan anlegen & typische Fehler vermeiden.
+          </p>
+          <span style={styles.cta}>Zum Artikel</span>
+        </Link>
+
+        {/* ETF Auswahl */}
+        <Link href="/etfs/etf-auswahl" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>ETF richtig auswählen</h3>
+          <p style={styles.cardText}>
+            TER, Replikation, Fondsgröße – so findest du den passenden ETF für dein Ziel.
           </p>
           <span style={styles.cta}>Zum Artikel</span>
         </Link>

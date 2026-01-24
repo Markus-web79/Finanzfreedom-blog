@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+  
 export default function EtfIndex() {
   return (
     <main style={styles.page}>
@@ -18,14 +18,14 @@ export default function EtfIndex() {
       {/* Karten */}
       <section style={styles.grid}>
         {/* ETF Grundlagen */}
-        <Link href="/etfs/grundlagen" style={styles.card}>
-          <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
-          <p style={styles.cardText}>
-            Was sind ETFs, wie funktionieren sie und warum sind sie ideal für Einsteiger?
-          </p>
-          <span style={styles.cta}>Zum Artikel</span>
-        </Link>
+ <Link href="/etfs/etf-grundlagen" style={styles.card}>
+  <div style={styles.cardBar} />
+  <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
+  <p style={styles.cardText}>
+    Was sind ETFs, wie funktionieren sie und warum sind sie ideal für Einsteiger?
+  </p>
+  <span style={styles.cta}>Zum Artikel</span>
+</Link>
 
         {/* ETF Sparplan */}
         <Link href="/etfs/etf-sparplan-einrichten" style={styles.card}>

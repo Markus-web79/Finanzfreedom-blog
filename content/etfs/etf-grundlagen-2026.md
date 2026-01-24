@@ -1,6 +1,6 @@
 ---
-title: ETF Grundlagen – einfach erklärt
-description: ETFs einfach und verständlich erklärt: Was ETFs sind, wie sie funktionieren, welche Vorteile sie haben und wie du als Anfänger richtig startest.
+title: "ETF Grundlagen – einfach erklärt"
+description: "ETFs einfach und verständlich erklärt: Was ETFs sind, wie sie funktionieren und welche Vorteile sie haben."
 category: etfs
 ---
 

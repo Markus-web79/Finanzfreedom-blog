@@ -119,7 +119,7 @@ Diese Fehler solltest du vermeiden:
 Wenn du jetzt weitergehen willst:
 
 - → [ETF auswählen – welcher ETF passt zu mir?](/etfs/etf-auswahl)  
-- → [ETF-Sparplan einrichten – Schritt für Schritt](/investieren/etf-sparplan-einrichten)  
+[ETF-Sparplan einrichten – Schritt für Schritt](/etfs/etf-sparplan-einrichten)
 - → [MSCI World ETF erklärt](/etfs/msci-world)
 
 ---

@@ -18,14 +18,13 @@ export default function SparenIndex() {
         </p>
       </header>
 
-      {/* Führung */}
+      {/* Führung (EINMAL!) */}
       <section className="intro">
         <h2>So startest du sinnvoll mit dem Sparen</h2>
         <p>
-          Sparen bedeutet nicht Verzicht, sondern Kontrolle. Manche Schritte
-          bringen mehr als andere – deshalb geh am besten strukturiert vor.
+          Sparen bedeutet nicht Verzicht, sondern Kontrolle.
+          Geh am besten strukturiert vor.
         </p>
-
         <ul>
           <li>1️⃣ Fixkosten analysieren & senken</li>
           <li>2️⃣ Haushaltsbudget erstellen</li>
@@ -35,7 +34,6 @@ export default function SparenIndex() {
 
       {/* Karten */}
       <section className="grid">
-        {/* Fixkosten */}
         <div className="card">
           <div className="icon">💸</div>
           <h3>Fixkosten senken</h3>
@@ -48,7 +46,6 @@ export default function SparenIndex() {
           </Link>
         </div>
 
-        {/* Haushaltsbudget */}
         <div className="card">
           <div className="icon">📊</div>
           <h3>Haushaltsbudget erstellen</h3>
@@ -62,30 +59,11 @@ export default function SparenIndex() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta">
-        <h3>Du willst strukturiert starten?</h3>
-        <p>
-          Beginne mit dem Notgroschen. Er schützt dich vor Schulden und gibt
-          dir die Sicherheit, später entspannt zu investieren.
-        </p>
-        <Link href="/sparen/grundlagen/notgroschen" className="ctaButton">
-          👉 Zum Notgroschen-Guide
-        </Link>
-      </section>
-
       {/* Styles */}
       <style jsx>{`
-        main {
-          min-height: 100vh;
-          padding: 60px 20px;
-          background: radial-gradient(circle at top, #0f172a, #020617);
-          color: #e5e7eb;
-        }
-
         .back {
           max-width: 900px;
-          margin: 0 auto 20px;
+          margin: 20px auto;
         }
 
         .back a {
@@ -96,7 +74,7 @@ export default function SparenIndex() {
 
         .header {
           max-width: 900px;
-          margin: 0 auto 40px;
+          margin: 40px auto;
           text-align: center;
         }
 
@@ -123,13 +101,7 @@ export default function SparenIndex() {
 
         .intro h2 {
           margin-bottom: 12px;
-          font-size: 1.4rem;
           color: #ffffff;
-        }
-
-        .intro p {
-          margin-bottom: 14px;
-          line-height: 1.7;
         }
 
         .intro ul {
@@ -139,7 +111,7 @@ export default function SparenIndex() {
 
         .grid {
           max-width: 900px;
-          margin: 0 auto;
+          margin: 0 auto 60px;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 24px;
@@ -176,37 +148,7 @@ export default function SparenIndex() {
 
         .card a {
           color: #2dd4bf;
-          font-weight: 500;
-          text-decoration: none;
-        }
-
-        .cta {
-          max-width: 900px;
-          margin: 60px auto 0;
-          padding: 32px;
-          border-radius: 16px;
-          background: linear-gradient(180deg, #020617, #020617);
-          border: 1px solid rgba(45, 212, 191, 0.25);
-          text-align: center;
-        }
-
-        .cta h3 {
-          margin-bottom: 10px;
-          color: #ffffff;
-        }
-
-        .cta p {
-          opacity: 0.9;
-          margin-bottom: 20px;
-        }
-
-        .ctaButton {
-          display: inline-block;
-          background: #2dd4bf;
-          color: #020617;
-          padding: 12px 22px;
-          border-radius: 999px;
-          font-weight: 700;
+          font-weight: 600;
           text-decoration: none;
         }
       `}</style>

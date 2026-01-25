@@ -3,15 +3,12 @@ export default function Impressum() {
     <main style={styles.page}>
       <h1>Impressum</h1>
 
-      <p>
-        Angaben gemäß § 5 TMG
-      </p>
+      <p>Angaben gemäß § 5 TMG</p>
 
       <p>
-        FinanzFreedom<br />
-        Betreiber: [DEIN NAME]<br />
-        Straße / Nr.<br />
-        PLZ Ort<br />
+        Markus Habermann<br />
+        Elsa-Brandströmstr. 21<br />
+        45699 Herten<br />
         Deutschland
       </p>
 
@@ -22,7 +19,7 @@ export default function Impressum() {
 
       <p>
         Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br />
-        [DEIN NAME]
+        Markus Habermann
       </p>
     </main>
   );
@@ -34,5 +31,6 @@ const styles = {
     margin: "0 auto",
     padding: "60px 20px",
     color: "#e5e7eb",
+    lineHeight: "1.7",
   },
 };

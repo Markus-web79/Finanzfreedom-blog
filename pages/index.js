@@ -9,48 +9,48 @@ export default function Home() {
         padding: "3rem 1.5rem",
       }}
     >
-{/* HERO / BANNER */}
-<section
-  style={{
-    background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
-    borderRadius: "16px",
-    padding: "3rem 1.5rem",
-    marginBottom: "4rem",
-  }}
->
-  <div
-    style={{
-      maxWidth: "900px",
-      margin: "0 auto",
-      textAlign: "center",
-    }}
-  >
-    <h1
-      style={{
-        color: "#ffffff",
-        fontSize: "clamp(2rem, 5vw, 2.8rem)",
-        fontWeight: "700",
-        marginBottom: "1rem",
-      }}
-    >
-      FinanzFreedom
-    </h1>
+      {/* HERO / BANNER */}
+      <section
+        style={{
+          background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
+          borderRadius: "16px",
+          padding: "3rem 1.5rem",
+          marginBottom: "4rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            style={{
+              color: "#ffffff",
+              fontSize: "clamp(2rem, 5vw, 2.8rem)",
+              fontWeight: "700",
+              marginBottom: "1rem",
+            }}
+          >
+            FinanzFreedom
+          </h1>
 
-    <p
-      style={{
-        color: "#ffffff",
-        fontSize: "1.1rem",
-        opacity: 0.95,
-        maxWidth: "720px",
-        margin: "0 auto",
-        lineHeight: 1.6,
-      }}
-    >
-      Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
-      finanzielle Freiheit.
-    </p>
-  </div>
-</section>
+          <p
+            style={{
+              color: "#ffffff",
+              fontSize: "1.1rem",
+              opacity: 0.95,
+              maxWidth: "720px",
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
+            finanzielle Freiheit.
+          </p>
+        </div>
+      </section>
 
       {/* KARTEN */}
       <section
@@ -64,6 +64,13 @@ export default function Home() {
           title="ETFs"
           text="ETF-Grundlagen, Sparpläne und langfristiger Vermögensaufbau – verständlich erklärt."
           href="/etfs"
+        />
+
+        {/* NEU: INVESTIEREN */}
+        <Card
+          title="Investieren"
+          text="Strategien, Einstieg und Struktur für langfristigen Vermögensaufbau – Schritt für Schritt erklärt."
+          href="/investieren"
         />
 
         <Card

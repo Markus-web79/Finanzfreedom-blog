@@ -41,7 +41,7 @@ export default function EtfIndex() {
       {/* Karten */}
       <section style={styles.grid}>
         {/* ETF Grundlagen */}
-        <Link href="/etfs/grundlagen" style={styles.card}>
+      <Link href="/etfs/etf-grundlagen" style={styles.card}>
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
           <p style={styles.cardText}>

@@ -4,11 +4,11 @@ function Card({ href, icon, title, text, disabled }) {
   const style = {
     background: "#020617",
     border: "1px solid #1e293b",
-    borderRadius: "14px",
+    borderRadius: "16px",
     padding: "24px",
     color: "#e5e7eb",
     textDecoration: "none",
-    transition: "transform 0.15s ease, border-color 0.15s ease",
+    transition: "transform 0.2s ease, border-color 0.2s ease",
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.5 : 1,
   };
@@ -16,7 +16,9 @@ function Card({ href, icon, title, text, disabled }) {
   const content = (
     <>
       <div style={{ fontSize: "2rem", marginBottom: "12px" }}>{icon}</div>
-      <h3 style={{ fontSize: "1.25rem", marginBottom: "8px" }}>{title}</h3>
+      <h3 style={{ fontSize: "1.25rem", marginBottom: "8px", color: "#ffffff" }}>
+        {title}
+      </h3>
       <p style={{ fontSize: "0.95rem", lineHeight: 1.6, opacity: 0.9 }}>
         {text}
       </p>
@@ -24,8 +26,9 @@ function Card({ href, icon, title, text, disabled }) {
         <p
           style={{
             marginTop: "16px",
-            color: "#14b8a6",
-            fontSize: "0.9rem",
+            color: "#2dd4bf",
+            fontWeight: 600,
+            fontSize: "0.95rem",
           }}
         >
           → Zum Artikel
@@ -47,37 +50,39 @@ function Card({ href, icon, title, text, disabled }) {
 
 export default function VersicherungenIndex() {
   return (
-    <main style={{ padding: "40px 20px" }}>
+    <main style={styles.page}>
       {/* Zurück */}
-      <div style={{ maxWidth: "900px", margin: "0 auto 20px" }}>
-        <Link href="/" style={{ color: "#14b8a6", textDecoration: "none" }}>
+      <section style={styles.header}>
+        <Link href="/" style={styles.back}>
           ← Zur Startseite
         </Link>
-      </div>
 
-      {/* Header */}
-      <header style={{ maxWidth: "900px", margin: "0 auto 40px" }}>
-        <h1 style={{ fontSize: "2.4rem", marginBottom: "12px" }}>
-          Versicherungen verstehen
-        </h1>
-        <p style={{ fontSize: "1.05rem", lineHeight: 1.7, opacity: 0.9 }}>
-          Welche Versicherungen brauchst du wirklich – und welche nicht?
-          Hier findest du klare, einfache Erklärungen ohne Verkaufsblabla.
+        <h1 style={styles.title}>Versicherungen verstehen</h1>
+        <p style={styles.subtitle}>
+          Welche Versicherungen brauchst du wirklich – und welche kannst du dir
+          sparen? Hier findest du klare, einfache Erklärungen ohne
+          Verkaufsblabla.
         </p>
-      </header>
+      </section>
+
+      {/* Führung */}
+      <section style={styles.guide}>
+        <h2 style={styles.guideTitle}>So gehst du bei Versicherungen vor</h2>
+        <p style={styles.guideText}>
+          Nicht jede Versicherung ist sinnvoll. Manche sind absolut notwendig,
+          andere optional – und einige eher unnötig.
+        </p>
+        <ul style={styles.guideList}>
+          <li>1️⃣ Starte mit den existenziell wichtigen Versicherungen</li>
+          <li>2️⃣ Prüfe, welche Risiken du wirklich absichern musst</li>
+          <li>3️⃣ Vermeide unnötige oder doppelte Policen</li>
+        </ul>
+      </section>
 
       {/* Karten */}
-      <section
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: "24px",
-        }}
-      >
+      <section style={styles.grid}>
         <Card
-    href="/versicherungen/privathaftpflicht"
+          href="/versicherungen/privathaftpflicht"
           icon="🛡️"
           title="Haftpflichtversicherung"
           text="Die wichtigste Versicherung überhaupt – schützt dich vor existenzbedrohenden Schäden."
@@ -114,3 +119,63 @@ export default function VersicherungenIndex() {
     </main>
   );
 }
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    padding: "60px 22px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    color: "#e5e7eb",
+  },
+  header: {
+    maxWidth: "900px",
+    margin: "0 auto 36px",
+    textAlign: "center",
+  },
+  back: {
+    display: "inline-block",
+    marginBottom: "16px",
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: 600,
+  },
+  title: {
+    fontSize: "2.4rem",
+    marginBottom: "12px",
+    color: "#ffffff",
+  },
+  subtitle: {
+    fontSize: "1.05rem",
+    lineHeight: 1.7,
+    color: "#9ca3af",
+  },
+  guide: {
+    maxWidth: "900px",
+    margin: "0 auto 40px",
+    padding: "24px",
+    borderRadius: "18px",
+    background: "rgba(2,6,23,0.5)",
+    border: "1px solid #1e293b",
+  },
+  guideTitle: {
+    fontSize: "1.4rem",
+    marginBottom: "12px",
+    color: "#ffffff",
+  },
+  guideText: {
+    marginBottom: "12px",
+    lineHeight: 1.6,
+    color: "#cbd5f5",
+  },
+  guideList: {
+    paddingLeft: "18px",
+    lineHeight: 1.7,
+  },
+  grid: {
+    maxWidth: "900px",
+    margin: "0 auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "24px",
+  },
+};

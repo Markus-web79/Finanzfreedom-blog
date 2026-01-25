@@ -9,54 +9,69 @@ export default function TradeRepublic() {
           ← Zur Broker-Übersicht
         </Link>
 
-        <h1 style={styles.title}>Trade Republic Erfahrungen 2026</h1>
+        <h1 style={styles.title}>Trade Republic Erfahrungen (2026)</h1>
         <p style={styles.subtitle}>
-          Kosten, Vorteile, Nachteile und für wen sich Trade Republic wirklich lohnt.
+          Kosten, Vorteile, Nachteile & für wen sich Trade Republic wirklich lohnt.
         </p>
       </section>
 
-      {/* Content */}
+      {/* Inhalt */}
       <section style={styles.content}>
         <h2>Was ist Trade Republic?</h2>
         <p>
-          Trade Republic ist ein deutscher Neobroker mit Sitz in Berlin. Der Fokus liegt
-          auf einfachem, günstigem Investieren per App – besonders für ETF-Sparpläne
-          und langfristige Anleger.
+          Trade Republic ist ein deutscher Neobroker mit Sitz in Berlin. Er
+          ermöglicht günstiges Investieren per App und richtet sich vor allem an
+          Einsteiger, ETF-Sparer und langfristige Anleger.
         </p>
 
         <h2>Welche Produkte bietet Trade Republic?</h2>
         <ul>
           <li>ETFs & ETF-Sparpläne</li>
-          <li>Aktien & Bruchstücke</li>
-          <li>Kryptowährungen</li>
-          <li>Anleihen & Derivate</li>
+          <li>Aktien & Derivate</li>
+          <li>Krypto (über Partner)</li>
+          <li>Zinsen auf nicht investiertes Guthaben</li>
         </ul>
 
-        <h2>Vorteile</h2>
+        <h2>Kosten & Gebühren</h2>
         <ul>
-          <li>Sehr niedrige Kosten</li>
-          <li>Viele kostenlose ETF-Sparpläne</li>
-          <li>Einfache, intuitive App</li>
-          <li>Ideal für Einsteiger</li>
+          <li>0 € Depotführung</li>
+          <li>0 € ETF-Sparpläne</li>
+          <li>1 € pro Einzelorder</li>
+          <li>keine versteckten Kosten</li>
+        </ul>
+
+        <h2>Vorteile von Trade Republic</h2>
+        <ul>
+          <li>sehr günstige Kostenstruktur</li>
+          <li>einfache, übersichtliche App</li>
+          <li>ideal für Einsteiger</li>
+          <li>große Auswahl an ETFs</li>
         </ul>
 
         <h2>Nachteile</h2>
         <ul>
-          <li>Keine klassische Beratung</li>
-          <li>Nur ein Handelsplatz (LS Exchange)</li>
-          <li>Wenig Analyse-Tools für Profis</li>
+          <li>keine klassische Web-Oberfläche</li>
+          <li>kein persönlicher Ansprechpartner</li>
+          <li>eingeschränkte Analyse-Tools</li>
         </ul>
 
-        <h2>Für wen ist Trade Republic geeignet?</h2>
+        <h2>Für wen eignet sich Trade Republic?</h2>
         <p>
-          Besonders geeignet für Einsteiger, Sparplan-Anleger und alle, die
-          langfristig und unkompliziert investieren möchten.
+          Trade Republic eignet sich besonders für Anleger, die regelmäßig in ETFs
+          investieren möchten, wenig handeln und eine einfache Lösung ohne
+          Schnickschnack suchen.
         </p>
 
-        <p style={styles.note}>
-          👉 Für viele Anfänger ist Trade Republic einer der einfachsten Einstiege
-          in ETFs und Aktien.
+        <h2>Fazit</h2>
+        <p>
+          Trade Republic ist einer der besten Broker für ETF-Sparer und Einsteiger.
+          Wer langfristig investieren möchte und niedrige Kosten schätzt, ist hier
+          sehr gut aufgehoben.
         </p>
+
+        <Link href="/broker/vergleich" style={styles.cta}>
+          → Broker vergleichen
+        </Link>
       </section>
     </main>
   );
@@ -72,6 +87,7 @@ const styles = {
   header: {
     maxWidth: "900px",
     margin: "0 auto 50px",
+    textAlign: "center",
   },
   back: {
     display: "inline-block",
@@ -81,12 +97,12 @@ const styles = {
     fontWeight: 600,
   },
   title: {
-    fontSize: "2.2rem",
+    fontSize: "2.4rem",
     marginBottom: "12px",
     color: "#ffffff",
   },
   subtitle: {
-    fontSize: "1.05rem",
+    fontSize: "1.1rem",
     color: "#9ca3af",
   },
   content: {
@@ -94,9 +110,11 @@ const styles = {
     margin: "0 auto",
     lineHeight: 1.7,
   },
-  note: {
-    marginTop: "24px",
-    fontWeight: 600,
+  cta: {
+    display: "inline-block",
+    marginTop: "30px",
     color: "#2dd4bf",
+    fontWeight: 600,
+    textDecoration: "none",
   },
 };

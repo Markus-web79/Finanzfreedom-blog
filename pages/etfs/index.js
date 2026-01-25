@@ -1,5 +1,5 @@
 import Link from "next/link";
-  
+
 export default function EtfIndex() {
   return (
     <main style={styles.page}>
@@ -9,40 +9,44 @@ export default function EtfIndex() {
           ← Zur Startseite
         </Link>
 
-        <h1 style={styles.title}>ETFs verstehen & vergleichen</h1>
+        <h1 style={styles.title}>ETFs verstehen & richtig starten</h1>
+
         <p style={styles.subtitle}>
-          Exchange Traded Funds einfach erklärt – von Grundlagen bis zur konkreten Umsetzung.
+          ETFs sind der einfachste Einstieg in den langfristigen Vermögensaufbau.
+          Auf dieser Seite findest du die wichtigsten Grundlagen, Erklärungen
+          und Entscheidungen – logisch aufgebaut und verständlich erklärt.
         </p>
+      </section>
+
+      {/* Einführung / Führung */}
+      <section style={styles.intro}>
+        <h2 style={styles.introTitle}>So nutzt du diese ETF-Übersicht sinnvoll</h2>
+
+        <ol style={styles.steps}>
+          <li>
+            <strong>Starte mit den Grundlagen:</strong> Verstehe zuerst, was ETFs
+            sind und warum sie für Einsteiger so beliebt sind.
+          </li>
+          <li>
+            <strong>Lerne die wichtigsten ETF-Typen kennen:</strong> MSCI World,
+            Emerging Markets und All-World ETFs im Vergleich.
+          </li>
+          <li>
+            <strong>Triff deine Entscheidung:</strong> Finde heraus, welcher ETF
+            zu deinem Ziel und deiner Risikobereitschaft passt.
+          </li>
+        </ol>
       </section>
 
       {/* Karten */}
       <section style={styles.grid}>
         {/* ETF Grundlagen */}
- <Link href="/etfs/etf-grundlagen" style={styles.card}>
-  <div style={styles.cardBar} />
-  <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
-  <p style={styles.cardText}>
-    Was sind ETFs, wie funktionieren sie und warum sind sie ideal für Einsteiger?
-  </p>
-  <span style={styles.cta}>Zum Artikel</span>
-</Link>
-
-        {/* ETF Sparplan */}
-        <Link href="/etfs/etf-sparplan-einrichten" style={styles.card}>
+        <Link href="/etfs/grundlagen" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>ETF-Sparplan einrichten</h3>
+          <h3 style={styles.cardTitle}>ETF Grundlagen</h3>
           <p style={styles.cardText}>
-            Schritt für Schritt erklärt: Depot eröffnen, Sparplan anlegen & typische Fehler vermeiden.
-          </p>
-          <span style={styles.cta}>Zum Artikel</span>
-        </Link>
-
-        {/* ETF Auswahl */}
-        <Link href="/etfs/etf-auswahl" style={styles.card}>
-          <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>ETF richtig auswählen</h3>
-          <p style={styles.cardText}>
-            TER, Replikation, Fondsgröße – so findest du den passenden ETF für dein Ziel.
+            Was ETFs sind, wie sie funktionieren und warum sie ideal für
+            Einsteiger sind.
           </p>
           <span style={styles.cta}>Zum Artikel</span>
         </Link>
@@ -52,17 +56,18 @@ export default function EtfIndex() {
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>MSCI World ETF</h3>
           <p style={styles.cardText}>
-            Der Klassiker unter den ETFs – globale Streuung, Chancen & Risiken verständlich erklärt.
+            Der Klassiker unter den ETFs – globale Streuung, Chancen & Risiken
+            verständlich erklärt.
           </p>
           <span style={styles.cta}>Zum Artikel</span>
         </Link>
 
-        {/* MSCI Emerging Markets */}
+        {/* Emerging Markets */}
         <Link href="/etfs/msci-emerging-markets" style={styles.card}>
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>MSCI Emerging Markets</h3>
           <p style={styles.cardText}>
-            Schwellenländer-ETFs: höhere Chancen, höhere Risiken – verständlich erklärt.
+            Schwellenländer-ETFs: höhere Chancen, höhere Risiken – klar erklärt.
           </p>
           <span style={styles.cta}>Zum Artikel</span>
         </Link>
@@ -72,7 +77,8 @@ export default function EtfIndex() {
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>All-World ETFs</h3>
           <p style={styles.cardText}>
-            Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co. klar erklärt.
+            Ein ETF für die ganze Welt – Unterschiede zu MSCI World & Co. auf
+            einen Blick.
           </p>
           <span style={styles.cta}>Zum Artikel</span>
         </Link>
@@ -90,7 +96,7 @@ const styles = {
   },
   header: {
     maxWidth: "900px",
-    margin: "0 auto 50px",
+    margin: "0 auto 40px",
     textAlign: "center",
   },
   back: {
@@ -108,7 +114,30 @@ const styles = {
   subtitle: {
     fontSize: "1.1rem",
     color: "#9ca3af",
+    lineHeight: 1.6,
   },
+
+  /* Einführung */
+  intro: {
+    maxWidth: "900px",
+    margin: "0 auto 50px",
+    background: "rgba(2, 6, 23, 0.55)",
+    border: "1px solid #1e293b",
+    borderRadius: "18px",
+    padding: "26px",
+  },
+  introTitle: {
+    fontSize: "1.4rem",
+    marginBottom: "14px",
+    color: "#ffffff",
+  },
+  steps: {
+    paddingLeft: "18px",
+    lineHeight: 1.8,
+    color: "#cbd5f5",
+  },
+
+  /* Karten */
   grid: {
     maxWidth: "1100px",
     margin: "0 auto",
@@ -124,7 +153,6 @@ const styles = {
     padding: "26px",
     textDecoration: "none",
     color: "#e5e7eb",
-    transition: "all 0.25s ease",
   },
   cardBar: {
     position: "absolute",

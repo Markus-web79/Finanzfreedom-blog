@@ -3,264 +3,170 @@ import Link from "next/link";
 export default function TradeRepublic() {
   return (
     <main style={styles.page}>
-      {/* Header */}
-      <section style={styles.header}>
-        <Link href="/broker" style={styles.back}>
-          ← Zur Broker-Übersicht
-        </Link>
+      {/* Back */}
+      <Link href="/broker" style={styles.back}>
+        ← Zur Broker-Übersicht
+      </Link>
 
+      {/* Header */}
+      <header style={styles.header}>
         <h1 style={styles.title}>Trade Republic Erfahrungen 2026</h1>
         <p style={styles.subtitle}>
           Trade Republic gehört zu den bekanntesten Neobrokern in Deutschland.
           Aber für wen lohnt sich der Broker wirklich – und wo liegen die Grenzen?
         </p>
-      </section>
+      </header>
 
-      {/* Überblick */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Kurzüberblick</h2>
-
-        <div style={styles.table}>
-          {facts.map((row, i) => (
-            <div key={i} style={styles.row}>
-              <div style={styles.cellTitle}>{row.label}</div>
-              <div>{row.value}</div>
-            </div>
-          ))}
+      {/* Quick Facts */}
+      <section style={styles.facts}>
+        <div style={styles.factCard}>
+          <span style={styles.factLabel}>Depotführung</span>
+          <strong>Kostenlos</strong>
+        </div>
+        <div style={styles.factCard}>
+          <span style={styles.factLabel}>ETF-Sparpläne</span>
+          <strong>Kostenlos</strong>
+        </div>
+        <div style={styles.factCard}>
+          <span style={styles.factLabel}>Orderkosten</span>
+          <strong>1 € pro Trade</strong>
+        </div>
+        <div style={styles.factCard}>
+          <span style={styles.factLabel}>Geeignet für</span>
+          <strong>Einsteiger & Sparpläne</strong>
         </div>
       </section>
 
-      {/* Was ist Trade Republic */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Was ist Trade Republic?</h2>
-        <p style={styles.p}>
+      {/* Inhalt */}
+      <section style={styles.content}>
+        <h2>Was ist Trade Republic?</h2>
+        <p>
           Trade Republic ist ein deutscher Neobroker mit Sitz in Berlin, der sich
           auf extrem günstiges und einfaches Investieren spezialisiert hat.
-          Der Fokus liegt klar auf ETF-Sparplänen und langfristigem Vermögensaufbau.
+          Der Fokus liegt klar auf ETF-Sparplänen und langfristigem
+          Vermögensaufbau.
         </p>
-        <p style={styles.p}>
-          Die Bedienung erfolgt hauptsächlich über die App, was Trade Republic
+        <p>
+          Die Nutzung erfolgt hauptsächlich über die App, was Trade Republic
           besonders für Einsteiger attraktiv macht.
         </p>
-      </section>
 
-      {/* Produkte */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Welche Produkte bietet Trade Republic?</h2>
-        <ul style={styles.ul}>
-          <li style={styles.li}>ETF-Sparpläne (kostenlos)</li>
-          <li style={styles.li}>Aktien & ETFs</li>
-          <li style={styles.li}>Anleihen</li>
-          <li style={styles.li}>Derivate (Optionsscheine, Zertifikate)</li>
+        <h2>Welche Produkte bietet Trade Republic?</h2>
+        <ul>
+          <li>ETFs & ETF-Sparpläne</li>
+          <li>Aktien & Einmalinvestments</li>
+          <li>Kryptowährungen</li>
+          <li>Zinsen auf Guthaben (je nach Marktphase)</li>
         </ul>
-      </section>
 
-      {/* Vorteile & Nachteile */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Vorteile & Nachteile</h2>
+        <h2>Kosten & Gebühren</h2>
+        <p>
+          Trade Republic ist bekannt für sein einfaches Gebührenmodell:
+        </p>
+        <ul>
+          <li>Depotführung: kostenlos</li>
+          <li>ETF-Sparpläne: kostenlos</li>
+          <li>Einmal-Käufe & Verkäufe: 1 € pro Trade</li>
+        </ul>
 
-        <div style={styles.compareGrid}>
-          <div style={styles.box}>
-            <h3 style={styles.h3}>✅ Vorteile</h3>
-            <ul style={styles.ul}>
-              <li style={styles.li}>Kostenlose ETF-Sparpläne</li>
-              <li style={styles.li}>Sehr einfache App</li>
-              <li style={styles.li}>Geringe Orderkosten (1 €)</li>
-              <li style={styles.li}>Ideal für Anfänger</li>
-            </ul>
-          </div>
-
-          <div style={styles.box}>
-            <h3 style={styles.h3}>❌ Nachteile</h3>
-            <ul style={styles.ul}>
-              <li style={styles.li}>Nur ein Handelsplatz</li>
-              <li style={styles.li}>Begrenzte ETF-Auswahl</li>
-              <li style={styles.li}>Kaum Analyse-Tools</li>
-              <li style={styles.li}>Wenig für aktive Trader</li>
-            </ul>
-          </div>
+        <div style={styles.tip}>
+          💡 <strong>Praxis-Tipp:</strong>  
+          Für langfristige ETF-Sparpläne ist Trade Republic eine der günstigsten
+          und einfachsten Lösungen am Markt.
         </div>
-      </section>
 
-      {/* Für wen geeignet */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Für wen ist Trade Republic geeignet?</h2>
-        <ul style={styles.ul}>
-          <li style={styles.li}>ETF-Einsteiger</li>
-          <li style={styles.li}>Sparplan-Investoren</li>
-          <li style={styles.li}>Personen mit wenig Zeit & Erfahrung</li>
-          <li style={styles.li}>Kleine bis mittlere Depots</li>
+        <h2>Vorteile & Nachteile</h2>
+        <h3>Vorteile</h3>
+        <ul>
+          <li>Sehr einfache Bedienung</li>
+          <li>Kostenlose ETF-Sparpläne</li>
+          <li>Transparentes Gebührenmodell</li>
+          <li>Ideal für Einsteiger</li>
         </ul>
-      </section>
 
-      {/* Fazit */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Unser Fazit</h2>
-        <p style={styles.p}>
-          Trade Republic ist einer der besten Broker für Einsteiger und alle,
-          die unkompliziert mit ETFs starten möchten. Wer maximale Einfachheit
-          sucht und langfristig investiert, ist hier richtig.
+        <h3>Nachteile</h3>
+        <ul>
+          <li>Begrenztere ETF-Auswahl als bei Scalable</li>
+          <li>App-fokussiert (Web nur eingeschränkt)</li>
+          <li>Wenig Zusatzfunktionen für Profis</li>
+        </ul>
+
+        <h2>Für wen eignet sich Trade Republic?</h2>
+        <p>
+          Trade Republic eignet sich besonders für:
         </p>
-        <p style={styles.p}>
-          Für fortgeschrittene Anleger mit größerem Depot oder vielen Trades
-          gibt es jedoch flexiblere Alternativen.
+        <ul>
+          <li>ETF-Einsteiger</li>
+          <li>Sparplan-Investoren</li>
+          <li>Personen, die es einfach & günstig wollen</li>
+        </ul>
+
+        <p>
+          Wenn du regelmäßig investieren willst, ohne dich mit vielen
+          Einstellungen oder Funktionen zu beschäftigen, bist du hier richtig.
         </p>
       </section>
-
-      {/* CTA */}
-      <section style={styles.ctaGrid}>
-        <Link href="/broker/vergleich" style={styles.ctaSecondary}>
-          Zum Broker-Vergleich
-        </Link>
-        <a
-          href="#"
-          style={styles.ctaPrimary}
-          rel="nofollow sponsored"
-        >
-          Trade Republic jetzt ansehen
-        </a>
-      </section>
-
-      <footer style={styles.footer}>
-        <div style={styles.footerLine} />
-        <p style={styles.footerText}>
-          Hinweis: Keine Anlageberatung. Konditionen können sich ändern.
-        </p>
-      </footer>
     </main>
   );
 }
 
-const facts = [
-  { label: "Depotführung", value: "Kostenlos" },
-  { label: "ETF-Sparpläne", value: "Kostenlos" },
-  { label: "Orderkosten", value: "1 € pro Trade" },
-  { label: "ETF-Auswahl", value: "Gut (fokussiert)" },
-  { label: "App & Web", value: "Primär App" },
-  { label: "Zielgruppe", value: "Einsteiger & Sparplan-Investoren" },
-];
-
 const styles = {
   page: {
     minHeight: "100vh",
-    padding: "70px 22px",
+    padding: "60px 20px",
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
-  header: {
-    maxWidth: "1000px",
-    margin: "0 auto 42px",
-    textAlign: "center",
-  },
   back: {
     display: "inline-block",
-    marginBottom: "16px",
+    marginBottom: "20px",
     color: "#2dd4bf",
     textDecoration: "none",
     fontWeight: 600,
   },
+  header: {
+    maxWidth: "900px",
+    margin: "0 auto 50px",
+    textAlign: "center",
+  },
   title: {
-    fontSize: "2.5rem",
+    fontSize: "2.4rem",
     marginBottom: "12px",
     color: "#ffffff",
   },
   subtitle: {
     fontSize: "1.1rem",
     color: "#9ca3af",
-    maxWidth: "820px",
-    margin: "0 auto",
-    lineHeight: 1.6,
   },
-  section: {
-    maxWidth: "1000px",
-    margin: "0 auto 40px",
-    background: "rgba(2, 6, 23, 0.45)",
-    border: "1px solid #1e293b",
-    borderRadius: "18px",
-    padding: "26px",
-  },
-  h2: {
-    fontSize: "1.5rem",
-    marginBottom: "16px",
-    color: "#ffffff",
-  },
-  h3: {
-    fontSize: "1.2rem",
-    marginBottom: "10px",
-    color: "#ffffff",
-  },
-  p: {
-    lineHeight: 1.7,
-    marginBottom: "12px",
-  },
-  table: {
+  facts: {
+    maxWidth: "1100px",
+    margin: "0 auto 50px",
     display: "grid",
-    gap: "10px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "20px",
   },
-  row: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1.2fr",
-    padding: "10px 0",
-    borderBottom: "1px solid rgba(51,65,85,0.35)",
-  },
-  cellTitle: {
-    fontWeight: 600,
-    color: "#ffffff",
-  },
-  compareGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "18px",
-  },
-  box: {
+  factCard: {
+    background: "#020617",
     border: "1px solid #1e293b",
     borderRadius: "14px",
-    padding: "18px",
-    background: "rgba(2,6,23,0.6)",
+    padding: "20px",
   },
-  ul: {
-    paddingLeft: "18px",
+  factLabel: {
+    display: "block",
+    fontSize: "0.85rem",
+    color: "#9ca3af",
+    marginBottom: "6px",
+  },
+  content: {
+    maxWidth: "900px",
+    margin: "0 auto",
     lineHeight: 1.7,
   },
-  li: {
-    marginBottom: "8px",
-  },
-  ctaGrid: {
-    maxWidth: "1000px",
-    margin: "0 auto 40px",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "14px",
-  },
-  ctaPrimary: {
-    textAlign: "center",
-    padding: "14px",
-    background: "#2dd4bf",
-    color: "#001018",
-    borderRadius: "12px",
-    fontWeight: 800,
-    textDecoration: "none",
-  },
-  ctaSecondary: {
-    textAlign: "center",
-    padding: "14px",
-    border: "1px solid rgba(45,212,191,0.6)",
-    color: "#2dd4bf",
-    borderRadius: "12px",
-    fontWeight: 800,
-    textDecoration: "none",
-  },
-  footer: {
-    maxWidth: "1000px",
-    margin: "0 auto",
-  },
-  footerLine: {
-    height: "1px",
-    background: "rgba(148,163,184,0.25)",
-    marginBottom: "12px",
-  },
-  footerText: {
-    fontSize: "0.9rem",
-    color: "#9ca3af",
+  tip: {
+    margin: "30px 0",
+    padding: "20px",
+    borderRadius: "14px",
+    background: "rgba(45,212,191,0.08)",
+    border: "1px solid rgba(45,212,191,0.25)",
   },
 };

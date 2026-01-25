@@ -1,5 +1,33 @@
 import Link from "next/link";
 
+const rows = [
+  {
+    label: "Ordergebühren",
+    tr: "1 € pro Trade",
+    sc: "0 € im Prime Broker, sonst 0,99 €",
+  },
+  {
+    label: "ETF-Sparpläne",
+    tr: "Kostenlos",
+    sc: "Kostenlos",
+  },
+  {
+    label: "ETF-Auswahl",
+    tr: "ca. 1.500 ETFs",
+    sc: "über 2.500 ETFs",
+  },
+  {
+    label: "App & Bedienung",
+    tr: "Sehr einfach & übersichtlich",
+    sc: "Etwas umfangreicher",
+  },
+  {
+    label: "Geeignet für",
+    tr: "Einsteiger & Sparplan-Nutzer",
+    sc: "Fortgeschrittene & Vielinvestierer",
+  },
+];
+
 export default function BrokerVergleich() {
   return (
     <main style={styles.page}>
@@ -15,7 +43,7 @@ export default function BrokerVergleich() {
 
         <p style={styles.subtitle}>
           Zwei der beliebtesten Neobroker in Deutschland – aber welcher passt
-          wirklich zu dir? Hier findest du den klaren, ehrlichen Vergleich ohne
+          wirklich zu dir? Hier findest du den ehrlichen Vergleich ohne
           Marketing-Blabla.
         </p>
       </section>
@@ -68,55 +96,40 @@ export default function BrokerVergleich() {
         </div>
       </section>
 
-      {/* Fazit */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Fazit</h2>
-        <p style={styles.p}>
-          Beide Broker sind günstig, seriös und für langfristiges Investieren
-          geeignet. Der Unterschied liegt nicht im „besser oder schlechter“,
-          sondern im <strong>Anspruch</strong>:
-        </p>
-
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <strong>Trade Republic</strong> → maximal simpel, perfekt für Einsteiger
-          </li>
-          <li style={styles.li}>
-            <strong>Scalable Capital</strong> → mehr Auswahl, besser für wachsende Depots
-          </li>
-        </ul>
-      </section>
-
-      {/* CTA */}
+      {/* Call to Action */}
       <section style={styles.ctaGrid}>
-        <Link href="/broker/trade-republic" style={styles.ctaPrimary}>
-          Trade Republic im Detail
-        </Link>
-        <Link href="/broker/scalable-capital" style={styles.ctaSecondary}>
-          Scalable Capital im Detail
-        </Link>
+        <a
+          href="#"
+          style={styles.ctaPrimary}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Trade Republic eröffnen
+        </a>
+
+        <a
+          href="#"
+          style={styles.ctaSecondary}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Scalable Capital eröffnen
+        </a>
       </section>
 
-      <footer style={styles.footer}>
+      {/* Affiliate-Hinweis */}
+      <section style={styles.footer}>
         <div style={styles.footerLine} />
         <p style={styles.footerText}>
-          Hinweis: Keine Anlageberatung. Konditionen können sich ändern – prüfe
-          vor Abschluss immer die aktuellen Angaben der Anbieter.
+          Hinweis: Die oben genannten Links sind sogenannte Affiliate-Links.
+          Wenn du über einen dieser Links ein Depot eröffnest, erhalten wir
+          möglicherweise eine kleine Provision. Für dich entstehen dadurch
+          keinerlei zusätzliche Kosten.
         </p>
-      </footer>
+      </section>
     </main>
   );
 }
-
-const rows = [
-  { label: "Depotführung", tr: "Kostenlos", sc: "Kostenlos (je nach Modell)" },
-  { label: "ETF-Sparpläne", tr: "Kostenlos", sc: "Kostenlos" },
-  { label: "Orderkosten", tr: "1 € pro Trade", sc: "ab 0,99 € oder Flatrate" },
-  { label: "ETF-Auswahl", tr: "Gut (fokussiert)", sc: "Sehr groß" },
-  { label: "Bedienung", tr: "Extrem einfach", sc: "Etwas komplexer" },
-  { label: "App & Web", tr: "App-fokussiert", sc: "App & Web sehr gut" },
-  { label: "Geeignet für", tr: "Einsteiger", sc: "Einsteiger & Fortgeschrittene" },
-];
 
 const styles = {
   page: {
@@ -167,10 +180,6 @@ const styles = {
     marginBottom: "10px",
     color: "#ffffff",
   },
-  p: {
-    lineHeight: 1.7,
-    marginBottom: "12px",
-  },
   table: {
     display: "grid",
     gap: "10px",
@@ -212,7 +221,7 @@ const styles = {
   },
   ctaGrid: {
     maxWidth: "1000px",
-    margin: "0 auto 40px",
+    margin: "0 auto 30px",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     gap: "14px",

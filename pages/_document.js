@@ -8,10 +8,16 @@ export default function Document() {
         {/* AWIN site verification */}
         <meta
           name="verification"
-          content="c7f1a5acfd56b563516e05e2f401e50a8"
+          content="c7f1a5acf5b565316e05e2f401e50a8"
         />
 
-        {/* TEMP: Seite nicht indexieren, solange wir prüfen */}
+        {/* impact.com site verification */}
+        <meta
+          name="impact-site-verification"
+          content="e4a2b0e8-884b-4d26-9895-28e4e9a4de7e"
+        />
+
+        {/* TEMP: Seite nicht indexieren, solange Setup läuft */}
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <body>

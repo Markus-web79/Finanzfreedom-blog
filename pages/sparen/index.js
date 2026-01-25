@@ -2,48 +2,46 @@ import Link from "next/link";
 
 export default function SparenIndex() {
   return (
-    <main
-      style={{
-        maxWidth: "1100px",
-        margin: "0 auto",
-        padding: "3rem 1.5rem",
-      }}
-    >
-      {/* Back */}
-      <Link href="/" style={{ color: "#2dd4bf" }}>
-        ← Zur Startseite
-      </Link>
+    <main>
+      {/* Zurück */}
+      <div className="back">
+        <Link href="/">← Zur Startseite</Link>
+      </div>
 
-      <h1 style={{ marginTop: "1.5rem" }}>Sparen & Rücklagen aufbauen</h1>
+      {/* Header */}
+      <header className="header">
+        <h1>Sparen & Geld organisieren</h1>
+        <p>
+          Bevor du investierst, solltest du dein Geld im Griff haben.
+          Hier lernst du, wie du sinnvoll sparst, Fixkosten senkst und
+          ein stabiles finanzielles Fundament aufbaust.
+        </p>
+      </header>
 
-      <p style={{ maxWidth: "700px", marginTop: "1rem", opacity: 0.9 }}>
-        Sparen ist die Grundlage jeder finanziellen Freiheit. Bevor du investierst,
-        solltest du deine Ausgaben im Griff haben und Rücklagen für Notfälle bilden.
-        Hier findest du praxisnahe Anleitungen, die wirklich funktionieren.
-      </p>
+      {/* Führung */}
+      <section className="intro">
+        <h2>So startest du sinnvoll mit dem Sparen</h2>
+        <p>
+          Sparen bedeutet nicht Verzicht, sondern Kontrolle. Manche Schritte
+          bringen mehr als andere – deshalb geh am besten strukturiert vor.
+        </p>
 
-      <h2 style={{ marginTop: "3rem" }}>Grundlagen</h2>
+        <ul>
+          <li>1️⃣ Fixkosten analysieren & senken</li>
+          <li>2️⃣ Haushaltsbudget erstellen</li>
+          <li>3️⃣ Notgroschen aufbauen</li>
+        </ul>
+      </section>
 
-      {/* GRID */}
-      <div className="grid">
-        {/* Notgroschen */}
-        <div className="card">
-          <div className="icon">🛟</div>
-          <h3>Notgroschen aufbauen</h3>
-          <p>
-            Dein finanzieller Airbag für unerwartete Ausgaben. Erfahre, wie hoch dein
-            Notgroschen sein sollte und wie du ihn stressfrei aufbaust.
-          </p>
-          <Link href="/sparen/grundlagen/notgroschen">Zum Artikel →</Link>
-        </div>
-
+      {/* Karten */}
+      <section className="grid">
         {/* Fixkosten */}
         <div className="card">
-          <div className="icon">📉</div>
+          <div className="icon">💸</div>
           <h3>Fixkosten senken</h3>
           <p>
-            Der größte Hebel für dauerhaft mehr Geld. Reduziere laufende Kosten, ohne
-            auf Lebensqualität zu verzichten.
+            Der größte Hebel für dauerhaft mehr Geld.
+            Reduziere laufende Kosten, ohne auf Lebensqualität zu verzichten.
           </p>
           <Link href="/sparen/grundlagen/fixkosten-senken">
             Zum Artikel →
@@ -58,35 +56,99 @@ export default function SparenIndex() {
             Mit einem klaren Budget behältst du die Kontrolle über dein Geld.
             Die 50-30-20-Regel hilft dir, sinnvoll zu sparen.
           </p>
-          <Link href="/sparen/haushaltsbudget">Zum Artikel →</Link>
+          <Link href="/sparen/haushaltsbudget">
+            Zum Artikel →
+          </Link>
         </div>
-      </div>
+      </section>
 
       {/* CTA */}
-      <div className="cta">
+      <section className="cta">
         <h3>Du willst strukturiert starten?</h3>
         <p>
-          Beginne mit dem Notgroschen. Er schützt dich vor Schulden und gibt dir die
-          Sicherheit, später entspannt zu investieren.
+          Beginne mit dem Notgroschen. Er schützt dich vor Schulden und gibt
+          dir die Sicherheit, später entspannt zu investieren.
         </p>
         <Link href="/sparen/grundlagen/notgroschen" className="ctaButton">
           👉 Zum Notgroschen-Guide
         </Link>
-      </div>
+      </section>
 
       {/* Styles */}
       <style jsx>{`
+        main {
+          min-height: 100vh;
+          padding: 60px 20px;
+          background: radial-gradient(circle at top, #0f172a, #020617);
+          color: #e5e7eb;
+        }
+
+        .back {
+          max-width: 900px;
+          margin: 0 auto 20px;
+        }
+
+        .back a {
+          color: #2dd4bf;
+          text-decoration: none;
+          font-weight: 600;
+        }
+
+        .header {
+          max-width: 900px;
+          margin: 0 auto 40px;
+          text-align: center;
+        }
+
+        .header h1 {
+          font-size: 2.4rem;
+          margin-bottom: 12px;
+          color: #ffffff;
+        }
+
+        .header p {
+          font-size: 1.05rem;
+          line-height: 1.7;
+          opacity: 0.9;
+        }
+
+        .intro {
+          max-width: 900px;
+          margin: 0 auto 40px;
+          padding: 26px;
+          border-radius: 16px;
+          background: rgba(2, 6, 23, 0.6);
+          border: 1px solid #1e293b;
+        }
+
+        .intro h2 {
+          margin-bottom: 12px;
+          font-size: 1.4rem;
+          color: #ffffff;
+        }
+
+        .intro p {
+          margin-bottom: 14px;
+          line-height: 1.7;
+        }
+
+        .intro ul {
+          padding-left: 18px;
+          line-height: 1.8;
+        }
+
         .grid {
+          max-width: 900px;
+          margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 1.5rem;
-          margin-top: 1.5rem;
+          gap: 24px;
         }
 
         .card {
           background: linear-gradient(180deg, #0f172a, #020617);
           border-radius: 14px;
-          padding: 1.75rem;
+          padding: 28px;
           border-top: 3px solid #2dd4bf;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
@@ -98,26 +160,30 @@ export default function SparenIndex() {
 
         .icon {
           font-size: 1.6rem;
-          margin-bottom: 0.75rem;
+          margin-bottom: 10px;
         }
 
         .card h3 {
-          margin-bottom: 0.5rem;
+          margin-bottom: 8px;
+          color: #ffffff;
         }
 
         .card p {
           opacity: 0.85;
-          margin-bottom: 1rem;
+          margin-bottom: 14px;
+          line-height: 1.6;
         }
 
         .card a {
           color: #2dd4bf;
           font-weight: 500;
+          text-decoration: none;
         }
 
         .cta {
-          margin-top: 4rem;
-          padding: 2.5rem;
+          max-width: 900px;
+          margin: 60px auto 0;
+          padding: 32px;
           border-radius: 16px;
           background: linear-gradient(180deg, #020617, #020617);
           border: 1px solid rgba(45, 212, 191, 0.25);
@@ -125,21 +191,23 @@ export default function SparenIndex() {
         }
 
         .cta h3 {
-          margin-bottom: 0.5rem;
+          margin-bottom: 10px;
+          color: #ffffff;
         }
 
         .cta p {
           opacity: 0.9;
-          margin-bottom: 1.5rem;
+          margin-bottom: 20px;
         }
 
         .ctaButton {
           display: inline-block;
           background: #2dd4bf;
           color: #020617;
-          padding: 0.75rem 1.25rem;
+          padding: 12px 22px;
           border-radius: 999px;
-          font-weight: 600;
+          font-weight: 700;
+          text-decoration: none;
         }
       `}</style>
     </main>

@@ -12,9 +12,9 @@ export default function ScalableCapital() {
       <header style={styles.header}>
         <h1 style={styles.title}>Scalable Capital Erfahrungen 2026</h1>
         <p style={styles.subtitle}>
-          Scalable Capital ist einer der größten Neobroker in Deutschland.
-          Besonders beliebt bei langfristigen Anlegern mit größerem Depot –
-          aber ist er wirklich besser als Trade Republic?
+          Scalable Capital ist ein beliebter Broker mit großer ETF-Auswahl und
+          flexiblen Sparplan-Optionen. Erfahre, für wen sich der Anbieter
+          lohnt und wo seine Stärken liegen.
         </p>
       </header>
 
@@ -22,19 +22,19 @@ export default function ScalableCapital() {
       <section style={styles.facts}>
         <div style={styles.factCard}>
           <span style={styles.factLabel}>Depotführung</span>
-          <strong>Meist kostenlos</strong>
+          <strong>Kostenlos</strong>
         </div>
         <div style={styles.factCard}>
           <span style={styles.factLabel}>ETF-Sparpläne</span>
-          <strong>Sehr große Auswahl</strong>
+          <strong>teilweise kostenlos</strong>
         </div>
         <div style={styles.factCard}>
           <span style={styles.factLabel}>Orderkosten</span>
-          <strong>ab 0,99 € / Trade</strong>
+          <strong>Flat-Fee oder Free-Modelle</strong>
         </div>
         <div style={styles.factCard}>
           <span style={styles.factLabel}>Geeignet für</span>
-          <strong>Einsteiger & Fortgeschrittene</strong>
+          <strong>ETF-Diversität & Vielnutzer</strong>
         </div>
       </section>
 
@@ -42,75 +42,76 @@ export default function ScalableCapital() {
       <section style={styles.content}>
         <h2>Was ist Scalable Capital?</h2>
         <p>
-          Scalable Capital ist ein deutscher Neobroker, der sich auf günstiges
-          und strukturiertes Investieren per App und Web spezialisiert hat.
-          Im Fokus stehen ETF-Sparpläne, Einzelinvestments und der langfristige
-          Vermögensaufbau.
-        </p>
-        <p>
-          Im Vergleich zu Trade Republic richtet sich Scalable stärker an Anleger,
-          die mehr Auswahl, mehr Kontrolle und ein langfristig wachsendes Depot
-          aufbauen möchten.
+          Scalable Capital ist ein deutscher Online-Broker mit Fokus auf
+          kostengünstigen Handel und ein breites Portfolio an ETFs, Aktien und
+          weiteren Finanzprodukten. Der Broker bietet flexible Sparpläne,
+          große Auswahl und verschiedene Preismodelle an.
         </p>
 
-        <h2>Welche Produkte bietet Scalable Capital?</h2>
+        <h2>Welche Produkte bietet Scalable?</h2>
         <ul>
-          <li>ETFs & ETF-Sparpläne (sehr große Auswahl)</li>
+          <li>ETFs & ETF-Sparpläne</li>
           <li>Aktien & Einmalinvestments</li>
-          <li>Kryptowährungen (je nach Region)</li>
-          <li>Portfolio-Übersicht & Auswertungen</li>
+          <li>Fonds</li>
+          <li>Teile von Aktien (Bruchteile)</li>
         </ul>
 
         <h2>Kosten & Gebühren</h2>
         <p>
-          Scalable Capital bietet zwei Modelle:
+          Scalable Capital bietet verschiedene Preisoptionen, darunter
+          kostenlose Sparpläne unter bestimmten Bedingungen sowie
+          Flatrate-Modelle für Vieltrader.
         </p>
         <ul>
-          <li>
-            <strong>Free-Modell:</strong> ab 0,99 € pro Trade
-          </li>
-          <li>
-            <strong>Prime-Modell:</strong> Flatrate für häufiges Handeln
-          </li>
+          <li>Depotführung: kostenlos</li>
+          <li>ETF-Sparpläne: teilweise kostenlos</li>
+          <li>Orderkosten: abhängig vom gewählten Tarif</li>
         </ul>
 
         <div style={styles.tip}>
           💡 <strong>Praxis-Tipp:</strong>  
-          Für langfristige ETF-Sparpläne reicht oft das Free-Modell.
-          Wenn du häufiger handelst oder viele Einzelkäufe tätigst,
-          kann sich das Prime-Modell lohnen.
+          Wenn du viele verschiedene ETFs besparen möchtest oder
+          Bruchteile von Wertpapieren suchst, kann Scalable eine
+          attraktive Option sein.
         </div>
 
         <h2>Vorteile & Nachteile</h2>
-
         <h3>Vorteile</h3>
         <ul>
-          <li>Sehr große ETF- & Aktienauswahl</li>
-          <li>App & Web nutzbar</li>
-          <li>Flexible Gebührenmodelle</li>
-          <li>Gut geeignet für größere Depots</li>
+          <li>Große Auswahl an ETFs und Produkten</li>
+          <li>Flexible Sparplanmodelle</li>
+          <li>Teilweise kostenlose Sparpläne</li>
+          <li>Optionale Flatrate-Modelle</li>
         </ul>
 
         <h3>Nachteile</h3>
         <ul>
-          <li>Etwas komplexer als Trade Republic</li>
-          <li>Prime-Modell lohnt sich nicht für jeden</li>
+          <li>Preis- und Tarifmodell kann komplex wirken</li>
+          <li>Funktionsumfang für Anfänger etwas unübersichtlich</li>
+          <li>Mobile & Desktop-Erlebnis kann variieren</li>
         </ul>
 
-        <h2>Für wen eignet sich Scalable Capital?</h2>
-        <p>
-          Scalable Capital eignet sich besonders für:
-        </p>
+        <h2>Für wen eignet sich Scalable?</h2>
         <ul>
-          <li>Langfristige ETF-Anleger</li>
-          <li>Investoren mit größerem Depot</li>
-          <li>Nutzer, die mehr Auswahl & Kontrolle möchten</li>
+          <li>Anleger mit Fokus auf ETF-Diversität</li>
+          <li>Vielnutzer mit häufigen Trades</li>
+          <li>Anleger, die flexible Tarife bevorzugen</li>
         </ul>
 
+        <h2>Fazit</h2>
         <p>
-          Wenn du dein Depot strukturiert aufbauen und langfristig erweitern
-          möchtest, ist Scalable Capital eine sehr starke Wahl.
+          Scalable Capital ist eine gute Wahl für Anleger, die Wert auf
+          große Produktvielfalt und flexible Sparpläne legen. Die
+          Preisstruktur kann Vorteile für Vielnutzer bieten, ist aber
+          etwas komplexer als bei anderen Brokern.
         </p>
+
+        {/* Affiliate Hinweis */}
+        <div style={styles.affiliate}>
+          Hinweis: Die folgenden Links sind sogenannte Affiliate-Links. Wenn
+          du über einen dieser Links ein Konto eröffnest, erhalten wir ggf. eine
+          Provision. Für dich entstehen dadurch keine zusätzlichen Kosten.
+        </div>
       </section>
     </main>
   );
@@ -174,5 +175,12 @@ const styles = {
     borderRadius: "14px",
     background: "rgba(45,212,191,0.08)",
     border: "1px solid rgba(45,212,191,0.25)",
+  },
+  affiliate: {
+    marginTop: "40px",
+    fontSize: "0.9rem",
+    color: "#9ca3af",
+    borderTop: "1px solid #1e293b",
+    paddingTop: "20px",
   },
 };

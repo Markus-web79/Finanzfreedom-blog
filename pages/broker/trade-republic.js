@@ -42,7 +42,7 @@ export default function TradeRepublic() {
         <h2>Was ist Trade Republic?</h2>
         <p>
           Trade Republic ist ein deutscher Neobroker mit Sitz in Berlin, der sich
-          auf extrem günstiges und einfaches Investieren spezialisiert hat.
+          auf günstiges und einfaches Investieren spezialisiert hat.
           Der Fokus liegt klar auf ETF-Sparplänen und langfristigem
           Vermögensaufbau.
         </p>
@@ -60,9 +60,6 @@ export default function TradeRepublic() {
         </ul>
 
         <h2>Kosten & Gebühren</h2>
-        <p>
-          Trade Republic ist bekannt für sein einfaches Gebührenmodell:
-        </p>
         <ul>
           <li>Depotführung: kostenlos</li>
           <li>ETF-Sparpläne: kostenlos</li>
@@ -76,6 +73,7 @@ export default function TradeRepublic() {
         </div>
 
         <h2>Vorteile & Nachteile</h2>
+
         <h3>Vorteile</h3>
         <ul>
           <li>Sehr einfache Bedienung</li>
@@ -86,25 +84,31 @@ export default function TradeRepublic() {
 
         <h3>Nachteile</h3>
         <ul>
-          <li>Begrenztere ETF-Auswahl als bei Scalable</li>
+          <li>Begrenztere ETF-Auswahl als bei Scalable Capital</li>
           <li>App-fokussiert (Web nur eingeschränkt)</li>
-          <li>Wenig Zusatzfunktionen für Profis</li>
+          <li>Wenig Zusatzfunktionen für fortgeschrittene Anleger</li>
         </ul>
 
         <h2>Für wen eignet sich Trade Republic?</h2>
-        <p>
-          Trade Republic eignet sich besonders für:
-        </p>
         <ul>
           <li>ETF-Einsteiger</li>
           <li>Sparplan-Investoren</li>
-          <li>Personen, die es einfach & günstig wollen</li>
+          <li>Personen, die einfach & günstig investieren möchten</li>
         </ul>
 
+        <h2>Fazit</h2>
         <p>
-          Wenn du regelmäßig investieren willst, ohne dich mit vielen
-          Einstellungen oder Funktionen zu beschäftigen, bist du hier richtig.
+          Trade Republic ist eine sehr gute Wahl für Einsteiger und alle, die
+          regelmäßig per ETF-Sparplan investieren möchten. Wer maximale
+          Einfachheit und niedrige Kosten sucht, ist hier richtig.
         </p>
+
+        {/* Affiliate Hinweis */}
+        <div style={styles.affiliate}>
+          Hinweis: Die folgenden Links sind sogenannte Affiliate-Links.
+          Wenn du über einen dieser Links ein Konto eröffnest, erhalten wir ggf.
+          eine Provision. Für dich entstehen dadurch keine zusätzlichen Kosten.
+        </div>
       </section>
     </main>
   );
@@ -168,5 +172,12 @@ const styles = {
     borderRadius: "14px",
     background: "rgba(45,212,191,0.08)",
     border: "1px solid rgba(45,212,191,0.25)",
+  },
+  affiliate: {
+    marginTop: "40px",
+    fontSize: "0.9rem",
+    color: "#9ca3af",
+    borderTop: "1px solid #1e293b",
+    paddingTop: "20px",
   },
 };

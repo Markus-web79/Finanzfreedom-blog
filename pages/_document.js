@@ -5,13 +5,13 @@ export default function Document() {
   return (
     <Html lang="de">
       <Head>
-        {/* impact.com Site Verification */}
+        {/* Impact Site Verification */}
         <meta
           name="impact-site-verification"
-          value="e4a2b0e8-884b-4d26-9895-28e4e9a4de7e"
+          content="d3904270-1cac-4cd4-9b6a-07ca68348969"
         />
 
-        {/* TEMP: solange wir prüfen, nicht indexieren */}
+        {/* robots ggf. später entfernen */}
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <body>

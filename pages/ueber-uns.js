@@ -1,87 +1,116 @@
-import Head from "next/head";
+import Link from "next/link";
 
 export default function UeberUns() {
   return (
-    <>
-      <Head>
-        <title>Über uns | FinanzFreedom</title>
-        <meta
-          name="description"
-          content="FinanzFreedom ist ein unabhängiges Finanzportal für Investieren, Vermögensaufbau und finanzielle Bildung – ohne Verkaufsdruck."
-        />
-      </Head>
+    <main style={styles.page}>
+      {/* Zurück */}
+      <Link href="/" style={styles.back}>
+        ← Zur Startseite
+      </Link>
 
-      <main style={styles.page}>
-        <section style={styles.header}>
-          <h1>Über FinanzFreedom</h1>
-          <p style={styles.subtitle}>
-            Ein unabhängiges Finanzportal – sachlich, verständlich und langfristig gedacht.
-          </p>
-        </section>
+      {/* Header */}
+      <header style={styles.header}>
+        <h1 style={styles.title}>Über FinanzFreedom</h1>
+        <p style={styles.subtitle}>
+          Ehrliche Finanzbildung für Menschen, die ihr Geld selbst verstehen
+          und verantwortungsvoll aufbauen wollen.
+        </p>
+      </header>
 
-        <section style={styles.block}>
-          <h2>Warum FinanzFreedom?</h2>
-          <p>
-            FinanzFreedom wurde gegründet, um Finanzwissen verständlich,
-            strukturiert und ohne Verkaufsdruck zugänglich zu machen.
-            Viele Finanzseiten verfolgen vor allem eigene Interessen –
-            wir setzen auf Transparenz und Klarheit.
-          </p>
-        </section>
+      {/* Inhalt */}
+      <section style={styles.content}>
+        <h2>Warum es FinanzFreedom gibt</h2>
+        <p>
+          FinanzFreedom ist entstanden, weil viele Menschen mit Finanzen
+          überfordert sind – nicht, weil sie unfähig sind, sondern weil
+          Finanzthemen oft unnötig kompliziert, verkaufsorientiert oder
+          intransparent erklärt werden.
+        </p>
+        <p>
+          Unser Ziel ist es, Finanzwissen so aufzubereiten, dass du fundierte
+          Entscheidungen treffen kannst – ohne Druck, ohne Angst und ohne
+          versteckte Interessen.
+        </p>
 
-        <section style={styles.block}>
-          <h2>Unsere Philosophie</h2>
-          <ul style={styles.list}>
-            <li>Unabhängige Informationen statt reiner Produktempfehlungen</li>
-            <li>Langfristiges Denken statt kurzfristiger Trends</li>
-            <li>Verständliche Erklärungen ohne Fachchinesisch</li>
-            <li>Strukturierte Inhalte statt unübersichtlicher Blog-Flut</li>
-          </ul>
-        </section>
+        <h2>Wer hinter FinanzFreedom steht</h2>
+        <p>
+          Hinter FinanzFreedom steht kein Konzern, kein Vertrieb und kein
+          Callcenter. Sondern eine private Initiative mit dem klaren Anspruch,
+          Finanzen verständlich, ehrlich und realistisch zu erklären.
+        </p>
+        <p>
+          Wir wissen aus eigener Erfahrung, wie schwierig der Einstieg in ETFs,
+          Sparpläne, Versicherungen und Broker sein kann – gerade dann, wenn man
+          kein Vorwissen hat.
+        </p>
 
-        <section style={styles.block}>
-          <h2>Was wir nicht sind</h2>
-          <p>
-            FinanzFreedom ist kein Finanzberater, kein Verkaufsportal
-            und kein Ort für schnelle Versprechen.
-            Wir liefern Wissen, Vergleiche und Orientierung –
-            Entscheidungen triffst du selbst.
-          </p>
-        </section>
+        <h2>Was uns von anderen Seiten unterscheidet</h2>
+        <ul>
+          <li>Keine Verkaufsberater, keine Telefonakquise</li>
+          <li>Klare Trennung zwischen Information und Werbung</li>
+          <li>Transparenter Umgang mit Affiliate-Links</li>
+          <li>Fokus auf langfristige, nachvollziehbare Strategien</li>
+        </ul>
 
-        <section style={styles.block}>
-          <h2>Langfristige Vision</h2>
-          <p>
-            FinanzFreedom soll sich zu einem umfassenden Finanzportal entwickeln:
-            mit fundierten Artikeln, Vergleichsrechnern, Tools
-            und Inhalten für verschiedene Länder.
-            Unser Fokus liegt auf nachhaltigem Vermögensaufbau
-            und finanzieller Selbstbestimmung.
-          </p>
-        </section>
-      </main>
-    </>
+        <h2>Wie wir Geld verdienen</h2>
+        <p>
+          FinanzFreedom enthält sogenannte Affiliate-Links. Wenn du über einen
+          solchen Link ein Produkt oder eine Dienstleistung nutzt, erhalten wir
+          möglicherweise eine Provision.
+        </p>
+        <p>
+          Für dich entstehen dadurch **keine zusätzlichen Kosten**. Unsere
+          Inhalte bleiben unabhängig von einzelnen Anbietern – Empfehlungen
+          basieren auf sachlichen Kriterien, nicht auf Provisionshöhe.
+        </p>
+
+        <h2>Unser Anspruch</h2>
+        <p>
+          FinanzFreedom soll wachsen – aber nicht um jeden Preis. Vertrauen,
+          Transparenz und Verständlichkeit stehen für uns über kurzfristigen
+          Einnahmen.
+        </p>
+        <p>
+          Wenn du Fragen, Anmerkungen oder Kritik hast, freuen wir uns über
+          ehrliches Feedback.
+        </p>
+      </section>
+    </main>
   );
 }
 
 const styles = {
   page: {
-    maxWidth: "820px",
-    margin: "0 auto",
-    padding: "3rem 1.5rem",
-    lineHeight: 1.7,
+    minHeight: "100vh",
+    padding: "60px 20px",
+    background: "radial-gradient(circle at top, #0f172a, #020617)",
+    color: "#e5e7eb",
+  },
+  back: {
+    display: "inline-block",
+    marginBottom: "20px",
+    color: "#2dd4bf",
+    textDecoration: "none",
+    fontWeight: 600,
   },
   header: {
-    marginBottom: "3rem",
+    maxWidth: "900px",
+    margin: "0 auto 40px",
+    textAlign: "center",
+  },
+  title: {
+    fontSize: "2.4rem",
+    marginBottom: "12px",
+    color: "#ffffff",
   },
   subtitle: {
-    opacity: 0.85,
-    marginTop: "0.75rem",
+    fontSize: "1.1rem",
+    color: "#9ca3af",
+    lineHeight: 1.6,
   },
-  block: {
-    marginBottom: "2.5rem",
-  },
-  list: {
-    paddingLeft: "1.2rem",
+  content: {
+    maxWidth: "900px",
+    margin: "0 auto",
+    lineHeight: 1.7,
   },
 };

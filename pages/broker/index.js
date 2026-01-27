@@ -9,75 +9,58 @@ export default function BrokerIndex() {
           ← Zur Startseite
         </Link>
 
-        <h1 style={styles.title}>Broker vergleichen</h1>
+        <h1 style={styles.title}>
+          Der beste Broker für ETF-Sparpläne (2026)
+        </h1>
 
         <p style={styles.subtitle}>
-          Finde den passenden Broker für ETFs, Sparpläne und langfristigen
-          Vermögensaufbau.
+          Unser ehrlicher Vergleich zeigt dir klar, welcher Broker für ETF-Einsteiger
+          die beste Wahl ist – und wann sich eine Alternative lohnt.
         </p>
       </section>
 
-      {/* Einführung / Führung */}
+      {/* Klare Empfehlung */}
       <section style={styles.section}>
-        <h2 style={styles.h2}>So findest du den passenden Broker</h2>
+        <h2 style={styles.h2}>Unsere klare Empfehlung</h2>
 
         <p style={styles.p}>
-          Nicht jeder Broker passt zu jedem Anleger. Manche sind perfekt für den
-          einfachen ETF-Sparplan, andere bieten mehr Auswahl und Funktionen.
+          Für die meisten Anleger, die einfach und günstig mit einem ETF-Sparplan
+          starten möchten, ist <strong>Trade Republic</strong> aktuell die beste Wahl.
         </p>
 
         <p style={styles.p}>
-          👉 <strong>Unser Vorschlag:</strong> Schau dir zuerst die einzelnen
-          Broker an und nutze danach den direkten Vergleich, um eine klare
-          Entscheidung zu treffen.
+          Wenn du dagegen ein größeres Depot planst, mehr ETF-Auswahl möchtest
+          oder häufiger investierst, kann <strong>Scalable Capital</strong> die bessere
+          Alternative sein.
         </p>
-
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            1️⃣ Broker einzeln anschauen (Trade Republic oder Scalable Capital)
-          </li>
-          <li style={styles.li}>
-            2️⃣ Kosten, Sparpläne & Bedienung vergleichen
-          </li>
-          <li style={styles.li}>
-            3️⃣ Den Broker wählen, der zu deinem Ziel passt
-          </li>
-        </ul>
       </section>
 
       {/* Karten */}
       <section style={styles.grid}>
-        {/* Trade Republic */}
+        {/* Trade Republic – Primär */}
         <Link href="/broker/trade-republic" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>Trade Republic</h3>
+          <h3 style={styles.cardTitle}>
+            🥇 Trade Republic – Beste Wahl für Einsteiger
+          </h3>
           <p style={styles.cardText}>
-            Beliebter Neobroker mit günstigen ETF-Sparplänen und extrem einfacher
-            App. Ideal für Einsteiger.
+            Extrem einfache App, sehr günstige ETF-Sparpläne und ideal für alle,
+            die unkompliziert mit dem Vermögensaufbau starten möchten.
           </p>
-          <span style={styles.cta}>Zum Artikel →</span>
+          <span style={styles.cta}>Empfehlung ansehen →</span>
         </Link>
 
-        {/* Scalable Capital */}
+        {/* Scalable Capital – Alternative */}
         <Link href="/broker/scalable-capital" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>Scalable Capital</h3>
+          <h3 style={styles.cardTitle}>
+            🥈 Scalable Capital – Starke Alternative
+          </h3>
           <p style={styles.cardText}>
-            Großer ETF-Anbieter mit Flatrate-Modell, viel Auswahl und mehr
-            Funktionen für größere Depots.
+            Größere ETF-Auswahl, Flatrate-Modelle und mehr Funktionen – besonders
+            interessant für größere Depots und aktive Anleger.
           </p>
-          <span style={styles.cta}>Zum Artikel →</span>
-        </Link>
-
-        {/* Broker Vergleich */}
-        <Link href="/broker/vergleich" style={styles.card}>
-          <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>Broker Vergleich</h3>
-          <p style={styles.cardText}>
-            Direkter Vergleich der wichtigsten Broker nach Kosten, Angebot und
-            Sparplänen.
-          </p>
-          <span style={styles.cta}>Zum Vergleich →</span>
+          <span style={styles.cta}>Alternative ansehen →</span>
         </Link>
       </section>
     </main>
@@ -128,13 +111,6 @@ const styles = {
   p: {
     lineHeight: 1.7,
     marginBottom: "12px",
-  },
-  ul: {
-    paddingLeft: "18px",
-    lineHeight: 1.7,
-  },
-  li: {
-    marginBottom: "8px",
   },
   grid: {
     maxWidth: "1100px",

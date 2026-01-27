@@ -1,98 +1,102 @@
-import React, { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 
-const BROKERS = {
-  trade_republic: {
-    key: "trade_republic",
-    name: "Trade Republic",
-    orderFee: 1,
-    savingsPlanFee: 0,
-    description:
-      "Sehr einfache App, ideal für Einsteiger. ETF-Sparpläne kostenlos.",
-  },
-  scalable_free: {
-    key: "scalable_free",
-    name: "Scalable Capital Free",
-    orderFee: 0.99,
-    savingsPlanFee: 0,
-    description:
-      "Große ETF-Auswahl, günstige Orders, gut für langfristige Anleger.",
-  },
-  scalable_prime: {
-    key: "scalable_prime",
-    name: "Scalable Capital Prime",
-    orderFee: 0,
-    savingsPlanFee: 0,
-    description:
-      "Flatrate-Modell für aktive Anleger mit größerem Depot.",
-  },
-};
-
 export default function Kostenrechner() {
-  const [monthlyContribution, setMonthlyContribution] = useState(200);
-  const [years, setYears] = useState(20);
+  const [monthlyContribution, setMonthlyContribution] = useState(100);
+  const [years, setYears] = useState(10);
 
-  const results = useMemo(() => {
+  const brokers = useMemo(() => {
     const months = years * 12;
 
-    return Object.values(BROKERS).map((broker) => {
-      const savingsPlanCosts =
-        months * broker.savingsPlanFee;
-
-      const orderCosts =
-        months * broker.orderFee;
-
-      const totalCosts = savingsPlanCosts + orderCosts;
-
-      return {
-        ...broker,
-        totalCosts,
-      };
-    });
+    return [
+      {
+        key: "trade_republic",
+        name: "Trade Republic",
+        desc: "Sehr einfache App, ideal für Einsteiger. ETF-Sparpläne kostenlos.",
+        cost: 0,
+        highlight: true,
+      },
+      {
+        key: "scalable_free",
+        name: "Scalable Capital Free",
+        desc: "Große ETF-Auswahl, günstige Orders, gut für langfristige Anleger.",
+        cost: 0,
+      },
+      {
+        key: "scalable_prime",
+        name: "Scalable Capital Prime",
+        desc: "Flatrate-Modell für aktive Anleger mit größerem Depot.",
+        cost: 0,
+      },
+    ];
   }, [monthlyContribution, years]);
 
   return (
     <main style={styles.page}>
+      {/* Header */}
       <section style={styles.header}>
-        <Link href="/broker" style={styles.back}>
-          ← Zur Broker-Übersicht
+        <Link href="/" style={styles.back}>
+          ← Zur Startseite
         </Link>
 
-        <h1 style={styles.title}>Broker-Kosten-Rechner</h1>
+        <h1 style={styles.title}>
+          Welcher Broker kostet dich langfristig am wenigsten?
+        </h1>
+
         <p style={styles.subtitle}>
-          Vergleiche transparent, welcher Broker dich langfristig am wenigsten kostet.
+          Vergleiche transparent, welcher Broker sich für deinen ETF-Sparplan
+          wirklich lohnt.
         </p>
       </section>
 
-      <section style={styles.controls}>
-        <div style={styles.inputGroup}>
-          <label>Monatliche Sparrate (€)</label>
+      {/* Inputs */}
+      <section style={styles.inputs}>
+        <div style={styles.inputBox}>
+          <label style={styles.label}>Monatliche Sparrate (€)</label>
           <input
             type="number"
             value={monthlyContribution}
-            onChange={(e) => setMonthlyContribution(Number(e.target.value))}
+            onChange={(e) => {
+              const value = e.target.value.replace(/^0+(?!$)/, "");
+              setMonthlyContribution(value === "" ? 0 : Number(value));
+            }}
+            style={styles.input}
           />
         </div>
 
-        <div style={styles.inputGroup}>
-          <label>Anlagedauer (Jahre)</label>
+        <div style={styles.inputBox}>
+          <label style={styles.label}>Anlagedauer (Jahre)</label>
           <input
             type="number"
             value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
+            onChange={(e) => {
+              const value = e.target.value.replace(/^0+(?!$)/, "");
+              setYears(value === "" ? 0 : Number(value));
+            }}
+            style={styles.input}
           />
         </div>
       </section>
 
+      {/* Karten */}
       <section style={styles.grid}>
-        {results.map((broker) => (
-          <div key={broker.key} style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3>{broker.name}</h3>
-            <p style={styles.desc}>{broker.description}</p>
+        {brokers.map((broker) => (
+          <div
+            key={broker.key}
+            style={{
+              ...styles.card,
+              ...(broker.highlight ? styles.cardHighlight : {}),
+            }}
+          >
+            {broker.highlight && (
+              <div style={styles.badge}>Beste Wahl</div>
+            )}
+
+            <h3 style={styles.cardTitle}>{broker.name}</h3>
+            <p style={styles.cardText}>{broker.desc}</p>
+
             <p style={styles.cost}>
-              Gesamtkosten:{" "}
-              <strong>{broker.totalCosts.toFixed(2)} €</strong>
+              Gesamtkosten: <strong>{broker.cost.toFixed(2)} €</strong>
             </p>
           </div>
         ))}
@@ -121,56 +125,80 @@ const styles = {
     fontWeight: 600,
   },
   title: {
-    fontSize: "2.3rem",
-    marginBottom: "10px",
+    fontSize: "2.4rem",
+    marginBottom: "12px",
     color: "#ffffff",
   },
   subtitle: {
+    fontSize: "1.1rem",
     color: "#9ca3af",
   },
-  controls: {
-    maxWidth: "700px",
+  inputs: {
+    maxWidth: "900px",
     margin: "0 auto 40px",
-    display: "flex",
-    gap: "20px",
-    justifyContent: "center",
-    flexWrap: "wrap",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "24px",
   },
-  inputGroup: {
+  inputBox: {
     display: "flex",
     flexDirection: "column",
-    gap: "6px",
+  },
+  label: {
+    marginBottom: "6px",
+    fontSize: "0.9rem",
+    color: "#9ca3af",
+  },
+  input: {
+    padding: "14px",
+    fontSize: "1.1rem",
+    borderRadius: "10px",
+    border: "1px solid #1e293b",
+    background: "#020617",
+    color: "#e5e7eb",
   },
   grid: {
     maxWidth: "1100px",
     margin: "0 auto",
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "24px",
+    gap: "28px",
   },
   card: {
     position: "relative",
     background: "#020617",
     border: "1px solid #1e293b",
-    borderRadius: "16px",
-    padding: "24px",
+    borderRadius: "18px",
+    padding: "28px",
+    fontSize: "1.05rem",
   },
-  cardBar: {
+  cardHighlight: {
+    border: "1px solid #2dd4bf",
+    boxShadow: "0 0 0 1px rgba(45,212,191,0.25)",
+  },
+  badge: {
     position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    height: "4px",
+    top: "16px",
+    right: "16px",
     background: "#2dd4bf",
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "16px",
+    color: "#020617",
+    padding: "6px 10px",
+    borderRadius: "999px",
+    fontSize: "0.75rem",
+    fontWeight: 700,
   },
-  desc: {
+  cardTitle: {
+    fontSize: "1.3rem",
+    marginBottom: "8px",
+    color: "#ffffff",
+  },
+  cardText: {
     fontSize: "0.95rem",
-    color: "#cbd5f5",
-    marginBottom: "12px",
+    lineHeight: 1.6,
+    opacity: 0.9,
+    marginBottom: "14px",
   },
   cost: {
-    fontSize: "1.05rem",
+    fontSize: "1.1rem",
   },
 };

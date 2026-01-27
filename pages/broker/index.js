@@ -37,6 +37,19 @@ export default function BrokerIndex() {
 
       {/* Karten */}
       <section style={styles.grid}>
+        {/* Broker Kosten Rechner – Geldmaschine */}
+        <Link href="/broker/kostenrechner" style={styles.card}>
+          <div style={styles.cardBar} />
+          <h3 style={styles.cardTitle}>
+            🧮 Broker-Kosten-Rechner
+          </h3>
+          <p style={styles.cardText}>
+            Berechne in wenigen Sekunden, welcher Broker dich über Jahre wirklich
+            am wenigsten kostet – basierend auf deinem Spar- und Kaufverhalten.
+          </p>
+          <span style={styles.cta}>Kosten berechnen →</span>
+        </Link>
+
         {/* Trade Republic – Primär */}
         <Link href="/broker/trade-republic" style={styles.card}>
           <div style={styles.cardBar} />

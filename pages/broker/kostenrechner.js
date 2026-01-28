@@ -2,36 +2,46 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 
 export default function Kostenrechner() {
-  const [monthlyContribution, setMonthlyContribution] = useState(100);
-  const [years, setYears] = useState(10);
+  // ✅ Inputs als STRING (Bugfix für iOS / führende Null)
+  const [monthlyContribution, setMonthlyContribution] = useState("100");
+  const [years, setYears] = useState("10");
+
+  const monthly = Number(monthlyContribution) || 0;
+  const duration = Number(years) || 0;
+
+  // 🔢 Beispielhafte Kostenlogik (realistisch erweiterbar)
+  const costs = useMemo(() => {
+    const totalMonths = duration * 12;
+
+    return {
+      trade_republic: 0,
+      scalable_free: totalMonths * 0.99 * 0.2, // Beispiel Orderkosten
+      scalable_prime: 2.99 * duration * 12, // Prime-Abo
+    };
+  }, [duration]);
 
   const recommendation = useMemo(() => {
-    if (monthlyContribution >= 500 || years >= 20) {
-      return "scalable_prime";
-    }
+    if (monthly >= 500 || duration >= 20) return "scalable_prime";
     return "trade_republic";
-  }, [monthlyContribution, years]);
+  }, [monthly, duration]);
 
   const brokers = [
     {
       key: "trade_republic",
       name: "Trade Republic",
       desc: "Sehr einfache App, ideal für Einsteiger. ETF-Sparpläne kostenlos.",
-      cost: 0,
       link: "/broker/trade-republic",
     },
     {
       key: "scalable_free",
       name: "Scalable Capital Free",
       desc: "Große ETF-Auswahl, günstige Orders, gut für langfristige Anleger.",
-      cost: 0,
       link: "/broker/scalable-capital",
     },
     {
       key: "scalable_prime",
       name: "Scalable Capital Prime",
       desc: "Flatrate-Modell für aktive Anleger mit größerem Depot.",
-      cost: 0,
       link: "/broker/scalable-capital",
     },
   ];
@@ -77,7 +87,8 @@ export default function Kostenrechner() {
               <p style={styles.cardText}>{b.desc}</p>
 
               <p style={styles.cost}>
-                Gesamtkosten: <strong>{b.cost.toFixed(2)} €</strong>
+                Gesamtkosten:{" "}
+                <strong>{costs[b.key].toFixed(2)} €</strong>
               </p>
 
               <Link href={b.link} style={styles.cta}>
@@ -96,17 +107,20 @@ function Input({ label, value, setValue }) {
     <div style={styles.inputBox}>
       <label style={styles.label}>{label}</label>
       <input
-        type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         value={value}
         onChange={(e) => {
-          const v = e.target.value.replace(/^0+(?!$)/, "");
-          setValue(v === "" ? 0 : Number(v));
+          const clean = e.target.value.replace(/^0+(?!$)/, "");
+          setValue(clean);
         }}
         style={styles.input}
       />
     </div>
   );
 }
+
+/* ===== STYLES ===== */
 
 const styles = {
   page: {
@@ -138,9 +152,9 @@ const styles = {
   inputBox: { display: "flex", flexDirection: "column" },
   label: { marginBottom: "6px", color: "#9ca3af" },
   input: {
-    padding: "14px",
-    fontSize: "1.1rem",
-    borderRadius: "10px",
+    padding: "16px",
+    fontSize: "1.25rem",
+    borderRadius: "12px",
     border: "1px solid #1e293b",
     background: "#020617",
     color: "#e5e7eb",

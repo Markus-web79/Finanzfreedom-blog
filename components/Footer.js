@@ -14,6 +14,7 @@ export default function Footer() {
           <Link href="/kontakt">Kontakt</Link>
           <Link href="/datenschutz">Datenschutz</Link>
           <Link href="/impressum">Impressum</Link>
+          <Link href="/buecher">Buchempfehlungen</Link>
         </nav>
       </div>
     </footer>

@@ -14,54 +14,65 @@ Sie versprechen **keine schnellen Gewinne**, sondern helfen dabei, ein **stabile
 
 ---
 
-## 💡 Grundlagen & Einstieg
+## ✅ Unsere Liste (seriös & zeitlos)
 
-### **[Der reichste Mann von Babylon](chatgpt://generic-entity?number=0)**
-Ein zeitloser Klassiker, der finanzielle Grundprinzipien in einfachen Geschichten erklärt.  
-Ideal für alle, die ohne Vorwissen ein gesundes Verhältnis zu Geld entwickeln wollen.
+### 1) Der reichste Mann von Babylon – George S. Clason
+Ein zeitloser Klassiker über Geldgesetze, Sparen und Investieren.  
+Einfach geschrieben, aber extrem wirkungsvoll – ideal für Einsteiger.
 
-👉 Empfehlung ansehen *(Affiliate-Link folgt)*
-
----
-
-## 🧠 Mindset & finanzielle Denkweise
-
-### **[Rich Dad Poor Dad](chatgpt://generic-entity?number=1)**
-Dieses Buch stellt grundlegende Fragen zum Thema Arbeit, Einkommen und Vermögensaufbau.  
-Nicht jede Aussage ist unumstritten – aber es regt stark dazu an, Geld neu zu denken.
-
-👉 Empfehlung ansehen *(Affiliate-Link folgt)*
+**Geeignet für:** Anfänger · junge Menschen · Eltern & Kinder
 
 ---
 
-### **[Die Psychologie des Geldes](chatgpt://generic-entity?number=2)**
-Warum handeln Menschen finanziell oft irrational, obwohl sie es besser wissen?  
-Dieses Buch erklärt, warum Verhalten wichtiger ist als perfekte Strategien.
+### 2) Rich Dad Poor Dad – Robert Kiyosaki
+Verändert die Sicht auf Arbeit, Einkommen und Vermögen.  
+Zeigt den Unterschied zwischen **für Geld arbeiten** und **Geld für sich arbeiten lassen**.
 
-👉 Empfehlung ansehen *(Affiliate-Link folgt)*
-
----
-
-## 📈 Investieren & langfristiger Vermögensaufbau
-
-### **[Souverän investieren mit Indexfonds](chatgpt://generic-entity?number=3)**
-Ein sachliches Standardwerk zum langfristigen Investieren mit ETFs.  
-Faktenbasiert, nüchtern und ohne Verkaufsversprechen – besonders geeignet für langfristige Anleger.
-
-👉 Empfehlung ansehen *(Affiliate-Link folgt)*
+**Geeignet für:** Mindset · Angestellte & Selbstständige · „Mehr-wollen“-Typen
 
 ---
 
-### **[The Millionaire Next Door](chatgpt://generic-entity?number=4)**
-Dieses Buch zeigt, wie Vermögen in der Realität entsteht – oft leise, diszipliniert und unspektakulär.  
-Ein guter Gegenpol zu unrealistischen Erfolgsversprechen.
+### 3) Souverän investieren mit Indexfonds und ETFs – Gerd Kommer
+Sachlich, datenbasiert und ohne Verkaufsversprechen.  
+Das Standardwerk für langfristiges Investieren mit ETFs.
 
-👉 Empfehlung ansehen *(Affiliate-Link folgt)*
+**Geeignet für:** ETF-Investoren · langfristiger Vermögensaufbau · rationale Entscheider
+
+---
+
+### 4) Psychologie des Geldes – Morgan Housel
+Warum machen Menschen immer wieder dieselben Geldfehler?  
+Weil Geld **mehr Verhalten als Mathematik** ist – genau darum geht’s hier.
+
+**Geeignet für:** alle Altersgruppen · bessere Entscheidungen · langfristiges Denken
+
+---
+
+### 5) Denke nach und werde reich – Napoleon Hill
+Ein Klassiker über Ziele, Disziplin und Konsequenz.  
+Kein Technik-Buch, sondern ein Buch über **Haltung und Umsetzung**.
+
+**Geeignet für:** Motivation · Zielklarheit · Durchhaltevermögen
+
+---
+
+### 6) Das einzige Buch, das du über Finanzen lesen solltest – Thomas Kehl
+Moderner Einstieg in Sparen, Investieren und finanzielle Freiheit.  
+Praxisnah, verständlich und auf heutige Zeit zugeschnitten.
+
+**Geeignet für:** Einsteiger · junge Erwachsene · deutschsprachiger Markt
+
+---
+
+### 7) Atomic Habits – James Clear
+Kein klassisches Finanzbuch – aber extrem relevant.  
+Vermögen entsteht oft durch **kleine, konsequente Gewohnheiten**.
+
+**Geeignet für:** Routinen · Disziplin · langfristige Ziele
 
 ---
 
 ## 🎯 Warum wir Bücher empfehlen
-
 Bücher sind kein Ersatz für eigene Entscheidungen –  
 aber sie helfen, **Fehler zu vermeiden**, Zusammenhänge zu verstehen und langfristig bessere Entscheidungen zu treffen.
 
@@ -69,7 +80,6 @@ Gerade am Anfang ist Wissen oft wertvoller als jede konkrete Anlageentscheidung.
 
 ---
 
-> **Hinweis:**  
-> Die mit * gekennzeichneten Links sind Affiliate-Links.  
-> Für dich entstehen dadurch **keine Mehrkosten**.  
-> Empfehlungen erfolgen unabhängig und nach inhaltlicher Überzeugung.
+> **Hinweis (Transparenz):**  
+> Sobald wir Affiliate-Links einsetzen, werden wir das klar kennzeichnen.  
+> Für dich entstehen dadurch **keine Mehrkosten**.

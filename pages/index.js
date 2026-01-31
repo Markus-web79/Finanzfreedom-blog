@@ -63,7 +63,7 @@ export default function Home() {
   Das unabhängige Finanzportal für Vermögensaufbau, Investieren und finanzielle Klarheit.
 </p>
      <div style={{ marginTop: "2rem" }}>
-  <Link href="/start">
++ <Link href="/wissen/start">
     <a
       style={{
         display: "inline-block",

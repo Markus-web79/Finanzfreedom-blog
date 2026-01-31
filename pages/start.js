@@ -28,7 +28,7 @@ export default function Start() {
           marginBottom: "3rem",
         }}
       >
-        Finanzielle Freiheit ist kein Glück und kein Geheimwissen.  
+        Finanzielle Freiheit ist kein Glück und kein Geheimwissen.
         Sie entsteht durch Struktur, Verständnis und konsequente Entscheidungen.
       </p>
 
@@ -39,9 +39,10 @@ export default function Start() {
         </h2>
         <p style={{ opacity: 0.9, marginBottom: "1rem" }}>
           Bevor du investierst oder sparst, musst du die Grundlagen verstehen:
-          Geldflüsse, Inflation, Risiko und Zeit.
+          Geldflüsse, Inflation, Risiko und Zeit. Wer diese Zusammenhänge nicht kennt,
+          trifft Entscheidungen im Blindflug.
         </p>
-        <Link href="/wissen" style={buttonStyle}>
+        <Link href="/wissen/start" style={buttonStyle}>
           Grundlagen lernen
         </Link>
       </section>
@@ -53,7 +54,8 @@ export default function Start() {
         </h2>
         <p style={{ opacity: 0.9, marginBottom: "1rem" }}>
           Langfristiger Vermögensaufbau funktioniert mit Strategie,
-          nicht mit Bauchgefühl oder Trends.
+          nicht mit Bauchgefühl oder Trends. Ziel ist Stabilität,
+          nicht der schnelle Kick.
         </p>
         <Link href="/investieren" style={buttonStyle}>
           Investieren verstehen
@@ -67,7 +69,8 @@ export default function Start() {
         </h2>
         <p style={{ opacity: 0.9, marginBottom: "1rem" }}>
           Freiheit entsteht durch Konsequenz – nicht durch Perfektion.
-          Kleine Schritte, sauber umgesetzt.
+          Kleine Schritte, sauber umgesetzt, bringen dich weiter
+          als große Pläne ohne Umsetzung.
         </p>
         <Link href="/etfs" style={buttonStyle}>
           ETF-Grundlagen ansehen

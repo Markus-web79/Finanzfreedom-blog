@@ -62,7 +62,26 @@ export default function Home() {
 >
   Das unabhängige Finanzportal für Vermögensaufbau, Investieren und finanzielle Klarheit.
 </p>
-        </div>
+     <div style={{ marginTop: "2rem" }}>
+  <Link href="/start">
+    <a
+      style={{
+        display: "inline-block",
+        background: "#ffffff",
+        color: "#0f172a",
+        padding: "0.9rem 1.6rem",
+        borderRadius: "10px",
+        fontWeight: "700",
+        fontSize: "1rem",
+        textDecoration: "none",
+        boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+      }}
+    >
+      Jetzt starten →
+    </a>
+  </Link>
+</div>
+    </div>
       </section>
 
       {/* KARTEN */}

@@ -25,27 +25,42 @@ export default function Home() {
             textAlign: "center",
           }}
         >
-        <h1
+  <h1
   style={{
     color: "#ffffff",
     fontSize: "clamp(2rem, 5vw, 2.8rem)",
+    fontWeight: "800",
+    marginBottom: "0.75rem",
+    letterSpacing: "0.2px",
+  }}
+>
+  FinanzFreedom
+</h1>
+
+<h2
+  style={{
+    color: "#ffffff",
+    fontSize: "clamp(1.35rem, 3.2vw, 2rem)",
     fontWeight: "700",
-    marginBottom: "1rem",
+    lineHeight: "1.25",
+    margin: "0 0 1rem 0",
+    opacity: 0.95,
   }}
 >
   Finanzielle Freiheit ist kein Moment.
   <br />
   Sie ist das Ergebnis guter Entscheidungen.
-</h1>
+</h2>
 
 <p
   style={{
     color: "#ffffff",
     fontSize: "1.1rem",
+    opacity: 0.9,
+    margin: 0,
   }}
 >
-  Das unabhängige Finanzportal für Vermögensaufbau,
-  Investieren und finanzielle Klarheit.
+  Das unabhängige Finanzportal für Vermögensaufbau, Investieren und finanzielle Klarheit.
 </p>
         </div>
       </section>

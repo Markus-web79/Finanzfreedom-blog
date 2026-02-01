@@ -14,66 +14,87 @@ export default function BrokerIndex() {
         </h1>
 
         <p style={styles.subtitle}>
-          Unser ehrlicher Vergleich zeigt dir klar, welcher Broker für ETF-Einsteiger
-          die beste Wahl ist – und wann sich eine Alternative lohnt.
+          Ein ehrlicher, unabhängiger Vergleich für Einsteiger und langfristige
+          Anleger – ohne Verkaufsdruck, ohne Schönfärberei.
         </p>
       </section>
 
       {/* Klare Empfehlung */}
       <section style={styles.section}>
-        <h2 style={styles.h2}>Unsere klare Empfehlung</h2>
+        <h2 style={styles.h2}>Unsere Einschätzung</h2>
 
         <p style={styles.p}>
-          Für die meisten Anleger, die einfach und günstig mit einem ETF-Sparplan
-          starten möchten, ist <strong>Trade Republic</strong> aktuell die beste Wahl.
+          Für viele Einsteiger, die regelmäßig per Sparplan investieren möchten,
+          ist <strong>Trade Republic</strong> eine sehr einfache und kostengünstige
+          Lösung.
         </p>
 
         <p style={styles.p}>
-          Wenn du dagegen ein größeres Depot planst, mehr ETF-Auswahl möchtest
-          oder häufiger investierst, kann <strong>Scalable Capital</strong> die bessere
-          Alternative sein.
+          Wer ein größeres Depot plant, mehr ETF-Auswahl möchte oder später
+          flexibler investieren will, fährt mit <strong>Scalable Capital</strong>
+          häufig besser.
+        </p>
+      </section>
+
+      {/* Entscheidungshilfe */}
+      <section style={styles.section}>
+        <h2 style={styles.h2}>Welcher Broker passt zu dir?</h2>
+
+        <ul style={styles.list}>
+          <li>
+            <strong>Trade Republic:</strong> Wenn du einfach starten willst,
+            per Sparplan investierst und eine sehr schlanke App suchst.
+          </li>
+          <li>
+            <strong>Scalable Capital:</strong> Wenn du größere Beträge anlegst,
+            mehr ETFs vergleichen willst oder langfristig mehr Flexibilität
+            brauchst.
+          </li>
+        </ul>
+
+        <p style={styles.note}>
+          Tipp: Nutze den Kostenrechner weiter unten, um ein Gefühl dafür zu
+          bekommen, wie sich Gebühren über Jahre auswirken können.
         </p>
       </section>
 
       {/* Karten */}
       <section style={styles.grid}>
-        {/* Broker Kosten Rechner – Geldmaschine */}
+        {/* Kostenrechner */}
         <Link href="/broker/kostenrechner" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>
-            🧮 Broker-Kosten-Rechner
-          </h3>
+          <h3 style={styles.cardTitle}>🧮 Broker-Kosten-Rechner</h3>
           <p style={styles.cardText}>
-            Berechne in wenigen Sekunden, welcher Broker dich über Jahre wirklich
-            am wenigsten kostet – basierend auf deinem Spar- und Kaufverhalten.
+            Simuliere Sparpläne und Einmalinvestments und sieh, wie sich Kosten
+            langfristig auf dein Vermögen auswirken können.
           </p>
-          <span style={styles.cta}>Kosten berechnen →</span>
+          <span style={styles.cta}>Zum Kostenrechner →</span>
         </Link>
 
-        {/* Trade Republic – Primär */}
+        {/* Trade Republic */}
         <Link href="/broker/trade-republic" style={styles.card}>
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>
-            🥇 Trade Republic – Beste Wahl für Einsteiger
+            🥇 Trade Republic – Einfacher Einstieg
           </h3>
           <p style={styles.cardText}>
-            Extrem einfache App, sehr günstige ETF-Sparpläne und ideal für alle,
-            die unkompliziert mit dem Vermögensaufbau starten möchten.
+            Keine Depotgebühr, ETF-Sparpläne häufig ohne Ausführungsgebühr.
+            Handelskosten können je nach Produkt anfallen.
           </p>
-          <span style={styles.cta}>Empfehlung ansehen →</span>
+          <span style={styles.cta}>Details ansehen →</span>
         </Link>
 
-        {/* Scalable Capital – Alternative */}
+        {/* Scalable Capital */}
         <Link href="/broker/scalable-capital" style={styles.card}>
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>
-            🥈 Scalable Capital – Starke Alternative
+            🥈 Scalable Capital – Mehr Möglichkeiten
           </h3>
           <p style={styles.cardText}>
-            Größere ETF-Auswahl, Flatrate-Modelle und mehr Funktionen – besonders
-            interessant für größere Depots und aktive Anleger.
+            Große ETF-Auswahl, optionale Flatrate-Modelle und mehr Funktionen
+            für wachsende Depots.
           </p>
-          <span style={styles.cta}>Alternative ansehen →</span>
+          <span style={styles.cta}>Details ansehen →</span>
         </Link>
       </section>
     </main>
@@ -105,8 +126,9 @@ const styles = {
     color: "#ffffff",
   },
   subtitle: {
-    fontSize: "1.1rem",
+    fontSize: "1.05rem",
     color: "#9ca3af",
+    lineHeight: 1.6,
   },
   section: {
     maxWidth: "900px",
@@ -125,6 +147,15 @@ const styles = {
     lineHeight: 1.7,
     marginBottom: "12px",
   },
+  list: {
+    paddingLeft: "18px",
+    lineHeight: 1.8,
+    marginBottom: "12px",
+  },
+  note: {
+    fontSize: "0.9rem",
+    opacity: 0.8,
+  },
   grid: {
     maxWidth: "1100px",
     margin: "0 auto",
@@ -140,7 +171,6 @@ const styles = {
     padding: "26px",
     textDecoration: "none",
     color: "#e5e7eb",
-    transition: "all 0.25s ease",
   },
   cardBar: {
     position: "absolute",

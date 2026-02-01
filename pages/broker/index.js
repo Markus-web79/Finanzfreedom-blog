@@ -14,87 +14,95 @@ export default function BrokerIndex() {
         </h1>
 
         <p style={styles.subtitle}>
-          Ein ehrlicher, unabhängiger Vergleich für Einsteiger und langfristige
-          Anleger – ohne Verkaufsdruck, ohne Schönfärberei.
+          Unser ehrlicher Vergleich zeigt dir klar, welcher Broker für ETF-Einsteiger
+          die beste Wahl ist – und wann sich eine Alternative lohnt.
         </p>
       </section>
 
       {/* Klare Empfehlung */}
       <section style={styles.section}>
-        <h2 style={styles.h2}>Unsere Einschätzung</h2>
+        <h2 style={styles.h2}>Unsere klare Empfehlung</h2>
 
         <p style={styles.p}>
-          Für viele Einsteiger, die regelmäßig per Sparplan investieren möchten,
-          ist <strong>Trade Republic</strong> eine sehr einfache und kostengünstige
-          Lösung.
+          Für die meisten Anleger, die einfach und günstig mit einem ETF-Sparplan
+          starten möchten, ist <strong>Trade Republic</strong> aktuell die beste Wahl.
         </p>
 
         <p style={styles.p}>
-          Wer ein größeres Depot plant, mehr ETF-Auswahl möchte oder später
-          flexibler investieren will, fährt mit <strong>Scalable Capital</strong>
-          häufig besser.
+          Wenn du dagegen ein größeres Depot planst, mehr ETF-Auswahl möchtest
+          oder häufiger investierst, kann <strong>Scalable Capital</strong> die bessere
+          Alternative sein.
         </p>
       </section>
 
-      {/* Entscheidungshilfe */}
-      <section style={styles.section}>
-        <h2 style={styles.h2}>Welcher Broker passt zu dir?</h2>
+      {/* Vergleichstabelle */}
+      <section style={styles.compare}>
+        <h2 style={styles.h2}>Direkter Broker-Vergleich</h2>
 
-        <ul style={styles.list}>
-          <li>
-            <strong>Trade Republic:</strong> Wenn du einfach starten willst,
-            per Sparplan investierst und eine sehr schlanke App suchst.
-          </li>
-          <li>
-            <strong>Scalable Capital:</strong> Wenn du größere Beträge anlegst,
-            mehr ETFs vergleichen willst oder langfristig mehr Flexibilität
-            brauchst.
-          </li>
-        </ul>
+        <div style={styles.tableWrap}>
+          <table style={styles.table}>
+            <thead>
+              <tr>
+                <th>Broker</th>
+                <th>ETF-Sparpläne</th>
+                <th>Orderkosten</th>
+                <th>ETF-Auswahl</th>
+                <th>Geeignet für</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Trade Republic</strong></td>
+                <td>kostenlos</td>
+                <td>1 € pro Trade</td>
+                <td>2.000+</td>
+                <td>Einsteiger</td>
+              </tr>
+              <tr>
+                <td><strong>Scalable Capital</strong></td>
+                <td>kostenlos</td>
+                <td>0 € / Flat-Modell</td>
+                <td>2.500+</td>
+                <td>Größere Depots</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <p style={styles.note}>
-          Tipp: Nutze den Kostenrechner weiter unten, um ein Gefühl dafür zu
-          bekommen, wie sich Gebühren über Jahre auswirken können.
+          Hinweis: Dieser Vergleich stellt keine Anlageberatung dar. Konditionen können
+          sich ändern.
         </p>
       </section>
 
       {/* Karten */}
       <section style={styles.grid}>
-        {/* Kostenrechner */}
         <Link href="/broker/kostenrechner" style={styles.card}>
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>🧮 Broker-Kosten-Rechner</h3>
           <p style={styles.cardText}>
-            Simuliere Sparpläne und Einmalinvestments und sieh, wie sich Kosten
-            langfristig auf dein Vermögen auswirken können.
+            Berechne, welcher Broker dich langfristig am wenigsten kostet – basierend
+            auf deinem Spar- und Kaufverhalten.
           </p>
-          <span style={styles.cta}>Zum Kostenrechner →</span>
+          <span style={styles.cta}>Kosten berechnen →</span>
         </Link>
 
-        {/* Trade Republic */}
         <Link href="/broker/trade-republic" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>
-            🥇 Trade Republic – Einfacher Einstieg
-          </h3>
+          <h3 style={styles.cardTitle}>🥇 Trade Republic</h3>
           <p style={styles.cardText}>
-            Keine Depotgebühr, ETF-Sparpläne häufig ohne Ausführungsgebühr.
-            Handelskosten können je nach Produkt anfallen.
+            Extrem einfache App, sehr günstige Sparpläne und ideal für Einsteiger.
           </p>
-          <span style={styles.cta}>Details ansehen →</span>
+          <span style={styles.cta}>Zur Bewertung →</span>
         </Link>
 
-        {/* Scalable Capital */}
         <Link href="/broker/scalable-capital" style={styles.card}>
           <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>
-            🥈 Scalable Capital – Mehr Möglichkeiten
-          </h3>
+          <h3 style={styles.cardTitle}>🥈 Scalable Capital</h3>
           <p style={styles.cardText}>
-            Große ETF-Auswahl, optionale Flatrate-Modelle und mehr Funktionen
-            für wachsende Depots.
+            Große ETF-Auswahl, Flatrate-Modelle und mehr Funktionen.
           </p>
-          <span style={styles.cta}>Details ansehen →</span>
+          <span style={styles.cta}>Zur Bewertung →</span>
         </Link>
       </section>
     </main>
@@ -126,9 +134,8 @@ const styles = {
     color: "#ffffff",
   },
   subtitle: {
-    fontSize: "1.05rem",
+    fontSize: "1.1rem",
     color: "#9ca3af",
-    lineHeight: 1.6,
   },
   section: {
     maxWidth: "900px",
@@ -147,14 +154,23 @@ const styles = {
     lineHeight: 1.7,
     marginBottom: "12px",
   },
-  list: {
-    paddingLeft: "18px",
-    lineHeight: 1.8,
-    marginBottom: "12px",
+  compare: {
+    maxWidth: "1000px",
+    margin: "0 auto 50px",
+  },
+  tableWrap: {
+    overflowX: "auto",
+  },
+  table: {
+    width: "100%",
+    borderCollapse: "collapse",
+    background: "#020617",
+    border: "1px solid #1e293b",
   },
   note: {
-    fontSize: "0.9rem",
-    opacity: 0.8,
+    marginTop: "10px",
+    fontSize: "0.85rem",
+    color: "#9ca3af",
   },
   grid: {
     maxWidth: "1100px",
@@ -179,8 +195,6 @@ const styles = {
     right: 0,
     height: "4px",
     background: "#2dd4bf",
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "16px",
   },
   cardTitle: {
     fontSize: "1.25rem",
@@ -190,7 +204,6 @@ const styles = {
   cardText: {
     fontSize: "0.95rem",
     lineHeight: 1.6,
-    opacity: 0.9,
   },
   cta: {
     display: "inline-block",

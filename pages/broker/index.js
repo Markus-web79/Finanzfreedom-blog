@@ -29,80 +29,57 @@ export default function BrokerIndex() {
         </p>
 
         <p style={styles.p}>
-          Wenn du dagegen ein größeres Depot planst, mehr ETF-Auswahl möchtest
-          oder häufiger investierst, kann <strong>Scalable Capital</strong> die bessere
+          Wenn du ein größeres Depot planst, mehr ETF-Auswahl möchtest oder
+          häufiger investierst, kann <strong>Scalable Capital</strong> die bessere
           Alternative sein.
         </p>
       </section>
 
-      {/* Vergleichstabelle */}
+      {/* Broker-Vergleich (Karten statt Tabelle) */}
       <section style={styles.compare}>
         <h2 style={styles.h2}>Direkter Broker-Vergleich</h2>
 
-        <div style={styles.tableWrap}>
-          <table style={styles.table}>
-            <thead>
-              <tr>
-                <th>Broker</th>
-                <th>ETF-Sparpläne</th>
-                <th>Orderkosten</th>
-                <th>ETF-Auswahl</th>
-                <th>Geeignet für</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Trade Republic</strong></td>
-                <td>kostenlos</td>
-                <td>1 € pro Trade</td>
-                <td>2.000+</td>
-                <td>Einsteiger</td>
-              </tr>
-              <tr>
-                <td><strong>Scalable Capital</strong></td>
-                <td>kostenlos</td>
-                <td>0 € / Flat-Modell</td>
-                <td>2.500+</td>
-                <td>Größere Depots</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div style={styles.compareGrid}>
+          {/* Trade Republic */}
+          <div style={styles.compareCard}>
+            <h3 style={styles.compareTitle}>🥇 Trade Republic</h3>
+            <ul style={styles.compareList}>
+              <li>ETF-Sparpläne: kostenlos</li>
+              <li>Orderkosten: 1 € pro Trade</li>
+              <li>ETF-Auswahl: 2.000+</li>
+              <li>Geeignet für: Einsteiger</li>
+            </ul>
+            <Link href="/broker/trade-republic" style={styles.compareCta}>
+              Zur Bewertung →
+            </Link>
+          </div>
 
-        <p style={styles.note}>
-          Hinweis: Dieser Vergleich stellt keine Anlageberatung dar. Konditionen können
-          sich ändern.
-        </p>
+          {/* Scalable Capital */}
+          <div style={styles.compareCard}>
+            <h3 style={styles.compareTitle}>🥈 Scalable Capital</h3>
+            <ul style={styles.compareList}>
+              <li>ETF-Sparpläne: kostenlos</li>
+              <li>Orderkosten: 0 € / Flatrate</li>
+              <li>ETF-Auswahl: 2.500+</li>
+              <li>Geeignet für: größere Depots</li>
+            </ul>
+            <Link href="/broker/scalable-capital" style={styles.compareCta}>
+              Zur Bewertung →
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* Karten */}
+      {/* Weiterführende Tools */}
       <section style={styles.grid}>
         <Link href="/broker/kostenrechner" style={styles.card}>
           <div style={styles.cardBar} />
           <h3 style={styles.cardTitle}>🧮 Broker-Kosten-Rechner</h3>
           <p style={styles.cardText}>
-            Berechne, welcher Broker dich langfristig am wenigsten kostet – basierend
-            auf deinem Spar- und Kaufverhalten.
+            Berechne, welcher Broker dich langfristig am wenigsten kostet –
+            basierend auf deinem Spar- und Kaufverhalten.
           </p>
           <span style={styles.cta}>Kosten berechnen →</span>
-        </Link>
-
-        <Link href="/broker/trade-republic" style={styles.card}>
-          <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>🥇 Trade Republic</h3>
-          <p style={styles.cardText}>
-            Extrem einfache App, sehr günstige Sparpläne und ideal für Einsteiger.
-          </p>
-          <span style={styles.cta}>Zur Bewertung →</span>
-        </Link>
-
-        <Link href="/broker/scalable-capital" style={styles.card}>
-          <div style={styles.cardBar} />
-          <h3 style={styles.cardTitle}>🥈 Scalable Capital</h3>
-          <p style={styles.cardText}>
-            Große ETF-Auswahl, Flatrate-Modelle und mehr Funktionen.
-          </p>
-          <span style={styles.cta}>Zur Bewertung →</span>
         </Link>
       </section>
     </main>
@@ -116,11 +93,13 @@ const styles = {
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
+
   header: {
     maxWidth: "900px",
     margin: "0 auto 40px",
     textAlign: "center",
   },
+
   back: {
     display: "inline-block",
     marginBottom: "16px",
@@ -128,15 +107,18 @@ const styles = {
     textDecoration: "none",
     fontWeight: 600,
   },
+
   title: {
     fontSize: "2.4rem",
     marginBottom: "12px",
     color: "#ffffff",
   },
+
   subtitle: {
     fontSize: "1.1rem",
     color: "#9ca3af",
   },
+
   section: {
     maxWidth: "900px",
     margin: "0 auto 40px",
@@ -145,33 +127,55 @@ const styles = {
     borderRadius: "18px",
     padding: "26px",
   },
+
   h2: {
     fontSize: "1.5rem",
     marginBottom: "14px",
     color: "#ffffff",
   },
+
   p: {
     lineHeight: 1.7,
     marginBottom: "12px",
   },
+
   compare: {
-    maxWidth: "1000px",
-    margin: "0 auto 50px",
+    maxWidth: "1100px",
+    margin: "0 auto 60px",
   },
-  tableWrap: {
-    overflowX: "auto",
+
+  compareGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "28px",
   },
-  table: {
-    width: "100%",
-    borderCollapse: "collapse",
+
+  compareCard: {
     background: "#020617",
     border: "1px solid #1e293b",
+    borderRadius: "18px",
+    padding: "26px",
   },
-  note: {
-    marginTop: "10px",
-    fontSize: "0.85rem",
-    color: "#9ca3af",
+
+  compareTitle: {
+    fontSize: "1.3rem",
+    marginBottom: "12px",
+    color: "#ffffff",
   },
+
+  compareList: {
+    lineHeight: 1.8,
+    marginBottom: "16px",
+    paddingLeft: "16px",
+  },
+
+  compareCta: {
+    display: "inline-block",
+    color: "#2dd4bf",
+    fontWeight: 600,
+    textDecoration: "none",
+  },
+
   grid: {
     maxWidth: "1100px",
     margin: "0 auto",
@@ -179,6 +183,7 @@ const styles = {
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
     gap: "28px",
   },
+
   card: {
     position: "relative",
     background: "#020617",
@@ -188,6 +193,7 @@ const styles = {
     textDecoration: "none",
     color: "#e5e7eb",
   },
+
   cardBar: {
     position: "absolute",
     top: 0,
@@ -195,16 +201,22 @@ const styles = {
     right: 0,
     height: "4px",
     background: "#2dd4bf",
+    borderTopLeftRadius: "16px",
+    borderTopRightRadius: "16px",
   },
+
   cardTitle: {
     fontSize: "1.25rem",
     marginBottom: "8px",
     color: "#ffffff",
   },
+
   cardText: {
     fontSize: "0.95rem",
     lineHeight: 1.6,
+    opacity: 0.9,
   },
+
   cta: {
     display: "inline-block",
     marginTop: "14px",

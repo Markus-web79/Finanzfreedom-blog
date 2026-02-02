@@ -1,114 +1,122 @@
 ---
-title: Berufsunfähigkeitsversicherung
-description: Warum eine Berufsunfähigkeitsversicherung so wichtig ist, für wen sie sinnvoll ist und worauf du beim Abschluss unbedingt achten musst.
-intro: Die Berufsunfähigkeitsversicherung schützt dein Einkommen, wenn du deinen Beruf aus gesundheitlichen Gründen nicht mehr ausüben kannst. Für viele Menschen ist sie existenziell.
+title: Berufsunfähigkeitsversicherung – sinnvoll absichern
+description: Warum die Berufsunfähigkeitsversicherung so wichtig ist, für wen sie sinnvoll ist und worauf du beim Abschluss wirklich achten solltest.
+intro: Die Berufsunfähigkeitsversicherung gehört zu den wichtigsten Absicherungen überhaupt. Sie schützt dein Einkommen, wenn du aus gesundheitlichen Gründen dauerhaft nicht mehr arbeiten kannst.
 ---
 
-## Was ist eine Berufsunfähigkeitsversicherung?
+## Warum ist eine Berufsunfähigkeitsversicherung so wichtig?
 
-Die Berufsunfähigkeitsversicherung (BU) zahlt dir eine **monatliche Rente**, wenn du deinen zuletzt ausgeübten Beruf **zu mindestens 50 % dauerhaft nicht mehr ausüben kannst**.
+Dein Einkommen ist dein größtes Vermögen.  
+Wenn du krank wirst oder einen Unfall hast und deinen Beruf nicht mehr ausüben kannst, fällt dieses Einkommen oft **komplett weg**.
 
-Wichtig:  
-Es geht **nicht** darum, ob du gar nicht mehr arbeiten kannst – sondern ob du **deinen Beruf** nicht mehr ausüben kannst.
+Der Staat hilft nur sehr eingeschränkt:
+- Die gesetzliche Erwerbsminderungsrente reicht meist **nicht zum Leben**
+- Sie greift oft **erst sehr spät**
+- Viele Betroffene erhalten **gar nichts**
 
----
-
-## Warum ist eine BU so wichtig?
-
-Die meisten unterschätzen das Risiko massiv.
-
-Fakten:
-- Jeder **vierte Erwerbstätige** wird im Laufe seines Lebens berufsunfähig
-- Häufigste Ursachen:
-  - psychische Erkrankungen (Burnout, Depression)
-  - Rücken- & Gelenkprobleme
-  - chronische Krankheiten
-- Staatliche Hilfe reicht **nicht** aus
-
-👉 Ohne BU droht schnell der finanzielle Absturz.
+👉 Eine Berufsunfähigkeitsversicherung schließt genau diese Lücke.
 
 ---
 
-## Was zahlt der Staat im Ernstfall?
+## Was bedeutet „berufsunfähig“?
 
-Die gesetzliche Erwerbsminderungsrente:
-- greift **nur**, wenn du fast gar nicht mehr arbeiten kannst
-- liegt oft bei **unter 1.000 € pro Monat**
-- reicht in den meisten Fällen **nicht zum Leben**
+Du giltst als berufsunfähig, wenn du:
+- deinen **zuletzt ausgeübten Beruf**
+- **zu mindestens 50 %**
+- **voraussichtlich dauerhaft**
+nicht mehr ausüben kannst.
 
-👉 Eine BU schließt genau diese Lücke.
+Wichtig:
+- Es zählt **dein konkreter Beruf**, nicht irgendeine andere Tätigkeit
+- Gute Tarife verzichten auf eine abstrakte Verweisung
 
 ---
 
-## Für wen ist eine BU sinnvoll?
+## Für wen ist eine BU besonders wichtig?
 
-Eine BU ist besonders wichtig für:
+Kurz gesagt: **für fast jeden, der von seiner Arbeitskraft lebt**.
 
+Besonders relevant ist die BU für:
 - Angestellte
-- Selbstständige & Freiberufler
+- Selbstständige
+- Azubis & Studenten
 - Akademiker
-- Menschen ohne großes Vermögen
-- Personen, die von ihrem Einkommen leben müssen (also fast alle)
+- Handwerker & körperlich Tätige
 
-👉 Je früher du abschließt, desto günstiger und besser sind die Bedingungen.
+Je früher du abschließt, desto:
+- günstiger der Beitrag
+- besser die Gesundheitsprüfung
+- stabiler der Schutz
 
 ---
 
-## Worauf solltest du beim Abschluss achten?
+## Was leistet eine gute BU?
 
-### ✔ Definition der Berufsunfähigkeit
-- **Mindestens 50 % Berufsunfähigkeit**
-- Verzicht auf abstrakte Verweisung (sehr wichtig!)
+Eine leistungsstarke Berufsunfähigkeitsversicherung bietet:
 
-### ✔ Höhe der BU-Rente
-- Faustregel: **60–80 % deines Nettoeinkommens**
+- **Monatliche BU-Rente**
+  - z. B. 1.000 € – 2.000 €
+- **Leistung ab 50 % Berufsunfähigkeit**
+- **Zahlung bis zum vereinbarten Endalter**
+  - idealerweise bis 67
+- **Nachversicherungsgarantien**
+  - bei Gehaltserhöhungen, Heirat, Kindern
+- **Verzicht auf abstrakte Verweisung**
+- **Stabile Bedingungen**, auch im Leistungsfall
 
-### ✔ Gesundheitsfragen
-- Ehrlich und vollständig beantworten
-- Fehler können später den Versicherungsschutz zerstören
+---
 
-### ✔ Dynamik & Nachversicherung
-- Erhöhung ohne erneute Gesundheitsprüfung
-- Sehr wichtig bei Gehaltssprüngen
+## Typische Fehler beim Abschluss
 
-### ✔ Vertragslaufzeit
-- Bis mindestens **67 Jahre**
+Viele BU-Verträge scheitern nicht am Preis, sondern an falschen Entscheidungen:
+
+- ❌ Zu niedrige BU-Rente
+- ❌ Zu kurze Laufzeit
+- ❌ Billigtarife mit schwachen Bedingungen
+- ❌ Falsche oder unvollständige Gesundheitsangaben
+- ❌ Abschluss erst, wenn bereits Vorerkrankungen bestehen
+
+👉 Eine gute BU ist kein Produkt für Schnellentscheidungen.
 
 ---
 
 ## Was kostet eine Berufsunfähigkeitsversicherung?
 
 Die Kosten hängen stark ab von:
-- Beruf
 - Alter
+- Beruf
 - Gesundheitszustand
+- Laufzeit
 - Höhe der BU-Rente
 
-Grobe Orientierung:
-- Studenten / Akademiker: ab **30–60 € pro Monat**
-- Handwerk / körperliche Berufe: deutlich teurer
+Grobe Richtwerte:
+- Studenten / Büroberufe: **ab ca. 30–50 €**
+- Handwerk / körperliche Berufe: **deutlich höher**
 
-👉 Früh abschließen spart oft **tausende Euro** über die Laufzeit.
+👉 Wichtig: **Preis ist zweitrangig**, wenn die Leistung stimmt.
 
 ---
 
-## Typische Fehler vermeiden
+## BU oder Alternativen?
 
-- ❌ Zu niedrige BU-Rente wählen
+Alternativen wie:
+- Erwerbsunfähigkeitsversicherung
+- Grundfähigkeitsversicherung
+- Dread-Disease
+
+können in Sonderfällen sinnvoll sein,  
+**ersetzen eine echte BU aber nicht vollständig**.
+
+---
+
 ## Unser Fazit
 
-Die Berufsunfähigkeitsversicherung gehört zu den **wichtigsten Absicherungen überhaupt**.  
-Sie schützt dein Einkommen – und damit deine finanzielle Existenz – wenn du deinen Beruf aus gesundheitlichen Gründen nicht mehr ausüben kannst.
+Die Berufsunfähigkeitsversicherung ist eine der wichtigsten finanziellen Absicherungen überhaupt.  
+Sie schützt dein Einkommen und damit deine gesamte Lebensplanung.
 
-Gerade weil staatliche Leistungen meist nicht ausreichen, ist eine BU für die meisten Menschen **keine Kür, sondern Pflicht**.
+👉 Wer früh handelt, spart langfristig Geld und sichert sich bessere Bedingungen.
 
-Entscheidend ist dabei nicht der günstigste Beitrag, sondern:
-- eine **saubere Definition der Berufsunfähigkeit**
-- eine ausreichend hohe **BU-Rente**
-- ehrliche und vollständige **Gesundheitsangaben**
-- flexible **Nachversicherungsoptionen**
-
-👉 **Unser Tipp:**  
-Schließe eine Berufsunfähigkeitsversicherung so früh wie möglich ab – jung und gesund spart langfristig viel Geld und sichert bessere Bedingungen.
-
-*Konkrete Tarifvergleiche und Empfehlungen folgen.*
+**Im nächsten Schritt** kannst du:
+- Tarife vergleichen
+- prüfen, welche BU zu deinem Beruf passt
+- eine fundierte Entscheidung treffen

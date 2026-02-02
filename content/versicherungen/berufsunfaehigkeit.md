@@ -1,8 +1,10 @@
 ---
 title: Berufsunfähigkeitsversicherung – sinnvoll absichern
 description: Warum die Berufsunfähigkeitsversicherung so wichtig ist, für wen sie sinnvoll ist und worauf du beim Abschluss wirklich achten solltest.
-intro: Die Berufsunfähigkeitsversicherung gehört zu den wichtigsten Absicherungen überhaupt. Sie schützt dein Einkommen, wenn du aus gesundheitlichen Gründen dauerhaft nicht mehr arbeiten kannst.
 ---
+
+**Die Berufsunfähigkeitsversicherung gehört zu den wichtigsten Absicherungen überhaupt.**  
+Sie schützt dein Einkommen, wenn du aus gesundheitlichen Gründen dauerhaft nicht mehr arbeiten kannst.
 
 ## Warum ist eine Berufsunfähigkeitsversicherung so wichtig?
 
@@ -68,13 +70,11 @@ Eine leistungsstarke Berufsunfähigkeitsversicherung bietet:
 
 ## Typische Fehler beim Abschluss
 
-Viele BU-Verträge scheitern nicht am Preis, sondern an falschen Entscheidungen:
-
 - ❌ Zu niedrige BU-Rente
 - ❌ Zu kurze Laufzeit
 - ❌ Billigtarife mit schwachen Bedingungen
 - ❌ Falsche oder unvollständige Gesundheitsangaben
-- ❌ Abschluss erst, wenn bereits Vorerkrankungen bestehen
+- ❌ Abschluss erst bei Vorerkrankungen
 
 👉 Eine gute BU ist kein Produkt für Schnellentscheidungen.
 
@@ -82,7 +82,7 @@ Viele BU-Verträge scheitern nicht am Preis, sondern an falschen Entscheidungen:
 
 ## Was kostet eine Berufsunfähigkeitsversicherung?
 
-Die Kosten hängen stark ab von:
+Die Kosten hängen u. a. ab von:
 - Alter
 - Beruf
 - Gesundheitszustand
@@ -93,7 +93,7 @@ Grobe Richtwerte:
 - Studenten / Büroberufe: **ab ca. 30–50 €**
 - Handwerk / körperliche Berufe: **deutlich höher**
 
-👉 Wichtig: **Preis ist zweitrangig**, wenn die Leistung stimmt.
+👉 **Preis ist zweitrangig**, wenn die Leistung stimmt.
 
 ---
 
@@ -104,19 +104,13 @@ Alternativen wie:
 - Grundfähigkeitsversicherung
 - Dread-Disease
 
-können in Sonderfällen sinnvoll sein,  
+können im Einzelfall sinnvoll sein,  
 **ersetzen eine echte BU aber nicht vollständig**.
 
 ---
 
 ## Unser Fazit
 
-Die Berufsunfähigkeitsversicherung ist eine der wichtigsten finanziellen Absicherungen überhaupt.  
-Sie schützt dein Einkommen und damit deine gesamte Lebensplanung.
+Die Berufsunfähigkeitsversicherung schützt dein Einkommen – und damit deine gesamte Lebensplanung.
 
-👉 Wer früh handelt, spart langfristig Geld und sichert sich bessere Bedingungen.
-
-**Im nächsten Schritt** kannst du:
-- Tarife vergleichen
-- prüfen, welche BU zu deinem Beruf passt
-- eine fundierte Entscheidung treffen
+👉 Wer früh handelt, sichert sich bessere Bedingungen und spart langfristig Geld.

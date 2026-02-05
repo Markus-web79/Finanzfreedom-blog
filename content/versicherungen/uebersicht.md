@@ -1,99 +1,81 @@
 ---
-title: Versicherungen – Welche sind wirklich sinnvoll?
-description: Welche Versicherungen brauchst du wirklich? Klare Priorisierung für Einsteiger – ohne Verkaufsdruck.
+title: Versicherungen – Überblick & sinnvoll absichern
+description: Welche Versicherungen wirklich wichtig sind, welche sinnvoll sind und wo du guten Schutz von unnötigen Policen unterscheidest.
 ---
 
-## Versicherungen: sinnvoll absichern, nicht überversichern
-
-Versicherungen sollen **dich vor existenziellen Risiken schützen** –  
-nicht dein Geld verbrennen und nicht kompliziert sein.
-
-Viele Menschen zahlen jahrelang für Versicherungen,
-die sie **nicht brauchen**,  
-und sparen genau dort, wo es **wirklich gefährlich wird**.
-
-Auf dieser Seite bekommst du eine **klare, ehrliche Orientierung**.
+**Versicherungen sollen dich schützen – nicht verwirren.**  
+Hier findest du eine klare Übersicht, welche Versicherungen wirklich wichtig sind, welche sinnvoll sein können und wo du dir Geld sparen kannst.
 
 ---
 
-## Die wichtigste Regel vorab
+## Welche Versicherungen sind wirklich wichtig?
 
-> **Versichern, was dich ruinieren kann – nicht, was nervt.**
+Nicht jede Versicherung ist sinnvoll – aber einige sind **absolute Grundlagen**, um dich vor existenziellen Risiken zu schützen.
 
-Alles andere ist optional.
+### 🔴 Unverzichtbar
+Diese Versicherungen solltest du **immer zuerst prüfen**:
 
----
+- **[Privathaftpflichtversicherung](/versicherungen/privathaftpflicht)**  
+  Schützt dich vor unbegrenzter Haftung – wichtigste Versicherung überhaupt.
 
-## 🔴 Unverzichtbar (für fast jeden)
-
-Diese Versicherungen solltest du **früh und unbedingt** prüfen:
-
-### 👉 Privathaftpflichtversicherung
-Wenn du einem anderen Menschen Schaden zufügst, haftest du unbegrenzt.
-
-→ **Absolute Pflichtversicherung.**
-
-[Mehr zur Privathaftpflicht →](/versicherungen/privathaftpflicht)
+- **[Krankenversicherung](/versicherungen/krankenversicherung)**  
+  Gesetzlich vorgeschrieben – mit großen Unterschieden bei Leistungen & Kosten.
 
 ---
 
-### 👉 Krankenversicherung
-Gesundheit ist keine Option. Ohne Versicherung kein Schutz.
+### 🟠 Sehr wichtig (je nach Lebenssituation)
+Diese Versicherungen sind für viele Menschen extrem sinnvoll:
 
-→ **Gesetzlich oder privat – aber niemals unversichert.**
+- **[Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)**  
+  Sichert dein Einkommen, wenn du nicht mehr arbeiten kannst.
 
-[Mehr zur Krankenversicherung →](/versicherungen/krankenversicherung)
+- **[Hausratversicherung](/versicherungen/hausrat)**  
+  Schützt dein Eigentum in Wohnung oder Haus vor hohen Schäden.
 
----
-
-## 🟡 Wichtig – abhängig von deiner Lebenssituation
-
-Diese Versicherungen sind **nicht für jeden nötig**, aber oft sehr sinnvoll:
-
-### 👉 Berufsunfähigkeitsversicherung
-Wenn dein Einkommen wegfällt, wird Vermögensaufbau unmöglich.
-
-→ Besonders wichtig, wenn du **von deiner Arbeit lebst**.
-
-[Mehr zur Berufsunfähigkeit →](/versicherungen/berufsunfaehigkeit)
+- **[Kfz-Versicherung](/versicherungen/kfz)**  
+  Pflicht für Autofahrer – mit großem Sparpotenzial durch Vergleich.
 
 ---
 
-### 👉 Hausratversicherung
-Schützt dein Eigentum bei Einbruch, Feuer oder Wasserschäden.
+## Welche Versicherungen sind oft überflüssig?
 
-→ Sinnvoll bei eigener Wohnung oder wertvollem Hausrat.
+Viele Policen werden verkauft, obwohl sie selten sinnvoll sind:
 
-[Mehr zur Hausratversicherung →](/versicherungen/hausrat)
+- Handy- oder Geräteversicherungen  
+- Brillen- & Reisegepäckversicherungen  
+- Mini-Sachversicherungen mit hohem Preis-Leistungs-Nachteil  
 
----
-
-## ⚪ Oft unnötig oder überschätzt
-
-Diese Versicherungen sind häufig teuer und bringen wenig Nutzen:
-
-- Handyversicherungen  
-- Garantieverlängerungen  
-- Kleinstschaden-Versicherungen  
-
-👉 **Kleine Schäden bezahlt man besser selbst.**
+👉 **Erst Grundlagen absichern, dann Extras prüfen.**
 
 ---
 
-## Wie es jetzt weitergeht
+## Wie solltest du vorgehen?
 
-Wenn du neu startest, halte dich an diese Reihenfolge:
+Eine sinnvolle Reihenfolge für die meisten Menschen:
 
-1. **Privathaftpflicht klären**
-2. **Krankenversicherung verstehen**
-3. **Einkommen absichern (BU prüfen)**
-4. Erst danach: Investieren & Vermögensaufbau
-
-Versicherungen sind kein Investment –  
-sie schaffen die **Basis**, damit Investieren überhaupt Sinn macht.
+1. Privathaftpflicht prüfen  
+2. Krankenversicherung verstehen  
+3. Einkommen absichern (BU)  
+4. Eigentum absichern (Hausrat)  
+5. Mobilität absichern (KFZ)
 
 ---
 
-👉 **Starte mit der wichtigsten Versicherung:**
+## Unser Ansatz bei FinanzFreedom
 
-[Zur Privathaftpflicht →](/versicherungen/privathaftpflicht)
+- keine unnötigen Versicherungen
+- klare Prioritäten
+- verständliche Erklärungen
+- Fokus auf **Leistung statt Werbung**
+
+👉 In den einzelnen Artikeln zeigen wir dir,  
+worauf du wirklich achten musst und wo Vergleich Sinn macht.
+
+---
+
+### Weiterführende Inhalte
+- [Privathaftpflichtversicherung](/versicherungen/privathaftpflicht)
+- [Krankenversicherung verstehen](/versicherungen/krankenversicherung)
+- [Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)
+- [Hausratversicherung](/versicherungen/hausrat)
+- [Kfz-Versicherung](/versicherungen/kfz)

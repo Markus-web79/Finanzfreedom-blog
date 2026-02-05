@@ -1,52 +1,73 @@
 ---
-title: Krankenversicherung
+title: Krankenversicherung – GKV oder PKV richtig entscheiden
 description: Gesetzliche oder private Krankenversicherung? Die wichtigsten Unterschiede, Vor- und Nachteile und wann sich ein Wechsel wirklich lohnt.
-intro: Die Krankenversicherung ist Pflicht – aber die Wahl zwischen gesetzlich und privat hat enorme finanzielle und medizinische Auswirkungen. Hier erfährst du, was wirklich sinnvoll ist.
 ---
 
-## Gesetzliche oder private Krankenversicherung – wo liegt der Unterschied?
+**Die Krankenversicherung ist Pflicht – aber die Entscheidung zwischen GKV und PKV hat enorme finanzielle und medizinische Auswirkungen.**  
+Hier erfährst du, was wirklich sinnvoll ist und welche Lösung zu deiner Situation passt.
 
-In Deutschland hast du grundsätzlich zwei Systeme:
+---
+
+## Gesetzliche oder private Krankenversicherung – der Grundunterschied
+
+In Deutschland gibt es zwei Systeme:
 - **Gesetzliche Krankenversicherung (GKV)**
 - **Private Krankenversicherung (PKV)**
 
-Beide Systeme funktionieren völlig unterschiedlich – mit großen Folgen für Beiträge, Leistungen und Flexibilität.
+Beide funktionieren grundlegend unterschiedlich – bei Beiträgen, Leistungen und langfristigen Kosten.
 
 ---
 
 ## Die gesetzliche Krankenversicherung (GKV)
 
-### Vorteile der GKV
-- Beiträge richten sich nach dem Einkommen
+### Vorteile
+- Beitrag abhängig vom Einkommen
 - Familienmitglieder oft kostenlos mitversichert
 - Keine Gesundheitsprüfung
-- Stabil bei niedrigem Einkommen
+- Hohe Planungssicherheit bei geringem Einkommen
 
-### Nachteile der GKV
+### Nachteile
 - Leistungen gesetzlich begrenzt
 - Kaum individuelle Tarifgestaltung
 - Lange Wartezeiten bei Fachärzten
 - Beiträge steigen mit dem Einkommen
 
-👉 Für viele Angestellte ist die GKV solide, aber nicht optimal.
+👉 Die GKV ist solide, aber leistungstechnisch begrenzt.
 
 ---
 
 ## Die private Krankenversicherung (PKV)
 
-### Vorteile der PKV
-- Deutlich bessere Leistungen (Arztwahl, Einzelzimmer, Chefarzt)
+### Vorteile
+- Deutlich bessere medizinische Leistungen
+- Freie Arzt- & Krankenhauswahl
 - Beiträge unabhängig vom Einkommen
 - Individuell anpassbare Tarife
-- Oft schnellere Termine & bessere Versorgung
 
-### Nachteile der PKV
-- Gesundheitsprüfung erforderlich
-- Beiträge steigen im Alter
+### Nachteile
+- Gesundheitsprüfung notwendig
 - Familienmitglieder kosten extra
-- Rückwechsel in die GKV oft schwierig
+- Beiträge steigen im Alter
+- Rückkehr in die GKV oft schwierig
 
 👉 Die PKV ist **kein Sparmodell**, sondern ein **Leistungsmodell**.
+
+---
+
+## Vergleich: GKV vs. PKV auf einen Blick
+
+| Kriterium | Gesetzliche KV (GKV) | Private KV (PKV) |
+|--------|----------------------|------------------|
+| Beitrag | einkommensabhängig | tarifabhängig |
+| Familienversicherung | ✅ kostenlos | ❌ extra Beitrag |
+| Gesundheitsprüfung | ❌ nein | ✅ ja |
+| Arztwahl | eingeschränkt | frei |
+| Wartezeiten | oft lang | meist kurz |
+| Leistungen | gesetzlich festgelegt | individuell wählbar |
+| Beiträge im Alter | stabil einkommensabhängig | oft steigend |
+| Flexibilität | gering | hoch |
+
+👉 **Keine Lösung ist pauschal besser – entscheidend ist deine Lebenssituation.**
 
 ---
 
@@ -56,26 +77,26 @@ Ein Wechsel in die PKV kann sinnvoll sein für:
 - Selbstständige & Freiberufler
 - Beamte (Beihilfe!)
 - Angestellte über der Jahresarbeitsentgeltgrenze
-- Junge, gesunde Personen mit stabilem Einkommen
+- Junge, gesunde Personen mit langfristigem Einkommen
 
-👉 Wer nur wegen niedriger Beiträge wechseln will, macht meist einen Fehler.
+👉 Wer **nur wegen niedriger Beiträge** wechseln will, macht meist einen Fehler.
 
 ---
 
 ## Worauf solltest du beim Wechsel achten?
 
 ### ✔ Langfristige Beitragsstabilität
-- Billige Einstiegstarife sind oft teuer im Alter
+- Billige Einstiegstarife werden oft teuer im Alter
 
 ### ✔ Leistungsumfang
 - Ambulant, stationär, Zahn
-- Heilpraktiker & Psychotherapie
+- Psychotherapie & Heilpraktiker
 
 ### ✔ Selbstbeteiligung realistisch wählen
-- Spart Beitrag, erhöht Risiko
+- Spart Beitrag, erhöht aber Risiko
 
-### ✔ Rücklagen & Alter
-- PKV ist eine **Lebensentscheidung**
+### ✔ Altersrückstellungen
+- Entscheidend für langfristige Kosten
 
 ---
 
@@ -86,7 +107,7 @@ Wenn du gesetzlich versichert bist, können Zusatzversicherungen sinnvoll sein:
 - Krankenhaus-Zusatzversicherung
 - Auslandsreisekrankenversicherung
 
-👉 Oft der beste Kompromiss zwischen Kosten und Leistung.
+👉 Für viele die **beste Balance aus Kosten & Leistung**.
 
 ---
 
@@ -95,16 +116,16 @@ Wenn du gesetzlich versichert bist, können Zusatzversicherungen sinnvoll sein:
 - ❌ Nur auf den Beitrag schauen
 - ❌ Langfristige Entwicklung ignorieren
 - ❌ PKV als kurzfristige Sparlösung sehen
-- ❌ Beratung ohne Vergleich akzeptieren
+- ❌ Ohne Vergleich oder Strategie wechseln
 
 ---
 
-## Unser Fazit
+## Fazit
 
-Die Krankenversicherung beeinflusst deine **Gesundheit, Finanzen und Freiheit** massiv.  
-Ein Wechsel in die PKV kann sinnvoll sein – muss aber **sehr gut überlegt** sein.
+Die Krankenversicherung beeinflusst **Gesundheit, Finanzen und Freiheit** massiv.  
+Ein PKV-Wechsel kann sinnvoll sein – muss aber **strategisch und langfristig** entschieden werden.
 
-👉 Wer unsicher ist, fährt mit GKV + Zusatzversicherungen oft besser.
-
-**Als Nächstes:**  
-Wir zeigen dir konkrete Beispiele, Beitragsvergleiche und Entscheidungshilfen.
+👉 **Im nächsten Schritt** zeigen wir:
+- konkrete Tarifvergleiche
+- wann Zusatzversicherungen besser sind
+- welche Anbieter sich wirklich lohnen

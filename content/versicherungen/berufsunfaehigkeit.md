@@ -3,20 +3,22 @@ title: Berufsunfähigkeitsversicherung – sinnvoll absichern
 description: Warum die Berufsunfähigkeitsversicherung so wichtig ist, für wen sie sinnvoll ist und worauf du beim Abschluss wirklich achten solltest.
 ---
 
-**Die Berufsunfähigkeitsversicherung gehört zu den wichtigsten Absicherungen überhaupt.**  
+**Die Berufsunfähigkeitsversicherung (BU) gehört zu den wichtigsten Absicherungen überhaupt.**  
 Sie schützt dein Einkommen, wenn du aus gesundheitlichen Gründen dauerhaft nicht mehr arbeiten kannst.
+
+---
 
 ## Warum ist eine Berufsunfähigkeitsversicherung so wichtig?
 
 Dein Einkommen ist dein größtes Vermögen.  
-Wenn du krank wirst oder einen Unfall hast und deinen Beruf nicht mehr ausüben kannst, fällt dieses Einkommen oft **komplett weg**.
+Wenn du krank wirst oder einen Unfall hast und deinen Beruf nicht mehr ausüben kannst, fällt dieses Einkommen oft **vollständig weg**.
 
-Der Staat hilft nur sehr eingeschränkt:
+Der Staat hilft nur begrenzt:
 - Die gesetzliche Erwerbsminderungsrente reicht meist **nicht zum Leben**
 - Sie greift oft **erst sehr spät**
-- Viele Betroffene erhalten **gar nichts**
+- Viele Betroffene erhalten **gar keine Leistung**
 
-👉 Eine Berufsunfähigkeitsversicherung schließt genau diese Lücke.
+👉 Die Berufsunfähigkeitsversicherung schließt genau diese existenzielle Lücke.
 
 ---
 
@@ -30,15 +32,15 @@ nicht mehr ausüben kannst.
 
 Wichtig:
 - Es zählt **dein konkreter Beruf**, nicht irgendeine andere Tätigkeit
-- Gute Tarife verzichten auf eine abstrakte Verweisung
+- Gute Tarife verzichten auf eine **abstrakte Verweisung**
 
 ---
 
 ## Für wen ist eine BU besonders wichtig?
 
-Kurz gesagt: **für fast jeden, der von seiner Arbeitskraft lebt**.
+Kurz gesagt: **für fast jeden, der von seiner Arbeitskraft lebt.**
 
-Besonders relevant ist die BU für:
+Besonders relevant für:
 - Angestellte
 - Selbstständige
 - Azubis & Studenten
@@ -48,23 +50,35 @@ Besonders relevant ist die BU für:
 Je früher du abschließt, desto:
 - günstiger der Beitrag
 - besser die Gesundheitsprüfung
-- stabiler der Schutz
+- stabiler die Vertragsbedingungen
 
 ---
 
-## Was leistet eine gute Berufsunfähigkeitsversicherung?
+## Vergleich: Berufsunfähigkeitsversicherung – worauf es wirklich ankommt
 
-Eine leistungsstarke Berufsunfähigkeitsversicherung bietet:
+| Kriterium | Sehr gut | Mittel | Schwach |
+|---------|---------|--------|--------|
+| BU-Rente | ≥ 75 % des Nettoeinkommens | 50–75 % | < 50 % |
+| Leistungsbeginn | ab 50 % BU | ab 60 % BU | erst bei Erwerbsunfähigkeit |
+| Laufzeit | bis 67 Jahre | bis 65 Jahre | unter 65 |
+| Abstrakte Verweisung | ❌ Verzicht | ⚠️ eingeschränkt | ✅ erlaubt |
+| Nachversicherung | mehrfach & ereignisunabhängig | begrenzt | nicht möglich |
+| Gesundheitsprüfung | fair & transparent | umfangreich | sehr streng |
+| Dynamik | Beitrags- & Leistungsdynamik | nur eine Dynamik | keine Dynamik |
+| Vertragsstabilität | Bedingungen garantiert | teilweise änderbar | unklar |
 
-- **Monatliche BU-Rente**
-  - z. B. 1.000 € – 2.000 €
-- **Leistung ab 50 % Berufsunfähigkeit**
-- **Zahlung bis zum vereinbarten Endalter**
-  - idealerweise bis 67
-- **Nachversicherungsgarantien**
-  - bei Gehaltserhöhungen, Heirat, Kindern
-- **Verzicht auf abstrakte Verweisung**
-- **Stabile Bedingungen**, auch im Leistungsfall
+👉 **Eine gute BU erfüllt möglichst viele Punkte in der Spalte „Sehr gut“.**
+
+---
+
+## Welche BU-Rente ist sinnvoll?
+
+| Lebensphase | Empfohlene BU-Rente |
+|------------|-------------------|
+| Student / Azubi | 800–1.200 € |
+| Berufseinsteiger | 1.200–1.800 € |
+| Familie / Haus | 1.800–2.500 € |
+| Selbstständig | individuell (oft höher) |
 
 ---
 
@@ -73,52 +87,10 @@ Eine leistungsstarke Berufsunfähigkeitsversicherung bietet:
 - ❌ Zu niedrige BU-Rente
 - ❌ Zu kurze Laufzeit
 - ❌ Billigtarife mit schwachen Bedingungen
-- ❌ Falsche oder unvollständige Gesundheitsangaben
-- ❌ Abschluss erst bei Vorerkrankungen
+- ❌ Unvollständige Gesundheitsangaben
+- ❌ Abschluss erst bei bestehenden Vorerkrankungen
 
-👉 Eine gute BU ist kein Produkt für Schnellentscheidungen.
-
----
-
-## Wie findest du eine passende Berufsunfähigkeitsversicherung?
-
-Die richtige BU hängt stark von deinem Beruf, deinem Alter und deinem Gesundheitszustand ab.  
-Ein Vergleich hilft dir, Tarife mit guten Bedingungen und fairen Beiträgen zu finden.
-
-👉 Ein unabhängiger Vergleich zeigt dir passende Anbieter und Konditionen.  
-*(Vergleichslink folgt)*
-
----
-
-## Was kostet eine Berufsunfähigkeitsversicherung?
-
-Die Kosten hängen u. a. ab von:
-- Alter
-- Beruf
-- Gesundheitszustand
-- Laufzeit
-- Höhe der BU-Rente
-
-Grobe Richtwerte:
-- Studenten / Büroberufe: **ab ca. 30–50 €**
-- Handwerk / körperliche Berufe: **deutlich höher**
-
-👉 **Preis ist zweitrangig**, wenn die Leistung stimmt.
-
----
-
-## Wichtige Kriterien beim Vergleich
-
-Achte beim Vergleich besonders auf:
-
-- Höhe der BU-Rente
-- Laufzeit bis mindestens 67
-- Verzicht auf abstrakte Verweisung
-- Nachversicherungsgarantien
-- Klare und faire Gesundheitsfragen
-
-👉 Ein strukturierter Vergleich spart Zeit und vermeidet teure Fehlentscheidungen.  
-*(Vergleichslink folgt)*
+👉 Eine gute BU ist **keine Schnellentscheidung**, sondern eine langfristige Absicherung.
 
 ---
 
@@ -127,15 +99,21 @@ Achte beim Vergleich besonders auf:
 Alternativen wie:
 - Erwerbsunfähigkeitsversicherung
 - Grundfähigkeitsversicherung
-- Dread-Disease
+- Dread-Disease-Versicherung
 
 können im Einzelfall sinnvoll sein,  
-**ersetzen eine echte BU aber nicht vollständig**.
+**ersetzen eine echte Berufsunfähigkeitsversicherung jedoch nicht vollständig.**
 
 ---
 
-## Unser Fazit
+## Fazit
 
-Die Berufsunfähigkeitsversicherung schützt dein Einkommen – und damit deine gesamte Lebensplanung.
+Die Berufsunfähigkeitsversicherung schützt dein Einkommen –  
+und damit deine gesamte Lebensplanung.
 
-👉 Wer früh handelt, sichert sich bessere Bedingungen und spart langfristig Geld.
+👉 Wer früh handelt, sichert sich bessere Bedingungen und langfristige Stabilität.
+
+**Im nächsten Schritt** zeigen wir:
+- wie du passende Tarife vergleichst
+- worauf du bei Anbietern achten solltest
+- wie du Fehler beim Abschluss vermeidest

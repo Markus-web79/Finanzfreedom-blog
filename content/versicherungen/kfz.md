@@ -1,7 +1,11 @@
 ---
 title: Kfz-Versicherung – Pflicht, Schutz & Kosten verstehen
 description: Welche Kfz-Versicherung du brauchst, welche Unterschiede es gibt und worauf du beim Abschluss wirklich achten solltest.
-intro: Die Kfz-Versicherung ist für Autofahrer in Deutschland gesetzlich vorgeschrieben. Doch zwischen Pflicht und sinnvoller Absicherung liegen große Unterschiede – und viel Sparpotenzial.
+---
+
+**Die Kfz-Versicherung ist für Autofahrer in Deutschland gesetzlich vorgeschrieben.**  
+Doch zwischen Pflicht und sinnvoller Absicherung liegen große Unterschiede – und viel Sparpotenzial.
+
 ---
 
 ## Welche Kfz-Versicherungen gibt es?
@@ -52,10 +56,26 @@ Das hängt vor allem ab von:
 - Nutzung
 - persönlicher Risikobereitschaft
 
-### Grobe Orientierung:
-- **Altes Auto (geringer Wert):** Haftpflicht
-- **Mittelwertiges Auto:** Haftpflicht + Teilkasko
-- **Neuwagen / Leasing:** Vollkasko
+**Grobe Orientierung:**
+- Altes Auto (geringer Wert): **Haftpflicht**
+- Mittelwertiges Auto: **Haftpflicht + Teilkasko**
+- Neuwagen / Leasing: **Vollkasko**
+
+---
+
+## Vergleich: Kfz-Versicherung – worauf es wirklich ankommt
+
+| Kriterium | Sehr gut | Mittel | Schwach |
+|---------|---------|--------|--------|
+| Deckungssumme Haftpflicht | 100 Mio. €+ | 50–100 Mio. € | unter 50 Mio. € |
+| Personenschäden | 15 Mio. € / Person | niedriger | Mindeststandard |
+| Grobe Fahrlässigkeit | ✅ voll abgedeckt | eingeschränkt | ❌ ausgeschlossen |
+| Neupreisentschädigung | 18–36 Monate | 6–12 Monate | ❌ keine |
+| Werkstattbindung | optional | Pflicht | unklar |
+| Fahrerkreis | flexibel | eingeschränkt | teuer |
+| Tarifaktualität | modern | teils veraltet | alt |
+
+👉 **Ein guter Tarif erfüllt möglichst viele Punkte in „Sehr gut“.**
 
 ---
 
@@ -70,8 +90,8 @@ Das hängt vor allem ab von:
 - Schützt auch bei eigenen Fehlern
 
 ### ✔ Werkstattbindung
-- Günstiger Beitrag
-- Einschränkung bei Werkstattwahl
+- Senkt den Beitrag
+- Einschränkung bei freier Werkstattwahl
 
 ### ✔ Fahrerkreis
 - Je mehr Fahrer, desto teurer
@@ -79,26 +99,26 @@ Das hängt vor allem ab von:
 
 ### ✔ Selbstbeteiligung
 - Senkt den Beitrag
-- Üblich:  
-  - Teilkasko: 150 €  
-  - Vollkasko: 300 €
+- Üblich:
+  - Teilkasko: **150 €**
+  - Vollkasko: **300 €**
 
 ---
 
 ## Was kostet eine Kfz-Versicherung?
 
-Die Kosten variieren stark und hängen ab von:
+Die Kosten hängen u. a. ab von:
 - Schadenfreiheitsklasse
 - Fahrzeugtyp
 - Regionalklasse
 - Fahrleistung pro Jahr
 
-Beispiel (grobe Richtwerte):
-- Haftpflicht: **ab ca. 200–400 € pro Jahr**
-- Teilkasko: **ab ca. 300–600 € pro Jahr**
-- Vollkasko: **ab ca. 600–1.200 € pro Jahr**
+**Grobe Richtwerte:**
+- Haftpflicht: **ca. 200–400 € / Jahr**
+- Teilkasko: **ca. 300–600 € / Jahr**
+- Vollkasko: **ca. 600–1.200 € / Jahr**
 
-👉 Ein Vergleich kann **mehrere hundert Euro** sparen.
+👉 Ein Vergleich spart oft **mehrere hundert Euro jährlich**.
 
 ---
 
@@ -116,20 +136,20 @@ Beispiel (grobe Richtwerte):
 
 Ein Wechsel lohnt sich besonders:
 - bei Beitragsanpassung
-- bei Änderung der Lebenssituation
 - bei Fahrzeugwechsel
+- bei Änderung der Lebenssituation
 - regelmäßig (z. B. jährlich prüfen)
 
-👉 Der Versicherungswechsel ist einfacher, als viele denken.
+👉 Der Wechsel ist einfacher, als viele denken.
 
 ---
 
-## Unser Fazit
+## Fazit
 
-Die Kfz-Versicherung ist Pflicht – aber **gute Tarife sparen Geld und Nerven**.  
-Wer regelmäßig vergleicht und die richtigen Leistungen wählt, zahlt weniger und ist besser abgesichert.
+Die Kfz-Versicherung ist Pflicht – **aber gute Tarife sparen Geld und Ärger**.  
+Wer regelmäßig vergleicht und sinnvoll absichert, zahlt weniger und fährt besser.
 
-**Im nächsten Schritt** zeigen wir dir:
+👉 **Im nächsten Schritt** zeigen wir:
 - wie du Tarife richtig vergleichst
-- welche Anbieter sich wirklich lohnen
-- worauf du beim Wechsel achten solltest
+- welche Anbieter sich lohnen
+- wie du dauerhaft Kosten senkst

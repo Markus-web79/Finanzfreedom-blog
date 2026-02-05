@@ -52,7 +52,7 @@ Je früher du abschließt, desto:
 
 ---
 
-## Was leistet eine gute BU?
+## Was leistet eine gute Berufsunfähigkeitsversicherung?
 
 Eine leistungsstarke Berufsunfähigkeitsversicherung bietet:
 
@@ -80,6 +80,16 @@ Eine leistungsstarke Berufsunfähigkeitsversicherung bietet:
 
 ---
 
+## Wie findest du eine passende Berufsunfähigkeitsversicherung?
+
+Die richtige BU hängt stark von deinem Beruf, deinem Alter und deinem Gesundheitszustand ab.  
+Ein Vergleich hilft dir, Tarife mit guten Bedingungen und fairen Beiträgen zu finden.
+
+👉 Ein unabhängiger Vergleich zeigt dir passende Anbieter und Konditionen.  
+*(Vergleichslink folgt)*
+
+---
+
 ## Was kostet eine Berufsunfähigkeitsversicherung?
 
 Die Kosten hängen u. a. ab von:
@@ -94,6 +104,21 @@ Grobe Richtwerte:
 - Handwerk / körperliche Berufe: **deutlich höher**
 
 👉 **Preis ist zweitrangig**, wenn die Leistung stimmt.
+
+---
+
+## Wichtige Kriterien beim Vergleich
+
+Achte beim Vergleich besonders auf:
+
+- Höhe der BU-Rente
+- Laufzeit bis mindestens 67
+- Verzicht auf abstrakte Verweisung
+- Nachversicherungsgarantien
+- Klare und faire Gesundheitsfragen
+
+👉 Ein strukturierter Vergleich spart Zeit und vermeidet teure Fehlentscheidungen.  
+*(Vergleichslink folgt)*
 
 ---
 

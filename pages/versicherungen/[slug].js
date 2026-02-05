@@ -5,7 +5,30 @@ import Link from "next/link";
 import Head from "next/head";
 import { marked } from "marked";
 
-export default function VersicherungArticle({ frontmatter, content }) {
+/**
+ * ZENTRALE AFFILIATE-LINKS
+ * Slug = Dateiname der MD-Datei
+ */
+const AFFILIATE_LINKS = {
+  privathaftpflicht:
+    "https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fprivathaftpflicht",
+
+  kfz:
+    "https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fkfz",
+
+  krankenversicherung:
+    "https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fkrankenversicherung",
+
+  hausrat:
+    "https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fhausratversicherung",
+
+  berufsunfaehigkeit:
+    "https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fberufsunfaehigkeit",
+};
+
+export default function VersicherungArticle({ frontmatter, content, slug }) {
+  const affiliateLink = AFFILIATE_LINKS[slug];
+
   return (
     <>
       <Head>
@@ -35,6 +58,7 @@ export default function VersicherungArticle({ frontmatter, content }) {
           </p>
         )}
 
+        {/* CONTENT */}
         <div
           style={{
             marginTop: "2.5rem",
@@ -42,6 +66,51 @@ export default function VersicherungArticle({ frontmatter, content }) {
           }}
           dangerouslySetInnerHTML={{ __html: content }}
         />
+
+        {/* AFFILIATE CTA – EINMAL, SAUBER, AUTOMATISCH */}
+        {affiliateLink && (
+          <section
+            style={{
+              marginTop: "4rem",
+              padding: "2.2rem",
+              borderRadius: "18px",
+              background:
+                "linear-gradient(180deg, rgba(15,23,42,0.95), rgba(2,6,23,0.95))",
+              border: "1px solid #1e293b",
+            }}
+          >
+            <h2 style={{ marginBottom: "0.75rem" }}>
+              Jetzt Tarif vergleichen
+            </h2>
+
+            <p style={{ opacity: 0.85, maxWidth: "720px" }}>
+              Kostenlos & unverbindlich vergleichen. In vielen Fällen lassen sich
+              mehrere hundert Euro pro Jahr sparen – bei besseren Leistungen.
+            </p>
+
+            <a
+              href={affiliateLink}
+              target="_blank"
+              rel="sponsored noopener"
+              style={{
+                display: "inline-block",
+                marginTop: "1.4rem",
+                padding: "15px 26px",
+                borderRadius: "14px",
+                background: "#14b8a6",
+                color: "#020617",
+                fontWeight: 700,
+                textDecoration: "none",
+              }}
+            >
+              → Jetzt vergleichen
+            </a>
+
+            <p style={{ fontSize: "0.8rem", opacity: 0.55, marginTop: "0.9rem" }}>
+              * Werbelink / Affiliate-Link
+            </p>
+          </section>
+        )}
       </main>
     </>
   );
@@ -75,6 +144,7 @@ export async function getStaticProps({ params }) {
     props: {
       frontmatter: data,
       content: marked.parse(content),
+      slug: params.slug,
     },
   };
 }

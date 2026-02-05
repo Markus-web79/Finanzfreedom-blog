@@ -27,7 +27,7 @@ Typische Beispiele:
 - Du verursachst einen Wasserschaden in einer Mietwohnung
 - Du verlierst einen fremden Schlüssel (z. B. Haus- oder Firmenschlüssel)
 
-👉 Ohne Privathaftpflicht können schnell **fünf- oder sechsstellige Beträge** entstehen – in schweren Fällen sogar deutlich mehr.
+👉 Ohne Privathaftpflicht können schnell **fünf- oder sechsstellige Beträge** entstehen.
 
 ---
 
@@ -38,43 +38,16 @@ Typische Beispiele:
 
 ## Was deckt eine gute Privathaftpflicht ab?
 
-Eine leistungsstarke Privathaftpflicht übernimmt unter anderem:
-
-- **Personenschäden**  
-  (Behandlungskosten, Schmerzensgeld, lebenslange Renten)
-- **Sachschäden**  
-  (beschädigte Gegenstände, Wohnungen, Fahrzeuge)
-- **Vermögensschäden**  
-  (z. B. Verdienstausfall des Geschädigten)
+- **Personenschäden**
+- **Sachschäden**
+- **Vermögensschäden**
 - **Mietsachschäden**
 - **Schlüsselverlust**
 - **Schäden durch Kinder**
 
 Zusätzlich sehr wichtig:
-- **Prüfung der Schuldfrage**
-- **Abwehr unberechtigter Forderungen**  
-  (passiver Rechtsschutz)
-
----
-
-## Worauf solltest du beim Abschluss unbedingt achten?
-
-### ✔ Deckungssumme
-- Mindestens **10 Mio. €**
-- Empfehlenswert: **20–50 Mio. €**
-
-### ✔ Forderungsausfalldeckung
-- Schützt dich, wenn dir jemand schadet, der selbst nicht versichert ist
-
-### ✔ Schlüsselverlust
-- Besonders wichtig für Mieter & beruflich genutzte Schlüssel
-
-### ✔ Mietsachschäden
-- Schäden an gemieteten Wohnungen sollten abgedeckt sein
-
-### ✔ Kinder & Familie
-- Kinder sollten mitversichert sein
-- Deliktunfähige Kinder idealerweise eingeschlossen
+- Prüfung der Schuldfrage  
+- Abwehr unberechtigter Forderungen (passiver Rechtsschutz)
 
 ---
 
@@ -88,50 +61,36 @@ Zusätzlich sehr wichtig:
 | Mietsachschäden | eingeschränkt | umfassend |
 | Grobe Fahrlässigkeit | ❌ | ✅ |
 | Kinder abgesichert | teilweise | vollständig |
-| Preisunterschied | gering | gering |
 
-👉 **Der Leistungsunterschied ist enorm – der Preisunterschied meist minimal.**
-
----
-
-## Welche Privathaftpflicht passt zu dir?
-
-Die richtige Absicherung hängt von deiner Lebenssituation ab:
-
-- **Singles:** hoher Schutz, günstiger Tarif
-- **Familien:** Kinder & deliktunfähige Kinder absichern
-- **Studenten:** oft über Eltern versichert – unbedingt prüfen
-- **Mieter:** Mietsachschäden & Schlüsselverlust besonders wichtig
+👉 **Großer Leistungsunterschied – kaum Preisunterschied.**
 
 ---
 
-## 👉 Nächster Schritt: passenden Tarif vergleichen
+## 🔍 Jetzt Privathaftpflicht vergleichen
 
-Es gibt große Leistungsunterschiede zwischen den Tarifen – oft bei nur wenigen Euro Preisunterschied pro Jahr.
+Viele zahlen **jahrelang zu viel** oder sind **falsch abgesichert**, ohne es zu wissen.
 
-👉 **Im nächsten Schritt zeigen wir dir:**
-- welche Tarife wirklich sinnvoll sind
-- worauf du beim Vergleich achten solltest
-- wie du teure Fehler vermeidest
+👉 **[Jetzt Privathaftpflicht vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fprivathaftpflicht)**
 
-**→ Privathaftpflicht-Tarife vergleichen (kostenlos & unverbindlich)**
+- kein Abschlusszwang  
+- transparente Tarifübersicht  
+- seriöser Vergleich  
 
 ---
 
 ## Was kostet eine gute Privathaftpflicht?
 
-Typische Kosten:
-- Singles: **ab ca. 3–5 € pro Monat**
-- Familien: **ab ca. 5–8 € pro Monat**
+- Singles: **ab ca. 3–5 € / Monat**
+- Familien: **ab ca. 5–8 € / Monat**
 
-👉 Sehr günstiger Schutz vor extremen Risiken.
+👉 Extrem günstiger Schutz vor existenziellen Risiken.
 
 ---
 
 ## Fazit
 
 Die Privathaftpflicht ist **die wichtigste Versicherung überhaupt**.  
-Sie kostet wenig, schützt aber vor existenzbedrohenden finanziellen Folgen.
+Sie kostet wenig – schützt aber vor finanziellen Katastrophen.
 
 👉 **Wenn du nur eine Versicherung hast, sollte es diese sein.**
 
@@ -141,3 +100,4 @@ Sie kostet wenig, schützt aber vor existenzbedrohenden finanziellen Folgen.
 - [Versicherungen – Überblick](/versicherungen)
 - [Krankenversicherung verstehen](/versicherungen/krankenversicherung)
 - [Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)
+- [Kfz-Versicherung verstehen](/versicherungen/kfz)

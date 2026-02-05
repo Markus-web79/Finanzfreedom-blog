@@ -67,7 +67,7 @@ Beispiel:
 
 Wichtig:
 - Unterversicherung vermeiden
-- Unterversicherungsverzicht nutzen
+- **Unterversicherungsverzicht nutzen**
 
 ---
 
@@ -134,7 +134,19 @@ Sie ist günstig, einfach abzuschließen und im Ernstfall extrem wertvoll.
 
 👉 Besonders für Mieter und Familien ist sie nahezu unverzichtbar.
 
-**Im nächsten Schritt** zeigen wir:
-- wie du Tarife vergleichst
-- welche Leistungen wirklich wichtig sind
-- wie du unnötige Kosten vermeidest
+---
+
+## 🔗 Nächster Schritt: sinnvoll weitergehen
+
+Damit du **nicht in einer Sackgasse landest**, kannst du jetzt direkt weiter:
+
+👉 **Hausrat-Tarife vergleichen (kostenlos & unverbindlich)**  
+→ *Vergleich & Empfehlungen folgen hier*
+
+👉 **Zur Versicherungs-Übersicht**  
+→ `/versicherungen`
+
+👉 **Weitere wichtige Versicherungen**
+- [Privathaftpflichtversicherung](/versicherungen/haftpflicht)
+- [Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)
+- [Kfz-Versicherung](/versicherungen/kfz)

@@ -1,57 +1,118 @@
 import Link from "next/link";
 
-function Card({ href, icon, title, text, disabled }) {
-  const style = {
+/* ======================
+   CARD COMPONENT
+====================== */
+function Card({ href, icon, title, text, disabled = false }) {
+  const baseStyle = {
     background: "#020617",
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "24px",
+
+    display: "flex",
+    flexDirection: "column",
+
     color: "#e5e7eb",
     textDecoration: "none",
-    transition: "transform 0.2s ease, border-color 0.2s ease",
-    cursor: disabled ? "not-allowed" : "pointer",
+
+    transition: "transform 0.15s ease, border-color 0.15s ease",
+    cursor: disabled ? "default" : "pointer",
     opacity: disabled ? 0.5 : 1,
+
+    boxSizing: "border-box",
+    overflow: "hidden",
   };
+
+  const hoverStyle = !disabled
+    ? {
+        transform: "translateY(-4px)",
+        borderColor: "#14b8a6",
+      }
+    : {};
 
   const content = (
     <>
-      <div style={{ fontSize: "2rem", marginBottom: "12px" }}>{icon}</div>
-      <h3 style={{ fontSize: "1.25rem", marginBottom: "8px", color: "#ffffff" }}>
+      {/* Icon */}
+      <div style={{ fontSize: "2rem", marginBottom: "14px" }}>
+        {icon}
+      </div>
+
+      {/* TITLE – FINAL FIX */}
+      <h3
+        style={{
+          fontSize: "1.05rem",
+          lineHeight: 1.35,
+          marginBottom: "10px",
+          color: "#ffffff",
+
+          /* 🔥 DIE ENTSCHEIDENDE LÖSUNG */
+          wordBreak: "break-word",
+          overflowWrap: "anywhere",
+          hyphens: "auto",
+
+          maxWidth: "100%",
+        }}
+      >
         {title}
       </h3>
-      <p style={{ fontSize: "0.95rem", lineHeight: 1.6, opacity: 0.9 }}>
+
+      {/* TEXT */}
+      <p
+        style={{
+          fontSize: "0.95rem",
+          lineHeight: 1.6,
+          opacity: 0.85,
+
+          wordBreak: "break-word",
+          overflowWrap: "anywhere",
+        }}
+      >
         {text}
       </p>
-      {!disabled && (
-        <p
-          style={{
-            marginTop: "16px",
-            color: "#2dd4bf",
-            fontWeight: 600,
-            fontSize: "0.95rem",
-          }}
-        >
-          → Zum Artikel
-        </p>
-      )}
+
+      {/* CTA */}
+      <div
+        style={{
+          marginTop: "auto",
+          paddingTop: "16px",
+          color: "#14b8a6",
+          fontWeight: 500,
+          fontSize: "0.95rem",
+        }}
+      >
+        {disabled ? "Demnächst" : "→ Zum Artikel"}
+      </div>
     </>
   );
 
   if (disabled) {
-    return <div style={style}>{content}</div>;
+    return <div style={baseStyle}>{content}</div>;
   }
 
   return (
-    <Link href={href} style={style}>
+    <Link
+      href={href}
+      style={baseStyle}
+      onMouseEnter={(e) =>
+        Object.assign(e.currentTarget.style, hoverStyle)
+      }
+      onMouseLeave={(e) =>
+        Object.assign(e.currentTarget.style, baseStyle)
+      }
+    >
       {content}
     </Link>
   );
 }
 
+/* ======================
+   PAGE
+====================== */
 export default function VersicherungenIndex() {
   return (
     <main style={styles.page}>
-      {/* Zurück */}
+      {/* Header */}
       <section style={styles.header}>
         <Link href="/" style={styles.back}>
           ← Zur Startseite
@@ -60,12 +121,11 @@ export default function VersicherungenIndex() {
         <h1 style={styles.title}>Versicherungen verstehen</h1>
         <p style={styles.subtitle}>
           Welche Versicherungen brauchst du wirklich – und welche kannst du dir
-          sparen? Hier findest du klare, einfache Erklärungen ohne
-          Verkaufsblabla.
+          sparen? Hier findest du klare, einfache Erklärungen ohne Verkaufsblabla.
         </p>
       </section>
 
-      {/* Führung */}
+      {/* Guide */}
       <section style={styles.guide}>
         <h2 style={styles.guideTitle}>So gehst du bei Versicherungen vor</h2>
         <p style={styles.guideText}>
@@ -79,7 +139,7 @@ export default function VersicherungenIndex() {
         </ul>
       </section>
 
-      {/* Karten */}
+      {/* Cards */}
       <section style={styles.grid}>
         <Card
           href="/versicherungen/privathaftpflicht"
@@ -120,6 +180,9 @@ export default function VersicherungenIndex() {
   );
 }
 
+/* ======================
+   STYLES
+====================== */
 const styles = {
   page: {
     minHeight: "100vh",

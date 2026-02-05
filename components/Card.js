@@ -43,7 +43,7 @@ export default function Card({
         {icon}
       </div>
 
-      {/* TITLE – HIER IST DER FIX */}
+      {/* TITLE – FIX FÜR LANGE WÖRTER */}
       <h3
         style={{
           fontSize: "1.05rem",
@@ -60,8 +60,9 @@ export default function Card({
           WebkitLineClamp: 2,
           WebkitBoxOrient: "vertical",
 
-          wordBreak: "break-all",        // 🔥 WICHTIG
-          overflowWrap: "anywhere",      // 🔥 WICHTIG
+          wordBreak: "normal",
+          overflowWrap: "break-word",
+          hyphens: "auto",
         }}
       >
         {title}
@@ -75,8 +76,8 @@ export default function Card({
           opacity: 0.85,
 
           maxWidth: "100%",
-          overflowWrap: "anywhere",
-          wordBreak: "break-word",
+          overflowWrap: "break-word",
+          wordBreak: "normal",
         }}
       >
         {text}
@@ -85,10 +86,9 @@ export default function Card({
       {/* CTA */}
       <div
         style={{
-          marginTop: "auto",
+          marginTop: "20px",
           color: "#14b8a6",
           fontWeight: 500,
-          marginTop: "20px",
         }}
       >
         {disabled ? "Demnächst" : "→ Zum Artikel"}

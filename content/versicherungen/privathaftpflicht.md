@@ -1,10 +1,14 @@
 ---
 title: Privathaftpflichtversicherung – warum sie unverzichtbar ist
 description: Warum die Privathaftpflicht eine Pflichtversicherung ist, was sie abdeckt und worauf du beim Abschluss wirklich achten solltest.
-intro: Die Privathaftpflicht ist eine der wichtigsten Versicherungen überhaupt. Sie schützt dich vor finanziellen Schäden, die schnell existenzbedrohend werden können – und kostet oft nur wenige Euro im Monat.
 ---
 
-## Privathaftpflichtversicherung – kurz erklärt
+**Die Privathaftpflichtversicherung gehört zu den wichtigsten Versicherungen überhaupt.**  
+Sie schützt dich vor finanziellen Schäden, die schnell existenzbedrohend werden können – und kostet oft nur wenige Euro im Monat.
+
+---
+
+## Privathaftpflicht – kurz erklärt
 
 Die Privathaftpflichtversicherung schützt dich vor Schadenersatzforderungen, wenn du anderen unbeabsichtigt einen Schaden zufügst.  
 In Deutschland haftest du dabei **unbegrenzt mit deinem gesamten Vermögen** – theoretisch ein Leben lang.
@@ -23,7 +27,7 @@ Typische Beispiele:
 - Du verursachst einen Wasserschaden in einer Mietwohnung
 - Du verlierst einen fremden Schlüssel (z. B. Haus- oder Firmenschlüssel)
 
-👉 Ohne Privathaftpflicht können schnell **fünf- oder sechsstellige Beträge** entstehen – in schweren Fällen sogar mehr.
+👉 Ohne Privathaftpflicht können schnell **fünf- oder sechsstellige Beträge** entstehen – in schweren Fällen sogar deutlich mehr.
 
 ---
 
@@ -49,16 +53,14 @@ Eine leistungsstarke Privathaftpflicht übernimmt unter anderem:
 Zusätzlich sehr wichtig:
 - **Prüfung der Schuldfrage**
 - **Abwehr unberechtigter Forderungen**  
-  (sogenannter passiver Rechtsschutz)
+  (passiver Rechtsschutz)
 
 ---
 
 ## Worauf solltest du beim Abschluss unbedingt achten?
 
-Nicht jeder Tarif ist sinnvoll. Achte mindestens auf diese Punkte:
-
 ### ✔ Deckungssumme
-- **Mindestens 10 Mio. €**
+- Mindestens **10 Mio. €**
 - Empfehlenswert: **20–50 Mio. €**
 
 ### ✔ Forderungsausfalldeckung
@@ -76,52 +78,66 @@ Nicht jeder Tarif ist sinnvoll. Achte mindestens auf diese Punkte:
 
 ---
 
-## 💡 Welche Privathaftpflicht passt zu dir?
+## Vergleich: gute vs. schlechte Privathaftpflicht
 
-Die passende Privathaftpflicht hängt von deiner Lebenssituation ab:
+| Leistungsmerkmal | Schlechter Tarif | Guter Tarif |
+|------------------|------------------|-------------|
+| Deckungssumme | 3–5 Mio. € | 20–50 Mio. € |
+| Forderungsausfall | ❌ | ✅ |
+| Schlüsselverlust | ❌ | ✅ |
+| Mietsachschäden | eingeschränkt | umfassend |
+| Grobe Fahrlässigkeit | ❌ | ✅ |
+| Kinder abgesichert | teilweise | vollständig |
+| Preisunterschied | gering | gering |
 
-- **Singles:** günstige Tarife mit hoher Deckung
-- **Familien:** Kinder & deliktunfähige Kinder absichern
-- **Studenten:** oft über Eltern versichert – prüfen!
-- **Mieter:** Mietsachschäden & Schlüsselverlust wichtig
-
-👉 Genau hier unterscheiden sich gute von schlechten Tarifen.
+👉 **Der Leistungsunterschied ist enorm – der Preisunterschied meist minimal.**
 
 ---
 
-## 👉 Nächster Schritt: passenden Tarif finden
+## Welche Privathaftpflicht passt zu dir?
+
+Die richtige Absicherung hängt von deiner Lebenssituation ab:
+
+- **Singles:** hoher Schutz, günstiger Tarif
+- **Familien:** Kinder & deliktunfähige Kinder absichern
+- **Studenten:** oft über Eltern versichert – unbedingt prüfen
+- **Mieter:** Mietsachschäden & Schlüsselverlust besonders wichtig
+
+---
+
+## 👉 Nächster Schritt: passenden Tarif vergleichen
 
 Es gibt große Leistungsunterschiede zwischen den Tarifen – oft bei nur wenigen Euro Preisunterschied pro Jahr.
 
-➡️ **Im nächsten Schritt zeigen wir dir**,  
-- welche Tarife wirklich sinnvoll sind  
-- worauf du beim Vergleich achten solltest  
+👉 **Im nächsten Schritt zeigen wir dir:**
+- welche Tarife wirklich sinnvoll sind
+- worauf du beim Vergleich achten solltest
 - wie du teure Fehler vermeidest
 
-**→ Zur Übersicht & Tarifauswahl (kostenlos)**
+**→ Privathaftpflicht-Tarife vergleichen (kostenlos & unverbindlich)**
 
 ---
 
 ## Was kostet eine gute Privathaftpflicht?
 
-Die gute Nachricht:
+Typische Kosten:
 - Singles: **ab ca. 3–5 € pro Monat**
 - Familien: **ab ca. 5–8 € pro Monat**
 
-👉 Der Preisunterschied zwischen schlechten und sehr guten Tarifen ist meist minimal – der Leistungsunterschied enorm.
+👉 Sehr günstiger Schutz vor extremen Risiken.
 
 ---
 
-## Unser Fazit
+## Fazit
 
 Die Privathaftpflicht ist **die wichtigste Versicherung überhaupt**.  
-Sie kostet wenig, schützt aber vor existenzbedrohenden Risiken.
+Sie kostet wenig, schützt aber vor existenzbedrohenden finanziellen Folgen.
 
 👉 **Wenn du nur eine Versicherung hast, sollte es diese sein.**
 
 ---
 
-### Weiterführende Inhalte:
+### Weiterführende Inhalte
 - [Versicherungen – Überblick](/versicherungen)
 - [Krankenversicherung verstehen](/versicherungen/krankenversicherung)
 - [Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)

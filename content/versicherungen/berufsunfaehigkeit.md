@@ -67,7 +67,7 @@ Je früher du abschließt, desto:
 | Dynamik | Beitrags- & Leistungsdynamik | nur eine Dynamik | keine Dynamik |
 | Vertragsstabilität | Bedingungen garantiert | teilweise änderbar | unklar |
 
-👉 **Eine gute BU erfüllt möglichst viele Punkte in der Spalte „Sehr gut“.**
+👉 **Eine gute BU erfüllt möglichst viele Punkte in „Sehr gut“.**
 
 ---
 
@@ -78,54 +78,47 @@ Je früher du abschließt, desto:
 | Student / Azubi | 800–1.200 € |
 | Berufseinsteiger | 1.200–1.800 € |
 | Familie / Haus | 1.800–2.500 € |
-| Selbstständig | individuell (oft höher) |
+| Selbstständig | individuell |
 
 ---
 
 ## Typische Fehler beim Abschluss
 
-- ❌ Zu niedrige BU-Rente
-- ❌ Zu kurze Laufzeit
-- ❌ Billigtarife mit schwachen Bedingungen
-- ❌ Unvollständige Gesundheitsangaben
-- ❌ Abschluss erst bei bestehenden Vorerkrankungen
+- ❌ Zu niedrige BU-Rente  
+- ❌ Zu kurze Laufzeit  
+- ❌ Billigtarife mit schwachen Bedingungen  
+- ❌ Unvollständige Gesundheitsangaben  
+- ❌ Abschluss erst bei bestehenden Vorerkrankungen  
 
 👉 Eine gute BU ist **keine Schnellentscheidung**, sondern eine langfristige Absicherung.
 
 ---
 
-## BU oder Alternativen?
+## 🔎 Jetzt Berufsunfähigkeitsversicherung vergleichen
 
-Alternativen wie:
-- Erwerbsunfähigkeitsversicherung
-- Grundfähigkeitsversicherung
-- Dread-Disease-Versicherung
+Die größten Unterschiede liegen **nicht im Beitrag**,  
+sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
 
-können im Einzelfall sinnvoll sein,  
-**ersetzen eine echte Berufsunfähigkeitsversicherung jedoch nicht vollständig.**
+👉 **[Jetzt BU-Versicherung vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fberufsunfaehigkeit)**
+
+- kein Abschlusszwang  
+- transparente Tarifübersicht  
+- seriöser Vergleich  
+
+---
+
+## 🔁 Weiterführende Inhalte
+
+- → [Versicherungen – Überblick](/versicherungen)
+- → [Privathaftpflichtversicherung](/versicherungen/privathaftpflicht)
+- → [Hausratversicherung](/versicherungen/hausrat)
+- → [Krankenversicherung](/versicherungen/krankenversicherung)
 
 ---
 
 ## Fazit
 
-Die Berufsunfähigkeitsversicherung schützt dein Einkommen –  
+Die Berufsunfähigkeitsversicherung schützt dein Einkommen  
 und damit deine gesamte Lebensplanung.
 
-👉 Wer früh handelt, sichert sich bessere Bedingungen und langfristige Stabilität.
-
----
-
-## 🔗 Nächster Schritt: sinnvoll weitergehen
-
-Damit du **nicht in einer Sackgasse landest**, kannst du jetzt direkt weiter:
-
-👉 **Berufsunfähigkeitsversicherung vergleichen (kostenlos & unverbindlich)**  
-→ *Vergleich & Empfehlungen folgen hier*
-
-👉 **Zur Versicherungs-Übersicht**  
-→ `/versicherungen`
-
-👉 **Weitere wichtige Versicherungen**
-- [Privathaftpflichtversicherung](/versicherungen/haftpflicht)
-- [Hausratversicherung](/versicherungen/hausrat)
-- [Krankenversicherung](/versicherungen/krankenversicherung)
+👉 **Wer früh vergleicht, vermeidet teure Fehler.**

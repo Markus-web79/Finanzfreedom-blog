@@ -64,7 +64,7 @@ Beide funktionieren grundlegend unterschiedlich – bei Beiträgen, Leistungen u
 | Arztwahl | eingeschränkt | frei |
 | Wartezeiten | oft lang | meist kurz |
 | Leistungen | gesetzlich festgelegt | individuell wählbar |
-| Beiträge im Alter | stabil einkommensabhängig | oft steigend |
+| Beiträge im Alter | einkommensabhängig | oft steigend |
 | Flexibilität | gering | hoch |
 
 👉 **Keine Lösung ist pauschal besser – entscheidend ist deine Lebenssituation.**
@@ -77,26 +77,9 @@ Ein Wechsel in die PKV kann sinnvoll sein für:
 - Selbstständige & Freiberufler
 - Beamte (Beihilfe!)
 - Angestellte über der Jahresarbeitsentgeltgrenze
-- Junge, gesunde Personen mit langfristigem Einkommen
+- Junge, gesunde Personen mit stabilem Einkommen
 
 👉 Wer **nur wegen niedriger Beiträge** wechseln will, macht meist einen Fehler.
-
----
-
-## Worauf solltest du beim Wechsel achten?
-
-### ✔ Langfristige Beitragsstabilität
-- Billige Einstiegstarife werden oft teuer im Alter
-
-### ✔ Leistungsumfang
-- Ambulant, stationär, Zahn
-- Psychotherapie & Heilpraktiker
-
-### ✔ Selbstbeteiligung realistisch wählen
-- Spart Beitrag, erhöht aber Risiko
-
-### ✔ Altersrückstellungen
-- Entscheidend für langfristige Kosten
 
 ---
 
@@ -111,21 +94,19 @@ Wenn du gesetzlich versichert bist, können Zusatzversicherungen sinnvoll sein:
 
 ---
 
-## Häufige Fehler vermeiden
+## 👉 Wie solltest du jetzt weiter vorgehen?
 
-- ❌ Nur auf den Beitrag schauen
-- ❌ Langfristige Entwicklung ignorieren
-- ❌ PKV als kurzfristige Sparlösung sehen
-- ❌ Ohne Vergleich oder Strategie wechseln
+**1️⃣ Bleibst du gesetzlich versichert?**  
+→ Zusatzversicherungen prüfen und sinnvoll ergänzen
+
+**2️⃣ Denkst du über PKV nach?**  
+→ Vergleich & langfristige Kosten analysieren
 
 ---
 
-## Fazit
+## Weiterführende Inhalte
 
-Die Krankenversicherung beeinflusst **Gesundheit, Finanzen und Freiheit** massiv.  
-Ein PKV-Wechsel kann sinnvoll sein – muss aber **strategisch und langfristig** entschieden werden.
-
-👉 **Im nächsten Schritt** zeigen wir:
-- konkrete Tarifvergleiche
-- wann Zusatzversicherungen besser sind
-- welche Anbieter sich wirklich lohnen
+- 👉 **[Versicherungen – Überblick](/versicherungen)**
+- 👉 **[Privathaftpflichtversicherung](/versicherungen/privathaftpflicht)**
+- 👉 **[Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)**
+- 👉 **[Kfz-Versicherung verstehen](/versicherungen/kfz)**

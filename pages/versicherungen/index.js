@@ -103,17 +103,17 @@ export default function VersicherungenIndex() {
         />
 
         <Card
+          href="/versicherungen/kfz"
           icon="🚗"
           title="Kfz-Versicherung"
-          text="Haftpflicht, Teilkasko oder Vollkasko – Erklärung folgt."
-          disabled
+          text="Haftpflicht, Teilkasko oder Vollkasko – Unterschiede, Kosten und Tipps."
         />
 
         <Card
+          href="/versicherungen/krankenversicherung"
           icon="🏥"
           title="Krankenversicherung"
-          text="Gesetzlich oder privat? Einfach erklärt – folgt."
-          disabled
+          text="Gesetzlich oder privat? Unterschiede, Vor- und Nachteile einfach erklärt."
         />
       </section>
     </main>

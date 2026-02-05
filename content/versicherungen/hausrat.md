@@ -1,12 +1,16 @@
 ---
 title: Hausratversicherung – Schutz für dein Zuhause
 description: Was eine Hausratversicherung abdeckt, für wen sie sinnvoll ist und worauf du beim Abschluss wirklich achten solltest.
-intro: Die Hausratversicherung schützt dein persönliches Eigentum in der Wohnung oder im Haus. Sie gehört zu den wichtigsten Versicherungen, da Schäden schnell hohe Kosten verursachen können.
+---
+
+**Die Hausratversicherung schützt dein persönliches Eigentum in deiner Wohnung oder deinem Haus.**  
+Sie gehört zu den wichtigsten Versicherungen, da Schäden schnell hohe Kosten verursachen können.
+
 ---
 
 ## Was ist eine Hausratversicherung?
 
-Die Hausratversicherung schützt **alles, was du in deiner Wohnung besitzt** – also Dinge, die du bei einem Umzug mitnehmen würdest.
+Die Hausratversicherung schützt **alles, was du bei einem Umzug mitnehmen würdest**.
 
 Dazu gehören unter anderem:
 - Möbel
@@ -47,7 +51,7 @@ Eine Hausratversicherung ist besonders wichtig für:
 - Wohngemeinschaften
 - Menschen mit hochwertiger Einrichtung
 
-👉 Auch bei wenig Einrichtung kann ein Schaden schnell mehrere tausend Euro kosten.
+👉 Auch bei wenig Einrichtung kann ein Schaden schnell **mehrere tausend Euro** kosten.
 
 ---
 
@@ -55,51 +59,62 @@ Eine Hausratversicherung ist besonders wichtig für:
 
 Die Versicherungssumme sollte den **Wert deines gesamten Hausrats** abdecken.
 
-Faustregel:
+**Faustregel:**
 - ca. **650–750 € pro Quadratmeter Wohnfläche**
 
 Beispiel:
-- 60 m² Wohnung → ca. 39.000–45.000 €
+- 60 m² Wohnung → ca. **39.000–45.000 €**
 
 Wichtig:
 - Unterversicherung vermeiden
-- Viele Tarife bieten eine **Unterversicherungsverzichts-Klausel**
+- Unterversicherungsverzicht nutzen
+
+---
+
+## Vergleich: Hausratversicherung – worauf es wirklich ankommt
+
+| Kriterium | Sehr gut | Mittel | Schwach |
+|---------|---------|--------|--------|
+| Versicherungssumme | 650–750 €/m² | niedriger | frei gewählt |
+| Unterversicherungsverzicht | ✅ enthalten | eingeschränkt | ❌ nicht enthalten |
+| Neuwert-Erstattung | ✅ immer | teilweise | ❌ Zeitwert |
+| Grobe Fahrlässigkeit | ✅ mitversichert | begrenzt | ❌ ausgeschlossen |
+| Fahrraddiebstahl | ✅ hoher Schutz | gering | ❌ nicht enthalten |
+| Außenversicherung | ✅ ausreichend | eingeschränkt | ❌ fehlt |
+| Vertragsbedingungen | modern & klar | teilweise alt | veraltet |
+
+👉 **Ein guter Tarif erfüllt möglichst viele Punkte in „Sehr gut“.**
 
 ---
 
 ## Worauf solltest du beim Abschluss achten?
 
-Achte mindestens auf folgende Punkte:
-
 ### ✔ Unterversicherungsverzicht
-- Sehr wichtig
+- Extrem wichtig
 - Nur bei korrekter Wohnflächenangabe gültig
 
 ### ✔ Neuwert-Erstattung
-- Schäden werden zum Neupreis ersetzt, nicht zum Zeitwert
+- Schäden werden zum Neupreis ersetzt
 
 ### ✔ Grobe Fahrlässigkeit
-- Schäden sind auch bei eigenen Fehlern abgesichert
+- Auch eigene Fehler sind abgesichert
 
 ### ✔ Fahrraddiebstahl
 - Besonders relevant in Städten
-- Auf passende Deckungssumme achten
 
 ### ✔ Außenversicherung
-- Hausrat ist auch außerhalb der Wohnung geschützt (z. B. Urlaub)
+- Schutz auch außerhalb der Wohnung (z. B. Urlaub)
 
 ---
 
 ## Was kostet eine Hausratversicherung?
 
-Die gute Nachricht:
-- Hausratversicherungen sind **sehr günstig**
+Hausratversicherungen sind **sehr günstig**:
 
-Typische Kosten:
 - Singles: **ab ca. 3–6 € pro Monat**
 - Familien: **ab ca. 5–10 € pro Monat**
 
-👉 Kleine Beiträge, große Wirkung im Schadensfall.
+👉 Kleine Beiträge, großer Schutz.
 
 ---
 
@@ -112,14 +127,14 @@ Typische Kosten:
 
 ---
 
-## Unser Fazit
+## Fazit
 
-Die Hausratversicherung schützt dein Zuhause und dein Eigentum zuverlässig vor existenziellen Schäden.  
+Die Hausratversicherung schützt dein Zuhause und dein Eigentum zuverlässig vor hohen finanziellen Schäden.  
 Sie ist günstig, einfach abzuschließen und im Ernstfall extrem wertvoll.
 
 👉 Besonders für Mieter und Familien ist sie nahezu unverzichtbar.
 
-**Im nächsten Schritt** kannst du:
-- Tarife vergleichen
-- Leistungen gegenüberstellen
-- prüfen, welcher Schutz zu deinem Zuhause passt
+**Im nächsten Schritt** zeigen wir:
+- wie du Tarife vergleichst
+- welche Leistungen wirklich wichtig sind
+- wie du unnötige Kosten vermeidest

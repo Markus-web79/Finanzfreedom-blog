@@ -113,7 +113,19 @@ und damit deine gesamte Lebensplanung.
 
 👉 Wer früh handelt, sichert sich bessere Bedingungen und langfristige Stabilität.
 
-**Im nächsten Schritt** zeigen wir:
-- wie du passende Tarife vergleichst
-- worauf du bei Anbietern achten solltest
-- wie du Fehler beim Abschluss vermeidest
+---
+
+## 🔗 Nächster Schritt: sinnvoll weitergehen
+
+Damit du **nicht in einer Sackgasse landest**, kannst du jetzt direkt weiter:
+
+👉 **Berufsunfähigkeitsversicherung vergleichen (kostenlos & unverbindlich)**  
+→ *Vergleich & Empfehlungen folgen hier*
+
+👉 **Zur Versicherungs-Übersicht**  
+→ `/versicherungen`
+
+👉 **Weitere wichtige Versicherungen**
+- [Privathaftpflichtversicherung](/versicherungen/haftpflicht)
+- [Hausratversicherung](/versicherungen/hausrat)
+- [Krankenversicherung](/versicherungen/krankenversicherung)

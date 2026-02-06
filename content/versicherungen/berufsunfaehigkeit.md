@@ -67,7 +67,7 @@ Je früher du abschließt, desto:
 | Dynamik | Beitrags- & Leistungsdynamik | nur eine Dynamik | keine Dynamik |
 | Vertragsstabilität | Bedingungen garantiert | teilweise änderbar | unklar |
 
-👉 **Eine gute BU erfüllt möglichst viele Punkte in „Sehr gut“.**
+👉 **Eine gute BU erfüllt möglichst viele Punkte in der Spalte „Sehr gut“.**
 
 ---
 
@@ -94,19 +94,6 @@ Je früher du abschließt, desto:
 
 ---
 
-## 🔎 Jetzt Berufsunfähigkeitsversicherung vergleichen
-
-Die größten Unterschiede liegen **nicht im Beitrag**,  
-sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
-
-👉 **[Jetzt BU-Versicherung vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fberufsunfaehigkeit)**
-
-- kein Abschlusszwang  
-- transparente Tarifübersicht  
-- seriöser Vergleich  
-
----
-
 ## 🔁 Weiterführende Inhalte
 
 - → [Versicherungen – Überblick](/versicherungen)
@@ -121,4 +108,4 @@ sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
 Die Berufsunfähigkeitsversicherung schützt dein Einkommen  
 und damit deine gesamte Lebensplanung.
 
-👉 **Wer früh vergleicht, vermeidet teure Fehler.**
+👉 Wer sich früh informiert, vermeidet teure Fehler.

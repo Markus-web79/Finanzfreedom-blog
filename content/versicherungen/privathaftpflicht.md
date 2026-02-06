@@ -66,18 +66,6 @@ Zusätzlich sehr wichtig:
 
 ---
 
-## 🔍 Jetzt Privathaftpflicht vergleichen
-
-Viele zahlen **jahrelang zu viel** oder sind **falsch abgesichert**, ohne es zu wissen.
-
-👉 **[Jetzt Privathaftpflicht vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=121064&awinaffid=2627146&ued=https%3A%2F%2Fwww.burda-vergleicht.de%2Fprivathaftpflicht)**
-
-- kein Abschlusszwang  
-- transparente Tarifübersicht  
-- seriöser Vergleich  
-
----
-
 ## Was kostet eine gute Privathaftpflicht?
 
 - Singles: **ab ca. 3–5 € / Monat**
@@ -87,17 +75,18 @@ Viele zahlen **jahrelang zu viel** oder sind **falsch abgesichert**, ohne es zu 
 
 ---
 
+## 🔁 Weiterführende Inhalte
+
+- → [Versicherungen – Überblick](/versicherungen)
+- → [Krankenversicherung verstehen](/versicherungen/krankenversicherung)
+- → [Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)
+- → [Kfz-Versicherung verstehen](/versicherungen/kfz)
+
+---
+
 ## Fazit
 
 Die Privathaftpflicht ist **die wichtigste Versicherung überhaupt**.  
 Sie kostet wenig – schützt aber vor finanziellen Katastrophen.
 
 👉 **Wenn du nur eine Versicherung hast, sollte es diese sein.**
-
----
-
-### Weiterführende Inhalte
-- [Versicherungen – Überblick](/versicherungen)
-- [Krankenversicherung verstehen](/versicherungen/krankenversicherung)
-- [Berufsunfähigkeitsversicherung](/versicherungen/berufsunfaehigkeit)
-- [Kfz-Versicherung verstehen](/versicherungen/kfz)

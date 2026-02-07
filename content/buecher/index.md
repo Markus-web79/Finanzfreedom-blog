@@ -20,7 +20,10 @@ Sie versprechen **keine schnellen Gewinne**, sondern helfen dabei, ein **stabile
 Ein zeitloser Klassiker über Geldgesetze, Sparen und Investieren.  
 Einfach geschrieben, aber extrem wirkungsvoll – ideal für Einsteiger.
 
-**Geeignet für:** Anfänger · junge Menschen · Eltern & Kinder
+👉 **[Der reichste Mann von Babylon bei Amazon ansehen](https://amzn.to/3Mbihvw)**
+
+**Geeignet für:** Anfänger · junge Menschen · Eltern & Kinder  
+*Hinweis: Affiliate-Link – für dich bleibt der Preis gleich.*
 
 ---
 
@@ -73,6 +76,7 @@ Vermögen entsteht oft durch **kleine, konsequente Gewohnheiten**.
 ---
 
 ## 🎯 Warum wir Bücher empfehlen
+
 Bücher sind kein Ersatz für eigene Entscheidungen –  
 aber sie helfen, **Fehler zu vermeiden**, Zusammenhänge zu verstehen und langfristig bessere Entscheidungen zu treffen.
 
@@ -81,5 +85,6 @@ Gerade am Anfang ist Wissen oft wertvoller als jede konkrete Anlageentscheidung.
 ---
 
 > **Hinweis (Transparenz):**  
-> Sobald wir Affiliate-Links einsetzen, werden wir das klar kennzeichnen.  
-> Für dich entstehen dadurch **keine Mehrkosten**.
+> Einige Links auf dieser Seite sind Affiliate-Links.  
+> Wenn du darüber etwas kaufst, erhalten wir eine kleine Provision –  
+> **für dich entstehen keinerlei Mehrkosten**.

@@ -36,6 +36,16 @@ export default function Buecher() {
             <strong>Der reichste Mann von Babylon</strong> – George S. Clason
             <br />
             Zeitlose Prinzipien zu Sparen, Investieren und Vermögensaufbau.
+            <br />
+            👉{" "}
+            <a
+              href="https://amzn.to/3Mbihvw"
+              target="_blank"
+              rel="nofollow sponsored noopener"
+              style={{ color: "#4fd1c5" }}
+            >
+              Bei Amazon ansehen
+            </a>
           </li>
 
           <li>
@@ -58,8 +68,8 @@ export default function Buecher() {
         </ul>
 
         <p style={{ marginTop: "2rem", opacity: 0.8 }}>
-          Transparenz-Hinweis: Zukünftig können einige Links Affiliate-Links sein.
-          Für dich entstehen dadurch keine Nachteile.
+          Transparenz-Hinweis: Einige Links auf dieser Seite sind Affiliate-Links.
+          Für dich entstehen dadurch keine Mehrkosten.
         </p>
       </main>
     </>

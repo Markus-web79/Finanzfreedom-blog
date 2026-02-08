@@ -59,15 +59,13 @@ Je früher du abschließt, desto:
 | Kriterium | Sehr gut | Mittel | Schwach |
 |---------|---------|--------|--------|
 | BU-Rente | ≥ 75 % des Nettoeinkommens | 50–75 % | < 50 % |
-| Leistungsbeginn | ab 50 % BU | ab 60 % BU | erst bei Erwerbsunfähigkeit |
+| Leistungsbeginn | ab 50 % BU | ab 60 % BU | erst Erwerbsunfähigkeit |
 | Laufzeit | bis 67 Jahre | bis 65 Jahre | unter 65 |
 | Abstrakte Verweisung | ❌ Verzicht | ⚠️ eingeschränkt | ✅ erlaubt |
 | Nachversicherung | mehrfach & ereignisunabhängig | begrenzt | nicht möglich |
 | Gesundheitsprüfung | fair & transparent | umfangreich | sehr streng |
-| Dynamik | Beitrags- & Leistungsdynamik | nur eine Dynamik | keine Dynamik |
-| Vertragsstabilität | Bedingungen garantiert | teilweise änderbar | unklar |
 
-👉 **Eine gute BU erfüllt möglichst viele Punkte in der Spalte „Sehr gut“.**
+👉 **Eine gute BU erfüllt möglichst viele Punkte in „Sehr gut“.**
 
 ---
 
@@ -88,9 +86,22 @@ Je früher du abschließt, desto:
 - ❌ Zu kurze Laufzeit  
 - ❌ Billigtarife mit schwachen Bedingungen  
 - ❌ Unvollständige Gesundheitsangaben  
-- ❌ Abschluss erst bei bestehenden Vorerkrankungen  
+- ❌ Abschluss erst bei Vorerkrankungen  
 
-👉 Eine gute BU ist **keine Schnellentscheidung**, sondern eine langfristige Absicherung.
+👉 Eine BU ist **keine Schnellentscheidung**, sondern eine langfristige Absicherung.
+
+---
+
+## 🔎 Jetzt Berufsunfähigkeitsversicherung vergleichen
+
+Die größten Unterschiede liegen **nicht im Beitrag**,  
+sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
+
+👉 **[Jetzt BU-Versicherung vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fberufsunfaehigkeitsversicherung%2F)**
+
+- kein Abschlusszwang  
+- transparente Tarifübersicht  
+- seriöser Vergleich  
 
 ---
 
@@ -98,8 +109,8 @@ Je früher du abschließt, desto:
 
 - → [Versicherungen – Überblick](/versicherungen)
 - → [Privathaftpflichtversicherung](/versicherungen/privathaftpflicht)
-- → [Hausratversicherung](/versicherungen/hausrat)
 - → [Krankenversicherung](/versicherungen/krankenversicherung)
+- → [Kfz-Versicherung](/versicherungen/kfz)
 
 ---
 
@@ -108,4 +119,4 @@ Je früher du abschließt, desto:
 Die Berufsunfähigkeitsversicherung schützt dein Einkommen  
 und damit deine gesamte Lebensplanung.
 
-👉 Wer sich früh informiert, vermeidet teure Fehler.
+👉 **Wer früh vergleicht, vermeidet teure Fehler.**

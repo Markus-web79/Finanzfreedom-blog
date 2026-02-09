@@ -1,6 +1,6 @@
 ---
-title: Berufsunfähigkeitsversicherung vergleichen – sinnvoll & richtig
-description: Berufsunfähigkeitsversicherung vergleichen: Worauf du achten solltest, wie der Vergleich abläuft und warum eine gute BU über deine finanzielle Zukunft entscheidet.
+title: "Berufsunfähigkeitsversicherung vergleichen – sinnvoll & richtig"
+description: "Berufsunfähigkeitsversicherung vergleichen: Worauf du achten solltest und warum eine gute BU entscheidend ist."
 ---
 
 ## Berufsunfähigkeitsversicherung vergleichen – der richtige nächste Schritt

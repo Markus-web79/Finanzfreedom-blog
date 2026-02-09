@@ -17,7 +17,7 @@ Grundsätzlich unterscheidet man drei Arten:
 - Deckt Schäden, die du **anderen** zufügst
 - Personenschäden, Sachschäden, Vermögensschäden
 
-👉 Ohne Haftpflicht darf kein Auto zugelassen werden.
+👉 Ohne Haftpflicht darf kein Fahrzeug zugelassen werden.
 
 ---
 
@@ -29,9 +29,9 @@ Zusätzlicher Schutz für dein eigenes Fahrzeug, z. B. bei:
 - Sturm, Hagel, Blitz
 - Brand oder Explosion
 
-Sinnvoll für:
-- neuere Fahrzeuge
-- Fahrzeuge mit höherem Wert
+**Sinnvoll für:**
+- neuere Fahrzeuge  
+- Fahrzeuge mit höherem Restwert
 
 ---
 
@@ -39,12 +39,12 @@ Sinnvoll für:
 Umfasst alles aus der Teilkasko **plus**:
 - selbst verschuldete Unfälle
 - Vandalismus
-- Schäden durch Fahrerfehler
+- Schäden durch Fahrfehler
 
-Sinnvoll für:
+**Sinnvoll für:**
 - Neuwagen
 - Leasingfahrzeuge
-- hochwertige Autos
+- hochwertige Fahrzeuge
 
 ---
 
@@ -90,12 +90,12 @@ Das hängt vor allem ab von:
 - Schützt auch bei eigenen Fehlern
 
 ### ✔ Werkstattbindung
-- Senkt den Beitrag
+- Kann den Beitrag senken
 - Einschränkung bei freier Werkstattwahl
 
 ### ✔ Fahrerkreis
 - Je mehr Fahrer, desto teurer
-- Genau angeben!
+- Genau und ehrlich angeben
 
 ### ✔ Selbstbeteiligung
 - Senkt den Beitrag
@@ -118,17 +118,20 @@ Die Kosten hängen u. a. ab von:
 - Teilkasko: **ca. 300–600 € / Jahr**
 - Vollkasko: **ca. 600–1.200 € / Jahr**
 
-👉 Ein Vergleich spart oft **mehrere hundert Euro jährlich**.
+👉 Ein Vergleich spart oft **mehrere hundert Euro pro Jahr**.
 
 ---
 
 ## 🚗 Kfz-Versicherung vergleichen & passenden Tarif finden
 
-Die größten Preisunterschiede entstehen nicht durch Zufall,  
-sondern durch Tarifdetails, die viele übersehen.
+Die größten Preisunterschiede entstehen **nicht zufällig**,  
+sondern durch Tarifdetails, die viele Versicherte übersehen.
 
-👉 **Kfz-Versicherung jetzt vergleichen**  
-[Zum Kfz-Vergleich bei CHECK24](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fkfz-versicherung%2F)
+👉 **Kfz-Versicherung jetzt vergleichen (kostenlos & unverbindlich)**  
+[Zum Kfz-Versicherungs-Vergleich bei CHECK24](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fkfz-versicherung%2F)
+
+> **Transparenz-Hinweis:**  
+> Der Vergleichslink ist ein Affiliate-Link. Für dich entstehen **keine Mehrkosten**.
 
 ---
 

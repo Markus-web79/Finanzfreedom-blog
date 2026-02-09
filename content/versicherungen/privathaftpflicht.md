@@ -42,7 +42,7 @@ Typische Beispiele:
 
 Eine leistungsstarke Privathaftpflicht übernimmt unter anderem:
 
-- **Personenschäden** (z. B. Behandlungskosten, Schmerzensgeld, Renten)
+- **Personenschäden** (Behandlungskosten, Schmerzensgeld, Renten)
 - **Sachschäden** (beschädigte Gegenstände, Wohnungen, Fahrzeuge)
 - **Vermögensschäden** (z. B. Verdienstausfall des Geschädigten)
 - **Mietsachschäden**
@@ -52,7 +52,7 @@ Eine leistungsstarke Privathaftpflicht übernimmt unter anderem:
 Zusätzlich extrem wichtig:
 - **Prüfung der Schuldfrage**
 - **Abwehr unberechtigter Forderungen**  
-  (sogenannter passiver Rechtsschutz)
+  (sogenannter *passiver Rechtsschutz*)
 
 ---
 
@@ -84,10 +84,13 @@ Typische Richtwerte:
 ## 🔍 Privathaftpflicht vergleichen & passenden Tarif finden
 
 Die größten Unterschiede liegen **nicht im Preis**,  
-sondern in den **Leistungen und Bedingungen**, die im Ernstfall entscheiden.
+sondern in den **Leistungen und Vertragsdetails**, die im Ernstfall entscheidend sind.
 
 👉 **Privathaftpflicht jetzt vergleichen (kostenlos & unverbindlich)**  
 [Zum Privathaftpflicht-Vergleich bei CHECK24](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fprivathaftpflicht%2F)
+
+> **Transparenz-Hinweis:**  
+> Der Vergleichslink ist ein Affiliate-Link. Für dich entstehen **keine Mehrkosten**.
 
 ---
 

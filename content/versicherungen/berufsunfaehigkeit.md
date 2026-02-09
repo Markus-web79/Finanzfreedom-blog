@@ -92,16 +92,15 @@ Je früher du abschließt, desto:
 
 ---
 
-## 🔎 Berufsunfähigkeitsversicherung vergleichen & passenden Tarif finden
+## 🔎 Berufsunfähigkeitsversicherung vergleichen
 
 Die größten Unterschiede liegen **nicht im Beitrag**,  
 sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
 
-👉 **Berufsunfähigkeitsversicherung jetzt vergleichen (kostenlos & unverbindlich)**  
-[Zum BU-Vergleich bei CHECK24](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fberufsunfaehigkeitsversicherung%2F)
-
-> **Transparenz-Hinweis:**  
-> Der Vergleichslink ist ein Affiliate-Link. Für dich entstehen **keine Mehrkosten**.
+👉 **[Zur BU-Vergleichsübersicht](\/versicherungen\/berufsunfaehigkeit\/vergleich)**  
+- strukturiert  
+- verständlich  
+- ohne Verkaufsdruck  
 
 ---
 

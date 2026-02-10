@@ -38,32 +38,27 @@ function Card({ href, icon, title, text, disabled = false }) {
         {icon}
       </div>
 
-      {/* TITLE – FINAL FIX */}
+      {/* Title */}
       <h3
         style={{
           fontSize: "1.05rem",
           lineHeight: 1.35,
           marginBottom: "10px",
           color: "#ffffff",
-
-          /* 🔥 DIE ENTSCHEIDENDE LÖSUNG */
           wordBreak: "break-word",
           overflowWrap: "anywhere",
           hyphens: "auto",
-
-          maxWidth: "100%",
         }}
       >
         {title}
       </h3>
 
-      {/* TEXT */}
+      {/* Text */}
       <p
         style={{
           fontSize: "0.95rem",
           lineHeight: 1.6,
           opacity: 0.85,
-
           wordBreak: "break-word",
           overflowWrap: "anywhere",
         }}
@@ -149,10 +144,17 @@ export default function VersicherungenIndex() {
         />
 
         <Card
+          href="/versicherungen/rechtsschutz"
+          icon="⚖️"
+          title="Rechtsschutzversicherung"
+          text="Schützt dich vor hohen Kosten bei rechtlichen Streitigkeiten, z. B. im Arbeits- oder Mietrecht."
+        />
+
+        <Card
           href="/versicherungen/hausrat"
           icon="🏠"
           title="Hausratversicherung"
-          text="Sichert dein Hab und Gut bei Diebstahl, Feuer oder Wasserschäden ab."
+          text="Sichert dein Hab und Gut bei Diebstahl, Feuer, Leitungswasser und Sturm ab."
         />
 
         <Card

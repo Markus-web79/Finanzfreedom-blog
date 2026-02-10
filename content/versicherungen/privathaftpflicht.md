@@ -44,7 +44,7 @@ Eine leistungsstarke Privathaftpflicht übernimmt unter anderem:
 
 - **Personenschäden** (Behandlungskosten, Schmerzensgeld, Renten)
 - **Sachschäden** (beschädigte Gegenstände, Wohnungen, Fahrzeuge)
-- **Vermögensschäden** (z. B. Verdienstausfall des Geschädigten)
+- **Vermögensschäden** (z. B. Verdienstausfall)
 - **Mietsachschäden**
 - **Schlüsselverlust**
 - **Schäden durch Kinder**
@@ -52,7 +52,7 @@ Eine leistungsstarke Privathaftpflicht übernimmt unter anderem:
 Zusätzlich extrem wichtig:
 - **Prüfung der Schuldfrage**
 - **Abwehr unberechtigter Forderungen**  
-  (sogenannter *passiver Rechtsschutz*)
+  (*passiver Rechtsschutz*)
 
 ---
 
@@ -86,11 +86,10 @@ Typische Richtwerte:
 Die größten Unterschiede liegen **nicht im Preis**,  
 sondern in den **Leistungen und Vertragsdetails**, die im Ernstfall entscheidend sind.
 
-👉 **Privathaftpflicht jetzt vergleichen (kostenlos & unverbindlich)**  
-[Zum Privathaftpflicht-Vergleich bei CHECK24](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fprivathaftpflicht%2F)
+👉 **[Privathaftpflicht jetzt vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=14797&awinaffid=2757918&ued=https%3A%2F%2Fwww.verivox.de%2Fprivathaftpflichtversicherung%2F)**
 
 > **Transparenz-Hinweis:**  
-> Der Vergleichslink ist ein Affiliate-Link. Für dich entstehen **keine Mehrkosten**.
+> Der Link ist ein Affiliate-Link. Für dich entstehen **keine Mehrkosten**.
 
 ---
 

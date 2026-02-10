@@ -97,10 +97,10 @@ Je früher du abschließt, desto:
 Die größten Unterschiede liegen **nicht im Beitrag**,  
 sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
 
-👉 **[Zur BU-Vergleichsübersicht](\/versicherungen\/berufsunfaehigkeit\/vergleich)**  
-- strukturiert  
-- verständlich  
-- ohne Verkaufsdruck  
+👉 **[Jetzt Berufsunfähigkeitsversicherung vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fberufsunfaehigkeitsversicherung%2F)**
+
+> **Transparenz-Hinweis:**  
+> Der Link ist ein Affiliate-Link. Für dich entstehen **keine Mehrkosten**.
 
 ---
 

@@ -55,8 +55,8 @@ Ein leistungsstarker Tarif bietet unter anderem:
 - **Außenversicherung** (z. B. Hotel, Keller, Garage)
 
 ⚠️ Wichtig:
-- Die **Versicherungssumme** muss zum Wohnraum passen
-- Unterversicherung kann Leistungen stark kürzen
+- Die **Versicherungssumme** muss zur Wohnfläche passen
+- **Unterversicherungsverzicht** ist ein Muss
 
 ---
 

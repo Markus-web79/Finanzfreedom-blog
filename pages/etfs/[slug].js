@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Link from "next/link";
 import Head from "next/head";
 import { marked } from "marked";
+import ArticleLayout from "../../components/ArticleLayout";
 
 export default function EtfArticle({ frontmatter, content }) {
   return (
@@ -16,45 +16,19 @@ export default function EtfArticle({ frontmatter, content }) {
         />
       </Head>
 
-      <main
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          padding: "3rem 1.5rem",
+      <ArticleLayout
+        title={frontmatter.title}
+        intro={frontmatter.intro}
+        backLink={{
+          href: "/etfs",
+          label: "Zurück zu ETFs",
         }}
       >
-        {/* Zurück-Link */}
-        <Link href="/etfs" style={{ color: "#2dd4bf" }}>
-          ← Zurück zu ETFs
-        </Link>
-
-        {/* Titel */}
-        <h1 style={{ marginTop: "1.5rem" }}>
-          {frontmatter.title}
-        </h1>
-
-        {/* Intro */}
-        {frontmatter.intro && (
-          <p
-            style={{
-              opacity: 0.85,
-              maxWidth: "800px",
-              lineHeight: "1.7",
-            }}
-          >
-            {frontmatter.intro}
-          </p>
-        )}
-
-        {/* Inhalt */}
+        {/* Artikelinhalt */}
         <div
-          style={{
-            marginTop: "2.5rem",
-            lineHeight: "1.7",
-          }}
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      </main>
+      </ArticleLayout>
     </>
   );
 }

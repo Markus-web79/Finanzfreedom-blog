@@ -101,6 +101,12 @@ So richtest du ihn ein:
 
 ---
 
+### 👉 Kostenlose ETF-Sparplan-Checkliste
+**Alle Schritte auf einer Seite – einfach abhaken.**  
+→ [/tools/etf-sparplan-checkliste](/tools/etf-sparplan-checkliste)
+
+---
+
 ## Schritt 6: Die 5 häufigsten Anfängerfehler (bitte vermeiden)
 
 1. **Zu früh verkaufen**, weil Kurse fallen  
@@ -127,4 +133,6 @@ Wenn du komplett neu bist, mach genau das:
 4) Richte den Sparplan ein  
 ➡️ /etfs/etf-sparplan-einrichten  
 
-Wenn du willst, baue ich als Nächstes die Seite **ETF-Sparplan einrichten** so, dass sie 100% anfängertauglich ist (mit Screenshots/Schritten).
+👉 **Wenn du alles kompakt willst:**  
+→ **Kostenlose ETF-Sparplan-Checkliste:**  
+/ tools / etf-sparplan-checkliste

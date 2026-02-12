@@ -116,6 +116,12 @@ Jetzt kommt der Teil, den viele unterschätzen:
 
 ---
 
+### 👉 Kostenlose ETF-Sparplan-Checkliste
+**Alle Schritte kompakt auf einer Seite – einfach abhaken.**  
+→ [/tools/etf-sparplan-checkliste](/tools/etf-sparplan-checkliste)
+
+---
+
 ## Häufige Anfängerfehler
 
 Diese Fehler kosten langfristig Rendite:

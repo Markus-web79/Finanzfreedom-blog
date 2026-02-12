@@ -309,3 +309,33 @@ main {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+.articleContainer {
+  overflow: visible;
+  padding-bottom: 6rem;
+}
+
+.newsletterBox {
+  margin-top: 4rem;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  text-align: center;
+}
+
+.newsletterBox h3 {
+  margin-bottom: 1rem;
+}
+
+.newsletterBox p {
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.newsletterHint {
+  display: block;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}

@@ -11,8 +11,6 @@ export default function Document() {
           content="d3904270-1cac-4cd4-9b6a-07ca68348969"
         />
 
-        {/* robots ggf. später entfernen */}
-        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <body>
         <Main />

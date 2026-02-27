@@ -1,6 +1,4 @@
-import type { GetServerSideProps } from "next";
-
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export async function getServerSideProps({ res }) {
   const siteUrl = "https://www.finanzfreedom.de";
 
   const pages = [
@@ -31,12 +29,13 @@ ${urls}
 </urlset>`;
 
   res.setHeader("Content-Type", "application/xml");
-  res.setHeader("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
   res.write(sitemap);
   res.end();
 
-  return { props: {} };
-};
+  return {
+    props: {},
+  };
+}
 
 export default function Sitemap() {
   return null;

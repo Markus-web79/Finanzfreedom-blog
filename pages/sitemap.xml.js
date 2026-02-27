@@ -1,7 +1,7 @@
 export async function getServerSideProps({ res }) {
-  const siteUrl = "https://www.finanzfreedom.de";
+  const baseUrl = "https://www.finanzfreedom.de";
 
-  const pages = [
+  const routes = [
     "",
     "etfs",
     "investieren",
@@ -11,30 +11,25 @@ export async function getServerSideProps({ res }) {
     "broker"
   ];
 
-  const urls = pages
-    .map((page) => {
-      const path = page ? `/${page}` : "";
-      return `
-        <url>
-          <loc>${siteUrl}${path}</loc>
-          <changefreq>daily</changefreq>
-          <priority>0.7</priority>
-        </url>`;
-    })
-    .join("");
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
+${routes
+  .map(
+    (route) => `
+  <url>
+    <loc>${baseUrl}${route ? `/${route}` : ""}</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>`
+  )
+  .join("")}
 </urlset>`;
 
   res.setHeader("Content-Type", "application/xml");
-  res.write(sitemap);
+  res.write(xml);
   res.end();
 
-  return {
-    props: {},
-  };
+  return { props: {} };
 }
 
 export default function Sitemap() {

@@ -1,24 +1,55 @@
 import Link from "next/link";
-import { GetStaticProps } from "next";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { getAllPosts } from "../../lib/posts";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts().filter(
-    (post) => post.slug && post.slug !== "README"
-  );
+type Post = {
+  slug: string; // wir normalisieren auf string
+  title: string;
+  excerpt?: string;
+  category?: string;
+};
+
+function normalizeSlug(slug: unknown): string | null {
+  if (typeof slug === "string") return slug;
+  if (Array.isArray(slug) && slug.every((s) => typeof s === "string")) {
+    // falls irgendwo string[] reinkommt: zu "a/b/c" zusammenbauen
+    return slug.join("/");
+  }
+  return null;
+}
+
+export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
+  const rawPosts = getAllPosts();
+
+  const posts: Post[] = rawPosts
+    .map((p: any) => {
+      const slug = normalizeSlug(p?.slug);
+      if (!slug) return null;
+
+      return {
+        slug,
+        title: typeof p?.title === "string" && p.title.trim() ? p.title : slug,
+        excerpt: typeof p?.excerpt === "string" ? p.excerpt : "",
+        category: typeof p?.category === "string" ? p.category : "",
+      } as Post;
+    })
+    .filter((p): p is Post => Boolean(p))
+    .filter((p) => p.slug.toUpperCase() !== "README");
 
   return {
     props: { posts },
   };
 };
 
-export default function BlogIndex({ posts }: any) {
+export default function BlogIndex({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <main style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem" }}>
       <h1>Blog</h1>
 
       <div style={{ display: "grid", gap: "1.5rem" }}>
-        {posts.map((post: any) => (
+        {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
@@ -35,11 +66,9 @@ export default function BlogIndex({ posts }: any) {
             >
               <h2 style={{ marginBottom: "0.5rem" }}>{post.title}</h2>
 
-              {post.excerpt && (
-                <p style={{ opacity: 0.8 }}>{post.excerpt}</p>
-              )}
+              {!!post.excerpt && <p style={{ opacity: 0.8 }}>{post.excerpt}</p>}
 
-              {post.category && (
+              {!!post.category && (
                 <small style={{ color: "#22d3ee" }}>
                   Kategorie: {post.category}
                 </small>

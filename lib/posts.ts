@@ -4,63 +4,41 @@ import matter from "gray-matter";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
-function getAllMarkdownFiles(dir: string, fileList: string[] = []) {
-  const files = fs.readdirSync(dir);
+function getAllFiles(dir: string): string[] {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-  files.forEach((file) => {
-    const fullPath = path.join(dir, file);
-    const stat = fs.statSync(fullPath);
+  return entries.flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
 
-    if (stat.isDirectory()) {
-      getAllMarkdownFiles(fullPath, fileList);
-    } else if (file.endsWith(".md")) {
-      fileList.push(fullPath);
+    if (entry.isDirectory()) {
+      return getAllFiles(fullPath);
     }
-  });
 
-  return fileList;
+    if (entry.name.endsWith(".md")) {
+      return [fullPath];
+    }
+
+    return [];
+  });
 }
 
 export function getAllPosts() {
-  const files = getAllMarkdownFiles(CONTENT_DIR);
+  const files = getAllFiles(CONTENT_DIR);
 
   return files.map((fullPath) => {
-    const slug = fullPath
-      .replace(CONTENT_DIR, "")
-      .replace(/\.md$/, "")
-      .replace(/\\/g, "/")
-      .replace(/^\//, "");
+    const relativePath = path
+      .relative(CONTENT_DIR, fullPath)
+      .replace(/\.md$/, "");
 
     const raw = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(raw);
 
     return {
-      slug,
-      title: data.title ?? slug,
+      slug: relativePath.split(path.sep),
+      title: data.title ?? relativePath,
       excerpt: data.excerpt ?? "",
       category: data.category ?? "",
       content,
     };
   });
-}
-
-export function getAllSlugs(): string[] {
-  return getAllPosts().map((post) => post.slug);
-}
-
-export function getPostBySlug(slug: string) {
-  const fullPath = path.join(CONTENT_DIR, `${slug}.md`);
-
-  if (!fs.existsSync(fullPath)) return null;
-
-  const raw = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(raw);
-
-  return {
-    slug,
-    title: data.title ?? slug,
-    excerpt: data.excerpt ?? "",
-    category: data.category ?? "",
-    content,
-  };
 }

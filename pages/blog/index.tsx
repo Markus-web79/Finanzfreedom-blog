@@ -3,7 +3,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { getAllPosts } from "../../lib/posts";
 
 type Post = {
-  slug: string; // wir normalisieren auf string
+  slug: string; // normalisiert auf string
   title: string;
   excerpt?: string;
   category?: string;
@@ -12,7 +12,6 @@ type Post = {
 function normalizeSlug(slug: unknown): string | null {
   if (typeof slug === "string") return slug;
   if (Array.isArray(slug) && slug.every((s) => typeof s === "string")) {
-    // falls irgendwo string[] reinkommt: zu "a/b/c" zusammenbauen
     return slug.join("/");
   }
   return null;
@@ -34,7 +33,7 @@ export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
       } as Post;
     })
     .filter((p): p is Post => Boolean(p))
-    .filter((p) => p.slug.toUpperCase() !== "README");
+    .filter((p) => p.slug.toLowerCase() !== "readme");
 
   return {
     props: { posts },

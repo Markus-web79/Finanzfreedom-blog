@@ -1,14 +1,24 @@
 const fs = require("fs");
 const path = require("path");
 
-const siteUrl = "https://finanzfreedom.de";
+// WICHTIG: Wenn Vercel bei dir auf www weiterleitet, nimm www als canonical:
+const siteUrl = "https://www.finanzfreedom.de";
 
 function getSlugsFromDir(dirPath) {
   if (!fs.existsSync(dirPath)) return [];
   return fs
     .readdirSync(dirPath)
     .filter((file) => file.endsWith(".md"))
-    .map((file) => file.replace(".md", ""));
+    .map((file) => file.replace(/\.md$/, ""));
+}
+
+function entry(urlPath) {
+  return {
+    loc: `${siteUrl}${urlPath}`,
+    lastmod: new Date().toISOString(),
+    changefreq: "daily",
+    priority: 0.7,
+  };
 }
 
 module.exports = {
@@ -16,7 +26,10 @@ module.exports = {
   generateRobotsTxt: true,
   sitemapSize: 7000,
 
-  additionalPaths: async (config) => {
+  // Optional, aber hilfreich wenn du "sitemap.xml" als Index willst
+  generateIndexSitemap: true,
+
+  additionalPaths: async () => {
     const contentRoot = path.join(process.cwd(), "content");
 
     const categories = [
@@ -25,17 +38,17 @@ module.exports = {
       "versicherungen",
       "wissen",
       "tools",
-      "broker"
+      "broker",
     ];
 
     const paths = [];
 
     // Startseite
-    paths.push(await config.transform(config, "/"));
+    paths.push(entry("/"));
 
     // Kategorie-Seiten
     for (const cat of categories) {
-      paths.push(await config.transform(config, `/${cat}`));
+      paths.push(entry(`/${cat}`));
     }
 
     // Kategorie-Artikel
@@ -44,23 +57,24 @@ module.exports = {
       const slugs = getSlugsFromDir(dir);
 
       for (const slug of slugs) {
-        paths.push(
-          await config.transform(config, `/${cat}/${slug}`)
-        );
+        if (slug.toLowerCase() === "readme") continue;
+        paths.push(entry(`/${cat}/${slug}`));
       }
     }
 
     // Root Markdown Files (impressum etc.)
     const rootSlugs = getSlugsFromDir(contentRoot);
-
     for (const slug of rootSlugs) {
-      if (slug.toLowerCase() !== "readme") {
-        paths.push(
-          await config.transform(config, `/${slug}`)
-        );
-      }
+      if (slug.toLowerCase() === "readme") continue;
+      paths.push(entry(`/${slug}`));
     }
 
     return paths;
+  },
+
+  robotsTxtOptions: {
+    policies: [{ userAgent: "*", allow: "/" }],
+    // sorgt dafür, dass robots.txt den richtigen (www) Pfad bekommt
+    additionalSitemaps: [`${siteUrl}/sitemap.xml`],
   },
 };

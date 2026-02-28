@@ -99,10 +99,10 @@ Wenn du gesetzlich versichert bist, können Zusatzversicherungen sinnvoll sein:
 Die größten Unterschiede liegen **nicht im Beitrag**,  
 sondern im **Kleingedruckten und den Leistungen**, die du später wirklich bekommst.
 
-👉 **Krankenversicherung jetzt vergleichen (kostenlos & unverbindlich)**  
-[Zum Krankenversicherungs-Vergleich bei CHECK24](https://www.awin1.com/cread.php?awinmid=9364&awinaffid=2757918&ued=https%3A%2F%2Fwww.check24.de%2Fkrankenversicherung%2F)
+👉 [Krankenversicherung jetzt vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=14797&awinaffid=2757918&ued=https%3A%2F%2Fwww.verivox.de%2Fkrankenversicherung%2F)
 
-> *Werbelink / Affiliate-Link – für dich entstehen keine Mehrkosten.*
+**Transparenz-Hinweis:**  
+Der Link ist ein Affiliate-Link. Für dich entstehen keine Mehrkosten.
 
 ---
 

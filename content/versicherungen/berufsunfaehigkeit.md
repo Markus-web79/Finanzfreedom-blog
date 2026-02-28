@@ -97,9 +97,10 @@ Je früher du dich absicherst, desto:
 Die größten Unterschiede liegen **nicht im Beitrag**,  
 sondern in den **Vertragsbedingungen**, die im Ernstfall entscheiden.
 
-👉 [Berufsunfähigkeitsversicherung vergleichen & informieren](https://www.check24.de/berufsunfaehigkeitsversicherung/vergleich/)
+👉 [Berufsunfähigkeitsversicherung jetzt vergleichen – kostenlos & unverbindlich](https://www.awin1.com/cread.php?awinmid=14797&awinaffid=2757918&ued=https%3A%2F%2Fwww.verivox.de%2Fberufsunfaehigkeitsversicherung%2F)
 
-*(Hinweis: externer Informations- und Vergleichslink, keine Vergütung)*
+**Transparenz-Hinweis:**  
+Der Link ist ein Affiliate-Link. Für dich entstehen keine Mehrkosten.
 
 ---
 

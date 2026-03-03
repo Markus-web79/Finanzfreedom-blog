@@ -1,16 +1,16 @@
 const SEO = {
-  title: "FinanzFreedom – Dein Weg zur finanziellen Unabhängigkeit",
+  title: "FinanzFreedom",
   description:
-    "Erfahre, wie du passives Einkommen aufbaust, clever investierst und finanzielle Freiheit erreichst. FinanzFreedom – Wissen, das sich auszahlt.",
-  canonical: "https://finanzfreedom.de",
+    "Unabhängiges Finanzportal für ETFs, Investieren, Sparen und finanzielle Freiheit.",
+  canonical: "https://www.finanzfreedom.de",
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://finanzfreedom.de",
+    url: "https://www.finanzfreedom.de",
     site_name: "FinanzFreedom",
     images: [
       {
-        url: "https://finanzfreedom.de/og-image.jpg",
+        url: "https://www.finanzfreedom.de/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "FinanzFreedom – finanzielle Freiheit beginnt mit Wissen",
@@ -18,8 +18,6 @@ const SEO = {
     ],
   },
   twitter: {
-    handle: "@finanzfreedom",
-    site: "@finanzfreedom",
     cardType: "summary_large_image",
   },
 };

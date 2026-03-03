@@ -1,6 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
+/** Rekursiv alle .md Dateien finden */
+function getAllMarkdownFiles(dirPath, arrayOfFiles = []) {
+  const files = fs.readdirSync(dirPath);
+
+  files.forEach((file) => {
+    const fullPath = path.join(dirPath, file);
+
+    if (fs.statSync(fullPath).isDirectory()) {
+      getAllMarkdownFiles(fullPath, arrayOfFiles);
+    } else if (file.endsWith('.md')) {
+      arrayOfFiles.push(fullPath);
+    }
+  });
+
+  return arrayOfFiles;
+}
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.finanzfreedom.de',
@@ -9,21 +26,21 @@ module.exports = {
   changefreq: 'daily',
   priority: 0.7,
 
-  additionalPaths: async (config) => {
-    const contentDir = path.join(process.cwd(), 'content');
-    const files = fs.readdirSync(contentDir);
+  additionalPaths: async () => {
+    const contentPath = path.join(process.cwd(), 'content');
+    const files = getAllMarkdownFiles(contentPath);
 
-    const dynamicPaths = files
-      .filter((file) => file.endsWith('.md'))
-      .map((file) => {
-        const slug = file.replace('.md', '');
-        return {
-          loc: `/blog/${slug}`,
-          changefreq: 'daily',
-          priority: 0.7,
-        };
-      });
+    return files.map((file) => {
+      const relativePath = file
+        .replace(contentPath, '')
+        .replace(/\\/g, '/')
+        .replace('.md', '');
 
-    return dynamicPaths;
+      return {
+        loc: `/blog${relativePath}`,
+        changefreq: 'daily',
+        priority: 0.7,
+      };
+    });
   },
 };

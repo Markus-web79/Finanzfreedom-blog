@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://finanzfreedom-blog.vercel.app/sitemap.xml
+Sitemap: https://www.finanzfreedom.de/sitemap.xml

@@ -23,40 +23,40 @@ export async function getServerSideProps({ res }) {
 
   const files = getAllMarkdownFiles(contentPath);
 
-  const urls = files.map((file) => {
-    const relativePath = file
-      .replace(contentPath, '')
-      .replace(/\\/g, '/')
-      .replace('.md', '');
+  const urls = files
+    .map((file) => {
+      const relativePath = file
+        .replace(contentPath, '')
+        .replace(/\\/g, '/')
+        .replace('.md', '');
 
-    return `
-      <url>
-        <loc>${baseUrl}/blog${relativePath}</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
-      </url>
-    `;
-  });
-
-  const staticPages = `
-    <url>
-      <loc>${baseUrl}</loc>
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  `;
+      return `<url>
+<loc>${baseUrl}/blog${relativePath}</loc>
+<changefreq>daily</changefreq>
+<priority>0.7</priority>
+</url>`;
+    })
+    .join('');
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${staticPages}
-    ${urls.join('')}
-  </urlset>`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>${baseUrl}</loc>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+${urls}
+</urlset>`;
 
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/xml');
+  res.end(sitemap);
 
-  return { props: {} };
+  return {
+    props: {},
+  };
 }
 
-export default function Sitemap() {}
+export default function Sitemap() {
+  return null;
+}

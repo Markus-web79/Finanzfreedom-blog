@@ -44,10 +44,6 @@ jobs:
           echo "🔗 Füge interne Links hinzu..."
           node scripts/linkInternal.js || true
 
-      - name: 🗺️ Sitemap generieren
-        run: |
-          echo "📍 Generiere Sitemap..."
-          node scripts/generateSitemap.js || true
 
       - name: 📰 RSS Feed generieren
         run: |

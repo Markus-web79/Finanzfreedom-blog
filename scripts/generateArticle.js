@@ -1,33 +1,95 @@
 import fs from "fs";
 import path from "path";
 
-const article = `
+const articles = [
+{
+slug: "etf-sparplan-einsteiger",
+title: "ETF-Sparplan für Einsteiger – der einfache Weg zum Vermögensaufbau",
+description: "Wie du mit einem ETF-Sparplan langfristig Vermögen aufbauen kannst."
+},
+
+{
+slug: "investieren-als-anfaenger",
+title: "Investieren als Anfänger – die wichtigsten Regeln für den Start",
+description: "Ein einfacher Leitfaden für deinen Einstieg in die Geldanlage."
+},
+
+{
+slug: "geldanlage-fuer-selbststaendige",
+title: "Geldanlage für Selbstständige – Strategien für unregelmäßiges Einkommen",
+description: "Wie Selbstständige flexibel und langfristig investieren können."
+},
+
+{
+slug: "etf-sparplan-starten",
+title: "ETF-Sparplan starten – Schritt für Schritt erklärt",
+description: "So richtest du deinen ersten ETF-Sparplan ein."
+},
+
+{
+slug: "investieren-mit-wenig-geld",
+title: "Investieren mit wenig Geld – Vermögensaufbau mit kleinen Beträgen",
+description: "Auch mit kleinen Beträgen kannst du langfristig investieren."
+}
+];
+
+const contentDir = path.join(process.cwd(), "content/investieren");
+
+function generateMarkdown(article) {
+return `
 ---
-title: ETF-Sparplan für Einsteiger
-slug: etf-sparplan-einsteiger
+title: ${article.title}
+description: ${article.description}
 category: investieren
-description: So startest du einfach und sicher mit ETFs.
+date: ${new Date().toISOString().split("T")[0]}
 ---
 
-## Was ist ein ETF-Sparplan?
+${article.title}
 
-Ein ETF-Sparplan ermöglicht dir, regelmäßig in börsengehandelte Indexfonds zu investieren.
+Viele Menschen möchten investieren, wissen aber nicht genau, wo sie anfangen sollen. Gerade am Anfang hilft eine klare Struktur.
 
-## Vorteile eines ETF-Sparplans
-- breite Diversifikation
-- geringe Kosten
-- flexibel anpassbar
+## Warum langfristiges Investieren funktioniert
 
-## Nachteile
-- Marktschwankungen
-- langfristiger Anlagehorizont nötig
+Langfristige Geldanlage nutzt einen entscheidenden Vorteil: Zeit. Durch den Zinseszinseffekt wächst Vermögen über Jahre immer schneller.
+
+## Diversifikation
+
+Ein wichtiger Grundsatz beim Investieren ist die Streuung. Wer sein Geld auf verschiedene Unternehmen und Branchen verteilt, reduziert Risiken.
+
+## ETFs als Einstieg
+
+Viele Einsteiger nutzen ETFs, weil sie kostengünstig sind und eine breite Streuung ermöglichen.
+
+## Regelmäßigkeit schlägt Timing
+
+Der Versuch, den perfekten Zeitpunkt für Käufe zu finden, scheitert oft. Regelmäßige Investitionen – etwa über Sparpläne – sind langfristig erfolgreicher.
 
 ## Fazit
-Ein ETF-Sparplan ist ideal für langfristigen Vermögensaufbau.
+
+Investieren muss nicht kompliziert sein. Wer früh beginnt, regelmäßig investiert und langfristig denkt, schafft eine solide Grundlage für Vermögensaufbau.
 `;
+}
 
-const dir = path.join(process.cwd(), "content/investieren");
-fs.mkdirSync(dir, { recursive: true });
-fs.writeFileSync(path.join(dir, "etf-sparplan.md"), article.trim());
+function generateArticle() {
 
-console.log("✅ Artikel erstellt");
+if (!fs.existsSync(contentDir)) {
+fs.mkdirSync(contentDir, { recursive: true });
+}
+
+const article = articles[Math.floor(Math.random() * articles.length)];
+
+const filePath = path.join(contentDir, `${article.slug}.md`);
+
+if (fs.existsSync(filePath)) {
+console.log("⚠️ Artikel existiert bereits:", article.slug);
+return;
+}
+
+const markdown = generateMarkdown(article);
+
+fs.writeFileSync(filePath, markdown.trim());
+
+console.log("✅ Neuer Artikel erstellt:", article.slug);
+}
+
+generateArticle();

@@ -70,7 +70,50 @@ export default function InvestierenIndex() {
         </Link>
       </section>
 
-      {/* Nächster Schritt – Sackgasse geschlossen */}
+      {/* Neue Artikel-Sektion */}
+      <section style={styles.articles}>
+        <h2 style={styles.h2}>Neue Artikel</h2>
+
+        <div style={styles.grid}>
+          <Link href="/investieren/handwerker-investieren">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>Investieren für Handwerker</h3>
+              <p style={styles.cardText}>
+                Viele Handwerker verdienen gut, investieren aber zu spät.
+                Strategien für Vermögensaufbau ohne komplizierte Finanzprodukte.
+              </p>
+              <span style={styles.cta}>Artikel lesen →</span>
+            </div>
+          </Link>
+
+          <Link href="/investieren/investieren-mit-20">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>Investieren mit 20</h3>
+              <p style={styles.cardText}>
+                Früher Start schlägt hohe Rendite. Wie du mit kleinen Beträgen
+                langfristig Vermögen aufbauen kannst.
+              </p>
+              <span style={styles.cta}>Artikel lesen →</span>
+            </div>
+          </Link>
+
+          <Link href="/investieren/investieren-mit-wenig-geld">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>Investieren mit wenig Geld</h3>
+              <p style={styles.cardText}>
+                Auch mit kleinen Beträgen kannst du Vermögen aufbauen.
+                Die wichtigsten Strategien für Einsteiger.
+              </p>
+              <span style={styles.cta}>Artikel lesen →</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* Nächster Schritt */}
       <section style={styles.nextStep}>
         <h2 style={styles.h2}>Dein nächster Schritt</h2>
         <p style={styles.p}>
@@ -129,22 +172,16 @@ const styles = {
     borderRadius: "16px",
     padding: "24px",
   },
+  articles: {
+    maxWidth: "1100px",
+    margin: "60px auto",
+  },
   h2: {
     fontSize: "1.4rem",
-    marginBottom: "12px",
+    marginBottom: "20px",
     color: "#ffffff",
   },
-  p: {
-    marginBottom: "12px",
-    lineHeight: 1.7,
-  },
-  list: {
-    paddingLeft: "18px",
-    lineHeight: 1.8,
-  },
   grid: {
-    maxWidth: "1100px",
-    margin: "0 auto",
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
     gap: "24px",
@@ -157,7 +194,6 @@ const styles = {
     padding: "24px",
     color: "#e5e7eb",
     cursor: "pointer",
-    transition: "transform 0.2s ease",
   },
   cardBar: {
     position: "absolute",

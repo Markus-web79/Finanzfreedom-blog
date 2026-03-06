@@ -1,24 +1,51 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
 
-export default function InvestierenIndex() {
+export async function getStaticProps() {
+  const dir = path.join(process.cwd(), "content/investieren");
+  const files = fs.readdirSync(dir);
+
+  const articles = files.map((file) => {
+    const slug = file.replace(".md", "");
+
+    const raw = fs.readFileSync(path.join(dir, file), "utf8");
+    const { data } = matter(raw);
+
+    return {
+      slug,
+      title: data.title || slug,
+      description: data.description || "",
+    };
+  });
+
+  return {
+    props: {
+      articles,
+    },
+  };
+}
+
+export default function InvestierenIndex({ articles }) {
   return (
     <main style={styles.page}>
-      {/* Header */}
       <section style={styles.header}>
         <Link href="/">
           <span style={styles.back}>← Zur Startseite</span>
         </Link>
 
         <h1 style={styles.title}>Investieren verstehen</h1>
+
         <p style={styles.subtitle}>
           Investieren bedeutet, dein Geld gezielt für dich arbeiten zu lassen.
           Wichtig ist nicht Perfektion – sondern ein klarer, einfacher Start.
         </p>
       </section>
 
-      {/* Führung */}
       <section style={styles.guide}>
         <h2 style={styles.h2}>So startest du sinnvoll mit dem Investieren</h2>
+
         <p style={styles.p}>
           Gerade am Anfang zählt Struktur. Diese Reihenfolge hat sich für die
           meisten Anleger bewährt:
@@ -31,104 +58,29 @@ export default function InvestierenIndex() {
         </ul>
       </section>
 
-      {/* Karten */}
-      <section style={styles.grid}>
-        <Link href="/investieren/etfs">
-          <div style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>ETFs verstehen</h3>
-            <p style={styles.cardText}>
-              Warum ETFs für Einsteiger ideal sind und wie sie langfristig
-              Vermögen aufbauen.
-            </p>
-            <span style={styles.cta}>Zu den ETFs →</span>
-          </div>
-        </Link>
-
-        <Link href="/sparen">
-          <div style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>Sparen & Basis schaffen</h3>
-            <p style={styles.cardText}>
-              Rücklagen, Fixkosten & Haushaltsbudget – die Basis vor dem
-              Investieren.
-            </p>
-            <span style={styles.cta}>Zum Sparen →</span>
-          </div>
-        </Link>
-
-        <Link href="/investieren/broker">
-          <div style={styles.card}>
-            <div style={styles.cardBar} />
-            <h3 style={styles.cardTitle}>Broker vergleichen</h3>
-            <p style={styles.cardText}>
-              Finde den passenden Broker für ETFs und Sparpläne – ohne
-              Verkaufsdruck.
-            </p>
-            <span style={styles.cta}>Zum Broker-Vergleich →</span>
-          </div>
-        </Link>
-      </section>
-
-      {/* Neue Artikel-Sektion */}
       <section style={styles.articles}>
-        <h2 style={styles.h2}>Neue Artikel</h2>
+        <h2 style={styles.h2}>Artikel</h2>
 
         <div style={styles.grid}>
-          <Link href="/investieren/vermoegensaufbau-fuer-handwerker">
-            <div style={styles.card}>
-              <div style={styles.cardBar} />
-              <h3 style={styles.cardTitle}>Investieren für Handwerker</h3>
-              <p style={styles.cardText}>
-                Viele Handwerker verdienen gut, investieren aber zu spät.
-                Strategien für Vermögensaufbau ohne komplizierte Finanzprodukte.
-              </p>
-              <span style={styles.cta}>Artikel lesen →</span>
-            </div>
-          </Link>
+          {articles.map((article) => (
+            <Link key={article.slug} href={`/investieren/${article.slug}`}>
+              <div style={styles.card}>
+                <div style={styles.cardBar} />
 
-          <Link href="/investieren/investieren-mit-20">
-            <div style={styles.card}>
-              <div style={styles.cardBar} />
-              <h3 style={styles.cardTitle}>Investieren mit 20</h3>
-              <p style={styles.cardText}>
-                Früher Start schlägt hohe Rendite. Wie du mit kleinen Beträgen
-                langfristig Vermögen aufbauen kannst.
-              </p>
-              <span style={styles.cta}>Artikel lesen →</span>
-            </div>
-          </Link>
+                <h3 style={styles.cardTitle}>
+                  {article.title}
+                </h3>
 
-          <Link href="/investieren/investieren-mit-wenig-geld">
-            <div style={styles.card}>
-              <div style={styles.cardBar} />
-              <h3 style={styles.cardTitle}>Investieren mit wenig Geld</h3>
-              <p style={styles.cardText}>
-                Auch mit kleinen Beträgen kannst du Vermögen aufbauen.
-                Die wichtigsten Strategien für Einsteiger.
-              </p>
-              <span style={styles.cta}>Artikel lesen →</span>
-            </div>
-          </Link>
-        </div>
-      </section>
+                <p style={styles.cardText}>
+                  {article.description}
+                </p>
 
-      {/* Nächster Schritt */}
-      <section style={styles.nextStep}>
-        <h2 style={styles.h2}>Dein nächster Schritt</h2>
-        <p style={styles.p}>
-          Verstehen kommt vor Rendite. Starte mit den Grundlagen und gehe dann
-          strukturiert weiter.
-        </p>
-
-        <div style={styles.nextLinks}>
-          <Link href="/wissen/start">
-            <span style={styles.nextCta}>Grundlagen lernen</span>
-          </Link>
-
-          <Link href="/investieren/etfs">
-            <span style={styles.nextCta}>ETFs verstehen</span>
-          </Link>
+                <span style={styles.cta}>
+                  Artikel lesen →
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </main>
@@ -181,6 +133,14 @@ const styles = {
     marginBottom: "20px",
     color: "#ffffff",
   },
+  p: {
+    marginBottom: "12px",
+    lineHeight: 1.7,
+  },
+  list: {
+    paddingLeft: "18px",
+    lineHeight: 1.8,
+  },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -220,29 +180,5 @@ const styles = {
     marginTop: "12px",
     color: "#2dd4bf",
     fontWeight: 600,
-  },
-  nextStep: {
-    maxWidth: "900px",
-    margin: "60px auto 0",
-    padding: "32px",
-    textAlign: "center",
-    background: "rgba(2, 6, 23, 0.6)",
-    border: "1px solid #1e293b",
-    borderRadius: "16px",
-  },
-  nextLinks: {
-    display: "flex",
-    gap: "16px",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    marginTop: "16px",
-  },
-  nextCta: {
-    padding: "10px 18px",
-    background: "#2dd4bf",
-    color: "#020617",
-    borderRadius: "8px",
-    fontWeight: 700,
-    cursor: "pointer",
   },
 };

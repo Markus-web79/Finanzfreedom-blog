@@ -75,7 +75,7 @@ export default function InvestierenIndex() {
         <h2 style={styles.h2}>Neue Artikel</h2>
 
         <div style={styles.grid}>
-          <Link href="/investieren/handwerker-investieren">
+          <Link href="/investieren/vermoegensaufbau-fuer-handwerker">
             <div style={styles.card}>
               <div style={styles.cardBar} />
               <h3 style={styles.cardTitle}>Investieren für Handwerker</h3>

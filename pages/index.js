@@ -25,63 +25,63 @@ export default function Home() {
             textAlign: "center",
           }}
         >
-  <h1
-  style={{
-    color: "#ffffff",
-    fontSize: "clamp(2rem, 5vw, 2.8rem)",
-    fontWeight: "800",
-    marginBottom: "0.75rem",
-    letterSpacing: "0.2px",
-  }}
->
-  FinanzFreedom
-</h1>
+          <h1
+            style={{
+              color: "#ffffff",
+              fontSize: "clamp(2rem, 5vw, 2.8rem)",
+              fontWeight: "800",
+              marginBottom: "0.75rem",
+            }}
+          >
+            FinanzFreedom
+          </h1>
 
-<h2
-  style={{
-    color: "#ffffff",
-    fontSize: "clamp(1.35rem, 3.2vw, 2rem)",
-    fontWeight: "700",
-    lineHeight: "1.25",
-    margin: "0 0 1rem 0",
-    opacity: 0.95,
-  }}
->
-  Finanzielle Freiheit ist kein Moment.
-  <br />
-  Sie ist das Ergebnis guter Entscheidungen.
-</h2>
+          <h2
+            style={{
+              color: "#ffffff",
+              fontSize: "clamp(1.35rem, 3.2vw, 2rem)",
+              fontWeight: "700",
+              lineHeight: "1.25",
+              marginBottom: "1rem",
+              opacity: 0.95,
+            }}
+          >
+            Finanzielle Freiheit ist kein Moment.
+            <br />
+            Sie ist das Ergebnis guter Entscheidungen.
+          </h2>
 
-<p
-  style={{
-    color: "#ffffff",
-    fontSize: "1.1rem",
-    opacity: 0.9,
-    margin: 0,
-  }}
->
-  Das unabhängige Finanzportal für Vermögensaufbau, Investieren und finanzielle Klarheit.
-</p>
-     <div style={{ marginTop: "2rem" }}>
-<Link href="/start">
-    <a
-      style={{
-        display: "inline-block",
-        background: "#ffffff",
-        color: "#0f172a",
-        padding: "0.9rem 1.6rem",
-        borderRadius: "10px",
-        fontWeight: "700",
-        fontSize: "1rem",
-        textDecoration: "none",
-        boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-      }}
-    >
-      Jetzt starten →
-    </a>
-  </Link>
-</div>
-    </div>
+          <p
+            style={{
+              color: "#ffffff",
+              fontSize: "1.1rem",
+              opacity: 0.9,
+            }}
+          >
+            Das unabhängige Finanzportal für Vermögensaufbau, Investieren und
+            finanzielle Klarheit.
+          </p>
+
+          <div style={{ marginTop: "2rem" }}>
+            <Link href="/start">
+              <span
+                style={{
+                  display: "inline-block",
+                  background: "#ffffff",
+                  color: "#0f172a",
+                  padding: "0.9rem 1.6rem",
+                  borderRadius: "10px",
+                  fontWeight: "700",
+                  fontSize: "1rem",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                  cursor: "pointer",
+                }}
+              >
+                Jetzt starten →
+              </span>
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* KARTEN */}
@@ -98,7 +98,6 @@ export default function Home() {
           href="/etfs"
         />
 
-        {/* NEU: INVESTIEREN */}
         <Card
           title="Investieren"
           text="Strategien, Einstieg und Struktur für langfristigen Vermögensaufbau – Schritt für Schritt erklärt."
@@ -146,6 +145,10 @@ function Card({ title, text, href }) {
           borderRadius: "14px",
           padding: "2rem",
           height: "100%",
+          minHeight: "190px",   // ← sorgt für gleich große Karten
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
           position: "relative",
           transition: "all 0.25s ease",
           boxShadow: "0 0 0 rgba(0,0,0,0)",

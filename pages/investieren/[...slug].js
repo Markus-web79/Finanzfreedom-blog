@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 export async function getStaticPaths() {
   const contentDir = path.join(process.cwd(), "content/investieren");
@@ -49,6 +50,13 @@ export async function getStaticProps({ params }) {
 export default function Article({ frontmatter, content }) {
   return (
     <main style={styles.page}>
+      
+      <div style={styles.backWrapper}>
+        <Link href="/investieren">
+          <span style={styles.back}>← Zurück zur Übersicht</span>
+        </Link>
+      </div>
+
       <article style={styles.article}>
         <h1 style={styles.title}>{frontmatter.title}</h1>
 
@@ -58,6 +66,7 @@ export default function Article({ frontmatter, content }) {
 
         <ReactMarkdown>{content}</ReactMarkdown>
       </article>
+
     </main>
   );
 }
@@ -69,16 +78,30 @@ const styles = {
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
+
+  backWrapper: {
+    maxWidth: "800px",
+    margin: "0 auto 20px",
+  },
+
+  back: {
+    color: "#2dd4bf",
+    fontWeight: 600,
+    cursor: "pointer",
+  },
+
   article: {
     maxWidth: "800px",
     margin: "0 auto",
     lineHeight: 1.7,
   },
+
   title: {
     fontSize: "2.2rem",
     marginBottom: "20px",
     color: "#ffffff",
   },
+
   description: {
     opacity: 0.8,
     marginBottom: "30px",

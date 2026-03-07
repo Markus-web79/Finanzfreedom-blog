@@ -30,6 +30,8 @@ export async function getStaticProps() {
 export default function InvestierenIndex({ articles }) {
   return (
     <main style={styles.page}>
+
+      {/* HEADER */}
       <section style={styles.header}>
         <Link href="/">
           <span style={styles.back}>← Zur Startseite</span>
@@ -43,23 +45,78 @@ export default function InvestierenIndex({ articles }) {
         </p>
       </section>
 
+      {/* START GUIDE */}
       <section style={styles.guide}>
         <h2 style={styles.h2}>So startest du sinnvoll mit dem Investieren</h2>
 
         <p style={styles.p}>
-          Gerade am Anfang zählt Struktur. Diese Reihenfolge hat sich für die
-          meisten Anleger bewährt:
+          Gerade am Anfang zählt Struktur. Diese Reihenfolge hat sich für viele Anleger bewährt.
         </p>
 
         <ul style={styles.list}>
-          <li>① Grundlagen verstehen (Risiko & Zeithorizont)</li>
-          <li>② Passende Produkte wählen (meist ETFs)</li>
-          <li>③ Broker auswählen & starten</li>
+          <li>① Grundlagen verstehen</li>
+          <li>② ETFs und Anlageformen kennenlernen</li>
+          <li>③ Broker auswählen und starten</li>
         </ul>
       </section>
 
+      {/* GUIDE KARTEN */}
+      <section style={styles.section}>
+        <h2 style={styles.h2}>Einstieg</h2>
+
+        <div style={styles.grid}>
+          <Link href="/investieren/etfs">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>ETFs verstehen</h3>
+              <p style={styles.cardText}>
+                Warum ETFs für viele Anleger der einfachste Einstieg in den Vermögensaufbau sind.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/sparen">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>Sparen & Rücklagen</h3>
+              <p style={styles.cardText}>
+                Bevor du investierst, solltest du eine stabile finanzielle Basis aufbauen.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/broker">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>Broker vergleichen</h3>
+              <p style={styles.cardText}>
+                Finde den passenden Broker für ETF-Sparpläne und langfristiges Investieren.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* TOOLS */}
+      <section style={styles.section}>
+        <h2 style={styles.h2}>Tools</h2>
+
+        <div style={styles.grid}>
+          <Link href="/tools/etf-sparplan-rechner">
+            <div style={styles.card}>
+              <div style={styles.cardBar} />
+              <h3 style={styles.cardTitle}>ETF Sparplan Rechner</h3>
+              <p style={styles.cardText}>
+                Berechne, wie sich dein Vermögen mit einem ETF-Sparplan entwickeln kann.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* ARTIKEL */}
       <section style={styles.articles}>
-        <h2 style={styles.h2}>Artikel</h2>
+        <h2 style={styles.h2}>Weitere Artikel</h2>
 
         <div style={styles.grid}>
           {articles.map((article) => (
@@ -83,6 +140,7 @@ export default function InvestierenIndex({ articles }) {
           ))}
         </div>
       </section>
+
     </main>
   );
 }
@@ -94,11 +152,13 @@ const styles = {
     background: "radial-gradient(circle at top, #0f172a, #020617)",
     color: "#e5e7eb",
   },
+
   header: {
     maxWidth: "900px",
     margin: "0 auto 40px",
     textAlign: "center",
   },
+
   back: {
     display: "inline-block",
     marginBottom: "16px",
@@ -106,16 +166,19 @@ const styles = {
     fontWeight: 600,
     cursor: "pointer",
   },
+
   title: {
     fontSize: "2.4rem",
     marginBottom: "12px",
     color: "#ffffff",
   },
+
   subtitle: {
     fontSize: "1.05rem",
     lineHeight: 1.7,
     opacity: 0.9,
   },
+
   guide: {
     maxWidth: "900px",
     margin: "0 auto 40px",
@@ -124,37 +187,50 @@ const styles = {
     borderRadius: "16px",
     padding: "24px",
   },
+
+  section: {
+    maxWidth: "1100px",
+    margin: "40px auto",
+  },
+
   articles: {
     maxWidth: "1100px",
     margin: "60px auto",
   },
+
   h2: {
     fontSize: "1.4rem",
     marginBottom: "20px",
     color: "#ffffff",
   },
+
   p: {
     marginBottom: "12px",
     lineHeight: 1.7,
   },
+
   list: {
     paddingLeft: "18px",
     lineHeight: 1.8,
   },
+
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
     gap: "24px",
   },
+
   card: {
     position: "relative",
     background: "#020617",
     border: "1px solid #1e293b",
     borderRadius: "16px",
     padding: "24px",
+    minHeight: "180px",
     color: "#e5e7eb",
     cursor: "pointer",
   },
+
   cardBar: {
     position: "absolute",
     top: 0,
@@ -165,16 +241,19 @@ const styles = {
     borderTopLeftRadius: "16px",
     borderTopRightRadius: "16px",
   },
+
   cardTitle: {
     fontSize: "1.2rem",
     marginBottom: "8px",
     color: "#ffffff",
   },
+
   cardText: {
     fontSize: "0.95rem",
     lineHeight: 1.6,
     opacity: 0.9,
   },
+
   cta: {
     display: "inline-block",
     marginTop: "12px",

@@ -21,9 +21,6 @@ jobs:
       - name: 🧩 Install Dependencies
         run: npm install
 
-      # ❗ ENTFERNT: KEIN fixCategoryConfig.js mehr
-      # ❗ ENTFERNT: KEINE Datei-Manipulationen mehr am Config-Ordner
-
       - name: 🧠 SEO Qualitätsprüfung
         run: |
           echo "📊 Prüfe Artikel auf SEO-Qualität..."
@@ -44,7 +41,6 @@ jobs:
           echo "🔗 Füge interne Links hinzu..."
           node scripts/linkInternal.js || true
 
-
       - name: 📰 RSS Feed generieren
         run: |
           echo "📡 Erstelle RSS-Feed..."
@@ -54,6 +50,15 @@ jobs:
         run: |
           echo "🔔 Informiere Google & Bing..."
           node scripts/pingSearchEngines.js || true
+
+      # 🔥 WICHTIG: neue Artikel committen
+      - name: 💾 Commit neue Inhalte
+        run: |
+          git config --global user.name "FinanzFreedom Bot"
+          git config --global user.email "bot@finanzfreedom.de"
+          git add content/
+          git commit -m "🤖 Auto: Neue Inhalte generiert" || echo "Keine neuen Inhalte"
+          git push
 
       - name: 🏗️ Build Next.js
         run: npm run build

@@ -5,20 +5,23 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const dir = path.join(process.cwd(), "content/investieren");
-  const files = fs.readdirSync(dir);
+  const files = fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 
-  const articles = files.map((file) => {
-    const slug = file.replace(".md", "");
+  const articles = files
+    .map((file) => {
+      const slug = file.replace(".md", "");
 
-    const raw = fs.readFileSync(path.join(dir, file), "utf8");
-    const { data } = matter(raw);
+      const raw = fs.readFileSync(path.join(dir, file), "utf8");
+      const { data } = matter(raw);
 
-    return {
-      slug,
-      title: data.title || slug,
-      description: data.description || "",
-    };
-  });
+      return {
+        slug,
+        title: data.title || slug,
+        description: data.description || "",
+        date: data.date ? String(data.date) : "2000-01-01",
+      };
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return {
     props: {

@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    if: "!contains(github.event.head_commit.message, 'Auto:')"
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +30,7 @@ jobs:
       - name: ✍️ Generiere Artikel
         run: |
           echo "📰 Generiere neuen Artikel..."
-          node scripts/generateArticle.js || true
+          node scripts/generateArticle.js
 
       - name: ⚖️ Generiere Vergleichsartikel
         run: |
@@ -51,7 +52,6 @@ jobs:
           echo "🔔 Informiere Google & Bing..."
           node scripts/pingSearchEngines.js || true
 
-      # 🔥 WICHTIG: neue Artikel committen
       - name: 💾 Commit neue Inhalte
         run: |
           git config --global user.name "FinanzFreedom Bot"

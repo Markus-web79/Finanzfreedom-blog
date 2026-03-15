@@ -5,6 +5,13 @@ on:
     branches:
       - main
 
+  schedule:
+    - cron: "0 7 * * 1"
+    - cron: "0 7 * * 3"
+    - cron: "0 7 * * 5"
+
+  workflow_dispatch:
+
 jobs:
   build:
     if: "!contains(github.event.head_commit.message, 'Auto:')"

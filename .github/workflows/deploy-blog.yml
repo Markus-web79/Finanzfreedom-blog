@@ -64,7 +64,7 @@ jobs:
           git config --global user.name "FinanzFreedom Bot"
           git config --global user.email "bot@finanzfreedom.de"
           git add content/ public/sitemap.xml public/feed.xml || true
-          git commit -m "🤖 Auto: Inhalte und Sitemap aktualisiert" || echo "Keine neuen Inhalte"
+          git commit -m "🤖 Sitemap: Inhalte und Sitemap aktualisiert" || echo "Keine neuen Inhalte"
           git push || true
 
       - name: 🏗️ Build Next.js

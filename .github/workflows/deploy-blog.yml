@@ -37,7 +37,7 @@ jobs:
       - name: ✍️ Generiere Artikel
         run: |
           echo "📰 Generiere neuen Artikel..."
-          node scripts/generateArticle.js
+          node scripts/generateArticle.js || true
 
       - name: ⚖️ Generiere Vergleichsartikel
         run: |
@@ -49,29 +49,34 @@ jobs:
           echo "🔗 Füge interne Links hinzu..."
           node scripts/linkInternal.js || true
 
+      - name: 🗺️ Sitemap generieren
+        run: |
+          echo "🗺️ Erstelle Sitemap..."
+          node scripts/generateSitemap.js
+
       - name: 📰 RSS Feed generieren
         run: |
           echo "📡 Erstelle RSS-Feed..."
           node scripts/generateFeed.js || true
 
-      - name: 🔔 Suchmaschinen anpingen
-        run: |
-          echo "🔔 Informiere Google & Bing..."
-          node scripts/pingSearchEngines.js || true
-
-      - name: 💾 Commit neue Inhalte
+      - name: 💾 Commit neue Inhalte und Sitemap
         run: |
           git config --global user.name "FinanzFreedom Bot"
           git config --global user.email "bot@finanzfreedom.de"
-          git add content/
-          git commit -m "🤖 Auto: Neue Inhalte generiert" || echo "Keine neuen Inhalte"
-          git push
+          git add content/ public/sitemap.xml public/feed.xml || true
+          git commit -m "🤖 Auto: Inhalte und Sitemap aktualisiert" || echo "Keine neuen Inhalte"
+          git push || true
 
       - name: 🏗️ Build Next.js
         run: npm run build
 
       - name: 🚀 Deploy to Vercel
         run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🔔 Suchmaschinen anpingen
+        run: |
+          echo "🔔 Informiere Google & Bing..."
+          node scripts/pingSearchEngines.js || true
 
       - name: 💾 Backup generierter Inhalte
         run: |

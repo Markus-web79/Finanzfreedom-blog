@@ -20,7 +20,7 @@ export default function Rechner() {
         </p>
 
         <section style={styles.grid}>
-          <Link href="/rechner/etf" style={styles.card}>
+          <Link href="/tools/etf-sparplan-rechner" style={styles.card}>
             <h2>ETF-Rechner</h2>
             <p>
               Berechne, wie sich ein ETF-Sparplan über Jahre entwickeln kann.

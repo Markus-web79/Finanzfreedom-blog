@@ -127,6 +127,12 @@ export default function Home() {
           text="Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne."
           href="/broker"
         />
+
+        <Card
+          title="Rechner & Tools"
+          text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."
+          href="/rechner"
+        />
       </section>
     </main>
   );
@@ -145,7 +151,7 @@ function Card({ title, text, href }) {
           borderRadius: "14px",
           padding: "2rem",
           height: "100%",
-          minHeight: "190px",   // ← sorgt für gleich große Karten
+          minHeight: "190px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",

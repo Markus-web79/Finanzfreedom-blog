@@ -3,10 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function SparplanRechner() {
-  const [sparrate, setSparrate] = useState(100);
-  const [jahre, setJahre] = useState(20);
+  const [sparrate, setSparrate] = useState("100");
+  const [jahre, setJahre] = useState("20");
 
-  const eingezahlt = sparrate * 12 * jahre;
+  const eingezahlt =
+    Number(sparrate || 0) * 12 * Number(jahre || 0);
 
   const formatEuro = (value) =>
     value.toLocaleString("de-DE", {
@@ -44,7 +45,7 @@ export default function SparplanRechner() {
               style={styles.input}
               type="number"
               value={sparrate}
-              onChange={(e) => setSparrate(Number(e.target.value))}
+              onChange={(e) => setSparrate(e.target.value)}
             />
           </label>
 
@@ -54,7 +55,7 @@ export default function SparplanRechner() {
               style={styles.input}
               type="number"
               value={jahre}
-              onChange={(e) => setJahre(Number(e.target.value))}
+              onChange={(e) => setJahre(e.target.value)}
             />
           </label>
         </section>
@@ -67,7 +68,8 @@ export default function SparplanRechner() {
           </h2>
 
           <p>
-            Bei einer monatlichen Sparrate von {sparrate} € über {jahre} Jahre.
+            Bei einer monatlichen Sparrate von {sparrate || 0} € über{" "}
+            {jahre || 0} Jahre.
           </p>
         </section>
 

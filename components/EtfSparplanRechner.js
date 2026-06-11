@@ -1,16 +1,22 @@
 import { useState } from "react";
 
 export default function EtfSparplanRechner() {
-  const [rate, setRate] = useState(200);
-  const [jahre, setJahre] = useState(20);
-  const [rendite, setRendite] = useState(6);
+  const [rate, setRate] = useState("200");
+  const [jahre, setJahre] = useState("20");
+  const [rendite, setRendite] = useState("6");
 
-  const monate = jahre * 12;
-  const monatsRendite = rendite / 100 / 12;
+  const rateNum = Number(rate || 0);
+  const jahreNum = Number(jahre || 0);
+  const renditeNum = Number(rendite || 0);
+
+  const monate = jahreNum * 12;
+  const monatsRendite = renditeNum / 100 / 12;
 
   const endvermoegen =
-    rate *
-    ((Math.pow(1 + monatsRendite, monate) - 1) / monatsRendite);
+    monatsRendite > 0
+      ? rateNum *
+        ((Math.pow(1 + monatsRendite, monate) - 1) / monatsRendite)
+      : rateNum * monate;
 
   return (
     <div
@@ -26,7 +32,7 @@ export default function EtfSparplanRechner() {
       <input
         type="number"
         value={rate}
-        onChange={(e) => setRate(Number(e.target.value))}
+        onChange={(e) => setRate(e.target.value)}
         style={inputStyle}
       />
 
@@ -34,7 +40,7 @@ export default function EtfSparplanRechner() {
       <input
         type="number"
         value={jahre}
-        onChange={(e) => setJahre(Number(e.target.value))}
+        onChange={(e) => setJahre(e.target.value)}
         style={inputStyle}
       />
 
@@ -42,7 +48,7 @@ export default function EtfSparplanRechner() {
       <input
         type="number"
         value={rendite}
-        onChange={(e) => setRendite(Number(e.target.value))}
+        onChange={(e) => setRendite(e.target.value)}
         style={inputStyle}
       />
 

@@ -213,8 +213,8 @@ const styles = {
   ctaBox: {
     maxWidth: "900px",
     margin: "0 auto",
-    background: "#022c22",
-    border: "1px solid #14b8a6",
+    background: "#020617",
+    border: "1px solid #1e293b",
     borderRadius: "18px",
     padding: "28px",
     textAlign: "center",
@@ -234,7 +234,7 @@ const styles = {
   disclaimer: {
     marginTop: "18px",
     fontSize: "0.85rem",
-    color: "#99f6e4",
+    color: "#9ca3af",
     lineHeight: 1.6,
   },
 };

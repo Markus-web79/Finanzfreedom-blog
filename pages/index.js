@@ -167,6 +167,12 @@ export default function Home() {
         />
 
         <Card
+          title="📱 Mobilfunk"
+          text="Handytarife vergleichen, bessere Konditionen finden und monatlich sparen."
+          href="/mobilfunk"
+        />
+
+        <Card
           title="💳 Kreditvergleich"
           text="Kredite vergleichen, Zinsen prüfen und passende Finanzierung finden."
           href="/kredit"

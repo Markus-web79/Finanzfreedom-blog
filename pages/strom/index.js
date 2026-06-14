@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+const STROM_AFFILIATE_LINK =
+  "https://www.awin1.com/cread.php?awinmid=14797&awinaffid=2757918&ued=https%3A%2F%2Fwww.verivox.de%2Fstromvergleich%2F";
+
 export default function StromIndex() {
   return (
     <main style={styles.page}>
@@ -16,7 +19,7 @@ export default function StromIndex() {
         </p>
 
         <a
-          href="https://www.verivox.de/stromvergleich/"
+          href={STROM_AFFILIATE_LINK}
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
           style={styles.heroButton}
@@ -92,7 +95,7 @@ export default function StromIndex() {
         </p>
 
         <a
-          href="https://www.verivox.de/stromvergleich/"
+          href={STROM_AFFILIATE_LINK}
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
           style={styles.ctaButton}

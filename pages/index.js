@@ -167,6 +167,12 @@ export default function Home() {
         />
 
         <Card
+          title="💳 Kreditvergleich"
+          text="Kredite vergleichen, Zinsen prüfen und passende Finanzierung finden."
+          href="/kredit"
+        />
+
+        <Card
           title="🧮 Rechner & Tools"
           text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."
           href="/rechner"

@@ -161,6 +161,12 @@ export default function Home() {
         />
 
         <Card
+          title="🌐 DSL Vergleich"
+          text="Internetanbieter vergleichen, Kosten senken und passende Tarife finden."
+          href="/dsl"
+        />
+
+        <Card
           title="🧮 Rechner & Tools"
           text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."
           href="/rechner"

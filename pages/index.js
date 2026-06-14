@@ -84,12 +84,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* KARTEN */}
+      {/* HAUPTBEREICHE */}
+      <SectionTitle
+        title="Finanzwissen & Vergleiche"
+        text="Starte mit den wichtigsten Bereichen rund um Vermögensaufbau, Versicherungen und finanzielle Entscheidungen."
+      />
+
       <section
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
           gap: "2rem",
+          marginBottom: "4rem",
         }}
       >
         <Card
@@ -127,14 +133,82 @@ export default function Home() {
           text="Broker-Vergleiche & Empfehlungen für ETFs und Sparpläne."
           href="/broker"
         />
+      </section>
+
+      {/* VERGLEICHE & RECHNER */}
+      <SectionTitle
+        title="Vergleiche & Rechner"
+        text="Nutze direkte Vergleiche und einfache Rechner, um bessere finanzielle Entscheidungen zu treffen."
+      />
+
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "2rem",
+        }}
+      >
+        <Card
+          title="⚡ Stromvergleich"
+          text="Stromtarife vergleichen, Kosten senken und passende Anbieter finden."
+          href="/strom"
+        />
 
         <Card
-          title="Rechner & Tools"
+          title="🔥 Gasvergleich"
+          text="Gastarife vergleichen und Heizkosten für deinen Haushalt optimieren."
+          href="/gas"
+        />
+
+        <Card
+          title="🧮 Rechner & Tools"
           text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."
           href="/rechner"
         />
+
+        <Card
+          title="📈 ETF-Rechner"
+          text="Berechne, wie sich ein ETF-Sparplan über Jahre entwickeln kann."
+          href="/tools/etf-sparplan-rechner"
+        />
       </section>
     </main>
+  );
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+function SectionTitle({ title, text }) {
+  return (
+    <div
+      style={{
+        marginBottom: "1.5rem",
+      }}
+    >
+      <h2
+        style={{
+          color: "#ffffff",
+          fontSize: "1.8rem",
+          fontWeight: "800",
+          marginBottom: "0.5rem",
+        }}
+      >
+        {title}
+      </h2>
+
+      <p
+        style={{
+          color: "#94a3b8",
+          fontSize: "1rem",
+          lineHeight: 1.6,
+          maxWidth: "760px",
+        }}
+      >
+        {text}
+      </p>
+    </div>
   );
 }
 

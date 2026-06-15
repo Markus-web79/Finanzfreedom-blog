@@ -179,6 +179,12 @@ export default function Home() {
         />
 
         <Card
+          title="🏦 Tagesgeld"
+          text="Aktuelle Tagesgeldzinsen vergleichen und flexible Rücklagen sinnvoll verzinsen."
+          href="/tagesgeld"
+        />
+
+        <Card
           title="🧮 Rechner & Tools"
           text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."
           href="/rechner"

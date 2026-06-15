@@ -85,6 +85,31 @@ export default function TagesgeldIndex() {
         </ul>
       </section>
 
+      <section style={styles.articleSection}>
+        <h2 style={styles.h2}>Ratgeber zum Tagesgeld</h2>
+
+        <div style={styles.articleGrid}>
+          <Link href="/tagesgeld/was-ist-tagesgeld" style={styles.articleCard}>
+            <h3 style={styles.articleTitle}>Was ist Tagesgeld?</h3>
+            <p style={styles.cardText}>
+              Einfach erklärt: Wie Tagesgeld funktioniert, für wen es sinnvoll
+              ist und worauf du achten solltest.
+            </p>
+          </Link>
+
+          <Link
+            href="/tagesgeld/tagesgeld-vs-festgeld"
+            style={styles.articleCard}
+          >
+            <h3 style={styles.articleTitle}>Tagesgeld vs. Festgeld</h3>
+            <p style={styles.cardText}>
+              Erfahre die wichtigsten Unterschiede und wann welche Anlageform
+              besser zu deinem Ziel passt.
+            </p>
+          </Link>
+        </div>
+      </section>
+
       <section style={styles.ctaBox}>
         <h2 style={styles.h2}>Tagesgeld jetzt vergleichen</h2>
 
@@ -210,6 +235,33 @@ const styles = {
   list: {
     lineHeight: 1.9,
     paddingLeft: "20px",
+  },
+
+  articleSection: {
+    maxWidth: "1100px",
+    margin: "0 auto 40px",
+  },
+
+  articleGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "28px",
+  },
+
+  articleCard: {
+    display: "block",
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "18px",
+    padding: "26px",
+    color: "#e5e7eb",
+    textDecoration: "none",
+  },
+
+  articleTitle: {
+    fontSize: "1.2rem",
+    marginBottom: "10px",
+    color: "#ffffff",
   },
 
   ctaBox: {

@@ -196,6 +196,11 @@ export default function Home() {
           href="/girokonto"
         />
 
+            <Card
+  title="💳 Kreditkarte"
+  text="Kreditkarten vergleichen, Gebühren prüfen und die passende Karte für Alltag und Reisen finden."
+  href="/kreditkarte"
+/>
         <Card
           title="🧮 Rechner & Tools"
           text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."

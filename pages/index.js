@@ -183,11 +183,19 @@ export default function Home() {
           text="Aktuelle Tagesgeldzinsen vergleichen und flexible Rücklagen sinnvoll verzinsen."
           href="/tagesgeld"
         />
+
         <Card
           title="🔒 Festgeld"
           text="Festgeldzinsen vergleichen, Geld sicher anlegen und feste Renditen für deine Laufzeit sichern."
           href="/festgeld"
         />
+
+        <Card
+          title="🏧 Girokonto"
+          text="Girokonten vergleichen, Gebühren sparen und das passende Konto für deinen Alltag finden."
+          href="/girokonto"
+        />
+
         <Card
           title="🧮 Rechner & Tools"
           text="Finanzrechner für ETF-Sparpläne, Zinseszins, Sparpläne und Vermögensaufbau."

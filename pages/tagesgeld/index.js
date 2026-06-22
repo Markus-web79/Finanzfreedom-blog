@@ -1,4 +1,4 @@
-import Link from "next/link";
+ import Link from "next/link";
 
 const TAGESGELD_AFFILIATE_LINK =
   "https://www.awin1.com/cread.php?awinmid=14797&awinaffid=2757918&ued=https%3A%2F%2Fwww.verivox.de%2Ftagesgeld%2F";
@@ -105,6 +105,44 @@ export default function TagesgeldIndex() {
             <p style={styles.cardText}>
               Erfahre die wichtigsten Unterschiede und wann welche Anlageform
               besser zu deinem Ziel passt.
+            </p>
+          </Link>
+        </div>
+      </section>
+
+      <section style={styles.relatedSection}>
+        <h2 style={styles.h2}>Weitere passende Themen</h2>
+
+        <div style={styles.relatedGrid}>
+          <Link href="/festgeld" style={styles.relatedCard}>
+            <h3 style={styles.articleTitle}>🔒 Festgeld</h3>
+            <p style={styles.cardText}>
+              Wenn du dein Geld für einen festen Zeitraum sicher anlegen
+              möchtest, kann Festgeld eine sinnvolle Ergänzung sein.
+            </p>
+          </Link>
+
+          <Link href="/girokonto" style={styles.relatedCard}>
+            <h3 style={styles.articleTitle}>🏧 Girokonto</h3>
+            <p style={styles.cardText}>
+              Prüfe, ob dein Girokonto noch zu dir passt oder ob du durch einen
+              Wechsel Gebühren sparen kannst.
+            </p>
+          </Link>
+
+          <Link href="/sparen" style={styles.relatedCard}>
+            <h3 style={styles.articleTitle}>💸 Sparen</h3>
+            <p style={styles.cardText}>
+              Baue zuerst Rücklagen auf, senke unnötige Kosten und schaffe dir
+              ein stabiles finanzielles Fundament.
+            </p>
+          </Link>
+
+          <Link href="/etfs" style={styles.relatedCard}>
+            <h3 style={styles.articleTitle}>📈 ETFs</h3>
+            <p style={styles.cardText}>
+              Für langfristigen Vermögensaufbau können ETFs eine passende
+              Ergänzung zu Tagesgeld und Rücklagen sein.
             </p>
           </Link>
         </div>
@@ -262,6 +300,27 @@ const styles = {
     fontSize: "1.2rem",
     marginBottom: "10px",
     color: "#ffffff",
+  },
+
+  relatedSection: {
+    maxWidth: "1100px",
+    margin: "0 auto 40px",
+  },
+
+  relatedGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "24px",
+  },
+
+  relatedCard: {
+    display: "block",
+    background: "rgba(2, 6, 23, 0.55)",
+    border: "1px solid #1e293b",
+    borderRadius: "18px",
+    padding: "24px",
+    color: "#e5e7eb",
+    textDecoration: "none",
   },
 
   ctaBox: {

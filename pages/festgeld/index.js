@@ -86,6 +86,44 @@ export default function FestgeldIndex() {
         </ul>
       </section>
 
+      <section style={styles.relatedSection}>
+        <h2 style={styles.h2}>Weitere passende Themen</h2>
+
+        <div style={styles.relatedGrid}>
+          <Link href="/tagesgeld" style={styles.relatedCard}>
+            <h3 style={styles.relatedTitle}>🏦 Tagesgeld</h3>
+            <p style={styles.cardText}>
+              Wenn du flexibel bleiben möchtest, kann Tagesgeld die bessere
+              Alternative zum Festgeld sein.
+            </p>
+          </Link>
+
+          <Link href="/tagesgeld/tagesgeld-vs-festgeld" style={styles.relatedCard}>
+            <h3 style={styles.relatedTitle}>⚖️ Tagesgeld vs. Festgeld</h3>
+            <p style={styles.cardText}>
+              Vergleiche beide Anlageformen und finde heraus, welche besser zu
+              deinem Ziel passt.
+            </p>
+          </Link>
+
+          <Link href="/girokonto" style={styles.relatedCard}>
+            <h3 style={styles.relatedTitle}>🏧 Girokonto</h3>
+            <p style={styles.cardText}>
+              Dein Girokonto ist die Basis deiner Finanzen. Prüfe, ob es noch
+              zu deinem Alltag passt.
+            </p>
+          </Link>
+
+          <Link href="/etfs" style={styles.relatedCard}>
+            <h3 style={styles.relatedTitle}>📈 ETFs</h3>
+            <p style={styles.cardText}>
+              Für langfristigen Vermögensaufbau können ETFs eine sinnvolle
+              Ergänzung zu sicheren Zinsanlagen sein.
+            </p>
+          </Link>
+        </div>
+      </section>
+
       <section style={styles.ctaBox}>
         <h2 style={styles.h2}>Festgeld jetzt vergleichen</h2>
 
@@ -211,6 +249,33 @@ const styles = {
   list: {
     lineHeight: 1.9,
     paddingLeft: "20px",
+  },
+
+  relatedSection: {
+    maxWidth: "1100px",
+    margin: "0 auto 40px",
+  },
+
+  relatedGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "24px",
+  },
+
+  relatedCard: {
+    display: "block",
+    background: "rgba(2, 6, 23, 0.55)",
+    border: "1px solid #1e293b",
+    borderRadius: "18px",
+    padding: "24px",
+    color: "#e5e7eb",
+    textDecoration: "none",
+  },
+
+  relatedTitle: {
+    fontSize: "1.2rem",
+    marginBottom: "10px",
+    color: "#ffffff",
   },
 
   ctaBox: {

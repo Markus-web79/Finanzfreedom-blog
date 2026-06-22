@@ -84,6 +84,31 @@ export default function GirokontoIndex() {
         </ul>
       </section>
 
+      <section style={styles.articleSection}>
+        <h2 style={styles.h2}>Ratgeber zum Girokonto</h2>
+
+        <div style={styles.articleGrid}>
+          <Link
+            href="/girokonto/was-ist-ein-girokonto"
+            style={styles.articleCard}
+          >
+            <h3 style={styles.articleTitle}>Was ist ein Girokonto?</h3>
+            <p style={styles.cardText}>
+              Einfach erklärt: Wie ein Girokonto funktioniert und worauf du bei
+              der Auswahl achten solltest.
+            </p>
+          </Link>
+
+          <Link href="/girokonto/girokonto-wechseln" style={styles.articleCard}>
+            <h3 style={styles.articleTitle}>Girokonto wechseln</h3>
+            <p style={styles.cardText}>
+              Schritt-für-Schritt-Anleitung für einen einfachen Kontowechsel
+              ohne unnötige Fehler.
+            </p>
+          </Link>
+        </div>
+      </section>
+
       <section style={styles.relatedSection}>
         <h2 style={styles.h2}>Weitere passende Themen</h2>
 
@@ -247,6 +272,33 @@ const styles = {
   list: {
     lineHeight: 1.9,
     paddingLeft: "20px",
+  },
+
+  articleSection: {
+    maxWidth: "1100px",
+    margin: "0 auto 40px",
+  },
+
+  articleGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "28px",
+  },
+
+  articleCard: {
+    display: "block",
+    background: "#020617",
+    border: "1px solid #1e293b",
+    borderRadius: "18px",
+    padding: "26px",
+    color: "#e5e7eb",
+    textDecoration: "none",
+  },
+
+  articleTitle: {
+    fontSize: "1.2rem",
+    marginBottom: "10px",
+    color: "#ffffff",
   },
 
   relatedSection: {
